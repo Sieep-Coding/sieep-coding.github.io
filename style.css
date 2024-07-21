@@ -60,6 +60,36 @@ section {
   margin-bottom: 60px;
 }
 
+.github-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: bold;
+  background-color: #6e40c9;
+  padding: 6px 12px;
+  border-radius: 20px;  /* Increased border-radius for pill shape */
+  transition: background-color 0.3s ease;
+  font-size: 23px;  /* Adjust font size as needed */
+  line-height: 1;
+}
+
+.github-link:hover {
+  background-color: #7e50d9;
+}
+
+.github-link svg {
+  width: 22px;  /* Slightly smaller icon */
+  height: 22px;
+  margin-right: 8px;  /* Reduced spacing between icon and text */
+  fill: currentColor;
+}
+.github-link span {
+  display: inline-block; /* Treat text as a block for alignment */
+  vertical-align: middle; /* Align vertically with icon */
+}
+
 .card, .repo-card, .proj-card {
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 16px;
