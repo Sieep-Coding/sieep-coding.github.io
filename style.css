@@ -90,6 +90,31 @@ section {
   vertical-align: middle; /* Align vertically with icon */
 }
 
+.repo-languages {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+  font-size: 14px;
+  color: #e0e0e0;
+}
+
+.repo-languages span {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 4px 8px;
+  border-radius: 12px;
+  transition: background-color 0.3s ease;
+}
+
+.repo-languages span:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.repo-languages span::before {
+  content: '• ';
+  color: #8E2DE2;
+}
+
 .card, .repo-card, .proj-card {
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 16px;
