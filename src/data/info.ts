@@ -102,13 +102,13 @@ export const info = {
       img_path: "note.png",
     },
     {
-      title: "Notezone",
+      title: "Web Crawler",
       date: "2024",
       description:
-        "NoteZone is a modern and intuitive note-taking application built with Electron, HTML, CSS, and JavaScript.",
+        "A simple web crawler with customizable paramaters.",
       link: "https://github.com/Sieep-Coding/web-crawler",
       tech: ["Go", "Neovim"],
-      img_alt: "Photo of Notezone",
+      img_alt: "Photo of Crawler",
       img_path: "crawler.png",
     },
   ],
