@@ -5,7 +5,7 @@ export default function TopButton() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 300) {
+      if (window.scrollY > 400) {
         setIsTop(false);
       } else {
         setIsTop(true);

@@ -3,9 +3,11 @@ import ToggleDarkMode from "../ToggleDarkMode";
 import Search from "../search/Search";
 import Hamburger from "./Hamburger";
 import { info } from "../../data/info";
+import HireMe from "./HireMe";
 
 export default function Nav({ posts }) {
   const [isNavOpen, setIsNavOpen] = useState(false);
+  const [isHireMeOpen, setIsHireMeOpen] = useState(false);
 
   const navLinks = [
     { name: "About", href: "/#about" },
@@ -34,18 +36,30 @@ export default function Nav({ posts }) {
             </span>
           </a>
 
-          {/* Button for CV download */}
-          <a
-            href={info.cv}
-            download
-            className="px-4 py-2 border-2 rounded text-secondary dark:text-dk-secondary border-secondary dark:border-dk-secondary hover:bg-secondary dark:hover:bg-dk-secondary hover:text-primary dark:hover:text-primary cursor-pointer"
-          >
-            <i className="fas fa-download mr-2"></i>
-            <span className="hidden lg:inline-block font-medium">
-              Download CV
-            </span>
-            <span className="lg:hidden font-medium">CV</span>
-          </a>
+          <div className="flex items-center space-x-4">
+            {/* Button for CV download */}
+            <a
+              href={info.cv}
+              download
+              className="px-4 py-2 border-2 rounded text-secondary dark:text-dk-secondary border-secondary dark:border-dk-secondary hover:bg-secondary dark:hover:bg-dk-secondary hover:text-primary dark:hover:text-primary cursor-pointer"
+            >
+              <i className="fas fa-download mr-2"></i>
+              <span className="hidden lg:inline-block font-medium">
+                Download Resume
+              </span>
+              <span className="lg:hidden font-medium">CV</span>
+            </a>
+
+            {/* Button for Hire Me */}
+            <button
+              onClick={() => setIsHireMeOpen(true)}
+              className="px-4 py-2 border-2 rounded text-secondary dark:text-dk-secondary border-secondary dark:border-dk-secondary hover:bg-secondary dark:hover:bg-dk-secondary hover:text-primary dark:hover:text-primary cursor-pointer"
+            >
+              <i className="fas fa-briefcase mr-2"></i>
+              <span className="hidden lg:inline-block font-medium">Hire Me</span>
+              <span className="lg:hidden font-medium">Hire</span>
+            </button>
+          </div>
 
           <div className="inline-flex lg:hidden text-secondary dark:text-dk-secondary">
             <Hamburger
@@ -100,6 +114,25 @@ export default function Nav({ posts }) {
           className="fixed inset-0 blur-3xl bg-black bg-opacity-50 z-40 lg:hidden"
           onClick={() => setIsNavOpen(false)}
         ></div>
+      )}
+      {isHireMeOpen && (
+        <div
+          className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-60"
+          onClick={() => setIsHireMeOpen(false)}
+        >
+          <div
+            className="relative bg-primary dark:bg-dk-primary p-8 rounded-lg w-full max-w-md mx-4 md:mx-8 lg:mx-16"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              className="absolute top-2 right-2 text-2xl text-secondary dark:text-dk-secondary hover:text-accent dark:hover:text-dk-accent"
+              onClick={() => setIsHireMeOpen(false)}
+            >
+              &times;
+            </button>
+            <HireMe />
+          </div>
+        </div>
       )}
     </>
   );
