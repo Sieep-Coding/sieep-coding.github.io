@@ -9,7 +9,7 @@ export const info = {
   cv: "/resume.pdf",
 
   about: {
-    description: `👋 Hi! I'm Nick Stambaugh, an analyst/developer with 4+ years' experience in manufacturing, healthcare, and economic development. I aim to lead UX in business apps. I love running, being outdoors with my dog, tech writing, literature, gaming, and spending time with loved ones.`,
+    description: `👋 Hi! I'm Nick Stambaugh, an analyst/developer with 4+ years' experience. I aim to lead UX in business apps. I love running, being outdoors with my dog, tech writing, literature, gaming, and spending time with loved ones.`,
     education: [
       {
         title: "BS in Economics and Philosophy",
@@ -32,7 +32,7 @@ export const info = {
         date: "2023 - 2024",
         location: "National Nail",
         description:
-          "Masterminded backend solutions using Node.js and MongoDB. Surprisingly good at debugging, considering my history of causing bugs.",
+          "My focus was on creating impactful visualizations, automating reporting processes, and providing analytical support to enhance business performance.",
       },
       {
         title: "Business Intelligence Analyst",
