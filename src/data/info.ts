@@ -9,8 +9,7 @@ export const info = {
   cv: "/resume.pdf",
 
   about: {
-    description: `👋 Hi! I'm Nick Stambaugh, and I have over 4 years of experience as an analyst/developer. I've built solutions for manufacturing, healthcare, and economic development organizations. My long-term objective is to strategically lead the user experience of business-critical applications, working with like-minded free-thinkers who do what they love. Outside of coding, I love to go for long runs and be outside with my dog, relax in a hammock, occasionally write about tech I find interesting, discover new literature to discuss with my father, play video games, and spend as much time as I can with friends and family.
-`,
+    description: `👋 Hi! I'm Nick Stambaugh, an analyst/developer with 4+ years' experience in manufacturing, healthcare, and economic development. I aim to lead UX in business apps. I love running, being outdoors with my dog, tech writing, literature, gaming, and spending time with loved ones.`,
     education: [
       {
         title: "BS in Economics and Philosophy",
