@@ -3,7 +3,7 @@ export const info = {
   brief_description:
     "Business Intelligence and Full Stack Developer",
   role: "Full Stack Developer",
-  picture: "/pic.jpg",
+  picture: "/img.jpg",
   picture_alt: "Nick Stambaugh",
   location: "Grand Rapids, MI",
   cv: "/resume.pdf",
