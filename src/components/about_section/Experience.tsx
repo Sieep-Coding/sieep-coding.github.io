@@ -20,7 +20,7 @@ export default function Experience(props: ExperienceProps) {
             <div className="flex-1">
               <h2 className="text-2xl font-semibold">{exp.title}</h2>
               <p className="text-lg font-normal">{exp.date}</p>
-              <p className="text-lg font-normal">{exp.location}</p>
+              <p className="text-lg font-bold">{exp.location}</p>
               <p className="text-lg font-normal mt-2">{exp.description}</p>
             </div>
           </div>
