@@ -6,9 +6,11 @@ import tailwindConfig from "../../tailwind.config.mjs";
 export default function Pointer() {
   const canvasRef = useRef(null);
   const twConfig = resolveConfig(tailwindConfig);
+  
+  // Updated to use the purple theme colors
   const themeColor = useThemeColor([
-    twConfig.theme.colors.blue["500"],
-    twConfig.theme.colors.blue["300"],
+    twConfig.theme.colors.accent, // Lighter purple
+    twConfig.theme.colors.secondary, // Medium purple
   ]);
 
   useEffect(() => {
@@ -63,14 +65,14 @@ export default function Pointer() {
     animate();
 
     const particlesConfig = {
-      radius_in: [3, 8], // Larger radius for more impact
-      vx_in: [-1.5, 1.5], // Increased velocity for more movement
-      vy_in: [-1.5, 1.5],
-      spread: 20, // Increased spread for a more dynamic effect
-      life: 30, // Longer life for particles
-      interval: 0.5, // Faster interval between particles
+      radius_in: [2, 4], // Smaller radius
+      vx_in: [-1, 1], // Reduced velocity for smaller movement
+      vy_in: [-1, 1],
+      spread: 15, // Slightly reduced spread
+      life: 20, // Shorter life for particles
+      interval: 0.3, // Faster interval between particles
       threshold: 2,
-      derivative_ratio: 8,
+      derivative_ratio: 10, // Increased ratio for smoother movement
     };
 
     const random = (min, max) => Math.random() * (max - min) + min;
@@ -141,7 +143,7 @@ function Particle(x, y, vx, vy, radius, color, life, spread, ctx) {
     this.ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
     this.ctx.fillStyle = this.color;
     this.ctx.shadowColor = this.color;
-    this.ctx.shadowBlur = 15; // Add a glow effect
+    this.ctx.shadowBlur = 10; // Reduced glow effect
     this.ctx.fill();
     this.ctx.closePath();
   };

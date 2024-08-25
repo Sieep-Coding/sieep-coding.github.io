@@ -11,6 +11,7 @@ export default function Nav({ posts }) {
     { name: "About", href: "/#about" },
     { name: "Projects", href: "/#projects" },
     { name: "Blog", href: "/#blog" },
+    { name: "Newsletter", href: "https://codewithnick.beehiiv.com/" },
     { name: "Contact", href: "/#contact" },
   ];
 
