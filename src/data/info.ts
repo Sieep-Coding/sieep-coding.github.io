@@ -1,49 +1,64 @@
 export const info = {
-  name: "Bart Simpson",
+  name: "Nick Stambaugh",
   brief_description:
-    "I'm a mischievous full stack developer with a knack for troublemaking.",
+    "Business Intelligence and Full Stack Developer",
   role: "Full Stack Developer",
-  picture: "/pic.png",
-  picture_alt: "Bart Simpson",
-  location: "Springfield, USA",
+  picture: "/pic.jpg",
+  picture_alt: "Nick Stambaugh",
+  location: "Grand Rapids, MI",
   cv: "/resume.pdf",
 
   about: {
-    description: `I'm a full stack developer with a passion for causing a little chaos in web development.
-    I have a solid foundation in computer science, although I prefer skateboarding over studying.
-    I excel in building web applications using React, Node.js, and MongoDB.
-    I'm known for my sharp wit and quick thinking, traits that serve me well in coding and pranks alike.
-    Looking for a challenge? Let's create something memorable together.`,
+    description: `👋 Hi! I'm Nick Stambaugh, and I have over 4 years of experience as an analyst/developer.
+
+I've built solutions for manufacturing, healthcare, and economic development organizations. My long-term objective is to strategically lead the user experience of business-critical applications, working with like-minded free-thinkers who do what they love. 
+
+Outside of coding, I love to go for long runs and be outside with my dog, relax in a hammock, occasionally write about tech I find interesting, discover new literature to discuss with my father, play video games, and spend as much time as I can with friends and family.
+`,
     education: [
       {
-        title: "Self-Taught Developer Extraordinaire",
-        date: "2000 - Present",
-        location: "Springfield Elementary School of Hard Knocks",
-        gpa: "4.0 (A+ in Pranks)",
-        thesis: "The Art of Subverting Expectations: A Practical Guide",
+        title: "BS in Economics and Philosophy",
+        date: "2019 - 2022",
+        location: "Grand Valley State University",
+        gpa: "3.4",
+        thesis: "VP of Real Estate & Investments Club, Economics Club, Finance Club.",
       },
     ],
     experience: [
       {
-        title: "Frontend Developer",
-        date: "2015 - Present",
-        location: "Krusty Burger Web Dev",
+        title: "Sales Operations Analyst",
+        date: "2024 - Present",
+        location: "NxGen MDx",
         description:
-          "Crafted interactive web experiences using React and Redux. Often multitasked between coding and avoiding Principal Skinner.",
+          "My responsibilities focus on streamlining reporting processes and providing actionable business intelligence to support executive and sales team decision-making.",
       },
       {
-        title: "Backend Bandit",
-        date: "2013 - 2015",
-        location: "Comic Book Guy's Software Emporium",
+        title: "Business Intelligence Developer",
+        date: "2023 - 2024",
+        location: "National Nail",
         description:
           "Masterminded backend solutions using Node.js and MongoDB. Surprisingly good at debugging, considering my history of causing bugs.",
       },
       {
-        title: "Junior Hacker",
-        date: "2010 - 2013",
-        location: "Springfield Elementary Cyber Club",
+        title: "Business Intelligence Analyst",
+        date: "2022 - 2023",
+        location: "The Right Place, Inc.",
         description:
-          "Pioneered early web exploits, leading the club in daring coding escapades. Was disciplined for hacking the school's grading system.",
+          "My contributions spanned from enterprise-level dashboard creation to designing web applications, all while providing valuable research and formal reporting consistently.",
+      },
+      {
+        title: "Founder",
+        date: "2021 - 2023",
+        location: "2 Quick Sellers, LLC",
+        description:
+          "My role involved overseeing all aspects of online sales operations and ensuring efficient management of inventory and customer interactions. ",
+      },
+      {
+        title: "Researcher",
+        date: "2021",
+        location: "University of Michigan Nuclear Engineering & Radiological Sciences",
+        description:
+          "As an Undergraduate Researcher at the University of Michigan, I focused on analyzing the economic aspects of US nuclear power plants, contributing with significant research and data analysis. ",
       },
     ],
 
@@ -52,41 +67,60 @@ export const info = {
 
   projects: [
     {
-      title: "Bart's Prank Portfolio",
+      title: "Go + HTMX + Alpine.js",
       date: "2024",
       description:
-        "An interactive portfolio website showcasing my mischievous coding projects.",
-      link: "https://github.com/bartsimpsonfake/prank-portfolio",
-      tech: ["React", "Node.js", "MongoDB", "Sarcasm.js"],
-      img_alt: "Bart's Portfolio",
-      img_path: "/simpsons.png",
+        "A simple todo app in HTMX, alpinejs, and Go.",
+      link: "https://github.com/Sieep-Coding/todo-htmx-alpine-go",
+      tech: ["Go", "Alpine.js", "HTMX"],
+      img_alt: "Photo of Site",
+      img_path: "site.png",
     },
     {
-      title: "Skateboard Shop",
-      date: "2023",
+      title: "Chat Server in Go",
+      date: "2024",
       description:
-        "An e-commerce site selling skateboards and prank supplies. No bullies allowed!",
-      link: "https://github.com/bartsimpsonfake/skate-shop",
-      tech: ["React", "Node.js", "MongoDB", "Skateboard.js"],
-      img_alt: "Skateboard Shop",
-      img_path: "skateboard.png",
+        "A single file chat server written in Go.",
+      link: "https://github.com/Sieep-Coding/chatserver",
+      tech: ["Go", "Neovim"],
+      img_alt: "Photo of Code",
+      img_path: "/chatserver.png",
     },
     {
-      title: "Comic Book Club",
-      date: "2022",
+      title: "Web Server in C",
+      date: "2024",
       description:
-        "A platform for comic book enthusiasts to discuss and share their collections.",
-      link: "https://github.com/bartsimpsonfake/comic-club",
-      tech: ["React", "Node.js", "MongoDB", "Comic.js"],
-      img_alt: "Comic Book Club",
-      img_path: "comics.png",
+        "A web-server written in pure C.",
+      link: "https://github.com/Sieep-Coding/web-server",
+      tech: ["C", "Neovim", "Makefile"],
+      img_alt: "Photo of Code",
+      img_path: "server.png",
+    },
+    {
+      title: "Notezone",
+      date: "2024",
+      description:
+        "NoteZone is a modern and intuitive note-taking application built with Electron, HTML, CSS, and JavaScript.",
+      link: "https://github.com/Sieep-Coding/notezone",
+      tech: ["Electron", "Node.js", "JSON", "JavaScript", "CSS"],
+      img_alt: "Photo of Notezone",
+      img_path: "note.png",
+    },
+    {
+      title: "Notezone",
+      date: "2024",
+      description:
+        "NoteZone is a modern and intuitive note-taking application built with Electron, HTML, CSS, and JavaScript.",
+      link: "https://github.com/Sieep-Coding/web-crawler",
+      tech: ["Go", "Neovim"],
+      img_alt: "Photo of Notezone",
+      img_path: "crawler.png",
     },
   ],
 
   contact: {
-    email: "bart@thesimpsons.com",
-    linkedin: "https://www.linkedin.com/in/bartsimpsonfake",
-    github: "https://www.github.com/gio-del",
-    twitter: "https://www.twitter.com/bartsimpsonfake",
+    email: "nickstambaugh@proton.me",
+    linkedin: "https://www.linkedin.com/in/nick-s-694241139/",
+    github: "https://github.com/Sieep-Coding/",
   },
 };

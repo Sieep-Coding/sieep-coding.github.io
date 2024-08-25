@@ -7,8 +7,8 @@ export default function Pointer() {
   const canvasRef = useRef(null);
   const twConfig = resolveConfig(tailwindConfig);
   const themeColor = useThemeColor([
-    twConfig.theme.colors["dk-secondary"],
-    twConfig.theme.colors["secondary"],
+    twConfig.theme.colors.blue["500"],
+    twConfig.theme.colors.blue["300"],
   ]);
 
   useEffect(() => {
@@ -46,7 +46,6 @@ export default function Pointer() {
     };
 
     document.addEventListener("mousemove", onMouseMove);
-
     document.addEventListener("mouseout", onMouseOut);
 
     function animate() {
@@ -64,14 +63,14 @@ export default function Pointer() {
     animate();
 
     const particlesConfig = {
-      radius_in: [2, 5],
-      vx_in: [-1, 1],
-      vy_in: [-1, 1],
-      spread: 10,
-      life: 20,
-      interval: 1,
-      threshold: 3,
-      derivative_ratio: 10,
+      radius_in: [3, 8], // Larger radius for more impact
+      vx_in: [-1.5, 1.5], // Increased velocity for more movement
+      vy_in: [-1.5, 1.5],
+      spread: 20, // Increased spread for a more dynamic effect
+      life: 30, // Longer life for particles
+      interval: 0.5, // Faster interval between particles
+      threshold: 2,
+      derivative_ratio: 8,
     };
 
     const random = (min, max) => Math.random() * (max - min) + min;
@@ -97,7 +96,6 @@ export default function Pointer() {
       }
 
       if (mouse.last_x && mouse.last_y) {
-        // Derivative of mouse position
         vx = (mouse.x - mouse.last_x) / derivative_ratio;
         vy = (mouse.y - mouse.last_y) / derivative_ratio;
       }
@@ -106,11 +104,9 @@ export default function Pointer() {
         new Particle(x, y, vx, vy, radius, color, life, spread, ctx)
       );
 
-      // Call createParticle again after interval
       setTimeout(createParticle, particlesConfig.interval);
     }
 
-    // Initial call to start creating particles
     createParticle();
 
     return () => {
@@ -118,7 +114,6 @@ export default function Pointer() {
       window.removeEventListener("mousemove", onMouseMove);
       window.removeEventListener("mouseout", onMouseOut);
 
-      // Clear particles when unmounting
       particles = [];
     };
   }, [themeColor]);
@@ -145,6 +140,8 @@ function Particle(x, y, vx, vy, radius, color, life, spread, ctx) {
     this.ctx.beginPath();
     this.ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
     this.ctx.fillStyle = this.color;
+    this.ctx.shadowColor = this.color;
+    this.ctx.shadowBlur = 15; // Add a glow effect
     this.ctx.fill();
     this.ctx.closePath();
   };
