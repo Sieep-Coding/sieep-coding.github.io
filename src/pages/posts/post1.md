@@ -1,16 +1,15 @@
 ---
-title: "My First Astro Post"
+title: "Introduction"
 date: "2022-01-01"
 
 layout: ../../layouts/PostLayout.astro
-description: "This is my first Astro post. Stay tuned for more exciting content coming soon!"
+description: "Welcome to my website! Click here to learn more about me."
 
-img_path : "/paper.png"
-img_alt: "Insert image description here"
+img_path : "/code.jpg"
+img_alt: "Nick Stambaugh"
 ---
 
-This is my first Astro post. Stay tuned for more exciting content coming soon!
-Voluptate dolor aliquip ipsum aliquip velit cillum mollit aliqua veniam cillum sint enim ad amet. Lorem cillum consectetur esse sint. Cillum excepteur do enim nulla qui esse sint ipsum amet adipisicing do.
+Hello internet dweller! My name is Nick Stambaugh.
 
 ## Section 1
 
