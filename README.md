@@ -2,4 +2,4 @@
 
 Learn more about me and my experience.
 
-View my ![blog](https://sieep-coding.github.io/posts/).
+View my [blog](https://sieep-coding.github.io/posts/).
