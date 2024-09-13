@@ -21,7 +21,7 @@ export const info = {
     ],
     experience: [
       {
-        title: "Sales Operations Analyst",
+        title: "Data Analyst",
         date: "2024 - Present",
         location: "NxGen MDx",
         description:
