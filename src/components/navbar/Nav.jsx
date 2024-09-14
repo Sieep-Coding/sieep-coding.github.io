@@ -12,8 +12,8 @@ export default function Nav({ posts }) {
   const navLinks = [
     { name: "About", href: "/#about" },
     { name: "Projects", href: "/#projects" },
-    { name: "Blog", href: "/#blog" },
-    { name: "Newsletter", href: "https://codewithnick.beehiiv.com/" },
+    { name: "Blog", href: "/posts" },
+    { name: "Support My Non-Profit", href: "https://accessgr.vercel.app/" },
     { name: "Contact", href: "/#contact" },
   ];
 
