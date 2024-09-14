@@ -62,14 +62,34 @@ export const info = {
 
   projects: [
     {
-      title: "Go + HTMX + Alpine.js",
+      title: "Full-Stack Website",
       date: "2024",
       description:
-        "A simple todo app in HTMX, alpinejs, and Go.",
-      link: "https://github.com/Sieep-Coding/todo-htmx-alpine-go",
-      tech: ["Go", "Alpine.js", "HTMX"],
-      img_alt: "Photo of Site",
-      img_path: "site.png",
+        "My Grand Rapids based non-profit dedicated to device recycling. ",
+      link: "https://accessgr.vercel.app/",
+      tech: ["Astro", "VSCode"],
+      img_alt: "Photo a nonprofit site.",
+      img_path: "access.png",
+    },
+    {
+      title: "Full-Stack Website - MiTalent360",
+      date: "2024",
+      description:
+        "MiTalent360 is an innovative virtual educational assessment tool designed by talent strategy professionals.",
+      link: "https://mitalent360.com/",
+      tech: ["React", "Node.js", "JSON", "JavaScript", "CSS"],
+      img_alt: "Photo of Mitalent360",
+      img_path: "mitalent.png",
+    },
+    {
+      title: "Information Tracking System in Go",
+      date: "2024",
+      description:
+        "This is a tool to manage device donations to my non-profit.",
+      link: "https://github.com/Sieep-Coding/laptop-cli",
+      tech: ["Go", "Neovim"],
+      img_alt: "Photo of CLI terminal",
+      img_path: "cli.jpg",
     },
     {
       title: "Chat Server in Go",
@@ -80,6 +100,16 @@ export const info = {
       tech: ["Go", "Neovim"],
       img_alt: "Photo of Code",
       img_path: "/chatserver.png",
+    },
+    {
+      title: "Go + HTMX + Alpine.js",
+      date: "2024",
+      description:
+        "A simple todo app in HTMX, alpinejs, and Go.",
+      link: "https://github.com/Sieep-Coding/todo-htmx-alpine-go",
+      tech: ["Go", "Alpine.js", "HTMX"],
+      img_alt: "Photo of Site",
+      img_path: "site.png",
     },
     {
       title: "Web Server in C",

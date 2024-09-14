@@ -9,26 +9,57 @@ img_path : "/code.jpg"
 img_alt: "Nick Stambaugh"
 ---
 
-Hello internet dweller! My name is Nick Stambaugh.
+## Introduction
 
-## Section 1
+### Who Am I?
 
-Commodo adipisicing et tempor laboris commodo enim consequat. Exercitation velit nulla excepteur eu qui minim in. Laborum occaecat occaecat irure occaecat labore et deserunt adipisicing exercitation.
+Hi, I’m **Nick Stambaugh**, a **Business Intelligence and Full Stack Developer** based in **Grand Rapids, MI**. 
 
-Duis est sint Lorem anim. Excepteur sunt magna sint exercitation aliqua adipisicing dolor dolore anim tempor Lorem enim dolore. Aliqua aliqua occaecat laborum culpa enim. Aliqua et ad consequat elit officia Lorem sunt voluptate adipisicing laborum velit adipisicing sunt. Sit cupidatat consequat velit eiusmod ut excepteur elit cillum irure pariatur sunt eu sunt dolor. Nisi eu est reprehenderit cillum magna eiusmod elit aliqua amet reprehenderit irure.
+My journey into technology and software development stems from a passion for solving complex problems and creating impactful solutions. 
 
-## Section 2
+With a formal background in **Economics and Philosophy**, I’ve honed my skills in a wide range of technologies and tools that allow me to develop effective business solutions and applications.
 
-Reprehenderit tempor laborum enim adipisicing amet tempor et. Consectetur reprehenderit sit quis ea ad occaecat aliquip ipsum aliqua aliquip proident ullamco culpa. Eu eu enim proident deserunt irure do in commodo nostrud elit quis quis occaecat sit. Occaecat cupidatat cillum ex in nisi laborum ullamco cillum officia amet et. Aliquip enim exercitation sint ut in deserunt ut et laborum ex reprehenderit cillum do. Veniam veniam amet aute incididunt mollit ex cupidatat nulla.
+I’m currently pursuing an **MS in Applied Computer Science** with a focus on software engineering at **Grand Valley State University**.
 
-Esse esse Lorem culpa minim consectetur dolor exercitation sunt in. Cillum proident labore irure dolor dolore. Mollit cillum esse quis labore aliqua reprehenderit anim ad sint ullamco tempor. Commodo veniam est mollit excepteur anim pariatur elit ullamco aliquip ut enim id magna. Lorem cillum ad Lorem ea.
+### My Skill Set
 
-Aute ullamco aute ea cillum nisi duis laborum consequat nisi deserunt dolore ex officia. Nulla deserunt laboris laborum cillum occaecat occaecat ut incididunt ex laboris consequat eu. Exercitation consequat ullamco excepteur excepteur in pariatur cupidatat pariatur aute aute tempor aliquip.
+Over the years, I’ve gained expertise in both **business intelligence** and **full stack development**. 
 
-Eiusmod consequat occaecat aute sint velit veniam Lorem officia consequat proident est consectetur aliqua. Tempor pariatur ipsum voluptate ex incididunt ea ad minim quis id sit Lorem culpa adipisicing. Commodo nisi non sunt ipsum eiusmod voluptate est aliquip in deserunt.
+I enjoy working on both the front and back end of projects, from creating beautiful user interfaces to handling complex data queries. Here’s a snapshot of my tech stack:
 
-Nisi cupidatat exercitation irure nulla irure ut Lorem irure Lorem. Ex et sunt esse sint. Magna elit Lorem consequat sint occaecat ad do tempor. Nostrud velit exercitation mollit ut aute labore pariatur ipsum. Nostrud ad adipisicing velit elit aute enim adipisicing consequat dolore voluptate nostrud. Tempor nulla Lorem eu aliquip. Dolor labore est fugiat aute sint sint incididunt sunt non adipisicing tempor.
+- **Languages & Frameworks:** React.js, Flutter, Laravel, Go, Python, TypeScript, C, SQL.
+- **BI Tools:** Tableau, Power BI, Zoho Analytics, SQL (for complex queries and data modeling)
+- **Development Tools:** Neovim, Docker, Git, Jira, Linux, WSL
+- **Specialized Skills:** Database administration (MySQL, MongoDB, SQL Server), CRM development (Salesforce/HubSpot/Zoho), and command-line tool development in Go.
 
-Elit incididunt anim non magna pariatur dolor id officia irure nostrud aute reprehenderit veniam. Incididunt fugiat sit laboris deserunt et ea id cupidatat ex irure deserunt magna exercitation labore. Enim ad quis consequat ullamco velit dolore dolor labore elit amet sint minim nostrud. Occaecat Lorem sunt reprehenderit cillum. Et Lorem non excepteur tempor laborum laborum. Qui cupidatat adipisicing magna ullamco sit minim fugiat aliqua consectetur fugiat eiusmod.
+> I am particularly passionate about **writing dev tools**, building **interactive dashboards**, and **solving problems using Go**, one of my favorite programming languages.
 
-Cillum enim amet amet dolor sint minim eiusmod consectetur amet labore ut. Velit aliqua minim aute incididunt do. Laboris veniam adipisicing adipisicing ut aliqua do. Qui laborum quis cillum est tempor mollit elit reprehenderit.
+### My Experience
+
+Throughout my career, I’ve worked in various roles that have shaped my understanding of technology and business. Some of the companies I’ve been part of include:
+
+- **NxGen MDx** as a Sales Operations Analyst, where I deliver powerful dashboards using **Tableau**, **Zoho Analytics**, and **SQL**.
+- **National Nail**, where I contributed to business solutions in **BI**, helping transform data into actionable insights.
+- **The Right Place, Inc.**, providing data-driven insights that helped guide **economic development** in my region.
+
+My focus is always on creating value through technology—whether it’s through data analysis, web development, or building internal tools that improve workflow efficiency.
+
+### My Hobbies and Projects
+
+When I’m not working or studying, you can often find me developing **personal projects** that push my skills further. 
+
+I’m currently working on a **Connect 4 game in C using Raylib** and a **Non-Profit for donating old devices**.
+
+I also enjoy gaming and am considering a switch to **Linux Mint** for my build, as I find it to be a reliable and customizable OS for both gaming and development.
+
+### Conclusion
+
+Whether it’s building dashboards, writing code, or contributing to open-source projects, I’m always eager to solve problems and improve my craft. 
+
+I’m constantly learning and expanding my skill set, with a long-term goal of mastering complex software in languages like C and Go. 
+
+Feel free to reach out if you'd like to collaborate on a project or just talk tech!
+
+**Connect with me on LinkedIn**: [Nick Stambaugh](https://linkedin.com/in/nick-s-694241139)
+
+**Check out my GitHub**: [Sieep-Coding](https://github.com/Sieep-Coding)
