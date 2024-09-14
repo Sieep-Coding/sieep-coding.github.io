@@ -93,7 +93,7 @@ export default function ProjectCarousel(props: ProjectCarouselProps) {
 
   return (
     <>
-      <h1 className="text-3xl font-bold text-center mt-10 mb-5">My Projects</h1>
+      <h1 className="text-3xl font-bold text-center mt-10 mb-5">Professional and Personal Projects</h1>
       <div className="flex justify-center flex-col items-center">
         <div className="slider-container w-5/6">
           <Slider {...settings}>
