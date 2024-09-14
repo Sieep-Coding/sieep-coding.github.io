@@ -1,6 +1,6 @@
 ---
 title: "Why I Love Go"
-date: "2022-01-01"
+date: "2024-09-14"
 
 layout: ../../layouts/PostLayout.astro
 description: "Explore why Go is one of my favorite programming languages, including its simplicity, performance, and concurrency model."
