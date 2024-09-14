@@ -2,7 +2,7 @@
 
 Learn more about me and my experience.
 
-View my [blog](https://sieep-coding.github.io/posts/).
+View my [blog](https://nickstambaugh.vercel.app/posts/).
 
 ## About this Astro Template
 
