@@ -21,6 +21,20 @@ In this post, I'll guide you through creating **a Game of Life simulation using 
 
 We’ll take user input for grid density and the number of generations, simulate the evolution of the grid, and print the results right in the terminal.
 
+### What is the Game of Life?
+
+For those not familiar, Conway's Game of Life is computer graphical simulation based on [cellular automation](https://en.wikipedia.org/wiki/Cellular_automaton).
+
+Every cell interacts with its eight neighbors, which are the cells that are horizontally, vertically, or diagonally adjacent. 
+
+At each step in time, the following transitions occur:
+
+- Any live cell with fewer than two live neighbours dies, as if by underpopulation.
+- Any live cell with two or three live neighbours lives on to the next generation.
+- Any live cell with more than three live neighbours dies, as if by overpopulation.
+- Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
+
+
 ### Setting up the Universe
 
 We first initialize a 50x50 universe grid, N and M, and an empty array uni that will represent our universe's state. 
@@ -132,7 +146,7 @@ end
 
 ### Updating the Universe
 
-The rules of **Conway's Game of Life** are simple:
+Reminder, the rules of **Conway's Game of Life** are simple:
 
 - A cell with fewer than 2 or more than 3 neighbors dies (under/overpopulation).
 - A cell with exactly 3 neighbors is born.
