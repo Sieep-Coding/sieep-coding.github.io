@@ -89,7 +89,7 @@ export const info = {
       link: "https://github.com/Sieep-Coding/check-your-lua",
       tech: ["Lua", "Neovim"],
       img_alt: "Photo of check your lua docs",
-      img_path: "cyl.jpg",
+      img_path: "cyl.png",
     },
     {
       title: "Information Tracking System in Go",
