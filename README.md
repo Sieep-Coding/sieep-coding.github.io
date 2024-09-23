@@ -1,6 +1,6 @@
 ## Interactive Resume Built With Astro
 
-![Vercel](https://vercelbadge.vercel.app/api/sieep-coding/sieep-coding.github.io)
+![Vercel](https://vercelbadge.vercel.app/api/sieep-coding/sieep-coding.github.io) ![License: UNLICENSE](https://img.shields.io/badge/License-UNLICENSE-blue.svg)
 
 Learn more about me and my experience.
 
