@@ -82,6 +82,16 @@ export const info = {
       img_path: "mitalent.png",
     },
     {
+      title: "Lua Testing Framework",
+      date: "2024",
+      description:
+        "A single-file, minimal Lua testing framework.",
+      link: "https://github.com/Sieep-Coding/check-your-lua",
+      tech: ["Lua", "Neovim"],
+      img_alt: "Photo of check your lua docs",
+      img_path: "cyl.jpg",
+    },
+    {
       title: "Information Tracking System in Go",
       date: "2024",
       description:
