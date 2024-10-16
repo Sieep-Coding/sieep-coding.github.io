@@ -40,7 +40,7 @@ When employees see that hard work and talent are recognized and rewarded, they a
 This results in higher productivity and a positive workplace atmosphere. 
 
 In contrast, **nepotism can breed resentment** and **disengagement** among employees who feel overlooked or undervalued.
-## Conclusion
+### Conclusion
 Merit should always trump nepotism in the workplace. 
 
 Organizations can **enhance trust, boost morale, and drive long-term success.** 
