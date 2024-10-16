@@ -12,21 +12,18 @@ img_alt: "Wooden blocks spelling out merit."
 In any workplace, the balance between merit and nepotism affects team dynamics and overall productivity. 
 
 While personal relationships can play a role in career advancement, **prioritizing merit is essential to creating a fair enviroment.**
-
 # Impact of Nepotism
 Nepotism occurs when individuals in power favor family members or friends for positions or promotions, regardless of their qualifications. 
 
 This practice can **create a toxic environment** where merit is sidelined. 
 
 Employees may feel demotivated when they see colleagues promoted based on connections rather than their hard work.
-
 # Culture of Trust
 A merit-based workplace sews trust. Employees want to feel that their contributions matter. 
 
 When merit trumps nepotism, it establishes a clear pathway for success that **everyone** can aspire to.
 
 This is how you get loyal employees, who want to push themselves further personally for the benefit of the organization.
-
 # Diverse Perspectives
 Diversity of **thought and experience** drives innovation. 
 
@@ -35,7 +32,6 @@ When hiring and promotion decisions hinge on merit, organizations naturally attr
 This diversity leads to varied perspectives, which are crucial for problem-solving and creativity. 
 
 In contrast, nepotism often leads to **homogeneity**, limiting the potential for growth.
-
 # Morale
 > A meritocracy boosts morale. Plain and simple.
 
@@ -44,7 +40,6 @@ When employees see that hard work and talent are recognized and rewarded, they a
 This results in higher productivity and a positive workplace atmosphere. 
 
 In contrast, **nepotism can breed resentment** and **disengagement** among employees who feel overlooked or undervalued.
-
 ## Conclusion
 Merit should always trump nepotism in the workplace. 
 
