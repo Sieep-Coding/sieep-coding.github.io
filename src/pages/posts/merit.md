@@ -8,9 +8,7 @@ description: "Nepotism leads to yes-men, unhappy employees, and a breakdown in t
 img_path : "/merit.png"
 img_alt: "Wooden blocks spelling out merit."
 ---
-
 # The Importance of Merit in the Workplace
-
 In any workplace, the balance between merit and nepotism affects team dynamics and overall productivity. 
 
 While personal relationships can play a role in career advancement, **prioritizing merit is essential to creating a fair enviroment.**
@@ -41,7 +39,6 @@ This diversity leads to varied perspectives, which are crucial for problem-solvi
 In contrast, nepotism often leads to **homogeneity**, limiting the potential for growth.
 
 ## Morale
-
 > A meritocracy boosts morale. Plain and simple.
 
 When employees see that hard work and talent are recognized and rewarded, they are more likely to be engaged. 
