@@ -21,9 +21,7 @@ This practice can **create a toxic environment** where merit is sidelined.
 Employees may feel demotivated when they see colleagues promoted based on connections rather than their hard work.
 
 # Culture of Trust
-A merit-based workplace sews trust.
-
-Employees want to feel that their contributions matter. 
+A merit-based workplace sews trust. Employees want to feel that their contributions matter. 
 
 When merit trumps nepotism, it establishes a clear pathway for success that **everyone** can aspire to.
 
