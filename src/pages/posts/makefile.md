@@ -39,7 +39,7 @@ This flexibility allows for easier collaboration across diverse environments, en
 # Encouraging Best Practices
 Using Makefiles inherently encourages best practices in project structure and organization. 
 
-The need to define targets and dependencies forces developers to think critically about their code. 
+The need to define targets and dependencies **forces developers to think critically about their code.** 
 
 This structured approach can lead to more maintainable projects.
 
