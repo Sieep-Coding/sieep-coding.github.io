@@ -13,7 +13,7 @@ export default function Nav({ posts }) {
     { name: "About", href: "/#about" },
     { name: "Projects", href: "/#projects" },
     { name: "Blog", href: "/posts" },
-    { name: "Support My Non-Profit", href: "https://accessgr.vercel.app/" },
+    // { name: "Support My Non-Profit", href: "https://accessgr.vercel.app/" },
     { name: "Contact", href: "/#contact" },
   ];
 
