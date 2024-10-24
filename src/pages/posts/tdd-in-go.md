@@ -1,5 +1,5 @@
 ---
-title: "Using TDD in Go: Gain Confidence Through Testing Code First."
+title: "Using TDD in Go: Gain Confidence Through Testing"
 date: "2024-10-24"
 
 layout: ../../layouts/PostLayout.astro
@@ -8,12 +8,12 @@ description: "Test Driven Development is a great way to write bulletproof & smar
 img_path : "/tdd.png"
 img_alt: "Test-Driven Development graph."
 ---
-## Using TDD in Go: Gain Confidence Through Testing Code First.
+## Using TDD in Go: Gain Confidence Through Testing
 When writing software, it is easy to make the mistake of not testing your code. You know that tests make your code more reliable and maintainable.
 
 You just can't find the time! But you know unit tests in specific are important.
 
-Test-Driven Development (TDD) in Go offers you a structured approach that circumvents this problem since you always write the test **first.**
+[Test-Driven Development (TDD)](https://en.wikipedia.org/wiki/Test-driven_development) in Go offers you a structured approach that circumvents this problem since you always write the test **first.**
 
 # Clear Intent
 Writing tests first may seem counterintuitive at first. In actuality, it creates **a clear understanding of the desired functionality.**
@@ -59,7 +59,7 @@ Consider the following process:
 - Refactor for clarity and efficiency while keeping tests green.
 ```
 
-# Encouraging Best Practices
+# Run Anywhere
 Go's testing framework is built into the language.
 
 This allows Go to work easily on your local machine as well as a cloud environment.
