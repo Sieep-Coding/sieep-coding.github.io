@@ -9,9 +9,13 @@ img_path : "/tdd.png"
 img_alt: "Test-Driven Development graph."
 ---
 ## Using TDD in Go: Gain Confidence Through Testing
-When writing software, it is easy to make the mistake of not testing your code. You know that tests make your code more reliable and maintainable.
+When writing software, it is easy to make the mistake of not testing your code. 
 
-You just can't find the time! But you know unit tests in specific are important.
+You know that tests make your code more reliable and maintainable.
+
+You just can't find the time! 
+
+But you know unit tests, in specific, are important.
 
 [Test-Driven Development (TDD)](https://en.wikipedia.org/wiki/Test-driven_development) in Go offers you a structured approach that circumvents this problem since you always write the test **first.**
 
@@ -77,7 +81,7 @@ When your code is structured with testing in mind, it naturally leads to more ma
 > You’re not just writing code; you’re crafting a well-defined contract that your implementation must adhere to.
 
 # Conclusion
-The testing framework in Go provides a refreshing approach to writing functions that emphasizes clarity and control. I commit to this development process to **streamline my workflow and makes me a more productive programmer in the long run.** 
+The testing framework in Go provides a refreshing approach to writing functions that emphasizes clarity and control. I commit to this development process to **streamline my workflow and make me a more productive programmer in the long run.** 
 
 *Written By [Nick Stambaugh](https://www.linkedin.com/in/nick-s-694241139/)*
 
