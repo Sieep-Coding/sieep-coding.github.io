@@ -21,7 +21,7 @@ export default function Search({ posts }: any) {
       setSearchResults([]);
     }
 
-    const res = fuse.search(query);
+    const res = fuse.search(query).slice(0, 5);
     setSearchResults(res);
   };
 
