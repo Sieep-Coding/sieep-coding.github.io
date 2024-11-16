@@ -48,7 +48,7 @@ export default function HireMe() {
   };
 
   return (
-    <div className="flex flex-col w-full h-full p-4 md:p-6 rounded-lg shadow-lg space-y-4 md:space-y-6">
+    <div className="flex flex-col w-full h-700 p-4 md:p-6 rounded-lg shadow-lg space-y-4 md:space-y-6">
       <h1 className="text-3xl md:text-4xl font-extrabold text-center text-primary dark:text-primary">Hire Me</h1>
       <p className="text-base md:text-lg text-center text-primary dark:text-secondary">
         Fill out the form below and I'll get back to you to set up a free 30-minute call.

@@ -9,7 +9,9 @@ export const info = {
   cv: "/resume.pdf",
 
   about: {
-    description: `👋 Hi! I'm Nick Stambaugh, an analyst/developer with 4+ years' experience. I aim to lead UX in business apps. I love running, being outdoors with my dog, tech writing, literature, gaming, and spending time with loved ones.`,
+    description: `👋 Hi! I'm Nick Stambaugh.
+    I am an experienced programmer and data analyst. 
+    When I am not coding, you can find me running, spending time with my dog Bruce, and playing video games.`,
     education: [
       {
         title: "BS in Economics and Philosophy",
@@ -57,7 +59,8 @@ export const info = {
       },
     ],
 
-    skills: ["JavaScript", "React", "Node.js", "MongoDB", "Prank Mastery"], // not used yet
+    skills: [ "Go", "SQL", "Python", "TypeScript", 
+             "PowerBI", "Neovim", "C/C++", "VS Code"], // not used yet
   },
 
   projects: [
