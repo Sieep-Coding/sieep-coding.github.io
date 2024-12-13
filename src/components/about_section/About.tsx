@@ -13,14 +13,14 @@ export default function About(props: AboutProps) {
 
   return (
     <div className="flex flex-col items-center h-full space-y-6 p-4 sm:p-6">
-      <div className="flex flex-col space-y-4 w-full sm:w-3/4 lg:w-2/3 mx-4 sm:mx-6 p-4 sm:p-6 rounded-lg shadow-lg transform transition-transform">
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-center tracking-wide">About Me</h1>
-        <p className="text-base sm:text-xl font-light leading-relaxed text-justify">
+      <div className="flex flex-col space-y-4 w-full sm:w-3/4 lg:w-2/3">
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center">About Me</h1>
+        <p className="text-base sm:text-xl leading-relaxed text-justify">
           {about.description}
         </p>
         <div>
-        <Skills skills={about.skills} />
-      </div>
+          <Skills skills={about.skills} />
+        </div>
       </div>
       <div className="w-full sm:w-3/4 lg:w-2/3">
         <Education education={about.education} />
@@ -31,5 +31,3 @@ export default function About(props: AboutProps) {
     </div>
   );
 }
-
-
