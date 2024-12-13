@@ -23,9 +23,22 @@ Note: this mini-guide assumes you have `npm` installed on your machine, if you d
 
 If you add/remove something from the contact section in the `info.ts` file, you will need to update the `Contact.tsx` file located in the `src/components/contact_section` directory by simply reflecting the changes you made in the `info.ts` file. Although, this choice may seem redundant, it allows to separate the data from the view.
 
+## Commands :genie_man:
+
+All commands are run from the root of the project, from a terminal:
+
+| Command                   | Action                                           |
+| :------------------------ | :----------------------------------------------- |
+| `npm install`             | Installs dependencies                            |
+| `npm run dev`             | Starts local dev server at `localhost:4321`      |
+| `npm run build`           | Build your production site to `./dist/`          |
+| `npm run preview`         | Preview your build locally, before deploying     |
+| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `npm run astro -- --help` | Get help using the Astro CLI                     |
+
 
 ## About this Astro Template
 
 I created this theme from [gio-del](https://github.com/gio-del/Astro-Theme-Astroway).
 
-# Please leave a star if you enjoyed this template.
+# Please leave a star if you enjoyed this template. ⭐
