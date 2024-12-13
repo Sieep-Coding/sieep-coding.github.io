@@ -1,4 +1,4 @@
-![sieep-coding.github.io](https://socialify.git.ci/Sieep-Coding/sieep-coding.github.io/image?description=1&language=1&name=1&owner=1&pattern=Charlie%20Brown&theme=Dark)
+![sieep-coding.github.io](https://socialify.git.ci/sieep-coding/sieep-coding.github.io/image?description=1&font=Bitter&language=1&name=1&owner=1&pattern=Charlie%20Brown&stargazers=1&theme=Dark)
 
 # Interactive Resume & Blog Built With Astro
 
