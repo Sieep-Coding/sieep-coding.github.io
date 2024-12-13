@@ -1,12 +1,21 @@
 ![sieep-coding.github.io](https://socialify.git.ci/Sieep-Coding/sieep-coding.github.io/image?description=1&language=1&name=1&owner=1&pattern=Charlie%20Brown&theme=Dark)
 
-## Interactive Resume Built With Astro
+# Interactive Resume & Blog Built With Astro
 
 ![Vercel](https://vercelbadge.vercel.app/api/sieep-coding/sieep-coding.github.io) ![License: UNLICENSE](https://img.shields.io/badge/License-UNLICENSE-blue.svg)
 
 Learn more about me and my experience.
 
 View my [blog](https://nickstambaugh.vercel.app/posts/).
+
+## Features :open_hands:
+
+- Dark mode toggle
+- Responsive design
+- Easy to customize and extend personal data
+- Fuzzy search for blog posts
+- SEO friendly (robots.txt, sitemap.xml)
+- RSS feed
 
 ## How to use this template :toolbox:
 
@@ -36,6 +45,28 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
 
+## Tools Used :hammer_and_wrench:
+
+This portfolio template uses the following tools/libraries/resources:
+
+- [Astro](https://astro.build/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Font Awesome](https://fontawesome.com/)
+- [React](https://reactjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Fuse.js](https://fusejs.io/)
+
+## Contributing :building_construction:
+
+If you would like to contribute to the Astro Portfolio Template, follow these steps:
+
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Make your changes and commit them.
+4. Push your changes to your forked repository.
+5. Submit a pull request to the main repository.
+
+See the [CONTRIBUTING.md](CONTRIBUTING.md) file for more information.
 
 ## About this Astro Template
 
