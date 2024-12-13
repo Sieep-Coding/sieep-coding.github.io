@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Tooltip from "./navbar/Tooltip";
 
 export default function TopButton() {
   const [isTop, setIsTop] = useState(true);
@@ -30,7 +31,9 @@ export default function TopButton() {
       onClick={handleTop}
       aria-label="Scroll to top"
     >
+      <Tooltip text="Go to the top." position="left">
       <i className="fas fa-arrow-up text-3xl lg:text-5xl animate-bounce"></i>
+      </Tooltip>
     </button>
   );
 }

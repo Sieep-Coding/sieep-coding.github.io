@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Tooltip from "./navbar/Tooltip";
 
 export default function DarkModeUtility() {
   const [theme, setTheme] = useState("light");
@@ -49,6 +50,7 @@ export default function DarkModeUtility() {
       alt={`Change theme to ${theme === "dark" ? "light" : "dark"} mode`}
       aria-label="Toggle dark mode"
     >
+      <Tooltip text="Toggle Dark/Light Mode." position="bottom">
       <span className="dark:hidden">
         <svg
           className="fill-secondary hover:fill-accent stroke-2"
@@ -69,6 +71,7 @@ export default function DarkModeUtility() {
           <path d="M20.083 33.667q-5.666 0-9.666-4t-4-9.667q0-3.583 1.562-6.729 1.563-3.146 4.979-5.438 2.042-.916 3.125-.125 1.084.792.834 3.125.166.292.271.542.104.25.104.458 0 4.542 3.229 7.75 3.229 3.209 7.812 3.209.542 0 .834.062.291.063.583.396 2.417-.125 2.938 1.062.52 1.188-.355 2.896-2.166 2.875-5.291 4.667-3.125 1.792-6.959 1.792Zm0-2.125q3.5 0 6.396-1.959 2.896-1.958 4.146-4.958-.5.125-1.125.208-.625.084-1.125.084-5.5 0-9.354-3.813-3.854-3.812-3.854-9.271 0-.625.083-1.208t.292-1.208q-3.167 1.375-5.084 4.25Q8.542 16.542 8.542 20q0 4.833 3.375 8.188 3.375 3.354 8.166 3.354Zm-.5-11.042Z" />
         </svg>
       </span>
+      </Tooltip>
     </button>
   );
 }
