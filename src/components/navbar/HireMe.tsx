@@ -48,8 +48,7 @@ export default function HireMe() {
   };
 
   return (
-    <div className="flex flex-col w-full h-700 p-4 md:p-6 rounded-lg shadow-lg space-y-4 md:space-y-6">
-      <h1 className="text-3xl md:text-4xl font-extrabold text-center text-primary dark:text-primary">Hire Me</h1>
+    <div className="flex flex-col w-600 h-300 p-4 md:p-6 rounded-lg shadow-lg space-y-4 md:space-y-6">
       <p className="text-base md:text-lg text-center text-primary dark:text-secondary">
         Fill out the form below and I'll get back to you to set up a free 30-minute call.
       </p>
@@ -95,7 +94,7 @@ export default function HireMe() {
         </label>
         <fieldset className="flex flex-col">
           <legend className="font-semibold text-base md:text-lg mb-1 md:mb-2 text-primary dark:text-secondary">Type of Project:</legend>
-          {["Web Development", "Mobile App Development (Flutter)", "Data Analysis", "Other"].map((type) => (
+          {["Web/App/Mobile Development","Data Analysis/Business Intelligence"].map((type) => (
             <label key={type} className="flex items-center text-primary dark:text-secondary mb-2">
               <input
                 type="checkbox"
