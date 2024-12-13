@@ -44,13 +44,6 @@ export const info = {
           "My contributions spanned from enterprise-level dashboard creation to designing web applications, all while providing valuable research and formal reporting consistently.",
       },
       {
-        title: "Founder",
-        date: "2021 - 2023",
-        location: "2 Quick Sellers, LLC",
-        description:
-          "My role involved overseeing all aspects of online sales operations and ensuring efficient management of inventory and customer interactions. ",
-      },
-      {
         title: "Researcher",
         date: "2021",
         location: "University of Michigan Nuclear Engineering & Radiological Sciences",
@@ -60,7 +53,7 @@ export const info = {
     ],
 
     skills: [ "Go", "SQL", "Python", "TypeScript", 
-             "PowerBI", "Neovim", "C/C++", "VS Code"], // not used yet
+             "PowerBI", "Neovim", "C/C++", "VS Code"],
   },
 
   projects: [
