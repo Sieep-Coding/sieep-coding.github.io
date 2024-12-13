@@ -68,7 +68,7 @@ export default function Search({ posts }: any) {
           onClick={() => setSearch(true)}
         ></i>
       </button>
-
+    
       <Modal
         isOpen={search}
         onRequestClose={() => setSearch(false)}
