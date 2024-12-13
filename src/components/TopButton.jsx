@@ -30,7 +30,7 @@ export default function TopButton() {
       onClick={handleTop}
       aria-label="Scroll to top"
     >
-      <i className="fas fa-arrow-up text-3xl lg:text-5xl"></i>
+      <i className="fas fa-arrow-up text-3xl lg:text-5xl animate-bounce"></i>
     </button>
   );
 }
