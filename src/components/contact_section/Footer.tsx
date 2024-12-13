@@ -3,8 +3,18 @@ import React from "react";
 const Footer: React.FC = () => {
     return (
         <footer className="w-full py-4 mt-8">
-            <div className="max-w-7xl mx-auto text-center">
+            <div className="max-w-9xl mx-auto text-center">
                 <p>
+                    Built with{" "}  
+                    <a
+                        href="https://astro.build/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-pink-400 hover:text-green-600 underline"
+                    >
+                          Astro
+                    </a>
+                    {" | "}{" "}{" "}
                     Made With{" "}
                     <span role="img" aria-label="heart">
                         ❤️
