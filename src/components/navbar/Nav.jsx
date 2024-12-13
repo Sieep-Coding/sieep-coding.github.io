@@ -53,7 +53,7 @@ export default function Nav({ posts }) {
               onClick={() => setIsHireMeOpen(true)}
               className="px-4 py-2 border-2 rounded text-secondary dark:text-dk-secondary border-secondary dark:border-dk-secondary hover:bg-secondary dark:hover:bg-dk-secondary hover:text-primary dark:hover:text-primary cursor-pointer"
             >
-              <Tooltip text="Fill out a form." position="right">
+              <Tooltip text="Fill out a form." position="bottom">
               <i className="fas fa-briefcase mr-2"></i>
               <span className="hidden lg:inline-block font-medium">Hire Me</span>
               <span className="lg:hidden font-medium">Hire</span>
