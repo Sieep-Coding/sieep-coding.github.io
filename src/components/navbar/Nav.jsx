@@ -4,6 +4,7 @@ import Search from "../search/Search";
 import Hamburger from "./Hamburger";
 import { info } from "../../data/info";
 import HireMe from "./HireMe";
+import GithubButton from "./GithubButton";
 
 export default function Nav({ posts }) {
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -36,7 +37,6 @@ export default function Nav({ posts }) {
           </a>
 
           <div className="flex items-center space-x-4">
-            {/* Button for CV download */}
             <a
               href={info.cv}
               download
@@ -48,8 +48,6 @@ export default function Nav({ posts }) {
               </span>
               <span className="lg:hidden font-medium">CV</span>
             </a>
-
-            {/* Button for Hire Me */}
             <button
               onClick={() => setIsHireMeOpen(true)}
               className="px-4 py-2 border-2 rounded text-secondary dark:text-dk-secondary border-secondary dark:border-dk-secondary hover:bg-secondary dark:hover:bg-dk-secondary hover:text-primary dark:hover:text-primary cursor-pointer"
@@ -58,21 +56,8 @@ export default function Nav({ posts }) {
               <span className="hidden lg:inline-block font-medium">Hire Me</span>
               <span className="lg:hidden font-medium">Hire</span>
             </button>
-
-            {/* GitHub Button */}
-            <button
-              className="relative px-5 py-2 rounded text-secondary dark:text-dk-secondary border-secondary dark:border-dk-secondary hover:bg-secondary dark:hover:bg-dk-secondary hover:text-primary dark:hover:text-primary cursor-pointer transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg"
-            >
-              <a
-                href="https://github.com/Sieep-Coding/sieep-coding.github.io"
-                className="flex items-center space-x-2"
-              >
-                <i className="fab fa-github text-3xl"></i>
-              </a>
-            </button>
           </div>
 
-          {/* Mobile Hamburger Menu */}
           <div className="inline-flex lg:hidden text-secondary dark:text-dk-secondary">
             <Hamburger
               onClick={() => setIsNavOpen(!isNavOpen)}
@@ -80,7 +65,6 @@ export default function Nav({ posts }) {
             />
           </div>
 
-          {/* Desktop Links */}
           <div className="hidden lg:block">
             <ul className="inline-flex text-secondary dark:text-dk-secondary text-2xl font-normal">
               {navLinks.map((link, index) => (
@@ -97,15 +81,16 @@ export default function Nav({ posts }) {
               <li className="px-4 flex">
                 <Search posts={posts} />
               </li>
+              <li className="px-4 flex">
+                <GithubButton />
+              </li>
             </ul>
           </div>
         </div>
 
-        {/* Mobile Menu Links */}
         <div
-          className={`${
-            !isNavOpen ? "hidden" : ""
-          } h-full flex flex-col items-center text-center lg:hidden dark:text-tertiary`}
+          className={`${!isNavOpen ? "hidden" : ""
+            } h-full flex flex-col items-center text-center lg:hidden dark:text-tertiary`}
         >
           <ul className="w-full text-secondary dark:text-dk-secondary text-xl font-semibold">
             {navLinks.map((link, index) => (
@@ -118,12 +103,12 @@ export default function Nav({ posts }) {
             <li className="p-4 flex flex-row items-center justify-evenly">
               <ToggleDarkMode />
               <Search posts={posts} />
+              <GithubButton />
             </li>
           </ul>
         </div>
       </nav>
 
-      {/* Overlay for Mobile Menu */}
       {isNavOpen && (
         <div
           className="fixed inset-0 blur-3xl bg-black bg-opacity-50 z-40 lg:hidden"
@@ -131,7 +116,6 @@ export default function Nav({ posts }) {
         ></div>
       )}
 
-      {/* Hire Me Modal */}
       {isHireMeOpen && (
         <div
           className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-60"
