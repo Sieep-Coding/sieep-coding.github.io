@@ -6,7 +6,7 @@ export const info = {
   picture: "/img.jpg",
   picture_alt: "Nick Stambaugh",
   location: "Grand Rapids, MI",
-  cv: "/resume.pdf",
+  cv: "/Nick_Stambaugh_Resume.pdf",
 
   about: {
     description: `👋 Hi! I'm Nick Stambaugh.
