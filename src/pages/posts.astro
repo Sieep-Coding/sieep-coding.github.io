@@ -4,11 +4,16 @@ import Post from "../components/post_section/Post.astro";
 
 const allPosts = await Astro.glob("../pages/posts/*.md");
 
-// Reorder allPosts by date
+// Sort the posts by date
 allPosts.sort((a, b) => {
   const dateA = new Date(a.frontmatter.date);
   const dateB = new Date(b.frontmatter.date);
-  return dateB.getTime() - dateA.getTime();
+
+  // Handle invalid dates by using a fallback date
+  if (isNaN(dateA.getTime())) return 1; // Invalid date comes last
+  if (isNaN(dateB.getTime())) return -1; // Invalid date comes last
+  
+  return dateB.getTime() - dateA.getTime(); // Sort descending
 });
 
 const title = "Posts";
@@ -18,12 +23,10 @@ const title = "Posts";
   <div
     class="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-4 md:p-2 xl:p-5 mt-24"
   >
-    {
-      allPosts.map((post) => (
-        <div class="mb-4">
-          <Post post={post} />
-        </div>
-      ))
-    }
+    {allPosts.map((post) => (
+      <div class="mb-4">
+        <Post post={post} />
+      </div>
+    ))}
   </div>
 </BaseLayout>
