@@ -62,7 +62,7 @@ export default function Nav({ posts }) {
             <button
               className="relative px-5 py-2 border-2 rounded text-secondary dark:text-dk-secondary border-secondary dark:border-dk-secondary hover:bg-secondary dark:hover:bg-dk-secondary hover:text-primary dark:hover:text-primary cursor-pointer transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg"
             >
-              <a href="https://github.com/Sieep-Coding/" className="flex items-center space-x-2">
+              <a href="https://github.com/Sieep-Coding/sieep-coding.github.io" className="flex items-center space-x-2">
                 <i className="fab fa-github"></i>
                 <span>GitHub</span>
               </a>
