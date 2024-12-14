@@ -5,6 +5,7 @@ import BaseLayout from "./BaseLayout.astro";
 
 import { info } from "../data/info";
 import Contact from "../components/contact_section/Contact";
+import Subscribe from "../components/post_section/Subscribe";
 
 const { frontmatter } = Astro.props;
 
@@ -77,6 +78,14 @@ const { title, date, img_path, img_alt } = frontmatter;
             {info.brief_description}
           </p>
           <Contact contact={info.contact} size="md" />
+        </div>
+        <div class="p-1">
+          <div class="flex py-1 justify-center w-full">
+            <section class="mt-16 w-full max-w-lg">
+              <Subscribe />
+            </section>
+          </div>
+        </div>        
         </div>
       </div>
     </div>
