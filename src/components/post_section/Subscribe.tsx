@@ -28,7 +28,7 @@ const Subscribe: React.FC = () => {
                 <div className="relative flex items-center flex-grow">
                     <input
                         type="email"
-                        placeholder="Enter your email..."
+                        placeholder="Enter your email"
                         className="w-full pl-4 pr-12 py-2 text-gray-300 bg-transparent focus:outline-none"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
