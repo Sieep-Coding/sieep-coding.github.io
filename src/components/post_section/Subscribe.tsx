@@ -54,7 +54,7 @@ const Subscribe: React.FC = () => {
                 {/* Submit Button */}
                 <button
                     type="submit"
-                    className="bg-pink-600 text-white px-6 py-2 rounded-full hover:bg-green-500 transition-all animate-pulse"
+                    className="bg-purple-600 text-white px-6 py-2 rounded-full hover:bg-green-500 transition-all animate-pulse"
                 >
                     Subscribe
                 </button>
