@@ -76,13 +76,9 @@ As you can see, the component includes:
 
 #  User-Friendly Experience
 
-I’ve made sure that the Subscribe component is simple yet poIrful for the user. The design ensures that it’s intuitive and doesn’t overwhelm the visitor. When users submit their email, they get instant feedback whether they’ve entered a valid email or not, which greatly improves the overall user experience.
+The design ensures that it’s intuitive and doesn’t overwhelm the visitor. 
 
-#  Customizable and Flexible
-
-The component is built to be flexible. 
-
-You can easily integrate it into any React project, customize the colors and styles with your own design system, and expand its functionality with backend logic to store subscriptions.
+When users submit their email, they get instant feedback whether they’ve entered a valid email or not, which improves the user experience.
 
 # Easy Integration with Your Site
 
