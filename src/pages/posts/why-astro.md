@@ -30,7 +30,7 @@ Astro’s architecture is built around delivering optimized performance out of t
 
 Unlike traditional frameworks like React or Vue, which often bundle unnecessary JavaScript for static content, Astro ships zero JavaScript to the client unless it’s needed.
 
-For a portfolio site, where much of the content is static, this approach drastically improves load times and overall user experience. According to [Astro’s documentation](https://astro.build/), it’s perfect for building fast, modern websites without sacrificing developer experience.
+For a portfolio site, where much of the content is static, this approach drastically improves load times and overall user experience. 
 
 # 1. Simplicity in Design
 One of my key goals for the [portfolio](https://nickstambaugh.vercel.app/) was to keep things minimalist. 
@@ -58,7 +58,7 @@ This is ideal for a portfolio site where many sections, like the About Me or sta
 
 Here’s an example of how I used Astro’s integration to hydrate only the `ProjectCarousel` component in my [projects section](https://nickstambaugh.vercel.app/#projects):
 
-```astro
+```javascript
 import ProjectCarousel from '../components/ProjectCarousel.jsx';
 
 <section>
