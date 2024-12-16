@@ -37,7 +37,7 @@ export default function Nav({ posts }) {
             </span>
           </a>
 
-          <div className="flex items-center space-x-4">
+          {/* <div className="flex items-center space-x-4">
             <a
               href={info.cv}
               download
@@ -59,7 +59,7 @@ export default function Nav({ posts }) {
               <span className="lg:hidden font-medium">Hire</span>
               </Tooltip>
             </button>
-          </div>
+          </div> */}
 
           <div className="inline-flex lg:hidden text-secondary dark:text-dk-secondary">
             <Hamburger

@@ -6,14 +6,14 @@ export default {
 	theme: {
 		extend: {
 			colors: {
-				'primary': '#F7EBFF', // Lighter purple
-				'secondary': '#B983FF', // Lighter medium purple
-				'accent': '#A259FF', // Lighter dark purple
-				'text': '#8247E5', // Lighter deep purple for text
-				'dk-primary': '#3D1E67', // Lighter dark purple
-				'dk-secondary': '#B983FF', // Lighter secondary dark purple
-				'dk-accent': '#8C52FF', // Lighter accent dark purple
-				'dk-text': '#D3A9FF', // Lighter light purple text for dark mode
+				'primary': '#e0d0c0', // White
+				'secondary': '#000000', // Light gray
+				'accent': '#FFFFFF', // Medium gray
+				'text': '#000000', // Black text
+				'dk-primary': '#1a1a1a', // Black for dark mode
+				'dk-secondary': '#FFFFFF', // Dark gray for dark mode
+				'dk-accent': '#FFFFFF', // Lighter dark gray for accent
+				'dk-text': '#FFFFFF', // White text for dark mode
 			},
 		},
 	},
