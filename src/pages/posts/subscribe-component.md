@@ -12,7 +12,9 @@ img_alt: "A preview of the Subscribe component."
 ## Why I Built the [Subscribe Component](https://github.com/Sieep-Coding/sieep-coding.github.io)
 A key feature for any modern website is a simple and effective way to capture user subscriptions. Whether it's for a blog, newsletter, or just keeping visitors updated, providing an easy-to-use subscription form is a must.
 
-We recently built a **React Subscribe component** for our website, and in this post, I’ll walk you through why I decided to create it and how it’s a perfect fit for any modern website.
+I recently built a **React Subscribe component** for our website, and in this post, 
+
+I’ll walk you through why I decided to create it and how it’s a perfect fit for any modern website.
 
 # **Simple and Straightforward**
 When designing the subscription form, simplicity was at the core. I wanted something easy to implement with minimal setup, yet still capable of handling user input efficiently.
@@ -79,6 +81,8 @@ As you can see, the component includes:
 The design ensures that it’s intuitive and doesn’t overwhelm the visitor. 
 
 When users submit their email, they get instant feedback whether they’ve entered a valid email or not, which improves the user experience.
+
+> Building a user-friendly experience is key.
 
 # Easy Integration with Your Site
 
