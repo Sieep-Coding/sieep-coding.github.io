@@ -3,7 +3,7 @@ title: "A Simple Bar-Chart Console App in TypeScript"
 date: "2024-12-27"
 
 layout: ../../layouts/PostLayout.astro
-description: "Creating an ASCII bar chart generator in the console with TypeScript.c"
+description: "Creating an ASCII bar chart generator in the console with TypeScript."
 
 img_path : "/image.png"
 img_alt: "Our Emoji/ASCII Bar Chart"
