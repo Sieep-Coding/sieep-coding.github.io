@@ -153,6 +153,5 @@ export const info = {
     email: "nickstambaugh@proton.me",
     linkedin: "https://www.linkedin.com/in/nick-s-694241139/",
     github: "https://github.com/Sieep-Coding/",
-    bluesky: "https://nickstambaugh.bsky.social",
   },
 };

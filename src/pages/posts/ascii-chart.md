@@ -5,7 +5,7 @@ date: "2024-12-27"
 layout: ../../layouts/PostLayout.astro
 description: "Creating an ASCII bar chart generator in the console with TypeScript."
 
-img_path : "/image.png"
+img_path : "/bar_image.png"
 img_alt: "Our Emoji/ASCII Bar Chart"
 ---
 
