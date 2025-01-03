@@ -46,8 +46,6 @@ Code Highlights
 
 The core of `SimpSQL` is in its ability to interpret and execute user commands REPL-style.
 
-# [VIEW THE CODE](https://github.com/Sieep-Coding/SimpSQL/)
-
 Below is a snippet showcasing the `Execute` method, which acts as the **entry point** for all operations:
 
 ```csharp
@@ -101,7 +99,36 @@ Insights
 
 Using one commands, `INSIGHTS`, I can get a quick overview of our table/database.
 
-![](https://github.com/Sieep-Coding/SimpSQL/assets/simple-stats.png)
+Here is a sample output from running `INSIGHTS`:
+
+```text
+>> INSIGHTS
+
+Table has 15 rows.
+Columns: name, age
+
+Column 'name' Statistics:
+    Non-numeric column - no statistics available.
+
+Column 'age' Statistics:
+    Count: 15
+    Sum: 467
+    Average: 31.133333333333333
+    Min: 15
+    Max: 52
+
+Value Distribution:
+  15.00 - 18.70: ##
+  18.70 - 22.40:
+  22.40 - 26.10: #####
+  26.10 - 29.80: #
+  29.80 - 33.50: #
+  33.50 - 37.20: ##
+  37.20 - 40.90: #
+  40.90 - 44.60:
+  44.60 - 48.30: ##
+  48.30 - 52.00: #
+```
 
 The code to handle the histogram is straightforward, with us iterating over an array of integers and printing `#` when there is an item that falls within a bin.
 
