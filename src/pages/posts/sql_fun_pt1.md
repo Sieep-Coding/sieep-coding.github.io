@@ -31,7 +31,7 @@ Additionally, it features advanced options like random query generation, table i
 
 > **Note:** This project is open-source and available under the MIT License. 
 > 
-> You can find the code on our [GitHub repository](https://github.com/Sieep-Coding/).
+> You can find the code on my [GitHub](https://github.com/Sieep-Coding/).
 
 Features of SimpSQL
 -------------------
