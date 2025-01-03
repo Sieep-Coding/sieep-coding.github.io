@@ -4,7 +4,12 @@ import { Image } from "astro:assets";
 const { post } = Astro.props;
 
 const { url } = post;
-const { title, description, img_path, img_alt, date } = post.frontmatter;
+const { title, description: originalDescription, img_path, img_alt, date } = post.frontmatter;
+
+let description = originalDescription;
+if (description.length > 200) {
+  description = description.slice(0, 200) + "...";
+}
 ---
 
 <div
