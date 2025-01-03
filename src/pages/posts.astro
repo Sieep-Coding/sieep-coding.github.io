@@ -21,10 +21,10 @@ const title = "Posts";
 
 <BaseLayout title={title}>
   <div
-    class="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-4 md:p-2 xl:p-5 mt-24"
+    class="grid gap-6 gap-y-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-4 sm:p-6 md:p-8 xl:p-10 mt-20"
   >
     {allPosts.map((post) => (
-      <div class="mb-4">
+      <div class="flex justify-center mb-6">
         <Post post={post} />
       </div>
     ))}
