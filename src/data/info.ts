@@ -23,32 +23,39 @@ export const info = {
     ],
     experience: [
       {
+        title: "Junior Application Developer",
+        date: "2025 - Present",
+        location: "Display Pack",
+        description:
+          "Enterprise software development in C#.",
+      },
+      {
         title: "Data Analyst",
-        date: "2024 - Present",
+        date: "2024 - 2025",
         location: "NxGen MDx",
         description:
-          "My responsibilities focus on streamlining reporting processes and providing actionable business intelligence to support executive and sales team decision-making.",
+          "Streamlining reporting processes and providing actionable business intelligence to support executive and sales team.",
       },
       {
         title: "Business Intelligence Developer",
         date: "2023 - 2024",
         location: "National Nail",
         description:
-          "My focus was on creating impactful visualizations, automating reporting processes, and providing analytical support to enhance business performance.",
+          "Creating impactful visualizations, automating reporting processes, and providing analytical support to enhance business performance.",
       },
       {
         title: "Business Intelligence Analyst",
         date: "2022 - 2023",
         location: "The Right Place, Inc.",
         description:
-          "My contributions spanned from enterprise-level dashboard creation to designing web applications, all while providing valuable research and formal reporting consistently.",
+          "Enterprise-level dashboard creation to designing web applications, all while providing valuable research and formal reporting consistently.",
       },
       {
         title: "Researcher",
         date: "2021",
         location: "University of Michigan Nuclear Engineering & Radiological Sciences",
         description:
-          "As an Undergraduate Researcher at the University of Michigan, I focused on analyzing the economic aspects of US nuclear power plants, contributing with significant research and data analysis. ",
+          "Analyzing the economic aspects of US nuclear power plants, contributing with significant research and data analysis. ",
       },
     ],
 
@@ -57,6 +64,16 @@ export const info = {
   },
 
   projects: [
+    {
+      title: "Programming Language Development",
+      date: "2025",
+      description:
+        "A toy SQL-like language written in C#.",
+      link: "https://github.com/Sieep-Coding/SimpSQL/",
+      tech: ["C#", "VS"],
+      img_alt: "Photo of C# hitting a SQL database with a hammer.",
+      img_path: "hacking_sql.png",
+    },
     {
       title: "Full-Stack Website",
       date: "2024",

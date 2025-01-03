@@ -27,12 +27,6 @@ export default function Contact({ contact, size }: ContactProps) {
       link: contact.linkedin,
       link_alt: "LinkedIn",
     },
-    {
-      name: "bluesky",
-      icon: "fab fa-twitter",
-      link: contact.bluesky,
-      link_alt: "Bluesky",
-    },
   ];
 
   return (
