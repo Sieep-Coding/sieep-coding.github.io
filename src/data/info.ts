@@ -78,7 +78,7 @@ export const info = {
       title: "Full-Stack Website",
       date: "2024",
       description:
-        "My Grand Rapids based non-profit dedicated to device recycling. ",
+        "My Grand Rapids based non-profit dedicated to device recycling.",
       link: "https://accessgr.vercel.app/",
       tech: ["Astro", "VSCode"],
       img_alt: "Photo a nonprofit site.",
@@ -88,7 +88,7 @@ export const info = {
       title: "Full-Stack Website - MiTalent360",
       date: "2024",
       description:
-        "MiTalent360 is an innovative virtual educational assessment tool designed by talent strategy professionals.",
+        "MiTalent360 is an innovative virtual educational assessment tool.",
       link: "https://mitalent360.com/",
       tech: ["React", "Node.js", "JSON", "JavaScript", "CSS"],
       img_alt: "Photo of Mitalent360",
