@@ -9,9 +9,8 @@ export const info = {
   cv: "/Nick_Stambaugh_Resume.pdf",
 
   about: {
-    description: `👋 Hi! I'm Nick Stambaugh.
-    I am an experienced programmer and data analyst. 
-    When I am not coding, you can find me running, spending time with my dog Bruce, and playing video games.`,
+    // description: `I am a full stack developer. 
+    // When I am not coding, you can find me running, spending time with my dog Bruce, and playing video games.`,
     education: [
       {
         title: "BS in Economics and Philosophy",
@@ -33,35 +32,35 @@ export const info = {
         title: "Data Analyst",
         date: "2024 - 2025",
         location: "NxGen MDx",
-        description:
-          "Streamlining reporting processes and providing actionable business intelligence to support executive and sales team.",
+        // description:
+        //   "Streamlining reporting processes and providing actionable business intelligence to support executive and sales team.",
       },
       {
         title: "Business Intelligence Developer",
         date: "2023 - 2024",
         location: "National Nail",
-        description:
-          "Creating impactful visualizations, automating reporting processes, and providing analytical support to enhance business performance.",
+        // description:
+        //   "Creating impactful visualizations, automating reporting processes, and providing analytical support to enhance business performance.",
       },
       {
         title: "Business Intelligence Analyst",
         date: "2022 - 2023",
         location: "The Right Place, Inc.",
-        description:
-          "Enterprise-level dashboard creation to designing web applications, all while providing valuable research and formal reporting consistently.",
+        // description:
+        //   "Enterprise-level dashboard creation to designing web applications, all while providing valuable research and formal reporting consistently.",
       },
       {
         title: "Researcher",
         date: "2021",
         location: "University of Michigan Nuclear Engineering & Radiological Sciences",
-        description:
-          "Analyzing the economic aspects of US nuclear power plants, contributing with significant research and data analysis. ",
+        // description:
+        //   "Analyzing the economic aspects of US nuclear power plants, contributing with significant research and data analysis. ",
       },
     ],
 
     skills: [ "C#", "SQLite", "Python",  "TypeScript", 
              "PowerBI", "Go", "C/C++", "SQL Server",
-             ".NET MVC", "React", "Tablaeu",],
+             ".NET", "React", "Tablaeu", "TailwindCSS",],
   },
 
   projects: [

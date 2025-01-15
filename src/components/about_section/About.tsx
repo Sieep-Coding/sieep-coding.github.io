@@ -15,7 +15,6 @@ export default function About(props: AboutProps) {
   return (
     <div className="flex flex-col items-center h-full space-y-6 p-4 sm:p-6">
       <div className="flex flex-col space-y-4 w-full sm:w-3/4 lg:w-2/3">
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center">About Me</h1>
         <p className="text-base sm:text-3xl leading-relaxed text-justify">
           {about.description}
         </p>
@@ -28,10 +27,9 @@ export default function About(props: AboutProps) {
         <Experience experience={about.experience} />
       </p>
       </div>
-      <p className="text-base sm:text-3xl leading-relaxed text-justify">
-        <Education education={about.education} />
-      </p>
+      <p className="text-base sm:text-3xl leading-relaxed text-justify"></p>
       <div className="w-full sm:w-3/4 lg:w-2/3">
+        <Education education={about.education} />
       </div>
       <div >
           <ViewBlog />
