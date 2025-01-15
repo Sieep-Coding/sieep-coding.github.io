@@ -88,7 +88,7 @@ export const info = {
       title: "Full-Stack Website - MiTalent360",
       date: "2024",
       description:
-        "MiTalent360 is an innovative virtual educational assessment tool.",
+        "MiTalent360 is a virtual educational assessment tool.",
       link: "https://mitalent360.com/",
       tech: ["React", "Node.js", "JSON", "JavaScript", "CSS"],
       img_alt: "Photo of Mitalent360",
