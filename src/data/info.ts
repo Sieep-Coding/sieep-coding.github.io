@@ -17,8 +17,8 @@ export const info = {
         title: "BS in Economics and Philosophy",
         date: "2019 - 2022",
         location: "Grand Valley State University",
-        gpa: "3.4",
-        thesis: "VP of Real Estate & Investments Club, Economics Club, Finance Club.",
+        // gpa: "3.4",
+        // thesis: "VP of Real Estate & Investments Club, Economics Club, Finance Club.",
       },
     ],
     experience: [
@@ -59,8 +59,9 @@ export const info = {
       },
     ],
 
-    skills: [ "Go", "SQL", "Python", "TypeScript", 
-             "PowerBI", "Neovim", "C/C++", "VS Code"],
+    skills: [ "C#", "SQLite", "Python",  "TypeScript", 
+             "PowerBI", "Go", "C/C++", "SQL Server",
+             ".NET MVC", "React", "Tablaeu",],
   },
 
   projects: [
