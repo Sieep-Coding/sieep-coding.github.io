@@ -24,7 +24,7 @@ export const info = {
       {
         title: "Junior Application Developer",
         date: "2025 - Present",
-        location: "Display Pack",
+        location: "Display Pack Inc",
         description:
           "Enterprise software development in C#.",
       },
