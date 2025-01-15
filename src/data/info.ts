@@ -65,7 +65,7 @@ export const info = {
 
   projects: [
     {
-      title: "Programming Language Development",
+      title: "REPL in C#",
       date: "2025",
       description:
         "A toy SQL-like language written in C#.",
