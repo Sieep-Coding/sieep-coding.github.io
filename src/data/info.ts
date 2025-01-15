@@ -145,7 +145,7 @@ export const info = {
       img_path: "server.png",
     },
     {
-      title: "Notezone",
+      title: "NoteZone",
       date: "2024",
       description:
         "NoteZone is a modern note-taking application built with Electron/JavaScript.",
