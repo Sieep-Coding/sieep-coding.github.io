@@ -90,7 +90,7 @@ export const info = {
       description:
         "MiTalent360 is a virtual educational assessment tool.",
       link: "https://mitalent360.com/",
-      tech: ["React", "Node.js", "JSON", "JavaScript", "CSS"],
+      tech: ["React", "Node.js","JavaScript"],
       img_alt: "Photo of Mitalent360",
       img_path: "mitalent.png",
     },
