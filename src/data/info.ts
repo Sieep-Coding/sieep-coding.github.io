@@ -85,7 +85,7 @@ export const info = {
       img_path: "access.png",
     },
     {
-      title: "Full-Stack Website - MiTalent360",
+      title: "Full-Stack Website",
       date: "2024",
       description:
         "MiTalent360 is a virtual educational assessment tool.",
