@@ -148,7 +148,7 @@ export const info = {
       title: "Notezone",
       date: "2024",
       description:
-        "NoteZone is a modern and intuitive note-taking application built with Electron, HTML, CSS, and JavaScript.",
+        "NoteZone is a modern note-taking application built with Electron/JavaScript.",
       link: "https://github.com/Sieep-Coding/notezone",
       tech: ["Electron", "Node.js", "JSON", "JavaScript", "CSS"],
       img_alt: "Photo of Notezone",
