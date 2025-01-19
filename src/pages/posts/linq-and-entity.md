@@ -58,6 +58,54 @@ Simple with **Lambdas and LINQ**:
 .ToList();
 ```
 
+Full Controller Class
+---------------------
+```csharp
+public class ProductsController : Controller
+{
+    private readonly AppDbContext _context;
+
+    public ProductsController(AppDbContext context)
+    {
+        _context = context;
+    }
+
+    public IActionResult Index()
+    {
+        // Fetch all products
+        var products = _context.Products.ToList();
+        
+        // Filter products with Price < 2
+        var productsToRemove = products.Where(p => p.Price < 2)
+        							   .ToList();
+
+        // Remove each filtered product from the database
+        _context.Products.RemoveRange(productsToRemove);
+
+        // Save changes to persist the removal
+        _context.SaveChanges();
+        
+        // Fetch a specific product by name
+        var laptop = _context.Products.FirstOrDefault(p => p.Name == "Laptop");
+
+        // Fetch products with stock greater than 5, ordered by cheapest price
+        var inStock = _context.Products
+                              .Where(p => p.Stock > 5)
+                              .OrderBy(p => p.Price)
+                              .ToList();
+                              
+        // Fetch up to 10 products named "Laptop"
+        var laptops = _context.Products
+                              .Where(p => p.Name == "Laptop")
+                              .Take(10)
+                              .ToList();
+		
+        // Pass the data to the view
+        return View(products);
+    }
+}
+```
+
 Conclusion
 ------------
 Instead of writing verbose SQL queries or manually iterating through collections, LINQ with Lambdas allows us to express business logic concisely.
