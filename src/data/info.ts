@@ -82,7 +82,7 @@ export const info = {
       link: "https://github.com/Sieep-Coding/spark",
       tech: ["Python", "tkinter"],
       img_alt: "spark application interface.",
-      img_path: "spark.png",
+      img_path: "p.png",
     },
     {
       title: "Full-Stack Website",
