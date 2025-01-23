@@ -9,7 +9,7 @@ export default function ViewBlog() {
         <div className="flex flex-col items-center space-y-4 p-4 bg-gradient-to-r from-blue-500 to-cyan-500 text-white shadow-lg rounded-lg mt-10">
         <Tooltip text="Explore more posts." position="left">
           <h2 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r text-white">
-            Read My Blog 📝
+          📝 Read My Blog
           </h2>
           </Tooltip>
         </div>
