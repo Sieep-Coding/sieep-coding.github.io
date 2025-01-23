@@ -58,6 +58,7 @@ const { title, date, img_path, img_alt } = frontmatter;
         prose-headings:underline"
         >
           <slot />
+          <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="nickstambaugh" data-color="#2563EB" data-emoji="🍺"  data-font="Inter" data-text="Buy me a beer" data-outline-color="#ffffff" data-font-color="#ffffff" data-coffee-color="#ffffff" ></script>
         </div>
       </div>
 
@@ -85,16 +86,15 @@ const { title, date, img_path, img_alt } = frontmatter;
           <div class="flex py-1 justify-center w-full">
             <!-- <section class="mt-16 w-full max-w-lg">
               <Subscribe />
-            </section> -->
-          </div>
-          <div class="p-1">
-            <div class="flex py-1 justify-center w-full">
-              <ViewBlog />
+              </section> -->
             </div>
-          </div>
+            <div class="p-1">
+              <div class="flex py-1 justify-center w-full">
+                <ViewBlog />
+              </div>
+            </div>
         </div>
       </div>
     </div>
-    <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="nickstambaugh" data-description="Support me on Buy me a coffee!" data-message="Like the content? Consider supporting me!" data-color="#22D3EE" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
   </main>
 </BaseLayout>
