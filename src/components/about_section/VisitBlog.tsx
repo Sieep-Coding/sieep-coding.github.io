@@ -4,7 +4,7 @@ export default function ViewBlog() {
     return (
       <a
         href="https://nickstambaugh.vercel.app/posts"
-        className="block transform transition-transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-purple-300"
+        className="block transform transition-transform hover:scale-105"
       >
         <div className="flex flex-col items-center space-y-4 p-4 bg-gradient-to-r from-blue-500 to-cyan-500 text-white shadow-lg rounded-lg mt-10">
         <Tooltip text="Explore more posts." position="left">

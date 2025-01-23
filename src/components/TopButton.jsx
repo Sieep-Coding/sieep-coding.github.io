@@ -25,13 +25,13 @@ export default function TopButton() {
 
   return (
     <button
-      className={`fixed right-4 bottom-4 lg:right-8 lg:bottom-8 z-50 p-2 rounded-full bg-transparent text-secondary dark:text-dk-secondary lg:hover:text-accent lg:dark:hover:text-dk-accent ${
+      className={`fixed left-4 bottom-4 lg:left-8 lg:bottom-8 z-50 p-2 rounded-full bg-transparent text-secondary dark:text-dk-secondary lg:hover:text-accent lg:dark:hover:text-dk-accent ${
         isTop ? "hidden" : ""
       }`}
       onClick={handleTop}
       aria-label="Scroll to top"
     >
-      <Tooltip text="Go to the top." position="left">
+      <Tooltip text="Go to the top." position="right">
       <i className="fas fa-arrow-up text-3xl lg:text-5xl animate-bounce"></i>
       </Tooltip>
     </button>
