@@ -10,6 +10,8 @@ View my [blog](https://nickstambaugh.vercel.app/posts/).
 
 ![](https://github.com/Sieep-Coding/sieep-coding.github.io/blob/main/public/image2.png)
 
+![](https://github.com/Sieep-Coding/sieep-coding.github.io/blob/main/public/image.png)
+
 ![](https://github.com/Sieep-Coding/sieep-coding.github.io/blob/main/public/image3.png)
 
 ![](https://github.com/Sieep-Coding/sieep-coding.github.io/blob/main/public/image4.png)
