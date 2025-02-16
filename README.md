@@ -2,7 +2,7 @@
 
 ![Vercel](https://vercelbadge.vercel.app/api/sieep-coding/sieep-coding.github.io) ![License: UNLICENSE](https://img.shields.io/badge/License-UNLICENSE-blue.svg)
 
-Learn more about me and my experience.
+Dracula themed website for your blog/portfolio.
 
 View my [blog](https://nickstambaugh.vercel.app/posts/).
 
