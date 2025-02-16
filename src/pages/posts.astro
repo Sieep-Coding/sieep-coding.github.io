@@ -4,16 +4,15 @@ import Post from "../components/post_section/Post.astro";
 
 const allPosts = await Astro.glob("../pages/posts/*.md");
 
-// Sort the posts by date
 allPosts.sort((a, b) => {
   const dateA = new Date(a.frontmatter.date);
   const dateB = new Date(b.frontmatter.date);
 
-  // Handle invalid dates by using a fallback date
-  if (isNaN(dateA.getTime())) return 1; // Invalid date comes last
-  if (isNaN(dateB.getTime())) return -1; // Invalid date comes last
   
-  return dateB.getTime() - dateA.getTime(); // Sort descending
+  if (isNaN(dateA.getTime())) return 1;
+  if (isNaN(dateB.getTime())) return -1; 
+  
+  return dateB.getTime() - dateA.getTime();
 });
 
 const title = "Posts";

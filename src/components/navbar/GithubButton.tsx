@@ -4,7 +4,7 @@ import Tooltip from "./Tooltip";  // Import the Tooltip component
 const GithubButton: React.FC = () => {
     return (
         <button>
-            <Tooltip text="Leave a ⭐" position="right">
+            <Tooltip text="Leave a ⭐" position="default">
                 <a
                     href="https://github.com/Sieep-Coding/sieep-coding.github.io"
                     className="flex items-center space-x-2 group"
