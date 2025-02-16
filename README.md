@@ -8,8 +8,6 @@ View my [blog](https://nickstambaugh.vercel.app/posts/).
 
 ## Pictures :camera:
 
-![](https://github.com/Sieep-Coding/sieep-coding.github.io/blob/main/public/image.png)
-
 ![](https://github.com/Sieep-Coding/sieep-coding.github.io/blob/main/public/image2.png)
 
 ![](https://github.com/Sieep-Coding/sieep-coding.github.io/blob/main/public/image3.png)
