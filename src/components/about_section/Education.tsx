@@ -20,11 +20,6 @@ export default function Education(props: EducationProps) {
             <div className="flex-1">
               <h2 className="text-2xl font-semibold">{edu.title}</h2>
               <p className="text-lg font-normal">{edu.date}</p>
-              <p className="text-lg font-bold">{edu.location}</p>
-              {edu.gpa && <p className="text-lg font-normal mt-2">GPA: {edu.gpa}</p>}
-              {edu.thesis && (
-                <p className="text-lg font-normal mt-2">Activities: {edu.thesis}</p>
-              )}
             </div>
           </div>
 
