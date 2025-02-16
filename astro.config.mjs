@@ -11,5 +11,6 @@ export default defineConfig({
   markdown: {
     rehypePlugins: [rehypeAccessibleEmojis],
   },
+  site: 'https://sieep-coding.github.io',
   integrations: [tailwind(), react(), robotsTxt(), sitemap()]
 });
