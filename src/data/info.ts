@@ -1,7 +1,7 @@
 export const info = {
   name: "Nick Stambaugh",
   brief_description:
-    "Business Intelligence and Full Stack Developer",
+    "Full Stack Enterprise Application Engineer",
   role: "Full Stack Engineer",
   picture: "/img.jpg",
   picture_alt: "Nick Stambaugh",
@@ -9,7 +9,7 @@ export const info = {
   cv: "/Nick_Stambaugh-Resume.pdf",
 
   about: {
-    description: `I am a full stack engineer. 
+    description: `I am a full stack engineer and former business intelligence professional. 
     When I am not coding, you can find me running, spending time with my dog Bruce, and playing video games.`,
     education: [
       {
@@ -158,7 +158,7 @@ export const info = {
       title: "NoteZone",
       date: "2024",
       description:
-        "NoteZone is a modern note-taking application built with Electron/JavaScript.",
+        "NoteZone is a note-taking app built with Electron.",
       link: "https://github.com/Sieep-Coding/notezone",
       tech: ["Electron", "Node.js", "JavaScript"],
       img_alt: "Photo of Notezone",
