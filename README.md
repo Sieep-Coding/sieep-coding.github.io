@@ -6,6 +6,8 @@ Dracula themed website for your blog/portfolio.
 
 View my [blog](https://nickstambaugh.vercel.app/posts/).
 
+Inspired by [dracula theme](https://draculatheme.com/).
+
 ## Pictures :camera:
 
 ![](https://github.com/Sieep-Coding/sieep-coding.github.io/blob/main/public/image2.png)
