@@ -48,15 +48,6 @@ const Footer: React.FC = () => {
                     </a>
                     {" || "}{" "}{" "}
                     <a
-                        href="https://nickstambaugh.vercel.app/Nick_Stambaugh-Resume.pdf"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-pink-400 hover:text-green-600 underline"
-                    >
-                        Resume
-                    </a>
-                    {" || "}{" "}{" "}
-                    <a
                         href="mailto:nickstambaugh@proton.me"
                         target="_blank"
                         rel="noopener noreferrer"

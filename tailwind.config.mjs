@@ -10,10 +10,10 @@ export default {
 				'secondary': '#000000', // Light gray
 				'accent': '#FFFFFF', // Medium gray
 				'text': '#000000', // Black text
-				'dk-primary': '#1a1a1a', // Black for dark mode
-				'dk-secondary': '#FFFFFF', // Dark gray for dark mode
-				'dk-accent': '#ede0e0', // Lighter dark gray for accent
-				'dk-text': '#FFFFFF', // White text for dark mode
+				'dk-primary': '#1e1f29', // Darker Background
+				'dk-secondary': '#6272a4', // Dracula Comment/Secondary
+				'dk-accent': '#8be9fd', // Dracula Cyan
+				'dk-text': '#6272a4', // Dracula White Text
 			},
 		},
 	},
