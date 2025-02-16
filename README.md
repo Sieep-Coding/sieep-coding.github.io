@@ -10,7 +10,9 @@ View my [blog](https://nickstambaugh.vercel.app/posts/).
 
 ## Pictures :camera:
 
-![](https://)
+![](https://github.com/Sieep-Coding/sieep-coding.github.io/blob/main/public/image.png)
+
+![](https://github.com/Sieep-Coding/sieep-coding.github.io/blob/main/public/image2.png)
 
 ## Features :open_hands:
 
