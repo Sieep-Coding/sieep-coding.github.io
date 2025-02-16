@@ -1,6 +1,4 @@
-![sieep-coding.github.io](https://socialify.git.ci/sieep-coding/sieep-coding.github.io/image?description=1&font=Bitter&language=1&name=1&owner=1&pattern=Charlie%20Brown&stargazers=1&theme=Dark)
-
-# Dracula-Theme Blog and Portfolio Website Built With Astro
+# Dracula-Theme Blog and Portfolio Website Built With Astro 🧛‍♂️🦇
 
 ![Vercel](https://vercelbadge.vercel.app/api/sieep-coding/sieep-coding.github.io) ![License: UNLICENSE](https://img.shields.io/badge/License-UNLICENSE-blue.svg)
 
