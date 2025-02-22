@@ -63,7 +63,6 @@ It’s a place that truly inspires curiosity and ambition, reminding us of Houst
 
 ![NASA’s Johnson Space Center](../photo/_houston5.jpg "NASA’s Johnson Space Center")
 ![NASA’s Johnson Space Center](../photo/_houston9.jpg "NASA’s Johnson Space Center")
-![NASA’s Johnson Space Center](../photo/_houston10.jpg "NASA’s Johnson Space Center")
 
 ### Diverse and Delicious Food
 
@@ -77,6 +76,13 @@ Whether you're grabbing tacos from a food truck or dining at a top-tier restaura
 
 ### Houston Rap
 
+Having gotten a love for rap music during the 2000s, there was no denying the impact that [Houston's rap scene](https://yesterdaysamerica.com/hip-hop-in-h-town/) had on the broader culture and the youth listening to it (such as myself). 
+
+During a time of heavy focus on [car-culture](https://www.reddit.com/r/cars/comments/9s61k8/what_was_late_90s_early_2000s_car_culture_really/), [Houston's flashy SLABs](https://www.chron.com/culture/article/swangas-slab-houston-definition-19420593.php) fit perfectly with movies like Fast and Furious. 
+
+Rappers such as Chamillionaire, Paul Wall, and Mike Jones were topping the charts reguarly--the wider hip-hop community took notice.
+
+I've always loved the sound of Houston rap. The slow, heavy bass, the [chopped-and-screwed](https://en.wikipedia.org/wiki/Chopped_and_screwed) beats, and the raw storytelling that captures the city's hustle.
 
 ## Final Thoughts
 
