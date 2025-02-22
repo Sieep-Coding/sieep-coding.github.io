@@ -28,7 +28,7 @@ export default function Skills({ skills }: SkillsProps) {
           Object.entries(category).map(([categoryName, skillList]) => (
             <section key={`${categoryName}-${index}`} className="space-y-4">
               <div
-                className="flex items-center justify-between cursor-pointer group p-2 border border-gray-300 dark:border-dk-border rounded-lg hover:border-accent transition-all duration-200"
+                className="flex items-center justify-between cursor-pointer group p-2 border border-blue-300 dark:border-dk-border rounded-lg hover:border-accent transition-all duration-200"
                 onClick={() => toggleCategory(categoryName)}
               >
                 <h3 className="text-2xl font-semibold text-accent mb-2">{categoryName}</h3>
