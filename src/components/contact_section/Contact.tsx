@@ -27,6 +27,12 @@ export default function Contact({ contact, size }: ContactProps) {
       link: contact.linkedin,
       link_alt: "LinkedIn",
     },
+    {
+      name: "RSS",
+      icon: "fa fa-rss",
+      link: contact.RSS,
+      link_alt: "RSS",
+    },
   ];
 
   return (

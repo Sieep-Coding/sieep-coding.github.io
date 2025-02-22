@@ -55,6 +55,15 @@ const Footer: React.FC = () => {
                     >
                         Email
                     </a>
+                    {" || "}{" "}{" "}
+                    <a
+                        href="nickstambaugh.vercel.app/rss.xml"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-pink-400 hover:text-green-600 underline"
+                    >
+                        RSS
+                    </a>
                 </p>
             </div>
         </footer>
