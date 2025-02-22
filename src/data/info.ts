@@ -9,15 +9,18 @@ export const info = {
   cv: "/Nick_Stambaugh-Resume.pdf",
 
   about: {
-    description: `I am a full stack engineer and former business intelligence professional. 
-    When I am not coding, you can find me running, spending time with my dog Bruce, and playing video games.`,
+    description: `I'm a full-stack engineer with a background in business intelligence, blending technical problem-solving with data-driven decision-making. 
+    My career started in analytics, where I built dashboards, automated reports, and made complex data more accessible. 
+    Now, I focus on developing enterprise software that optimizes business and production processes. 
+    When I’m not coding, you’ll probably find me running, gaming, or hanging out with my dog, Bruce. 
+    I enjoy tackling new challenges, whether it's building games in C++, optimizing workflows with C#, or experimenting with TypeScript/Python/Go/Lua in my side projects.`,
     education: [
       {
         title: "BS in Economics and Philosophy",
         date: "Grand Valley State University",
         location: "Grand Valley State University",
         // gpa: "3.4",
-        // thesis: "VP of Real Estate & Investments Club, Economics Club, Finance Club.",
+        thesis: "Deepened my understanding of economic systems and philosophical reasoning, which translates well into software development.",
       },
     ],
     experience: [
@@ -26,14 +29,17 @@ export const info = {
         date: "2025 - Present",
         location: "Display Pack Inc",
         description:
-          "Enterprise software development focused on automating business/production processes in C#, JavaScript using Model-View-Controller, Test-Driven Development.",
+          `Developing enterprise software to automate business and production processes.
+          Working with C#, JavaScript, and .NET MVC while applying Test-Driven Development principles with xUnit.
+          Helping modernize and streamline internal tools that drive real-world manufacturing efficiency.`,
       },
       {
         title: "Data Analyst",
         date: "2024 - 2025",
         location: "NxGen MDx",
-        // description:
-        //   "Streamlining reporting processes and providing actionable business intelligence to support executive and sales team.",
+        description:
+           `Transformed complex data into meaningful insights, helping drive business decisions.
+            Streamlined reporting processes to improve efficiency for leadership and sales teams.`,
       },
       {
         title: "Business Intelligence Developer",
@@ -47,20 +53,27 @@ export const info = {
         date: "2022 - 2023",
         location: "The Right Place, Inc.",
         description:
-        "Enterprise-level dashboard creation to designing web applications, all while providing valuable research, and formal reporting consistently.",
+        `Built interactive dashboards and automated reports to enhance business performance.
+        Provided analytical support to inform executive decision-making.`,
       },
       {
         title: "Researcher",
         date: "2021",
         location: "University of Michigan Nuclear Engineering & Radiological Sciences",
         description:
-        "Analyzing the economic aspects of US nuclear power plants, contributing with significant research and data analysis. ",
+        `Conducted economic analysis of U.S. nuclear power plants, focusing on feasibility and efficiency.
+        Worked on data modeling and analysis, contributing to a deeper understanding of nuclear energy economics.`,
       },
     ],
 
-    skills: [ "C#", "SQLite", "Python",  "TypeScript", 
-             "PowerBI", "Go", "C/C++", "SQL Server",
-             ".NET", "React", "Tablaeu", "TailwindCSS",],
+    skills: [ {
+      Languages: ["C#", "Python", "JavaScript", "TypeScript", "Go", "Lua", "HTML", "CSS", "SQL", "C/C++", "Bash", "R",],
+      Frameworks: ["React", ".NET", "Node.js", "Electron", "Astro", "TailwindCSS", "Bootstrap", "HTMX", "Alpine.js", "Flask", "Django", "Express.js",],
+      Libraries: ["xUnit", "Pandas", "NumPy", "Matplotlib", "Seaborn", "Plotly", "D3.js", "Chart.js", "Three.js", "TensorFlow",],
+      Databases: ["SQLite", "SQL Server", "Microsoft AX", "Salesforce", "MongoDB", "Zoho"],
+      Concepts: ["TDD", "OOP", "MVC", "Data Analysis", "Business Intelligence", "Data Visualization", "Machine Learning", "Web Development", "API Development", "Agile Methodologies",],
+      Tools: ["VSCode", "Visual Studio", "Bitbucket", "Neovim", "Git", "Docker", "PowerBI", "Tableau",],
+    } ],
   },
 
   projects: [

@@ -19,7 +19,11 @@ export default function Education(props: EducationProps) {
             <i className="fas fa-graduation-cap text-3xl text-secondary dark:text-dk-secondary hover:text-accent dark:hover:text-dk-accent"></i>
             <div className="flex-1">
               <h2 className="text-2xl font-semibold">{edu.title}</h2>
-              <p className="text-lg font-normal">{edu.date}</p>
+              <a className="text-lg font-bold text-blue-500 hover:underline" href="https://www.gvsu.edu/">
+                {edu.date}
+              </a>
+
+              <p className="text-lg font-normal">{edu.thesis}</p>
             </div>
           </div>
 
