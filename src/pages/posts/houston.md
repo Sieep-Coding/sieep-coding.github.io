@@ -1,5 +1,5 @@
 ---
-title: "Why I Love Houston"
+title: "Why I Love Houston As A Michigander"
 date: "2025-02-22"
 
 layout: ../../layouts/PostLayout.astro
@@ -9,7 +9,7 @@ img_path : "/hx.jpg"
 img_alt: "houston"
 ---
 
-## Why I Love Houston
+## Why I Love Houston As A Michigander
 
 ### Introduction
 
