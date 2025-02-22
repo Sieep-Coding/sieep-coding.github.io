@@ -84,6 +84,11 @@ Rappers such as Chamillionaire, Paul Wall, and Mike Jones were topping the chart
 
 I've always loved the sound of Houston rap. The slow, heavy bass, the [chopped-and-screwed](https://en.wikipedia.org/wiki/Chopped_and_screwed) beats, and the raw storytelling that captures the city's hustle.
 
+The famous Vietnamese jeweler, [Johnny Dang](https://en.wikipedia.org/wiki/Johnny_Dang), supplied the bombastic jewelry and swagger that became synonymous with the hip-hop culture of the 2000s, transforming artists into walking icons of bling and luxury.
+
+![Houston SLAB](../photo/_slab.jpg "Houston SLAB")
+![Johnny Dang](../photo/_dang.jpg "Johnny Dang")
+
 ## Final Thoughts
 
 Houston is a city that blends history, innovation, and culture in a way that makes it truly unique. 
