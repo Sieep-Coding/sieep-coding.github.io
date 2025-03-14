@@ -78,6 +78,8 @@ That was basically all the code I had to write (besides a small [refactor](https
 # Music Composition
 For music production, I use [Ableton Live 12 Lite](https://www.ableton.com/en/) and a [Launchkey Mini MK3](https://us.novationmusic.com/products/launchkey-mini-mk3).
 
+![The LaunchKey Mini MK3](../photo/launchkey.jpg "The LaunchKey Mini MK3")
+
 1. **Creating a Soft Pad**: I started by creating a soft, ambient pad for the background. This pad will give the track a dreamy atmosphere that blends well with the falling snow.
 
 2. **Adding Chord Progression:** For a relaxing vibe, I laid down a repetitive chord progression. Something soft & organic, like C - G - A - F, played on the pad.
