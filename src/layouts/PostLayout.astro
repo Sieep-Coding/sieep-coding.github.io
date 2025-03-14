@@ -8,8 +8,20 @@ import Contact from "../components/contact_section/Contact";
 // import Subscribe from "../components/post_section/Subscribe";
 import ViewBlog from "../components/about_section/VisitBlog";
 import Tooltip from "../components/navbar/Tooltip";
+import RecentPosts from "../components/post_section/RecentBlogs";
 
 const { frontmatter } = Astro.props;
+const rawPosts = await Astro.glob("../pages/posts/*.md");
+
+// Transform MarkdownInstance into Post[]
+const posts = rawPosts.map((post) => ({
+  frontmatter: {
+    title: post.frontmatter.title,
+    date: post.frontmatter.date,
+    description: post.frontmatter.description,
+  },
+  url: post.url, // Astro provides the `url` property
+})); // Generate correct URL
 
 const { title, date, img_path, img_alt } = frontmatter;
 // TODO: add tags here
@@ -88,6 +100,7 @@ const { title, date, img_path, img_alt } = frontmatter;
             <!-- <section class="mt-16 w-full max-w-lg">
               <Subscribe />
               </section> -->
+              <RecentPosts posts={posts} />
             </div>
             <div class="p-1">
               <div class="flex py-1 justify-center w-full">

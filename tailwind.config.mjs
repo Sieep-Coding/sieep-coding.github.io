@@ -6,14 +6,14 @@ export default {
 	theme: {
 		extend: {
 			colors: {
-				'primary': '#e0d0c0', // White
-				'secondary': '#000000', // Light gray
-				'accent': '#FFFFFF', // Medium gray
-				'text': '#000000', // Black text
-				'dk-primary': '#1e1f29', // Darker Background
-				'dk-secondary': '#6272a4', // Dracula Comment/Secondary
-				'dk-accent': '#8be9fd', // Dracula Cyan
-				'dk-text': '#6272a4', // Dracula White Text
+				'primary': '#e8d8c8',
+				'secondary': '#202020',
+				'accent': '#FFFFFF',
+				'text': '#202020',
+				'dk-primary': '#2a2b39', 
+				'dk-secondary': '#7c8fd1',
+				'dk-accent': '#aff6ff',
+				'dk-text': '#96a6e2',
 			},
 		},
 	},
