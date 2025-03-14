@@ -33,7 +33,7 @@ DrawText("Toggle Music", playMusicPos.x + buttonWidth / 2 - MeasureText("Toggle 
 ```
 
 
-We make use of various functions/classes built into raylib here, include `DrawRectangle();`, `Vector2`, and `DrawText();`.
+We make use of various functions/classes built into raylib here, including `DrawRectangle();`, `Vector2`, and `DrawText();`.
 
 > These built in functions/classes allow us to build UIs in C easily!
 
