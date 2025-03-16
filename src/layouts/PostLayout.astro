@@ -13,65 +13,84 @@ import RecentPosts from "../components/post_section/RecentBlogs";
 const { frontmatter } = Astro.props;
 const rawPosts = await Astro.glob("../pages/posts/*.md");
 
-// Transform MarkdownInstance into Post[]
 const posts = rawPosts.map((post) => ({
   frontmatter: {
     title: post.frontmatter.title,
     date: post.frontmatter.date,
     description: post.frontmatter.description,
   },
-  url: post.url, // Astro provides the `url` property
-})); // Generate correct URL
+  url: post.url, 
+})); 
 
 const { title, date, img_path, img_alt } = frontmatter;
-// TODO: add tags here
 ---
+<script>
+  function readingTime() {
+    const article = document.getElementById("article");
+    if (!article) return;
+    const text = article.innerText || "";
+    const wpm = 175;
+    const words = text.trim().split(/\s+/).length;
+    const time = Math.max(1, Math.ceil(words / wpm));
+    document.getElementById("time").innerText = time.toString();
+  }
+  window.onload = readingTime;
+</script>
 
 <BaseLayout title={title}>
   <main class="mt-24">
     <div class="mb-4 md:mb-0 w-full mx-auto relative">
-      <div
-        class="flex lg:flex-row flex-col relative justify-between items-center mb-4"
-      >
+      <div class="flex lg:flex-row flex-col relative justify-between items-center mb-4">
         <div class="px-4 lg:px-0">
-          <h1>
-            {title}
-          </h1>
+          <h1>{title}</h1>
         </div>
 
-        <p
-          class="text-sm lg:text-base px-4 lg:px-0 flex lg:flex-row flex-col items-center justify-between gap-2"
-        >
-          <span>{date}</span>
-          <a href="/posts" class="hover:underline">Back to posts</a>
-        </p>
+        <div class="flex flex-col lg:flex-row lg:items-center lg:gap-4">
+          <p class="text-sm text-base px-4 lg:px-0">
+            <span id="time"></span> minute read
+          </p>
+          <p class="text-sm lg:text-base px-4 lg:px-0 flex items-center justify-center gap-2">
+            <span>{date}</span>
+            <a href="/posts" class="hover:underline">Back to posts</a>
+          </p>
+        </div>
       </div>
-      {
-        img_path && (
-          <Image
-            src={img_path}
-            alt={img_alt || title}
-            class="w-full object-cover lg:rounded lg:h-96 h-64"
-            width={800}
-            height={400}
-          />
-        )
-      }
+
+      {img_path && (
+        <Image
+          src={img_path}
+          alt={img_alt || title}
+          class="w-full object-cover lg:rounded lg:h-96 h-64"
+          width={800}
+          height={400}
+        />
+      )}
     </div>
 
     <div class="flex flex-col lg:flex-row lg:space-x-12 justify-center">
-      <div
-        class="px-4 lg:px-0 mt-12 text-text dark:text-dk-text text-lg leading-normal w-full lg:w-3/4"
-      >
+      <div class="px-4 lg:px-0 mt-12 text-text dark:text-dk-text text-lg leading-normal w-full lg:w-3/4">
         <div
+          id="article"
           class="*:mb-4 leading-relaxed prose dark:prose-invert max-w-none
-        prose-h1:font-bold prose-h1:text-xl
-        prose-a:text-blue-600 prose-img:rounded-xl
-        prose-p:leading-normal prose-p:text-left
-        prose-headings:underline"
+            prose-h1:font-bold prose-h1:text-xl
+            prose-a:text-blue-600 prose-img:rounded-xl
+            prose-p:leading-normal prose-p:text-left
+            prose-headings:underline"
         >
           <slot />
-          <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="nickstambaugh" data-color="#2563EB" data-emoji="🍺"  data-font="Inter" data-text="Buy me a beer" data-outline-color="#ffffff" data-font-color="#ffffff" data-coffee-color="#ffffff" ></script>
+          <script
+            type="text/javascript"
+            src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js"
+            data-name="bmc-button"
+            data-slug="nickstambaugh"
+            data-color="#2563EB"
+            data-emoji="🍺"
+            data-font="Inter"
+            data-text="Buy me a beer"
+            data-outline-color="#ffffff"
+            data-font-color="#ffffff"
+            data-coffee-color="#ffffff"
+          ></script>
         </div>
       </div>
 
@@ -90,25 +109,25 @@ const { title, date, img_path, img_alt } = frontmatter;
               <p class="font-semibold text-gray-600 text-xs">{info.role}</p>
             </div>
           </div>
-          <p class="text-gray-700 py-3">
-            {info.brief_description}
-          </p>
+          <p class="text-gray-700 py-3">{info.brief_description}</p>
           <Contact contact={info.contact} size="md" />
         </div>
+
         <div class="p-1">
           <div class="flex py-1 justify-center w-full">
-            <!-- <section class="mt-16 w-full max-w-lg">
-              <Subscribe />
-              </section> -->
-              <RecentPosts posts={posts} />
+            <!-- <section class="mt-16 w-full max-w-lg"> -->
+            <!-- <Subscribe /> -->
+            <!-- </section> -->
+            <RecentPosts posts={posts} />
+          </div>
+          <div class="p-1">
+            <div class="flex py-1 justify-center w-full">
+              <ViewBlog />
             </div>
-            <div class="p-1">
-              <div class="flex py-1 justify-center w-full">
-                <ViewBlog />
-              </div>
-            </div>
+          </div>
         </div>
       </div>
     </div>
   </main>
 </BaseLayout>
+

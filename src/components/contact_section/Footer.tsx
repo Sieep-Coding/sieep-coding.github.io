@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer: React.FC = () => {
     return (
-        <footer className="w-full py-4 mt-8">
+        <footer className="w-full py-4 mt-8 mb-8 border-t border-b">
             <div className="max-w-7xl mx-auto text-center">
                 <p className="text-sm">
                     Built with{" "}
@@ -63,6 +63,15 @@ const Footer: React.FC = () => {
                         className="text-pink-400 hover:text-green-600 underline"
                     >
                         RSS
+                    </a>
+                    {" || "}{" "}{" "}
+                    <a
+                        href="https://buymeacoffee.com/nickstambaugh"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-pink-400 hover:text-green-600 underline"
+                    >
+                        Buy Me A Coffee
                     </a>
                 </p>
             </div>
