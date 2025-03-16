@@ -65,14 +65,14 @@ export default function Pointer() {
     animate();
 
     const particlesConfig = {
-      radius_in: [1, 4], // Smaller radius
-      vx_in: [-1, 1], // Reduced velocity for smaller movement
+      radius_in: [1, 3], 
+      vx_in: [-1, 1], 
       vy_in: [-1, 1],
-      spread: 12, // Slightly reduced spread
-      life: 15, // Shorter life for particles
-      interval: 0.4, // Faster interval between particles
+      spread: 12, 
+      life: 13, 
+      interval: 0.4,
       threshold: 2,
-      derivative_ratio: 11, // Increased ratio for smoother movement
+      derivative_ratio: 12,
     };
 
     const random = (min, max) => Math.random() * (max - min) + min;
