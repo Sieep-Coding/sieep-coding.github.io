@@ -102,4 +102,6 @@ The music itself was a fun challenge, **especially with my Launchkey Mini guidin
 
 If you’re looking to add music to your own project, I hope this breakdown gives you inspiration!
 
+[View the full code on Github!](https://github.com/Sieep-Coding/snow-simulation/) 
+
 Written By [Nick Stambaugh](https://www.linkedin.com/in/nick-s-694241139/)
