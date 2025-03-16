@@ -7,10 +7,9 @@ export default function Pointer() {
   const canvasRef = useRef(null);
   const twConfig = resolveConfig(tailwindConfig);
   
-  // Updated to use the purple theme colors
   const themeColor = useThemeColor([
-    twConfig.theme.colors.accent, // Lighter purple
-    twConfig.theme.colors.secondary, // Medium purple
+    twConfig.theme.colors.accent,
+    twConfig.theme.colors.secondary,
   ]);
 
   useEffect(() => {
