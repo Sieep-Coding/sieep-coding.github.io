@@ -7,6 +7,8 @@ description: "Learn how to build a simple Game of Life simulation in Lua using b
 
 img_path : "/gol.gif"
 img_alt: "Conway's Game Of Life Simulation"
+
+tags: ["#Lua", "#Coding", "#Tech"]
 ---
 
 ## Building a Game of Life Simulation in Lua

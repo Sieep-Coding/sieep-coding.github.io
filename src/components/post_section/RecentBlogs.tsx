@@ -5,6 +5,7 @@ interface Post {
     title: string;
     date: string;
     description: string;
+    tags: string[];
   };
   url: string;
 }
@@ -22,7 +23,7 @@ const RecentPosts: React.FC<RecentPostsProps> = ({ posts = [] }) => {
     return (
         <div className="flex flex-col border-t border-b md:border md:rounded-lg lg:flex-row justify-evenly mt-8 p-6">
           <div className="flex flex-col gap-8">
-            <h1 className="text-2xl font-semibold primary">Recent Posts</h1>
+            <h1 className="text-3xl font-bold dark:text-accent">Recent Posts</h1>
             {recentPosts.map((post, index) => (
               <div key={index} className="flex flex-col gap-2">
                 <h1 className="text-lg font-semibold">

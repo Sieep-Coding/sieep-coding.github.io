@@ -7,6 +7,8 @@ description: "Refactoring isn't just about simplifying code; it's about making i
 
 img_path: "/code-cleanup.png"
 img_alt: "A clean code editor interface."
+
+tags: ["#TypeScript", "#Coding", "#Tech"]
 ---
 ## Refactoring for Clarity: Lessons Learned from Cleaning Up Code
 Refactoring code can sometimes feel like a chore, but it’s one of the most rewarding aspects of development. 

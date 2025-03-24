@@ -7,6 +7,8 @@ description: "Astro's lightweight, optimized approach made it the perfect choice
 
 img_path: "/astro.png"
 img_alt: "A comparison of modern web frameworks."
+
+tags: ["#Astro", "#Coding", "#Tech"]
 ---
 
 ## Why [Astro](https://astro.build/) Stood Out for [My Portfolio](https://nickstambaugh.vercel.app/)

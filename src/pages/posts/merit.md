@@ -7,6 +7,8 @@ description: "Nepotism leads to yes-men, unhappy employees, and a breakdown in t
 
 img_path : "/merit.png"
 img_alt: "Wooden blocks spelling out merit."
+
+tags: ["#Workplace", "#Merit"]
 ---
 ## The Importance of Merit in the Workplace
 In any workplace, the balance between merit and nepotism affects team dynamics and overall productivity. 

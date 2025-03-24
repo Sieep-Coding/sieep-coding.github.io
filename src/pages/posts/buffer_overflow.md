@@ -7,6 +7,8 @@ description: "Discover why Linux Mint is my go-to operating system for both deve
 
 img_path : "/mint.jpg"
 img_alt : "Mint Desktop"
+
+tags: ["#Linux", "#OS", "#Tech"]
 ---
 
 ## Why I Use Linux Mint

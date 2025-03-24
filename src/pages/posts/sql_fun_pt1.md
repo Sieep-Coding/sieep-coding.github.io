@@ -7,6 +7,8 @@ description: "Part 1 of creating a SQL-like language in C# for fun."
 
 img_path: "/hacking_sql.png"
 img_alt: "C# hitting a SQL database with a hammer."
+
+tags: ["C#", "#.NET", "#Coding", "#Tech"]
 ---
 
 [PART 1] Creating A SQL-Like Language in C#

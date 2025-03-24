@@ -7,6 +7,8 @@ description: "An example of why I'm starting to love C# more than Go."
 
 img_path: "/bonk_go.png"
 img_alt: "C# hitting a Go gopher with a hammer."
+
+tags: ["C#", "#.NET", "#Coding", "#Tech"]
 ---
 
 What I've Learned about LINQ and MVC

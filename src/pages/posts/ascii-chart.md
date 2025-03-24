@@ -7,6 +7,8 @@ description: "Creating an ASCII bar chart generator in the console with TypeScri
 
 img_path : "/bar_image.png"
 img_alt: "Our Emoji/ASCII Bar Chart"
+
+tags: ["#TypeScript", "#Coding", "#Tech"]
 ---
 
 ## Why I Built the [ASCII Bar Chart Console App](https://github.com/Sieep-Coding/ascii-bar-chart)

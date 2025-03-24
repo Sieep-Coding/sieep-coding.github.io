@@ -7,6 +7,8 @@ description: "Welcome to my website! Click here to learn more about me."
 
 img_path : "/code.jpg"
 img_alt: "Nick Stambaugh"
+
+tags: ["#About me"]
 ---
 
 ## Introduction

@@ -7,6 +7,8 @@ description: "Test Driven Development is a great way to write bulletproof & smar
 
 img_path : "/tdd.png"
 img_alt: "Test-Driven Development graph."
+
+tags: ["#Go", "#TDD", "#Coding", "#Tech"]
 ---
 ## Using TDD in Go: Gain Confidence Through Testing
 When writing software, it is easy to make the mistake of not testing your code. 

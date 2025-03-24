@@ -7,6 +7,8 @@ description: "A new React component for easy email subscriptions on your website
 
 img_path: "/subscribe-component.png"
 img_alt: "A preview of the Subscribe component."
+
+tags: ["#TypeScript", "#Coding", "#Tech"]
 ---
 
 ## Why I Built the [Subscribe Component](https://github.com/Sieep-Coding/sieep-coding.github.io)

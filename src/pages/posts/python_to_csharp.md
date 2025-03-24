@@ -7,6 +7,8 @@ description: "How I am leveling-up my C# skills in preperation for my new job."
 
 img_path : "/csharp.png"
 img_alt: "the c# logo"
+
+tags: ["C#", "#.NET", "#Coding", "#Tech"]
 ---
 
 # Python to C#: My Path to Becoming a Junior Developer
