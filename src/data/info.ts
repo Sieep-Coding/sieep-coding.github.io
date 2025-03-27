@@ -1,7 +1,7 @@
 export const info = {
   name: "Nick Stambaugh",
   brief_description:
-    "Full Stack Enterprise Application Engineer",
+    "Full Stack & Enterprise Application Engineer",
   role: "Full Stack Engineer",
   picture: "/img.jpg",
   picture_alt: "Nick Stambaugh",
