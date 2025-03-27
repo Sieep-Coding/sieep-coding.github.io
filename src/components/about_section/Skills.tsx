@@ -21,14 +21,17 @@ export default function Skills({ skills }: SkillsProps) {
   };
 
   return (
-    <div className="flex flex-col items-center h-full p-8">
+    <div className="flex flex-col items-center h-full p-8 dark: rounded-xl shadow-lg">
       <h2 className="text-4xl font-semibold text-primary mb-8">Skills</h2>
       <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {skills.map((category, index) =>
           Object.entries(category).map(([categoryName, skillList]) => (
-            <section key={`${categoryName}-${index}`} className="space-y-4">
+            <section
+              key={`${categoryName}-${index}`}
+              className="space-y-4"
+            >
               <div
-                className="flex items-center justify-between cursor-pointer group p-2 border border-blue-300 dark:border-dk-border rounded-lg hover:border-accent transition-all duration-200"
+                className="flex items-center justify-between cursor-pointer group p-4 border-2 border-transparent hover:border-blue-400 dark:hover:border-dk-accent rounded-lg transition-all duration-200"
                 onClick={() => toggleCategory(categoryName)}
               >
                 <h3 className="text-2xl font-semibold text-accent mb-2">{categoryName}</h3>
@@ -50,11 +53,11 @@ export default function Skills({ skills }: SkillsProps) {
 
               {/* Skills List (hidden/shown based on state) */}
               {openCategory === categoryName && (
-                <ul className="grid grid-cols-2 gap-4 list-none pl-0 dark:bg-dk-background p-4 rounded-lg shadow-md">
+                <ul className="grid grid-cols-2 gap-4 list-none pl-0 dark:bg-dk-background p-4 rounded-lg shadow-md max-h-96 overflow-auto">
                   {skillList.map((skill, i) => (
                     <li
                       key={i}
-                      className="text-lg font-medium text-secondary dark:text-dk-secondary hover:text-accent dark:hover:text-dk-accent transition-all duration-200"
+                      className="text-lg font-medium text-secondary dark:text-dk-secondary hover:text-accent dark:hover:text-dk-accent transition-all duration-200 break-words"
                     >
                       {skill}
                     </li>
@@ -68,4 +71,3 @@ export default function Skills({ skills }: SkillsProps) {
     </div>
   );
 }
-//

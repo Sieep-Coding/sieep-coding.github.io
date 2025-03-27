@@ -3,10 +3,11 @@
 @tailwind utilities;
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Fira Code', monospace;
   margin: 0;
   padding: 0;
 }
+
 html {
   scroll-behavior: smooth;
 }
@@ -14,52 +15,74 @@ html {
 * {
   scrollbar-color: theme(colors.secondary) theme(colors.primary);
   scrollbar-width: thin;
+  transition: color 0.25s linear;
+  -webkit-transition: color 0.25s linear;
+  -moz-transition: color 0.25s linear;
+  -ms-transition: color 0.25s linear;
+  -o-transition: color 0.25s linear;
 }
 
 html.dark {
   scrollbar-color: theme(colors.dk-secondary) theme(colors.dk-primary);
 }
 
+html, body {
+  overflow-x: hidden;
+}
+
+*::selection {
+  background-color: theme(colors.text) !important;
+  color: theme(colors.primary) !important;
+}
+
+html.dark *::selection {
+  background-color: theme(colors.dk-text) !important;
+  color: theme(colors.dk-primary) !important;
+}
+
+/* Headings */
 h1 {
   margin: 0;
   padding: 0;
-  font-size: 2.5rem;
-  line-height: 2.5rem;
-  font-weight: bold;
+  font-size: 2.25rem; /* Slightly smaller to make it more balanced */
+  line-height: 2.75rem; /* Increased line height for readability */
+  font-weight: 700; /* Bold for hierarchy */
   color: theme(colors.secondary);
 }
 
 h2 {
-  font-size: 1.5rem;
-  line-height: 2rem;
+  font-size: 1.75rem; /* Increased for better hierarchy */
+  line-height: 2.25rem; /* Slightly bigger line-height */
   font-weight: 600;
   color: theme(colors.secondary);
 }
 
 h3 {
-  font-size: 1.25rem;
-  line-height: 1.75rem;
+  font-size: 1.5rem; /* Larger for better readability */
+  line-height: 2rem; /* Slightly bigger line height */
   font-weight: 500;
   color: theme(colors.secondary);
 }
 
 h4 {
-  font-size: 1rem;
-  line-height: 1.5rem;
-  font-weight: 400;
+  font-size: 1.125rem; /* Slightly larger than normal text */
+  line-height: 1.75rem;
+  font-weight: 500; /* Less bold for a softer look */
   color: theme(colors.secondary);
 }
 
 p {
   font-size: 1rem;
-  line-height: 1.5rem;
+  line-height: 1.75rem; /* Increased line height for easier reading */
   font-weight: 400;
-}
-
-h2,
-p {
   color: theme(colors.text);
 }
+
+h2, p {
+  color: theme(colors.text);
+}
+
+/* Dark mode */
 html.dark h1 {
   color: theme(colors.dk-secondary);
 }
@@ -72,29 +95,4 @@ html.dark h4 {
 
 html.dark p {
   color: theme(colors.dk-text);
-}
-
-html,
-body {
-  overflow-x: hidden;
-}
-
-* {
-  overflow-wrap: break-word !important;
-  word-wrap: break-word !important;
-  transition: color 0.25s linear;
-  -webkit-transition: color 0.25s linear;
-  -moz-transition: color 0.25s linear;
-  -ms-transition: color 0.25s linear;
-  -o-transition: color 0.25s linear;
-}
-
-*::selection {
-  background-color: theme(colors.text) !important;
-  color: theme(colors.primary) !important;
-}
-
-html.dark *::selection {
-  background-color: theme(colors.dk-text) !important;
-  color: theme(colors.dk-primary) !important;
 }

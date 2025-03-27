@@ -1,0 +1,95 @@
+---
+const { name, description, link, price, rating, platform } = Astro.props;
+---
+
+<a href={link} target="_blank" rel="noopener noreferrer" class="block p-6 bg-gray-900 text-white rounded-2xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 hover:scale-105 duration-300 border border-transparent hover:border-2 hover:animate-rainbow-border">
+    <div class="flex items-center mb-4">
+      <h2 class="text-xl font-semibold">{name}</h2>
+    </div>
+    <p class="text-gray-400 text-sm mb-2">{description}</p>
+    <span class={`text-sm font-bold ${price === 'FREE' ? 'text-green-400' : 'text-yellow-400'}`}>{price}</span>
+    <div class="flex items-center mt-2">
+      {"★".repeat(rating)}
+      {"☆".repeat(5 - rating)}
+      <span class="ml-2 text-gray-400 text-xs">{platform}</span>
+    </div>
+    <p class="mt-4 text-blue-400 font-semibold text-sm tracking-wide hover:animate-pulse">
+      Grab it now →
+    </p>
+  </a>
+  
+  <style>
+    @keyframes rainbow-border {
+      0% {
+        border-image-source: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet);
+      }
+      5% {
+        border-image-source: linear-gradient(45deg, orange, yellow, green, blue, indigo, violet, red);
+      }
+      10% {
+        border-image-source: linear-gradient(45deg, yellow, green, blue, indigo, violet, red, orange);
+      }
+      15% {
+        border-image-source: linear-gradient(45deg, green, blue, indigo, violet, red, orange, yellow);
+      }
+      20% {
+        border-image-source: linear-gradient(45deg, blue, indigo, violet, red, orange, yellow, green);
+      }
+      25% {
+        border-image-source: linear-gradient(45deg, indigo, violet, red, orange, yellow, green, blue);
+      }
+      30% {
+        border-image-source: linear-gradient(45deg, violet, red, orange, yellow, green, blue, indigo);
+      }
+      35% {
+        border-image-source: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet);
+      }
+      40% {
+        border-image-source: linear-gradient(45deg, orange, yellow, green, blue, indigo, violet, red);
+      }
+      45% {
+        border-image-source: linear-gradient(45deg, yellow, green, blue, indigo, violet, red, orange);
+      }
+      50% {
+        border-image-source: linear-gradient(45deg, green, blue, indigo, violet, red, orange, yellow);
+      }
+      55% {
+        border-image-source: linear-gradient(45deg, blue, indigo, violet, red, orange, yellow, green);
+      }
+      60% {
+        border-image-source: linear-gradient(45deg, indigo, violet, red, orange, yellow, green, blue);
+      }
+      65% {
+        border-image-source: linear-gradient(45deg, violet, red, orange, yellow, green, blue, indigo);
+      }
+      70% {
+        border-image-source: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet);
+      }
+      75% {
+        border-image-source: linear-gradient(45deg, orange, yellow, green, blue, indigo, violet, red);
+      }
+      80% {
+        border-image-source: linear-gradient(45deg, yellow, green, blue, indigo, violet, red, orange);
+      }
+      85% {
+        border-image-source: linear-gradient(45deg, green, blue, indigo, violet, red, orange, yellow);
+      }
+      90% {
+        border-image-source: linear-gradient(45deg, blue, indigo, violet, red, orange, yellow, green);
+      }
+      95% {
+        border-image-source: linear-gradient(45deg, indigo, violet, red, orange, yellow, green, blue);
+      }
+      100% {
+        border-image-source: linear-gradient(45deg, violet, red, orange, yellow, green, blue, indigo);
+      }
+    }
+  
+    .hover\:animate-rainbow-border:hover {
+      border-width: 2px;
+      border-style: solid;
+      border-image: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet) 1;
+      animation: rainbow-border 3s linear infinite;
+    }
+  </style>
+  

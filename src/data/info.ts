@@ -9,11 +9,12 @@ export const info = {
   cv: "/Nick_Stambaugh-Resume.pdf",
 
   about: {
-    description: `I'm a full-stack engineer with a background in business intelligence, blending technical problem-solving with data-driven decision-making. 
+    description: `
+    I'm a full-stack engineer with a background in business intelligence, blending technical problem-solving with data-driven decision-making. 
     My career started in analytics, where I built dashboards, automated reports, and made complex data more accessible. 
     Now, I focus on developing enterprise software that optimizes business and production processes. 
     When I’m not coding, you’ll probably find me running, gaming, or hanging out with my dog, Bruce. 
-    I enjoy tackling new challenges, whether it's building games in C++, optimizing workflows with C#, or experimenting with TypeScript/Python/Go/Lua in my side projects.`,
+    I enjoy tackling new challenges, whether it's building professional apps in C#, or experimenting with TypeScript/Python/Go/Lua in my side projects`,
     education: [
       {
         title: "BS in Economics and Philosophy",
@@ -68,10 +69,10 @@ export const info = {
 
     skills: [ {
       Languages: ["C#", "Python", "JavaScript", "TypeScript", "Go", "Lua", "HTML", "CSS", "SQL", "C/C++", "Bash", "R",],
-      Frameworks: ["React", ".NET", "Node.js", "Electron", "Astro", "TailwindCSS", "Bootstrap", "HTMX", "Alpine.js", "Flask", "Django", "Express.js",],
-      Libraries: ["xUnit", "Pandas", "NumPy", "Matplotlib", "Seaborn", "Plotly", "D3.js", "Chart.js", "Three.js", "TensorFlow",],
-      Databases: ["SQLite", "SQL Server", "Microsoft AX", "Salesforce", "MongoDB", "Zoho"],
-      Concepts: ["TDD", "OOP", "MVC", "Data Analysis", "Business Intelligence", "Data Visualization", "Machine Learning", "Web Development", "API Development", "Agile Methodologies",],
+      Frameworks: ["React", ".NET", "Node.js", "Electron", "Astro", "TailwindCSS", "Bootstrap", "HTMX", "Express.js",],
+      Libraries: ["xUnit", "Pandas", "NumPy", "Matplotlib", "Seaborn", "Plotly", "D3.js", "Chart.js",],
+      Databases: ["SQLite", "SQL Server", "Dynamics AX", "Salesforce", "Zoho"],
+      Concepts: ["TDD", "Software Architect", "OOP", "MVC", "Data Analysis", "Data Viz", "Web Dev", "API Development", "Agile Methods",],
       Tools: ["VSCode", "Visual Studio", "Bitbucket", "Neovim", "Git", "Docker", "PowerBI", "Tableau",],
     } ],
   },
