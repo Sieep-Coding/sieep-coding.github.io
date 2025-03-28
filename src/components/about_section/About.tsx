@@ -12,7 +12,8 @@ interface AboutProps {
 export default function About(props: AboutProps) {
   const { about } = props;
   const aboutString = about.description;
-  const sentenceArray = aboutString.split('. ')
+  const sentenceArray = aboutString.split('. ');
+
   return (
     <div className="flex flex-col items-center h-full space-y-6 p-4 sm:p-6">
       <div className="flex flex-col space-y-4 w-full sm:w-3/4 lg:w-2/3">
@@ -22,20 +23,17 @@ export default function About(props: AboutProps) {
             <span key={index} className="block mb-5">{word}</span> // Each word in a new line
           ))}
         </p>
-        <div>
-          <Skills skills={about.skills} />
-        </div>
       </div>
       <div className="w-full sm:w-3/4 lg:w-2/3">
-        <p className="text-base sm:text-3xl leading-normal">
-          <Experience experience={about.experience} />
-        </p>
+        <Experience experience={about.experience} />
       </div>
-      <p className="text-base sm:text-3xl leading-normal"></p>
+      <div className="w-full sm:w-3/4 lg:w-2/3">
+        <Skills skills={about.skills} />
+      </div>
       <div className="w-full sm:w-3/4 lg:w-2/3">
         <Education education={about.education} />
       </div>
-      <div >
+      <div>
         <ViewBlog />
       </div>
     </div>

@@ -32,7 +32,7 @@ export default function Nav({ posts }) {
     <>
       <nav className="container mx-auto top-0 z-50 absolute bg-primary dark:bg-dk-primary">
         <div className="w-full px-6 py-2 flex justify-between items-center">
-          <a className="font-bold text-2xl lg:text-4xl" href="/#">
+          <a className="font-bold text-2xl lg:text-4xl hover:scale-105 hover:-rotate-3 duration-300" href="/#">
             <span className="text-secondary dark:text-dk-secondary">
               {"</" + extractInitials(info.name) + ">"}
             </span>
@@ -42,7 +42,7 @@ export default function Nav({ posts }) {
             <a
               href={info.cv}
               download
-              className="px-4 py-2 border-2 rounded text-secondary dark:text-dk-secondary border-secondary dark:border-dk-secondary hover:bg-secondary dark:hover:bg-dk-secondary hover:text-primary dark:hover:text-primary cursor-pointer"
+              className="px-4 py-2 border-2 rounded text-secondary dark:text-dk-secondary border-secondary dark:border-dk-secondary hover:bg-secondary dark:hover:bg-dk-secondary hover:text-primary dark:hover:text-primary hover:scale-105 hover:-rotate-2 duration-300 cursor-pointer"
             >
               <i className="fas fa-download mr-2"></i>
               <span className="hidden lg:inline-block font-medium">
@@ -52,7 +52,7 @@ export default function Nav({ posts }) {
             </a>
             <button
               onClick={() => setIsHireMeOpen(true)}
-              className="px-4 py-2 border-2 rounded text-secondary dark:text-dk-secondary border-secondary dark:border-dk-secondary hover:bg-secondary dark:hover:bg-dk-secondary hover:text-primary dark:hover:text-primary cursor-pointer"
+              className="px-4 py-2 border-2 rounded text-secondary dark:text-dk-secondary border-secondary dark:border-dk-secondary hover:bg-secondary dark:hover:bg-dk-secondary hover:text-primary dark:hover:text-primary hover:scale-105 hover:-rotate-2 duration-300 cursor-pointer"
             >
               <Tooltip text="Fill out a form." position="bottom">
               <i className="fas fa-circle-info mr-2"></i>
@@ -74,19 +74,19 @@ export default function Nav({ posts }) {
               {navLinks.map((link, index) => (
                 <li
                   key={index}
-                  className="p-4 hover:text-accent dark:hover:text-dk-accent"
+                  className="p-4 hover:text-accent dark:hover:text-dk-accent hover:scale-105 hover:-rotate-2 duration-300"
                 >
                   <a href={link.href}>{link.name}</a>
                 </li>
               ))}
               <li className="px-4 flex">
-                <ToggleDarkMode />
-              </li>
-              <li className="px-4 flex">
                 <Search posts={posts} />
               </li>
               <li className="px-4 flex">
                 <GithubButton />
+              </li>
+              <li className="px-4 flex mt-1 mr-1">
+                <ToggleDarkMode />
               </li>
             </ul>
           </div>

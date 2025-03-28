@@ -5,7 +5,7 @@ interface FilterTagsProps {
 
 const FilterTags: React.FC<FilterTagsProps> = ({ tags, onClick }) => {
     return (
-        <div className="flex flex-wrap gap-2 p-4">
+        <div className="flex flex-wrap gap-2 p-4" id="tags">
             {tags.map((tag) => (
                 <button
                     key={tag}

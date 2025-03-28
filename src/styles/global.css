@@ -96,3 +96,8 @@ html.dark h4 {
 html.dark p {
   color: theme(colors.dk-text);
 }
+
+#tags button:hover {
+  cursor: none;
+}
+
