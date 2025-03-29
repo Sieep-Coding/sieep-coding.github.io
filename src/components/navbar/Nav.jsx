@@ -13,8 +13,6 @@ export default function Nav({ posts }) {
 
   const navLinks = [
     { name: "Data", href: "/data" },
-    { name: "About", href: "/#about" },
-    { name: "Projects", href: "/#projects" },
     { name: "Blog", href: "/posts" },
     { name: "Contact", href: "/#contact" },
   ];
