@@ -104,7 +104,7 @@ This erosion of morale manifests in lack of motivation and decreased performance
 
 Employees in such environments often stop caring altogether.
 
-When morale is low, creativity and innovation are the first to go. 
+**When morale is low, creativity and innovation are the first to go.**
 
 Teams lose the collaborative spark and the energy needed to tackle challenges head-on. 
 
