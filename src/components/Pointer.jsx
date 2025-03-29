@@ -1,9 +1,9 @@
-// import React, { useRef, useEffect } from "react";
-// import { useThemeColor } from "../hooks/useThemeColor";
-// import resolveConfig from "tailwindcss/resolveConfig";
-// import tailwindConfig from "../../tailwind.config.mjs";
+import React, { useRef, useEffect } from "react";
+import { useThemeColor } from "../hooks/useThemeColor";
+import resolveConfig from "tailwindcss/resolveConfig";
+import tailwindConfig from "../../tailwind.config.mjs";
 
-// export default function Pointer() {
+export default function Pointer() {
 //   const canvasRef = useRef(null);
 //   const twConfig = resolveConfig(tailwindConfig);
   
@@ -168,4 +168,4 @@
 //   this.isDead = function () {
 //     return this.life <= 0;
 //   };
-// }
+}
