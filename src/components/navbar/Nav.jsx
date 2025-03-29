@@ -37,7 +37,6 @@ export default function Nav({ posts }) {
               {"</" + extractInitials(info.name) + ">"}
             </span>
           </a>
-
           <div className="flex items-center space-x-4">
             <a
               href={info.cv}
