@@ -8,18 +8,18 @@ description: "Nepotism leads to yes-men, unhappy employees, and a breakdown in t
 img_path : "/merit.png"
 img_alt: "Wooden blocks spelling out merit."
 
-tags: ["#Workplace", "#Merit"]
+tags: ["#Workplace", "#Merit", "#Business"]
 ---
 ## The Importance of Merit in the Workplace
 In any workplace, the balance between merit and nepotism affects team dynamics and overall productivity. 
 
-While personal relationships can play a role in career advancement, **prioritizing merit is essential to creating a fair enviroment.**
+While personal relationships can play a role in career advancement, **prioritizing merit is essential to creating a fair environment.**
 # Impact of Nepotism
 Nepotism occurs when individuals in power favor family members or friends for positions or promotions, regardless of their qualifications. 
 
 This practice can **create a toxic environment** where merit is sidelined. 
 
-Employees may feel demotivated when they see colleagues promoted based on connections rather than their hard work.
+Employees may feel unmotivated when they see colleagues promoted based on connections rather than their hard work.
 # Culture of Trust
 A merit-based workplace sews trust. Employees want to feel that their contributions matter. 
 

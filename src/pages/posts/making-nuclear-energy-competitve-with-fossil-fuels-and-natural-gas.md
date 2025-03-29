@@ -1,5 +1,5 @@
 ---
-title: "Making Nuclear Energy Cost Competitive..."
+title: "Making Nuclear Energy Cost Competitive with Fossil Fuels and Renewables"
 date: "2021-08-01"
 
 layout: ../../layouts/PostLayout.astro

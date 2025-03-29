@@ -1,3 +1,4 @@
+import React from "react";
 import { info } from "../../data/info";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
@@ -6,7 +7,8 @@ interface ProjectCardProps {
   project: (typeof info)["projects"][number];
 }
 
-export default function ProjectCard(props: ProjectCardProps) {
+// Wrap the component with React.memo to avoid unnecessary re-renders
+const ProjectCard = React.memo((props: ProjectCardProps) => {
   const { project } = props;
 
   return (
@@ -23,6 +25,8 @@ export default function ProjectCard(props: ProjectCardProps) {
             alt={project.img_alt}
             width="100%"
             effect="blur"
+            // Ensure the image loads only when it's in the viewport
+            threshold={200} // Adjust the threshold value if needed
           />
         </a>
       </div>
@@ -68,4 +72,6 @@ export default function ProjectCard(props: ProjectCardProps) {
       </div>
     </div>
   );
-}
+});
+
+export default ProjectCard;
