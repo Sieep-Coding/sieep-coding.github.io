@@ -48,8 +48,8 @@ export default function HireMe() {
   };
 
   return (
-    <div className="flex flex-col w-600 h-300 p-4 md:p-6 rounded-lg shadow-lg space-y-4 md:space-y-6">
-      <p className="text-base md:text-lg text-center text-primary text-black">
+    <div className="flex flex-col w-600 h-300 p-4 md:p-6 rounded-lg space-y-4 md:space-y-6">
+      <p className="text-base md:text-lg text-center text-black font-semibold">
         Fill out the form below and I'll get back to you to set up a free 30-minute call.
       </p>
       <form
@@ -57,7 +57,7 @@ export default function HireMe() {
         onSubmit={handleSubmit}
       >
         <label className="flex flex-col">
-          <p className="text-base md:text-lg text-left text-primary text-black">Name:</p>
+          <p className="text-base md:text-lg text-left text-black font-semibold">Name:</p>
           <input
             type="text"
             name="name"
@@ -69,7 +69,7 @@ export default function HireMe() {
           />
         </label>
         <label className="flex flex-col">
-          <p className="text-base md:text-lg text-left text-primary text-black">Email:</p>
+          <p className="md:text-lg text-left text-black font-semibold">Email:</p>
           <input
             type="email"
             name="email"
@@ -81,7 +81,7 @@ export default function HireMe() {
           />
         </label>
         <label className="flex flex-col">
-          <p className="text-base md:text-lg text-left text-primary text-black">Message:</p>
+          <p className="text-black font-semibold text-black md:text-lg text-left">Message:</p>
           <textarea
             name="message"
             value={formData.message}
@@ -93,9 +93,9 @@ export default function HireMe() {
           />
         </label>
         <fieldset className="flex flex-col">
-          <p className="text-base md:text-lg text-left text-primary text-black">Type of Project:</p>
-          {["Web/App/Mobile Development","Data Analysis/Business Intelligence"].map((type) => (
-            <label key={type} className="flex items-center text-primary mb-2">
+          <p className="text-black font-semibold md:text-lg text-left">Type of Project:</p>
+          {["Web/App/Mobile Development","Business Intelligence","Career"].map((type) => (
+            <label key={type} className="flex items-center text-black font-semibold mb-2">
               <input
                 type="checkbox"
                 name="projectType"
@@ -104,13 +104,13 @@ export default function HireMe() {
                 onChange={handleChange}
                 className="mr-2"
               />
-              <p className="text-base md:text-lg text-center text-primary text-black">{type}</p>
+              <p className="text-base md:text-lg text-center text-black font-semibold">{type}</p>
             </label>
           ))}
         </fieldset>
         <button
           type="submit"
-          className="px-4 py-2 md:px-6 md:py-3 bg-primary text-black font-semibold rounded-lg shadow-md hover:bg-accent dark:hover:bg-dk-accent focus:outline-none focus:ring-2 focus:ring-accent dark:focus:ring-dk-accent transition-transform transform hover:scale-105"
+          className="px-4 py-2 md:px-6 md:py-3 text-black font-semibold bg-accent rounded-lg shadow-md hover:bg-dk-accent dark:hover:bg-dk-accent focus:outline-none focus:ring-2 focus:ring-accent dark:focus:ring-dk-accent transition-transform transform hover:scale-105"
         >
           Send Message
         </button>

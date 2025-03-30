@@ -28,33 +28,36 @@ export default function Nav({ posts }) {
 
   return (
     <>
-      <nav className="container mx-auto top-0 z-50 absolute bg-primary dark:bg-dk-primary">
-        <div className="w-full px-6 py-2 flex justify-between items-center">
-          <a className="font-bold text-2xl lg:text-4xl hover:scale-105 hover:-rotate-3 duration-300" href="/#">
+       <nav className="container top-0 z-50 absolute bg-primary dark:bg-dk-primary">
+        <div className="w-full px-4 sm:px-6 md:px-6 py-2 flex justify-between items-center">
+          <a
+            className="font-bold text-lg sm:text-2xl md:text-2xl lg:text-4xl hover:scale-105 hover:-rotate-3 duration-300"
+            href="/#"
+          >
             <span className="text-secondary dark:text-dk-secondary">
               {"</" + extractInitials(info.name) + ">"}
             </span>
           </a>
-          <div className="flex items-center space-x-4 mr-20">
+          <div className="flex items-center space-x-3 sm:space-x-5 mr-5 sm:mr-20 md:space-x-5 mr-5 sm:mr-20">
             <a
               href={info.cv}
               download
-              className="px-4 py-2 border-2 rounded text-secondary dark:text-dk-secondary border-secondary dark:border-dk-secondary hover:bg-secondary dark:hover:bg-dk-secondary hover:text-primary dark:hover:text-primary hover:scale-105 hover:-rotate-2 duration-300 cursor-pointer"
+              className="px-3 sm:px-4 py-1 sm:py-2 border-2 rounded text-sm sm:text-base text-secondary dark:text-dk-secondary border-secondary dark:border-dk-secondary hover:bg-secondary dark:hover:bg-dk-secondary hover:text-primary dark:hover:text-primary hover:scale-105 hover:-rotate-2 duration-300 cursor-pointer"
             >
-              <i className="fas fa-download mr-2"></i>
+              <i className="fas fa-download mr-1 sm:mr-2"></i>
               <span className="hidden lg:inline-block font-medium">
                 Download Resume
               </span>
-              <span className="lg:hidden font-medium">CV</span>
+              <span className="lg:hidden font-small">CV</span>
             </a>
             <button
               onClick={() => setIsHireMeOpen(true)}
-              className="px-4 py-2 border-2 rounded text-secondary dark:text-dk-secondary border-secondary dark:border-dk-secondary hover:bg-secondary dark:hover:bg-dk-secondary hover:text-primary dark:hover:text-primary hover:scale-105 hover:-rotate-2 duration-300 cursor-pointer"
+              className="px-3 sm:px-4 py-1 sm:py-2 border-2 rounded text-sm sm:text-base text-secondary dark:text-dk-secondary border-secondary dark:border-dk-secondary hover:bg-secondary dark:hover:bg-dk-secondary hover:text-primary dark:hover:text-primary hover:scale-105 hover:-rotate-2 duration-300 cursor-pointer"
             >
               <Tooltip text="Fill out a form." position="bottom">
-              <i className="fas fa-circle-info mr-2"></i>
-              <span className="hidden lg:inline-block font-medium">Contact Me</span>
-              <span className="lg:hidden font-medium">Hire</span>
+                <i className="fas fa-circle-info mr-1"></i>
+                <span className="hidden lg:inline-block font-small">Contact Me</span>
+                <span className="lg:hidden font-small">Hire</span>
               </Tooltip>
             </button>
           </div>
@@ -90,8 +93,7 @@ export default function Nav({ posts }) {
         </div>
 
         <div
-          className={`${!isNavOpen ? "hidden" : ""
-            } h-full flex flex-col items-center text-center lg:hidden dark:text-tertiary`}
+          className={`${!isNavOpen ? "hidden" : ""} h-full flex flex-col items-center text-center lg:hidden dark:text-tertiary`}
         >
           <ul className="w-full text-secondary dark:text-dk-secondary text-xl font-semibold">
             {navLinks.map((link, index) => (
