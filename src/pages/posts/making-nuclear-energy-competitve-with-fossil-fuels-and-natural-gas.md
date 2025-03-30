@@ -125,22 +125,22 @@ gasoline in our cars) and fossil fuels have detrimental impacts on human health 
 negative effects of the combustion of carbon-based substances can be broken into two main categories.
 Air pollution includes ash and chemicals such as nitrogen dioxide from energy production. 
 
-Carbon
-dioxide release is separated into its category since the environmental impacts referred to as “climate
+Carbon dioxide release is separated into its category since the environmental impacts referred to as “climate
 change” from this practice have been thoroughly studied across many different academic focuses, with
 commonalities being found of the negative impacts from its release into the atmosphere.
+
 On the right, we see the process of energy production from fission which leads to different results than
 combustion. A large downside of nuclear which is discussed briefly in this paper is the long-term waste
-storage of spent fuel rods. New techniques of fuel storage are being innovated, such as the long-term plan
-in Finland which seeks to store spent fuel rods underground for thousands of years with no impact on the
-environment (Gil, 2020). Storing waste underground is safe since the waste is stored in highly engineered
-caskets under the biosphere, underneath any organic material. The caskets are designed to stop the
-movement of radiation for thousands of years (World Nuclear Association, n.d.).
+storage of spent fuel rods. 
+
+New techniques of fuel storage are being innovated, such as the long-term plan in Finland which seeks to store spent fuel rods underground for thousands of years with no impact on the environment (Gil, 2020). Storing waste underground is safe since the waste is stored in highly engineered caskets under the biosphere, underneath any organic material. 
+
+The caskets are designed to stop the movement of radiation for thousands of years (World Nuclear Association, n.d.).
 The positives from nuclear energy production largely outweigh this negative since the negative
 externalities associated with nuclear energy production are not tied to human and environmental collapse
-in the same ways fossil fuels are. Another negative to consider would-be nuclear weapon proliferation. It
-is certainly tied to nuclear energy production since investments in nuclear infrastructure for the purpose of
-energy can backbone weapons manufacturing. With that being said, the long-term effects of this are
+in the same ways fossil fuels are. 
+
+Another negative to consider would-be nuclear weapon proliferation. It is certainly tied to nuclear energy production since investments in nuclear infrastructure for the purpose of energy can backbone weapons manufacturing. With that being said, the long-term effects of this are
 unknown and are hard to examine through the lens of economic analysis since nuclear weapons have only
 been deployed twice in warfare (United Nations, n.d.). 
 
@@ -175,8 +175,9 @@ and closing existing plants hurts our climate even more (Nuclear Energy Institut
 fear towards an event that may or may not occur leads us to believe there is more behind the decision of
 closing Indian Point that has less to do with accidents and more to do with politics.
 Overall, the side-by-side comparison of these two flowcharts should provide insight into how different
-practices within energy production can lead to vastly divergent outcomes. It highlights how human life, in
-general, seeks to gain from electricity production. Despite this, fossil fuel companies causing large-scale
+practices within energy production can lead to vastly divergent outcomes. 
+
+It highlights how human life, in general, seeks to gain from electricity production. Despite this, fossil fuel companies causing large-scale
 harm in the form of air pollution and climate change, the ulterior motives of those continuing to fund
 fossil fuels must be brought into the light, as well as making public the balance sheet of anyone involved
 in fossil fuel production, transparency is key to understanding how we can effectively change policy. This
@@ -202,6 +203,7 @@ year for natural gas production, holding 44.6% of generation throughout that yea
 Figure 1.2 also shows that renewables have just about caught up to nuclear in terms of total generation. This is backed up by the
 pie chart in Figure 1.3, as we can see renewables (PV, Solar thermal, on-shore and off-shore wind) shared **+7.7%** more of the capacity throughout the year compared to nuclear, meaning the surpassing of total
 generation should happen within the next couple years.
+
 While natural gas seeks to replace coal as the dominant power source, renewables and nuclear are not
 competing as much as they may seem country-wide, as load capacities across the two tend to have enough
 difference that they end up supplying different markets. It is important to note that some renewable farms
@@ -314,9 +316,7 @@ where construction cost is the major component of TCC. LCOE will be compared for
 examining the impact of carbon prices on fossil fuel-based energy production.
 
 ```math
-𝐿𝐶𝑂𝐸 = Σ(𝐶𝑎𝑝𝑖𝑡𝑎𝑙𝑡 + 𝑂&𝑀𝑡 + 𝐹𝑢𝑒𝑙𝑡 + 𝐶𝑎𝑟𝑏𝑜𝑛𝑡 + 𝐷𝑡) *(1+𝑟)−𝑡
-
-Σ𝑀𝑊ℎ (1+𝑟)−𝑡
+𝐿𝐶𝑂𝐸 = Σ(𝐶𝑎𝑝𝑖𝑡𝑎𝑙𝑡 + 𝑂&𝑀𝑡 + 𝐹𝑢𝑒𝑙𝑡 + 𝐶𝑎𝑟𝑏𝑜𝑛𝑡 + 𝐷𝑡) *(1+𝑟)−𝑡 Σ𝑀𝑊ℎ (1+𝑟)−𝑡
 ```
 11
 Table 2.1
@@ -509,7 +509,9 @@ Figure 3.4
 In Figure 3.4, we notice that there is already a steady increase in TCC prior to the Three Mile Incident in
 6. Looking at the data from the EIA and decommissioningcollaborative.org, we obtained a rough
 TCC that likely includes initial capital cost for the construction and refurbishment over the years to
-improve and maintain plant operation. The data pulled is for a one reactor plant and some of the years had
+improve and maintain plant operation. 
+
+The data pulled is for a one reactor plant and some of the years had
 multiple plants begin construction which we averaged the TCC and the years from construction start to
 grid connection. Grid connection is taken to mean that the plant has begun commercial operation.
 In Figure 3.5, it shows that with each new construction there is an increase in rated output. Like in Figure
@@ -531,44 +533,51 @@ Figure 3.5
 
 Construction time of nuclear power plants was relatively quick in the 1960s when the first plants were
 being built. Over time, with more sophisticated reactors and equipment being used, the overall
-construction time slowly increased. This became more pronounced after the Three Mile Island accident.
+construction time slowly increased. 
+
+This became more pronounced after the Three Mile Island accident.
+
 The backlash against the nuclear industry was fierce and the federal government needed to enact policies
 to safeguard against any problems that may arise during the operation of a nuclear plant in the future.
 Because of the increase in the number of safety measures that were being implemented by Congress and
 to be enforced by the NRC, it forced nuclear plant owners to reevaluate the plant designs to accommodate
 these new safety features. Doing so, increased the amount of time required for the construction of new
-18
 plants and reactors greatly as shown in Figure 3.4. With the increase in construction time, the costs of
 professional labor like engineers and management also increased.
+
 From an MIT report, Department of Energy (DOE) researchers discovered that construction costs of
 plants increased mostly from indirect costs - costs that are related to engineering and designing, on-site
-supervision, and facilities needed during the building process (Stauffer, 2020). These indirect costs total
-about 72% of increases in cost from 1976-1987 while the remainder was mostly attributed to three
+supervision, and facilities needed during the building process (Stauffer, 2020). 
+
+These indirect costs total about 72% of increases in cost from 1976-1987 while the remainder was mostly attributed to three
 physical components: the steam supply system, the turbine generator, and the containment building.
 The DOE researchers discovered that based on cost estimations for the construction of containment
 buildings, they were able to discern that most of the cost increases were based on more materials being
-used and a drop in labor productivity. Labor productivity in the construction industry had dropped overall
+used and a drop in labor productivity. 
+
+Labor productivity in the construction industry had dropped overall
 from 1976-2017 but construction in the nuclear energy industry, in particular, had lowered an ever greater
 amount. The DOE also discovered there was a discrepancy between projections and actual material usage
 that contributed significantly to the cost overruns. Large, capital intensive projects suffer hard when labor
 productivity drops, which highlights why policy changes within massive capital projects need to be
 considered.
-Capital Costs
+
+## Capital Costs
 Capital costs consist of raw materials and labor needed for new plant construction, land procurement,
 operator license, decommissioning fund, and financing/interest rate on loans for the project. Within
 nuclear energy from a global standpoint, capital costs are the most intensive and most likely to cause
 overrun. This means that tightly controlled markets will benefit from putting up nuclear plants since
 funding and construction are streamlined.
-19
 Table 3.6
-20
 Figure 3.7
+
 Table 3.6 is the numerical representation of data on total capital costs of different plant types in USD from
 a 2020 report for the EIA by Sargent & Lundy as well as the rated output in MW for each plant type.
 Figure 3.7 is a graphical representation that gives us a better look at how the costs compare with each
 other. The EIA report did not have a look at nuclear long-term operation plants, which are plants that are
-upgraded and run beyond their original lifecycles, so it was not included. What is included is coal
-without and with a carbon capture system installed, natural gas with and without a carbon capture system
+upgraded and run beyond their original lifecycles, so it was not included. 
+
+What is included is coal without and with a carbon capture system installed, natural gas with and without a carbon capture system
 (CCS), advanced nuclear light water reactor, nuclear small modular reactor system, offshore and onshore
 wind, solar PV panels, and solar PV with a battery storage solution. These are all electricity generation
 facilities that are considered utility-scale. 
@@ -589,28 +598,32 @@ costs to build a new LWR nuclear power plant. Investors could be put off by issu
 and radiation, as for financial purposes they care more about return on investment (ROI), and currently
 nuclear is one of the most expensive energy sources around. Additionally, the majority of nuclear plants in
 the US are approaching the end of their lifetimes.
+
 Investment in new large-scale nuclear plants is dropping because of its initial price. So instead of building
 new nuclear plants, cheaper alternatives are chosen, either natural gas plants or renewable energy plants.
+
 Natural gas is chosen over coal because the price of natural gas is currently low and it doesn’t emit as
-many harmful pollutants as coal (United States Energy Information Agency, 2021). However, renewables
-are not yet able to sustain energy output to cover base load demands, so ultimately, natural gas plants will
+many harmful pollutants as coal (United States Energy Information Agency, 2021). 
+
+However, renewables are not yet able to sustain energy output to cover base load demands, so ultimately, natural gas plants will
 be chosen to be built. Therefore, in order for nuclear power to become more widespread as a means of
 producing electricity that does not produce greenhouse gas emissions, it must become more economically
 competitive with its base load competitors, coal and natural gas.
 Figure 3.8
-Figure 3.8: EIA notes that for Total Overnight Costs:” Overnight capital cost includes contingency factors and excludes regional multipliers
-(except as noted for wind and solar PV) and learning effects. Interest charges are also excluded. The capital costs represent current costs for plants
-that would come online in 2021.
+
+**Figure 3.8: EIA notes that for Total Overnight Costs:” Overnight capital cost includes contingency factors and excludes regional multipliers(except as noted for wind and solar PV) and learning effects. Interest charges are also excluded. The capital costs represent current costs for plants that would come online in 2021.**
+
 The total overnight cost for wind and solar PV technologies in the table is the average input value across all 25 electricity market regions, as
-weighted by the respective capacity of that type installed during 2019 in each region to account for the substantial regional variation in wind and
-solar costs. The input value used for onshore wind in AEO2021 was $1,268 per kilowatt (kW), and for solar PV with tracking it was $1,232/kW,
-which represents the cost of building a plant excluding regional factors. Region-specific factors contributing to the substantial regional variation
-in cost include differences in typical project size across regions, accessibility of resources, and variation in labor and other construction costs
-throughout the country.”
+weighted by the respective capacity of that type installed during 2019 in each region to account for the substantial regional variation in wind and solar costs. 
+
+The input value used for onshore wind in AEO2021 was $1,268 per kilowatt (kW), and for solar PV with tracking it was $1,232/kW,
+which represents the cost of building a plant excluding regional factors. Region-specific factors contributing to the substantial regional variation in cost include differences in typical project size across regions, accessibility of resources, and variation in labor and other construction costs throughout the country.”
+
 According to Figure 3.8, the data are projections done by the EIA to estimate what the overnight cost of a
 power plant could be based on the source. We see that overnight costs in terms of $/kW are higher in
-22
-nuclear (LWR, SMR) compared to other energy technologies. This table is one of the main reasons
+nuclear (LWR, SMR) compared to other energy technologies. 
+
+This table is one of the main reasons
 nuclear is not being considered as a long-term viable option to support our growing energy grid since the
 cost of construction is simply too high. We see how production can impact projected $/kW. Despite LWR
 technology being some of the most expensive in construction costs alone, it is unmatched in terms of what
@@ -704,7 +717,8 @@ period are taken off the market.
 CARB is also allowing additional allowances to be available for trade
 beyond the initial allotment set at the current going price at a higher price (California Air Resources
 Board, n.d.).
-27
+
+
 Revenue generated from this program allows California to invest in more green projects. These projects
 include further research for green energy types, promotion of low and no carbon-emitting forms of
 transportation, and sustainable agriculture. California has taken some of the externalized costs of energy

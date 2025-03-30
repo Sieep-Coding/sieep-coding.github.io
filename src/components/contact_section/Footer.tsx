@@ -6,14 +6,14 @@ const Footer: React.FC = () => {
             <div className="max-w-7xl mx-auto text-center text-sm">
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                     <div>
-                        <h3 className="font-semibold text-primary">About</h3>
+                        <h3 className="font-semibold text-pink-400">About</h3>
                         <ul>
                             <li>
                                 <a
                                     href="https://astro.build/"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="hover:text-pink-600 underline text-primary"
+                                    className="hover:text-pink-600 underline dark:text-primary"
                                 >
                                     Built with Astro
                                 </a>
@@ -24,7 +24,7 @@ const Footer: React.FC = () => {
                                 <a
                                     href="#about"
                                     rel="noopener noreferrer"
-                                    className="hover:text-pink-600 underline text-primary"
+                                    className="hover:text-pink-600 underline dark:text-primary"
                                 >
                                     About Me
                                 </a>
@@ -34,7 +34,7 @@ const Footer: React.FC = () => {
                                         href="https://nickstambaugh.vercel.app/privacy"
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="hover:text-pink-600 underline text-primary"
+                                        className="hover:text-pink-600 underline dark:text-primary"
                                     >
                                         Privacy
                                     </a>
@@ -49,7 +49,7 @@ const Footer: React.FC = () => {
                                     href="https://nickstambaugh.vercel.app/posts"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="hover:text-pink-600 underline text-primary"
+                                    className="hover:text-pink-600 underline dark:text-primary"
                                 >
                                     Blog
                                 </a>
@@ -59,7 +59,7 @@ const Footer: React.FC = () => {
                                     href="/rss.xml"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="hover:text-pink-600 underline text-primary"
+                                    className="hover:text-pink-600 underline dark:text-primary"
                                 >
                                     RSS
                                 </a>
@@ -69,7 +69,7 @@ const Footer: React.FC = () => {
                                     href="/license"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="hover:text-pink-600 underline text-primary"
+                                    className="hover:text-pink-600 underline dark:text-primary"
                                 >
                                     OPEN SOURCE LICENSE
                                 </a>
@@ -84,7 +84,7 @@ const Footer: React.FC = () => {
                                     href="mailto:nickstambaugh@proton.me"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="hover:text-pink-600 underline text-primary"
+                                    className="hover:text-pink-600 underline dark:text-primary"
                                 >
                                     Email
                                 </a>
@@ -94,7 +94,7 @@ const Footer: React.FC = () => {
                                     href="https://buymeacoffee.com/nickstambaugh"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="hover:text-pink-600 underline text-primary"
+                                    className="hover:text-pink-600 underline dark:text-primary"
                                 >
                                     Buy Me A Coffee
                                 </a>
@@ -104,7 +104,7 @@ const Footer: React.FC = () => {
                                     href="https://github.com/Sieep-Coding/sieep-coding.github.io/issues"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="hover:text-pink-600 underline text-primary"
+                                    className="hover:text-pink-600 underline dark:text-primary"
                                 >
                                     Report an Issue
                                 </a>
@@ -119,7 +119,7 @@ const Footer: React.FC = () => {
                                         href="https://github.com/Sieep-Coding/sieep-coding.github.io?tab=readme-ov-file#how-to-use-this-template-toolbox"
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="hover:text-pink-600 underline text-primary"
+                                        className="hover:text-pink-600 underline dark:text-primary"
                                     >
                                         Use This Website Template
                                     </a>
@@ -129,7 +129,7 @@ const Footer: React.FC = () => {
                                         href="https://nickstambaugh.vercel.app/tools"
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="hover:text-pink-600 underline text-primary"
+                                        className="hover:text-pink-600 underline dark:text-primary"
                                     >
                                         Tools
                                     </a>
@@ -139,7 +139,7 @@ const Footer: React.FC = () => {
                                         href="https://wakatime.com/@SieepCoding"
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="hover:text-pink-600 underline text-primary"
+                                        className="hover:text-pink-600 underline dark:text-primary"
                                     >
                                         My Coding Stats
                                     </a>
