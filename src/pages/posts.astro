@@ -8,10 +8,9 @@ allPosts.sort((a, b) => {
   const dateA = new Date(a.frontmatter.date);
   const dateB = new Date(b.frontmatter.date);
 
-  
   if (isNaN(dateA.getTime())) return 1;
-  if (isNaN(dateB.getTime())) return -1; 
-  
+  if (isNaN(dateB.getTime())) return -1;
+
   return dateB.getTime() - dateA.getTime();
 });
 
@@ -20,12 +19,14 @@ const title = "Posts";
 
 <BaseLayout title={title}>
   <div
-    class="grid gap-2 gap-y-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 p-4 xl:p-10 mt-5"
+    class="grid gap-2 gap-y-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 p-4 xl:p-10 mt-12"
   >
-    {allPosts.map((post) => (
-      <div class="flex justify-center">
-        <Post post={post} />
-      </div>
-    ))}
+    {
+      allPosts.map((post) => (
+        <div class="flex justify-center">
+          <Post post={post} />
+        </div>
+      ))
+    }
   </div>
 </BaseLayout>
