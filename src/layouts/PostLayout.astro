@@ -8,7 +8,7 @@ import { info } from "../data/info";
 import Contact from "../components/contact_section/Contact";
 // import Subscribe from "../components/post_section/Subscribe";
 import ViewBlog from "../components/about_section/VisitBlog";
-// import Tooltip from "../components/navbar/Tooltip";
+import Tooltip from "../components/navbar/Tooltip";
 import RecentPosts from "../components/post_section/RecentBlogs";
 import FilterTags from "../components/post_section/FilterTags";
 // import { useState } from "react";
@@ -51,22 +51,24 @@ const filteredPosts = selectedTag
 
 <BaseLayout title={title}>
   <main class="mt-24"></main>
-  <div class="mb-4 w-full mx-auto relative">
+  <div class="mb-4 w-full relative">
     <div class="px-4 lg:px-0 w-full lg:w-auto">
       <h1 class="text-3xl font-semibold lg:text-4xl">{title}</h1>
     </div>
     
-    <div class="w-full lg:flex-row lg:items-center lg:gap-4 w-full lg:w-auto text-center lg:text-right">
-      <p class="text-sm lg:text-base px-4 lg:px-0">
-        <span id="time"></span> min read
-      </p>
-      <p class="text-sm lg:text-base px-4 lg:px-0 flex flex-col lg:flex-row items-center justify-center sm:block hidden text-left lg:justify-start gap-1 lg:gap-2">
+    <div class="w-full flex-row lg:flex-row lg:items-center w-full lg:text-right">
+      <Tooltip text="At 175 words per minute." position="left">
+        <p class="text-sm lg:text-base px-4 lg:px-0">
+          <span id="time" class="font-bold"></span> min read
+        </p>
+      </Tooltip>
+      <p class="text-sm lg:text-base px-4 lg:px-0 lg:flex-row lg:justify-start gap-1 lg:gap-2">
         <span>{date}</span>
         <a href="/posts" class="hover:underline">Back to posts</a>
       </p>
     </div>
     
-      
+    
     {
       img_path && (
         <Image
@@ -78,11 +80,14 @@ const filteredPosts = selectedTag
         />
       )
     }
+  <h2 class="text-sm lg:text-base text-text dark:text-dk-text">
+    {frontmatter.description || "An insightful blog post."}
+  </h2>
   </div>
   <div class="mb-4 w-full mx-auto" id="filter-tags">
     <FilterTags
-      tags={tags}
-      onClick={(tag) => {
+    tags={tags}
+    onClick={(tag) => {
         location.href = `?selectedTag=${tag}`;
       }}
     />
