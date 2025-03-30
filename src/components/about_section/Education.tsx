@@ -16,7 +16,7 @@ export default function Education(props: EducationProps) {
   };
 
   return (
-    <div className="flex flex-col space-y-6 w-full max-w-4xl mx-auto px-4 sm:px-6 md:px-8">
+    <div className="flex flex-col space-y-6 max-w-4xl mx-auto px-4">
       <h1 className="text-3xl sm:text-4xl font-bold mb-6 text-center">Education</h1>
       {education.map((edu, index) => (
         <div
@@ -26,18 +26,18 @@ export default function Education(props: EducationProps) {
         >
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <i className="fas fa-graduation-cap text-accent text-lg sm:text-xl"></i>
-              <h2 className="text-lg sm:text-2xl font-semibold">{edu.title}</h2>
+              <i className="fas fa-graduation-cap text-accent text-lg"></i>
+              <h2 className="text-sm sm:text-2xl font-semibold">{edu.title}</h2>
             </div>
             <div className="flex items-center space-x-2">
               <a
-                className="text-sm sm:text-lg font-bold text-blue-500 hover:underline"
+                className="text-sm font-bold text-blue-500 hover:underline"
                 href="https://www.gvsu.edu/"
               >
                 {edu.date}
               </a>
               <svg
-                className={`w-5 sm:w-6 h-5 sm:h-6 text-accent transform transition-transform duration-300 ${expandedIndex === index ? 'rotate-180' : ''}`}
+                className={`flex w-5 sm:w-6 h-5 sm:h-6 text-accent transform transition-transform duration-300 ${expandedIndex === index ? 'rotate-180' : ''}`}
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 20 20"
                 fill="currentColor"

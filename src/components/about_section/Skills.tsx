@@ -48,7 +48,7 @@ export default function Skills({ skills }: SkillsProps) {
                 {skillList.map((skill, i) => (
                   <li
                     key={i}
-                    className="text-lg font-medium text-secondary dark:text-dk-secondary hover:text-accent dark:hover:text-dk-accent transition-all duration-200 break-words"
+                    className="font-medium text-secondary dark:text-dk-secondary hover:text-accent dark:hover:text-dk-accent transition-all duration-200 break-words"
                   >
                     {skill}
                   </li>
