@@ -9,8 +9,8 @@ export default function HireMe() {
   });
   const [status, setStatus] = useState("");
 
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value, type, checked } = e.target as HTMLInputElement;
     if (type === "checkbox") {
       setFormData(prevState => ({
         ...prevState,
@@ -48,12 +48,9 @@ export default function HireMe() {
   };
 
   return (
-    <div className="flex flex-col w-600 h-300 p-4 md:p-6 rounded-lg space-y-4 md:space-y-6">
-      <p className="text-base md:text-lg text-center text-black font-semibold">
-        Fill out the form below and I'll get back to you to set up a free 30-minute call.
-      </p>
+    <div className="flex flex-col w-full max-w-3xl h-auto p-4 md:p-6 rounded-lg space-y-4 md:space-y-6 sm:h-auto overflow-auto">
       <form
-        className="flex flex-col space-y-4 md:space-y-6"
+        className="overflow-auto flex flex-col space-y-4 md:space-y-6 sm:flex flex-col sm:space-y-8 sm:w-full sm:max-w-md mx-auto sm:h-auto sm:overflow-y-auto"
         onSubmit={handleSubmit}
       >
         <label className="flex flex-col">
@@ -92,10 +89,10 @@ export default function HireMe() {
             required
           />
         </label>
-        <fieldset className="flex flex-col">
+        <fieldset className="shrink flex-none flex-col">
           <p className="text-black font-semibold md:text-lg text-left">Type of Project:</p>
-          {["Web/App/Mobile Development","Business Intelligence","Career"].map((type) => (
-            <label key={type} className="flex items-center text-black font-semibold mb-2">
+          {["Web Development","Custom Software","Business Intelligence","Career", "Desktop App", "Database", "CRM/ERP"].map((type) => (
+            <label key={type} className="flex items-center text-black font-semibold">
               <input
                 type="checkbox"
                 name="projectType"
