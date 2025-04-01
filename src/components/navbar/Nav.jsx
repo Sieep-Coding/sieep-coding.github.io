@@ -52,7 +52,7 @@ export default function Nav({ posts }) {
             </a>
             <button
               onClick={() => setIsHireMeOpen(true)}
-              className="px-3 sm:px-4 py-1 sm:py-2 border-2 rounded text-sm sm:text-base text-secondary dark:text-dk-secondary border-secondary dark:border-dk-secondary hover:bg-secondary dark:hover:bg-dk-secondary hover:text-primary hover:scale-105 hover:-rotate-2 duration-300 cursor-pointer"
+              className="px-3 sm:px-4 py-1 sm:py-2 border-2 rounded text-sm sm:text-base text-secondary dark:text-dk-secondary border-secondary dark:border-dk-secondary hover:bg-secondary dark:hover:bg-dk-secondary hover:text-primary dark:hover:text-primary hover:scale-105 hover:-rotate-2 duration-300 cursor-pointer"
             >
               <Tooltip text="Fill out a form." position="bottom">
                 <i className="fas fa-circle-info mr-1"></i>
