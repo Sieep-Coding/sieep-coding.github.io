@@ -13,7 +13,7 @@ html {
 }
 
 * {
-  scrollbar-color: theme(colors.secondary) theme(colors.primary);
+  scrollbar-color: #202020 #e8d8c8; 
   scrollbar-width: thin;
   transition: color 0.25s linear;
   -webkit-transition: color 0.25s linear;
@@ -23,7 +23,7 @@ html {
 }
 
 html.dark {
-  scrollbar-color: theme(colors.dk-secondary) theme(colors.dk-primary);
+  scrollbar-color: #7c8fd1 #2a2b39; 
 }
 
 html, body {
@@ -31,73 +31,75 @@ html, body {
 }
 
 *::selection {
-  background-color: theme(colors.text) !important;
-  color: theme(colors.primary) !important;
+  background-color: #202020 !important; 
+  color: #e8d8c8 !important; 
 }
 
 html.dark *::selection {
-  background-color: theme(colors.dk-text) !important;
-  color: theme(colors.dk-primary) !important;
+  background-color: #96a6e2 !important; 
+  color: #2a2b39 !important; 
 }
 
-/* Headings */
 h1 {
   margin: 0;
   padding: 0;
-  font-size: 2.25rem; /* Slightly smaller to make it more balanced */
-  line-height: 2.75rem; /* Increased line height for readability */
-  font-weight: 700; /* Bold for hierarchy */
-  color: theme(colors.secondary);
+  font-size: 2.25rem;
+  line-height: 2.75rem; 
+  font-weight: 700; 
+  color: #202020;
 }
 
 h2 {
-  font-size: 1.75rem; /* Increased for better hierarchy */
-  line-height: 2.25rem; /* Slightly bigger line-height */
+  font-size: 1.75rem; 
+  line-height: 2.25rem; 
   font-weight: 600;
-  color: theme(colors.secondary);
+  color: #202020; 
 }
 
 h3 {
-  font-size: 1.5rem; /* Larger for better readability */
-  line-height: 2rem; /* Slightly bigger line height */
+  font-size: 1.5rem; 
+  line-height: 2rem; 
   font-weight: 500;
-  color: theme(colors.secondary);
+  color: #202020; 
 }
 
 h4 {
-  font-size: 1.125rem; /* Slightly larger than normal text */
+  font-size: 1.125rem; 
   line-height: 1.75rem;
-  font-weight: 500; /* Less bold for a softer look */
-  color: theme(colors.secondary);
+  font-weight: 500;
+  color: #202020;
 }
 
 p {
   font-size: 1rem;
-  line-height: 1.75rem; /* Increased line height for easier reading */
+  line-height: 1.75rem; 
   font-weight: 400;
-  color: theme(colors.text);
+  color: #202020; 
 }
 
 h2, p {
-  color: theme(colors.text);
+  color: #202020; 
 }
 
 /* Dark mode */
 html.dark h1 {
-  color: theme(colors.dk-secondary);
+  color: #7c8fd1;
 }
 
 html.dark h2,
 html.dark h3,
 html.dark h4 {
-  color: theme(colors.dk-secondary);
+  color: #7c8fd1;
 }
 
 html.dark p {
-  color: theme(colors.dk-text);
+  color: #96a6e2; /* Dark mode text */
+}
+
+html.dark a {
+  color: #8BE9FD; /* Dark mode link color */
 }
 
 #tags button:hover {
   cursor: none;
 }
-
