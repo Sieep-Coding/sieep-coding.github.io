@@ -11,7 +11,7 @@ img_alt: "C# logo with Declarative Programming text below the image"
 tags: ["C#", "#Coding", "#Tech", "#LINQ"]
 ---
 
-## [PERMALINK](https://sieep-coding.github.io/posts/LINQ-and-being-declarative#LINQ-and-Learning-To-Be-Declarative)
+## [PERMALINK](https://sieep-coding.github.io/posts/LINQ-and-being-declarative#LINQ_and_Learning_To_Be_Declarative)
 
 # LINQ and Learning To Be Declarative
 If you're familiar with [functional programming](https://en.wikipedia.org/wiki/Functional_programming) concepts, you may enjoy the idea of declarative programming using [LINQ](https://en.wikipedia.org/wiki/Language_Integrated_Query) or **Language Integrated Query**. Querying data is a common solution to a lot of problems in business, but within itself we get a lot of different issues. What's the best way to query data? [SQL](https://en.wikipedia.org/wiki/SQL) is by far the weapon of choice for most developers. It's simple to pickup and is performant as long as your DBA has some sense of professionalism. 
