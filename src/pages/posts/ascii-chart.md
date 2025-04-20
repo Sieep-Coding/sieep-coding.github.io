@@ -11,6 +11,8 @@ img_alt: "Our Emoji/ASCII Bar Chart"
 tags: ["#TypeScript", "#Coding", "#Tech"]
 ---
 
+## [PERMALINK](https://sieep-coding.github.io/posts/LINQ-and-being-declarative#TypeScript_for_Better_Development)
+
 ## Why I Built the [ASCII Bar Chart Console App](https://github.com/Sieep-Coding/ascii-bar-chart)
 
 Visualizing data can be a powerful way to communicate insights, but sometimes you don't need fancy charts. 

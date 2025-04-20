@@ -11,6 +11,8 @@ img_alt : "Mint Desktop"
 tags: ["#Linux", "#OS", "#Tech"]
 ---
 
+## [PERMALINK](https://sieep-coding.github.io/posts/LINQ-and-being-declarative#Why_I_Use_Linux_Mint)
+
 ## Why I Use Linux Mint
 
 ### Introduction
