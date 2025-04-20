@@ -11,7 +11,7 @@ img_alt: "Our Emoji/ASCII Bar Chart"
 tags: ["#TypeScript", "#Coding", "#Tech"]
 ---
 
-## [PERMALINK](https://sieep-coding.github.io/posts/LINQ-and-being-declarative#TypeScript_for_Better_Development)
+## [PERMALINK](https://sieep-coding.github.io/posts/ascii-chart#TypeScript_for_Better_Development)
 
 ## Why I Built the [ASCII Bar Chart Console App](https://github.com/Sieep-Coding/ascii-bar-chart)
 

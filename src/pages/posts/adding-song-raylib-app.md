@@ -11,7 +11,7 @@ img_alt: "raylib and C logo"
 tags: ["#C", "#raylib", "#Coding", "#Low-Level Development", "#Tech", "#Music"]
 ---
 
-## [PERMALINK](https://sieep-coding.github.io/posts/LINQ-and-being-declarative#Adding_Music_To_My_Raylib_App)
+## [PERMALINK](https://sieep-coding.github.io/posts/adding-song-raylib-app#Adding_Music_To_My_Raylib_App)
 
 ## Adding Music To My Raylib App
 For some reason, the *musician* in me awoke today. 

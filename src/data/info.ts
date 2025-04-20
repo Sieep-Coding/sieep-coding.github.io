@@ -1,7 +1,7 @@
 export const info = {
   name: "Nick Stambaugh",
   brief_description:
-    "Full Stack & Enterprise Application Engineer",
+    "Enterprise Software Engineer",
   role: "Full Stack Engineer",
   picture: "/img.jpg",
   picture_alt: "Nick Stambaugh",
@@ -10,9 +10,9 @@ export const info = {
 
   about: {
     description: `
-    I'm a full-stack engineer with a background in business intelligence, blending technical problem-solving with data-driven decision-making. 
+    I'm a full-stack engineer with a background in business intelligence, data analysis, statistics, and economics. 
     My career started in analytics, where I built dashboards, automated reports, and made complex data more accessible. 
-    Now, I focus on developing enterprise software that optimizes business and production processes. 
+    Now, I focus on developing enterprise software that optimizes business and production processes. I love working with stakeholders to bring their vision to life. 
     When I’m not coding, you’ll probably find me running, gaming, or hanging out with my dog, Bruce. 
     I enjoy tackling new challenges, whether it's building professional apps in C#, or experimenting with TypeScript/Python/Go/Lua in my side projects`,
     education: [
@@ -21,7 +21,7 @@ export const info = {
         date: "Grand Valley State University",
         location: "Grand Valley State University",
         // gpa: "3.4",
-        thesis: "Deepened my understanding of economic systems and philosophical reasoning, which translates well into software development.",
+        thesis: "Deepened my understanding of economic systems and critical reasoning, offering me unique perspectives on leadership, business, & software development.",
       },
     ],
     experience: [
