@@ -5,7 +5,7 @@ export const info = {
   role: "Full Stack Engineer",
   picture: "/img.jpg",
   picture_alt: "Nick Stambaugh",
-  location: "Grand Rapids, MI",
+  location: "Rockford, Michigan",
   cv: "/Nick_Stambaugh-Resume.pdf",
 
   about: {
