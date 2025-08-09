@@ -43,7 +43,12 @@ export default function Experience({ experience }: ExperienceProps) {
           </div>
           {expandedIndex === index && (
             <div className="mt-2">
-              <p className="text-base sm:text-lg font-bold">{exp.location}</p>
+              <a
+                className="text-sm sm:text-lg font-bold text-blue-500 hover:underline"
+                href={exp.link}
+              >
+              {exp.location}
+              </a>
               <p className="text-sm sm:text-lg font-normal mt-2">{exp.description}</p>
             </div>
           )}

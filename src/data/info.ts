@@ -10,11 +10,20 @@ export const info = {
 
   about: {
     description: `
-    I'm a full-stack engineer with a background in business intelligence, data analysis, statistics, and economics. 
-    My career started in analytics, where I built dashboards, automated reports, and made complex data more accessible. 
-    Now, I focus on developing enterprise software that optimizes business and production processes. I love working with stakeholders to bring their vision to life. 
-    When I’m not coding, you’ll probably find me running, gaming, or hanging out with my dog, Bruce. 
-    I enjoy tackling new challenges, whether it's building professional apps in C#, or experimenting with TypeScript/Python/Go/Lua in my side projects`,
+
+    I'm the founder of Luniv Consulting, LLC. I am also a full-stack engineer, an expert & former professional
+    in business intelligence, data analysis, and economics. 
+
+
+    My journey began by making complex data accessible through academic reports, dashboards 
+    and automated reports, and it evolved into building robust enterprise 
+    software that streamlines business and production processes.  I partner 
+    with stakeholders to not only understand their vision but to actively 
+    bring it to life through a blend of technical expertise and strategic insight.  
+    While my professional work focuses on C#, .NET, and JavaScript, 
+    I also enjoy experimenting with new technologies like TypeScript, Python, Go, and Lua in my spare time. 
+    Beyond coding, I have a strong background in economics and philosophy,
+    which enriches my approach to problem-solving and decision-making in the tech world.`,
     education: [
       {
         title: "BS in Economics and Philosophy",
@@ -29,6 +38,7 @@ export const info = {
         title: "Founder",
         date: "2022 - Present",
         location: "luniv.tech",
+        link: "https://www.luniv.tech/",
         description:
           `Book a free consultation today: luniv.tech`,
       },
@@ -36,6 +46,7 @@ export const info = {
         title: "Junior Application Developer",
         date: "2025 - Present",
         location: "Display Pack Inc",
+        link: "https://www.displaypack.com/",
         description:
           `Developing enterprise software to automate business and production processes.
           Working with C#, JavaScript, and .NET MVC while applying Test-Driven Development principles with xUnit.
@@ -45,6 +56,7 @@ export const info = {
         title: "Data Analyst",
         date: "2024 - 2025",
         location: "NxGen MDx",
+        link: "https://www.nxgenmdx.com/",
         description:
            `Transformed complex data into meaningful insights, helping drive business decisions.
             Streamlined reporting processes to improve efficiency for leadership and sales teams.`,
@@ -53,6 +65,7 @@ export const info = {
         title: "Business Intelligence Developer",
         date: "2023 - 2024",
         location: "National Nail",
+        link: "https://www.nationalnail.com/",
         description:
         "Creating impactful visualizations, automating reporting processes, and providing analytical support to enhance business performance.",
       },
@@ -60,6 +73,7 @@ export const info = {
         title: "Business Intelligence Analyst",
         date: "2022 - 2023",
         location: "The Right Place, Inc.",
+        link: "https://www.rightplace.org/",
         description:
         `Built interactive dashboards and automated reports to enhance business performance.
         Provided analytical support to inform executive decision-making.`,
@@ -68,6 +82,7 @@ export const info = {
         title: "Researcher",
         date: "2021",
         location: "University of Michigan Nuclear Engineering & Radiological Sciences",
+        link: "https://ners.engin.umich.edu/",
         description:
         `Conducted economic analysis of U.S. nuclear power plants, focusing on feasibility and efficiency.
         Worked on data modeling and analysis, contributing to a deeper understanding of nuclear energy economics.`,
