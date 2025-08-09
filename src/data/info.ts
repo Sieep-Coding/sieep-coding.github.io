@@ -1,7 +1,7 @@
 export const info = {
   name: "Nick Stambaugh",
   brief_description:
-    "Enterprise Software Engineer",
+    "Entreprenuer & Enterprise Software Engineer",
   role: "Full Stack Engineer",
   picture: "/img.jpg",
   picture_alt: "Nick Stambaugh",
@@ -25,6 +25,13 @@ export const info = {
       },
     ],
     experience: [
+      {
+        title: "Founder",
+        date: "2022 - Present",
+        location: "luniv.tech",
+        description:
+          `Book a free consultation today: luniv.tech`,
+      },
       {
         title: "Junior Application Developer",
         date: "2025 - Present",

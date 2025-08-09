@@ -8,6 +8,7 @@ import { info } from "../data/info";
 import Contact from "../components/contact_section/Contact";
 // import Subscribe from "../components/post_section/Subscribe";
 import ViewBlog from "../components/about_section/VisitBlog";
+import BookConsultation from "../components/about_section/VisitLuniv";
 import Tooltip from "../components/navbar/Tooltip";
 import RecentPosts from "../components/post_section/RecentBlogs";
 import FilterTags from "../components/post_section/FilterTags";
@@ -145,6 +146,9 @@ const filteredPosts = selectedTag
             <!-- </section> -->
             <RecentPosts posts={filteredPosts} />
           </div>
+            <div class="flex py-1 justify-center w-full">
+              <BookConsultation />
+            </div>
           <div class="p-1">
             <div class="flex py-1 justify-center w-full">
               <ViewBlog />
