@@ -10,6 +10,18 @@ const Footer: React.FC = () => {
                         <ul>
                             <li>
                                 <a
+                                    href="https://luniv.tech/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="hover:text-pink-600 underline dark:text-primary"
+                                >
+                                    luniv.tech
+                                </a>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <a
                                     href="https://astro.build/"
                                     target="_blank"
                                     rel="noopener noreferrer"
@@ -44,6 +56,16 @@ const Footer: React.FC = () => {
                     <div>
                         <h3 className="font-semibold text-pink-400">Links</h3>
                         <ul>
+                            <li>
+                                <a
+                                    href="https://luniv.tech/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="hover:text-pink-600 underline dark:text-primary"
+                                >
+                                    Book a Free Consultation
+                                </a>
+                            </li>
                             <li>
                                 <a
                                     href="https://nickstambaugh.vercel.app/posts"
@@ -108,6 +130,7 @@ const Footer: React.FC = () => {
                                 >
                                     Report an Issue
                                 </a>
+                                
                             </li>
                         </ul>
                     </div>
@@ -143,6 +166,17 @@ const Footer: React.FC = () => {
                                     >
                                         My Coding Stats
                                     </a>
+                                    
+                            </li>
+                            <li>
+                                <a
+                                    href="https://www.luniv.tech/services"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="hover:text-pink-600 underline dark:text-primary"
+                                >
+                                    See My Work at luniv.tech
+                                </a>
                             </li>
                         </ul>
                     </div>

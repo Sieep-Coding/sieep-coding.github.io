@@ -10,6 +10,12 @@ export default function Contact({ contact, size }: ContactProps) {
   const socialMediaLinks = [
     // Fix this if you add or remove social media links in info.ts
     {
+      name: "website",
+      icon: "fas fa-globe",
+      link: contact.website,
+      link_alt: "Website",
+    },
+    {
       name: "email",
       icon: "fas fa-envelope",
       link: `mailto:${contact.email}`,
