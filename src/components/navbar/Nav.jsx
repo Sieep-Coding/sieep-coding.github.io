@@ -12,7 +12,6 @@ export default function Nav({ posts }) {
   const [isHireMeOpen, setIsHireMeOpen] = useState(false);
 
   const navLinks = [
-    { name: "Data", href: "/data" },
     { name: "Blog", href: "/posts" },
     { name: "Contact", href: "/#contact" },
   ];
