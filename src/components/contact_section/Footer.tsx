@@ -43,7 +43,7 @@ const Footer: React.FC = () => {
                             </li>
                             <li>
                                     <a
-                                        href="https://nickstambaugh.vercel.app/privacy"
+                                        href="https://nickstambaugh.dev/privacy"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="hover:text-pink-600 underline dark:text-primary"
@@ -68,7 +68,7 @@ const Footer: React.FC = () => {
                             </li>
                             <li>
                                 <a
-                                    href="https://nickstambaugh.vercel.app/posts"
+                                    href="https://nickstambaugh.dev/posts"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="hover:text-pink-600 underline dark:text-primary"
@@ -103,7 +103,7 @@ const Footer: React.FC = () => {
                         <ul>
                             <li>
                                 <a
-                                    href="mailto:nickstambaugh@proton.me"
+                                    href="mailto:info@luniv.tech"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="hover:text-pink-600 underline dark:text-primary"
@@ -121,17 +121,6 @@ const Footer: React.FC = () => {
                                     Buy Me A Coffee
                                 </a>
                             </li>
-                            <li>
-                                <a
-                                    href="https://github.com/Sieep-Coding/sieep-coding.github.io/issues"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="hover:text-pink-600 underline dark:text-primary"
-                                >
-                                    Report an Issue
-                                </a>
-                                
-                            </li>
                         </ul>
                     </div>
                     <div>
@@ -139,17 +128,7 @@ const Footer: React.FC = () => {
                         <ul>
                             <li>
                                     <a
-                                        href="https://github.com/Sieep-Coding/sieep-coding.github.io?tab=readme-ov-file#how-to-use-this-template-toolbox"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="hover:text-pink-600 underline dark:text-primary"
-                                    >
-                                        Use This Website Template
-                                    </a>
-                            </li>
-                            <li>
-                                    <a
-                                        href="https://nickstambaugh.vercel.app/tools"
+                                        href="https://nickstambaugh.dev/tools"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="hover:text-pink-600 underline dark:text-primary"
@@ -159,7 +138,7 @@ const Footer: React.FC = () => {
                             </li>
                             <li>
                                     <a
-                                        href="https://wakatime.com/@SieepCoding"
+                                        href="https://wakatime.com/@LunivConsulting"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="hover:text-pink-600 underline dark:text-primary"
