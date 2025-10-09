@@ -105,7 +105,7 @@ The simplest way to write this would be to use [lambdas](https://en.wikipedia.or
 ```csharp
 List<Product> GetExclusiveProducts(List<Product> source)
 {
-  return source.Where(p => p.ProductTitle == "iPhone").OrderBy(p => p.TypeOfPhone);
+  return source.Where(p => p.ProductTitle == "iPhone").OrderBy(p => p.TypeOfPhone).ToList();
 }
 ```
 
