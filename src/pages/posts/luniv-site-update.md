@@ -11,7 +11,7 @@ img_alt: "Abstract graphic of interconnected nodes representing technology"
 tags: ["#Business", "#LunivConsulting"]
 ---
 
-## [Check out the new site!](https://luniv.tech)
+> # [Contact Luniv Consulting for Custom Software In Grand Rapids, Michigan](https://luniv.tech/contact)
 
 # Luniv Consulting v1.3 is LIVE!
 
@@ -35,6 +35,8 @@ We recognized that building great software is only half the battle—keeping it 
 * **IoT & Embedded Systems:** Got hardware dreams? We've developed specialized capacity for connecting software solutions with physical hardware like **Raspberry Pi** and **Arduino**. The physical-digital connection is getting real!
 * **Deeper AI & Machine Learning Integration:** We've structured our AI services to better leverage powerful tools like **ChatGPT** and **Gemini**. This means more automation, deeper data analysis, and smarter decision-making baked right into your custom applications.
 * **Enhanced Integrations:** Seamlessly connecting new custom solutions with your existing platforms is a must. We now offer formal support for major CRMs and ERPs, including **Salesforce**, **Dynamics AX**, and **Zoho**.
+
+> # [Contact Luniv Consulting for Custom Software In Grand Rapids, Michigan](https://luniv.tech/contact)
 
 ### 2. Redesigned Homepage and Visuals: Crystal Clear Clarity
 
@@ -70,4 +72,7 @@ We've done the work; now we're ready to start building your next great project! 
 
 Thanks for reading.
 
+
 Written By [_Nick Stambaugh_](https://www.linkedin.com/in/nick-s-694241139/)
+
+> # [Contact Luniv Consulting for Custom Software In Grand Rapids, Michigan](https://luniv.tech/contact)
