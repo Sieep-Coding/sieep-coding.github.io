@@ -57,7 +57,7 @@ const banners = [TopBanner, TopBanner2, TopBanner3, TopBanner4, TopBanner5, TopB
 
 ```
 
-Each <div> acts as a slot for one banner. The js-color-target class marks the element that will receive the randomly selected Tailwind color.
+Each `<div>` acts as a slot for one banner. The js-color-target class marks the element that will receive the randomly selected Tailwind color.
 
 #### 2. Randomization Script
 
