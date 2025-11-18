@@ -13,6 +13,8 @@ tags: ["#Astro", "#TailwindCSS", "#WebDev"]
 
 ## [PERMALINK](https://www.nickstambaugh.dev/posts/random-banner-icons)
 
+## [Join the discussion on Hacker News💬](https://news.ycombinator.com/item?id=45960473)
+
 > Dynamic website elements don’t have to be static. Randomized banner icons can improve engagement and give your site a polished, interactive feel.
 
 # Randomized Banner Icons in Astro
