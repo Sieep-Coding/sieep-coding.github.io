@@ -22,9 +22,9 @@ const allPosts = await Astro.glob("./posts/*.md");
         <Image
           src={info.picture}
           alt={info.picture_alt}
-          width={200}
-          height={200}
-          class="lg:h-[500px] lg:w-[500px] h-64 w-64 rounded-full object-fill object-center shadow-lg"
+          width={150}
+          height={150}
+          class="h-60 w-60 rounded-full object-fill object-center shadow-lg"
         />
       </div>
 
@@ -51,7 +51,7 @@ const allPosts = await Astro.glob("./posts/*.md");
           <p
             class="text-xs font-bold uppercase tracking-widest text-zinc-500 dark:text-zinc-400"
           >
-            Seen In
+            Featured In:
           </p>
 
           <div

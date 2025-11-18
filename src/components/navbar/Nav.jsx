@@ -50,16 +50,16 @@ export default function Nav({ posts }) {
               <span className="lg:hidden font-small">CV</span>
             </a> */}
             <a
-              href='https://luniv.tech'
+              href='https://luniv.tech/contact'
               className="px-3 sm:px-4 py-1 sm:py-2 border-2 rounded text-sm sm:text-base text-secondary dark:text-dk-secondary border-secondary dark:border-dk-secondary hover:bg-secondary dark:hover:bg-dk-secondary hover:text-primary dark:hover:text-primary hover:scale-105 hover:-rotate-2 duration-300 cursor-pointer"
             >
-              <i className="fas fa-clock mr-1 sm:mr-2"></i>
-              <span className="hidden lg:inline-block font-medium">
+              <i className="fas fa-clock sm:mr-2"></i>
+              <span className="hidden lg:inline-block font-large font-extrabold">
                 Book a Free Consultation
               </span>
               <span className="lg:hidden font-small">Hire Me</span>
             </a> 
-            <button
+            {/* <button
               onClick={() => setIsHireMeOpen(true)}
               className="px-3 sm:px-4 py-1 sm:py-2 border-2 rounded text-sm sm:text-base text-secondary dark:text-dk-secondary border-secondary dark:border-dk-secondary hover:bg-secondary dark:hover:bg-dk-secondary hover:text-primary dark:hover:text-primary hover:scale-105 hover:-rotate-2 duration-300 cursor-pointer"
             >
@@ -68,7 +68,7 @@ export default function Nav({ posts }) {
                 <span className="hidden lg:inline-block font-small">Contact Me</span>
                 <span className="lg:hidden font-small">Contact</span>
               </Tooltip>
-            </button>
+            </button> */}
           </div>
 
           <div className="inline-flex lg:hidden text-secondary dark:text-dk-secondary">
@@ -83,15 +83,15 @@ export default function Nav({ posts }) {
               {navLinks.map((link, index) => (
                 <li
                   key={index}
-                  className="p-4 hover:scale-105 hover:-rotate-2 duration-300 dark:hover:text-pink-800"
+                  className="p-2 hover:scale-105 hover:-rotate-2 duration-300 dark:hover:text-pink-800"
                 >
                   <a href={link.href}>{link.name}</a>
                 </li>
               ))}
-              <li className="px-4 flex text-black dark:text-primary">
+              {/* <li className="px-4 flex text-black dark:text-primary">
                 <GithubButton />
-              </li>
-              <li className="px-4 flex">
+              </li> */}
+              <li className="px-2 flex">
                 <Search posts={posts} />
               </li>
               <li className="px-4 flex mt-1 mr-1">

@@ -11,19 +11,12 @@ export const info = {
   about: {
     description: `
 
-    I'm the founder of Luniv Consulting, LLC. I am also a full-stack engineer, an expert & former professional
-    in business intelligence, data analysis, and economics. 
-
-
-    My journey began by making complex data accessible through academic reports, dashboards 
-    and automated reports, and it evolved into building robust enterprise 
-    software that streamlines business and production processes.  I partner 
-    with stakeholders to not only understand their vision but to actively 
-    bring it to life through a blend of technical expertise and strategic insight.  
-    While my professional work focuses on C#, .NET, and JavaScript, 
-    I also enjoy experimenting with new technologies like TypeScript, Python, Go, and Lua in my spare time. 
-    Beyond coding, I have a strong background in economics and philosophy,
-    which enriches my approach to problem-solving and decision-making in the tech world.`,
+    At Luniv Consulting, we are building the best technology consulting group in West Michigan to serve clients globally. 
+    
+    We are looking for talent from software engineers to marketing/sales. 
+    
+     
+    We provide custom software (web, mobile, desktop), business intelligence/database solutions, IT team extensions, and AI integrations.`,
     education: [
       {
         title: "BS in Economics and Philosophy",
@@ -38,9 +31,10 @@ export const info = {
         title: "Founder",
         date: "2022 - Present",
         location: "luniv.tech",
-        link: "https://www.luniv.tech/",
+        link: "https://www.luniv.tech/contact",
         description:
-          `Book a free consultation today: luniv.tech`,
+          `Devloping software solutions for enterprises and start-ups. We offer a variety of services such as Custom Software, 
+          AI Integration, Business Intelligence, Database, Mobile App Development, Managed IT Services`,
       },
       {
         title: "Junior Application Developer",
