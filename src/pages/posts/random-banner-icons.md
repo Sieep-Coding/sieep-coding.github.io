@@ -11,7 +11,7 @@ img_alt: "Screenshot of multiple colorful banners with icons"
 tags: ["#Astro", "#TailwindCSS", "#WebDev"]
 ---
 
-## [PERMALINK](https://nickstambaugh.dev/posts/randomized-banner-icons#Randomized-Banner-Icons)
+## [PERMALINK](https://www.nickstambaugh.dev/posts/random-banner-icons)
 
 > Dynamic website elements don’t have to be static. Randomized banner icons can improve engagement and give your site a polished, interactive feel.
 
