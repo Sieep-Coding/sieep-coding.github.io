@@ -23,22 +23,6 @@ At [Luniv](https://luniv.tech), we often use Astro for these dynamic components,
 
 ---
 
-### Component Selection
-
-First, import all banner variations into a parent component. Each banner is a separate `.astro` file with consistent props:
-
-```ts
-import TopBanner from './TopBanner.astro';
-import TopBanner2 from './TopBanner2.astro';
-import TopBanner3 from './TopBanner3.astro';
-import TopBanner4 from './TopBanner4.astro';
-import TopBanner5 from './TopBanner5.astro';
-import TopBanner6 from './TopBanner6.astro';
-import TopBanner7 from './TopBanner7.astro';
-```
-
-These banner files can include different layouts, icons, or messaging, but each should accept a color prop to remain consistent with styling.
-
 ### Randomization Logic
 
 We pre-render all banner components server-side but initially hide them. 
