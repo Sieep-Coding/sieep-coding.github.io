@@ -41,40 +41,96 @@ These banner files can include different layouts, icons, or messaging, but each 
 
 ### Randomization Logic
 
-We define arrays for both banner components and Tailwind colors, then select a random combination each time the component is rendered:
+We pre-render all banner components server-side but initially hide them. 
 
-```ts
-const banners = [TopBanner, TopBanner2, TopBanner6, TopBanner3, TopBanner4, TopBanner5, TopBanner7];
+A client-side script then selects one banner at random and applies a random Tailwind background color each time the page loads or the user navigates client-side. This ensures a dynamic experience without multiple imports or rerendering issues.
 
-const colors = [
-  'cyan', 'orange', 'amber', 'lime', 'emerald', 'teal', 
-  'sky', 'indigo', 'violet', 'fuchsia', 'rose', 'pink', 
-  'red', 'yellow', 'green', 'blue', 'purple',
-];
+#### 1. Pre-render Banners
 
-const bgClassMap = {
-  cyan: 'bg-cyan-600 hover:bg-cyan-700',
-  orange: 'bg-orange-600 hover:bg-orange-700',
-  amber: 'bg-amber-600 hover:bg-amber-700',
-  lime: 'bg-lime-600 hover:bg-lime-700',
-  emerald: 'bg-emerald-600 hover:bg-emerald-700',
-  teal: 'bg-teal-600 hover:bg-teal-700',
-  sky: 'bg-sky-600 hover:bg-sky-700',
-  indigo: 'bg-indigo-600 hover:bg-indigo-700',
-  violet: 'bg-violet-600 hover:bg-violet-700',
-  fuchsia: 'bg-fuchsia-600 hover:bg-fuchsia-700',
-  rose: 'bg-rose-600 hover:bg-rose-700',
-  pink: 'bg-pink-600 hover:bg-pink-700',
-  red: 'bg-red-600 hover:bg-red-700',
-  yellow: 'bg-yellow-500 hover:bg-yellow-600',
-  green: 'bg-green-600 hover:bg-green-700',
-  blue: 'bg-blue-600 hover:bg-blue-700',
-  purple: 'bg-purple-600 hover:bg-purple-700',
-};
+We import all banners and render them in hidden slots:
 
-const Banner = banners[Math.floor(Math.random() * banners.length)];
-const color = colors[Math.floor(Math.random() * colors.length)];
-const bgClass = bgClassMap[color];
+```astro
+---
+import TopBanner from './TopBanner.astro';
+import TopBanner2 from './TopBanner2.astro';
+import TopBanner3 from './TopBanner3.astro';
+import TopBanner4 from './TopBanner4.astro';
+import TopBanner5 from './TopBanner5.astro';
+import TopBanner6 from './TopBanner6.astro';
+import TopBanner7 from './TopBanner7.astro';
+
+const banners = [TopBanner, TopBanner2, TopBanner3, TopBanner4, TopBanner5, TopBanner6, TopBanner7];
+---
+
+<div id="banner-wrapper" class="w-full">
+  {banners.map((Banner) => (
+    <div class="random-banner-slot" style="display: none;">
+      <Banner color="js-color-target transition-colors duration-300" />
+    </div>
+  ))}
+</div>
+
+
+```
+
+Each <div> acts as a slot for one banner. The js-color-target class marks the element that will receive the randomly selected Tailwind color.
+
+#### 2. Randomization Script
+
+The following script runs on every page load and client-side navigation via astro:page-load:
+
+```js
+<script is:inline>
+document.addEventListener('astro:page-load', () => {
+  const colors = [
+    'cyan','orange','amber','lime','emerald','teal',
+    'sky','indigo','violet','fuchsia','rose','pink',
+    'red','yellow','green','blue','purple'
+  ];
+
+  const bgClassMap = {
+    cyan: 'bg-cyan-600 hover:bg-cyan-700',
+    orange: 'bg-orange-600 hover:bg-orange-700',
+    amber: 'bg-amber-600 hover:bg-amber-700',
+    lime: 'bg-lime-600 hover:bg-lime-700',
+    emerald: 'bg-emerald-600 hover:bg-emerald-700',
+    teal: 'bg-teal-600 hover:bg-teal-700',
+    sky: 'bg-sky-600 hover:bg-sky-700',
+    indigo: 'bg-indigo-600 hover:bg-indigo-700',
+    violet: 'bg-violet-600 hover:bg-violet-700',
+    fuchsia: 'bg-fuchsia-600 hover:bg-fuchsia-700',
+    rose: 'bg-rose-600 hover:bg-rose-700',
+    pink: 'bg-pink-600 hover:bg-pink-700',
+    red: 'bg-red-600 hover:bg-red-700',
+    yellow: 'bg-yellow-500 hover:bg-yellow-600',
+    green: 'bg-green-600 hover:bg-green-700',
+    blue: 'bg-blue-600 hover:bg-blue-700',
+    purple: 'bg-purple-600 hover:bg-purple-700',
+  };
+
+  const wrapper = document.getElementById('banner-wrapper');
+  const bannerSlots = wrapper.querySelectorAll('.random-banner-slot');
+
+  bannerSlots.forEach(el => el.style.display = 'none');
+
+  const randomBannerIndex = Math.floor(Math.random() * bannerSlots.length);
+  const randomColorKey = colors[Math.floor(Math.random() * colors.length)];
+  const classesToAdd = bgClassMap[randomColorKey].split(' ');
+
+  const activeSlot = bannerSlots[randomBannerIndex];
+
+  if (activeSlot) {
+    const targetElement = activeSlot.querySelector('.js-color-target');
+
+    if (targetElement) {
+      targetElement.classList.remove('js-color-target');
+      targetElement.classList.add(...classesToAdd);
+    }
+
+    activeSlot.style.display = 'block';
+  }
+});
+</script>
 
 ```
 
@@ -105,6 +161,8 @@ const { color } = Astro.props;
 
 ```
 ### Why This Approach Works
+
+- Dynamic Navigation: Using `astro:page-load` ensures the same behavior occurs on client-side navigation, keeping the page experience consistent.
 
 - Randomization: Keeps the interface fresh for returning users.
 
