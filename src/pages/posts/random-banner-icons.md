@@ -114,14 +114,18 @@ const { color } = Astro.props;
 
 At [Luniv](https://www.luniv.tech/), this technique is part of our approach to dynamic web presentation, improving both usability and user engagement.
 
-## Next Steps
+### Next Steps
 
 - Add more banner variations for different campaigns or product highlights.
 
 - Experiment with animated icons or gradient backgrounds for extra flair.
 
-- Combine with A/B testing to determine which banner combinations maximize click-throughs.
+## KEY TO SUCCESS:
 
-Randomized banners are a simple but effective way to create a polished, lively experience for site visitors.
+- **Combine with A/B testing to determine which banner combinations maximize click-throughs, optimize towards lead gen (i.e. contact form).**
+
+## In Closing...
+
+Randomized banners are a simple but effective way to create a lively experience for site visitors. Astro makes it easy to combine JS logic with templated components.
 
 Written By [Nick Stambaugh](https://www.linkedin.com/in/nick-s-694241139/)
