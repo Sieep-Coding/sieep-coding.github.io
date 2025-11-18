@@ -24,26 +24,70 @@ const allPosts = await Astro.glob("./posts/*.md");
           alt={info.picture_alt}
           width={200}
           height={200}
-          class="lg:h-96 lg:w-96 h-40 w-40 rounded-full object-fill object-center space-x-8"
+          class="lg:h-[500px] lg:w-[500px] h-64 w-64 rounded-full object-fill object-center shadow-lg"
         />
       </div>
 
-      <div class="flex flex-col lg:mx-8 leading-relaxed space-y-4">
+      <div
+        class="flex flex-col lg:mx-8 leading-relaxed space-y-4 text-center lg:text-left"
+      >
         <h1 class="text-3xl lg:text-5xl font-bold font-serif">
-          Hi, I'm <span class="bg-clip-text animate-pulse typewriter underline decoration-zinc-500">
-            {info.name}</span
+          Hi, I'm <span
+            class="bg-clip-text animate-pulse typewriter underline decoration-zinc-500"
+            >{info.name}</span
           >
         </h1>
+
         <h2 class="text-text dark:text-dk-text">{info.brief_description}</h2>
+
         <p class="text-2xl">
-          Based in <span class="typewriter text-secondary underline decoration-zinc-500 dark:text-dk-secondary"
+          Based in <span
+            class="typewriter text-secondary underline decoration-zinc-500 dark:text-dk-secondary"
             >{info.location}</span
           >
         </p>
+
+        <div class="mt-8 space-y-3">
+          <p
+            class="text-xs font-bold uppercase tracking-widest text-zinc-500 dark:text-zinc-400"
+          >
+            Seen In
+          </p>
+
+          <div
+            class="flex flex-wrap justify-center lg:justify-start items-center gap-6"
+          >
+            <a
+              href="https://news.ycombinator.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group transition-transform hover:-translate-y-1"
+            >
+              <img
+                src="/src/pages/photo/logos/hn.png"
+                alt="Hacker News"
+                style="
+    height: 120px;
+    width: auto;
+    filter: grayscale(100%);
+    opacity: 0.6;
+    transition: filter 0.3s ease, opacity 0.3s ease;
+    position: relative;
+    top: -50px;
+    left: -5px;
+  "
+                onmouseover="this.style.filter='grayscale(0%)'; this.style.opacity='1';"
+                onmouseout="this.style.filter='grayscale(100%)'; this.style.opacity='0.6';"
+              />
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
-  <section class="flex flex-col mb-24 lg:flex-row justify-center items-center h-full space-y-4">
+  <section
+    class="flex flex-col mb-24 lg:flex-row justify-center items-center h-full space-y-4"
+  >
     <BookConsultation />
   </section>
   <section class="lg:m-0
