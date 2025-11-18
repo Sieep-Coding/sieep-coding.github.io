@@ -11,7 +11,7 @@ img_alt: "Abstract graphic of interconnected nodes representing technology"
 tags: ["#Business", "#LunivConsulting"]
 ---
 
-> # [Contact Luniv Consulting for Custom Software In Grand Rapids, Michigan](https://luniv.tech/contact)
+> # [Contact Luniv Consulting for Custom Software In Grand Rapids, Michigan](https://luniv.tech/contact)r
 
 # Luniv Consulting v1.3 is LIVE!
 
