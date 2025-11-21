@@ -28,7 +28,7 @@ export const info = {
     ],
     experience: [
       {
-        title: "Founder",
+        title: "Software Engineer",
         date: "2022 - Present",
         location: "luniv.tech",
         link: "https://www.luniv.tech/contact",
