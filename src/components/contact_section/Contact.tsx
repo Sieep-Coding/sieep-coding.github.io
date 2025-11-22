@@ -34,6 +34,12 @@ export default function Contact({ contact, size }: ContactProps) {
       link_alt: "LinkedIn",
     },
     {
+      name: "HackerNews",
+      icon: "fa fa-hacker-news",
+      link: contact.HN,
+      link_alt: "HackerNews",
+    },
+    {
       name: "RSS",
       icon: "fa fa-rss",
       link: contact.RSS,

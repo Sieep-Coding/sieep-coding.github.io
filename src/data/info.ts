@@ -211,6 +211,7 @@ export const info = {
     linkedin: "https://www.linkedin.com/in/nick-s-694241139/",
     github: "https://github.com/Sieep-Coding/",
     RSS: "/rss.xml",
+    HN: "https://news.ycombinator.com/user?id=sieep",
     website: "https://luniv.tech",
   },
 };
