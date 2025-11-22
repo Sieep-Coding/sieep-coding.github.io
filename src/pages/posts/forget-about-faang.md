@@ -10,7 +10,7 @@ img_alt: "Logos for the FAANG companies"
 
 tags: ["#FAANG", "#Business", "#Career", "#DataAnalysis"]
 ---
-# THIS BLOG IS IN PROGRESS, PLEASE CHECK BACK LATER
+# WIP - THIS BLOG IS IN PROGRESS, PLEASE CHECK BACK LATER
 
 ## [PERMALINK](https://www.nickstambaugh.dev/posts/forget-about-faang)
 
