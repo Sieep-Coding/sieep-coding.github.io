@@ -14,77 +14,81 @@ const allPosts = await Astro.glob("./posts/*.md");
 ---
 
 <BaseLayout title="Home">
-  <section class="lg:h-screen lg:m-0 my-20 mx-2" id="home">
-    <div
-      class="flex flex-col lg:flex-row justify-center items-center h-full space-y-4"
-    >
-      <div class="profile-pic">
-        <Image
-          src={info.picture}
-          alt={info.picture_alt}
-          width={150}
-          height={150}
-          class="h-60 w-60 rounded-full object-fill object-center shadow-lg"
-        />
-      </div>
+<section id="home" class="lg:h-screen lg:m-0 my-20 mx-2">
+  <div class="flex flex-col lg:flex-row justify-center items-center h-full space-y-6 lg:space-y-0">
 
-      <div
-        class="flex flex-col lg:mx-8 leading-relaxed space-y-4 text-center lg:text-left"
-      >
-        <h1 class="text-3xl lg:text-5xl font-bold font-serif">
-          Hi, I'm <span
-            class="bg-clip-text animate-pulse typewriter underline decoration-zinc-500"
-            >{info.name}</span
-          >
-        </h1>
+    <div class="flex flex-col items-center">
+  <Image
+    src={info.picture}
+    alt={info.picture_alt}
+    width={150}
+    height={150}
+    class="h-60 w-60 rounded-full object-fill object-center shadow-lg ring-4 ring-zinc-200 dark:ring-zinc-800"
+  />
 
-        <h2 class="text-text dark:text-dk-text">{info.brief_description}</h2>
+  <div class="flex items-center justify-center gap-2 mt-3">
+    <div class="h-3 w-3 bg-green-700 rounded-full animate-pulse"></div>
+    <p class="text-xs font-bold uppercase tracking-widest text-zinc-500 dark:text-zinc-400">
+      Available for <a href="#contact" class="font-extrabold underline">work</a>
+    </p>
+  </div>
+</div>
 
-        <p class="text-2xl">
-          Based in <span
-            class="typewriter text-secondary underline decoration-zinc-500 dark:text-dk-secondary"
-            >{info.location}</span
-          >
+
+    <div class="flex flex-col lg:mx-8 leading-relaxed space-y-4 text-center lg:text-left">
+      <h1 class="text-3xl lg:text-5xl font-bold font-serif">
+        Hi, I'm 
+        <span class="bg-clip-text animate-pulse typewriter underline decoration-zinc-500">
+          {info.name}
+        </span>
+      </h1>
+
+      <h2 class="text-text dark:text-dk-text">{info.brief_description}</h2>
+
+      <p class="text-2xl">
+        Based in 
+        <span class="typewriter text-secondary underline decoration-zinc-500 dark:text-dk-secondary">
+          {info.location}
+        </span>
+      </p>
+
+      <div class="mt-8 space-y-3">
+        <p class="text-xs font-bold uppercase tracking-widest text-zinc-500 dark:text-zinc-400">
+          Featured On:
         </p>
 
-        <div class="mt-8 space-y-3">
-          <p
-            class="text-xs font-bold uppercase tracking-widest text-zinc-500 dark:text-zinc-400"
+        <div class="flex flex-wrap justify-center lg:justify-start items-center gap-6">
+          <a
+            href="https://news.ycombinator.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group transition-transform hover:-translate-y-1"
           >
-            Featured On:
-          </p>
-
-          <div
-            class="flex flex-wrap justify-center lg:justify-start items-center gap-6"
-          >
-            <a
-              href="https://news.ycombinator.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="group transition-transform hover:-translate-y-1"
-            >
-              <img
-                src="/_hn.png"
-                alt="Hacker News"
-                style="
-    height: 120px;
-    width: auto;
-    filter: grayscale(100%);
-    opacity: 0.6;
-    transition: filter 0.3s ease, opacity 0.3s ease;
-    position: relative;
-    top: -50px;
-    left: -5px;
-  "
-                onmouseover="this.style.filter='grayscale(0%)'; this.style.opacity='1';"
-                onmouseout="this.style.filter='grayscale(100%)'; this.style.opacity='0.6';"
-              />
-            </a>
-          </div>
+            <img
+              src="/_hn.png"
+              alt="Hacker News"
+              class="transition-all"
+              style="
+                height: 120px;
+                width: auto;
+                filter: grayscale(100%);
+                opacity: 0.6;
+                position: relative;
+                top: -50px;
+                left: -5px;
+              "
+              onmouseover="this.style.filter='grayscale(0%)'; this.style.opacity='1';"
+              onmouseout="this.style.filter='grayscale(100%)'; this.style.opacity='0.6';"
+            />
+          </a>
         </div>
       </div>
     </div>
-  </section>
+
+  </div>
+</section>
+
+
   <section
     class="flex flex-col mb-24 lg:flex-row justify-center items-center h-full space-y-4"
   >
