@@ -5,7 +5,7 @@ export default function BookConsultation() {
 
   return (
     <a
-      href="https://calendly.com/nstamb6/let-s-chat"
+      href="https://calendly.com/luniv/let-s-chat"
       className="group inline-block"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}

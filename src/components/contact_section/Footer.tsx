@@ -58,7 +58,7 @@ const Footer: React.FC = () => {
                         <ul>
                             <li>
                                 <a
-                                    href="https://calendly.com/nstamb6/let-s-chat"
+                                    href="https://calendly.com/luniv/let-s-chat"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="hover:text-pink-600 underline dark:text-primary"
