@@ -140,6 +140,7 @@ const title = "Posts";
 
       let open = window.innerWidth >= 1068; // open by default on desktop
       panel.style.maxHeight = open ? "200px" : "0px";
+      panel.style.overflow = 'auto';
       if (open) arrow.style.transform = "rotate(180deg)";
 
       toggle.addEventListener("click", () => {
