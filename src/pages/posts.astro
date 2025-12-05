@@ -24,7 +24,8 @@ const title = "Posts";
 <BaseLayout title={title}>
   <br>
   <div class="wrap mx-auto max-w-6xl p-4 mt-12">
-    <!-- Search -->
+
+    <!-- Search Bar -->
     <input
       id="post-search"
       type="text"
@@ -32,25 +33,41 @@ const title = "Posts";
       class="w-full mb-4 px-4 py-2 rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-dk-primary text-text dark:text-dk-text"
     />
 
-    <!-- Tag Filters -->
-    <div id="tag-filter" class="flex flex-wrap gap-2 mb-6">
+    <!-- Collapsible Filter Section -->
+    <div class="mb-6">
       <button
-        data-filter="*"
-        class="tag-btn px-3 py-1 rounded-full text-sm border border-gray-300 dark:border-gray-600 bg-white dark:bg-dk-primary text-text dark:text-dk-text"
+        id="filters-toggle"
+        class="w-full flex items-center justify-between px-4 py-2 rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-dk-primary text-text dark:text-dk-text text-sm"
       >
-        All
+        <span class="font-semibold">Filters</span>
+        <span id="filters-arrow" class="transition-transform">▼</span>
       </button>
 
-      {
-        Array.from(tags).map(tag => (
+      <!-- Collapsible content -->
+      <div
+        id="filters-panel"
+        class="overflow-hidden transition-[max-height] duration-300 ease-in-out max-h-0 md:max-h-40"
+      >
+        <div id="tag-filter" class="flex flex-wrap gap-2 p-3">
           <button
-            data-filter={`.${slug(tag)}`}
+            data-filter="*"
             class="tag-btn px-3 py-1 rounded-full text-sm border border-gray-300 dark:border-gray-600 bg-white dark:bg-dk-primary text-text dark:text-dk-text"
           >
-            {tag}
+            All
           </button>
-        ))
-      }
+
+          {
+            Array.from(tags).map(tag => (
+              <button
+                data-filter={`.${slug(tag)}`}
+                class="tag-btn px-3 py-1 rounded-full text-sm border border-gray-300 dark:border-gray-600 bg-white dark:bg-dk-primary text-text dark:text-dk-text"
+              >
+                {tag}
+              </button>
+            ))
+          }
+        </div>
+      </div>
     </div>
 
     <!-- Posts Grid -->
@@ -95,9 +112,7 @@ const title = "Posts";
         posts.forEach(post => {
           const t = post.dataset.title;
           const tags = post.dataset.tags;
-          const textMatch =
-            t.includes(query) || tags.includes(query);
-
+          const textMatch = t.includes(query) || tags.includes(query);
           const filterMatch =
             activeFilter === "*" ||
             post.classList.contains(activeFilter.slice(1));
@@ -116,6 +131,28 @@ const title = "Posts";
       });
 
       searchEl.addEventListener("input", applyFilters);
+
+
+      /* Collapsible Filter Panel */
+      const panel = document.getElementById("filters-panel");
+      const toggle = document.getElementById("filters-toggle");
+      const arrow = document.getElementById("filters-arrow");
+
+      let open = window.innerWidth >= 1068; // open by default on desktop
+      panel.style.maxHeight = open ? "200px" : "0px";
+      if (open) arrow.style.transform = "rotate(180deg)";
+
+      toggle.addEventListener("click", () => {
+        open = !open;
+
+        if (open) {
+          panel.style.maxHeight = "200px";
+          arrow.style.transform = "rotate(180deg)";
+        } else {
+          panel.style.maxHeight = "0px";
+          arrow.style.transform = "rotate(0deg)";
+        }
+      });
 
       applyFilters();
     });
