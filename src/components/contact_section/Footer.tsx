@@ -58,12 +58,12 @@ const Footer: React.FC = () => {
                         <ul>
                             <li>
                                 <a
-                                    href="https://luniv.tech/"
+                                    href="https://calendly.com/nstamb6/let-s-chat"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="hover:text-pink-600 underline dark:text-primary"
                                 >
-                                    Book a Free Consultation
+                                    Let's Connect! Book 15 Mins with Me
                                 </a>
                             </li>
                             <li>

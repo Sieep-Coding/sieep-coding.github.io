@@ -5,7 +5,7 @@ export default function BookConsultation() {
 
   return (
     <a
-      href="https://luniv.tech/contact"
+      href="https://calendly.com/nstamb6/let-s-chat"
       className="group inline-block"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -43,7 +43,7 @@ export default function BookConsultation() {
                 isHovered ? '-translate-x-2 opacity-0' : 'translate-x-0 opacity-100'
               }`}
             >
-              Book Free Consultation
+              Let's Chat!
             </span>
 
             {/* NEW FLY-IN TEXT - FIX APPLIED HERE */}
@@ -55,7 +55,7 @@ export default function BookConsultation() {
                               : 'opacity-0 translate-x-[150%]' // Text is invisible and far right
                           }`}
             >
-              Get expert guidance today
+              Book a 15-min call with me.
             </span>
 
             {/* RIGHT ARROW */}
