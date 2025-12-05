@@ -57,7 +57,7 @@ export default function Nav({ posts }) {
               <span className="hidden lg:inline-block font-large font-extrabold">
                 Let's Connect! Book 15 Mins with Me
               </span>
-              <span className="lg:hidden font-small">Let's Chat!</span>
+              <span className="lg:hidden"> Let's Chat!</span>
             </a> 
             {/* <button
               onClick={() => setIsHireMeOpen(true)}
