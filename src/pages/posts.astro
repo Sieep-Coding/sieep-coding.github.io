@@ -5,28 +5,119 @@ import Post from "../components/post_section/Post.astro";
 const allPosts = await Astro.glob("../pages/posts/*.md");
 
 allPosts.sort((a, b) => {
-  const dateA = new Date(a.frontmatter.date);
-  const dateB = new Date(b.frontmatter.date);
-
-  if (isNaN(dateA.getTime())) return 1;
-  if (isNaN(dateB.getTime())) return -1;
-
-  return dateB.getTime() - dateA.getTime();
+  const A = new Date(a.frontmatter.date).getTime();
+  const B = new Date(b.frontmatter.date).getTime();
+  return (isNaN(B) ? 0 : B) - (isNaN(A) ? 0 : A);
 });
+
+// Build tag set
+const tags = new Set();
+for (const p of allPosts) {
+  (p.frontmatter.tags || []).forEach(t => tags.add(t));
+}
+
+const slug = (t) =>
+  t.toLowerCase().trim().replace(/[^\w\s-]/g, "").replace(/[\s_-]+/g, "-");
 
 const title = "Posts";
 ---
-
 <BaseLayout title={title}>
-  <div
-    class="grid gap-2 gap-y-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 p-4 xl:p-10 mt-12"
-  >
-    {
-      allPosts.map((post) => (
-        <div class="flex justify-center">
-          <Post post={post} />
-        </div>
-      ))
-    }
+  <br>
+  <div class="wrap mx-auto max-w-6xl p-4 mt-12">
+    <!-- Search -->
+    <input
+      id="post-search"
+      type="text"
+      placeholder="Search posts..."
+      class="w-full mb-4 px-4 py-2 rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-dk-primary text-text dark:text-dk-text"
+    />
+
+    <!-- Tag Filters -->
+    <div id="tag-filter" class="flex flex-wrap gap-2 mb-6">
+      <button
+        data-filter="*"
+        class="tag-btn px-3 py-1 rounded-full text-sm border border-gray-300 dark:border-gray-600 bg-white dark:bg-dk-primary text-text dark:text-dk-text"
+      >
+        All
+      </button>
+
+      {
+        Array.from(tags).map(tag => (
+          <button
+            data-filter={`.${slug(tag)}`}
+            class="tag-btn px-3 py-1 rounded-full text-sm border border-gray-300 dark:border-gray-600 bg-white dark:bg-dk-primary text-text dark:text-dk-text"
+          >
+            {tag}
+          </button>
+        ))
+      }
+    </div>
+
+    <!-- Posts Grid -->
+    <div
+      id="posts-grid"
+      class="grid gap-2 gap-y-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-4"
+    >
+      {
+        allPosts.map((post) => {
+          const tagClasses = (post.frontmatter.tags || [])
+            .map(t => slug(t))
+            .join(" ");
+
+          const title = post.frontmatter.title || "";
+          const tagsStr = (post.frontmatter.tags || []).join(",");
+
+          return (
+            <div
+              class={`flex justify-center post-item ${tagClasses}`}
+              data-title={title.toLowerCase()}
+              data-tags={tagsStr.toLowerCase()}
+            >
+              <Post post={post} />
+            </div>
+          );
+        })
+      }
+    </div>
   </div>
+
+  <script is:inline>
+    document.addEventListener("DOMContentLoaded", () => {
+      const searchEl = document.getElementById("post-search");
+      const tagButtons = Array.from(document.querySelectorAll(".tag-btn"));
+      const posts = Array.from(document.querySelectorAll(".post-item"));
+
+      let activeFilter = "*";
+
+      const applyFilters = () => {
+        const query = searchEl.value.toLowerCase();
+
+        posts.forEach(post => {
+          const t = post.dataset.title;
+          const tags = post.dataset.tags;
+          const textMatch =
+            t.includes(query) || tags.includes(query);
+
+          const filterMatch =
+            activeFilter === "*" ||
+            post.classList.contains(activeFilter.slice(1));
+
+          post.style.display = textMatch && filterMatch ? "flex" : "none";
+        });
+      };
+
+      tagButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+          tagButtons.forEach(b => b.classList.remove("bg-gray-200", "dark:bg-gray-700"));
+          btn.classList.add("bg-gray-200", "dark:bg-gray-700");
+          activeFilter = btn.dataset.filter;
+          applyFilters();
+        });
+      });
+
+      searchEl.addEventListener("input", applyFilters);
+
+      applyFilters();
+    });
+  </script>
 </BaseLayout>
