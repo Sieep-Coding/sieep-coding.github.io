@@ -8,7 +8,7 @@ description: "How browser inconsistencies in JavaScript APIs can silently tank y
 img_path : "/browser.png"
 img_alt : "All the major browser desktop icons: Edge, Firefox, Chrome, Opera, Brave"
 
-tags: ["#Engineering", "#Astro", "#Frontend"]
+tags: ["#WebDev", "#Astro", "#Frontend", "#JavaScript"]
 ---
 
 > You ship your Astro site on Friday afternoon. Chrome looks perfect. Safari looks great. 
