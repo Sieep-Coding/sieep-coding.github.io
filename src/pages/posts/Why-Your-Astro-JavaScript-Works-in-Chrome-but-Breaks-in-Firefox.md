@@ -41,7 +41,7 @@ But here's where it gets expensive: that 100ms delay now applies to everyone. It
 
 ### The Real Cost: User Experience, Not Code
 
-When your infinite scroll doesn't work in Firefox, you're not just disappointing users. You're losing trust. A carousel that jumps, stutters, or resets is a signal that your site isn't production-ready. Whether it's a measurement bug or not doesn't matter to the user—they perceive it as broken.
+When your infinite scroll doesn't work in Firefox, you're not just disappointing users. You're losing trust. A carousel that jumps, stutters, or resets is a signal that your site isn't production-ready.
 
 That perception has real consequences:
 - Lower time-on-page (users leave frustrated)
@@ -55,15 +55,15 @@ Every hour you spend chasing browser inconsistencies is an hour you're not spend
 
 The answer isn't to sprinkle `setTimeout` everywhere. It's to use measurement APIs that work consistently across browsers:
 
-**Use `getBoundingClientRect()` instead of `offsetWidth`** – It accounts for CSS transforms, layout recalculation, and gives you real rendered dimensions, not computed ones.
+Use `getBoundingClientRect()` instead of `offsetWidth` – It accounts for CSS transforms, layout recalculation, and gives you real rendered dimensions, not computed ones.
 
-**Use `requestAnimationFrame()` before measuring** – This guarantees the browser has completed layout before you read dimensions.
+Use `requestAnimationFrame()` before measuring – This guarantees the browser has completed layout before you read dimensions.
 
-**Wait for images and content to actually load** – If your measurements depend on image sizes or content width, wait for those assets to load. Don't measure empty containers.
+Wait for images and content to actually load – If your measurements depend on image sizes or content width, wait for those assets to load. Don't measure empty containers.
 
-**Test in actual browsers, not just Chrome DevTools emulation** – Browser emulation in DevTools is a lie. Safari on a real iPhone measures things differently than Chrome on a real Android phone. Firefox on Windows measures differently than Firefox on macOS. You need actual device testing.
+Test in actual browsers, not just Chrome DevTools emulation – Browser emulation in DevTools is a lie. Safari on a real iPhone measures things differently than Chrome on a real Android phone. Firefox on Windows measures differently than Firefox on macOS. You need actual device testing.
 
-**Use feature detection, not browser sniffing** – Instead of checking "is this Firefox?" and applying a workaround, check "does this API return what I expect?" and handle the result accordingly.
+Use feature detection, not browser sniffing – Instead of checking "is this Firefox?" and applying a workaround, check "does this API return what I expect?" and handle the result accordingly.
 
 ### The Business Impact: Speed vs. Correctness
 
