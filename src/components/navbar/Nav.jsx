@@ -13,6 +13,7 @@ export default function Nav({ posts }) {
 
   const navLinks = [
     { name: "Blog", href: "/posts" },
+    { name: "Membership", href: "https://buymeacoffee.com/nickstambaugh/membership" },
     { name: "Contact", href: "/contact" },
   ];
 
