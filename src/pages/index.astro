@@ -77,12 +77,6 @@ const allPosts = await Astro.glob("./posts/*.md");
         mx-2" id="about">
     <About about={info.about} client:visible />
   </section>
-  <section
-    class="lg:h-screen lg:m-0 my-20 mx-2 flex-col flex justify-center w-full"
-    id="projects"
-  >
-    <ProjectCarousel projects={info.projects} client:only />
-  </section>
 
   <section
     class="lg:h-screen lg:m-0 my-20 flex-col flex justify-center w-full"
