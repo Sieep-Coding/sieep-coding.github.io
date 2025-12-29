@@ -62,41 +62,7 @@ const allPosts = await Astro.glob("./posts/*.md");
           </span>
         </p>
 
-        <div class="mt-8 space-y-3">
-          <p
-            class="text-xs font-bold uppercase tracking-widest text-zinc-500 dark:text-zinc-400"
-          >
-            Featured On:
-          </p>
 
-          <div
-            class="flex flex-wrap justify-center lg:justify-start items-center gap-6"
-          >
-            <a
-              href="https://news.ycombinator.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="group transition-transform hover:-translate-y-1"
-            >
-              <img
-                src="/_hn.png"
-                alt="Hacker News"
-                class="transition-all"
-                style="
-                height: 120px;
-                width: auto;
-                filter: grayscale(100%);
-                opacity: 0.6;
-                position: relative;
-                top: -50px;
-                left: -5px;
-              "
-                onmouseover="this.style.filter='grayscale(0%)'; this.style.opacity='1';"
-                onmouseout="this.style.filter='grayscale(100%)'; this.style.opacity='0.6';"
-              />
-            </a>
-          </div>
-        </div>
       </div>
     </div>
   </section>
