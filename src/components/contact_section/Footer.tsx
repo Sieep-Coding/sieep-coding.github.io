@@ -137,6 +137,36 @@ const Footer: React.FC = () => {
                                 </a>
                             </li>
                             <li>
+                                <a
+                                    href="https://michigan-pulse.gigalixirapp.com/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="hover:text-pink-600 underline dark:text-primary"
+                                >
+                                    Michigan Pulse
+                                </a>
+                            </li>
+                                                                                    <li>
+                                <a
+                                    href="https://michigan-guide.vercel.app/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="hover:text-pink-600 underline dark:text-primary"
+                                >
+                                    Michigan Guide
+                                </a>
+                            </li>
+                                                        <li>
+                                <a
+                                    href="https://luniv.tech"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="hover:text-pink-600 underline dark:text-primary"
+                                >
+                                    Luniv Technology
+                                </a>
+                            </li>
+                            <li>
                                     <a
                                         href="https://nickstambaugh.dev/tools"
                                         target="_blank"
