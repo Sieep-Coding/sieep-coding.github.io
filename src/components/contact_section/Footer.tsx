@@ -54,7 +54,7 @@ const Footer: React.FC = () => {
                         </ul>
                     </div>
                     <div>
-                        <h3 className="font-semibold text-pink-400">Links</h3>
+                        <h3 className="font-semibold text-pink-400">Useful Links</h3>
                         <ul>
                             <li>
                                 <a
@@ -127,6 +127,16 @@ const Footer: React.FC = () => {
                         <h3 className="font-semibold text-pink-400">Fun Links</h3>
                         <ul>
                             <li>
+                                <a
+                                    href="https://counterstrike.blog/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="hover:text-pink-600 underline dark:text-primary"
+                                >
+                                    counterstrike.blog
+                                </a>
+                            </li>
+                            <li>
                                     <a
                                         href="https://nickstambaugh.dev/tools"
                                         target="_blank"
@@ -155,16 +165,6 @@ const Footer: React.FC = () => {
                                     className="hover:text-pink-600 underline dark:text-primary"
                                 >
                                     See My Work at luniv.tech
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    href="https://counterstrike.blog/"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="hover:text-pink-600 underline dark:text-primary"
-                                >
-                                    counterstrike.blog
                                 </a>
                             </li>
                         </ul>
