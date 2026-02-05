@@ -171,5 +171,3 @@ At [Luniv](https://www.luniv.tech/), this technique is part of our approach to d
 ## In Closing...
 
 Randomized banners are a simple but effective way to create a lively experience for site visitors. Astro makes it easy to combine JS logic with templated components.
-
-Written By [Nick Stambaugh](https://www.linkedin.com/in/nick-s-694241139/)

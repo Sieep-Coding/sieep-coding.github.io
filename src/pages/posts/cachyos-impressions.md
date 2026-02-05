@@ -53,5 +53,3 @@ CachyOS is a fantastic choice for anyone who wants the power and flexibility of 
 It’s perfect for both engineers and gamers who need a reliable and high-performance system. 
 
 The team behind CachyOS has done a great job creating a polished and user-friendly experience. I highly recommend giving it a shot if you're looking for a new daily driver.
-
-*Written By [Nick Stambaugh](https://www.linkedin.com/in/nick-s-694241139/)*

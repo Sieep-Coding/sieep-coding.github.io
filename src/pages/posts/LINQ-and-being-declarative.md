@@ -125,6 +125,4 @@ If you want to become an expert in LINQ, I recommend starting by reading the [do
 
 Thanks for reading.
 
-Written By [_Nick Stambaugh_](https://www.linkedin.com/in/nick-s-694241139/)
-
 > [https://learn.microsoft.com/en-us/dotnet/csharp/linq/](https://learn.microsoft.com/en-us/dotnet/csharp/linq/)

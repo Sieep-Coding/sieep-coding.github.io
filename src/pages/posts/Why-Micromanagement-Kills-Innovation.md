@@ -128,5 +128,3 @@ It is built on a foundation of collaboration and bold leadership that is willing
 **The choice is clear:** micromanage and stagnate or trust and innovate. 
 
 Which path will you take?
-
-*Written By [Nick Stambaugh](https://www.linkedin.com/in/nick-s-694241139/)*

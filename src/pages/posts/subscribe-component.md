@@ -112,5 +112,3 @@ Further Ideas:
 The React `Subscribe` component is a quick way to capture email subscribers on your website.
 
 I am excited to see how you implement this on your site, and I hope it helps you keep your users engaged!
-
-Written by [_Nick Stambaugh_](https://www.linkedin.com/in/nick-s-694241139/)

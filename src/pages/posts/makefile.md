@@ -51,5 +51,3 @@ When complexity often reigns, Makefiles provide a refreshing alternative.
 They prioritize *clarity, control, and collaboration,* allowing teams to thrive. 
 
 By sticking with Makefiles, I embrace a straightforward approach that not only simplifies my workflow but also cultivates a productive environment for everyone involved.
-
-*Written By [Nick Stambaugh](https://www.linkedin.com/in/nick-s-694241139/)*

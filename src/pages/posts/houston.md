@@ -100,5 +100,3 @@ Houston is a city that blends history, innovation, and culture in a way that mak
 During my trip, I found amazing seafood, insightful musuems, and an appreciation for one of the best cities America has to offer.
 
 You'll find a way to fall in love with Houston--I guarantee it.
-
-Written By [_Nick Stambaugh_](https://www.linkedin.com/in/nick-s-694241139/)

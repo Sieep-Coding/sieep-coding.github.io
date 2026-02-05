@@ -72,7 +72,4 @@ We've done the work; now we're ready to start building your next great project! 
 
 Thanks for reading.
 
-
-Written By [_Nick Stambaugh_](https://www.linkedin.com/in/nick-s-694241139/)
-
 > # [Contact Luniv Consulting for Custom Software In Grand Rapids, Michigan](https://luniv.tech/contact)

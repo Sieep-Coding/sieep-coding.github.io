@@ -111,6 +111,3 @@ public class ProductsController : Controller
 Conclusion
 ------------
 Instead of writing verbose SQL queries or manually iterating through collections, LINQ with Lambdas allows us to express business logic concisely.
-
-
-Written By [_Nick Stambaugh_](https://www.linkedin.com/in/nick-s-694241139/)

@@ -85,5 +85,3 @@ Refactoring isn’t just about making the code prettier—it’s about making it
 So, the next time you’re looking at your code and thinking, *“This works, why bother?”*—remember this: 
 
 refactoring isn’t a chore; **it’s a craft.**
-
-*Written By [Nick Stambaugh](https://www.linkedin.com/in/nick-s-694241139/)*

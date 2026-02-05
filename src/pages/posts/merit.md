@@ -48,5 +48,3 @@ Merit should always trump nepotism in the workplace.
 Organizations can **enhance trust, boost morale, and drive long-term success.** 
 
 Prioritizing merit not only lifts employees but also creates an innovative work environment that benefits everyone.
-
-*Written By [Nick Stambaugh](https://www.linkedin.com/in/nick-s-694241139/)*

@@ -97,5 +97,3 @@ For anyone considering a switch, especially gamers and developers, Pop!_OS is wo
 While no OS is perfect, this one gets a lot right and continues to improve. 
 
 If Linux gaming and desktop experience keep evolving at this pace, and a viable alternative to Ableton is released for Linux, my days of using Windows as a primary OS might be numbered.
-
-*Written By [Nick Stambaugh](https://www.linkedin.com/in/nick-s-694241139/)*

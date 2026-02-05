@@ -97,5 +97,3 @@ While the app works perfectly for simple use cases, there are a few ideas for im
 - Add additional chart types (e.g., **line charts or pie charts**).
 - Enhance the **error handling and validation** to support different data formats (e.g., CSV or TXT files).
 - Allow users to **customize the appearance** of the bar chart, like changing the characters used for the bars.
-
-Written by [_Nick Stambaugh_](https://www.linkedin.com/in/nick-s-694241139/)

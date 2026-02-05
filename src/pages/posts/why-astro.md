@@ -104,5 +104,3 @@ Astro offers a perfect balance of **simplicity, performance, and flexibility** f
 It allows me to focus on what matters most: **creating a fast, visually appealing, and maintainable site.**
 
 I highly recommend giving Astro a try.
-
-Written by [_Nick Stambaugh_](https://www.linkedin.com/in/nick-s-694241139/)

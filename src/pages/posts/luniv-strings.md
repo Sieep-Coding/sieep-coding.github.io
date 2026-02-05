@@ -103,5 +103,3 @@ This is a human way of evaluating a value: just because it is a string does not 
 Overall, my first attempt to develop a library has been fun. I even started a [document website](https://sieep-coding.github.io/luniv-strings/) to help beginners. It has been a blast!
 
 Thanks for reading.
-
-Writtten by [Nick](https://www.linkedin.com/in/nick-s-694241139/)

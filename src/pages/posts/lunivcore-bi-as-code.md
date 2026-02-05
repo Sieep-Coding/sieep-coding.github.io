@@ -100,5 +100,3 @@ LunivCore's architecture is a strategic combination of two languages:
 It provides a unique blend of C-level performance, portability, and developer-first tooling, making it an intriguing alternative to traditional, often proprietary, BI platforms. 
 
 Its commitment to treating analytics as version-controlled code is a key differentiator for organizations aiming for higher auditability and data governance.
-
-*Written By [Nick Stambaugh](https://www.linkedin.com/in/nick-s-694241139/)*

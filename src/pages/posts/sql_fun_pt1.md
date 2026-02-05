@@ -170,5 +170,3 @@ Conclusion
 Feel free to clone the repository, suggest enhancements, or report any issues you encounter. 
 
 # [VIEW THE CODE](https://github.com/Sieep-Coding/SimpSQL/)
-
-Written By [_Nick Stambaugh_](https://www.linkedin.com/in/nick-s-694241139/)

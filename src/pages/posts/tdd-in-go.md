@@ -85,8 +85,6 @@ When your code is structured with testing in mind, it naturally leads to more ma
 # Conclusion
 The testing framework in Go provides a refreshing approach to writing functions that emphasizes clarity and control. I commit to this development process to **streamline my workflow and make me a more productive programmer in the long run.** 
 
-*Written By [Nick Stambaugh](https://www.linkedin.com/in/nick-s-694241139/)*
-
 #### References:
 
 For learning about TDD in Go, I highly recommend [this resource.](https://quii.gitbook.io/learn-go-with-tests)

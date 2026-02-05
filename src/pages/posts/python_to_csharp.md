@@ -145,5 +145,3 @@ Each language has its strengths, and I've come to appreciate how learning both e
 This journey isn't just about learning a new language; it's about preparing to contribute meaningfully as a Developer. 
 
 If you're also navigating a new tech stack, take it one step at a time and just _breathe_.
-
-Written By [Nick Stambaugh](https://www.linkedin.com/in/nick-s-694241139/)

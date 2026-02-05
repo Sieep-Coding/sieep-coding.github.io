@@ -225,6 +225,4 @@ This basic Game of Life simulation in Lua is a great way to experiment with how 
 
 Lua's flexibility and easy-to-read syntax make it perfect for small simulations like this, allowing you to focus on logic rather than complexity. 
 
-*Written By [Nick Stambaugh](https://www.linkedin.com/in/nick-s-694241139/)*
-
 [View the full code on Github!](https://github.com/Sieep-Coding/game-of-life-lua/) 
