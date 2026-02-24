@@ -11,12 +11,7 @@ export const info = {
   about: {
     description: `
 
-    At Luniv Consulting, we are building the best technology consulting group in West Michigan to serve clients globally. 
-    
-    We are looking for talent from software engineers to marketing/sales. 
-    
-     
-    We provide custom software (web, mobile, desktop), business intelligence/database solutions, IT team extensions, and AI integrations.`,
+    At Luniv Consulting, we are building the best technology consulting group in West Michigan to serve clients globally.`,
     education: [
       {
         title: "BS in Economics and Philosophy",
@@ -37,7 +32,7 @@ export const info = {
           AI Integration, Business Intelligence, Database, Mobile App Development, Managed IT Services`,
       },
       {
-        title: "Junior Application Developer",
+        title: "Application Developer",
         date: "2025 - Present",
         location: "Display Pack Inc",
         link: "https://www.displaypack.com/",
