@@ -85,7 +85,7 @@ export const info = {
                  "Custom CRMs",
                  "ETL Microservices",
                  "Custom DSLs",
-                 "Enterprise Notifcation System"].
+                 "Enterprise Notifcation System"],
       Languages: ["C#", "Elixir", "Python", "TypeScript", "Go", "Lua", "SQL"],
       Frameworks: ["Phoenix (Elixir)", "React", ".NET", "Node.js", "Astro"],
       Libraries: ["xUnit", "Jest", "D3.js"],
