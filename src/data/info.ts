@@ -80,8 +80,12 @@ export const info = {
 
     skills: [ {
       Projects: ["Robotic Proccess Automation",
+                 "Custom Interpreters",
+                 "Static Site Generators",
                  "Document Management Systems", 
-                 "Reporting/Analytical Microservices", 
+                 "Reporting/Analytical Microservices",
+                 "Custom Unit Test Suite",
+                 
                  "Interactive Org Charts",
                  "Custom CRMs",
                  "ETL Microservices",
