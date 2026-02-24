@@ -79,12 +79,17 @@ export const info = {
     ],
 
     skills: [ {
-      Languages: ["C#", "Python", "JavaScript", "TypeScript", "Go", "Lua", "HTML", "CSS", "SQL", "C/C++", "Bash", "R",],
-      Frameworks: ["React", ".NET", "Node.js", "Electron", "Astro", "TailwindCSS", "Bootstrap", "HTMX", "Express.js",],
-      Libraries: ["xUnit", "Pandas", "NumPy", "Matplotlib", "Seaborn", "Plotly", "D3.js", "Chart.js",],
-      Databases: ["SQLite", "SQL Server", "Dynamics AX", "Salesforce", "Zoho"],
-      Concepts: ["TDD", "Software Architect", "OOP", "MVC", "Data Analysis", "Data Viz", "Web Dev", "API Development", "Agile Methods",],
-      Tools: ["VSCode", "Visual Studio", "Bitbucket", "Neovim", "Git", "Docker", "PowerBI", "Tableau",],
+      Projects: ["Document Management Systems", 
+                 "Reporting/Analytical Microservices", 
+                 "Interactive Org Charts",
+                 "Custom CRMs",
+                 "ETL Microservices",
+                 "Custom DSLs",
+                 "Enterprise Notifcation System"].
+      Languages: ["C#", "Elixir", "Python", "TypeScript", "Go", "Lua", "SQL"],
+      Frameworks: ["Phoenix (Elixir)", "React", ".NET", "Node.js", "Astro"],
+      Libraries: ["xUnit", "Jest", "D3.js"],
+      Databases: ["Postgres", "SQLite", "SQL Server",],
     } ],
   },
 
