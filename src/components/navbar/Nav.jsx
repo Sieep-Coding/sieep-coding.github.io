@@ -56,7 +56,7 @@ export default function Nav({ posts }) {
             >
               <i className="fas fa-clock sm:mr-2"></i>
               <span className="hidden lg:inline-block font-large font-extrabold">
-                Let's Connect! Book 15 Mins with Me
+                Let's Connect!
               </span>
               <span className="lg:hidden"> Let's Chat!</span>
             </a> 

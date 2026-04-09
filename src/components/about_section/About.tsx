@@ -30,11 +30,8 @@ export default function About(props: AboutProps) {
       <div className="w-full sm:w-3/4 lg:w-2/3">
         <Skills skills={about.skills} />
       </div>
-      <div className="w-full sm:w-3/4 lg:w-2/3">
+      <div className="w-full mb-12 sm:w-3/4 lg:w-2/3">
         <Education education={about.education} />
-      </div>
-      <div>
-        <ViewBlog />
       </div>
     </div>
   );
