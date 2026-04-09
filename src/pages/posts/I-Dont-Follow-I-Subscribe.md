@@ -62,3 +62,8 @@ You aren't trailing behind a celebrity like a lost dog; you are intentionally si
 I encourage you to get rid of one of your social apps for 24 hours. See how it makes you feel. I encourage you that the next time you feel the urge to scroll a feed, you go to the super market and strike up a conversation with a stranger.
 
 Be a subscriber to your own and your values. Go outside and do something worth writing about. Start creating a story of your own that is more interesting than whatever is on social media.
+
+## On a personal note...
+For those of you who read this blog regularly, I apologize for the hiatus and I hope you enjoyed the new style of writing. I've taken some time to focus on skills outside of programming and writing about technology. I plan to continue back up on writing similar to this as well as my prior stuff. 
+
+Thanks for reading!
