@@ -4,7 +4,7 @@ const K = 3; // Number of recent posts to display
 const { posts } = Astro.props;
 
 const recentPosts = posts
-  .sort((a: { frontmatter: { date: string | number | Date; }; }, b: { frontmatter: { date: string | number | Date; }; }) => {
+  .sort((a, b) => {
     return (
       new Date(b.frontmatter.date).getTime() -
       new Date(a.frontmatter.date).getTime()
@@ -20,10 +20,10 @@ const recentPosts = posts
   </header>
   <div>
     {
-      recentPosts.map((post: { frontmatter: { tags: any[]; title: unknown; description: unknown; date: unknown; }; url: string | URL | null | undefined; }, _index: any) => (
+      recentPosts.map((post, index) => (
         <div class="mb-8">
           <p class="text-gray-600 dark:text-dk-accent text-sm mb-1">
-              {post.frontmatter.tags?.map((tag: unknown, index: number) => (
+              {post.frontmatter.tags.map((tag, index) => (
                 <span>
                   {tag}
                   {index < post.frontmatter.tags.length - 1 && (<span class="mx-1"> </span>)}
