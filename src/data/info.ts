@@ -11,12 +11,7 @@ export const info = {
   about: {
     description: `
 
-    At Luniv Consulting, we are building the best technology consulting group in West Michigan to serve clients globally. 
-    
-    We are looking for talent from software engineers to marketing/sales. 
-    
-     
-    We provide custom software (web, mobile, desktop), business intelligence/database solutions, IT team extensions, and AI integrations.`,
+    At Luniv Consulting, we are building the best technology consulting group in West Michigan to serve clients globally.`,
     education: [
       {
         title: "BS in Economics and Philosophy",
@@ -37,7 +32,7 @@ export const info = {
           AI Integration, Business Intelligence, Database, Mobile App Development, Managed IT Services`,
       },
       {
-        title: "Junior Application Developer",
+        title: "Application Developer",
         date: "2025 - Present",
         location: "Display Pack Inc",
         link: "https://www.displaypack.com/",
@@ -84,12 +79,25 @@ export const info = {
     ],
 
     skills: [ {
-      Languages: ["C#", "Python", "JavaScript", "TypeScript", "Go", "Lua", "HTML", "CSS", "SQL", "C/C++", "Bash", "R",],
-      Frameworks: ["React", ".NET", "Node.js", "Electron", "Astro", "TailwindCSS", "Bootstrap", "HTMX", "Express.js",],
-      Libraries: ["xUnit", "Pandas", "NumPy", "Matplotlib", "Seaborn", "Plotly", "D3.js", "Chart.js",],
-      Databases: ["SQLite", "SQL Server", "Dynamics AX", "Salesforce", "Zoho"],
-      Concepts: ["TDD", "Software Architect", "OOP", "MVC", "Data Analysis", "Data Viz", "Web Dev", "API Development", "Agile Methods",],
-      Tools: ["VSCode", "Visual Studio", "Bitbucket", "Neovim", "Git", "Docker", "PowerBI", "Tableau",],
+      Projects: ["Robotic Proccess Automation",
+                 "Custom Interpreters",
+                 "Static Site Generators",
+                 "Document Management Systems", 
+                 "Reporting/Analytical Microservices",
+                 "Custom Unit Test Suite",
+                 
+                 "Interactive Org Charts",
+                 "Custom CRMs",
+                 "ETL Microservices",
+                 "Custom DSLs in Lua",
+                 "Enterprise Notifcation System",
+                 "Command-Line Tools",
+                 "Web Servers",
+                 "Employee Evaluation Software"],
+      Languages: ["C#", "Elixir", "Python", "TypeScript", "Go", "Lua", "SQL"],
+      Frameworks: ["Phoenix (Elixir)", "React", ".NET", "Node.js", "Astro"],
+      Libraries: ["xUnit", "Jest", "D3.js"],
+      Databases: ["Postgres", "SQLite", "SQL Server",],
     } ],
   },
 
