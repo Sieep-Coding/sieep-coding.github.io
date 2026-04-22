@@ -58,16 +58,6 @@ const Footer: React.FC = () => {
                         <ul>
                             <li>
                                 <a
-                                    href="https://calendly.com/luniv/let-s-chat"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="hover:text-pink-600 underline dark:text-primary"
-                                >
-                                    Let's Connect! Book 15 Mins with Me
-                                </a>
-                            </li>
-                            <li>
-                                <a
                                     href="https://nickstambaugh.dev/posts"
                                     target="_blank"
                                     rel="noopener noreferrer"
@@ -136,16 +126,6 @@ const Footer: React.FC = () => {
                                     counterstrike.blog
                                 </a>
                             </li>
-                            <li>
-                                <a
-                                    href="https://michigan-pulse.gigalixirapp.com/"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="hover:text-pink-600 underline dark:text-primary"
-                                >
-                                    Michigan Pulse
-                                </a>
-                            </li>
                                                                                     <li>
                                 <a
                                     href="https://michigan-guide.vercel.app/"
@@ -186,16 +166,6 @@ const Footer: React.FC = () => {
                                         My Coding Stats
                                     </a>
                                     
-                            </li>
-                            <li>
-                                <a
-                                    href="https://www.luniv.tech/services"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="hover:text-pink-600 underline dark:text-primary"
-                                >
-                                    See My Work at luniv.tech
-                                </a>
                             </li>
                         </ul>
                     </div>
