@@ -39,40 +39,6 @@ export default function Nav({ posts }) {
             </span>
           </a>
           <div className="flex items-center space-x-3 sm:space-x-5 mr-5 sm:mr-20 md:space-x-5 mr-5 sm:mr-20">
-<<<<<<< HEAD
-=======
-            {/* <a
-              href={info.cv}
-              download
-              className="px-3 sm:px-4 py-1 sm:py-2 border-2 rounded text-sm sm:text-base text-secondary dark:text-dk-secondary border-secondary dark:border-dk-secondary hover:bg-secondary dark:hover:bg-dk-secondary hover:text-primary dark:hover:text-primary hover:scale-105 hover:-rotate-2 duration-300 cursor-pointer"
-            >
-              <i className="fas fa-download mr-1 sm:mr-2"></i>
-              <span className="hidden lg:inline-block font-medium">
-                Download Resume
-              </span>
-              <span className="lg:hidden font-small">CV</span>
-            </a> */}
-            <a
-              href='https://calendly.com/luniv/let-s-chat'
-              className="px-3 sm:px-4 py-1 sm:py-2 border-2 rounded text-sm sm:text-base text-secondary dark:text-dk-secondary border-secondary dark:border-dk-secondary hover:bg-secondary dark:hover:bg-dk-secondary hover:text-primary dark:hover:text-primary hover:scale-105 hover:-rotate-2 duration-300 cursor-pointer"
-            >
-              <i className="fas fa-clock sm:mr-2"></i>
-              <span className="hidden lg:inline-block font-large font-extrabold">
-                Let's Connect!
-              </span>
-              <span className="lg:hidden"> Let's Chat!</span>
-            </a> 
-            {/* <button
-              onClick={() => setIsHireMeOpen(true)}
-              className="px-3 sm:px-4 py-1 sm:py-2 border-2 rounded text-sm sm:text-base text-secondary dark:text-dk-secondary border-secondary dark:border-dk-secondary hover:bg-secondary dark:hover:bg-dk-secondary hover:text-primary dark:hover:text-primary hover:scale-105 hover:-rotate-2 duration-300 cursor-pointer"
-            >
-              <Tooltip text="Fill out a form." position="bottom">
-                <i className="fas fa-circle-info mr-1"></i>
-                <span className="hidden lg:inline-block font-small">Contact Me</span>
-                <span className="lg:hidden font-small">Contact</span>
-              </Tooltip>
-            </button> */}
->>>>>>> 501fded99a472d15146de5c42dbd313407c91047
           </div>
 
           <div className="inline-flex lg:hidden text-secondary dark:text-dk-secondary">
