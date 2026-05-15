@@ -14,10 +14,12 @@ const Tooltip: React.FC<TooltipProps> = ({ children, text, position = "top" }) =
     if (ref.current) {
       const rect = ref.current.getBoundingClientRect();
       const spaceOnRight = window.innerWidth - rect.left;
-      // If less than 220px to the right, anchor to right edge instead
       setAlignRight(spaceOnRight < 220);
     }
   };
+
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 640;
+  const maxWidth = isMobile ? "min(220px, 60vw)" : "none";
 
   const positionClasses = {
     top: "bottom-full mb-2 left-1/2 transform -translate-x-1/2",
@@ -35,7 +37,8 @@ const Tooltip: React.FC<TooltipProps> = ({ children, text, position = "top" }) =
     >
       {children}
       <div
-        className={`absolute ${positionClasses[position]} bg-secondary text-primary dark:bg-dk-secondary dark:text-dk-primary text-xs rounded py-1 px-2 opacity-0 transition-opacity duration-200 group-hover:opacity-100 whitespace-nowrap z-50 pointer-events-none`}
+        className={`absolute ${positionClasses[position]} bg-secondary text-primary dark:bg-dk-secondary dark:text-dk-primary text-xs rounded py-1 px-2 opacity-0 transition-opacity duration-200 group-hover:opacity-100 z-50 pointer-events-none`}
+        style={{ maxWidth, whiteSpace: isMobile ? "normal" : "nowrap", wordBreak: "break-word" }}
       >
         {text}
       </div>
