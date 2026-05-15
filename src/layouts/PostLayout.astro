@@ -24,7 +24,7 @@ const posts = rawPosts.map((post) => ({
     description: post.frontmatter.description,
     tags: post.frontmatter.tags || [],
   },
-  url: post.url,
+  url: post.url || "",
 }));
 
 const { title, date, img_path, img_alt } = frontmatter;
