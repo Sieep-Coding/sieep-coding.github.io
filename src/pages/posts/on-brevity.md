@@ -45,7 +45,7 @@ Think about how junior developers write code versus how seasoned engineers appro
 
 A junior dev will often drop a 200-line monster function filled with redundant variables and overly complex logic to solve a problem.
 
-But an experienced engineer looks at that monster and sees a massive security risk. They know that every single line of code is a liability. Often referred to as `Tech Debt`,it's the hidden cost of writing code.
+But an experienced engineer looks at that monster and sees a massive security risk. They know that every single line of code is a liability. Often referred to as `Tech Debt`, it's the hidden cost of writing code.
 
 It’s another line that can hide a bug, another line that can be exploited, and another line that creates unintended side effects. 
 
