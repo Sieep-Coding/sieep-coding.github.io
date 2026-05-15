@@ -1,56 +1,47 @@
 ---
-const K = 3; // Number of recent posts to display
+const K = 5;
 
 const { posts } = Astro.props;
 
 const recentPosts = posts
-  .sort((a: { frontmatter: { date: string | number | Date; }; }, b: { frontmatter: { date: string | number | Date; }; }) => {
-    return (
-      new Date(b.frontmatter.date).getTime() -
-      new Date(a.frontmatter.date).getTime()
-    );
-  })
+  .sort((a: any, b: any) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime())
   .slice(0, K);
 ---
 
-<div class="flex flex-col lg:flex-row justify-evenly">
-  <header class="mb-8 mr-8">
-    <h1 class="mb-2">Recent Posts from the Blog</h1>
-    <h2 class="mb-4 text-text dark:text-dk-text">A new post every week!</h2>
+<div class="space-y-8">
+  <header class="border-b border-zinc-200 dark:border-zinc-800 pb-4">
+    <h2 class="text-xl font-bold tracking-tight text-zinc-900 dark:text-white">Recent Writing</h2>
   </header>
-  <div>
-    {
-      recentPosts.map((post: { frontmatter: { tags: any[]; title: unknown; description: unknown; date: unknown; }; url: string | URL | null | undefined; }, _index: any) => (
-        <div class="mb-8">
-          <p class="text-gray-600 dark:text-dk-accent text-sm mb-1">
-              {post.frontmatter.tags.map((tag: unknown, index: number) => (
-                <span>
-                  {tag}
-                  {index < post.frontmatter.tags.length - 1 && (<span class="mx-1"> </span>)}
-                </span>
-              ))}
-            </p>
-          <h1 class="mb-2">
-            <a href={post.url}>{post.frontmatter.title}</a>
-          </h1>
-          <p>{post.frontmatter.description}</p>
-          <p class="text-gray-600 dark:text-gray-400">
-            {post.frontmatter.date}
-          </p>
-          <a
-            class="text-secondary dark:text-dk-secondary hover:text-accent dark:hover:text-dk-accent mb-3"
-            href={post.url}
-          >
-            Read more &rarr;
-          </a>
-          <div class="border-t border-gray-200 dark:border-dk-gray-800" />
+  
+  <div class="divide-y divide-zinc-100 dark:divide-zinc-900 space-y-6">
+    {recentPosts.map((post: any) => (
+      <article class="pt-6 first:pt-0 group">
+        <div class="flex items-center gap-3 text-xs text-zinc-500 dark:text-zinc-400 mb-2">
+          <time datetime={post.frontmatter.date}>{post.frontmatter.date}</time>
+          {post.frontmatter.tags && post.frontmatter.tags.length > 0 && (
+            <span>•</span>
+            <span class="font-medium uppercase tracking-wider">{post.frontmatter.tags.join(", ")}</span>
+          )}
         </div>
-      ))
-    }
-    <div class="text-right mt-4 text-secondary dark:text-dk-secondary">
-      <a class="hover:text-accent dark:hover:text-dk-accent" href="/posts">
-        Read more posts </a
-      >
-    </div>
+        
+        <h3 class="text-lg font-semibold text-zinc-900 dark:text-white group-hover:text-cyan-500 transition-colors">
+          <a href={post.url}>{post.frontmatter.title}</a>
+        </h3>
+        
+        <p class="mt-2 text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+          {post.frontmatter.description}
+        </p>
+        
+        <a href={post.url} class="inline-flex items-center gap-1 text-sm font-medium text-cyan-600 dark:text-cyan-400 mt-3 hover:underline">
+          Read article &rarr;
+        </a>
+      </article>
+    ))}
+  </div>
+
+  <div class="pt-4 mb-5">
+    <a class="text-sm font-medium text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors underline underline-offset-4" href="/posts">
+      View all posts &rarr;
+    </a>
   </div>
 </div>

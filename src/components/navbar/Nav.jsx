@@ -13,8 +13,6 @@ export default function Nav({ posts }) {
 
   const navLinks = [
     { name: "Blog", href: "/posts" },
-    { name: "Membership", href: "https://buymeacoffee.com/nickstambaugh/membership" },
-    { name: "Contact", href: "/contact" },
   ];
 
   const extractInitials = (name) => {
@@ -61,11 +59,14 @@ export default function Nav({ posts }) {
               {/* <li className="px-4 flex text-black dark:text-primary">
                 <GithubButton />
               </li> */}
-              <li className="px-2 flex">
+              <li className="ml-2 px-2 flex">
                 <Search posts={posts} />
               </li>
               <li className="px-4 flex mt-1 mr-1">
                 <ToggleDarkMode />
+              </li>
+              <li className="px-4 flex mt-1 mr-1">
+                <GithubButton />
               </li>
             </ul>
           </div>

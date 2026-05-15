@@ -1,169 +1,56 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { info } from "../data/info";
-import ProjectCarousel from "../components/projects_section/ProjectCarousel";
-import Contact from "../components/contact_section/Contact";
-import About from "../components/about_section/About";
 import Blog from "../components/post_section/Blog.astro";
-import BookConsultation from "../components/about_section/VisitLuniv";
-// import Subscribe from "../components/post_section/Subscribe";
-
+import Contact from "../components/contact_section/Contact";
 import { Image } from "astro:assets";
 
 const allPosts = await Astro.glob("./posts/*.md");
 ---
 
 <BaseLayout title="Home">
-  <section id="home" class="lg:h-screen lg:m-0 my-20 mx-2">
-    <div
-      class="flex flex-col lg:flex-row justify-center items-center h-full space-y-6 lg:space-y-0"
-    >
-      <div class="flex flex-col items-center">
+  <main class="max-w-2xl mx-auto px-4 py-16 sm:py-24 space-y-20">
+    
+    <!-- Minimalist Hero Header -->
+    <header class="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+      <div class="space-y-3 order-2 sm:order-1">
+        <h1 class="text-3xl font-bold tracking-tight text-secondary dark:text-dk-accent">
+          Hi, I'm {info.name}
+        </h1>
+        <p class="text-text dark:text-dk-text text-lg leading-relaxed">
+          {info.brief_description}
+        </p>
+        <p class="text-sm text-text dark:text-dk-text">
+          Based in {info.location} — <a href="mailto:nickstambaugh@proton.me" class="text-secondary dark:text-dk-secondary hover:text-secondary/80 dark:hover:text-dk-accent underline decoration-text/30 dark:decoration-dk-text/30 transition-colors">Email me</a>
+        </p>
+      </div>
+
+      <div class="order-1 sm:order-2 shrink-0">
         <Image
           src={info.picture}
           alt={info.picture_alt}
-          width={150}
-          height={150}
-          class="h-60 w-60 rounded-full object-fill object-center shadow-lg ring-4 ring-zinc-200 dark:ring-zinc-800"
+          width={96}
+          height={96}
+          class="h-24 w-24 rounded-full object-cover grayscale contrast-115 shadow-sm border border-text/10 dark:border-dk-text/10"
         />
-
-        <div class="mt-4 flex items-center justify-center gap-3 border border-zinc-200 bg-zinc-50/50 py-2 px-4 rounded-full w-fit mx-auto dark:border-zinc-800 dark:bg-zinc-900/50">
-  <span class="relative flex h-2 w-2">
-    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
-    <span class="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
-  </span>
-
-  <p class="text-[10px] font-bold uppercase tracking-[0.15em] text-zinc-600 dark:text-zinc-400">
-    See my
-    <a href="#contact" class="text-zinc-900 dark:text-white hover:underline decoration-cyan-500 underline-offset-4 transition-colors">work.</a>
-    <a href="mailto:nickstambaugh@proton.me" class="text-zinc-900 dark:text-white hover:underline decoration-cyan-500 underline-offset-4 transition-colors">Email me ➡️</a>
-  </p>
-</div>
       </div>
+    </header>
 
-      <div
-        class="flex flex-col lg:mx-8 leading-relaxed space-y-4 text-center lg:text-left"
-      >
-        <h1 class="text-3xl lg:text-5xl font-bold font-serif">
-          Hi, I'm
-          <span
-            class="bg-clip-text animate-pulse typewriter underline decoration-zinc-500"
-          >
-            {info.name}
-          </span>
-        </h1>
+    <hr class="border-text/10 dark:border-dk-text/10" />
 
-        <h2 class="text-text dark:text-dk-text">{info.brief_description}</h2>
+    <!-- Simplified Content Feed -->
+    <section id="blog">
+      <Blog posts={allPosts} />
+    </section>
 
-        <p class="text-2xl">
-          Based in
-          <span
-            class="typewriter text-secondary underline decoration-zinc-500 dark:text-dk-secondary"
-          >
-            {info.location}
-          </span>
-        </p>
+    <hr class="border-text/10 dark:border-dk-text/10" />
 
-
+    <!-- Simple Contact Footer Component Integration -->
+    <section id="contact" class="pb-12">
+      <div class="border border-text/10 dark:border-dk-text/10 bg-secondary/5 dark:bg-dk-secondary/5 rounded-xl p-6">
+        <Contact contact={info.contact} size="md" />
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section
-    class="flex flex-col mb-24 lg:flex-row justify-center items-center h-full space-y-4"
-  >
-    <BookConsultation />
-  </section>
-  <section class="lg:m-0
-        my-20
-        mx-2" id="about">
-    <About about={info.about} client:visible />
-  </section>
-
-  <section
-    class="lg:h-screen lg:m-0 my-20 flex-col flex justify-center w-full"
-    id="blog"
-  >
-    <Blog posts={allPosts} />
-  </section>
-  <!-- Subscribe Section -->
-  <!-- <section class="mt-16">
-    <Subscribe />
-  </section> -->
-  <section
-    class="lg:h-screen lg:m-0 my-20 mx-2 flex-col flex justify-center w-full"
-    id="contact"
-  >
-    <div class="flex flex-row justify-center items-center h-full space-y-4">
-      <Contact contact={info.contact} size="lg" />
-    </div>
-
-  </section>
+  </main>
 </BaseLayout>
-
-<style>
-  .typewriter {
-    background: linear-gradient(to left, #3333ff, #efff15, #ff0000);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    animation: animation 6s ease-in-out infinite;
-    background-size: 400% 100%;
-  }
-
-  @keyframes animation {
-    0%,
-    100% {
-      background-position: 0 0;
-    }
-
-    50% {
-      background-position: 100% 0;
-    }
-  }
-
-  /* Shadow effect shifting through the image: inspired by https://codepen.io/davidicus/pen/emgQKJ */
-  .profile-pic {
-    position: relative;
-    display: inline-block;
-    overflow: hidden;
-    border-radius: 100%;
-  }
-
-  .profile-pic::before {
-    position: absolute;
-    top: 0;
-    left: -75%;
-    z-index: 2;
-    display: block;
-    content: "";
-    width: 50%;
-    height: 100%;
-    background: -webkit-linear-gradient(
-      left,
-      rgba(255, 255, 255, 0) 0%,
-      rgba(255, 255, 255, 0.3) 100%
-    );
-    background: linear-gradient(
-      to right,
-      rgba(255, 255, 255, 0) 0%,
-      rgba(255, 255, 255, 0.3) 100%
-    );
-    -webkit-transform: skewX(-25deg);
-    transform: skewX(-25deg);
-  }
-  .profile-pic:hover::before {
-    -webkit-animation: shine 0.75s;
-    animation: shine 0.75s;
-  }
-  @-webkit-keyframes shine {
-    100% {
-      left: 125%;
-    }
-  }
-  @keyframes shine {
-    100% {
-      left: 125%;
-    }
-  }
-</style>
