@@ -1,5 +1,5 @@
 ---
-title: "Selling an .html file for a few grand"
+title: "Selling an html file for a few grand"
 date: "2026-05-15"
 
 layout: ../../layouts/PostLayout.astro
@@ -37,7 +37,7 @@ If you read my post last year about [software losing you money](./software-can-s
 
 But clients don't buy your tech stack. They buy **outcomes**.
 
-The client didn't care that their solution didn't involve Next.js or a complex database. What they cared about was that their new marketing website, Bold Talks, needed to load instantly, look incredibly clean, and clearly convert visitors without a massive tangle of background plugins slowing everything down to a crawl.
+The client didn't care that their solution didn't involve Next.js or a complex database. What they cared about was that their new marketing website, [Bold Talks](https://bold-talks.com/), needed to load instantly, look incredibly clean, and clearly convert visitors without a massive tangle of background plugins slowing everything down to a crawl.
 
 I have a saying that I always remind people of:
 
