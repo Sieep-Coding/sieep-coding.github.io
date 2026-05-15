@@ -16,14 +16,14 @@ const Tooltip: React.FC<TooltipProps> = ({ children, text, position = "top" }) =
     };
 
     return (
-        <div className="relative inline-block group">
+        <span className="relative inline-flex items-baseline group flex-shrink-0">
             {children}
             <div
-                className={`absolute ${positionClasses[position]} bg-secondary text-primary dark:bg-dk-secondary dark:text-dk-primary text-xs rounded py-1 px-2 opacity-0 transition-opacity duration-200 group-hover:opacity-100 whitespace-nowrap z-50`}
+                className={`absolute ${positionClasses[position]} bg-secondary text-primary dark:bg-dk-secondary dark:text-dk-primary text-xs rounded py-1 px-2 opacity-0 transition-opacity duration-200 group-hover:opacity-100 whitespace-nowrap z-50 pointer-events-none`}
             >
                 {text}
             </div>
-        </div>
+        </span>
     );
 };
 
