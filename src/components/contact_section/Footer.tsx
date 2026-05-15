@@ -7,10 +7,10 @@ const Footer: React.FC = () => {
                 
                 {/* Minimalist Horizontal Navigation */}
                 <div className="flex flex-wrap justify-center items-center gap-x-3 gap-y-2 text-center font-medium">
-                    <a
+                                        <a
                         href="https://luniv.tech/"
                         target="_blank"
-                        誠="noopener noreferrer"
+                        rel="noopener noreferrer"
                         className="hover:text-secondary dark:hover:text-dk-accent transition-colors"
                     >
                         luniv.tech
