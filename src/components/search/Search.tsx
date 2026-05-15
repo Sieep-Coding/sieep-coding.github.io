@@ -1,5 +1,4 @@
 import Fuse from "fuse.js";
-
 import React, { useEffect, useState } from "react";
 import Modal from "react-modal";
 import Tooltip from "../navbar/Tooltip";
@@ -26,7 +25,6 @@ export default function Search({ posts }: any) {
     setSearchResults(res);
   };
 
-  // handle keyboard navigation
   useEffect(() => {
     const handleKeyboard = (e: KeyboardEvent) => {
       if (!search) return;
@@ -55,7 +53,6 @@ export default function Search({ posts }: any) {
     };
 
     window.addEventListener("keydown", handleKeyboard);
-
     return () => {
       window.removeEventListener("keydown", handleKeyboard);
     };
@@ -63,12 +60,12 @@ export default function Search({ posts }: any) {
 
   return (
     <div className="self-center">
-      <button onClick={() => setSearch(true)} aria-label="Search">
+      <button onClick={() => setSearch(true)} aria-label="Search" className="text-secondary dark:text-dk-secondary">
         <Tooltip text="Search my blog." position="bottom">
-        <i
-          className="fa fa-search self-center hover:text-accent dark:hover:text-dk-accent text-2xl"
-          onClick={() => setSearch(true)}
-        ></i>
+          <i
+            className="fa fa-search self-center hover:text-accent dark:hover:text-dk-accent text-2xl cursor-pointer transition-colors"
+            onClick={() => setSearch(true)}
+          ></i>
         </Tooltip>
       </button>
     
@@ -81,7 +78,7 @@ export default function Search({ posts }: any) {
       >
         <div className="relative">
           <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-            <i className="fa fa-search text-gray-400 dark:text-gray-300"></i>
+            <i className="fa fa-search text-text/50 dark:text-dk-text/50"></i>
           </div>
           <input
             type="search"
@@ -93,28 +90,30 @@ export default function Search({ posts }: any) {
             onChange={(e) => query(e.target.value)}
           />
         </div>
-        <div className="flex flex-col space-y-4 mt-4">
+        <div className="flex flex-col space-y-4 mt-4 overflow-y-auto">
           <ul className="flex flex-col space-y-2">
             {searchResults.map((result: any, index: number) => (
               <li
                 key={result.item.frontmatter.title}
-                className="p-2 rounded-lg cursor-pointer flex flex-row justify-between items-center"
+                className={`p-2 rounded-lg cursor-pointer flex flex-row justify-between items-center ${
+                  selected === index ? "bg-secondary/10 dark:bg-dk-secondary/20" : ""
+                }`}
                 onMouseEnter={() => setSelected(index)}
               >
                 <a
                   href={result.item.url}
-                  className="block"
+                  className="block w-full"
                   onClick={() => setSearch(false)}
                 >
                   <h3 className="text-xl font-bold text-text dark:text-dk-text">
                     {result.item.frontmatter.title}
                   </h3>
-                  <p className="text-text dark:text-dk-text">
+                  <p className="text-text dark:text-dk-text opacity-80">
                     {result.item.frontmatter.description}
                   </p>
                 </a>
                 {selected === index && (
-                  <i className="fa fa-arrow-left text-accent dark:text-dk-accent text-2xl"></i>
+                  <i className="fa fa-arrow-left text-accent dark:text-dk-accent text-2xl ml-2"></i>
                 )}
               </li>
             ))}

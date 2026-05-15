@@ -1,15 +1,17 @@
 import React from "react";
-import Tooltip from "./Tooltip";  // Import the Tooltip component
+import Tooltip from "./Tooltip";
 
 const GithubButton: React.FC = () => {
     return (
-        <button>
+        <button className="flex items-center justify-center self-center" aria-label="GitHub Profile">
             <Tooltip text="Follow Me On Github" position="default">
                 <a
                     href="https://github.com/Sieep-Coding/"
-                    className="flex items-center space-x-2 group"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center text-secondary dark:text-dk-secondary hover:text-accent dark:hover:text-dk-accent transition-colors"
                 >
-                    <i className="fab fa-github self-center hover:text-accent dark:hover:text-dk-accent text-2xl"></i>
+                    <i className="fab fa-github text-2xl"></i>
                 </a>
             </Tooltip>
         </button>

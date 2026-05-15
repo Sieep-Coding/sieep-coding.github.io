@@ -1,11 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ToggleDarkMode from "../ToggleDarkMode";
 import Search from "../search/Search";
 import Hamburger from "./Hamburger";
 import { info } from "../../data/info";
 import HireMe from "./HireMe";
 import GithubButton from "./GithubButton";
-import Tooltip from "./Tooltip";
 
 export default function Nav({ posts }) {
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -26,64 +25,61 @@ export default function Nav({ posts }) {
 
   return (
     <>
-       <nav className="container top-0 z-50 absolute bg-primary dark:bg-dk-primary">
-        <div className="w-full px-4 sm:px-6 md:px-6 py-2 flex justify-between items-center">
+      <nav className="container top-0 z-50 absolute bg-primary dark:bg-dk-primary">
+        <div className="w-full px-4 sm:px-6 py-4 flex justify-between items-center">
           <a
-            className="font-bold text-lg sm:text-2xl md:text-2xl lg:text-4xl hover:scale-105 hover:-rotate-3 duration-300"
+            className="font-bold text-lg sm:text-2xl hover:scale-105 hover:-rotate-3 duration-300 block"
             href="/#"
           >
             <span className="text-secondary dark:text-dk-secondary">
               {"</" + extractInitials(info.name) + ">"}
             </span>
           </a>
-          <div className="flex items-center space-x-3 sm:space-x-5 mr-5 sm:mr-20 md:space-x-5 mr-5 sm:mr-20">
-          </div>
 
-          <div className="inline-flex lg:hidden text-secondary dark:text-dk-secondary">
+          <div className="inline-flex lg:hidden">
             <Hamburger
               onClick={() => setIsNavOpen(!isNavOpen)}
               isNavOpen={isNavOpen}
             />
           </div>
 
+          {/* Desktop Navigation Items */}
           <div className="hidden lg:block">
-            <ul className="inline-flex text-secondary dark:text-dk-secondary text-2xl font-normal">
+            <ul className="flex items-center text-secondary dark:text-dk-secondary text-2xl font-normal space-x-6">
               {navLinks.map((link, index) => (
                 <li
                   key={index}
-                  className="p-2 hover:scale-105 hover:-rotate-2 duration-300 dark:hover:text-pink-800"
+                  className="p-2 hover:scale-105 hover:-rotate-2 duration-300 hover:text-accent dark:hover:text-dk-accent"
                 >
                   <a href={link.href}>{link.name}</a>
                 </li>
               ))}
-              {/* <li className="px-4 flex text-black dark:text-primary">
-                <GithubButton />
-              </li> */}
-              <li className="ml-2 px-2 flex">
+              <li className="flex items-center justify-center">
                 <Search posts={posts} />
               </li>
-              <li className="px-4 flex mt-1 mr-1">
+              <li className="flex mt-1.5 items-center justify-center">
                 <ToggleDarkMode />
               </li>
-              <li className="px-4 flex mt-1 mr-1">
+              <li className="flex items-center justify-center">
                 <GithubButton />
               </li>
             </ul>
           </div>
         </div>
 
+        {/* Mobile Dropdown Panel */}
         <div
-          className={`${!isNavOpen ? "hidden" : ""} h-full flex flex-col items-center text-center lg:hidden dark:text-tertiary`}
+          className={`${!isNavOpen ? "hidden" : ""} h-full flex flex-col items-center text-center lg:hidden bg-primary dark:bg-dk-primary`}
         >
           <ul className="w-full text-secondary dark:text-dk-secondary text-xl font-semibold">
             {navLinks.map((link, index) => (
-              <li key={index} className="p-4">
+              <li key={index} className="p-4 hover:text-accent dark:hover:text-dk-accent">
                 <a href={link.href} onClick={() => setIsNavOpen(false)}>
                   {link.name}
                 </a>
               </li>
             ))}
-            <li className="p-4 flex flex-row items-center justify-evenly">
+            <li className="p-4 flex flex-row items-center justify-center space-x-8 border-t border-secondary/10 dark:border-dk-secondary/10">
               <ToggleDarkMode />
               <Search posts={posts} />
               <GithubButton />
@@ -92,20 +88,21 @@ export default function Nav({ posts }) {
         </div>
       </nav>
 
+      {/* Backdrop Overlays */}
       {isNavOpen && (
         <div
-          className="fixed inset-0 blur-3xl bg-black bg-opacity-50 z-40 lg:hidden"
+          className="fixed inset-0 backdrop-blur-sm bg-secondary/20 dark:bg-dk-primary/40 z-40 lg:hidden"
           onClick={() => setIsNavOpen(false)}
         ></div>
       )}
 
       {isHireMeOpen && (
         <div
-          className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-60"
+          className="fixed inset-0 flex items-center justify-center z-50 backdrop-blur-sm bg-secondary/40 dark:bg-black/50"
           onClick={() => setIsHireMeOpen(false)}
         >
           <div
-            className="relative bg-primary dark:bg-dk-primary p-8 rounded-lg w-full max-w-md mx-4 md:mx-8 lg:mx-16"
+            className="relative bg-primary dark:bg-dk-primary p-8 rounded-lg w-full max-w-md mx-4 border-2 border-secondary dark:border-dk-secondary"
             onClick={(e) => e.stopPropagation()}
           >
             <button

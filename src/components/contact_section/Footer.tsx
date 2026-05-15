@@ -26,13 +26,6 @@ const Footer: React.FC = () => {
                     </a>
                     <span>·</span>
                     <a
-                        href="#about"
-                        className="hover:text-secondary dark:hover:text-dk-accent transition-colors"
-                    >
-                        About
-                    </a>
-                    <span>·</span>
-                    <a
                         href="https://nickstambaugh.dev/posts"
                         className="hover:text-secondary dark:hover:text-dk-accent transition-colors"
                     >
