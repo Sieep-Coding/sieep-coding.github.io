@@ -4,17 +4,13 @@ export default function ViewBlog() {
   return (
     <a
       href="https://nickstambaugh.dev/posts"
-      className="block transform transition-transform hover:scale-105"
+      className="inline-block mt-10"
     >
-      <div className="flex flex-col items-center space-y-4 p-4 bg-gradient-to-r from-[#ff79c6] to-[#8be9fd] shadow-lg rounded-lg mt-10">
-        <Tooltip text="Explore more posts." position="left">
-          <h2 className="text-3xl font-bold text-accent dark:text-white hover:text-secondary dark:hover:text-dk-secondary transition-colors duration-300">
-            Visit Blog
-          </h2>
-        </Tooltip>
-      </div>
+      <Tooltip text="Explore more posts." position="bottom">
+        <h2 className="text-xl font-medium text-text hover:text-secondary dark:text-dk-text dark:hover:text-dk-secondary transition-colors duration-200">
+          Visit Blog →
+        </h2>
+      </Tooltip>
     </a>
   );
 }
-
-  
