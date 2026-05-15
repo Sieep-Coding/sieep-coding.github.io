@@ -49,7 +49,6 @@ const Footer: React.FC = () => {
                     </a>
                 </div>
 
-                {/* Secondary Legal/Support Row */}
                 <div className="flex flex-wrap justify-center items-center gap-x-3 text-xs opacity-80 tracking-wide uppercase">
                     <a
                         href="https://nickstambaugh.dev/privacy"
