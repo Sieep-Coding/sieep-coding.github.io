@@ -3,7 +3,7 @@ export const info = {
   brief_description:
     "Nick Stambaugh is an entrepreneur & enterprise software engineer",
   role: "Full Stack Engineer",
-  picture: "/img.jpg",
+  picture: "/nickbruce.jpg",
   picture_alt: "Nick Stambaugh",
   location: "Rockford, Michigan",
   cv: "/Nick_Stambaugh-Resume.pdf",
