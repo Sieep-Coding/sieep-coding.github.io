@@ -33,7 +33,7 @@ If you spend your days writing software, you already understand this concept imp
 
 A junior dev will often drop a 200-line function filled with overly complex logic to solve a problem. But an experienced engineer looks at that and sees a massive security risk. They know that every single line of code is a liability. Often referred to as `Tech Debt`, it's the hidden cost of writing code.
 
-The exact same rule applies to the words that come out of your mouth or the updates you post online
+The exact same rule applies to the words that come out of your mouth or the updates you post online.
 
 ## The Right Words at the Right Time
 
