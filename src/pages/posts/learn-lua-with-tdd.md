@@ -9,7 +9,7 @@ tags: ["#Lua", "#Coding", "#Tech"]
 ---
 > Today I started working on my first book, Learn Lua With Tests
 >
-> [See live updates!](__https://learn-lua-with-tests.vercel.app/__)
+> [See live updates!](https://learn-lua-with-tests.vercel.app/)
 
 [Lua](https://lua.org/) is such a great language. Simple to understand but capable of a lot.
 
