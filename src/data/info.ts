@@ -1,7 +1,7 @@
 export const info = {
   name: "Nick Stambaugh",
   brief_description:
-    "Nick Stambaugh is an entrepreneur & enterprise software engineer",
+    "Nick Stambaugh is a writer, entrepreneur, and enterprise software engineer",
   role: "Full Stack Engineer",
   picture: "/nickbruce.jpg",
   picture_alt: "Nick Stambaugh",
