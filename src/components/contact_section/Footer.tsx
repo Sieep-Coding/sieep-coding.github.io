@@ -100,6 +100,24 @@ const Footer: React.FC = () => {
                         />
                     </a>
 
+                    {/* Firefox Badge */}
+                    <a 
+                        href="https://www.mozilla.org/firefox/new/" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="block w-[88px] h-[31px] rounded-[2px] overflow-hidden border border-text/10 dark:border-dk-text/10 hover:opacity-80 transition-opacity"
+                        title="Get Firefox"
+                    >
+                        <img 
+                            src="./firefox.gif" 
+                            alt="Get Firefox" 
+                            width="88" 
+                            height="31"
+                            className="block w-full h-full"
+                            style={{ imageRendering: "pixelated" }}
+                        />
+                    </a>
+
                     {/* Aries Badge */}
                     <a 
                         href="https://nickstambaugh.dev" 
@@ -111,6 +129,42 @@ const Footer: React.FC = () => {
                         <img 
                             src="./aries.gif" 
                             alt="Aries" 
+                            width="88" 
+                            height="31"
+                            className="block w-full h-full"
+                            style={{ imageRendering: "pixelated" }}
+                        />
+                    </a>
+
+                    {/* University of Michigan Badge */}
+                    <a 
+                        href="https://umich.edu" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="block w-[88px] h-[31px] rounded-[2px] overflow-hidden border border-text/10 dark:border-dk-text/10 hover:opacity-80 transition-opacity"
+                        title="University of Michigan"
+                    >
+                        <img 
+                            src="./goblue.gif" 
+                            alt="Go Blue" 
+                            width="88" 
+                            height="31"
+                            className="block w-full h-full"
+                            style={{ imageRendering: "pixelated" }}
+                        />
+                    </a>
+
+                    {/* Linux Mint Badge */}
+                    <a 
+                        href="https://linuxmint.com/download.php" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="block w-[88px] h-[31px] rounded-[2px] overflow-hidden border border-text/10 dark:border-dk-text/10 hover:opacity-80 transition-opacity"
+                        title="Linux Mint"
+                    >
+                        <img 
+                            src="./linux.gif" 
+                            alt="Linux Mint" 
                             width="88" 
                             height="31"
                             className="block w-full h-full"
