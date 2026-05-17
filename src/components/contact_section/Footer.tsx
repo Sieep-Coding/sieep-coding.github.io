@@ -5,7 +5,6 @@ const Footer: React.FC = () => {
         <footer className="w-full py-8 mt-16 border-t border-text/10 dark:border-dk-text/10">
             <div className="max-w-2xl mx-auto px-4 flex flex-col items-center gap-6 text-sm text-text/70 dark:text-dk-text/70">
                 
-                {/* Minimalist Horizontal Navigation */}
                 <div className="flex flex-wrap justify-center items-center gap-x-3 gap-y-2 text-center font-medium">
                     <a
                         href="https://luniv.tech/"
@@ -49,7 +48,6 @@ const Footer: React.FC = () => {
                     </a>
                 </div>
 
-                {/* Secondary Links */}
                 <div className="flex flex-wrap justify-center items-center gap-x-3 text-xs opacity-80 tracking-wide uppercase">
                     <a
                         href="https://nickstambaugh.dev/privacy"
@@ -79,10 +77,8 @@ const Footer: React.FC = () => {
                     </a>
                 </div>
 
-                {/* Old-School 88x31 Web Badges */}
                 <div className="pt-2 flex flex-wrap justify-center items-center gap-3">
                     
-                    {/* Kagi Badge */}
                     <a 
                         href="https://kagi.com" 
                         target="_blank" 
@@ -100,7 +96,6 @@ const Footer: React.FC = () => {
                         />
                     </a>
 
-                    {/* Firefox Badge */}
                     <a 
                         href="https://www.mozilla.org/firefox/new/" 
                         target="_blank" 
@@ -109,7 +104,7 @@ const Footer: React.FC = () => {
                         title="Get Firefox"
                     >
                         <img 
-                            src="./firefox.gif" 
+                            src="/firefox.gif" 
                             alt="Get Firefox" 
                             width="88" 
                             height="31"
@@ -118,7 +113,6 @@ const Footer: React.FC = () => {
                         />
                     </a>
 
-                    {/* Aries Badge */}
                     <a 
                         href="https://nickstambaugh.dev" 
                         target="_blank" 
@@ -127,7 +121,7 @@ const Footer: React.FC = () => {
                         title="Aries"
                     >
                         <img 
-                            src="./aries.gif" 
+                            src="/aries.gif" 
                             alt="Aries" 
                             width="88" 
                             height="31"
@@ -136,7 +130,6 @@ const Footer: React.FC = () => {
                         />
                     </a>
 
-                    {/* University of Michigan Badge */}
                     <a 
                         href="https://umich.edu" 
                         target="_blank" 
@@ -145,7 +138,7 @@ const Footer: React.FC = () => {
                         title="University of Michigan"
                     >
                         <img 
-                            src="./goblue.gif" 
+                            src="/goblue.gif" 
                             alt="Go Blue" 
                             width="88" 
                             height="31"
@@ -154,16 +147,15 @@ const Footer: React.FC = () => {
                         />
                     </a>
 
-                    {/* Linux Mint Badge */}
                     <a 
-                        href="https://linuxmint.com/download.php" 
+                        href="https://linuxmint.com" 
                         target="_blank" 
                         rel="noopener noreferrer"
                         className="block w-[88px] h-[31px] rounded-[2px] overflow-hidden border border-text/10 dark:border-dk-text/10 hover:opacity-80 transition-opacity"
                         title="Linux Mint"
                     >
                         <img 
-                            src="./linux.gif" 
+                            src="/linux.gif" 
                             alt="Linux Mint" 
                             width="88" 
                             height="31"
@@ -172,7 +164,6 @@ const Footer: React.FC = () => {
                         />
                     </a>
 
-                    {/* RSS Badge */}
                     <a 
                         href="/rss.xml" 
                         target="_blank" 
@@ -181,7 +172,7 @@ const Footer: React.FC = () => {
                         title="RSS Feed"
                     >
                         <img 
-                            src="./rss.gif" 
+                            src="/rss.gif" 
                             alt="RSS Feed" 
                             width="88" 
                             height="31"
@@ -190,7 +181,6 @@ const Footer: React.FC = () => {
                         />
                     </a>
 
-                    {/* Buy Me A Coffee Badge */}
                     <a 
                         href="https://buymeacoffee.com/nickstambaugh" 
                         target="_blank" 
@@ -199,7 +189,7 @@ const Footer: React.FC = () => {
                         title="Buy Me A Coffee"
                     >
                         <img 
-                            src="./coffee.gif" 
+                            src="/coffee.gif" 
                             alt="Buy Me A Coffee" 
                             width="88" 
                             height="31"
@@ -208,7 +198,6 @@ const Footer: React.FC = () => {
                         />
                     </a>
 
-                    {/* CLI Junkie Badge */}
                     <a 
                         href="https://github.com/sieep-coding"
                         target="_blank" 
@@ -217,7 +206,7 @@ const Footer: React.FC = () => {
                         title="sieep-coding on GitHub"
                     >
                         <img 
-                            src="./cli.gif" 
+                            src="/cli.gif" 
                             alt="CLI Junkie" 
                             width="88" 
                             height="31" 
