@@ -25,7 +25,21 @@ const Footer: React.FC = () => {
                     </a>
                     <span>·</span>
                     <a
-                        href="https://nickstambaugh.dev/posts"
+                        href="/bruce-the-dog"
+                        className="hover:text-secondary dark:hover:text-dk-accent transition-colors"
+                    >
+                        Bruce The Dog
+                    </a>
+                    <span>·</span>
+                    <a
+                        href="/about"
+                        className="hover:text-secondary dark:hover:text-dk-accent transition-colors"
+                    >
+                        About Me
+                    </a>
+                    <span>·</span>
+                    <a
+                        href="/posts"
                         className="hover:text-secondary dark:hover:text-dk-accent transition-colors"
                     >
                         Blog
