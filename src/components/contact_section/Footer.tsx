@@ -47,8 +47,6 @@ const Footer: React.FC = () => {
                     <span>·</span>
                     <a
                         href="/rss.xml"
-                        target="_blank"
-                        rel="noopener noreferrer"
                         className="hover:text-secondary dark:hover:text-dk-accent transition-colors"
                     >
                         RSS
@@ -64,9 +62,7 @@ const Footer: React.FC = () => {
 
                 <div className="flex flex-wrap justify-center items-center gap-x-3 text-xs opacity-80 tracking-wide uppercase">
                     <a
-                        href="https://nickstambaugh.dev/privacy"
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        href="/privacy"
                         className="hover:text-secondary dark:hover:text-dk-accent transition-colors"
                     >
                         Privacy
@@ -74,8 +70,6 @@ const Footer: React.FC = () => {
                     <span>·</span>
                     <a
                         href="/license"
-                        target="_blank"
-                        rel="noopener noreferrer"
                         className="hover:text-secondary dark:hover:text-dk-accent transition-colors"
                     >
                         License
