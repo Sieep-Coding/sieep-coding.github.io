@@ -47,7 +47,7 @@ export const info = {
         location: "NxGen MDx",
         link: "https://www.nxgenmdx.com/",
         description:
-           `Transformed complex data into meaningful insights, helping drive business decisions.
+          `Transformed complex data into meaningful insights, helping drive business decisions.
             Streamlined reporting processes to improve efficiency for leadership and sales teams.`,
       },
       {
@@ -56,7 +56,7 @@ export const info = {
         location: "National Nail",
         link: "https://www.nationalnail.com/",
         description:
-        "Creating impactful visualizations, automating reporting processes, and providing analytical support to enhance business performance.",
+          "Creating impactful visualizations, automating reporting processes, and providing analytical support to enhance business performance.",
       },
       {
         title: "Business Intelligence Analyst",
@@ -64,7 +64,7 @@ export const info = {
         location: "The Right Place, Inc.",
         link: "https://www.rightplace.org/",
         description:
-        `Built interactive dashboards and automated reports to enhance business performance.
+          `Built interactive dashboards and automated reports to enhance business performance.
         Provided analytical support to inform executive decision-making.`,
       },
       {
@@ -73,32 +73,32 @@ export const info = {
         location: "University of Michigan Nuclear Engineering & Radiological Sciences",
         link: "https://ners.engin.umich.edu/",
         description:
-        `Conducted economic analysis of U.S. nuclear power plants, focusing on feasibility and efficiency.
+          `Conducted economic analysis of U.S. nuclear power plants, focusing on feasibility and efficiency.
         Worked on data modeling and analysis, contributing to a deeper understanding of nuclear energy economics.`,
       },
     ],
 
-    skills: [ {
+    skills: [{
       Projects: ["Robotic Proccess Automation",
-                 "Custom Interpreters",
-                 "Static Site Generators",
-                 "Document Management Systems", 
-                 "Reporting/Analytical Microservices",
-                 "Custom Unit Test Suite",
-                 
-                 "Interactive Org Charts",
-                 "Custom CRMs",
-                 "ETL Microservices",
-                 "Custom DSLs in Lua",
-                 "Enterprise Notifcation System",
-                 "Command-Line Tools",
-                 "Web Servers",
-                 "Employee Evaluation Software"],
+        "Custom Interpreters",
+        "Static Site Generators",
+        "Document Management Systems",
+        "Reporting/Analytical Microservices",
+        "Custom Unit Test Suite",
+
+        "Interactive Org Charts",
+        "Custom CRMs",
+        "ETL Microservices",
+        "Custom DSLs in Lua",
+        "Enterprise Notifcation System",
+        "Command-Line Tools",
+        "Web Servers",
+        "Employee Evaluation Software"],
       Languages: ["C#", "Elixir", "Python", "TypeScript", "Go", "Lua", "SQL"],
       Frameworks: ["Phoenix (Elixir)", "React", ".NET", "Node.js", "Astro"],
       Libraries: ["xUnit", "Jest", "D3.js"],
       Databases: ["Postgres", "SQLite", "SQL Server",],
-    } ],
+    }],
   },
 
   projects: [
@@ -138,7 +138,7 @@ export const info = {
       description:
         "MiTalent360 is a virtual educational assessment tool.",
       link: "https://mitalent360.com/",
-      tech: ["React", "Node.js","JavaScript"],
+      tech: ["React", "Node.js", "JavaScript"],
       img_alt: "Photo of Mitalent360",
       img_path: "mitalent.png",
     },
@@ -217,6 +217,8 @@ export const info = {
   contact: {
     email: "nickstambaugh@proton.me",
     github: "https://github.com/Sieep-Coding/",
+    twitch: "https://twitch.tv/sieep00",
+    youtube: "https://www.youtube.com/@sieep00",
     RSS: "/rss.xml",
     website: "https://luniv.tech",
   },

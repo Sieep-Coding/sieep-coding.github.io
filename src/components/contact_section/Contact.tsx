@@ -8,32 +8,43 @@ interface ContactProps {
 
 export default function Contact({ contact, size }: ContactProps) {
   const socialMediaLinks = [
-    // Fix this if you add or remove social media links in info.ts
-    {
-      name: "website",
-      icon: "fas fa-globe",
-      link: contact.website,
-      link_alt: "Website",
-    },
-    {
-      name: "email",
-      icon: "fas fa-envelope",
-      link: `mailto:${contact.email}`,
-      link_alt: "Email",
-    },
-    {
-      name: "github",
-      icon: "fab fa-github",
-      link: contact.github,
-      link_alt: "GitHub",
-    },
-    {
-      name: "RSS",
-      icon: "fa fa-rss",
-      link: contact.RSS,
-      link_alt: "RSS",
-    },
-  ];
+  {
+    name: "website",
+    icon: "fas fa-globe",
+    link: contact.website,
+    link_alt: "Website",
+  },
+  {
+    name: "email",
+    icon: "fas fa-envelope",
+    link: `mailto:${contact.email}`,
+    link_alt: "Email",
+  },
+  {
+    name: "github",
+    icon: "fab fa-github",
+    link: contact.github,
+    link_alt: "GitHub",
+  },
+  {
+    name: "twitch",
+    icon: "fab fa-twitch",
+    link: contact.twitch,
+    link_alt: "Twitch",
+  },
+  {
+    name: "youtube",
+    icon: "fab fa-video",
+    link: contact.youtube,
+    link_alt: "YouTube",
+  },
+  {
+    name: "RSS",
+    icon: "fa fa-rss",
+    link: contact.RSS,
+    link_alt: "RSS",
+  },
+];
 
   return (
     <div

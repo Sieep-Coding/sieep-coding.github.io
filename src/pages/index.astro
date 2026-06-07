@@ -7,31 +7,89 @@ import Tooltip from "../components/navbar/Tooltip";
 import { Image } from "astro:assets";
 const allPosts = await Astro.glob("./posts/*.md");
 ---
+
 <BaseLayout title="Home">
   <main class="max-w-2xl mx-auto px-4 py-16 sm:py-24 space-y-20">
-
     <!-- Minimalist Hero Header -->
-    <header class="flex flex-col sm:flex-row sm:items-center justify-between gap-8">
+    <header
+      class="flex flex-col sm:flex-row sm:items-center justify-between gap-8"
+    >
       <div class="space-y-2 order-2 sm:order-1">
         <div>
-          <h1 class="text-3xl font-bold tracking-tight text-secondary dark:text-dk-accent">
+          <h1
+            class="text-3xl font-bold tracking-tight text-secondary dark:text-dk-accent"
+          >
             Hi, I'm {info.name}
           </h1>
-          <div class="mt-1 text-sm text-text/50 dark:text-dk-text/50" style="display:flex;flex-direction:row;align-items:center;gap:4px;flex-wrap:wrap;">
-            <span style="white-space:nowrap;flex-shrink:0">alias</span><Tooltip text="pronounced seep or /siːp/ — rhymes with sleep, deep" position="default" client:load><span class="cursor-help" style="white-space:nowrap;flex-shrink:0">'sieep'</span></Tooltip><span style="white-space:nowrap;flex-shrink:0">·</span><a href="https://github.com/sieep-coding" target="_blank" rel="noopener noreferrer" class="hover:text-secondary dark:hover:text-dk-accent transition-colors" style="white-space:nowrap;display:inline-flex;align-items:center;gap:3px;"><i class="fab fa-github text-sm"></i>sieep-coding</a><span style="white-space:nowrap;flex-shrink:0">·</span><a href="https://discord.com/users/414103569147494401" target="_blank" rel="noopener noreferrer" class="hover:text-secondary dark:hover:text-dk-accent transition-colors" style="white-space:nowrap;display:inline-flex;align-items:center;gap:3px;"><i class="fab fa-discord text-xs"></i>sieep00</a>
+          <div
+            class="mt-1 flex flex-wrap items-center gap-1 text-sm text-text/50 dark:text-dk-text/50"
+          >
+            <span class="whitespace-nowrap">alias</span>
+
+            <Tooltip
+              text="pronounced seep or /siːp/ — rhymes with sleep, deep"
+              position="default"
+              client:load
+            >
+              <span class="cursor-help whitespace-nowrap">'sieep'</span>
+            </Tooltip>
+
+            <span aria-hidden="true">·</span>
+
+            <a
+              href="https://github.com/sieep-coding"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-1 whitespace-nowrap transition-colors hover:text-secondary dark:hover:text-dk-accent"
+            >
+              <i class="fab fa-github text-base"></i>
+              <span>sieep-coding</span>
+            </a>
+
+
+            <span aria-hidden="true">·</span>
+
+            <a
+              href="https://twitch.tv/sieep00"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-1 whitespace-nowrap transition-colors hover:text-secondary dark:hover:text-dk-accent"
+            >
+              <i class="fab fa-twitch text-base"></i>
+              <span>sieep00</span>
+
+              <span aria-hidden="true">·</span>
+
+              <a
+                href="https://www.youtube.com/@sieep00"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-1 whitespace-nowrap transition-colors hover:text-secondary dark:hover:text-dk-accent"
+              >
+                <i class="fab fa-video text-base"></i>
+                <span>@sieep00</span>
+              </a>
+            </a>
           </div>
         </div>
         <p class="text-text dark:text-dk-text text-lg leading-relaxed pt-1">
           {info.brief_description}
         </p>
         <p class="text-sm text-text/60 dark:text-dk-text/60">
-          Based out of {info.location} — <a href="mailto:nickstambaugh@proton.me" class="text-secondary dark:text-dk-secondary hover:text-secondary/80 dark:hover:text-dk-accent underline decoration-text/20 dark:decoration-dk-text/20 underline-offset-2 transition-colors">Email me</a>
+          Based out of {info.location} — <a
+            href="mailto:nickstambaugh@proton.me"
+            class="text-secondary dark:text-dk-secondary hover:text-secondary/80 dark:hover:text-dk-accent underline decoration-text/20 dark:decoration-dk-text/20 underline-offset-2 transition-colors"
+            >Email me<i class="fab fa-envelope text-lg ml-2"></i></a
+          >
         </p>
-              <div class="mt-8">
-        <a href="/about" class="inline-flex items-center text-sm font-medium text-secondary dark:text-dk-accent hover:underline underline-offset-4">
-          About me →
-        </a>
-      </div>
+        <div class="mt-8">
+          <a
+            href="/about"
+            class="inline-flex items-center text-sm font-medium text-secondary dark:text-dk-accent hover:underline underline-offset-4"
+          >
+            About me →
+          </a>
+        </div>
       </div>
       <div class="order-1 sm:order-2 shrink-0">
         <Image
@@ -53,10 +111,11 @@ const allPosts = await Astro.glob("./posts/*.md");
     <hr class="border-text/10 dark:border-dk-text/10" />
 
     <section id="contact" class="pb-12">
-      <div class="border border-text/10 dark:border-dk-text/10 bg-secondary/5 dark:bg-dk-secondary/5 rounded-xl p-6">
+      <div
+        class="border border-text/10 dark:border-dk-text/10 bg-secondary/5 dark:bg-dk-secondary/5 rounded-xl p-6"
+      >
         <Contact contact={info.contact} size="md" />
       </div>
     </section>
-
   </main>
 </BaseLayout>
