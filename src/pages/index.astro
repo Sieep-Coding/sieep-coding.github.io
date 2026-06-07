@@ -27,6 +27,11 @@ const allPosts = await Astro.glob("./posts/*.md");
         <p class="text-sm text-text/60 dark:text-dk-text/60">
           Based out of {info.location} — <a href="mailto:nickstambaugh@proton.me" class="text-secondary dark:text-dk-secondary hover:text-secondary/80 dark:hover:text-dk-accent underline decoration-text/20 dark:decoration-dk-text/20 underline-offset-2 transition-colors">Email me</a>
         </p>
+              <div class="mt-8">
+        <a href="/about" class="inline-flex items-center text-sm font-medium text-secondary dark:text-dk-accent hover:underline underline-offset-4">
+          About me →
+        </a>
+      </div>
       </div>
       <div class="order-1 sm:order-2 shrink-0">
         <Image
@@ -43,11 +48,6 @@ const allPosts = await Astro.glob("./posts/*.md");
 
     <section id="blog">
       <Blog posts={allPosts} />
-      <div class="mt-8">
-        <a href="/about" class="inline-flex items-center text-sm font-medium text-secondary dark:text-dk-accent hover:underline underline-offset-4">
-          Read more about my journey →
-        </a>
-      </div>
     </section>
 
     <hr class="border-text/10 dark:border-dk-text/10" />
