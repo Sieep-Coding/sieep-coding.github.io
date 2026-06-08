@@ -134,7 +134,7 @@ If you haven't spent time in the Loop, you're missing out on one of the greatest
 ## Extras
 
 ![Coding in Union Station](../photo/_gettinworkdone.jpg "Coding in Union Station")
-> Coding in Union Station
+> Gettin' work done in Union Station, hit me up at [Luniv Technology](https://luniv.tech/)
 
 ![Peet's Coffee by Chicago River](../photo/_peets.jpg "Peet's Coffee by Chicago River")
 > [Peet's coffee](https://en.wikipedia.org/wiki/Peet%27s_Coffee) by the Chicago River
