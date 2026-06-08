@@ -129,6 +129,15 @@ const Footer: React.FC = () => {
                     >
                         Buy Me A Coffee
                     </a>
+                    <span>·</span>
+                    <a
+                        href="/llms.txt"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-secondary dark:hover:text-dk-accent transition-colors"
+                    >
+                        Are you a bot?
+                    </a>
                 </div>
 
                 <div className="pt-2 flex flex-wrap justify-center items-center gap-3">
