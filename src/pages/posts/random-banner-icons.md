@@ -8,7 +8,7 @@ description: "A guide to creating dynamic, randomized banner icons."
 img_path: "/try-banner.png"
 img_alt: "Screenshot of multiple colorful banners with icons"
 
-tags: ["#Astro", "#TailwindCSS", "#WebDev"]
+tags: ["#Coding", "#Tech"]
 ---
 
 ## [PERMALINK](https://www.nickstambaugh.dev/posts/random-banner-icons)

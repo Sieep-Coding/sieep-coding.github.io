@@ -8,7 +8,7 @@ description: "Explore why Go is one of my favorite programming languages, includ
 img_path : "/go.png"
 img_alt: "the golang gopher"
 
-tags: ["#Go", "#Coding", "#Tech"]
+tags: ["#Coding", "#Tech"]
 ---
 
 ## Why I Love Go

@@ -8,7 +8,7 @@ description: "LINQ is familiar to those who know SQL, but can be jarring to C# n
 img_path : "/declare.png"
 img_alt: "C# logo with Declarative Programming text below the image"
 
-tags: ["C#", "#Coding", "#Tech", "#LINQ"]
+tags: ["#Coding", "#Tech"]
 ---
 
 ## [PERMALINK](https://sieep-coding.github.io/posts/LINQ-and-being-declarative#LINQ_and_Learning_To_Be_Declarative)

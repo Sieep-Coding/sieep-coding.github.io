@@ -8,7 +8,7 @@ description: "My thoughts on CachyOS, as an engineer and gamer."
 img_path : "/CachyOS.png"
 img_alt : "CachyOS Desktop"
 
-tags: ["#Linux", "#OS", "#Tech"]
+tags: ["#Tech"]
 ---
 
 ## Impressions of CachyOS

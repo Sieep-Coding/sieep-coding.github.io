@@ -8,7 +8,7 @@ description: "Discover why Linux Mint is my go-to operating system for both deve
 img_path : "/mint.jpg"
 img_alt : "Mint Desktop"
 
-tags: ["#Linux", "#OS", "#Tech"]
+tags: ["#Tech"]
 ---
 
 ## [PERMALINK](https://sieep-coding.github.io/posts/buffer_overflow#Why_I_Use_Linux_Mint)

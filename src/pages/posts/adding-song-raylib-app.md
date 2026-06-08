@@ -8,7 +8,7 @@ description: "Adding audio to a C application is easy with raylib!"
 img_path : "/raylibmusic.png"
 img_alt: "raylib and C logo"
 
-tags: ["#C", "#raylib", "#Coding", "#Low-Level Development", "#Tech", "#Music"]
+tags: ["#Coding", "#Tech", "#Music"]
 ---
 
 ## [PERMALINK](https://sieep-coding.github.io/posts/adding-song-raylib-app#Adding_Music_To_My_Raylib_App)

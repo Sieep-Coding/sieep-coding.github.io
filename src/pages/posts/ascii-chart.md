@@ -8,7 +8,7 @@ description: "Creating an ASCII bar chart generator in the console with TypeScri
 img_path : "/bar_image.png"
 img_alt: "Our Emoji/ASCII Bar Chart"
 
-tags: ["#TypeScript", "#Coding", "#Tech"]
+tags: ["#Coding", "#Tech"]
 ---
 
 ## [PERMALINK](https://sieep-coding.github.io/posts/ascii-chart#TypeScript_for_Better_Development)

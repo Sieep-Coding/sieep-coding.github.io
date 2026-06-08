@@ -8,7 +8,7 @@ description: "How manually updating your GitHub profile README quietly fails at 
 img_path: "/action.png"
 img_alt: "GitHub Actions workflow running in the GitHub interface"
 
-tags: ["#Automation", "#DevOps", "#Engineering"]
+tags: ["#DevOps", "Tech"]
 ---
 
 > If something requires discipline to stay correct, it will eventually become incorrect.

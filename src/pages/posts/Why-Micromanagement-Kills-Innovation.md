@@ -8,7 +8,7 @@ description: "Micromanagement of workers, especially software engineers, is detr
 img_path : "/micromanage.png"
 img_alt: "Wooden blocks spelling out merit."
 
-tags: ["#Workplace", "#Leadership", "#Business"]
+tags: ["#Business", "#Opinion"]
 ---
 ## Why Micromanagement Kills Innovation
 

@@ -8,7 +8,7 @@ description: "Sticking with Makefiles offers a blend of simplicity and clarity."
 img_path : "/gnu-make.png"
 img_alt: "GNU logo."
 
-tags: ["#makefile", "#Tech"]
+tags: ["#Tech"]
 ---
 ## The Value of [Makefiles](https://www.gnu.org/software/make/manual/make.html) in Modern Development
 The choice of build systems can influence productivity and team cohesion.

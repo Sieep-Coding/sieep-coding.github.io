@@ -8,7 +8,7 @@ description: "Late-stage capitalism is accelerated by silicon valley's latest Ba
 img_path: "/ai.png"
 img_alt: "Text reads: 'AI: Bullshit-as-a-service'"
 
-tags: ["#AI", "#Opinion", "#Tech"]
+tags: ["#Opinion", "#Tech"]
 ---
 
 ## [PERMALINK](https://sieep-coding.github.io/posts/bullshit-as-a-service#Bullshit-As-A-Service)

@@ -8,7 +8,7 @@ description: "Let me explain myself! 1-based indexing is not as bad as you think
 img_path : "/lua.png"
 img_alt: "Lua logo"
 
-tags: ["#Lua", "#Coding", "#Tech"]
+tags: ["#Coding", "#Tech"]
 ---
 
 # Lua is strange...

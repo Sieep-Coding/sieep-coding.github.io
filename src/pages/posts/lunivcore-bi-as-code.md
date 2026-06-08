@@ -8,7 +8,7 @@ description: "A lightweight, expressive, efficient, extensible BI language with 
 img_path : "/lunivcore-ns.png"
 img_alt : "LunivCore C/Lua Desktop Workflow Showcase"
 
-tags: ["#LunivCore", "#BIAsCode", "#C", "#Lua", "#BusinessIntelligence"]
+tags: ["#Coding"]
 ---
 
 ## [PERMALINK](https://nickstambaugh.dev/posts/lunivcore-bi-as-code)

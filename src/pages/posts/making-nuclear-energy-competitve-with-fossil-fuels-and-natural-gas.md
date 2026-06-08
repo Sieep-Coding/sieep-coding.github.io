@@ -8,7 +8,7 @@ description: "This is a paper that was written for the Nuclear Engineering depar
 img_path : "/nuclear.jpg"
 img_alt: "A Nuclear Power Plant Emitting Steam"
 
-tags: ["#Research Paper", "#Nuclear Energy", "#Economics", "#R", "#Data Analysis"]
+tags: ["#Economics"]
 ---
 
 

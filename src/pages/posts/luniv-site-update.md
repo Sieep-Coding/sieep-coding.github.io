@@ -8,7 +8,7 @@ description: "A major update to Luniv Consulting! We've expanded our services."
 img_path : "/luniv-nsdev.png"
 img_alt: "Abstract graphic of interconnected nodes representing technology"
 
-tags: ["#Business", "#LunivConsulting"]
+tags: ["#Business"]
 ---
 
 > # [Contact Luniv Consulting for Custom Software In Grand Rapids, Michigan](https://luniv.tech/contact)

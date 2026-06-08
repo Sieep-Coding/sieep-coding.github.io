@@ -8,7 +8,7 @@ description: "Designing a minimalist, fast, and testable JavaScript library for 
 img_path: "/luniv-strings.png"
 img_alt: "Stylized JS logo with 'Utility First' text"
 
-tags: ["#JavaScript", "#Coding", "#Utilities", "#LunivStrings"]
+tags: ["#Coding"]
 ---
 ## [PERMALINK](https://sieep-coding.github.io/posts/luniv-strings#Utility_First_Thinking_in_JavaScript)
 
