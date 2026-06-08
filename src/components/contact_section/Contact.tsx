@@ -34,7 +34,7 @@ export default function Contact({ contact, size }: ContactProps) {
   },
   {
     name: "youtube",
-    icon: "fab fa-video",
+    icon: "fas fa-video",
     link: contact.youtube,
     link_alt: "YouTube",
   },
