@@ -54,7 +54,7 @@ Before proceeding, ensure you have addressed any outstanding administrative task
 
 #### Reactivating Your Account
 
-Only reactive it once you are job searching.
+> Pro tip: Only reactivate your account once you are job searching.
 
 When you are ready to return to the platform:
 
