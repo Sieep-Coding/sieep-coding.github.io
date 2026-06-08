@@ -35,7 +35,7 @@ The [Chicago skyline](https://www.gettyimages.com/photos/chicago-skyline) is arg
 
 From the gothic heights of the Tribune Tower to the sheer glass ambition of the Willis Tower (I'll always call it the Sears Tower), the urban landscape is stunning. 
 
-While Houston relies on sprawl, Chicago relies on density and a beautiful, walkable grid. Taking a river cruise through the city really hammers home how intentional and grand the architecture is. The way the city interacts with the [Chicago River](https://en.wikipedia.org/wiki/Chicago_River) and the vast expanse of Lake Michigan is something I’ve always admired.
+While [Houston](https://www.nickstambaugh.dev/posts/houston) relies on sprawl, Chicago relies on density and a beautiful, walkable grid. Taking a river cruise through the city really hammers home how intentional and grand the architecture is. The way the city interacts with the [Chicago River](https://en.wikipedia.org/wiki/Chicago_River) and the vast expanse of Lake Michigan is something I’ve always admired.
 
 You can always find [Greek inspired architecture](https://en.wikipedia.org/wiki/Ancient_Greek_architecture) in these kinds of cities, which is a personal favorite. Like in the [Union Station](https://en.wikipedia.org/wiki/Chicago_Union_Station).
 
@@ -105,7 +105,7 @@ I highly recommend trying out Uzbekistan cuisine, I went to [ANJIR UZBEK HALAL](
 
 ### The Chicago Sound
 
-Much like my love for Houston rap, I’ve always been drawn to the sonic identity of Chicago. 
+Much like my love for [Houston](https://www.nickstambaugh.dev/posts/houston) rap, I’ve always been drawn to the sonic identity of Chicago. 
 
 I grew up listening to the [Chicago hip-hop scene](https://en.wikipedia.org/wiki/Drill_music) evolve from the early days to the drill era that took over the 2010s. The city has a distinct, aggressive, and incredibly innovative musical pulse. I assure you my friends still remember all the lyrics to ['I Don't Like'](https://en.wikipedia.org/wiki/I_Don%27t_Like) and ['Favorite Song'](https://en.wikipedia.org/wiki/Favorite_Song_(Chance_the_Rapper_song)) the same way I do.
 
