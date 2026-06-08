@@ -3,7 +3,7 @@ title: "Why I Love Chicago As A Michigander"
 date: "2026-06-07"
 
 layout: ../../layouts/PostLayout.astro
-description: "Chicago is a powerhouse of architecture and culture that feels like a natural extension of any midwestern's experience."
+description: "Chicago is a powerhouse of architecture and culture."
 
 img_path : "/chi.jpg"
 img_alt: "Chicago skyline"
