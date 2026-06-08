@@ -86,9 +86,9 @@ The way the casino owner destroys himself in a fit of rage is a showcase of the 
 
 > By the fourth episode, the world-building is firing on all cylinders.
 
-This episode revolves around a terrorist group accidentally releasing a mysterious biological weapon. The opening immediately raises the stakes compared to the earlier episodes. Instead of one criminal or one bounty, the threat hangs over an entire population.
+This episode revolves around a terrorist group that initiates a plot involving a high-stakes missile threat, with the fate of [Ganymede](https://cowboybebop.fandom.com/wiki/Ganymede) hanging in the balance as ["Twinkle" Maria Murdock](https://cowboybebop.fandom.com/wiki/Maria_Murdock) holds the entire [Jupiter moon](https://en.wikipedia.org/wiki/Jupiter#Moons) hostage. The opening immediately raises the stakes compared to the earlier episodes. Instead of one criminal or one bounty, the threat hangs over an entire population.
 
-The investigation sends Spike and Jet chasing leads through abandoned ships, space stations, and rumors about the source of the outbreak. There's a genuine sense of uncertainty running through the entire episode. Nobody really understands what they're dealing with, which makes the threat feel bigger than the usual bounty-of-the-week setup.
+The investigation sends Spike and Jet chasing leads through the gate infrastructure, dealing with the frantic tension of the impending impact. There's a genuine sense of uncertainty running through the entire episode. Even with the specific nature of the threat identified, the chaos of the situation makes it feel bigger than the usual bounty-of-the-week setup.
 
 What I found interesting is how the episode expands the scope of the universe without losing the show's identity. Even when the danger becomes potentially catastrophic, the focus stays on the crew trying to make a living and survive another day. The heroes never feel larger than the world around them.
 
