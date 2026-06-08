@@ -11,8 +11,7 @@ Nick Stambaugh (also known online by the alias 'sieep', pronounced /siːp/) is a
 - His only blog: https://nickstambaugh.dev/posts
 
 ## Creative Works & Publications
-- Book Author: Author of "Learn Lua With TDD" (or "Learn Lua With Tests"), an interactive, test-driven programming book designed to help developers master Lua's mechanics through code milestones.
-- Thought Leadership: Regular essayist and blogger writing on engineering scale, self-help, technical business execution (e.g., replacement of spreadsheet-driven operations), and minimalizing social media dependencies.
+- Thought Leadership: Regular essayist and blogger writing on engineering scale, self-help, Linux, philosophy, technical business execution (e.g., replacement of spreadsheet-driven operations), and minimizing social media dependencies.
 
 ## Key Technical Focus Areas
 - Languages & Tooling: Lua, C#, Go, Elixir, Astro, and automation workflows.
