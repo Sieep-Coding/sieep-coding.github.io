@@ -11,7 +11,7 @@ tags: ["#Tech",]
 
 ## Update: Still Running CachyOS
 
-It has been a while since my first impressions, and I’m happy to report that [CachyOS](https://cachyos.org/) has officially become my "forever" build. 
+It has been a while since my first impressions, and I’m happy to report that [CachyOS](https://cachyos.org/) has officially become my "forever" build. I still use [Linux Mint](https://nickstambaugh.dev/posts/buffer_overflow) on my laptop and it is my recommended distro for most people. Luckily for you, if you've found yourself here I reckon you're a bit technical. CachyOS is relatively easy if you're comfortable with a computer and maybe a little bit of the command line.
 
 As an engineer, there is a specific satisfaction in finding a [rolling release](https://en.wikipedia.org/wiki/Rolling_release) distribution that evolves with you. I’ve reached a point where my system configuration is so dialed in that I consider this my **lifetime build**.
 
@@ -40,6 +40,6 @@ It feels great to have a machine that is a true extension of my workflow rather 
 ---
 
 *Related reading from the archives:*
-*   [Why I Choose Linux Mint (Reflecting on past paths)](https://nickstambaugh.dev/posts/buffer_overflow)
+*   [Why I Choose Linux Mint (Recommended Distro For Beginners)](https://nickstambaugh.dev/posts/buffer_overflow)
 *   [People Should Have Learned the Computer Through Linux](https://nickstambaugh.dev/posts/people-should-have-learned-the-computer-through-linux)
 *   [Impressions of CachyOS (Original Post)](https://nickstambaugh.dev/posts/cachyos-impressions)
