@@ -32,12 +32,16 @@ What stood out to me is how little the show cares about giving you a clean victo
 The fight scene between Asimov and Spike is well animated and the bar shoot-out is like an anime version of [Michael Mann's](https://en.wikipedia.org/wiki/Michael_Mann) action movie [Heat](https://en.wikipedia.org/wiki/Heat_(1995_film)).
 
 ![Spike Spiegel](../photo/_spike.jpg "Spike Spiegel")
-
 > [Spike Spiegel](https://en.wikipedia.org/wiki/Spike_Spiegel) has been impactful on pop culture, especially his drifter aesthetic
 
+![Jet Black](../photo/_jet.jpg "Jet Black")
+> [Jet Black](https://en.wikipedia.org/wiki/List_of_Cowboy_Bebop_characters#Jet_Black) is the stoic, mature [foil](https://en.wikipedia.org/wiki/Foil_(narrative)) to Spike
+
 ![Episode #1](../photo/_ep1.jpg "Episode #1")
+> [Asimov](https://cowboybebop.fandom.com/wiki/Asimov_Solensan) and [Katerina](https://cowboybebop.fandom.com/wiki/Katerina_Solensan) on the run from [Spike](https://cowboybebop.fandom.com/wiki/Spike_Spiegel) and [Jet](https://cowboybebop.fandom.com/wiki/Jet_Black)
 
-
+![Spike Spiegel](../photo/_spike2.jpg "Spike Spiegel")
+> [Spike Spiegel](https://en.wikipedia.org/wiki/Spike_Spiegel) stares into space after witnessing Katerina murder Asimov, before dying herself
 ---
 
 ### Episode 2: Stray Dog Strut
@@ -51,8 +55,10 @@ The reveal that the prize is actually a [Pembroke Welsh Corgi](https://en.wikipe
 What I liked most is that the episode gives you a better sense of how bounty hunting actually works in this universe. It's messy, competitive, and usually not worth the effort. Spike and Jet are constantly one step behind, scraping by instead of looking like action heroes.
 
 ![Ein](../photo/_ein.jpg "Ein")
-
 > [Ein](https://en.wikipedia.org/wiki/Ein_(Cowboy_Bebop)), the smartest member of the crew
+
+![Ein](../photo/_ein2.jpg "Ein")
+> [Spike](https://en.wikipedia.org/wiki/Spike_Spiegel) angry after finally catching [Ein](https://en.wikipedia.org/wiki/Ein_(Cowboy_Bebop))
 
 ---
 
@@ -72,7 +78,7 @@ The way the casino owner destroys himself in a fit of rage is a showcase of the 
 > [Faye Valentine](https://en.wikipedia.org/wiki/Faye_Valentine) bringing the chaos
 
 ![Faye](../photo/_fay2.jpg "Faye")
-
+> Faye disguised as a [Blackjack](https://en.wikipedia.org/wiki/Blackjack) dealer
 
 ---
 
@@ -88,7 +94,8 @@ What I found interesting is how the episode expands the scope of the universe wi
 
 The stakes feel higher, and you're starting to see the cracks in the armor of these characters. Spike acts cool, Jet acts composed, and Faye acts confident especially when she saves the day, but all three are carrying baggage that's becoming harder to ignore.
 
-
+![Episode #4](../photo/_shuffle.jpg "Episode #4")
+> ["Twinkle" Maria Murdock](https://cowboybebop.fandom.com/wiki/Maria_Murdock) and her [Space Warriors](https://cowboybebop.fandom.com/wiki/Space_Warriors)
 
 ![Episode #4](../photo/_ep4.png "Episode #4")
 > ["Twinkle" Maria Murdock](https://cowboybebop.fandom.com/wiki/Maria_Murdock) is by far the most intimidating bounty we have seen so far.
