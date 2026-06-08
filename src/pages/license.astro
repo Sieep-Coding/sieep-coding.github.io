@@ -1,36 +1,59 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-const title = "License";
+const title = "License & Terms";
 ---
 
 <BaseLayout title={title}>
-  <br />
-  <br />
-  <div class="justify-center mt-12">
-    <h3 class="text-primary text-semibold">License</h3>
-    <p class="mb-12">
-      This is free and unencumbered software released into the public domain.
-      Anyone is free to copy, modify, publish, use, compile, sell, or distribute
-      this software, either in source code form or as a compiled binary, for any
-      purpose, commercial or non-commercial, and by any means.
-    </p>
-    <p class="mb-12">
-      In jurisdictions that recognize copyright laws, the author or authors of
-      this software dedicate any and all copyright interest in the software to
-      the public domain. We make this dedication for the benefit of the public
-      at large and to the detriment of our heirs and successors. We intend this
-      dedication to be an overt act of relinquishment in perpetuity of all
-      present and future rights to this software under copyright law.
-    </p>
-    <p>
-      THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-      IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-      FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-      THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
-      IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
-      CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-    </p>
-    <p>For more information, please refer to https://unlicense.org</p>
+  <div class="max-w-3xl mx-auto px-4 mt-12 py-16">
+    <h1 class="text-3xl font-bold text-secondary dark:text-dk-accent mb-8">License & Terms</h1>
+    
+    <section class="space-y-8 text-text/90 dark:text-dk-text/90 leading-relaxed">
+      
+      <div>
+        <h2 class="text-xl font-semibold mb-2">License (The Unlicense)</h2>
+        <p>
+          This is free and unencumbered software released into the public domain. 
+          Anyone is free to copy, modify, publish, use, compile, sell, or distribute 
+          this software, either in source code form or as a compiled binary, for any 
+          purpose, commercial or non-commercial, and by any means.
+        </p>
+        <p class="mt-4">
+          In jurisdictions that recognize copyright laws, the author or authors of 
+          this software dedicate any and all copyright interest in the software to 
+          the public domain. We make this dedication for the benefit of the public 
+          at large and to the detriment of our heirs and successors. We intend this 
+          dedication to be an overt act of relinquishment in perpetuity of all 
+          present and future rights to this software under copyright law.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-semibold mb-2">Terms of Use</h2>
+        <ul class="list-decimal list-inside space-y-2">
+          <li><strong>Acceptance:</strong> By accessing this website or using the software provided, you agree to be bound by these terms.</li>
+          <li><strong>Modification:</strong> The author reserves the right to modify the content, projects, or terms of this site at any time without prior notice.</li>
+          <li><strong>Accuracy:</strong> All content, including technical insights and data, is provided for informational purposes. No guarantee is made regarding the accuracy or completeness of the information provided.</li>
+          <li><strong>User Responsibility:</strong> You are solely responsible for how you implement or utilize the code and information found on this site.</li>
+          <li><strong>External Links:</strong> This site may contain links to third-party resources. The author is not responsible for the content or privacy practices of these external sites.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-semibold mb-2">Disclaimer of Warranty</h2>
+        <p class="italic">
+          THE SOFTWARE AND CONTENT ARE PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
+          IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+          FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL 
+          THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER 
+          IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
+          CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+        </p>
+      </div>
+
+      <p class="pt-4 border-t border-text/10 dark:border-dk-text/10">
+        For more information regarding the license, please refer to <a class="underline text-secondary" href="https://unlicense.org" target="_blank" rel="noopener noreferrer">https://unlicense.org</a>
+      </p>
+    </section>
   </div>
 </BaseLayout>

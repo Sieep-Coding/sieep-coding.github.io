@@ -118,7 +118,7 @@ const Footer: React.FC = () => {
                         href="/license"
                         className="hover:text-secondary dark:hover:text-dk-accent transition-colors"
                     >
-                        License
+                        License & Terms
                     </a>
                     <span>·</span>
                     <a
