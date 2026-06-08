@@ -21,13 +21,13 @@ I've seen it before but I want to dive into why this show is seen not just as a 
 
 Man, it hits that intersection of lo-fi aesthetic and high stakes tension I’ve been obsessing over lately. The dub and sub are both fantastic. The plot is sophisticated, deep. The musical score (including the theme song [Tank!](https://en.wikipedia.org/wiki/Music_of_Cowboy_Bebop#%22Tank!%22)) is among my favorite in any show or movie.
 
-It’s got that gritty, blue-collar vibe that feels like a futuristic Western.
+It’s got that gritty vibe that feels like a futuristic [Cyberpunk](https://en.wikipedia.org/wiki/Cyberpunk) [Western](https://en.wikipedia.org/wiki/Western_(genre)).
 
 Here’s the take on the first four episodes:
 
 ### Episode 1: Asteroid Blues
 
-The pilot sets the tone perfectly. It’s heavy on atmosphere, introducing [Spike Spiegel](https://en.wikipedia.org/wiki/Spike_Spiegel) as that classic, reluctant drifter who’s clearly running from a past he can’t outrun. The "Western in space" motif is front and center here. The bounty hunters, the harsh frontier, and that [jazz-inspired](https://en.wikipedia.org/wiki/Jazz) pulse that makes the whole thing feel urgent.
+The pilot sets the tone perfectly. It’s heavy on atmosphere, introducing [Spike Spiegel](https://en.wikipedia.org/wiki/Spike_Spiegel) as that classic, reluctant drifter who’s clearly running from a past he can’t outrun. The Western in space motif is front and center here. The bounty hunters, the harsh frontier, and that [jazz-inspired](https://en.wikipedia.org/wiki/Jazz) pulse that makes the whole thing feel urgent.
 
 The actual bounty of the episode revolves around Asimov, a low-level criminal trying to escape Mars with his girlfriend Katerina after stealing a stash of the drug Bloody Eye. What starts as a routine payday for Spike and Jet quickly spirals into something much more tragic. Asimov isn't some larger-than-life villain. He's desperate, paranoid, and already doomed before the episode really gets moving.
 
