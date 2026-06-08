@@ -15,7 +15,11 @@ tags: ["#Review"]
 
 ## Space Cowboys & Cigarettes
 
-I’ve finally sat down to really dig into *Cowboy Bebop*. I've seen it before, but it’s been on the watchlist for a minute, and man, it hits that exact intersection of "lo-fi aesthetic" and high-stakes tension I’ve been obsessing over lately.
+I’ve finally sat down to dig into [*Cowboy Bebop*](https://en.wikipedia.org/wiki/Cowboy_Bebop).
+
+I've seen it before but I want to dive into why this show is seen not just as a great anime, but as a [phenomenal piece of media.](https://en.wikipedia.org/wiki/Cowboy_Bebop#Reception)
+
+Man, it hits that intersection of lo-fi aesthetic and high stakes tension I’ve been obsessing over lately. The dub and sub are both fantastic. The plot is sophisticated, deep. The musical score (including the theme song [Tank!](https://en.wikipedia.org/wiki/Music_of_Cowboy_Bebop#%22Tank!%22)) is among my favorite in any show or movie.
 
 It’s got that gritty, blue-collar vibe that feels like a futuristic Western.
 
@@ -103,9 +107,9 @@ The stakes feel higher, and you're starting to see the cracks in the armor of th
 
 ## Final Thoughts
 
-Four episodes in, what stands out most is how comfortable *Cowboy Bebop* is with failure. The crew rarely gets paid. Their plans rarely work. Most of the people they chase end up dead, escaped, or completely outside their reach.
+Four episodes in, what stands out most is how comfortable [*Cowboy Bebop*](https://en.wikipedia.org/wiki/Cowboy_Bebop) is with failure. The crew rarely gets paid. Their plans rarely work. Most of the people they chase end up dead, escaped, or completely outside their reach.
 
-A lesser show would make the bounty hunters feel like superheroes. *Cowboy Bebop* makes them feel like working-class drifters trying to stay afloat in a universe that doesn't care about them.
+A lesser show would make the bounty hunters feel like superheroes. [*Cowboy Bebop*](https://en.wikipedia.org/wiki/Cowboy_Bebop) makes them feel like working-class drifters trying to stay afloat in a universe that doesn't care about them.
 
 This is easily one of the best anime to watch for a beginner to the genre.
 
