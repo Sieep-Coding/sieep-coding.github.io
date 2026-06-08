@@ -1,0 +1,8 @@
+# robots.txt
+
+User-agent: *
+Allow: /
+
+Sitemap: https://nickstambaugh.dev/sitemap.xml
+
+LLM-Sitemap: https://nickstambaugh.dev/llms.txt

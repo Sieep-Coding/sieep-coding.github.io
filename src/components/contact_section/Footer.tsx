@@ -138,6 +138,15 @@ const Footer: React.FC = () => {
                     >
                         Are you a bot?
                     </a>
+                    <span>·</span>
+                    <a
+                        href="/sitemap.xml"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-secondary dark:hover:text-dk-accent transition-colors"
+                    >
+                        SITEMAP
+                    </a>
                 </div>
 
                 <div className="pt-2 flex flex-wrap justify-center items-center gap-3">
