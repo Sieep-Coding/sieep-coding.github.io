@@ -102,7 +102,7 @@ const Footer: React.FC = () => {
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-1 hover:text-secondary dark:hover:text-dk-accent transition-colors"
                     >
-                        <i className="fab fa-video text-base" />
+                        <i className="fas fa-video text-base" />
                         <span>YouTube</span>
                     </a>
                 </div>
