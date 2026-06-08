@@ -97,6 +97,6 @@ The famous Vietnamese jeweler, [Johnny Dang](https://en.wikipedia.org/wiki/Johnn
 
 Houston is a city that blends history, innovation, and culture in a way that makes it truly unique.
 
-During my trip, I found amazing seafood, insightful musuems, and an appreciation for one of the best cities America has to offer.
+During my trip, I found amazing seafood, insightful museum, and an appreciation for one of the best cities America has to offer.
 
-You'll find a way to fall in love with Houston--I guarantee it.
+You'll find a way to fall in love with Houston.
