@@ -1,4 +1,3 @@
-```md
 ---
 
 title: "A Look at Ghost Rider Epic Collection Vol. 1"
