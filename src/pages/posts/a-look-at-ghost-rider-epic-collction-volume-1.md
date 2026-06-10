@@ -76,7 +76,7 @@ The internal conflict of Johnny Blaze is nowhere more apparent than in his confr
 
 For anyone working on their own branding or narrative, this is a great study in **visual consistency**.
 
-Even when the story gets wild, the signature elements—the flames, the bike, and the skull—remain constant.
+Even when the story gets wild, the signature elements: the flames, the bike, and the skull. These 3 always remain constant.
 
 You don't need to explain the brand if the imagery does the heavy lifting for you.
 
