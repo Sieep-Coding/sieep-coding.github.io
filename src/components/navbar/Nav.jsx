@@ -24,8 +24,8 @@ export default function Nav({ posts }) {
 
   return (
     <>
-      <nav className="container top-0 z-50 absolute bg-primary dark:bg-dk-primary">
-        <div className="w-full px-4 sm:px-6 py-4 flex justify-between items-center">
+     <nav className="w-full top-0 z-50 absolute bg-primary dark:bg-dk-primary">
+        <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
           <a
             className="font-bold text-lg sm:text-2xl hover:scale-105 hover:-rotate-3 duration-300 block"
             href="/#"
