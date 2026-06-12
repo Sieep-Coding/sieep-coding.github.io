@@ -1,18 +1,14 @@
 ---
 import { Image } from "astro:assets";
-
 import BaseLayout from "./BaseLayout.astro";
-
 import { info } from "../data/info";
 import Contact from "../components/contact_section/Contact";
-// import Subscribe from "../components/post_section/Subscribe";
 import ViewBlog from "../components/about_section/VisitBlog";
 import ViewAboutMe from "../components/about_section/VisitAboutMe";
 import BookConsultation from "../components/about_section/VisitLuniv";
 import Tooltip from "../components/navbar/Tooltip";
 import RecentPosts from "../components/post_section/RecentBlogs";
 import FilterTags from "../components/post_section/FilterTags";
-// import { useState } from "react";
 
 const { frontmatter } = Astro.props;
 const rawPosts = await Astro.glob("../pages/posts/*.md");
@@ -27,9 +23,8 @@ const posts = rawPosts.map((post) => ({
   url: post.url || "",
 }));
 
-const { title, date, img_path, img_alt } = frontmatter;
-const { tags } = frontmatter;
-let selectedTag = Astro.props.selectedTag || null;
+const { title, date, img_path, img_alt, tags } = frontmatter;
+const selectedTag = Astro.url.searchParams.get("selectedTag");
 
 const filteredPosts = selectedTag
   ? posts.filter((post) => post.frontmatter.tags.includes(selectedTag))
@@ -50,110 +45,82 @@ const filteredPosts = selectedTag
 </script>
 
 <BaseLayout title={title}>
-  <main class="mt-24"></main>
-  <div class="mb-4 w-full relative">
-    <div class="px-4 lg:px-0 w-full lg:w-auto">
-      <h1 class="text-3xl font-semibold lg:text-4xl">{title}</h1>
-    </div>
-
-    <div
-      class="w-full flex-row lg:flex-row lg:items-center w-full lg:text-right"
-    >
-      <Tooltip text="At 175 words per minute." position="left">
-        <p class="text-sm lg:text-base px-4 lg:px-0">
-          <span id="time" class="font-bold"></span> min read
+  <main class="mt-8 lg:mt-24 w-full max-w-5xl mx-auto px-4">
+    <div class="mb-8 w-full">
+     <h1 class="text-3xl font-semibold lg:text-4xl text-[#202020] dark:text-[#7c8fd1] break-words">{title}</h1>
+      <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between mt-4">
+        <Tooltip text="At 175 words per minute." position="left">
+          <p class="text-sm lg:text-base text-[#202020] dark:text-[#96a6e2]">
+            <span id="time" class="font-bold"></span> min read
+          </p>
+        </Tooltip>
+        <p class="text-sm lg:text-base flex gap-2 text-[#202020] dark:text-[#96a6e2]">
+          <span>{date}</span>
+          <a href="/posts" class="ml-2 hover:underline"> Back to posts</a>
         </p>
-      </Tooltip>
-      <p
-        class="text-sm lg:text-base px-4 lg:px-0 lg:flex-row lg:justify-start gap-1 lg:gap-2"
-      >
-        <span>{date}</span>
-        <a href="/posts" class="hover:underline">Back to posts</a>
-      </p>
-    </div>
-
-    {
-      img_path && (
+      </div>
+      {img_path && (
         <Image
           src={img_path}
           alt={img_alt || title}
-          class="w-full object-cover lg:rounded lg:h-96 h-64"
+          class="w-full object-cover rounded lg:rounded-lg h-64 lg:h-96 mt-6"
           width={800}
           height={400}
         />
-      )
-    }
-    <h2 class="text-sm lg:text-base text-text dark:text-dk-text">
-      {frontmatter.description || "An insightful blog post."}
-    </h2>
-  </div>
-  <div class="mb-4 w-full mx-auto" id="filter-tags">
-    <FilterTags
-      tags={tags}
-      onClick={(tag) => {
-        location.href = `?selectedTag=${tag}`;
-      }}
-    />
+      )}
+      <h2 class="text-md lg:text-lg mt-4 opacity-80 text-[#202020] dark:text-[#7c8fd1]">
+        {frontmatter.description || "An insightful blog post."}
+      </h2>
+    </div>
 
-    <div class="flex flex-col lg:flex-row lg:space-x-12 justify-center">
-      <div
-        class="px-4 lg:px-0 mt-12 text-text dark:text-dk-text text-lg leading-normal w-full lg:w-3/4"
-      >
-        <div
-          id="article"
-          class="*:mb-4 leading-relaxed prose dark:prose-invert max-w-none
-              prose-h1:font-bold prose-h1:text-xl
-              prose-a:text-blue-600 prose-img:rounded-xl
-              prose-p:leading-normal prose-p:text-left
-              prose-headings:underline"
-        >
+    <div class="w-full mb-12" id="filter-tags">
+      <FilterTags
+        tags={tags}
+        onClick={(tag) => {
+          location.href = `?selectedTag=${tag}`;
+        }}
+      />
+    </div>
+
+    <div class="flex flex-col lg:flex-row lg:gap-16 w-full">
+      <div class="w-full lg:w-2/3">
+        <div id="article" class="prose dark:prose-invert max-w-none text-[#202020] dark:text-[#96a6e2]">
           <slot />
         </div>
       </div>
 
-      <div class="w-full lg:w-1/4 m-auto mt-12 max-w-screen-sm">
-        <div class="border-t border-b p-4 md:rounded md:border">
+      <aside class="w-full lg:w-1/3 mt-12 lg:mt-0">
+        <div class="border border-[#202020] dark:border-[#7c8fd1] p-6 rounded">
           <div class="flex items-center py-2">
             <Image
               src={info.picture}
               alt={info.picture_alt}
-              class="mr-2 h-10 w-10 rounded-full object-cover"
-              height={40}
-              width={40}
+              class="mr-3 h-12 w-12 rounded-full object-cover"
+              height={48}
+              width={48}
             />
             <div>
-              <p class="text-xs font-semibold text-gray-600">Author</p>
-              <a
-                class="inline-flex text-wrap text-sm font-bold text-gray-700 hover:underline"
-                href="/"
-              >
-                {info.name}
-              </a>
+              <p class="text-xs font-semibold text-[#202020]/70 dark:text-[#96a6e2]/70">Author</p>
+              <a class="text-sm font-bold text-[#202020] dark:text-[#7c8fd1] hover:underline" href="/">{info.name}</a>
             </div>
           </div>
-          <p class="py-3 text-sm text-gray-700">{info.brief_description}</p>
+          <p class="py-3 text-sm text-[#202020] dark:text-[#96a6e2]">
+            {info.brief_description}
+          </p>
           <Contact contact={info.contact} size="md" />
         </div>
-        <div class="p-1">
-          <div class="flex py-1 justify-center w-full">
-            <!-- <section class="mt-16 w-full max-w-lg"> -->
-            <!-- <Subscribe /> -->
-            <!-- </section> -->
-            <RecentPosts posts={filteredPosts} />
-          </div>
-          <div class="flex py-1 justify-center w-full text-center mt-10">
+
+        <div class="mt-8">
+          <RecentPosts posts={filteredPosts} />
+          <div class="text-center pt-4">
             <BookConsultation />
           </div>
-          <div class="p-1">
-            <div class="flex py-1 justify-center w-full">
-              <ViewBlog />
-            </div>
-            <div class="flex py-1 justify-center w-full">
-              <ViewAboutMe />
-            </div>
+          <div class="flex flex-col gap-2 mt-4">
+            <ViewBlog />
+            <ViewAboutMe />
           </div>
         </div>
-      </div>
+      </aside>
     </div>
-  </div>
+  </main>
 </BaseLayout>
