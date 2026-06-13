@@ -38,14 +38,14 @@
     function positionCard(link) {
       const rect = link.getBoundingClientRect();
       const cardRect = card.getBoundingClientRect();
+
       let top = rect.top - cardRect.height - 10;
       let left = rect.left;
 
-      // Flip below if not enough space above
       if (top < 8) {
         top = rect.bottom + 10;
       }
-      // Clamp horizontally to viewport
+
       const maxLeft = window.innerWidth - cardRect.width - 8;
       left = Math.min(Math.max(left, 8), Math.max(maxLeft, 8));
 
@@ -55,20 +55,53 @@
 
     async function fetchMeta(href) {
       if (CACHE.has(href)) return CACHE.get(href);
+
       try {
-        const res = await fetch(
-          `https://api.microlink.io/?url=${encodeURIComponent(href)}&meta=true`
-        );
-        const json = await res.json();
-        const data = {
-          title: json?.data?.title || href,
-          description: json?.data?.description || "",
-          image: json?.data?.image?.url || json?.data?.logo?.url || "",
-        };
+        let data;
+
+        if (isExternal(href)) {
+          const res = await fetch(
+            `https://api.microlink.io/?url=${encodeURIComponent(href)}&meta=true`
+          );
+
+          const json = await res.json();
+
+          data = {
+            title: json?.data?.title || href,
+            description: json?.data?.description || "",
+            image: json?.data?.image?.url || json?.data?.logo?.url || "",
+          };
+        } else {
+          const res = await fetch(href);
+          const html = await res.text();
+
+          const doc = new DOMParser().parseFromString(html, "text/html");
+
+          data = {
+            title:
+              doc.querySelector('meta[property="og:title"]')?.content ||
+              doc.querySelector("title")?.textContent ||
+              href,
+
+            description:
+              doc.querySelector('meta[property="og:description"]')?.content ||
+              doc.querySelector('meta[name="description"]')?.content ||
+              "",
+
+            image:
+              doc.querySelector('meta[property="og:image"]')?.content || "",
+          };
+        }
+
         CACHE.set(href, data);
         return data;
       } catch {
-        const fallback = { title: href, description: "", image: "" };
+        const fallback = {
+          title: href,
+          description: "",
+          image: "",
+        };
+
         CACHE.set(href, fallback);
         return fallback;
       }
@@ -77,25 +110,32 @@
     function showCard(link) {
       clearTimeout(hideTimeout);
       activeLink = link;
+
       const href = link.href;
+      const url = new URL(href);
 
       card.querySelector(".lp-title").textContent = "Loading…";
       card.querySelector(".lp-desc").textContent = "";
-      card.querySelector(".lp-url").textContent = new URL(href).hostname;
+      card.querySelector(".lp-url").textContent = url.hostname;
       card.querySelector(".lp-img").style.backgroundImage = "";
+      card.querySelector(".lp-img").style.display = "none";
+
       card.classList.add("visible");
       positionCard(link);
 
       fetchMeta(href).then((data) => {
-        if (activeLink !== link) return; // hovered away already
+        if (activeLink !== link) return;
+
         card.querySelector(".lp-title").textContent = data.title;
         card.querySelector(".lp-desc").textContent = data.description;
+
         if (data.image) {
           card.querySelector(".lp-img").style.backgroundImage = `url(${data.image})`;
           card.querySelector(".lp-img").style.display = "block";
         } else {
           card.querySelector(".lp-img").style.display = "none";
         }
+
         positionCard(link);
       });
     }
@@ -111,10 +151,8 @@
       const article = document.getElementById("article");
       if (!article) return;
 
-      // --- Hover previews ---
-      const links = Array.from(article.querySelectorAll("a[href]")).filter((a) =>
-        isExternal(a.getAttribute("href"))
-      );
+      // Internal + external links
+      const links = Array.from(article.querySelectorAll("a[href]"));
 
       links.forEach((link) => {
         link.addEventListener("mouseenter", () => showCard(link));
@@ -124,8 +162,8 @@
       card.addEventListener("mouseenter", () => clearTimeout(hideTimeout));
       card.addEventListener("mouseleave", hideCard);
 
-      // --- Sources section ---
-      buildSources(links);
+      // Sources section still only uses external links
+      buildSources(links.filter((a) => isExternal(a.href)));
     }
 
     function buildSources(links) {
@@ -138,12 +176,20 @@
 
       links.forEach((link) => {
         const href = link.href;
+
         if (seen.has(href)) return;
         seen.add(href);
+
         if (/(^https?:\/\/)([a-z]+\.)?wikipedia\.org/i.test(href)) {
-          wiki.push({ href, text: link.textContent.trim() || href });
+          wiki.push({
+            href,
+            text: link.textContent.trim() || href,
+          });
         } else {
-          other.push({ href, text: link.textContent.trim() || href });
+          other.push({
+            href,
+            text: link.textContent.trim() || href,
+          });
         }
       });
 
@@ -157,17 +203,21 @@
 
       if (wiki.length) {
         html += `<h3>Wikipedia</h3><ul>`;
+
         wiki.forEach((l) => {
           html += `<li><a href="${l.href}" target="_blank" rel="noopener noreferrer">${l.text}</a></li>`;
         });
+
         html += `</ul>`;
       }
 
       if (other.length) {
         html += `<h3>Further Reading</h3><ul>`;
+
         other.forEach((l) => {
           html += `<li><a href="${l.href}" target="_blank" rel="noopener noreferrer">${l.text}</a></li>`;
         });
+
         html += `</ul>`;
       }
 
@@ -175,7 +225,10 @@
       article.appendChild(section);
     }
 
-    if (document.readyState === "complete" || document.readyState === "interactive") {
+    if (
+      document.readyState === "complete" ||
+      document.readyState === "interactive"
+    ) {
       setTimeout(init, 0);
     } else {
       document.addEventListener("DOMContentLoaded", init);
@@ -199,15 +252,18 @@
     pointer-events: none;
     overflow: hidden;
   }
+
   .link-preview-card.visible {
     opacity: 1;
     transform: translateY(0);
     pointer-events: auto;
   }
+
   .dark .link-preview-card {
     background: #1c1c1e;
     border-color: rgba(255, 255, 255, 0.1);
   }
+
   .link-preview-card .lp-img {
     width: 100%;
     height: 120px;
@@ -216,9 +272,11 @@
     background-color: rgba(0, 0, 0, 0.05);
     display: none;
   }
+
   .link-preview-card .lp-body {
     padding: 10px 12px;
   }
+
   .link-preview-card .lp-title {
     font-size: 0.85rem;
     font-weight: 600;
@@ -229,9 +287,11 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
+
   .dark .link-preview-card .lp-title {
     color: #e5e9ff;
   }
+
   .link-preview-card .lp-desc {
     font-size: 0.75rem;
     margin: 0 0 4px;
@@ -241,9 +301,11 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
+
   .dark .link-preview-card .lp-desc {
     color: rgba(229, 233, 255, 0.7);
   }
+
   .link-preview-card .lp-url {
     font-size: 0.7rem;
     margin: 0;
@@ -254,26 +316,32 @@
   .sources-section {
     margin-top: 2.5rem;
   }
+
   .sources-divider {
     margin: 2rem 0 1.5rem;
     border-color: rgba(0, 0, 0, 0.1);
   }
+
   .dark .sources-divider {
     border-color: rgba(255, 255, 255, 0.1);
   }
+
   .sources-section h2 {
     font-size: 1.25rem;
     margin-bottom: 0.5rem;
   }
+
   .sources-section h3 {
     font-size: 0.95rem;
     margin: 1rem 0 0.25rem;
     opacity: 0.8;
   }
+
   .sources-section ul {
     margin: 0;
     padding-left: 1.25rem;
   }
+
   .sources-section li {
     font-size: 0.85rem;
     margin: 0.25rem 0;
