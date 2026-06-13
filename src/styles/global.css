@@ -52,10 +52,10 @@ html.dark ::selection {
 h1 {
   margin: 0;
   padding: 0;
-  font-size: 1.75rem;
-  line-height: 2.25rem;
   font-weight: 700;
   color: #202020;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
 }
 
 @media (min-width: 1024px) {
