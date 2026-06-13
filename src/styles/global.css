@@ -6,10 +6,19 @@ body {
   font-family: 'Fira Code', monospace;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
 html {
   scroll-behavior: smooth;
+  overflow-y: scroll;
+}
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: 1200px;
 }
 
 * {
@@ -30,12 +39,12 @@ html, body {
   overflow-x: hidden;
 }
 
-*::selection {
+::selection {
   background-color: #202020 !important; 
   color: #e8d8c8 !important; 
 }
 
-html.dark *::selection {
+html.dark ::selection {
   background-color: #96a6e2 !important; 
   color: #2a2b39 !important; 
 }
@@ -43,10 +52,17 @@ html.dark *::selection {
 h1 {
   margin: 0;
   padding: 0;
-  font-size: 2.25rem;
-  line-height: 2.75rem; 
-  font-weight: 700; 
+  font-size: 1.75rem;
+  line-height: 2.25rem;
+  font-weight: 700;
   color: #202020;
+}
+
+@media (min-width: 1024px) {
+  h1 {
+    font-size: 2.25rem;
+    line-height: 2.75rem;
+  }
 }
 
 h2 {
@@ -93,11 +109,11 @@ html.dark h4 {
 }
 
 html.dark p {
-  color: #96a6e2; /* Dark mode text */
+  color: #96a6e2;
 }
 
 html.dark a {
-  color: #95b4dd; /* Dark mode link color */
+  color: #95b4dd;
 }
 
 #tags button:hover {

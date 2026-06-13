@@ -21,35 +21,24 @@ const RecentPosts: React.FC<RecentPostsProps> = ({ posts = [] }) => {
     .slice(0, K);
 
   return (
-    <div className="flex flex-col border-t border-b md:border md:rounded-lg lg:flex-row justify-evenly mt-8 p-6">
+    <div className="border border-[#202020] dark:border-[#7c8fd1] p-6 rounded">
+      <h1 className="text-3xl font-bold text-[#202020] dark:text-[#7c8fd1] mb-8">Recent Posts</h1>
       <div className="flex flex-col gap-8">
-        <h1 className="text-3xl font-bold dark:text-accent">Recent Posts</h1>
         {recentPosts.map((post, index) => (
           <div key={index} className="flex flex-col gap-2">
-            <h1 className="text-lg font-semibold">
-              <a href={post.url} className="hover:underline primary dark:text-accent">{post.frontmatter.title}</a>
-            </h1>
-            <p className="text-text dark:text-dk-text">{post.frontmatter.description}</p>
-            <p className="text-gray-600 dark:text-gray-400 text-sm">{post.frontmatter.date}</p>
-            <a
-              className="text-secondary dark:text-dk-secondary hover:text-accent dark:hover:text-dk-accent"
-              href={post.url}
-            >
+            <h3 className="text-lg font-semibold">
+              <a href={post.url} className="hover:underline text-[#202020] dark:text-[#7c8fd1]">{post.frontmatter.title}</a>
+            </h3>
+            <p className="text-[#202020] dark:text-[#96a6e2]">{post.frontmatter.description}</p>
+            <p className="text-[#202020]/70 dark:text-[#96a6e2]/70 text-sm">{post.frontmatter.date}</p>
+            <a className="text-[#202020] dark:text-[#7c8fd1] hover:underline" href={post.url}>
               Read more &rarr;
             </a>
-            <p className="text-gray-600 dark:text-dk-accent text-sm">
-              {post.frontmatter.tags.map((tag, index) => (
-                <span key={index}>
-                  {tag}
-                  {index < post.frontmatter.tags.length - 1 && <span className="mx-1"> </span>}
-                </span>
-              ))}
-            </p>
-            <div className="border-t border-gray-200 dark:border-dk-gray-800" />
+            <div className="border-t border-[#202020]/20 dark:border-[#7c8fd1]/20 mt-2" />
           </div>
         ))}
-        <div className="text-right mt-1 text-secondary dark:text-dk-secondary">
-          <a className="hover:text-accent dark:hover:text-dk-accent" href="/posts">
+        <div className="text-right">
+          <a className="text-[#202020] dark:text-[#7c8fd1] hover:underline font-bold" href="/posts">
             Read more posts
           </a>
         </div>

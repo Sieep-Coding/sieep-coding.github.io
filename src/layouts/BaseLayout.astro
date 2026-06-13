@@ -74,18 +74,11 @@ import "../styles/global.css";
       }
     </script>
   </head>
-  <body class="bg-primary dark:bg-dk-primary w-full container mx-auto">
-    <Nav client:visible posts={posts} />
-    <div class="container mx-auto px-4">
-      <slot />
-    </div>
-    <Footer />
-    <!--
-    <TopButton client:only />
-    <Pointer client:only />
-      <script id="BMC-Widget" data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="nickstambaugh" data-description="Support me on Buy me a coffee!" data-color="#22D3EE" data-position="Right" data-x_margin="18" data-y_margin="18">
-      </script>
-  
-    -->
-  </body>
+  <body class="bg-primary dark:bg-dk-primary min-h-screen flex flex-col">
+  <Nav client:visible posts={posts} />
+  <div class="flex-grow w-full max-w-5xl mx-auto">
+    <slot />
+  </div>
+  <Footer />
+</body>
 </html>
