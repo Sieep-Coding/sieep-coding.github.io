@@ -1,0 +1,282 @@
+---
+// src/components/post_section/LinkPreview.astro
+// Only use this inside PostLayout.astro
+---
+
+<script is:inline defer>
+  (function () {
+    const CACHE = new Map();
+
+    function isExternal(href) {
+      try {
+        const u = new URL(href, window.location.origin);
+        return u.origin !== window.location.origin;
+      } catch {
+        return false;
+      }
+    }
+
+    function buildCard() {
+      const card = document.createElement("div");
+      card.className = "link-preview-card";
+      card.innerHTML = `
+        <div class="lp-img"></div>
+        <div class="lp-body">
+          <p class="lp-title"></p>
+          <p class="lp-desc"></p>
+          <p class="lp-url"></p>
+        </div>
+      `;
+      document.body.appendChild(card);
+      return card;
+    }
+
+    const card = buildCard();
+    let activeLink = null;
+    let hideTimeout;
+
+    function positionCard(link) {
+      const rect = link.getBoundingClientRect();
+      const cardRect = card.getBoundingClientRect();
+      let top = rect.top - cardRect.height - 10;
+      let left = rect.left;
+
+      // Flip below if not enough space above
+      if (top < 8) {
+        top = rect.bottom + 10;
+      }
+      // Clamp horizontally to viewport
+      const maxLeft = window.innerWidth - cardRect.width - 8;
+      left = Math.min(Math.max(left, 8), Math.max(maxLeft, 8));
+
+      card.style.top = `${top}px`;
+      card.style.left = `${left}px`;
+    }
+
+    async function fetchMeta(href) {
+      if (CACHE.has(href)) return CACHE.get(href);
+      try {
+        const res = await fetch(
+          `https://api.microlink.io/?url=${encodeURIComponent(href)}&meta=true`
+        );
+        const json = await res.json();
+        const data = {
+          title: json?.data?.title || href,
+          description: json?.data?.description || "",
+          image: json?.data?.image?.url || json?.data?.logo?.url || "",
+        };
+        CACHE.set(href, data);
+        return data;
+      } catch {
+        const fallback = { title: href, description: "", image: "" };
+        CACHE.set(href, fallback);
+        return fallback;
+      }
+    }
+
+    function showCard(link) {
+      clearTimeout(hideTimeout);
+      activeLink = link;
+      const href = link.href;
+
+      card.querySelector(".lp-title").textContent = "Loading…";
+      card.querySelector(".lp-desc").textContent = "";
+      card.querySelector(".lp-url").textContent = new URL(href).hostname;
+      card.querySelector(".lp-img").style.backgroundImage = "";
+      card.classList.add("visible");
+      positionCard(link);
+
+      fetchMeta(href).then((data) => {
+        if (activeLink !== link) return; // hovered away already
+        card.querySelector(".lp-title").textContent = data.title;
+        card.querySelector(".lp-desc").textContent = data.description;
+        if (data.image) {
+          card.querySelector(".lp-img").style.backgroundImage = `url(${data.image})`;
+          card.querySelector(".lp-img").style.display = "block";
+        } else {
+          card.querySelector(".lp-img").style.display = "none";
+        }
+        positionCard(link);
+      });
+    }
+
+    function hideCard() {
+      hideTimeout = setTimeout(() => {
+        card.classList.remove("visible");
+        activeLink = null;
+      }, 120);
+    }
+
+    function init() {
+      const article = document.getElementById("article");
+      if (!article) return;
+
+      // --- Hover previews ---
+      const links = Array.from(article.querySelectorAll("a[href]")).filter((a) =>
+        isExternal(a.getAttribute("href"))
+      );
+
+      links.forEach((link) => {
+        link.addEventListener("mouseenter", () => showCard(link));
+        link.addEventListener("mouseleave", hideCard);
+      });
+
+      card.addEventListener("mouseenter", () => clearTimeout(hideTimeout));
+      card.addEventListener("mouseleave", hideCard);
+
+      // --- Sources section ---
+      buildSources(links);
+    }
+
+    function buildSources(links) {
+      const article = document.getElementById("article");
+      if (!article || article.querySelector("#sources-section")) return;
+
+      const seen = new Set();
+      const wiki = [];
+      const other = [];
+
+      links.forEach((link) => {
+        const href = link.href;
+        if (seen.has(href)) return;
+        seen.add(href);
+        if (/(^https?:\/\/)([a-z]+\.)?wikipedia\.org/i.test(href)) {
+          wiki.push({ href, text: link.textContent.trim() || href });
+        } else {
+          other.push({ href, text: link.textContent.trim() || href });
+        }
+      });
+
+      if (wiki.length === 0 && other.length === 0) return;
+
+      const section = document.createElement("div");
+      section.id = "sources-section";
+      section.className = "sources-section";
+
+      let html = `<hr class="sources-divider" /><h2>Sources</h2>`;
+
+      if (wiki.length) {
+        html += `<h3>Wikipedia</h3><ul>`;
+        wiki.forEach((l) => {
+          html += `<li><a href="${l.href}" target="_blank" rel="noopener noreferrer">${l.text}</a></li>`;
+        });
+        html += `</ul>`;
+      }
+
+      if (other.length) {
+        html += `<h3>Further Reading</h3><ul>`;
+        other.forEach((l) => {
+          html += `<li><a href="${l.href}" target="_blank" rel="noopener noreferrer">${l.text}</a></li>`;
+        });
+        html += `</ul>`;
+      }
+
+      section.innerHTML = html;
+      article.appendChild(section);
+    }
+
+    if (document.readyState === "complete" || document.readyState === "interactive") {
+      setTimeout(init, 0);
+    } else {
+      document.addEventListener("DOMContentLoaded", init);
+    }
+  })();
+</script>
+
+<style is:global>
+  .link-preview-card {
+    position: fixed;
+    z-index: 9999;
+    width: 280px;
+    max-width: 90vw;
+    background: var(--card-bg, #ffffff);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity 0.15s ease, transform 0.15s ease;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .link-preview-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  .dark .link-preview-card {
+    background: #1c1c1e;
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  .link-preview-card .lp-img {
+    width: 100%;
+    height: 120px;
+    background-size: cover;
+    background-position: center;
+    background-color: rgba(0, 0, 0, 0.05);
+    display: none;
+  }
+  .link-preview-card .lp-body {
+    padding: 10px 12px;
+  }
+  .link-preview-card .lp-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin: 0 0 4px;
+    color: #202020;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .dark .link-preview-card .lp-title {
+    color: #e5e9ff;
+  }
+  .link-preview-card .lp-desc {
+    font-size: 0.75rem;
+    margin: 0 0 4px;
+    color: rgba(32, 32, 32, 0.7);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .dark .link-preview-card .lp-desc {
+    color: rgba(229, 233, 255, 0.7);
+  }
+  .link-preview-card .lp-url {
+    font-size: 0.7rem;
+    margin: 0;
+    color: #96a6e2;
+    text-transform: lowercase;
+  }
+
+  .sources-section {
+    margin-top: 2.5rem;
+  }
+  .sources-divider {
+    margin: 2rem 0 1.5rem;
+    border-color: rgba(0, 0, 0, 0.1);
+  }
+  .dark .sources-divider {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  .sources-section h2 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+  .sources-section h3 {
+    font-size: 0.95rem;
+    margin: 1rem 0 0.25rem;
+    opacity: 0.8;
+  }
+  .sources-section ul {
+    margin: 0;
+    padding-left: 1.25rem;
+  }
+  .sources-section li {
+    font-size: 0.85rem;
+    margin: 0.25rem 0;
+    word-break: break-word;
+  }
+</style>
