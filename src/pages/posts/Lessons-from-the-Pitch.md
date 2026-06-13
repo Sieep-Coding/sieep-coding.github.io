@@ -19,7 +19,7 @@ When you look at [Balogun’s](https://en.wikipedia.org/wiki/Folarin_Balogun) se
 
 ![Balogun's second goal](../photo/_m2-res_1080p.gif "Balogun's second goal")
 
-## Reyna’s Trivela: The Technical Edge
+## Reyna’s Trivela
 
 Pulling off a trivela in the closing minutes of a World Cup match is a testament to the kind of confidence that comes from technical mastery. Despite almost nobody questioning his talent, [Giovanni Reyna](https://en.wikipedia.org/wiki/Giovanni_Reyna) has been somewhat of a doubt at all times for the US, but he came through here.
 
