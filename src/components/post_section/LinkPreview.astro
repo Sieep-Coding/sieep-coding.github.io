@@ -16,6 +16,15 @@
       }
     }
 
+    function isInternalPost(href) {
+      try {
+        const url = new URL(href, window.location.origin);
+        return url.hostname === window.location.hostname && url.pathname.startsWith("/posts");
+      } catch {
+        return false;
+      }
+    }
+
     function buildCard() {
       const card = document.createElement("div");
       card.className = "link-preview-card";
@@ -151,7 +160,6 @@
       const article = document.getElementById("article");
       if (!article) return;
 
-      // Internal + external links
       const links = Array.from(article.querySelectorAll("a[href]"));
 
       links.forEach((link) => {
@@ -162,8 +170,7 @@
       card.addEventListener("mouseenter", () => clearTimeout(hideTimeout));
       card.addEventListener("mouseleave", hideCard);
 
-      // Sources section still only uses external links
-      buildSources(links.filter((a) => isExternal(a.href)));
+      buildSources(links);
     }
 
     function buildSources(links) {
@@ -172,7 +179,11 @@
 
       const seen = new Set();
       const wiki = [];
+      const internal = [];
       const other = [];
+
+      const isWiki = (href) =>
+        /(^https?:\/\/)([a-z]+\.)?wikipedia\.org/i.test(href);
 
       links.forEach((link) => {
         const href = link.href;
@@ -180,20 +191,18 @@
         if (seen.has(href)) return;
         seen.add(href);
 
-        if (/(^https?:\/\/)([a-z]+\.)?wikipedia\.org/i.test(href)) {
-          wiki.push({
-            href,
-            text: link.textContent.trim() || href,
-          });
+        const text = link.textContent.trim() || href;
+
+        if (isWiki(href)) {
+          wiki.push({ href, text });
+        } else if (isInternalPost(href)) {
+          internal.push({ href, text });
         } else {
-          other.push({
-            href,
-            text: link.textContent.trim() || href,
-          });
+          other.push({ href, text });
         }
       });
 
-      if (wiki.length === 0 && other.length === 0) return;
+      if (!wiki.length && !internal.length && !other.length) return;
 
       const section = document.createElement("div");
       section.id = "sources-section";
@@ -203,21 +212,25 @@
 
       if (wiki.length) {
         html += `<h3>Wikipedia</h3><ul>`;
-
         wiki.forEach((l) => {
           html += `<li><a href="${l.href}" target="_blank" rel="noopener noreferrer">${l.text}</a></li>`;
         });
+        html += `</ul>`;
+      }
 
+      if (internal.length) {
+        html += `<h3>Related Posts</h3><ul>`;
+        internal.forEach((l) => {
+          html += `<li><a href="${l.href}">${l.text}</a></li>`;
+        });
         html += `</ul>`;
       }
 
       if (other.length) {
         html += `<h3>Further Reading</h3><ul>`;
-
         other.forEach((l) => {
           html += `<li><a href="${l.href}" target="_blank" rel="noopener noreferrer">${l.text}</a></li>`;
         });
-
         html += `</ul>`;
       }
 
