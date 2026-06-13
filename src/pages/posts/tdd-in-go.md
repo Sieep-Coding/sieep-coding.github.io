@@ -10,7 +10,8 @@ img_alt: "Test-Driven Development graph."
 
 tags: ["#Coding", "#Tech"]
 ---
-## Using TDD in Go: Gain Confidence Through Testing
+
+# Using TDD in Go: Gain Confidence Through Testing
 When writing software, it is easy to make the mistake of not testing your code. 
 
 You know that tests make your code more reliable and maintainable.

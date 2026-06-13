@@ -13,7 +13,7 @@ tags: ["#Review"]
 
 ---
 
-## Burning Rubber
+# Burning Rubber
 
 Let's talk comics! Specifically, let's talk [Ghost Rider.](https://en.wikipedia.org/wiki/Ghost_Rider_(Johnny_Blaze))
 

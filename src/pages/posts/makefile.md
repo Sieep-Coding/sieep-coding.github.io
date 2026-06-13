@@ -10,7 +10,8 @@ img_alt: "GNU logo."
 
 tags: ["#Tech"]
 ---
-## The Value of [Makefiles](https://www.gnu.org/software/make/manual/make.html) in Modern Development
+
+# The Value of [Makefiles](https://www.gnu.org/software/make/manual/make.html) in Modern Development
 The choice of build systems can influence productivity and team cohesion.
 
 While more advanced tools and containerization are gaining popularity, sticking with **Makefiles** offers a unique blend of simplicity and clarity that keeps me grounded.

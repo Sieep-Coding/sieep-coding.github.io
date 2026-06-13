@@ -11,7 +11,7 @@ img_alt: "HTML code written on a dark screen"
 tags: ["#Business", "#Tech"]
 ---
 
-## Selling an .html File for a Few Grand
+# Selling an .html File for a Few Grand
 
 > While the tech around us is constantly evolving, that doesn't mean what is new is always the correct tool for the job.
 

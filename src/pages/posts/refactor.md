@@ -10,7 +10,8 @@ img_alt: "A clean code editor interface."
 
 tags: ["#Coding", "#Tech"]
 ---
-## Refactoring for Clarity: Lessons Learned from Cleaning Up Code
+
+# Refactoring for Clarity: Lessons Learned from Cleaning Up Code
 Refactoring code can sometimes feel like a chore, but it’s one of the most rewarding aspects of development. 
 
 Recently, I revisited code on [this website](https://nickstambaugh.vercel.app/) and stripped away unnecessary styling and complexity. 

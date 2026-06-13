@@ -23,7 +23,7 @@ Your carefully calculated animation distance is broken. The gap spacing in your 
 
 Welcome to the strange, infuriating world of browser inconsistencies in JavaScript.
 
-### The Problem Isn't Your Code. It's That Browsers Aren't Reading the Same Script.
+# The Problem Isn't Your Code. It's That Browsers Aren't Reading the Same Script.
 
 Here's what makes this particularly dangerous: your JavaScript isn't broken. The DOM isn't broken. Your CSS isn't broken. But the APIs that measure the DOM return different values depending on the browser, the timing, and whether you're measuring before or after layout recalculation.
 

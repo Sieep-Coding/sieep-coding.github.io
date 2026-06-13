@@ -11,7 +11,7 @@ img_alt: "A comparison of modern web frameworks."
 tags: ["#Coding", "#Tech"]
 ---
 
-## Why [Astro](https://astro.build/) Stood Out for [My Portfolio](https://nickstambaugh.vercel.app/)
+# Why [Astro](https://astro.build/) Stood Out for [My Portfolio](https://nickstambaugh.vercel.app/)
 Choosing a framework for a portfolio website can be overwhelming with so many options available. 
 
 After experimenting with several frameworks, I landed on Astro, and it quickly became the clear winner for my needs.

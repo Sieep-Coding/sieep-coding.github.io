@@ -11,7 +11,7 @@ img_alt: "houston"
 tags: ["#Travel"]
 ---
 
-## Why I Love Houston As A Michigander
+# Why I Love Houston As A Michigander
 
 ### Introduction
 

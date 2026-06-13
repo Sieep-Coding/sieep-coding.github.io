@@ -13,7 +13,7 @@ tags: ["#Coding", "#Tech"]
 
 ## [PERMALINK](https://sieep-coding.github.io/posts/ascii-chart#TypeScript_for_Better_Development)
 
-## Why I Built the [ASCII Bar Chart Console App](https://github.com/Sieep-Coding/ascii-bar-chart)
+# Why I Built the [ASCII Bar Chart Console App](https://github.com/Sieep-Coding/ascii-bar-chart)
 
 Visualizing data can be a powerful way to communicate insights, but sometimes you don't need fancy charts. 
 

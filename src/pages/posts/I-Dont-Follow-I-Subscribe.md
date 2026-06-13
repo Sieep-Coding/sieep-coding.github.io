@@ -11,7 +11,7 @@ img_alt: "Subscription written out in wooden block letters"
 tags: ["#SelfHelp", "#SocialMedia"]
 ---
 
-## I Don't Follow, I Subscribe
+# I Don't Follow, I Subscribe
 
 > The idea of following somebody's fake life sounds like something out of a sci-fi novel.
 

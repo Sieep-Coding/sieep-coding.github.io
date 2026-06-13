@@ -11,9 +11,9 @@ img_alt: "Chicago skyline"
 tags: ["#Travel"]
 ---
 
-## Why I Love Chicago As A Michigander
+# Why I Love Chicago As A Michigander
 
-### Introduction
+## Introduction
 
 Hey all! 
 

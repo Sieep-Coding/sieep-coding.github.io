@@ -11,9 +11,9 @@ img_alt : "CachyOS Desktop"
 tags: ["#Tech"]
 ---
 
-## Impressions of CachyOS
+# Impressions of CachyOS
 
-### Introduction
+## Introduction
 
 [CachyOS](https://cachyos.org/) is a powerful operating system that combines the flexibility of [Arch Linux](https://archlinux.org/) while addressing it's pain-points.
 

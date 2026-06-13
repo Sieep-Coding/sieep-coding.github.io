@@ -10,7 +10,8 @@ img_alt: "Wooden blocks spelling out merit."
 
 tags: ["#Business"]
 ---
-## The Importance of Merit in the Workplace
+
+# The Importance of Merit in the Workplace
 In any workplace, the balance between merit and nepotism affects team dynamics and overall productivity. 
 
 While personal relationships can play a role in career advancement, **prioritizing merit is essential to creating a fair environment.**

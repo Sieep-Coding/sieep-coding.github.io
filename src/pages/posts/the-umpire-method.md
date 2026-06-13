@@ -14,7 +14,7 @@ tags: ["#Coding", "#Tech"]
 > This is a re-release from my original article on [Medium](https://medium.com/@nick-stambaugh/a-guide-to-the-umpire-method-7d233c5e1367)
 
 
-### Introduction
+# Introduction
 
 How do you navigate an interview or Leetcode question when you get thrown a curveball?
 
@@ -22,7 +22,7 @@ It’s simple: The Umpire Method.
 
 This methodology can show an interviewer your competent problem-solving skills, even if you end up getting the wrong result from your code.
 
-## The Umpire Method: A Play-by-Play Guide
+# The Umpire Method: A Play-by-Play Guide
 
 As developers, we’ve all been there. Staring at a coding problem, our minds racing with solutions, yet struggling to commit to an approach.
 

@@ -13,9 +13,9 @@ tags: ["#Tech"]
 
 ## [PERMALINK](https://sieep-coding.github.io/posts/buffer_overflow#Why_I_Use_Linux_Mint)
 
-## Why I Use Linux Mint
+# Why I Use Linux Mint
 
-### Introduction
+## Introduction
 
 Switching operating systems is a big decision, especially when you’re accustomed to one. I’ve tried a lot of different Linux distributions over the years, but I always come back to **Linux Mint**. 
 

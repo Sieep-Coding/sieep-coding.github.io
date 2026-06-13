@@ -26,7 +26,7 @@ This was taken from a PDF and painstakingly converted to a markdown file line by
 
 You can contact me at [nickstambaugh@proton.me](mailto:nickstambaugh@proton.me) for any inquiries or questions.
 
-## Making Nuclear Energy Cost Competitive with Fossil Fuels and Renewables
+# Making Nuclear Energy Cost Competitive with Fossil Fuels and Renewables
 #### August 2021
 ---------------
 | Author | Contact  |

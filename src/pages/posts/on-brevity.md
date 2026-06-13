@@ -11,7 +11,7 @@ img_alt: "A clean, empty desk with a single pen sitting next to a white notebook
 tags: ["#Philosophy", "#SelfHelp"]
 ---
 
-## On Brevity
+# On Brevity
 
 > The most powerful thing you can say is often the thing you leave unsaid.
 

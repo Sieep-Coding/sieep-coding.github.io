@@ -11,7 +11,7 @@ img_alt: "A preview of the Subscribe component."
 tags: ["#Coding", "#Tech"]
 ---
 
-## Why I Built the [Subscribe Component](https://github.com/Sieep-Coding/sieep-coding.github.io)
+# Why I Built the [Subscribe Component](https://github.com/Sieep-Coding/sieep-coding.github.io)
 A key feature for any modern website is a simple and effective way to capture user subscriptions. Whether it's for a blog, newsletter, or just keeping visitors updated, providing an easy-to-use subscription form is a must.
 
 I recently built a **React Subscribe component** for our website, and in this post, 

@@ -11,7 +11,7 @@ img_alt: "Conway's Game Of Life Simulation"
 tags: ["#Coding", "#Tech"]
 ---
 
-## Building a Game of Life Simulation in Lua
+# Building a Game of Life Simulation in Lua
 
 ### Introduction
 

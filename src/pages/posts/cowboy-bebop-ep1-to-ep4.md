@@ -13,7 +13,7 @@ tags: ["#Review"]
 
 ---
 
-## Space Cowboys & Cigarettes
+# Space Cowboys & Cigarettes
 
 I’ve finally sat down to dig into [*Cowboy Bebop*](https://en.wikipedia.org/wiki/Cowboy_Bebop).
 
@@ -50,7 +50,7 @@ The fight scene between Asimov and Spike is well animated and the bar shoot-out 
 
 ### Episode 2: Stray Dog Strut
 
-This one starts to flesh out the crew dynamic, and it’s brilliant. Bringing [Ein](https://en.wikipedia.org/wiki/Ein_(Cowboy_Bebop)) into the mix adds this weird, grounded levity to the show. It’s a fun caper, but it still maintains that "hard-luck" energy I love. You can see how the series balances the high-octane action with just enough melancholy to keep you hooked.
+This one starts to flesh out the crew dynamic, and it’s brilliant. Bringing [Ein](https://en.wikipedia.org/wiki/Ein_(Cowboy_Bebop)) into the mix adds this weird, grounded levity to the show. It’s a fun caper, but it still maintains that "hard-luck" energ Back to posy I love. You can see how the series balances the high-octane action with just enough melancholy to keep you hooked.
 
 The plot itself is wonderfully chaotic. Spike and Jet are chasing a bounty tied to a stolen briefcase while a bunch of different criminal groups are chasing the exact same target. Everyone thinks the briefcase contains something incredibly valuable, and the episode turns into a giant game of keep-away across the city.
 

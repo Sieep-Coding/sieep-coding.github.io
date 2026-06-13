@@ -10,7 +10,8 @@ img_alt: "Wooden blocks spelling out merit."
 
 tags: ["#Business", "#Opinion"]
 ---
-## Why Micromanagement Kills Innovation
+
+# Why Micromanagement Kills Innovation
 
 To begin, let's answer some important questions first.
 

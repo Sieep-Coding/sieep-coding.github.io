@@ -13,7 +13,7 @@ tags: ["#Coding", "#Tech", "#Music"]
 
 ## [PERMALINK](https://sieep-coding.github.io/posts/adding-song-raylib-app#Adding_Music_To_My_Raylib_App)
 
-## Adding Music To My Raylib App
+# Adding Music To My Raylib App
 For some reason, the *musician* in me awoke today. 
 
 I decided to use my [Novation LaunchKey Mini [MK3]](https://us.novationmusic.com/products/launchkey-mini-mk3) to compose and write a simple tune for [an app I made last year](https://github.com/Sieep-Coding/snow-simulation) that has garnered interest from the public on [Github.](https://github.com/) 

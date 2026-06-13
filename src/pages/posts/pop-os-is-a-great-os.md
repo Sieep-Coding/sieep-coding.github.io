@@ -11,7 +11,7 @@ img_alt : "Pop!_OS Desktop"
 tags: ["#Tech"]
 ---
 
-## Thoughts on Pop!_OS
+# Thoughts on Pop!_OS
 
 ### Introduction
 

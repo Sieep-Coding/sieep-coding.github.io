@@ -13,7 +13,7 @@ tags: ["#DevOps", "#Tech"]
 
 > If something requires discipline to stay correct, it will eventually become incorrect.
 
-## Why I Automated My [GitHub Profile README](https://github.com/Sieep-Coding)
+# Why I Automated My [GitHub Profile README](https://github.com/Sieep-Coding)
 
 Your GitHub profile README is supposed to represent *what you are working on now*.
 

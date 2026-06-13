@@ -11,7 +11,7 @@ img_alt: "the golang gopher"
 tags: ["#Coding", "#Tech"]
 ---
 
-## Why I Love Go
+# Why I Love Go
 
 ### Introduction
 

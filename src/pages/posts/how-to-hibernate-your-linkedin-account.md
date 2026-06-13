@@ -11,7 +11,7 @@ img_alt: "LinkedIn settings interface"
 tags: ["#SocialMedia", "#SelfHelp"]
 ---
 
-## How to Hibernate Your LinkedIn Account
+# How to Hibernate Your LinkedIn Account
 
 #### Introduction
 

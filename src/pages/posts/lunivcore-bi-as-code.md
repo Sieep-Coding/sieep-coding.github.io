@@ -11,9 +11,9 @@ img_alt : "LunivCore C/Lua Desktop Workflow Showcase"
 tags: ["#Coding"]
 ---
 
-## [PERMALINK](https://nickstambaugh.dev/posts/lunivcore-bi-as-code)
+#### [PERMALINK](https://nickstambaugh.dev/posts/lunivcore-bi-as-code)
 
-## [LunivCore](https://lunivcore.vercel.app/): Business Intelligence As Code
+# [LunivCore](https://lunivcore.vercel.app/): Business Intelligence As Code
 
 ### Introduction
 

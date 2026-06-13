@@ -9,7 +9,7 @@ img_alt : "CachyOS Desktop"
 tags: ["#Tech",]
 ---
 
-## Update: Still Running CachyOS
+# Update: Still Running CachyOS
 
 It has been a while since my first impressions, and I’m happy to report that [CachyOS](https://cachyos.org/) has officially become my "forever" build. I still use [Linux Mint](https://nickstambaugh.dev/posts/buffer_overflow) on my laptop and it is my recommended distro for most people. Luckily for you, if you've found yourself here I reckon you're a bit technical. CachyOS is relatively easy if you're comfortable with a computer and maybe a little bit of the command line.
 
