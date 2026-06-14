@@ -6,16 +6,28 @@ import { Image } from "astro:assets";
 
 <BaseLayout title="About">
   <main class="max-w-2xl mx-auto px-4 py-16 sm:py-24">
-
     <header class="flex flex-col sm:flex-row sm:items-center gap-8 mb-12">
       <div class="space-y-4 order-2 sm:order-1">
-        <h1 class="text-3xl font-bold tracking-tight text-secondary dark:text-dk-accent">
+        <h1
+          class="text-3xl font-bold tracking-tight text-secondary dark:text-dk-accent"
+        >
           About
         </h1>
         <p class="text-lg text-text dark:text-dk-text leading-relaxed">
           <strong>{info.name}</strong> is a
-          <a class="text-dk-text underline" href="https://en.wikipedia.org/wiki/Software_engineering">full-stack engineer</a> with a background in <a class="text-dk-text underline" href="https://en.wikipedia.org/wiki/Business_intelligence">business intelligence</a> and <a class="text-dk-text underline" href="https://en.wikipedia.org/wiki/Economics">economics</a>. He helps businesses turn complex data and
-          processes into solutions that drive results.
+          <a
+            class="text-dk-text underline"
+            href="https://en.wikipedia.org/wiki/Software_engineering"
+            >full-stack engineer</a
+          > with a background in <a
+            class="text-dk-text underline"
+            href="https://en.wikipedia.org/wiki/Business_intelligence"
+            >business intelligence</a
+          > and <a
+            class="text-dk-text underline"
+            href="https://en.wikipedia.org/wiki/Economics">economics</a
+          >. He helps businesses turn complex data and processes into solutions
+          that drive results.
         </p>
       </div>
       <div class="order-1 sm:order-2 shrink-0">
@@ -29,52 +41,78 @@ import { Image } from "astro:assets";
       </div>
     </header>
 
-    <div class="space-y-6 text-text/90 dark:text-dk-text/90 leading-relaxed">
+    <div
+      class="space-y-6 mt-6 mb-6 text-text/90 dark:text-dk-text/90 leading-relaxed"
+    >
+      <h2 class="text-xl font-semibold text-secondary dark:text-dk-accent mb-4">
+        About me
+      </h2>
       <p>
-        His professional journey began in BI, making data accessible through
-        dashboards, automated reporting systems, and academic insights. 
-        <br><br>
-        Over
-        time this evolved into building enterprise software that streamlines
-        operations, increases efficiency, and supports strategic
-        decision-making.
+        His professional journey began in BI, building dashboards, automating reports, and digging into data to make it useful for people.
+        <br /><br />
+        Over time, that evolved into building full-on enterprise software that helps businesses run smoother and make better decisions.
       </p>
       <p>
-         His
-        work primarily focuses on <strong>Elixir, .NET, Go, and JavaScript</strong>,
-        while also exploring <strong>TypeScript, C, and Lua</strong> to build
-        innovative, scalable solutions.
+        His work primarily focuses on <strong
+          >Elixir, .NET, Go, and JavaScript</strong
+        >
       </p>
       <p>
-        Nick holds a bachelor's degree in economics and philosophy. This combines
-        analytical thinking with technical expertise to deliver software that
-        works.
+        Nick holds a bachelor's degree in economics and philosophy. This
+        combines analytical thinking with technical expertise to deliver
+        software that works.
       </p>
 
       <section class="pt-6">
-        <h2 class="text-xl font-semibold text-secondary dark:text-dk-accent mb-4">
+        <h2
+          class="text-xl font-semibold text-secondary dark:text-dk-accent mb-4"
+        >
           Personal Interests
         </h2>
-        <ul class="list-disc list-inside space-y-2 text-text/80 dark:text-dk-text/80">
-          <li>Writing on <a class="text-dk-text underline" href="/posts">his blog</a> 📝</li>
+        <ul
+          class="list-disc list-inside space-y-2 text-text/80 dark:text-dk-text/80"
+        >
+          <li>
+            Writing on <a class="text-dk-text underline" href="/posts"
+              >his blog</a
+            > 📝
+          </li>
           <li>Football, the good kind ⚽</li>
-          <li>Hanging out with his dog, <a class="text-dk-text underline" href="/bruce-the-dog">Bruce</a> 🐕</li>
+          <li>
+            Hanging out with his dog, <a
+              class="text-dk-text underline"
+              href="/bruce-the-dog">Bruce</a
+            > 🐕
+          </li>
           <li>Exploring trends in technology, business, and economics 📈</li>
           <li>Video games 🎮</li>
-          <li>Experimenting with new programming languages and frameworks 🛠️</li>
+          <li>
+            Experimenting with new programming languages 🛠️
+          </li>
           <li>Traveling ✈️</li>
         </ul>
       </section>
     </div>
 
-    <footer class="mt-16 pt-8 border-t border-text/10 dark:border-dk-text/10">
-      <a
-        href="/"
-        class="text-sm text-text/60 dark:text-dk-text/60 hover:text-secondary dark:hover:text-dk-accent transition-colors"
-      >
-        ← Back to home
-      </a>
-    </footer>
-
-  </main>
-</BaseLayout>
+    <section class="pt-6">
+       <h2 class="text-xl font-semibold text-secondary dark:text-dk-accent mb-4">
+        About this site
+      </h2>
+      <p>
+        It is built with <a class="text-dk-text underline" href="https://astro.build/"
+          >Astro</a>. The code is hosted on <a class="text-dk-text underline" href="https://github.com/sieep-coding/sieep-coding.github.io">Github</a> and the deployment is handled by <a class="text-dk-text underline" href="https://vercel.com/">Vercel</a>. If you want to show some love, 
+          <a class="text-dk-text underline"
+          href="https://www.buymeacoffee.com/nickstambaugh"
+          >buy Nick a coffee</a> ☕
+      </p>
+      <footer class="mt-16 pt-8 border-t border-text/10 dark:border-dk-text/10">
+        <a
+          href="/"
+          class="text-sm text-text/60 dark:text-dk-text/60 hover:text-secondary dark:hover:text-dk-accent transition-colors"
+        >
+          ← Back to home
+        </a>
+      </footer>
+    </section>
+  </main></BaseLayout
+>
