@@ -61,9 +61,6 @@ export default function Nav({ posts }) {
               <li className="flex items-center justify-center w-9 h-9">
                 <ToggleDarkMode />
               </li>
-              <li className="flex items-center justify-center w-9 h-9">
-                <GithubButton />
-              </li>
             </ul>
           </div>
         </div>
