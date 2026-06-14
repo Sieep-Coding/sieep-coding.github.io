@@ -118,6 +118,7 @@ jobs:
 ```
 
 The fetch step converts my RSS feed into a deterministic Markdown table.
+
 ---
 
 ## Why the README Is Treated as a Template, Not a File
