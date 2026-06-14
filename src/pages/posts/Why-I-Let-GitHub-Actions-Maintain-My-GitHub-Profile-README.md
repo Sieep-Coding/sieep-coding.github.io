@@ -1,7 +1,7 @@
 ---
 
 title: "Why I Let GitHub Actions Maintain My GitHub Profile README"
-date: "2026-01-06"
+date: "2026-06-06"
 
 layout: ../../layouts/PostLayout.astro
 description: "How manually updating your GitHub profile README quietly fails at scale, and how I use GitHub Actions to keep it accurate, current, and maintenance-free."
@@ -15,29 +15,23 @@ tags: ["#DevOps", "#Tech"]
 
 # Why I Automated My [GitHub Profile README](https://github.com/Sieep-Coding)
 
-Your GitHub profile README is supposed to represent *what you are working on now*.
+Your GitHub profile README is supposed to show people what you are working on right now.
 
-In practice, most profile READMEs represent what someone cared about **six months ago**.
+In practice, it shows what you cared about six months ago.
 
-Pinned projects go stale. Blog links drift. “Latest work” sections quietly rot. Not because engineers are careless—but because manual updates do not scale against real work.
+You're shipping code, writing posts, moving fast. Updating a README is always the lowest priority thing on the list.
 
-I hit that wall.
-
-I write consistently. I ship consistently. But my GitHub profile only changed when I remembered to update it. That meant the most visible page of my professional identity was always slightly wrong.
+I hit that wall. But my profile only changed when I remembered to touch it. The most visible page of my professional identity was always a little bit wrong.
 
 So I stopped treating it like documentation and started treating it like **output**.
 
 ---
 
-## The Real Problem: Manual Updates Don’t Fail Loudly
+## The Real Problem: Manual Updates Don't Fail Loudly
 
-Nothing breaks when your README is outdated.
+Nothing breaks when your README goes stale.
 
-- There are no tests.
-- No alerts.
-- No CI failures.
-
-That is exactly why the problem persists.
+There are no tests. No alerts. No CI failures. It just quietly becomes wrong, and nobody tells you.
 
 | Manual README Maintenance | Result               |
 | ------------------------- | -------------------- |
@@ -48,7 +42,7 @@ That is exactly why the problem persists.
 
 > Anything that fails silently will fail indefinitely.
 
-Your GitHub profile is often the *first* thing recruiters, collaborators, or engineers see. Quietly letting it decay is a credibility tax you pay without noticing.
+Your GitHub profile is often the first thing a recruiter, collaborator, or fellow engineer looks at. Letting it decay is a credibility tax you pay without noticing.
 
 ---
 
@@ -58,21 +52,17 @@ I wanted my profile README to satisfy three rules:
 
 1. **Always reflect my latest writing**
 2. **Require zero manual intervention**
-3. **Fail safely (no broken commits, no noise)**
+3. **Fail safely**
 
-That led directly to GitHub Actions.
-
-Not because GitHub Actions are flashy—but because they are boring, predictable, and already trusted.
+That led directly to GitHub Actions. Not because they're flashy — but because they're boring, predictable, and already trusted.
 
 ---
 
 ## The Workflow: Treat Content as a Data Source
 
-Instead of manually curating links, I treat my blog as the source of truth and my README as a rendered view.
+Instead of manually curating links, I treat my blog as the source of truth and my README as a rendered view of it.
 
-The workflow runs on a schedule, pulls my RSS feed, extracts the most recent posts, and replaces a bounded section of the README.
-
-No logic lives in the README itself. It is just output.
+The workflow runs on a schedule, pulls my RSS feed, extracts the most recent posts, and replaces a clearly bounded section of the README. No logic lives in the README itself. It is just output.
 
 Here is the core of the workflow:
 
@@ -81,7 +71,8 @@ name: Update README with Latest Blog Posts
 
 on:
   schedule:
-    - cron: '0 * * * *'
+    - cron: '0 * * * *'  
+  # workflow_dispatch:
 
 jobs:
   update-readme:
@@ -89,31 +80,49 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-
       - name: Fetch Latest Blog Posts
         run: |
           sudo apt-get update && sudo apt-get install -y jq
           pip install yq
 
           curl -s https://www.nickstambaugh.dev/rss.xml | \
-          xq -r '.rss.channel.item |
+          xq -r '.rss.channel.item | 
             map({
-              title: .title,
-              link: (.link // .guid | sub("\\s+"; ""; "g")),
+              title: .title, 
+              link: (.link // .guid | sub("\\s+"; ""; "g")), 
               date: (.pubDate | strptime("%a, %d %b %Y %H:%M:%S GMT") | mktime)
-            }) |
-            sort_by(.date) | reverse[:7] |
-            map("| " + (.date | strftime("%a, %d %b %Y")) + " | **[" + .title + "](" + .link + ")** |") |
+            }) | 
+            sort_by(.date) | reverse[:7] | 
+            map("| " + (.date | strftime("%a, %d %b %Y")) + " | **[" + .title + "](" + .link + ")** |") | 
             join("\n")' > latest-posts.md
+
+          # Extract everything before and after the BLOG-POST-LIST section
+          sed '/<!-- BLOG-POST-LIST:START -->/q' README.md > README.tmp
+          echo -e "\n<!-- BLOG-POST-LIST:START -->\n| Date | Title |\n| --- | --- |" >> README.tmp
+          cat latest-posts.md >> README.tmp
+          echo -e "\n<!-- BLOG-POST-LIST:END -->" >> README.tmp
+          tail -n +$(($(grep -n "<!-- BLOG-POST-LIST:END -->" README.md | cut -d: -f1) + 1)) README.md >> README.tmp
+          
+          mv README.tmp README.md
+
+
+
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git commit -m "Updated latest blog posts" || exit 0
+          git push
 ```
 
-This step converts my RSS feed into a deterministic Markdown table. No scraping. No heuristics. No guessing.
-
+The fetch step converts my RSS feed into a deterministic Markdown table.
 ---
 
 ## Why the README Is Treated as a Template, Not a File
 
-The most important design choice is this:
+The most important design decision here is what the workflow *doesn't* touch.
 
 > The workflow only owns a clearly marked section of the README.
 
@@ -122,9 +131,7 @@ The most important design choice is this:
 <!-- BLOG-POST-LIST:END -->
 ```
 
-Everything outside that boundary is left untouched.
-
-This matters because it prevents automation from becoming destructive. The README remains human-editable, but one section is machine-controlled.
+Everything outside those markers is left exactly as-is. The README stays human-editable. One section is machine-controlled.
 
 | Approach               | Failure Mode          |
 | ---------------------- | --------------------- |
@@ -132,26 +139,21 @@ This matters because it prevents automation from becoming destructive. The READM
 | Manual edits           | Drift                 |
 | Bounded automation     | Predictable, safe     |
 
-Automation should be **surgical**, not aggressive.
+Automation should be surgical, not aggressive. Own exactly what you need to own, and nothing more.
 
 ---
 
 ## Commit Strategy: Silent When Nothing Changes
 
-Another subtle but critical choice:
-
 ```bash
 git commit -m "Updated latest blog posts" || exit 0
 ```
 
-If nothing changed, the workflow exits cleanly.
-
-- No failed jobs.
-- No noise.
+If nothing changed since the last run, the workflow exits cleanly. No failed jobs. No noise. No pointless commit history full of "no changes" entries.
 
 > Automation should disappear when it has nothing to do.
 
-This keeps the signal clean and avoids the common “CI spam” problem that makes teams distrust automation in the first place.
+This is what keeps teams trusting automation over time. CI spam is annoying. A workflow that stays quiet when it's not needed is a workflow people trust when it does act.
 
 ---
 
@@ -171,12 +173,8 @@ This keeps the signal clean and avoids the common “CI spam” problem that mak
 
 This workflow is about treating *representation* as a system problem, not a discipline problem.
 
-If correctness depends on remembering to do the right thing, it will fail. If correctness is enforced by systems, it becomes boring—and boring is exactly what you want.
+If correctness depends on someone remembering to do the right thing, it will eventually fail.
 
----
-
-**The lesson:** If something matters professionally, automate it. Your GitHub profile should be a live reflection of your work, not a historical artifact.
-
-This is the same principle I apply when building internal tools, dashboards, and operational systems: **remove humans from the loop where consistency matters.**
+Your GitHub profile should be a live reflection of your work, not a historical artifact. The same principle applies to internal tools, dashboards, status pages, and operational runbooks: remove humans from the loop where consistency matters, and let systems handle the rest.
 
 If you want help designing automation that quietly keeps important systems correct, [Luniv Technology](https://luniv.tech) specializes in exactly that.
