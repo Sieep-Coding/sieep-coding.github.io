@@ -16,12 +16,12 @@ const Footer: React.FC = () => {
                     </a>
                     <span>·</span>
                     <a
-                        href="https://astro.build/"
+                        href="https://luniv.tech/case-study"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="hover:text-secondary dark:hover:text-dk-accent transition-colors"
                     >
-                        Astro
+                        Case Studies
                     </a>
                     <span>·</span>
                     <a
@@ -51,13 +51,7 @@ const Footer: React.FC = () => {
                     >
                         RSS
                     </a>
-                    <span>·</span>
-                    <a
-                        href="mailto:info@luniv.tech"
-                        className="hover:text-secondary dark:hover:text-dk-accent transition-colors"
-                    >
-                        Contact
-                    </a>
+
                 </div>
                 <div className="flex flex-wrap justify-center items-center gap-x-3 gap-y-2 text-sm">
                     <a
