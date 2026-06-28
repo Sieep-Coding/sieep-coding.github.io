@@ -83,9 +83,15 @@ const allPosts = await Astro.glob("./posts/*.md");
           >
         </p>
         <div class="mt-8">
+           <a
+            href="/posts"
+            class="inline-flex items-center text-sm font-medium text-secondary dark:text-dk-accent hover:underline underline-offset-4"
+          >
+            Read my blog →
+          </a>
           <a
             href="/about"
-            class="inline-flex items-center text-sm font-medium text-secondary dark:text-dk-accent hover:underline underline-offset-4"
+            class="ml-12 inline-flex items-center text-sm font-medium text-secondary dark:text-dk-accent hover:underline underline-offset-4"
           >
             Read about me →
           </a>
