@@ -40,7 +40,9 @@ It functioned as a museum for a dead ideology while also being curated for the m
 
 ## The Blurred Line
 
-The existence of establishments like Pravda Vodka Bar highlights a peculiar human tendency: our desire to aesthetics of the "forbidden." By placing symbols of a regime responsible for systemic oppression into a setting defined by luxury, alcohol, and leisure, the bar created a cognitive dissonance that was both its draw and its most controversial element, [as noted by its owner before it closed.](https://torontolife.com/food/pravda-vodka-house-toronto-brash-and-sassy/)
+The existence of establishments like Pravda Vodka Bar highlights a peculiar human tendency: our attraction to the aesthetics of the "forbidden." 
+
+By placing symbols of a regime responsible for systemic oppression into a setting defined by luxury, alcohol, and leisure, the bar created a cognitive dissonance that was both its draw and its most controversial element, [as noted by its owner before it closed.](https://torontolife.com/food/pravda-vodka-house-toronto-brash-and-sassy/)
 
 As we move further from the 20th century, the distance between historical tragedy and cultural commodity will shorten. If a regime that collapsed in the early 90s can be turned into a trendy piano bar by the 2010s or earlier, we must ask what happens when more highly polarized historical events are given the same treatment. If we continue to package history without the burden of its original weight, we risk creating a culture of historical amnesia.
 
@@ -50,6 +52,8 @@ As we move further from the 20th century, the distance between historical traged
 ---
 
 ## Final Thoughts
-Despite my more philosophical thoughts on the bar, I think in Canada it is fine. I enjoyed my time in here and was sad to see it close.
+Despite my more philosophical thoughts on the bar, I think in cosmopolitan Toronto it is fine and was not crossing into anything immoral. A bar is just a bar at the end of the day. I enjoyed my time in here and was sad to see it close. 
+
+> To me, the danger isn't necessarily in the existence of one bar. It’s in the cumulative effect of a culture that prioritizes novelty over literacy.
 
 Do you believe these spaces honor history? Or do they strip away the truth for the sake of an atmosphere and profit?
