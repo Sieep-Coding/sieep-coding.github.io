@@ -52,7 +52,7 @@ The clock in the game always runs and the stoppages are minimal. This creates a 
 ### Global reach
 The FIFA World Cup is the biggest sporting event globally. This gives small countries a chance to show themselves on the global stage outside of the Olympics opening ceremony. It gives Europeans and South American countries a chance to shit on everyone else. 
 
-Players aren't just competing for a paycheck.They're representing their country, their families, and millions of people back home.
+Players are representing their country, their families, and millions of people back home.
 
 ### Storytelling
 
