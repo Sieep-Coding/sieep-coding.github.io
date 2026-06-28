@@ -54,6 +54,6 @@ As we move further from the 20th century, the distance between historical traged
 ## Final Thoughts
 Despite my more philosophical thoughts on the bar, I think in cosmopolitan Toronto it is fine and was not crossing into anything immoral. A bar is just a bar at the end of the day. I enjoyed my time in here and was sad to see it close. 
 
-> To me, the danger isn't necessarily in the existence of one bar. It’s in the cumulative effect of a culture that prioritizes novelty over literacy.
+> To me, the danger isn't necessarily in the existence of one bar. The danger is the outcomes of a culture that prioritizes novelty over literacy.
 
 Do you believe these spaces honor history? Or do they strip away the truth for the sake of an atmosphere and profit?
