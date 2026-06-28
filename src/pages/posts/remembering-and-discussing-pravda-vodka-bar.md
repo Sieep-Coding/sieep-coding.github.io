@@ -29,7 +29,7 @@ I grew up in America in the 2000s. The 'red scare' and America's general fear of
 Pravda Vodka Bar was a classy piano bar with a wide variety of authentic Soviet Union memorabilia on display (I learned that it was authentic from the bartender). 
 
 - The Irony: Capitalism in a Soviet bar. Need I say more?
-- Packaging the Past: It transformed a traumatic reality into a stylistic choice. Stalin's communist policies resulted in millions of deaths, historians estimate over 20 million. This history was stripped of any true weight and turned into a backdrop.
+- Packaging the Past: It transformed a traumatic reality into a stylistic choice. **Stalin's communist policies resulted in millions of deaths, historians estimate over 20 million.** This history was stripped of any true weight and turned into a backdrop.
 
 It functioned as a museum for a dead ideology while also being curated for the modern consumer. 
 
