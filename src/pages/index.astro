@@ -3,7 +3,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import { info } from "../data/info";
 import Blog from "../components/post_section/Blog.astro";
 import Contact from "../components/contact_section/Contact";
-import Tooltip from "../components/navbar/Tooltip";
 import { Image } from "astro:assets";
 const allPosts = await Astro.glob("./posts/*.md");
 ---
@@ -15,76 +14,69 @@ const allPosts = await Astro.glob("./posts/*.md");
     >
       <div class="space-y-2 order-2 sm:order-1">
         <div>
-          <div class="group inline-block">
-            <button
-              type="button"
-              class="flex items-center gap-2 cursor-pointer"
+          <button
+            id="alias-toggle"
+            type="button"
+            class="flex items-center gap-2 cursor-pointer"
+            aria-expanded="false"
+          >
+            <h1
+              class="text-3xl font-bold tracking-tight text-secondary dark:text-dk-accent"
             >
-              <h1
-                class="text-3xl font-bold tracking-tight text-secondary dark:text-dk-accent"
-              >
-                {info.name}
-              </h1>
+              {info.name}
+            </h1>
+            <span
+              id="alias-caret"
+              class="text-lg text-text/50 dark:text-dk-text/50 transition-transform duration-300"
+            >
+              ^
+            </span>
+          </button>
 
-              <span
-                class="text-lg transition-transform duration-300 group-hover:rotate-180 text-text/50 dark:text-dk-text/50"
-              >
-                ^
-              </span>
-            </button>
-
+          <div
+            id="alias-panel"
+            class="grid grid-rows-[0fr] overflow-hidden transition-all duration-300"
+          >
             <div
-              class="grid grid-rows-[0fr] overflow-hidden transition-all duration-300 group-hover:grid-rows-[1fr]"
+              class="overflow-hidden mt-3 flex flex-wrap items-center gap-1 text-sm text-text/80 dark:text-dk-text/80"
             >
-              <div
-                class="overflow-hidden mt-3 flex flex-wrap items-center gap-1 text-sm text-text/50 dark:text-dk-text/50"
+              <span class="whitespace-nowrap">alias</span>
+              <span class="cursor-help whitespace-nowrap">'sieep'</span>
+              <span aria-hidden="true">·</span>
+
+              <a
+                href="https://github.com/sieep-coding"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-1 whitespace-nowrap transition-colors hover:text-secondary dark:hover:text-dk-accent"
               >
-                <span class="whitespace-nowrap">alias</span>
+                <i class="fab fa-github text-base"></i>
+                <span>sieep-coding</span>
+              </a>
 
-                <Tooltip
-                  text="pronounced seep or /siːp/ — rhymes with sleep, deep"
-                  position="default"
-                  client:load
-                >
-                  <span class="cursor-help whitespace-nowrap">'sieep'</span>
-                </Tooltip>
+              <span aria-hidden="true">·</span>
 
-                <span aria-hidden="true">·</span>
+              <a
+                href="https://twitch.tv/sieep00"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-1 whitespace-nowrap transition-colors hover:text-secondary dark:hover:text-dk-accent"
+              >
+                <i class="fab fa-twitch text-base"></i>
+                <span>sieep00</span>
+              </a>
 
-                <a
-                  href="https://github.com/sieep-coding"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="inline-flex items-center gap-1 whitespace-nowrap transition-colors hover:text-secondary dark:hover:text-dk-accent"
-                >
-                  <i class="fab fa-github text-base"></i>
-                  <span>sieep-coding</span>
-                </a>
+              <span aria-hidden="true">·</span>
 
-                <span aria-hidden="true">·</span>
-
-                <a
-                  href="https://twitch.tv/sieep00"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="inline-flex items-center gap-1 whitespace-nowrap transition-colors hover:text-secondary dark:hover:text-dk-accent"
-                >
-                  <i class="fab fa-twitch text-base"></i>
-                  <span>sieep00</span>
-                </a>
-
-                <span aria-hidden="true">·</span>
-
-                <a
-                  href="https://www.youtube.com/@sieep00"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="inline-flex items-center gap-1 whitespace-nowrap transition-colors hover:text-secondary dark:hover:text-dk-accent"
-                >
-                  <i class="fas fa-video text-base"></i>
-                  <span>@sieep00</span>
-                </a>
-              </div>
+              <a
+                href="https://www.youtube.com/@sieep00"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-1 whitespace-nowrap transition-colors hover:text-secondary dark:hover:text-dk-accent"
+              >
+                <i class="fas fa-video text-base"></i>
+                <span>@sieep00</span>
+              </a>
             </div>
           </div>
         </div>
@@ -98,21 +90,28 @@ const allPosts = await Astro.glob("./posts/*.md");
             href="/posts"
             class="inline-flex items-center text-sm font-medium text-secondary dark:text-dk-accent hover:underline underline-offset-4"
           >
-            Read my blog →
+            Blog →
           </a>
 
           <a
             href="/about"
             class="inline-flex items-center text-sm font-medium text-secondary dark:text-dk-accent hover:underline underline-offset-4"
           >
-            Read about Nick →
+            Nick →
           </a>
 
           <a
             href="https://luniv.tech/"
             class="inline-flex items-center text-sm font-medium text-secondary dark:text-dk-accent hover:underline underline-offset-4"
           >
-            Explore Luniv →
+            Luniv →
+          </a>
+
+          <a
+            href="/projects"
+            class="inline-flex items-center text-sm font-medium text-secondary dark:text-dk-accent hover:underline underline-offset-4"
+          >
+            Projects →
           </a>
         </div>
       </div>
@@ -144,4 +143,18 @@ const allPosts = await Astro.glob("./posts/*.md");
       </div>
     </section>
   </main>
+
+  <script>
+    const toggle = document.getElementById("alias-toggle");
+    const panel = document.getElementById("alias-panel");
+    const caret = document.getElementById("alias-caret");
+
+    toggle?.addEventListener("click", () => {
+      const isOpen = toggle.getAttribute("aria-expanded") === "true";
+      toggle.setAttribute("aria-expanded", String(!isOpen));
+      panel?.classList.toggle("grid-rows-[0fr]", isOpen);
+      panel?.classList.toggle("grid-rows-[1fr]", !isOpen);
+      caret?.classList.toggle("rotate-180", !isOpen);
+    });
+  </script>
 </BaseLayout>
