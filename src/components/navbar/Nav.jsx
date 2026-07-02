@@ -12,7 +12,7 @@ export default function Nav({ posts }) {
 
   const navLinks = [
     { name: "Blog", href: "/posts" },
-    { name: "Me", href: "/about" },
+    { name: "About", href: "/about" },
   ];
 
   const extractInitials = (name) => {
