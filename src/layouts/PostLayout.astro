@@ -42,17 +42,72 @@ const filteredPosts = selectedTag
     const time = Math.max(1, Math.ceil(words / wpm));
     document.getElementById("time").innerText = time.toString();
   }
-  window.onload = readingTime;
+
+  function buildTOC() {
+    const article = document.getElementById("article");
+    const toc = document.getElementById("toc-list");
+
+    if (!article || !toc) return;
+
+    const headings = article.querySelectorAll("h2, h3");
+
+    headings.forEach((heading, index) => {
+      if (!heading.id) {
+        heading.id = `heading-${index}`;
+      }
+
+      const a = document.createElement("a");
+      a.href = `#${heading.id}`;
+      a.textContent = heading.textContent || "";
+      a.className =
+        heading.tagName === "H2"
+          ? "block py-1 hover:underline"
+          : "block py-1 pl-5 text-sm opacity-80 hover:underline";
+
+      toc.appendChild(a);
+    });
+
+    if (!headings.length) {
+      toc.innerHTML =
+        '<p class="opacity-60 text-sm">No headings found.</p>';
+    }
+  }
+
+  window.onload = () => {
+    readingTime();
+    buildTOC();
+  };
 </script>
 
 <BaseLayout title={title}>
   <main class="mt-8 lg:mt-24 pt-20 lg:pt-24 w-full max-w-5xl mx-auto px-4">
+    <details
+      class="mb-8 w-full rounded-lg border border-[#202020]/15 dark:border-[#7c8fd1]/30 bg-white dark:bg-[#111827] overflow-hidden group"
+    >
+      <summary class="flex cursor-pointer list-none items-center justify-between px-5 py-4 font-semibold text-[#202020] dark:text-[#7c8fd1]">
+        <span>Table of Contents</span>
+        <span class="transition-transform duration-300 group-open:rotate-180">
+          ^
+        </span>
+      </summary>
+
+      <div
+        class="border-t border-[#202020]/10 dark:border-[#7c8fd1]/20 px-5 py-4"
+      >
+        <nav
+          id="toc-list"
+          class="flex flex-col text-[#202020] dark:text-[#96a6e2]"
+        ></nav>
+      </div>
+    </details>
+
     <div class="mb-8 w-full overflow-visible">
       <h1
         class="text-3xl font-semibold lg:text-4xl text-[#202020] dark:text-[#7c8fd1] break-words"
       >
         {title}
       </h1>
+
       <div
         class="flex flex-col lg:flex-row lg:items-center lg:justify-between mt-4"
       >
@@ -106,6 +161,7 @@ const filteredPosts = selectedTag
         >
           <slot />
         </div>
+
         <LinkPreview />
       </div>
 
@@ -125,6 +181,7 @@ const filteredPosts = selectedTag
               >
                 Author
               </p>
+
               <a
                 class="text-sm font-bold text-[#202020] dark:text-[#7c8fd1] hover:underline"
                 href="/"
@@ -147,6 +204,7 @@ const filteredPosts = selectedTag
           <div class="text-center pt-4">
             <BookConsultation />
           </div>
+
           <div class="flex flex-col gap-2 mt-4">
             <ViewBlog />
             <ViewAboutMe />
