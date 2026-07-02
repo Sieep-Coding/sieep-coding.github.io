@@ -23,7 +23,7 @@ It comes down to a few key aspects:
  - Global reach
 
 ### How would I know?
-I'm certainly no British scholar who can list 40 different [defensive formations](https://en.wikipedia.org/wiki/Formation_(association_football)) off the top of my noggin, but I grew up playing and watching soccer my entire life. Some of my greatest memories growing up were spent on the field with some of my best friends. To many of my peers, American athletes like [LeBron James](https://en.wikipedia.org/wiki/LeBron_James) and [Tom Brady](https://en.wikipedia.org/wiki/Tom_Brady)110w were who they looked up to.
+I'm certainly no British scholar who can list 40 different [defensive formations](https://en.wikipedia.org/wiki/Formation_(association_football)) off the top of my noggin, but I grew up playing and watching soccer my entire life. Some of my greatest memories growing up were spent on the field with some of my best friends. To many of my peers, American athletes like [LeBron James](https://en.wikipedia.org/wiki/LeBron_James) and [Tom Brady](https://en.wikipedia.org/wiki/Tom_Brady) were who they looked up to.
 
 I believe the first [footballers](https://en.wikipedia.org/wiki/Football_player) I wanted to emulate were [Kaká](https://en.wikipedia.org/wiki/Kak%C3%A1), [Ronaldo Nazário](https://en.wikipedia.org/wiki/Ronaldo_(Brazilian_footballer)) and [Ronaldinho](https://en.wikipedia.org/wiki/Ronaldinho), all Brazilian. I distinctly remember watching them on YouTube on the family computer at a very young age. 
 
