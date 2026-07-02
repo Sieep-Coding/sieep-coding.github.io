@@ -35,38 +35,59 @@ const filteredPosts = selectedTag
 <script is:inline>
   function setupArticleFeatures() {
     const article = document.getElementById("article");
-    const timeEl = document.getElementById("time");
-    const tocList = document.getElementById("toc-list");
+    if (!article) return;
 
-    if (article && timeEl) {
-      const text = article.innerText || "";
-      const wpm = 175;
+    const timeEl = document.getElementById("time");
+    if (timeEl) {
+      const text = article.textContent || "";
       const words = text.trim().split(/\s+/).filter(Boolean).length;
-      timeEl.innerText = Math.max(1, Math.ceil(words / wpm)).toString();
+      const minutes = Math.max(1, Math.ceil(words / 175));
+      timeEl.textContent = String(minutes);
     }
 
-    if (article && tocList) {
-      // Clear existing to prevent duplication on view transitions
+    const tocList = document.getElementById("toc-list");
+    if (tocList) {
       tocList.innerHTML = "";
+
       const headings = article.querySelectorAll("h2, h3");
-      if (headings.length === 0) {
-        tocList.innerHTML = '<p class="opacity-60 text-sm">No headings found.</p>';
-      } else {
-        headings.forEach((heading, index) => {
-          if (!heading.id) heading.id = `heading-${index}`;
-          const a = document.createElement("a");
-          a.href = `#${heading.id}`;
-          a.textContent = heading.textContent || "";
-          a.className = heading.tagName === "H2" 
-            ? "block py-1 hover:underline" 
-            : "block py-1 pl-5 text-sm opacity-80 hover:underline";
-          tocList.appendChild(a);
-        });
+
+      if (!headings.length) {
+        tocList.innerHTML =
+          '<p class="opacity-60 text-sm">No headings found.</p>';
+        return;
       }
+
+      headings.forEach((heading, index) => {
+        if (!heading.id) {
+          heading.id =
+            heading.textContent
+              ?.toLowerCase()
+              .trim()
+              .replace(/[^\w\s-]/g, "")
+              .replace(/\s+/g, "-") || `heading-${index}`;
+        }
+
+        const link = document.createElement("a");
+        link.href = `#${heading.id}`;
+        link.textContent = heading.textContent || "";
+        link.className =
+          heading.tagName === "H2"
+            ? "block py-1 hover:underline"
+            : "block py-1 pl-5 text-sm opacity-80 hover:underline";
+
+        tocList.appendChild(link);
+      });
     }
   }
 
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setupArticleFeatures);
+  } else {
+    setupArticleFeatures();
+  }
+
   document.addEventListener("astro:page-load", setupArticleFeatures);
+  document.addEventListener("astro:after-swap", setupArticleFeatures);
 </script>
 
 <BaseLayout title={title}>
