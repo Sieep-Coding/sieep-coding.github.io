@@ -6,7 +6,6 @@ import { Image } from "astro:assets";
 
 <BaseLayout title="About">
   <main class="max-w-2xl mx-auto px-4 py-16 sm:py-24">
-
     <header class="flex flex-col sm:flex-row sm:items-center gap-8 mb-12">
       <div class="space-y-4 order-2 sm:order-1">
         <h1 class="text-3xl font-bold tracking-tight text-secondary dark:text-dk-accent">
@@ -35,7 +34,6 @@ import { Image } from "astro:assets";
         />
       </div>
     </header>
-
     <div class="space-y-6 mt-6 mb-6 text-text/90 dark:text-dk-text/90 leading-relaxed">
       <h2 class="text-xl font-semibold text-secondary dark:text-dk-accent mb-4">
         About Nick
@@ -98,13 +96,18 @@ import { Image } from "astro:assets";
         </ul>
       </section>
     </div>
-
+    <section class="pt-6">
+         <h2 class="text-xl font-semibold text-secondary dark:text-dk-accent mb-4">
+        Subscribing
+      </h2>
+      <p>You can subscribe to this website using <a class="text-dk-text underline" href="/rss.xml">RSS.</a></p>
+    </section>
     <section class="pt-6">
       <h2 class="text-xl font-semibold text-secondary dark:text-dk-accent mb-4">
         About this site
       </h2>
       <p>
-        It is built with <a class="text-dk-text underline" href="https://astro.build/">Astro</a>.
+        <a class="text-dk-text underline" href="/">nickstambaugh.dev</a> is built with <a class="text-dk-text underline" href="https://astro.build/">Astro</a>.
         The code is hosted on
         <a class="text-dk-text underline" href="https://github.com/sieep-coding/sieep-coding.github.io">GitHub</a>
         and deployed via <a class="text-dk-text underline" href="https://vercel.com/">Vercel</a>.
