@@ -108,6 +108,10 @@ const filteredPosts = selectedTag
       </h2>
     </div>
 
+    <div class="w-full mb-12">
+      <FilterTags tags={tags} onClick={(tag: string) => { window.location.href = `?selectedTag=${tag}`; }} />
+    </div>
+
     <div class="mt-8 border-y border-[#202020]/10 dark:border-[#7c8fd1]/20 py-4">
       <div class="flex flex-wrap items-center gap-4">
         <span class="text-sm font-semibold text-[#202020] dark:text-[#7c8fd1]">Share</span>
@@ -118,10 +122,6 @@ const filteredPosts = selectedTag
         <a href={`mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(Astro.url.href)}`} class="inline-flex items-center gap-2 text-sm hover:underline"><i class="fas fa-envelope"></i> Email</a>
         <button type="button" onclick="navigator.clipboard.writeText(window.location.href)" class="inline-flex items-center gap-2 text-sm dark:prose-invert max-w-none text-[#202020] dark:text-[#96a6e2] hover:underline"><i class="fas fa-link"></i> Copy Link</button>
       </div>
-    </div>
-
-    <div class="w-full mb-12">
-      <FilterTags tags={tags} onClick={(tag: string) => { window.location.href = `?selectedTag=${tag}`; }} />
     </div>
 
     <div class="flex flex-col lg:flex-row lg:gap-16 w-full">
