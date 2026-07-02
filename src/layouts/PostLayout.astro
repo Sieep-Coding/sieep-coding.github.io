@@ -46,6 +46,8 @@ const filteredPosts = selectedTag
     }
 
     if (article && tocList) {
+      // Clear existing to prevent duplication on view transitions
+      tocList.innerHTML = "";
       const headings = article.querySelectorAll("h2, h3");
       if (headings.length === 0) {
         tocList.innerHTML = '<p class="opacity-60 text-sm">No headings found.</p>';
