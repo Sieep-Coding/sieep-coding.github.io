@@ -19,7 +19,7 @@ const allPosts = await Astro.glob("./posts/*.md");
           <h1
             class="text-3xl font-bold tracking-tight text-secondary dark:text-dk-accent"
           >
-            Hi, I'm {info.name}
+            {info.name}
           </h1>
           <div
             class="mt-1 flex flex-wrap items-center gap-1 text-sm text-text/50 dark:text-dk-text/50"
@@ -87,7 +87,7 @@ const allPosts = await Astro.glob("./posts/*.md");
             Read my blog →
           </a>
           <a href="/about" class="inline-flex items-center text-sm font-medium text-secondary dark:text-dk-accent hover:underline underline-offset-4">
-            Read about me →
+            Read about Nick →
           </a>
            <a href="https://luniv.tech/" class="inline-flex items-center text-sm font-medium text-secondary dark:text-dk-accent hover:underline underline-offset-4">
             Explore Luniv →
