@@ -35,7 +35,7 @@ const Footer: React.FC = () => {
                         href="/about"
                         className="hover:text-secondary dark:hover:text-dk-accent transition-colors"
                     >
-                        About Me
+                        About Nick
                     </a>
                     <span>·</span>
                     <a
