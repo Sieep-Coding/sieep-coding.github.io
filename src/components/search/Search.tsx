@@ -1,7 +1,6 @@
 import Fuse from "fuse.js";
 import React, { useEffect, useState } from "react";
 import Modal from "react-modal";
-import Tooltip from "../navbar/Tooltip";
 
 export default function Search({ posts }: any) {
   const [search, setSearch] = useState(false);
@@ -61,12 +60,10 @@ export default function Search({ posts }: any) {
   return (
     <div className="self-center">
       <button onClick={() => setSearch(true)} aria-label="Search" className="text-secondary dark:text-dk-secondary">
-        <Tooltip text="Search my blog." position="bottom">
           <i
             className="fa fa-search self-center hover:text-accent dark:hover:text-dk-accent text-2xl cursor-pointer transition-colors"
             onClick={() => setSearch(true)}
           ></i>
-        </Tooltip>
       </button>
     
       <Modal
