@@ -58,6 +58,33 @@ h1 {
   overflow-wrap: anywhere;
 }
 
+.prose {
+  --tw-prose-body: #202020;
+  --tw-prose-headings: #202020;
+  --tw-prose-links: #202020;
+  --tw-prose-bold: #202020;
+
+  /* Borders / dividers */
+  --tw-prose-hr: #202020;
+  --tw-prose-quotes: #202020;
+  --tw-prose-quote-borders: #202020;
+
+  /* Tables */
+  --tw-prose-th-borders: #202020;
+  --tw-prose-td-borders: #202020;
+}
+
+.dark .prose {
+  --tw-prose-body: #96a6e2;
+  --tw-prose-headings: #7c8fd1;
+  --tw-prose-links: #95b4dd;
+
+  --tw-prose-hr: #7c8fd1;
+  --tw-prose-quote-borders: #7c8fd1;
+  --tw-prose-th-borders: #7c8fd1;
+  --tw-prose-td-borders: #4a577e;
+}
+
 @media (min-width: 1024px) {
   h1 {
     font-size: 2.05rem;
