@@ -21,6 +21,8 @@ Rather than existing as a static state, becoming virtuous is an ongoing process 
 
 While a lot has changed about our physical world since ancient Greece and Rome, these same thoughts can still be true in the digital age.
 
+---
+
 ## Stoicism and Platonic Thinking In The Digital Age
 While Stoicism emphasizes the neutrality of tools, Plato's concern with appearances suggests that certain technologies may systematically encourage ways of thinking that distance us from truth.
 
@@ -43,6 +45,8 @@ Plato argues that writing encourages the appearance of wisdom rather than genuin
 - **The Framework:** Plato might argue how digital media colonizes the consciousness. He would warn that if you offload your memory to a smartphone, you are atrophying the very "muscles" required to reach truth.
 
 - **The Application:** A Platonist would ask: Does this technology bring me closer to the Forms (truth/beauty/justice), or does it keep me in the Cave (shadows/images/opiates)? If you use tech to engage in dialectic (genuine dialogue, questioning, and learning), it is a ladder to the light. If you use it to consume "shadows" (infinite scrolls, rage-bait, algorithmic content), it is a shackle.
+
+---
 
 ## A Modern Synthesis of Both Philosophies
 The modern "virtuous person" must consciously bridge the gap between digital output and integrity.
