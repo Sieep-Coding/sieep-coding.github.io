@@ -86,6 +86,30 @@ h1 {
   --tw-prose-td-borders: #4a577e;
 }
 
+.prose :where(a):not(:where([class~="not-prose"] *)) {
+  color: #202020;
+  text-decoration: underline;
+  text-decoration-color: #202020;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  font-weight: 500;
+  transition: opacity 0.2s ease;
+}
+
+.prose :where(a):not(:where([class~="not-prose"] *)):hover {
+  opacity: 0.65;
+}
+
+.dark .prose :where(a):not(:where([class~="not-prose"] *)) {
+  color: #95b4dd;
+  text-decoration-color: #95b4dd;
+  opacity: 0.95;
+}
+
+.dark .prose :where(a):not(:where([class~="not-prose"] *)):hover {
+  opacity: 0.75;
+}
+
 @media (min-width: 1024px) {
   h1 {
     font-size: 2.15rem;
