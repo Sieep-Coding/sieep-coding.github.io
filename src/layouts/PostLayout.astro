@@ -92,15 +92,6 @@ const filteredPosts = selectedTag
 
 <BaseLayout title={title}>
   <main class="pt-20 lg:pt-24 w-full max-w-5xl mx-auto px-4">
-    <details class="mb-8 w-full rounded-lg border border-[#202020]/15 dark:border-[#7c8fd1]/30 bg-white dark:bg-[#111827] overflow-hidden group">
-      <summary class="flex cursor-pointer list-none items-center justify-between px-5 py-4 font-semibold text-[#202020] dark:text-[#7c8fd1]">
-        <span>Table of Contents</span>
-        <span class="transition-transform duration-300 group-open:rotate-180">^</span>
-      </summary>
-      <div class="border-t border-[#202020]/10 dark:border-[#7c8fd1]/20 px-5 py-4">
-        <nav id="toc-list" class="flex flex-col text-[#202020] dark:text-[#96a6e2]"></nav>
-      </div>
-    </details>
 
     <div class="mb-8 w-full">
       <h1 class="text-3xl font-semibold lg:text-4xl text-[#202020] dark:text-[#7c8fd1] break-words">{title}</h1>
@@ -134,7 +125,7 @@ const filteredPosts = selectedTag
     <div class="mb-8">
       <FilterTags tags={tags} onClick={(tag: string) => { window.location.href = `?selectedTag=${tag}`; }} />
     </div>
-
+    
     <div class="mb-12 border-y border-[#202020]/10 dark:border-[#7c8fd1]/20 py-4">
       <div class="flex flex-wrap items-center gap-4">
         <span class="text-sm font-semibold text-[#202020] dark:text-[#7c8fd1]">Share</span>
@@ -146,7 +137,15 @@ const filteredPosts = selectedTag
         <button type="button" onclick="navigator.clipboard.writeText(window.location.href)" class="inline-flex items-center gap-2 text-sm text-[#202020] dark:text-[#96a6e2] hover:underline"><i class="fas fa-link"></i> Copy Link</button>
       </div>
     </div>
-
+        <details class="mb-8 w-full rounded-lg border border-[#202020]/15 dark:border-[#7c8fd1]/30 bg-white dark:bg-[#111827] overflow-hidden group">
+      <summary class="flex cursor-pointer list-none items-center justify-between px-5 py-4 font-semibold text-[#202020] dark:text-[#7c8fd1]">
+        <span>Table of Contents</span>
+        <span class="transition-transform duration-300 group-open:rotate-180">^</span>
+      </summary>
+      <div class="border-t border-[#202020]/10 dark:border-[#7c8fd1]/20 px-5 py-4">
+        <nav id="toc-list" class="flex flex-col text-[#202020] dark:text-[#96a6e2]"></nav>
+      </div>
+    </details>
     <div class="flex flex-col lg:flex-row lg:gap-16 w-full">
       <div class="w-full lg:w-2/3">
         <div id="article" class="prose dark:prose-invert max-w-none text-[#202020] dark:text-[#96a6e2]">
