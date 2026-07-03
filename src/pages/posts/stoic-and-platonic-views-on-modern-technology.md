@@ -36,7 +36,7 @@ To a stoic, technology is an external. It is not evil, nor is it virtuous. Howev
 - **The Application:** Ancient stoicism would likely lead to digital minimalism. The "virtuous person" uses hardware and software with precision. Once the work is done, the tool is set down. Notifications, feeds, and long-form videos are removed entirely.
 
 ### The Platonic View: Technology as a *Pharmakon*
-In *Phaedrus*, Socrates (as presented by Plato) describes writing as a *pharmakon*, both a remedy and a poison, to describe writing.
+In *Phaedrus*, Socrates (as presented by Plato) describes writing as a *pharmakon*, both a remedy and a poison.
 
 Plato was concerned that writers could damage the masses memory, and create false appearances of wisdom. Plato argues that writing encourages the appearance of wisdom rather than genuine understanding, which is cultivated through dialectic.
 
