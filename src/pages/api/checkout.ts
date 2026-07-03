@@ -1,8 +1,4 @@
-// src/pages/api/checkout.ts
-// Astro API route — place at src/pages/api/checkout.ts
-// Install: npm install stripe
-
-import type { APIRoute } from "astro";
+/*import type { APIRoute } from "astro";
 import Stripe from "stripe";
 
 const stripe = new Stripe(import.meta.env.STRIPE_SECRET_KEY, {
@@ -26,4 +22,4 @@ export const POST: APIRoute = async ({ request }) => {
   });
 
   return new Response(JSON.stringify({ url: session.url }), { status: 200 });
-};
+};*/
