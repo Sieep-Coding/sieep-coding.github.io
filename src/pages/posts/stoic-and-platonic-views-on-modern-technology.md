@@ -38,7 +38,7 @@ To a stoic, technology is an external. It is not evil, nor is it virtuous. Howev
 ### The Platonic View: Technology as a *Pharmakon*
 In *Phaedrus*, Socrates (as presented by Plato) describes writing as a *pharmakon*, both a remedy and a poison.
 
-Plato was concerned that writers could damage the masses memory, and create false appearances of wisdom. Plato argues that writing encourages the appearance of wisdom rather than genuine understanding, which is cultivated through dialectic.
+Plato argues that writing encourages the appearance of wisdom rather than genuine understanding, which is cultivated through dialectic.
 
 - **The Framework:** Plato might argue how digital media colonizes the consciousness. He would warn that if you offload your memory to a smartphone, you are atrophying the very "muscles" required to reach truth.
 
