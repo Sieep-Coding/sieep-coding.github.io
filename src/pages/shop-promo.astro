@@ -1,0 +1,42 @@
+---
+import ShopLayout from "../layouts/ShopLayout.astro";
+---
+
+<ShopLayout
+  title="Shop — Nick Stambaugh"
+  description="Framed archival prints and music."
+>
+  <div class="flex flex-col items-center justify-center min-h-[60vh] text-center px-4 animate-fade-in">
+
+    <p class="text-xs tracking-[0.3em] uppercase text-[#202020]/90 dark:text-[#96a6e2]/90 mb-6">
+      Coming Soon
+    </p>
+
+    <h2 class="text-3xl lg:text-4xl font-bold text-[#202020] dark:text-[#7c8fd1] mb-4">
+      Prints, Music, & Other Goodies
+    </h2>
+
+    <p class="text-[#202020]/60 dark:text-[#96a6e2]/60 max-w-md leading-relaxed mb-10">
+      Framed archival photography and original music, available soon. 
+      Get notified when the shop opens.
+    </p>
+
+    <a
+      href="mailto:nickstambaugh@proton.me?subject=Shop Launch Notification?body=Hi Nick,%0D%0A%0D%0AI'd like to be notified when your shop opens.%0D%0A%0D%0AThanks!"
+      class="inline-flex items-center gap-2 px-5 py-2.5 border border-[#202020]/20 dark:border-[#7c8fd1]/30 rounded text-sm font-mono text-[#202020] dark:text-[#96a6e2] hover:border-[#202020]/50 dark:hover:border-[#7c8fd1]/60 transition-colors"
+    >
+      Notify me →
+    </a>
+  </div>
+</ShopLayout>
+
+<style>
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.9s cubic-bezier(0.4, 0, 0.2, 1) both;
+  }
+</style>

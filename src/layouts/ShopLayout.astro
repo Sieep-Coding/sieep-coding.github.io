@@ -1,0 +1,37 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+
+const { title, description } = Astro.props;
+---
+
+<BaseLayout title={title}>
+<!--  
+    
+  <div class="min-h-screen pt-20 lg:pt-24">
+    <div class="w-full max-w-5xl mx-auto px-4">
+
+      <div class="border-b border-[#202020]/10 dark:border-[#7c8fd1]/20 pb-6 mb-10">
+        <p class="text-xs tracking-[0.2em] uppercase text-[#202020]/50 dark:text-[#96a6e2]/50 mb-2">Nick Stambaugh</p>
+        <h1 class="text-3xl lg:text-4xl font-bold text-[#202020] dark:text-[#7c8fd1]">Shop</h1>
+        {description && (
+          <p class="mt-3 text-[#202020]/70 dark:text-[#96a6e2]/70 max-w-xl">{description}</p>
+        )}
+        <div class="flex gap-6 mt-5 text-sm text-[#202020]/50 dark:text-[#96a6e2]/50">
+          <a href="/shop" class="hover:text-[#202020] dark:hover:text-[#96a6e2] transition-colors">All</a>
+       <a href="/shop?type=print" class="hover:text-[#202020] dark:hover:text-[#96a6e2] transition-colors">Prints</a>
+          <a href="/shop?type=album" class="hover:text-[#202020] dark:hover:text-[#96a6e2] transition-colors">Music</a>
+        </div>
+    </div>
+    -->
+    <slot />
+    
+</div>
+</div>
+</BaseLayout>
+
+<style>
+  .stripe-loading {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+</style>

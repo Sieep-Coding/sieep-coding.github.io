@@ -1,18 +1,10 @@
 ---
 import Nav from "../components/navbar/Nav";
 import Footer from "../components/contact_section/Footer";
-import Pointer from "../components/Pointer";
 
 const { title } = Astro.props;
 const posts = await Astro.glob("../pages/posts/*.md");
-const formattedPosts = Object.keys(posts).map((key) => ({
-  frontmatter: {
-    title: posts[key].frontmatter.title,
-    date: posts[key].frontmatter.date,
-    description: posts[key].frontmatter.description,
-  },
-  url: key.replace("../pages", "").replace(".md", ""), // Generate correct URL
-}));
+
 
 import "../styles/global.css";
 ---
@@ -62,7 +54,6 @@ import "../styles/global.css";
     <title>{title}</title>
   </head>
 <body class="bg-primary dark:bg-dk-primary min-h-screen flex flex-col">
-  <Pointer client:load />
   <div class="relative z-10 flex flex-col min-h-screen">
     <Nav client:visible posts={posts} />
     <div class="flex-grow w-full max-w-5xl mx-auto">

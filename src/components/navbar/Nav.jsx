@@ -17,7 +17,7 @@ export default function Nav({ posts }) {
   return (
     <>
       <nav className="w-full top-0 z-50 absolute bg-primary dark:bg-dk-primary">
-        <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+        <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center relative">
           <a
             className="font-bold text-lg sm:text-2xl hover:scale-105 hover:-rotate-3 duration-300 block"
             href="/#"
@@ -25,6 +25,13 @@ export default function Nav({ posts }) {
             <span className="text-secondary dark:text-dk-secondary">
               {"</" + extractInitials(info.name) + ">"}
             </span>
+          </a>
+
+          <a
+            href="/shop-promo"
+            className="absolute left-1/2 -translate-x-1/2 text-secondary dark:text-dk-secondary"
+          >
+            Shop
           </a>
 
           <div className="flex items-center gap-4 text-secondary dark:text-dk-secondary">
