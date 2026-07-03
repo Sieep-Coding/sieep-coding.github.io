@@ -1,5 +1,6 @@
 import Fuse from "fuse.js";
 import React, { useEffect, useState } from "react";
+//@ts-ignore
 import Modal from "react-modal";
 
 export default function Search({ posts }: any) {
