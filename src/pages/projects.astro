@@ -35,7 +35,7 @@ const featuredCases = [
     tags: ["Events", "Community", "Web Design"],
     accent: "#F59E0B",
     liveLink: "https://bold-talks.com",
-    link: "https://www.luniv.tech/case-study/bold-talks",
+    link: "https://bold-talks.com",
     outcome:
       "Turned a cigar bar conversation series into a discoverable, RSVP-ready digital presence.",
     image:
@@ -48,7 +48,7 @@ const featuredCases = [
     tags: ["Industrial", "Web Design", "Lead Generation"],
     accent: "#EF4444",
     liveLink: "https://www.mpdwelding.com",
-    link: "https://www.luniv.tech/case-study/mpd-welding",
+    link: "https://www.mpdwelding.com",
     outcome:
       "Turned a legacy industrial site into a 24/7 quote intake and recruiting machine.",
     image:
@@ -223,7 +223,6 @@ const openSourceProjects = [
     }
 
     .case-row:hover {
-      background: var(--hover-bg);
     }
 
     .case-row:nth-child(even) .case-image {
@@ -486,6 +485,12 @@ const openSourceProjects = [
       <h1 class="masthead-headline">
         Things I've<br /><em>shipped.</em> <br />
       </h1>
+      <a
+  href="https://luniv.tech/contact"
+  class="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-secondary dark:bg-dk-secondary text-white dark:text-white hover:bg-accent hover:text-black dark:hover:text-black dark:hover:bg-dk-accent transition-colors duration-300 font-medium shadow-md hover:shadow-lg"
+>
+  Hire Me!
+</a>
     </header>
     <section class="cases-section">
       <p class="section-label">Case Studies &mdash; Client &amp; Product Work</p>
@@ -509,7 +514,7 @@ const openSourceProjects = [
                 </p>
               </div>
               <span class="case-cta">
-                {c.liveLink.startsWith("http") ? "Visit site →" : "Get in touch →"}
+                {c.liveLink.startsWith("http") ? "Visit site →" : "Learn More →"}
               </span>
             </div>
             <div class="case-image">
