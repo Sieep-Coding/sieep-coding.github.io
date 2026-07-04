@@ -27,13 +27,6 @@ export default function Nav({ posts }) {
             </span>
           </a>
 
-          <a
-            href="/shop-promo"
-            className="absolute left-1/2 -translate-x-1/2 text-secondary dark:text-dk-secondary"
-          >
-            Shop
-          </a>
-
           <div className="flex items-center gap-4 text-secondary dark:text-dk-secondary">
             <Search posts={posts} />
             <ToggleDarkMode />
