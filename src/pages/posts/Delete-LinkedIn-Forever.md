@@ -29,12 +29,16 @@ When you make your social media platform attractive to the most vain, predatory 
 
 AI-generated content is low-cost, low-effort, and more importantly, it requires little thinking. That makes it ideal for a platform like LinkedIn, where users value the convenience and *precieved benefit* of automated posting over actual social interaction.
 
-## The Illusion
-The biggest hurdle to clicking 'delete' is the fear of missing out. We are conditioned to believe that if you aren't on LinkedIn, you don't exist professionally. It is an anxiety designed to keep you scrolling through empty corporate platitudes. 
+![Kramer](../photo/_kramer.gif "Kramer")
 
-But the reality is much simpler. People do business with people they actually know, trust, and respect. They do not do business with a optimized profile sleeping under a mountain of garbage. 
+## The Illusion
+The biggest hurdle to clicking 'delete' is the FOMO. 
+
+We believe that if you aren't on LinkedIn, you don't exist as a professional.
+
+In reality, people do business with people they actually know and trust. They do not do business with a optimized profile sleeping under a mountain of garbage. 
 
 ## Real Connections
-If my history has proven anything, it's that real-world results happen in the real world. A casual conversation with a former coworker or a direct application on a dedicated job board yields more tangible outcomes than sending fifty cold connection requests into a void of automated replies.
+A casual conversation with a former coworker or a direct application on a dedicated job board yields more tangible outcomes than sending fifty cold connection requests into a void of automated replies.
 
 I am done participating in the theater. If a future employer or connection (or perhaps, an old lover?) really wants to find me, they can do it the old-fashioned way.
