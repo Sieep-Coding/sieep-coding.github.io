@@ -59,6 +59,36 @@ h1 {
   font-size: 2.2rem;
 }
 
+.toc-link {
+  display: block;
+  padding: 6px 20px;
+  font-size: 0.875rem;
+  color: #202020;
+  text-decoration: none;
+}
+
+.toc-link:hover {
+  text-decoration: underline;
+}
+
+.toc-link-sub {
+  display: block;
+  padding: 6px 20px 6px 40px;
+  font-size: 0.8rem;
+  color: #202020;
+  opacity: 0.7;
+  text-decoration: none;
+}
+
+.toc-link-sub:hover {
+  text-decoration: underline;
+}
+
+html.dark .toc-link,
+html.dark .toc-link-sub {
+  color: #96a6e2;
+}
+
 .prose {
   --tw-prose-body: #202020;
   --tw-prose-headings: #202020;

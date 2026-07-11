@@ -69,10 +69,7 @@ const filteredPosts = selectedTag
         const link = document.createElement("a");
         link.href = `#${heading.id}`;
         link.textContent = heading.textContent || "";
-        link.className =
-          heading.tagName === "H2"
-            ? "block py-1 hover:underline"
-            : "block py-1 pl-5 text-sm opacity-80 hover:underline";
+        link.className = heading.tagName === "H2" ? "toc-link" : "toc-link-sub";
 
         tocList.appendChild(link);
       });
