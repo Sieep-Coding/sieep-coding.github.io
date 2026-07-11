@@ -73,6 +73,13 @@ h1 {
   /* Tables */
   --tw-prose-th-borders: #202020;
   --tw-prose-td-borders: #202020;
+
+  --tw-prose-bullets: #202020;
+  --tw-prose-counters: #202020;
+  --tw-prose-captions: #202020;
+  --tw-prose-code: #202020;
+  --tw-prose-pre-code: #202020;
+  --tw-prose-pre-bg: #f0e8e0;
 }
 
 .dark .prose {
@@ -84,6 +91,13 @@ h1 {
   --tw-prose-quote-borders: #7c8fd1;
   --tw-prose-th-borders: #7c8fd1;
   --tw-prose-td-borders: #4a577e;
+
+  --tw-prose-bullets: #96a6e2;
+  --tw-prose-counters: #96a6e2;
+  --tw-prose-captions: #96a6e2;
+  --tw-prose-code: #96a6e2;
+  --tw-prose-pre-code: #96a6e2;
+  --tw-prose-pre-bg: #1e2030;
 }
 
 .prose :where(a):not(:where([class~="not-prose"] *)) {

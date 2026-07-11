@@ -91,61 +91,139 @@ const filteredPosts = selectedTag
 
 <BaseLayout title={title}>
   <main class="pt-20 lg:pt-24 w-full max-w-5xl mx-auto px-4">
-
     <div class="mb-8 w-full">
-      <h1 class="text-3xl font-semibold lg:text-4xl text-[#202020] dark:text-[#7c8fd1] break-words">{title}</h1>
-      <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between mt-4">
-          <p class="text-sm lg:text-base text-[#202020] dark:text-[#96a6e2]">
-            <span id="time" class="font-bold"></span> min read
-          </p>
-        <p class="text-sm lg:text-base flex gap-2 text-[#202020] dark:text-[#96a6e2]">
+      <h1
+        class="text-3xl font-semibold lg:text-4xl text-[#202020] dark:text-[#7c8fd1] break-words"
+      >
+        {title}
+      </h1>
+      <div
+        class="flex flex-col lg:flex-row lg:items-center lg:justify-between mt-4"
+      >
+        <p class="text-sm lg:text-base text-[#202020] dark:text-[#96a6e2]">
+          <span id="time" class="font-bold"></span> min read
+        </p>
+        <p
+          class="text-sm lg:text-base flex gap-2 text-[#202020] dark:text-[#96a6e2]"
+        >
           <span>{date}</span>
           <a href="/posts" class="ml-2 hover:underline">Back to posts</a>
         </p>
       </div>
 
-      {img_path && (
-        <Image
-          src={img_path}
-          alt={img_alt || title}
-          class="w-full object-cover rounded lg:rounded-lg h-64 lg:h-96 mt-6"
-          width={800}
-          height={400}
-        />
-      )}
+      {
+        img_path && (
+          <Image
+            src={img_path}
+            alt={img_alt || title}
+            class="w-full object-cover rounded lg:rounded-lg h-64 lg:h-96 mt-6"
+            width={800}
+            height={400}
+          />
+        )
+      }
 
-      <h2 class="text-md lg:text-lg mt-4 opacity-80 text-[#202020] dark:text-[#7c8fd1]">
+      <h2
+        class="text-md lg:text-lg mt-4 opacity-80 text-[#202020] dark:text-[#7c8fd1]"
+      >
         {frontmatter.description || "An insightful blog post."}
       </h2>
     </div>
 
     <div class="mb-8">
-      <FilterTags tags={tags} onClick={(tag: string) => { window.location.href = `?selectedTag=${tag}`; }} />
+      <FilterTags
+        tags={tags}
+        onClick={(tag: string) => {
+          window.location.href = `?selectedTag=${tag}`;
+        }}
+      />
     </div>
-    
-    <div class="mb-12 border-y border-[#202020]/10 dark:border-[#7c8fd1]/20 py-4">
+
+    <div
+      class="mb-12 border-y border-[#202020]/10 dark:border-[#7c8fd1]/20 py-4"
+    >
       <div class="flex flex-wrap items-center gap-4">
-        <span class="text-sm font-semibold text-[#202020] dark:text-[#7c8fd1]">Share</span>
-        <a href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(Astro.url.href)}&text=${encodeURIComponent(title)}`} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm hover:underline"><i class="fab fa-x-twitter"></i> X</a>
-        <a href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(Astro.url.href)}`} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm hover:underline"><i class="fab fa-facebook"></i> Facebook</a>
-        <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(Astro.url.href)}`} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm hover:underline"><i class="fab fa-linkedin"></i> LinkedIn</a>
-        <a href={`https://www.reddit.com/submit?url=${encodeURIComponent(Astro.url.href)}&title=${encodeURIComponent(title)}`} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm hover:underline"><i class="fab fa-reddit"></i> Reddit</a>
-        <a href={`mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(Astro.url.href)}`} class="inline-flex items-center gap-2 text-sm hover:underline"><i class="fas fa-envelope"></i> Email</a>
-        <button type="button" onclick="navigator.clipboard.writeText(window.location.href)" class="inline-flex items-center gap-2 text-sm text-[#202020] dark:text-[#96a6e2] hover:underline"><i class="fas fa-link"></i> Copy Link</button>
+        <span class="text-sm font-semibold text-[#202020] dark:text-[#7c8fd1]"
+          >Share</span
+        >
+        <a
+          href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(Astro.url.href)}&text=${encodeURIComponent(title)}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 text-sm hover:underline"
+          ><i class="fab fa-x-twitter"></i> X</a
+        >
+        <a
+          href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(Astro.url.href)}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 text-sm hover:underline"
+          ><i class="fab fa-facebook"></i> Facebook</a
+        >
+        <a
+          href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(Astro.url.href)}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 text-sm hover:underline"
+          ><i class="fab fa-linkedin"></i> LinkedIn</a
+        >
+        <a
+          href={`https://www.reddit.com/submit?url=${encodeURIComponent(Astro.url.href)}&title=${encodeURIComponent(title)}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 text-sm hover:underline"
+          ><i class="fab fa-reddit"></i> Reddit</a
+        >
+        <a
+          href={`mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(Astro.url.href)}`}
+          class="inline-flex items-center gap-2 text-sm hover:underline"
+          ><i class="fas fa-envelope"></i> Email</a
+        >
+        <button
+          type="button"
+          onclick="navigator.clipboard.writeText(window.location.href)"
+          class="inline-flex items-center gap-2 text-sm text-[#202020] dark:text-[#96a6e2] hover:underline"
+          ><i class="fas fa-link"></i> Copy Link</button
+        >
       </div>
     </div>
-        <details class="mb-8 w-full rounded-lg border border-[#202020]/15 dark:border-[#7c8fd1]/30 bg-white dark:bg-[#111827] overflow-hidden group">
-      <summary class="flex cursor-pointer list-none items-center justify-between px-5 py-4 font-semibold text-[#202020] dark:text-[#7c8fd1]">
+    <details
+      class="mb-8 w-full rounded-lg border border-[#202020]/15 dark:border-[#7c8fd1]/30 bg-[#f9f6f230] dark:bg-[#111827] overflow-hidden group"
+    >
+      <summary
+        class="flex cursor-pointer list-none items-center justify-between px-5 py-4 font-semibold text-[#202020] dark:text-[#7c8fd1]"
+      >
         <span>Table of Contents</span>
-        <span class="transition-transform duration-300 group-open:rotate-180">^</span>
+        <svg
+          class="h-4 w-4 transition-transform duration-300 group-open:rotate-180"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="2.5"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M19 9l-7 7-7-7"></path>
+        </svg>
       </summary>
-      <div class="border-t border-[#202020]/10 dark:border-[#7c8fd1]/20 px-5 py-4">
-        <nav id="toc-list" class="flex flex-col text-[#202020] dark:text-[#96a6e2]"></nav>
+      <div
+        class="border-t border-[#202020]/10 dark:border-[#7c8fd1]/20 px-5 py-4"
+      >
+        <nav
+          id="toc-list"
+          class="flex flex-col text-[#202020] dark:text-[#96a6e2]"
+        >
+        </nav>
       </div>
     </details>
     <div class="flex flex-col lg:flex-row lg:gap-16 w-full">
       <div class="w-full lg:w-2/3">
-        <div id="article" class="prose dark:prose-invert max-w-none text-[#202020] dark:text-[#96a6e2]">
+        <div
+          id="article"
+          class="prose dark:prose-invert max-w-none text-[#202020] dark:text-[#96a6e2]"
+        >
           <slot />
         </div>
         <div class="mt-8">
@@ -156,50 +234,75 @@ const filteredPosts = selectedTag
       <aside class="w-full lg:w-1/3 mt-12 lg:mt-0">
         <div class="border border-[#202020] dark:border-[#7c8fd1] p-6 rounded">
           <div class="flex items-center py-2">
-            <Image src={info.picture} alt={info.picture_alt} class="mr-3 h-12 w-12 rounded-full object-cover" height={48} width={48} />
+            <Image
+              src={info.picture}
+              alt={info.picture_alt}
+              class="mr-3 h-12 w-12 rounded-full object-cover"
+              height={48}
+              width={48}
+            />
             <div>
-              <p class="text-xs font-semibold text-[#202020]/70 dark:text-[#96a6e2]/70">Author</p>
-              <a class="text-sm font-bold text-[#202020] dark:text-[#7c8fd1] hover:underline" href="/">{info.name}</a>
+              <p
+                class="text-xs font-semibold text-[#202020]/70 dark:text-[#96a6e2]/70"
+              >
+                Author
+              </p>
+              <a
+                class="text-sm font-bold text-[#202020] dark:text-[#7c8fd1] hover:underline"
+                href="/">{info.name}</a
+              >
             </div>
           </div>
-          <p class="py-3 text-sm text-[#202020] dark:text-[#96a6e2]">{info.brief_description}</p>
+          <p class="py-3 text-sm text-[#202020] dark:text-[#96a6e2]">
+            {info.brief_description}
+          </p>
           <Contact contact={info.contact} size="md" />
         </div>
         <div class="mt-8">
           <RecentPosts posts={filteredPosts} />
           <div class="text-center pt-4"><BookConsultation /></div>
-          <div class="flex flex-col gap-2 mt-4"><ViewBlog /><ViewAboutMe /></div>
+          <div class="flex flex-col gap-2 mt-4">
+            <ViewBlog /><ViewAboutMe />
+          </div>
         </div>
       </aside>
     </div>
-<section class="pt-6">
-  <h2 class="mb-4 text-xl font-semibold text-[#202020] dark:text-[#7c8fd1]">
-    Notes from Nick
-  </h2>
+    <section class="pt-6">
+      <h2 class="mb-4 text-xl font-semibold text-[#202020] dark:text-[#7c8fd1]">
+        Notes from Nick
+      </h2>
 
-  <p class="m-4 text-[#202020] dark:text-[#7c8fd1]">
-    Thanks for reading! This post was written by <a href="/about" class="underline">Nick Stambaugh</a>, not AI.
-  </p>
+      <p class="m-4 text-[#202020] dark:text-[#7c8fd1]">
+        Thanks for reading! This post was written by <a
+          href="/about"
+          class="underline">Nick Stambaugh</a
+        >, not AI.
+      </p>
 
-  <ul class="list-disc space-y-2 pl-5 text-[#202020] dark:text-[#7c8fd1]">
-    <li>
-      Have a question or want to discuss a topic?
-      <a href="mailto:nickstambaugh@proton.me" class="underline">Email Nick</a>
-    </li>
-    <li>
-      Stay up to date with Nick's latest posts via
-      <a href="/rss.xml" class="underline">RSS</a>
-    </li>
-    <li>
-      Interested in working together? Visit
-      <a href="https://luniv.tech" class="underline">Luniv Technology</a>
-    </li>
-    <li>
-      This website costs money to maintain and contains no advertisements. Consider
-      <a href="https://buymeacoffee.com/nickstambaugh" class="underline">buying Nick a coffee</a>
-      as a token of appreciation.
-    </li>
-  </ul>
-</section>
+      <ul class="list-disc space-y-2 pl-5 text-[#202020] dark:text-[#7c8fd1]">
+        <li>
+          Have a question or want to discuss a topic?
+          <a href="mailto:nickstambaugh@proton.me" class="underline"
+            >Email Nick</a
+          >
+        </li>
+        <li>
+          Stay up to date with Nick's latest posts via
+          <a href="/rss.xml" class="underline">RSS</a>
+        </li>
+        <li>
+          Interested in working together? Visit
+          <a href="https://luniv.tech" class="underline">Luniv Technology</a>
+        </li>
+        <li>
+          This website costs money to maintain and contains no advertisements.
+          Consider
+          <a href="https://buymeacoffee.com/nickstambaugh" class="underline"
+            >buying Nick a coffee</a
+          >
+          as a token of appreciation.
+        </li>
+      </ul>
+    </section>
   </main>
 </BaseLayout>
