@@ -5,7 +5,7 @@ release: false
 layout: ../../layouts/PostLayout.astro
 description: "After using Ableton for a few years, I decided to move back to the first DAW I learned."
 img_path : "/fl-studio.png"
-img_alt : "CachyOS Desktop"
+img_alt : "Fl Studio!"
 tags: ["#Music",]
 ---
 
