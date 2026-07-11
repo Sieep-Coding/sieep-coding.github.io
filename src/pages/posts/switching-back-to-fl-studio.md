@@ -28,6 +28,8 @@ This isn't meant to be a hit piece. Ableton is excellent software used by seriou
 
 The clip-based workflow is powerful, but my brain doesn't think in clips. I think in patterns and loops that stack on top of each other. FL's Playlist view maps to that mental model naturally. It felt natural coming from video editing software. With Ableton, I always felt like I was one step removed from the actual music.
 
+---
+
 ## What I Like About FL Studio
 There is many different aspects of FL Studio I like. Before getting into technical reasons, I wanted to bring light to the other sides of FL and why I find it superior.
 
@@ -50,6 +52,8 @@ There is a lot to love about FL, but I will list my top 3.
 
 ![Channel Rack](../photo/_channelrack.png "Channel Rack")
 > The Channel Rack simplifies drum patterns. If you want to learn all of the buttons, visit the [official FL Studio documentation.](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/channelrack.htm) 
+
+---
 
 ## What's Next
 Right now I'm just relearning the software and getting my sample library organized. It's a bit of a mess. 
