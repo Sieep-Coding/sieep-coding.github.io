@@ -24,9 +24,8 @@ export default function TopButton() {
 
   return (
     <button
-      className={`fixed left-4 bottom-4 lg:left-8 lg:bottom-8 z-25 p-2 rounded-full bg-transparent text-secondary dark:text-dk-secondary lg:hover:text-accent lg:dark:hover:text-dk-accent ${
-        isTop ? "hidden" : ""
-      }`}
+      className={`fixed left-4 bottom-4 lg:left-8 lg:bottom-8 z-25 p-2 rounded-full bg-transparent text-secondary dark:text-dk-secondary lg:hover:text-accent lg:dark:hover:text-dk-accent ${isTop ? "hidden" : ""
+        }`}
       onClick={handleTop}
       aria-label="Scroll to top"
     >

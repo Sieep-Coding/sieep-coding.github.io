@@ -5,10 +5,9 @@ import Footer from "../components/contact_section/Footer";
 const { title } = Astro.props;
 const posts = await Astro.glob("../pages/posts/*.md");
 
-
 import "../styles/global.css";
-
 ---
+
 <script>
   // On page load or when changing themes, best to add inline in `head` to avoid FOUC
   if (
@@ -21,7 +20,6 @@ import "../styles/global.css";
     document.documentElement.classList.remove("dark");
   }
 </script>
-<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -29,9 +27,12 @@ import "../styles/global.css";
       name="Nick Stambaugh portfolio website and blog."
       content="A portfolio website for a software developer, blogger, writer, and business intelligence professional."
     />
-    <meta name="keywords" content="Nick Stambaugh, Full-Stack Engineer, Business Intelligence, Economics, Software Developer, Elixir, Go, .NET, TypeScript, Data Visualization, Strategic Operations, portfolio, software, developer, BI, excel, python, tableau, Go, blog, content" />
+    <meta
+      name="keywords"
+      content="Nick Stambaugh, Full-Stack Engineer, Business Intelligence, Economics, Software Developer, Elixir, Go, .NET, TypeScript, Data Visualization, Strategic Operations, portfolio, software, developer, BI, excel, python, tableau, Go, blog, content"
+    />
     <meta name="author" content="Nick Stambaugh" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
     <link
       rel="alternate"
@@ -65,13 +66,13 @@ import "../styles/global.css";
     />
     <title>{title}</title>
   </head>
-<body class="bg-primary dark:bg-dk-primary min-h-screen flex flex-col">
-  <div class="relative z-10 flex flex-col min-h-screen">
-    <Nav client:visible posts={posts} />
-    <div class="flex-grow w-full max-w-5xl mx-auto">
-      <slot />
+  <body class="bg-primary dark:bg-dk-primary min-h-screen flex flex-col">
+    <div class="relative z-10 flex flex-col min-h-screen">
+      <Nav client:visible posts={posts} />
+      <div class="flex-grow w-full max-w-5xl mx-auto">
+        <slot />
+      </div>
+      <Footer />
     </div>
-    <Footer />
-  </div>
-</body>
+  </body>
 </html>
