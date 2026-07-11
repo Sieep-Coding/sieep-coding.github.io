@@ -6,10 +6,13 @@ const { post } = Astro.props;
 const { url } = post;
 const { title: originalTitle, description: originalDescription, img_path, img_alt, date } = post.frontmatter;
 
-let description = originalDescription;
-let title = originalTitle;
-if (description.length > 75 || title.length > 50) {
+let description = originalDescription || "";
+let title = originalTitle || "";
+
+if (description.length > 75) {
   description = description.slice(0, 75) + "...";
+}
+if (title.length > 50) {
   title = title.slice(0, 50) + "...";
 }
 
