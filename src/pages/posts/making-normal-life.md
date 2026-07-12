@@ -45,10 +45,10 @@ I've made a lot of beats where I'm chasing a sound. This one felt like the sound
 
 There's something about the way Doc Holliday says those words that hits differently when you're sitting alone at 1am in FL Studio. That's probably the best time to make something like this.
 
-[Listen to Normal Life →](/music)
+[Listen to Normal Life →](https://www.youtube.com/watch?v=I0BHk5_UDQk)
 
 ---
 
-*Normal Life* is available to stream for free on the [Music](/music) page.
+*Normal Life* is available to stream for free on [Youtube](https://www.youtube.com/watch?v=I0BHk5_UDQk) or the [Music](/music) page.
 
 Interested in licensing or collaboration? Email me at [nickstambaugh@proton.me](mailto:nickstambaugh@proton.me)

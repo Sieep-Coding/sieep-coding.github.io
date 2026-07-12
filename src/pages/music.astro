@@ -11,6 +11,7 @@ const tracks = [
     description: "Travis Scott-influenced beat · Val Kilmer vocal sample",
     tags: ["hip-hop", "atmospheric", "sample-based"],
     src: "/music-files/normal-life-mix2.wav",
+    youtube: "https://www.youtube.com/watch?v=I0BHk5_UDQk",
     featured: true,
   },
   // Add more tracks here:
@@ -142,7 +143,7 @@ const catalogTracks = tracks.filter((t) => !t.featured);
         </div>
 
         <!-- Volume row -->
-        <div class="px-5 py-4 flex items-center gap-3">
+        <div class="px-5 py-4 flex items-center gap-3 justify-between">
           <button
             id="mute-btn"
             aria-label="Toggle mute"
@@ -168,6 +169,23 @@ const catalogTracks = tracks.filter((t) => !t.featured);
             aria-label="Volume"
             class="volume-range w-24 h-1 accent-[#7c8fd1] cursor-pointer"
           />
+
+          <!-- YouTube link -->
+          {featuredTrack.youtube && (
+            <a
+              href={featuredTrack.youtube}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Watch on YouTube"
+              class="ml-auto flex items-center gap-1.5 text-[#202020]/30 dark:text-[#96a6e2]/30 hover:text-[#202020]/60 dark:hover:text-[#96a6e2]/60 transition-colors flex-shrink-0"
+            >
+              <!-- YouTube icon -->
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.3 31.3 0 0 0 0 12a31.3 31.3 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.3 31.3 0 0 0 24 12a31.3 31.3 0 0 0-.5-5.8zM9.75 15.5v-7l6.5 3.5-6.5 3.5z"/>
+              </svg>
+              <span class="text-[10px] tracking-widest uppercase font-mono">YouTube</span>
+            </a>
+          )}
         </div>
       </div>
     </section>
@@ -188,12 +206,15 @@ const catalogTracks = tracks.filter((t) => !t.featured);
                 data-artist={track.artist}
                 aria-label={`Play ${track.title}`}
               >
+                <!-- Index / play indicator -->
                 <span class="w-5 text-center font-mono text-xs text-[#202020]/30 dark:text-[#96a6e2]/30 group-hover:hidden flex-shrink-0">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <span class="w-5 hidden group-hover:flex items-center justify-center flex-shrink-0 text-[#7c8fd1]">
                   <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                 </span>
+
+                <!-- Info -->
                 <div class="flex-1 min-w-0">
                   <p class="text-sm font-medium text-[#202020] dark:text-[#7c8fd1] truncate">
                     {track.title}
@@ -203,6 +224,8 @@ const catalogTracks = tracks.filter((t) => !t.featured);
                     {track.description}
                   </p>
                 </div>
+
+                <!-- Tags + year -->
                 <div class="hidden sm:flex items-center gap-2 flex-shrink-0">
                   {track.tags.slice(0, 2).map((tag) => (
                     <span class="text-[10px] px-1.5 py-0.5 rounded border border-[#202020]/10 dark:border-[#7c8fd1]/15 text-[#202020]/35 dark:text-[#96a6e2]/35">
