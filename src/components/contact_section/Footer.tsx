@@ -25,6 +25,9 @@ const Footer: React.FC = () => {
           <h3 className="text-secondary dark:text-dk-secondary text-sm font-semibold uppercase tracking-widest mb-1">Work</h3>
                     <a href="/projects" target="_blank" rel="noopener noreferrer"
             className="text-sm text-text/70 dark:text-dk-text/70 hover:text-secondary dark:hover:text-dk-secondary transition-colors">Projects</a>
+                     <a href="/music" target="_blank" rel="noopener noreferrer"
+            className="text-sm text-text/70 dark:text-dk-text/70 hover:text-secondary dark:hover:text-dk-secondary transition-colors">Music</a>
+            
           <a href="https://luniv.tech/" target="_blank" rel="noopener noreferrer"
             className="text-sm text-text/70 dark:text-dk-text/70 hover:text-secondary dark:hover:text-dk-secondary transition-colors">luniv.tech</a>
           <a href="https://luniv.tech/case-study" target="_blank" rel="noopener noreferrer"
