@@ -34,10 +34,10 @@ The drums were the weird part. I wanted them to sound like they were coming out 
 
 There's a roll about halfway through that leads into some synths. I was messing around with a transition by cutting the drums up and it just worked, so I kept it.
 
-[Listen to Be Yourself →](https://www.youtube.com/watch?v=w37pk_39yB0)
+[Listen to Be Yourself →](https://www.youtube.com/watch?v=-wRETGIhiKI)
 
 ---
 
-*Be Yourself* is available to stream for free on [YouTube](https://www.youtube.com/watch?v=w37pk_39yB0) or the [Music](/music) page.
+*Be Yourself* is available to stream for free on [YouTube](https://www.youtube.com/watch?v=-wRETGIhiKI) or the [Music](/music) page.
 
 Interested in licensing or collaboration? Email me at [nickstambaugh@proton.me](mailto:nickstambaugh@proton.me)
