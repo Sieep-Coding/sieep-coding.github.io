@@ -15,6 +15,9 @@ I made this using [FL Studio!](/posts/switching-back-to-fl-studio)
 
 This was part of [my challenge](/posts/making-normal-life) to myself this weekend to make two songs. This was the second one, built entirely from samples. Every old-school hip-hop producer knows how to chop up vinyl from jazz, soul, and just about anywhere else to create the beats you hear on albums like Nas' [*Illmatic*](https://en.wikipedia.org/wiki/Illmatic).
 
+I think my inspiration mostly comes from the production on albums like [Wu-Tang Clan's *Enter the Wu-Tang (36 Chambers)*](https://en.wikipedia.org/wiki/Enter_the_Wu-Tang_%2836_Chambers%29), but I'm not really sure.
+
+
 ## Finding the Samples
 
 Everything in this track is sampled. There are no original recordings. No live drums, no played instruments. Just things I found, chopped up, and arranged until they sounded like something new.
