@@ -3,8 +3,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 const tracks = [
   {
-    id: "kill-those-crows",
-    title: "Kill Those Crows",
+    id: "crows",
+    title: "Crows",
     artist: "sieep",
     year: "2026",
     type: "Single",
@@ -126,7 +126,7 @@ const tracks = [
                 </p>
                 <div class="flex flex-wrap gap-1.5 mt-2.5">
                   {track.tags.map((tag) => (
-                    <span class="text-[10px] px-1.5 py-0.5 rounded border border-[#202020]/12 dark:border-[#7c8fd1]/20 text-[#202020]/35 dark:text-[#96a6e2]/35">
+                    <span class="text-[10px] px-1.5 py-0.5 rounded border border-[#7c8fd1] dark:border-[#7c8fd1] text-[#202020]/85 dark:text-[#96a6e2]/85">
                       {tag}
                     </span>
                   ))}
