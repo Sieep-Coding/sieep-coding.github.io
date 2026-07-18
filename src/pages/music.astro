@@ -47,18 +47,21 @@ const licenseOptions = [
   {
     name: "Non-Exclusive Lease",
     blurb:
-      "Good for demos, mixtapes, or releases with a capped audience (limited streams/views). Lower cost, fast turnaround, and I can license the same track to others too.",
+      "Good for demos, mixtapes, and commercial use. I can license the same track to others.",
+    price: "$50–$550",
   },
   {
     name: "Exclusive License",
     blurb:
-      "The track is yours alone going forward — no one else gets it after. Best for official singles/EPs. Pricing depends on scope and usage.",
+      "The track is yours alone going forward, no one else gets it after. Best for official releases.",
+    price: "$2,550+",
   },
   {
-    name: "Custom / Collab",
+    name: "Split Royalty Agreement",
     blurb:
-      "Always open to new work, original production, remixes, or full collaborations from scratch. Tell me what you're going for and we'll figure it out.",
-  },
+      "I retain a 50% interest in royalties. You must register me as a producer on all platforms or a co-writer, if applicable.",
+      price: "All splits and terms negotiable",
+  }
 ];
 ---
 
@@ -141,25 +144,6 @@ const licenseOptions = [
             </a>
           </div>
         ))}
-      </section>
-            <section class="license-info" aria-label="Licensing options">
-        <div class="license-info-head">
-          <h2>Licensing</h2>
-          <p class="license-info-sub">
-            Generally these are the options. Every deal can flex depending on what you need. <strong>Open to new work and collabs.</strong>
-          </p>
-        </div>
-        <div class="license-grid">
-          {licenseOptions.map((opt) => (
-            <div class="license-card">
-              <h3>{opt.name}</h3>
-              <p>{opt.blurb}</p>
-            </div>
-          ))}
-        </div>
-        <i class="license-note">
-          Terms and pricing vary by project. <a href="mailto:nickstambaugh@proton.me">Email me</a> and we'll sort out what fits.
-        </p>
       </section>
       <footer class="page-footer">
         <p>
