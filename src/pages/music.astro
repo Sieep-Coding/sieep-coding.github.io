@@ -42,6 +42,24 @@ const gradients = [
   "linear-gradient(135deg,#7c8fd1,#202020)",
   "linear-gradient(135deg,#96a6e2,#202020)",
 ];
+
+const licenseOptions = [
+  {
+    name: "Non-Exclusive Lease",
+    blurb:
+      "Good for demos, mixtapes, or releases with a capped audience (limited streams/views). Lower cost, fast turnaround, and I can license the same track to others too.",
+  },
+  {
+    name: "Exclusive License",
+    blurb:
+      "The track is yours alone going forward — no one else gets it after. Best for official singles/EPs. Pricing depends on scope and usage.",
+  },
+  {
+    name: "Custom / Collab",
+    blurb:
+      "Always open to new work, original production, remixes, or full collaborations from scratch. Tell me what you're going for and we'll figure it out.",
+  },
+];
 ---
 
 <BaseLayout title="Music — Nick Stambaugh">
@@ -96,7 +114,6 @@ const gradients = [
             </span>
 
             <span class="col-title">
-              <span class="art"></span>
               <span class="titles">
                 <span class="track-title">{track.title}</span>
                 <span class="track-artist">{track.artist} · {track.type}</span>
@@ -125,7 +142,25 @@ const gradients = [
           </div>
         ))}
       </section>
-
+            <section class="license-info" aria-label="Licensing options">
+        <div class="license-info-head">
+          <h2>Licensing</h2>
+          <p class="license-info-sub">
+            Generally these are the options. Every deal can flex depending on what you need. <strong>Open to new work and collabs.</strong>
+          </p>
+        </div>
+        <div class="license-grid">
+          {licenseOptions.map((opt) => (
+            <div class="license-card">
+              <h3>{opt.name}</h3>
+              <p>{opt.blurb}</p>
+            </div>
+          ))}
+        </div>
+        <i class="license-note">
+          Terms and pricing vary by project. <a href="mailto:nickstambaugh@proton.me">Email me</a> and we'll sort out what fits.
+        </p>
+      </section>
       <footer class="page-footer">
         <p>
           Interested in licensing or collaborating? Email me:{" "}
@@ -189,6 +224,7 @@ const gradients = [
     --pill-border: rgba(32, 32, 32, 0.35);
     --bar-bg: rgba(32, 32, 32, 0.1);
     --bar-elevated: rgba(32, 32, 32, 0.04);
+    --card-bg: rgba(32, 32, 32, 0.03);
 
     background: transparent;
     color: var(--text);
@@ -209,6 +245,7 @@ const gradients = [
     --pill-border: rgba(124, 143, 209, 0.4);
     --bar-bg: rgba(124, 143, 209, 0.12);
     --bar-elevated: rgba(124, 143, 209, 0.06);
+    --card-bg: rgba(124, 143, 209, 0.06);
   }
 
   .content-scroll {
@@ -303,6 +340,74 @@ const gradients = [
   }
   .note strong {
     color: var(--text-dim);
+  }
+
+  .license-info {
+    max-width: 760px;
+    margin: 0 auto;
+    margin-top: 5%;
+    padding: 0 1.5rem 2.5rem;
+  }
+
+  .license-info-head h2 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.01em;
+  }
+
+  .license-info-sub {
+    margin-top: 0.35rem;
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    max-width: 34rem;
+    line-height: 1.5;
+  }
+
+  .license-grid {
+    margin-top: 1.25rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  @media (min-width: 640px) {
+    .license-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .license-card {
+    border: 1px solid var(--border);
+    background: var(--card-bg);
+    border-radius: 10px;
+    padding: 1rem 1.1rem;
+  }
+
+  .license-card h3 {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.4rem;
+  }
+
+  .license-card p {
+    font-size: 0.75rem;
+    line-height: 1.55;
+    color: var(--text-dim);
+  }
+
+  .license-note {
+    margin-top: 1rem;
+    font-size: 0.75rem;
+    color: var(--text-faint);
+  }
+  .license-note a {
+    color: var(--text-dim);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .license-note a:hover {
+    color: var(--text);
   }
 
   .track-list {
