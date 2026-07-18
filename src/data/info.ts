@@ -94,7 +94,7 @@ export const info = {
         "Command-Line Tools",
         "Web Servers",
         "Employee Evaluation Software"],
-      Languages: ["C#", "Elixir", "Python", "TypeScript", "Go", "Lua", "SQL"],
+      Languages: ["C#", "Python", "TypeScript", "Go", "Lua", "SQL"],
       Frameworks: ["Phoenix (Elixir)", "React", ".NET", "Node.js", "Astro"],
       Libraries: ["xUnit", "Jest", "D3.js"],
       Databases: ["Postgres", "SQLite", "SQL Server",],

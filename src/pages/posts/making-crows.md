@@ -1,5 +1,5 @@
 ---
-title: "Making 'Kill Those Crows'"
+title: "Making 'Crows'"
 date: "2026-07-18"
 
 layout: ../../layouts/PostLayout.astro
@@ -45,10 +45,10 @@ The game footage lines up with that shift in a way that worked out.
 
 The pacing of *Kill the Crows* has its own rhythm to it and the cut in the music kind of mirrors that.
 
-[Listen to Kill Those Crows →](https://www.youtube.com/watch?v=QV10MDaCoNU)
+[Listen to Crows →](https://www.youtube.com/watch?v=QV10MDaCoNU)
 
 ---
 
-*Kill Those Crows* is available to stream for free on [YouTube](https://www.youtube.com/watch?v=QV10MDaCoNU) or the [Music](/music) page.
+The song, *Crows*, is available to stream for free on [YouTube](https://www.youtube.com/watch?v=QV10MDaCoNU) or the [Music](/music) page.
 
 Interested in licensing or collaboration? Email me at [nickstambaugh@proton.me](mailto:nickstambaugh@proton.me)
