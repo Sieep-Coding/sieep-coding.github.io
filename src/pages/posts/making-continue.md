@@ -13,7 +13,7 @@ tags: ["#Music"]
 
 I made this using [FL Studio!](/posts/switching-back-to-fl-studio)
 
-This was a part of [my challenge this week](/posts/crows) to make a song without any assistance. By assistance, I mean watching a tutorial or using any help. I wanted to make something from scratch that I could say came solely from my own ideas.
+This was a part of [my challenge this week](/posts/making-crows) to make a song without any assistance. By assistance, I mean watching a tutorial or using any help. I wanted to make something from scratch that I could say came solely from my own ideas.
 
 The first sound I made was this muddy little 8-bit sounding synth. It wasn't particularly clean or polished, but it immediately had a character to it. Instead of trying to fix it, I leaned into it and built everything else around that sound.
 
