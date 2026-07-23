@@ -56,15 +56,15 @@ Next to "Recent Writing" on the homepage, and again at the top of the [Posts pag
 
 It's a tiny inline chart showing how many posts I've written per month, which sounds like a minor thing, but I like it a lot. It's a quiet way of holding myself accountable. If the line goes flat for a few months, that's on me.
 
-The homepage version is subtle, just a little line next to the post count. The one on the Posts page is bigger and more prominent, with a filled area under the line and hover tooltips so you can see exactly how many posts I put out in a given month. Both are just inline SVGs generated from the frontmatter dates on my `.md` files, no charting library needed.
+The homepage version is subtle, just a little line next to the post count. The one on the Posts page is bigger and more prominent, with a filled area under the line and hover tooltips so you can see exactly how many posts I put out in a given month. Both are just inline SVGs generated from the frontmatter dates on my `.md` files.
 
 ## The Footer Bug
 
 This one was dumber than I'd like to admit.
 
-The footer's bottom bar (copyright, Privacy, License & Terms, etc.) was wrapping onto two lines on mobile, which bugged me every time I looked at the site on my phone. My first attempt was to force it onto one line with `flex-nowrap` and horizontal scrolling. That was a mistake. Instead of scrolling nicely, the content just got clipped off-screen with no visible scrollbar. Genuinely worse than the two-line version.
+The footer's bottom bar (copyright, Privacy, License & Terms, etc.) was wrapping onto two lines on mobile, which bugged me every time I looked at the site on my phone. My first attempt was to force it onto one line with `flex-nowrap` and horizontal scrolling. That was a mistake. Instead of scrolling nicely, the content just got clipped off-screen. Genuinely worse than the two-line version.
 
-The actual fix was simpler than forcing anything: shorten the labels on small screens ("License & Terms" becomes "Terms," "Buy me a coffee" becomes "Coffee"), hide the lowest-priority links (looking at you, `/llms.txt` and `/sitemap.xml`) below the `sm` breakpoint, and let everything expand back to full text on larger screens. No JavaScript, no scroll hijacking, just responsive Tailwind classes doing what they're supposed to do.
+The actual fix was simpler than forcing anything: shorten the labels on small screens ("License & Terms" becomes "Terms," "Buy me a coffee" becomes "Coffee"), hide the lowest-priority links (looking at you, `/llms.txt` and `/sitemap.xml`) below the `sm` breakpoint, and let everything expand back to full text on larger screens.
 
 Sometimes the fix isn't "make the container smarter," it's "have less stuff in the container."
 
