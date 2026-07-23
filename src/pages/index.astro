@@ -14,71 +14,11 @@ const allPosts = await Astro.glob("./posts/*.md");
     >
       <div class="space-y-2 order-2 sm:order-1">
         <div>
-          <button
-            id="alias-toggle"
-            type="button"
-            class="flex items-center gap-2 cursor-pointer"
-            aria-expanded="false"
+          <h1
+            class="text-3xl font-bold tracking-tight text-secondary dark:text-dk-accent"
           >
-            <h1
-              class="text-3xl font-bold tracking-tight"
-            >
-              {info.name}
-            </h1>
-            <span
-              id="alias-caret"
-              class="text-lg text-text/50 dark:text-dk-text/50 transition-transform duration-300"
-            >
-              ^
-            </span>
-          </button>
-
-          <div
-            id="alias-panel"
-            class="grid grid-rows-[0fr] overflow-hidden transition-all duration-300"
-          >
-            <div
-              class="overflow-hidden mt-3 flex flex-wrap items-center gap-1 text-sm text-text/80 dark:text-dk-text/80"
-            >
-              <span class="whitespace-nowrap">alias</span>
-              <span class="cursor-help whitespace-nowrap">'sieep'</span>
-              <span aria-hidden="true">·</span>
-
-              <a
-                href="https://github.com/sieep-coding"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-flex items-center gap-1 whitespace-nowrap transition-colors hover:text-secondary dark:hover:text-dk-accent"
-              >
-                <i class="fab fa-github text-base"></i>
-                <span>sieep-coding</span>
-              </a>
-
-              <span aria-hidden="true">·</span>
-
-              <a
-                href="https://twitch.tv/sieep00"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-flex items-center gap-1 whitespace-nowrap transition-colors hover:text-secondary dark:hover:text-dk-accent"
-              >
-                <i class="fab fa-twitch text-base"></i>
-                <span>sieep00</span>
-              </a>
-
-              <span aria-hidden="true">·</span>
-
-              <a
-                href="https://www.youtube.com/@sieep00"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-flex items-center gap-1 whitespace-nowrap transition-colors hover:text-secondary dark:hover:text-dk-accent"
-              >
-                <i class="fas fa-video text-base"></i>
-                <span>@sieep00</span>
-              </a>
-            </div>
-          </div>
+            {info.name}
+          </h1>
         </div>
 
         <p class="text-text dark:text-dk-text text-lg leading-relaxed pt-1">

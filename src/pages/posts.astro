@@ -20,9 +20,117 @@ const slug = (t) =>
   t.toLowerCase().trim().replace(/[^\w\s-]/g, "").replace(/[\s_-]+/g, "-");
 
 const title = "Posts";
+
+// --- Header stats: total post count + monthly activity sparkline ---
+const totalCount = allPosts.length;
+
+const monthKey = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}`;
+const monthLabel = (key) => {
+  const [y, m] = key.split("-").map(Number);
+  return new Date(y, m - 1, 1).toLocaleDateString("en-US", { month: "short", year: "2-digit" });
+};
+
+const counts = new Map();
+for (const p of allPosts) {
+  const d = new Date(p.frontmatter.date);
+  if (isNaN(d.getTime())) continue;
+  const key = monthKey(d);
+  counts.set(key, (counts.get(key) || 0) + 1);
+}
+
+const sortedKeys = Array.from(counts.keys()).sort();
+const bucketKeys = sortedKeys.slice(-18); // last 18 active months
+const values = bucketKeys.map((k) => counts.get(k) || 0);
+
+const sparkWidth = 320;
+const sparkHeight = 72;
+const padX = 6;
+const padY = 10;
+const max = Math.max(1, ...values);
+const step = values.length > 1 ? (sparkWidth - padX * 2) / (values.length - 1) : 0;
+
+const points = values.map((v, i) => {
+  const x = padX + i * step;
+  const y = sparkHeight - padY - (v / max) * (sparkHeight - padY * 2);
+  return { x, y, v, key: bucketKeys[i] };
+});
+
+const linePath = points.length > 1
+  ? `M${points.map(p => `${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(" L")}`
+  : "";
+
+const areaPath = points.length > 1
+  ? `${linePath} L${points[points.length - 1].x.toFixed(1)},${sparkHeight - padY} L${points[0].x.toFixed(1)},${sparkHeight - padY} Z`
+  : "";
+
+const lastPoint = points[points.length - 1];
 ---
 <BaseLayout title={title}>
   <div class="mx-auto max-w-4xl px-4 mt-32">
+
+    <header class="mb-12 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-8">
+      <div>
+        <p class="text-xs uppercase tracking-[0.25em] font-bold text-text/40 dark:text-dk-text/40 mb-2">
+          By <a href="/about" class="font-medium text-text dark:text-dk-text">Nick Stambaugh</a>
+        </p>
+        <h1 class="text-4xl sm:text-5xl font-black tracking-tight text-text dark:text-dk-accent leading-none">
+          Posts
+        </h1>
+        <p class="mt-3 text-sm text-text/60 dark:text-dk-text/60">
+          <span class="font-bold text-text dark:text-dk-text tabular-nums">{totalCount}</span> posts written{bucketKeys.length > 0 && (
+            <>
+              {" "}· latest in <span class="font-medium">{monthLabel(bucketKeys[bucketKeys.length - 1])}</span>
+            </>
+          )}
+        </p>
+      </div>
+
+      {linePath && (
+        <div class="shrink-0 w-full sm:w-80">
+          <div class="flex items-center justify-between mb-1 text-[10px] uppercase tracking-widest font-bold text-text/40 dark:text-dk-text/40">
+            <span>Writing activity</span>
+            <span>{bucketKeys.length} mo</span>
+          </div>
+          <svg
+            viewBox={`0 0 ${sparkWidth} ${sparkHeight}`}
+            class="w-full h-auto overflow-visible"
+            preserveAspectRatio="none"
+            role="img"
+            aria-label="Posts published per month over time"
+          >
+            <path
+              d={areaPath}
+              fill="currentColor"
+              class="text-secondary/10 dark:text-dk-accent/10"
+            />
+            <path
+              d={linePath}
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="text-secondary dark:text-dk-accent"
+            />
+            {points.map((p) => (
+              <circle
+                cx={p.x}
+                cy={p.y}
+                r={p === lastPoint ? 3 : 1.6}
+                fill="currentColor"
+                class={p === lastPoint ? "text-secondary dark:text-dk-accent" : "text-text/30 dark:text-dk-text/30"}
+              >
+                <title>{`${monthLabel(p.key)}: ${p.v} post${p.v === 1 ? "" : "s"}`}</title>
+              </circle>
+            ))}
+          </svg>
+          <div class="mt-1 flex justify-between text-[10px] text-text/30 dark:text-dk-text/30">
+            <span>{monthLabel(bucketKeys[0])}</span>
+            <span>{monthLabel(bucketKeys[bucketKeys.length - 1])}</span>
+          </div>
+        </div>
+      )}
+    </header>
 
     <!-- High-Contrast Search & Action Container -->
     <div class="relative flex items-center mb-4 border-b-2 border-text/40 dark:border-dk-text/40 focus-within:border-secondary dark:focus-within:border-dk-accent transition-colors pb-1">
