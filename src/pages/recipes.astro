@@ -28,7 +28,7 @@ const recipes = [
       "Flip carefully, brown the other side, and cook until the cheese is fully melted through.",
       "Slice in half and serve hot, with extra dressing on the side if you want it.",
     ],
-    note: "Drain the sauerkraut well or the sandwich turns soggy fast — squeeze it out in a paper towel first.",
+    note: "Drain the sauerkraut well or the sandwich turns soggy fast. Squeeze it out in a paper towel first.",
   },
   {
     id: "vodka-meatball-bake",
@@ -209,7 +209,7 @@ const recipes = [
       "Drain the pasta and add it to the pan with the pancetta. Toss to coat, then remove from heat and add the egg mixture, tossing for about a minute until the sauce thickens and clings to the pasta.",
       "Adjust salt and pepper, and serve immediately with extra Parmigiano for passing.",
     ],
-    note: "Take the pan off the heat before adding the eggs — that's what keeps this a sauce and not scrambled eggs.",
+    note: "Take the pan off the heat before adding the eggs. That's what keeps this a sauce and not scrambled eggs.",
   },
   {
     id: "brisket-knish-melt",
@@ -271,64 +271,106 @@ const recipes = [
     note: "Use day-old matzo balls so they hold their shape while baking.",
   },
   {
-  id: "uzbek-lamb-kebab",
-  title: "Uzbek Lamb Kebab",
-  year: "2026",
-  time: "35 min",
-  servings: "4",
-  tags: ["uzbek", "grill", "lamb"],
-  description:
-    "Tender chunks of lamb marinated with onion and simple spices, then grilled until smoky and juicy. Serve with flatbread, sliced onions, and fresh tomatoes.",
-  ingredients: [
-    "2 lbs lamb shoulder, cut into cubes",
-    "1 large onion, grated",
-    "2 tbsp vegetable oil",
-    "1 tsp ground cumin",
-    "1 tsp paprika",
-    "1 tsp black pepper",
-    "1 tsp salt",
-    "Metal or soaked wooden skewers",
-  ],
-  steps: [
-    "Mix the lamb with the grated onion, oil, cumin, paprika, pepper, and salt.",
-    "Marinate for at least 1 hour or overnight if you have time.",
-    "Thread the lamb onto skewers.",
-    "Grill over medium-high heat for 10-12 minutes, turning every few minutes until browned and cooked through.",
-    "Serve with flatbread, raw sliced onions, and tomatoes.",
-  ],
-  note: "Grated onion helps tenderize the lamb while adding a ton of flavor.",
-},
-{
-  id: "uzbek-plov",
-  title: "Simple Uzbek Plov",
-  year: "2026",
-  time: "1 hr",
-  servings: "6",
-  tags: ["uzbek", "rice", "comfort-food"],
-  description:
-    "A classic one-pot rice dish with lamb, carrots, onions, and cumin. It's hearty, simple, and one of the most well-known dishes in Uzbekistan.",
-  ingredients: [
-    "2 lbs lamb, cubed",
-    "2 cups long-grain rice",
-    "2 large carrots, cut into matchsticks",
-    "2 onions, sliced",
-    "4 cups beef broth",
-    "1 whole head of garlic",
-    "2 tsp ground cumin",
-    "2 tbsp vegetable oil",
-    "Salt and black pepper",
-  ],
-  steps: [
-    "Rinse the rice until the water runs mostly clear.",
-    "Brown the lamb in the oil, then add the onions and cook until softened.",
-    "Add the carrots and cumin and cook for about 5 minutes.",
-    "Pour in the broth and nestle the whole head of garlic into the pot.",
-    "Spread the rice evenly over the top without stirring.",
-    "Cover and simmer on low for about 25 minutes until the rice is tender and the liquid is absorbed.",
-    "Remove the garlic, fluff the rice, and gently mix everything together before serving.",
-  ],
-  note: "Don't stir the rice while it cooks or it'll lose the classic plov texture.",
-},
+    id: "uzbek-lamb-kebab",
+    title: "Uzbek Lamb Kebab",
+    year: "2026",
+    time: "35 min",
+    servings: "4",
+    tags: ["uzbek", "grill", "lamb"],
+    description:
+      "Tender chunks of lamb marinated with onion and simple spices, then grilled until smoky and juicy. Serve with flatbread, sliced onions, and fresh tomatoes.",
+    ingredients: [
+      "2 lbs lamb shoulder, cut into cubes",
+      "1 large onion, grated",
+      "2 tbsp vegetable oil",
+      "1 tsp ground cumin",
+      "1 tsp paprika",
+      "1 tsp black pepper",
+      "1 tsp salt",
+      "Metal or soaked wooden skewers",
+    ],
+    steps: [
+      "Mix the lamb with the grated onion, oil, cumin, paprika, pepper, and salt.",
+      "Marinate for at least 1 hour or overnight if you have time.",
+      "Thread the lamb onto skewers.",
+      "Grill over medium-high heat for 10-12 minutes, turning every few minutes until browned and cooked through.",
+      "Serve with flatbread, raw sliced onions, and tomatoes.",
+    ],
+    note: "Grated onion helps tenderize the lamb while adding a ton of flavor.",
+  },
+  {
+    id: "uzbek-plov",
+    title: "Simple Uzbek Plov",
+    year: "2026",
+    time: "1 hr",
+    servings: "6",
+    tags: ["uzbek", "rice", "comfort-food"],
+    description:
+      "A classic one-pot rice dish with lamb, carrots, onions, and cumin. It's hearty, simple, and one of the most well-known dishes in Uzbekistan.",
+    ingredients: [
+      "2 lbs lamb, cubed",
+      "2 cups long-grain rice",
+      "2 large carrots, cut into matchsticks",
+      "2 onions, sliced",
+      "4 cups beef broth",
+      "1 whole head of garlic",
+      "2 tsp ground cumin",
+      "2 tbsp vegetable oil",
+      "Salt and black pepper",
+    ],
+    steps: [
+      "Rinse the rice until the water runs mostly clear.",
+      "Brown the lamb in the oil, then add the onions and cook until softened.",
+      "Add the carrots and cumin and cook for about 5 minutes.",
+      "Pour in the broth and nestle the whole head of garlic into the pot.",
+      "Spread the rice evenly over the top without stirring.",
+      "Cover and simmer on low for about 25 minutes until the rice is tender and the liquid is absorbed.",
+      "Remove the garlic, fluff the rice, and gently mix everything together before serving.",
+    ],
+    note: "Don't stir the rice while it cooks or it'll lose the classic plov texture.",
+  },
+  {
+    id: "vanilla-latte",
+    title: "Simple Vanilla Latte",
+    year: "2026",
+    time: "5 min",
+    servings: "1",
+    tags: ["drink", "coffee", "quick"],
+    description:
+      "A smooth espresso drink with steamed milk and just enough vanilla to sweeten it without overpowering the coffee.",
+    ingredients: ["2 shots espresso", "1 cup milk", "1 tbsp vanilla syrup"],
+    steps: [
+      "Brew the espresso into a mug.",
+      "Stir in the vanilla syrup.",
+      "Steam or heat the milk until hot and frothy.",
+      "Pour the milk over the espresso and spoon the foam on top.",
+      "Serve immediately.",
+    ],
+    note: "No espresso machine? Strong brewed coffee works surprisingly well.",
+  },
+  {
+    id: "honey-green-tea",
+    title: "Honey Green Tea",
+    year: "2026",
+    time: "5 min",
+    servings: "1",
+    tags: ["drink", "tea", "easy"],
+    description:
+      "A light, soothing green tea sweetened with honey and finished with a squeeze of fresh lemon.",
+    ingredients: [
+      "1 green tea bag",
+      "8 oz hot water",
+      "1 tbsp honey",
+      "1 lemon wedge",
+    ],
+    steps: [
+      "Steep the green tea in hot water for 2-3 minutes.",
+      "Remove the tea bag and stir in the honey.",
+      "Squeeze in the lemon juice.",
+      "Serve hot.",
+    ],
+    note: "Avoid boiling water if possible, slightly cooler water keeps green tea from turning bitter.",
+  },
   {
     id: "pastrami-latke-stack",
     title: "Pastrami Latke Stack",
@@ -364,7 +406,11 @@ for (const r of recipes) {
 }
 
 const slug = (t) =>
-  t.toLowerCase().trim().replace(/[^\w\s-]/g, "").replace(/[\s_-]+/g, "-");
+  t
+    .toLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g, "")
+    .replace(/[\s_-]+/g, "-");
 ---
 
 <BaseLayout title="Recipes — Nick Stambaugh">
@@ -376,7 +422,8 @@ const slug = (t) =>
         Recipes
       </h1>
       <p class="text-lg text-text dark:text-dk-text/80 leading-relaxed">
-        A small collection of things I cook. Breaking American stereotypes one recipe at a time.
+        A small collection of things I cook. Breaking American stereotypes one
+        recipe at a time.
       </p>
       <p class="text-xs text-text/50 dark:text-dk-text/50">
         {recipes.length} recipes · tap a card to open it
@@ -384,7 +431,9 @@ const slug = (t) =>
     </header>
 
     <!-- Search & Filter Toggle -->
-    <div class="relative flex items-center mb-4 border-b-2 border-text/40 dark:border-dk-text/40 focus-within:border-secondary dark:focus-within:border-dk-accent transition-colors pb-1">
+    <div
+      class="relative flex items-center mb-4 border-b-2 border-text/40 dark:border-dk-text/40 focus-within:border-secondary dark:focus-within:border-dk-accent transition-colors pb-1"
+    >
       <input
         id="recipe-search"
         type="text"
@@ -397,7 +446,10 @@ const slug = (t) =>
         class="ml-4 px-4 py-2 text-sm uppercase font-bold tracking-widest text-text dark:text-dk-text hover:text-secondary dark:hover:text-dk-accent transition-colors focus:outline-none flex items-center gap-1"
       >
         <span>Tags</span>
-        <span id="filters-arrow" class="inline-block transition-transform duration-200 text-xs">↓</span>
+        <span
+          id="filters-arrow"
+          class="inline-block transition-transform duration-200 text-xs">↓</span
+        >
       </button>
     </div>
 
@@ -406,7 +458,10 @@ const slug = (t) =>
       id="filters-panel"
       class="overflow-hidden transition-[max-height] duration-200 ease-out max-h-0"
     >
-      <div id="tag-filter" class="flex flex-wrap gap-x-6 gap-y-3 pt-3 pb-8 border-b-2 border-text/10 dark:border-dk-text/10">
+      <div
+        id="tag-filter"
+        class="flex flex-wrap gap-x-6 gap-y-3 pt-3 pb-8 border-b-2 border-text/10 dark:border-dk-text/10"
+      >
         <button
           data-filter="*"
           class="tag-btn text-sm lowercase font-bold tracking-wide text-secondary dark:text-dk-accent decoration-secondary dark:decoration-dk-accent hover:text-secondary dark:hover:text-dk-accent transition-colors underline decoration-2 underline-offset-8"
@@ -427,90 +482,99 @@ const slug = (t) =>
       </div>
     </div>
 
-    <p id="no-results" class="hidden text-sm text-text/50 dark:text-dk-text/50 mb-8">
+    <p
+      id="no-results"
+      class="hidden text-sm text-text/50 dark:text-dk-text/50 mb-8"
+    >
       No recipes match your search.
     </p>
 
     <!-- Accordion list: collapsed by default, click to expand -->
     <div class="space-y-3" id="recipes-list">
-      {recipes.map((recipe) => {
-        const tagClasses = (recipe.tags || []).map((t) => slug(t)).join(" ");
-        const tagsStr = (recipe.tags || []).join(",");
-        return (
-          <article
-            id={recipe.id}
-            class={`recipe-item ${tagClasses} border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 overflow-hidden`}
-            data-title={recipe.title.toLowerCase()}
-            data-tags={tagsStr.toLowerCase()}
-            data-description={recipe.description.toLowerCase()}
-          >
-            <button
-              class="recipe-toggle w-full text-left flex items-start justify-between gap-4 p-5 sm:p-6 cursor-pointer"
-              aria-expanded="false"
+      {
+        recipes.map((recipe) => {
+          const tagClasses = (recipe.tags || []).map((t) => slug(t)).join(" ");
+          const tagsStr = (recipe.tags || []).join(",");
+          return (
+            <article
+              id={recipe.id}
+              class={`recipe-item ${tagClasses} border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 overflow-hidden`}
+              data-title={recipe.title.toLowerCase()}
+              data-tags={tagsStr.toLowerCase()}
+              data-description={recipe.description.toLowerCase()}
             >
-              <div class="min-w-0">
-                <h2 class="text-lg font-semibold text-secondary dark:text-dk-accent">
-                  {recipe.title}
-                </h2>
-
-                <div class="mt-1.5 flex flex-wrap gap-x-3 gap-y-1 text-xs text-text/60 dark:text-dk-text/60">
-                  <span>⏱ {recipe.time}</span>
-                  <span>🍽 {recipe.servings}</span>
-                </div>
-
-                <p class="mt-2 text-sm text-text/80 dark:text-dk-text/80 leading-relaxed">
-                  {recipe.description}
-                </p>
-
-                <div class="mt-3 flex flex-wrap gap-1.5">
-                  {recipe.tags.map((tag) => (
-                    <span class="text-[11px] px-2 py-0.5 rounded-full border border-text/30 dark:border-dk-text/30 text-text/70 dark:text-dk-text/70">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              <span
-                class="recipe-arrow shrink-0 mt-1 text-text/40 dark:text-dk-text/40 transition-transform duration-200"
-                aria-hidden="true"
+              <button
+                class="recipe-toggle w-full text-left flex items-start justify-between gap-4 p-5 sm:p-6 cursor-pointer"
+                aria-expanded="false"
               >
-                ↓
-              </span>
-            </button>
+                <div class="min-w-0">
+                  <h2 class="text-lg font-semibold text-secondary dark:text-dk-accent">
+                    {recipe.title}
+                  </h2>
 
-            <div class="recipe-panel overflow-hidden transition-[max-height] duration-300 ease-out max-h-0">
-              <div class="px-5 sm:px-6 pb-6 pt-2 border-t border-text/10 dark:border-dk-text/10">
-                <div class="grid sm:grid-cols-2 gap-8 mt-4">
-                  <div>
-                    <h3 class="text-sm font-semibold uppercase tracking-wide text-text/60 dark:text-dk-text/60 mb-3">
-                      Ingredients
-                    </h3>
-                    <ul class="list-disc list-inside space-y-1.5 text-sm text-text/80 dark:text-dk-text/80">
-                      {recipe.ingredients.map((ing) => <li>{ing}</li>)}
-                    </ul>
+                  <div class="mt-1.5 flex flex-wrap gap-x-3 gap-y-1 text-xs text-text/60 dark:text-dk-text/60">
+                    <span>⏱ {recipe.time}</span>
+                    <span>🍽 {recipe.servings}</span>
                   </div>
 
-                  <div>
-                    <h3 class="text-sm font-semibold uppercase tracking-wide text-text/60 dark:text-dk-text/60 mb-3">
-                      Directions
-                    </h3>
-                    <ol class="list-decimal list-inside space-y-2 text-sm text-text/80 dark:text-dk-text/80">
-                      {recipe.steps.map((step) => <li>{step}</li>)}
-                    </ol>
+                  <p class="mt-2 text-sm text-text/80 dark:text-dk-text/80 leading-relaxed">
+                    {recipe.description}
+                  </p>
+
+                  <div class="mt-3 flex flex-wrap gap-1.5">
+                    {recipe.tags.map((tag) => (
+                      <span class="text-[11px] px-2 py-0.5 rounded-full border border-text/30 dark:border-dk-text/30 text-text/70 dark:text-dk-text/70">
+                        {tag}
+                      </span>
+                    ))}
                   </div>
                 </div>
 
-                {recipe.note && (
-                  <p class="mt-6 text-xs text-text/50 dark:text-dk-text/50 border-t border-text/10 dark:border-dk-text/10 pt-4">
-                    <strong>Note:</strong> {recipe.note}
-                  </p>
-                )}
+                <span
+                  class="recipe-arrow shrink-0 mt-1 text-text/40 dark:text-dk-text/40 transition-transform duration-200"
+                  aria-hidden="true"
+                >
+                  ↓
+                </span>
+              </button>
+
+              <div class="recipe-panel overflow-hidden transition-[max-height] duration-300 ease-out max-h-0">
+                <div class="px-5 sm:px-6 pb-6 pt-2 border-t border-text/10 dark:border-dk-text/10">
+                  <div class="grid sm:grid-cols-2 gap-8 mt-4">
+                    <div>
+                      <h3 class="text-sm font-semibold uppercase tracking-wide text-text/60 dark:text-dk-text/60 mb-3">
+                        Ingredients
+                      </h3>
+                      <ul class="list-disc list-inside space-y-1.5 text-sm text-text/80 dark:text-dk-text/80">
+                        {recipe.ingredients.map((ing) => (
+                          <li>{ing}</li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div>
+                      <h3 class="text-sm font-semibold uppercase tracking-wide text-text/60 dark:text-dk-text/60 mb-3">
+                        Directions
+                      </h3>
+                      <ol class="list-decimal list-inside space-y-2 text-sm text-text/80 dark:text-dk-text/80">
+                        {recipe.steps.map((step) => (
+                          <li>{step}</li>
+                        ))}
+                      </ol>
+                    </div>
+                  </div>
+
+                  {recipe.note && (
+                    <p class="mt-6 text-xs text-text/50 dark:text-dk-text/50 border-t border-text/10 dark:border-dk-text/10 pt-4">
+                      <strong>Note:</strong> {recipe.note}
+                    </p>
+                  )}
+                </div>
               </div>
-            </div>
-          </article>
-        );
-      })}
+            </article>
+          );
+        })
+      }
     </div>
 
     <footer class="mt-16 pt-8 border-t border-text/10 dark:border-dk-text/10">
@@ -545,7 +609,8 @@ const slug = (t) =>
             tags.includes(query) ||
             description.includes(query);
           const filterMatch =
-            activeFilter === "*" || item.classList.contains(activeFilter.slice(1));
+            activeFilter === "*" ||
+            item.classList.contains(activeFilter.slice(1));
 
           const show = textMatch && filterMatch;
           item.style.display = show ? "block" : "none";
@@ -562,7 +627,7 @@ const slug = (t) =>
               "text-secondary",
               "dark:text-dk-accent",
               "decoration-secondary",
-              "dark:decoration-dk-accent"
+              "dark:decoration-dk-accent",
             );
             b.classList.add("text-text/70", "dark:text-dk-text");
           });
@@ -572,7 +637,7 @@ const slug = (t) =>
             "text-secondary",
             "dark:text-dk-accent",
             "decoration-secondary",
-            "dark:decoration-dk-accent"
+            "dark:decoration-dk-accent",
           );
 
           activeFilter = btn.dataset.filter;
