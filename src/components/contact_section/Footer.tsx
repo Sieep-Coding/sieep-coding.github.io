@@ -44,19 +44,28 @@ const Footer: React.FC = () => {
         </div>
       </div>
       <div className="border-t border-text/10 dark:border-dk-text/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-5 flex flex-nowrap items-center justify-between gap-3 overflow-x-auto whitespace-nowrap text-[10px] xs:text-xs sm:text-sm text-text/50 dark:text-dk-text/50">
-          <span className="shrink-0">&copy; {currentYear} {info.name}. All rights reserved.</span>
-          <div className="flex flex-nowrap items-center gap-x-2.5 sm:gap-x-4 shrink-0">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-5 flex items-center justify-between gap-2 text-[11px] sm:text-sm text-text/50 dark:text-dk-text/50">
+          <span className="truncate">
+            &copy; {currentYear} {info.name}.{" "}
+            <span className="hidden sm:inline">All rights reserved.</span>
+          </span>
+          <div className="flex items-center gap-x-2 sm:gap-x-4 shrink-0">
             <a href="/privacy" className="hover:text-secondary dark:hover:text-dk-secondary transition-colors">Privacy</a>
             <span aria-hidden="true">·</span>
-            <a href="/license" className="hover:text-secondary dark:hover:text-dk-secondary transition-colors">License &amp; Terms</a>
-            <span aria-hidden="true">·</span>
-            <a href="/llms.txt" target="_blank" rel="noopener noreferrer" className="hover:text-secondary dark:hover:text-dk-secondary transition-colors">llms.txt</a>
-            <span aria-hidden="true">·</span>
-            <a href="/sitemap.xml" target="_blank" rel="noopener noreferrer" className="hover:text-secondary dark:hover:text-dk-secondary transition-colors">Sitemap</a>
+            <a href="/license" className="hover:text-secondary dark:hover:text-dk-secondary transition-colors">
+              <span className="sm:hidden">Terms</span>
+              <span className="hidden sm:inline">License &amp; Terms</span>
+            </a>
+            <span aria-hidden="true" className="hidden sm:inline">·</span>
+            <a href="/llms.txt" target="_blank" rel="noopener noreferrer" className="hidden sm:inline hover:text-secondary dark:hover:text-dk-secondary transition-colors">llms.txt</a>
+            <span aria-hidden="true" className="hidden sm:inline">·</span>
+            <a href="/sitemap.xml" target="_blank" rel="noopener noreferrer" className="hidden sm:inline hover:text-secondary dark:hover:text-dk-secondary transition-colors">Sitemap</a>
             <span aria-hidden="true">·</span>
             <a href="https://buymeacoffee.com/nickstambaugh" target="_blank" rel="noopener noreferrer"
-              className="hover:text-secondary dark:hover:text-dk-secondary transition-colors">Buy me a coffee</a>
+              className="hover:text-secondary dark:hover:text-dk-secondary transition-colors">
+              <span className="sm:hidden">Coffee</span>
+              <span className="hidden sm:inline">Buy me a coffee</span>
+            </a>
           </div>
         </div>
       </div>
