@@ -271,6 +271,65 @@ const recipes = [
     note: "Use day-old matzo balls so they hold their shape while baking.",
   },
   {
+  id: "uzbek-lamb-kebab",
+  title: "Uzbek Lamb Kebab",
+  year: "2026",
+  time: "35 min",
+  servings: "4",
+  tags: ["uzbek", "grill", "lamb"],
+  description:
+    "Tender chunks of lamb marinated with onion and simple spices, then grilled until smoky and juicy. Serve with flatbread, sliced onions, and fresh tomatoes.",
+  ingredients: [
+    "2 lbs lamb shoulder, cut into cubes",
+    "1 large onion, grated",
+    "2 tbsp vegetable oil",
+    "1 tsp ground cumin",
+    "1 tsp paprika",
+    "1 tsp black pepper",
+    "1 tsp salt",
+    "Metal or soaked wooden skewers",
+  ],
+  steps: [
+    "Mix the lamb with the grated onion, oil, cumin, paprika, pepper, and salt.",
+    "Marinate for at least 1 hour or overnight if you have time.",
+    "Thread the lamb onto skewers.",
+    "Grill over medium-high heat for 10-12 minutes, turning every few minutes until browned and cooked through.",
+    "Serve with flatbread, raw sliced onions, and tomatoes.",
+  ],
+  note: "Grated onion helps tenderize the lamb while adding a ton of flavor.",
+},
+{
+  id: "uzbek-plov",
+  title: "Simple Uzbek Plov",
+  year: "2026",
+  time: "1 hr",
+  servings: "6",
+  tags: ["uzbek", "rice", "comfort-food"],
+  description:
+    "A classic one-pot rice dish with lamb, carrots, onions, and cumin. It's hearty, simple, and one of the most well-known dishes in Uzbekistan.",
+  ingredients: [
+    "2 lbs lamb, cubed",
+    "2 cups long-grain rice",
+    "2 large carrots, cut into matchsticks",
+    "2 onions, sliced",
+    "4 cups beef broth",
+    "1 whole head of garlic",
+    "2 tsp ground cumin",
+    "2 tbsp vegetable oil",
+    "Salt and black pepper",
+  ],
+  steps: [
+    "Rinse the rice until the water runs mostly clear.",
+    "Brown the lamb in the oil, then add the onions and cook until softened.",
+    "Add the carrots and cumin and cook for about 5 minutes.",
+    "Pour in the broth and nestle the whole head of garlic into the pot.",
+    "Spread the rice evenly over the top without stirring.",
+    "Cover and simmer on low for about 25 minutes until the rice is tender and the liquid is absorbed.",
+    "Remove the garlic, fluff the rice, and gently mix everything together before serving.",
+  ],
+  note: "Don't stir the rice while it cooks or it'll lose the classic plov texture.",
+},
+  {
     id: "pastrami-latke-stack",
     title: "Pastrami Latke Stack",
     year: "2026",
@@ -317,8 +376,7 @@ const slug = (t) =>
         Recipes
       </h1>
       <p class="text-lg text-text dark:text-dk-text/80 leading-relaxed">
-        A small collection of things I cook. Some are mine, some are
-        borrowed from better cooks.
+        A small collection of things I cook. Breaking American stereotypes one recipe at a time.
       </p>
       <p class="text-xs text-text/50 dark:text-dk-text/50">
         {recipes.length} recipes · tap a card to open it
