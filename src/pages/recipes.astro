@@ -399,7 +399,6 @@ const recipes = [
   },
 ];
 
-// Build tag set
 const tags = new Set();
 for (const r of recipes) {
   (r.tags || []).forEach((t) => tags.add(t));
@@ -429,8 +428,6 @@ const slug = (t) =>
         {recipes.length} recipes · tap a card to open it
       </p>
     </header>
-
-    <!-- Search & Filter Toggle -->
     <div
       class="relative flex items-center mb-4 border-b-2 border-text/40 dark:border-dk-text/40 focus-within:border-secondary dark:focus-within:border-dk-accent transition-colors pb-1"
     >
