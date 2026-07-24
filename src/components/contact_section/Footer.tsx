@@ -30,6 +30,8 @@ const Footer: React.FC = () => {
             className="text-sm text-text/70 dark:text-dk-text/70 hover:text-secondary dark:hover:text-dk-secondary transition-colors">Projects</a>
                      <a href="/music" target="_blank" rel="noopener noreferrer"
             className="text-sm text-text/70 dark:text-dk-text/70 hover:text-secondary dark:hover:text-dk-secondary transition-colors">Music</a>
+              <a href="/referral" target="_blank" rel="noopener noreferrer"
+            className="text-sm text-text/70 dark:text-dk-text/70 hover:text-secondary dark:hover:text-dk-secondary transition-colors">Referral Links</a>
         </div>
         <div className="flex flex-col gap-3">
           <h3 className="text-secondary dark:text-dk-secondary text-sm font-semibold uppercase tracking-widest mb-1">Technologies</h3>
