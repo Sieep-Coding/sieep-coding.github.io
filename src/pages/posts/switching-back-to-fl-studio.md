@@ -68,3 +68,6 @@ When it comes to why FL beats the other guys, their business practices are the b
 ### Bonus
 ![Simplified travel studio.](../photo/_simple-stu.png "Simplified travel studio.")
 > Simplified travel studio.
+
+![Simplified travel studio.](../photo/_simple_stu2.png "Simplified travel studio.")
+> Simplified travel studio, pt. 2
