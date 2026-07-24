@@ -37,14 +37,7 @@ const allPosts = await Astro.glob("./posts/*.md");
             href="/about"
             class="inline-flex items-center text-sm font-medium text-secondary dark:text-dk-accent hover:underline underline-offset-4"
           >
-           About →
-          </a>
-
-          <a
-            href="https://luniv.tech/"
-            class="inline-flex items-center text-sm font-medium text-secondary dark:text-dk-accent hover:underline underline-offset-4"
-          >
-            Luniv →
+            About →
           </a>
 
           <a
@@ -59,6 +52,12 @@ const allPosts = await Astro.glob("./posts/*.md");
           >
             Music →
           </a>
+          <a
+            href="/recipes"
+            class="inline-flex items-center text-sm font-medium text-secondary dark:text-dk-accent hover:underline underline-offset-4"
+          >
+            Recipes →
+          </a>
         </div>
       </div>
 
@@ -72,7 +71,6 @@ const allPosts = await Astro.glob("./posts/*.md");
         />
       </div>
     </header>
-
 
     <section id="blog">
       <Blog posts={allPosts} />

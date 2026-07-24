@@ -28,20 +28,20 @@ export default function Nav({ posts }) {
           </a>
 
           <div className="absolute left-1/2 -translate-x-1/2 flex items-center gap-8">
-  <a
-    href="/music"
-    className="text-sm font-medium text-secondary dark:text-dk-secondary hover:underline underline-offset-4 transition-colors"
-  >
-    Music
-  </a>
+            <a
+              href="/music"
+              className="text-sm font-medium text-secondary dark:text-dk-secondary hover:underline underline-offset-4 transition-colors"
+            >
+              Music
+            </a>
 
-  <a
-    href="/posts"
-    className="text-sm font-medium text-secondary dark:text-dk-secondary hover:underline underline-offset-4 transition-colors"
-  >
-    Blog
-  </a>
-</div>
+            <a
+              href="/posts"
+              className="text-sm font-medium text-secondary dark:text-dk-secondary hover:underline underline-offset-4 transition-colors"
+            >
+              Blog
+            </a>
+          </div>
 
           <div className="flex items-center gap-4 text-secondary dark:text-dk-secondary">
             <Search posts={posts} />
