@@ -11,7 +11,7 @@ img_alt: "A chart of labor force participation trending downward"
 tags: ["#Economics", "#Tech"]
 ---
 
-The last time I wrote anything under the Economics tag, it was a [research paper](/posts/making-nuclear-energy-cost-competitive-with-fossil-fuels-and-renewables) for the Nuclear Engineering department at Michigan, arguing nuclear needs better subsidies to compete with fossil fuels and renewables. That paper leaned entirely on LCOE calculators and IEA spreadsheets. This one's smaller in scope but scratched a similar itch, I found a table of civilian labor force data from the BLS going back to 2012, and instead of just eyeballing it, I threw it into a `pandas.DataFrame` and let Python do the arithmetic I'd otherwise get wrong by hand.
+The last time I wrote anything under the Economics tag, it was a [research paper](/posts/making-nuclear-energy-competitve-with-fossil-fuels-and-natural-gas) for the Nuclear Engineering department at Michigan, arguing nuclear needs better subsidies to compete with fossil fuels and renewables. That paper leaned entirely on LCOE calculators and IEA spreadsheets. This one's smaller in scope but scratched a similar itch, I found a table of civilian labor force data from the BLS going back to 2012, and instead of just eyeballing it, I threw it into a `pandas.DataFrame` and let Python do the arithmetic I'd otherwise get wrong by hand.
 
 ## The Data
 
@@ -112,6 +112,6 @@ If you want to mess with the dataset yourself, the whole script is above, `panda
 
 Data source: U.S. Bureau of Labor Statistics, [Employment status of the civilian noninstitutional population, 1955 to date](https://www.bls.gov/cps/data/aa2025/cpsa2025.pdf) (Table 1, CPS Annual Averages, 2025). Note that 2025 figures are 11-month averages excluding October due to the federal government shutdown.
 
-Interested in the nuclear energy paper referenced above? [Read it here.](/posts/making-nuclear-energy-cost-competitive-with-fossil-fuels-and-renewables)
+Interested in the nuclear energy paper referenced above? [Read it here.](/posts/making-nuclear-energy-competitve-with-fossil-fuels-and-natural-gas)
 
 Questions or corrections? Email me at [nickstambaugh@proton.me](mailto:nickstambaugh@proton.me)
