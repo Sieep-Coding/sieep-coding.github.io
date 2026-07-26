@@ -15,5 +15,8 @@ Inspired by [dracula theme](https://draculatheme.com/).
 - Responsive design
 - Easy to customize and extend personal data
 - Fuzzy search for blog posts
-- SEO friendly (robots.txt, sitemap.xml)
+- SEO friendly (robots.txt, llms.text, sitemap.xml)
+- Tags
+- 3 photo displays
+- 2 layouts
 - RSS feed
