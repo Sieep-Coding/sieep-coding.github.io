@@ -1,0 +1,550 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const books = [
+  {
+    id: "penguin-book-of-pirates",
+    title: "The Penguin Book of Pirates",
+    subtitle: "True Stories of the Most Notorious Pirates",
+    author: "Katherine Howe (Editor)",
+    publisher: "Penguin Classics",
+    year: "2024",
+    pages: 400,
+    isbn: "978-0-14-313751-1",
+    format: "Paperback",
+    tags: ["nonfiction", "history", "anthology", "maritime", "true-crime"],
+    description:
+      "A Penguin Classics anthology of real-life pirate accounts spanning three centuries and eight thousand nautical miles, compiled by Katherine Howe, a direct descendant of a sailor who fought pirates in the early nineteenth century. Drawn from trial transcripts, journalism, and ship logs, it covers figures like Blackbeard and the real pirates behind Jack Sparrow, Stede Bonnet, and the Dread Pirate Roberts, alongside lesser-known women pirates who disguised themselves as men.",
+  },
+  {
+    id: "tale-of-despereaux",
+    title: "The Tale of Despereaux",
+    subtitle: "Being the Story of a Mouse, a Princess, Some Soup, and a Spool of Thread",
+    author: "Kate DiCamillo",
+    illustrator: "Timothy Basil Ering",
+    publisher: "Candlewick Press",
+    year: "2015 (anniversary ed.); originally published 2003",
+    pages: 272,
+    isbn: "978-0-7636-8089-3",
+    format: "Paperback",
+    tags: ["fiction", "children", "fantasy", "newbery-medal", "illustrated"],
+    description:
+      "A Newbery Medal-winning children's fantasy novel following Despereaux Tilling, an undersized mouse with oversized ears who falls in love with music, stories, and a human princess named Pea. His fate intertwines with Roscuro, a rat drawn to the light he isn't allowed to have, and Miggery Sow, a servant girl chasing an impossible wish — three threads that lead down into a dungeon, up into a castle, and into each other's lives. Illustrated in black and white by Timothy Basil Ering.",
+  },
+  {
+    id: "ghost-rider-hell-on-wheels",
+    title: "Ghost Rider Epic Collection: Hell on Wheels",
+    author: "Gary Friedrich, Tony Isabella",
+    illustrator: "Mike Ploog, Tom Sutton, Jim Mooney",
+    publisher: "Marvel",
+    year: "2022",
+    pages: 424,
+    isbn: "978-1-302-94611-1",
+    format: "Paperback",
+    tags: ["comics", "graphic-novel", "marvel", "horror", "action"],
+    description:
+      "Collects the origin of Ghost Rider: Marvel Spotlight (1971) #5-12, Ghost Rider (1973) #1-11, and Marvel Team-Up (1972) #15. Johnny Blaze strikes a deal with the devil to save a friend's life and is transformed into the flame-skulled Ghost Rider, battling Satan, the Witch-Woman, and teaming with Daimon Hellstrom, the Son of Satan, in the stories that launched decades of hell-on-wheels action.",
+  },
+  {
+    id: "grand-canyon-and-the-southwest",
+    title: "The Grand Canyon and the Southwest",
+    author: "Ansel Adams",
+    illustrator: "Edited by Andrea G. Stillman",
+    publisher: "Little, Brown and Company",
+    year: "2019",
+    pages: 112,
+    isbn: "978-0-316-53487-1",
+    format: "Paperback",
+    tags: ["photography", "nonfiction", "nature", "art"],
+    description:
+      "Published to honor the Grand Canyon National Park centennial, this collection of Ansel Adams' black-and-white photographs captures the drama and beauty of the Canyon and the American Southwest — landscapes Adams considered second only to Yosemite and the High Sierra in his affections.",
+  },
+  {
+    id: "nicomachean-ethics",
+    title: "The Nicomachean Ethics",
+    author: "Aristotle (trans. David Ross, rev. Lesley Brown)",
+    publisher: "Oxford University Press (Oxford World's Classics)",
+    year: "2009",
+    pages: 336,
+    isbn: "978-0-19-921361-0",
+    format: "Paperback",
+    tags: ["philosophy", "nonfiction", "classics", "ethics"],
+    description:
+      "Aristotle's foundational work of moral philosophy, asking what the best thing for a human being is and answering: happiness — not a feeling, but a kind of flourishing life built from our best capacities. This Oxford World's Classics edition pairs David Ross's classic translation, revised by Lesley Brown, with a new introduction, notes, glossary, and bibliography.",
+  },
+  {
+    id: "together-is-better",
+    title: "Together Is Better",
+    subtitle: "A Little Book of Inspiration",
+    author: "Simon Sinek",
+    illustrator: "Ethan M. Aldridge",
+    publisher: "Portfolio (Penguin)",
+    year: "2016",
+    pages: 160,
+    isbn: "978-1-59184-785-4",
+    format: "Hardcover",
+    tags: ["nonfiction", "business", "inspiration", "leadership", "illustrated"],
+    description:
+      "A short, illustrated parable from the author of Start With Why and Leaders Eat Last, about the courage to ask for help, the willingness to help others, and how the choice to go together — rather than alone — shapes how we feel about our journey. Looks like a children's book; written for adults.",
+  },
+  {
+    id: "who-moved-my-cheese",
+    title: "Who Moved My Cheese?",
+    subtitle: "An A-Mazing Way to Deal with Change in Your Work and in Your Life",
+    author: "Spencer Johnson",
+    publisher: "G. P. Putnam's Sons",
+    year: "1998",
+    pages: 96,
+    isbn: "978-0-399-14446-2",
+    format: "Hardcover",
+    tags: ["nonfiction", "business", "self-help", "parable"],
+    description:
+      "A #1 international bestseller told as a simple parable about two mice and two \"littlepeople\" navigating a maze in search of cheese — a metaphor for anticipating, acknowledging, and adapting to change at work and in life.",
+  },
+  {
+    id: "art-of-the-deal",
+    title: "Trump: The Art of the Deal",
+    author: "Donald J. Trump, Tony Schwartz",
+    publisher: "Ballantine Books (Random House)",
+    year: "2015 reissue; originally published 1987",
+    pages: 384,
+    isbn: "978-0-399-59449-6",
+    format: "Paperback",
+    tags: ["nonfiction", "business", "memoir", "real-estate"],
+    description:
+      "A firsthand account of Donald Trump's rise as a real estate developer, laying out his professional and personal worldview through stories from some of his biggest deals in 1980s New York City real estate.",
+  },
+  {
+    id: "source-code",
+    title: "Source Code",
+    subtitle: "My Beginnings",
+    author: "Bill Gates",
+    publisher: "Vintage",
+    year: "2026",
+    pages: 336,
+    isbn: "978-0-593-68746-8",
+    format: "Paperback",
+    tags: ["nonfiction", "memoir", "technology", "biography"],
+    description:
+      "Bill Gates' memoir of his childhood, early passions, and the path that led a twenty-year-old Harvard dropout to co-found Microsoft — focused not on the company or the Gates Foundation, but on the personal story of how he became who he is.",
+  },
+  {
+    id: "enders-game",
+    title: "Ender's Game",
+    author: "Orson Scott Card",
+    publisher: "Tor Books",
+    year: "2021 (Ender Saga ed.); originally published 1985",
+    pages: 256,
+    isbn: "978-1-250-77302-9",
+    format: "Paperback",
+    tags: ["fiction", "sci-fi", "hugo-award", "nebula-award"],
+    description:
+      "The Hugo and Nebula award-winning science fiction novel following Andrew \"Ender\" Wiggin, a child genius bred and trained by military agencies to command Earth's defenses against a hostile alien race — believing he's playing one more simulated war game.",
+  },
+  {
+    id: "the-one-thing",
+    title: "The ONE Thing",
+    subtitle: "The Surprisingly Simple Truth About Extraordinary Results",
+    author: "Gary Keller, Jay Papasan",
+    publisher: "Bard Press",
+    year: "2013",
+    pages: 240,
+    isbn: "978-1-885167-77-4",
+    format: "Hardcover",
+    tags: ["nonfiction", "business", "productivity", "self-help"],
+    description:
+      "A #1 Wall Street Journal, New York Times, and USA Today bestseller arguing that extraordinary results come from focusing on the single most important thing in any area of life — work, personal, family, and spiritual — rather than spreading effort thin.",
+  },
+  {
+    id: "old-man-and-the-sea",
+    title: "The Old Man and the Sea",
+    subtitle: "The Hemingway Library Edition",
+    author: "Ernest Hemingway",
+    publisher: "Scribner",
+    year: "2022 ed.; originally published 1952",
+    pages: 160,
+    isbn: "978-1-4767-8785-5",
+    format: "Paperback",
+    tags: ["fiction", "classics", "pulitzer-prize", "nobel-prize"],
+    description:
+      "The Pulitzer Prize-winning story of an aging Cuban fisherman's relentless battle with a giant marlin far out in the Gulf Stream. This Hemingway Library Edition adds a previously unpublished short story, a foreword by Patrick Hemingway, and an introduction by Seán Hemingway.",
+  },
+  {
+    id: "steve-jobs",
+    title: "Steve Jobs",
+    author: "Walter Isaacson",
+    publisher: "Simon & Schuster",
+    year: "2021 (paperback); originally published 2011",
+    pages: 672,
+    isbn: "978-1-9821-7686-0",
+    format: "Paperback",
+    tags: ["nonfiction", "biography", "technology", "business"],
+    description:
+      "Based on more than forty interviews with Steve Jobs over two years, plus interviews with over 100 family members, friends, and colleagues, this biography traces the roller-coaster life of Apple's cofounder, whose drive for perfection reshaped personal computers, animation, music, phones, and publishing.",
+  },
+  {
+    id: "better-decisions-fewer-regrets",
+    title: "Better Decisions, Fewer Regrets",
+    subtitle: "5 Questions to Help You Determine Your Next Move",
+    author: "Andy Stanley",
+    publisher: "Zondervan",
+    year: "2020",
+    pages: 192,
+    isbn: "978-0-310-53708-3",
+    format: "Hardcover",
+    tags: ["nonfiction", "self-help", "faith"],
+    description:
+      "Pastor and author Andy Stanley lays out five questions to run every major decision through — around finances, relationships, and career — aimed at helping readers make better decisions and avoid the regret of decisions made carelessly or in a hurry.",
+  },
+];
+
+const tags = new Set();
+for (const b of books) {
+  (b.tags || []).forEach((t) => tags.add(t));
+}
+
+const slug = (t) =>
+  t
+    .toLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g, "")
+    .replace(/[\s_-]+/g, "-");
+---
+
+<BaseLayout title="Library — Nick Stambaugh">
+  <main class="max-w-2xl mx-auto px-4 py-16 sm:py-24">
+    <header class="space-y-4 mb-12">
+      <h1 class="text-3xl font-bold tracking-tight text-secondary dark:text-dk-accent">
+        Library
+      </h1>
+      <p class="text-lg text-text dark:text-dk-text/80 leading-relaxed">
+        Physical books I own.
+      </p>
+      <p class="text-xs text-text/50 dark:text-dk-text/50">
+        {books.length} books · tap a row to expand
+      </p>
+    </header>
+
+    <div
+      class="relative flex items-center mb-4 border-b-2 border-text/40 dark:border-dk-text/40 focus-within:border-secondary dark:focus-within:border-dk-accent transition-colors pb-1"
+    >
+      <input
+        id="book-search"
+        type="text"
+        placeholder="Search books..."
+        class="w-full py-3 bg-transparent text-text dark:text-dk-accent placeholder-text/60 dark:placeholder-dk-text/60 focus:outline-none text-xl font-medium tracking-wide"
+      />
+
+      <button
+        id="filters-toggle"
+        class="ml-4 px-4 py-2 text-sm uppercase font-bold tracking-widest text-text dark:text-dk-text hover:text-secondary dark:hover:text-dk-accent transition-colors focus:outline-none flex items-center gap-1"
+      >
+        <span>Tags</span>
+        <span
+          id="filters-arrow"
+          class="inline-block transition-transform duration-200 text-xs">↓</span
+        >
+      </button>
+    </div>
+
+    <!-- Collapsible tag panel -->
+    <div
+      id="filters-panel"
+      class="overflow-hidden transition-[max-height] duration-200 ease-out max-h-0"
+    >
+      <div
+        id="tag-filter"
+        class="flex flex-wrap gap-x-6 gap-y-3 pt-3 pb-8 border-b-2 border-text/10 dark:border-dk-text/10"
+      >
+        <button
+          data-filter="*"
+          class="tag-btn text-sm lowercase font-bold tracking-wide text-secondary dark:text-dk-accent decoration-secondary dark:decoration-dk-accent hover:text-secondary dark:hover:text-dk-accent transition-colors underline decoration-2 underline-offset-8"
+        >
+          all
+        </button>
+
+        {
+          Array.from(tags).map((tag) => (
+            <button
+              data-filter={`.${slug(tag)}`}
+              class="tag-btn text-sm lowercase font-bold tracking-wide text-text/70 dark:text-dk-text hover:text-secondary dark:hover:text-dk-accent transition-colors underline decoration-2 decoration-transparent underline-offset-8"
+            >
+              {tag}
+            </button>
+          ))
+        }
+      </div>
+    </div>
+
+    <p
+      id="no-results"
+      class="hidden text-sm text-text/50 dark:text-dk-text/50 mb-8"
+    >
+      No books match your search.
+    </p>
+
+    <!-- Table -->
+    <div class="border border-text/10 dark:border-dk-text/10 rounded-xl overflow-hidden">
+      <table class="w-full text-sm border-collapse table-fixed">
+        <colgroup>
+          <col class="w-[52%] sm:w-[46%]" />
+          <col class="w-[26%] sm:w-[30%]" />
+          <col class="w-[16%] sm:w-[16%]" />
+          <col class="w-[6%] sm:w-[8%]" />
+        </colgroup>
+        <thead>
+          <tr class="border-b border-text/10 dark:border-dk-text/10 bg-secondary/5 dark:bg-dk-secondary/5">
+            <th class="text-left font-semibold uppercase tracking-wide text-[10px] sm:text-xs text-text/60 dark:text-dk-text/60 px-3 sm:px-4 py-3">
+              Title
+            </th>
+            <th class="text-left font-semibold uppercase tracking-wide text-[10px] sm:text-xs text-text/60 dark:text-dk-text/60 px-3 sm:px-4 py-3">
+              Author
+            </th>
+            <th class="text-left font-semibold uppercase tracking-wide text-[10px] sm:text-xs text-text/60 dark:text-dk-text/60 px-3 sm:px-4 py-3">
+              Year
+            </th>
+            <th class="px-2 py-3"></th>
+          </tr>
+        </thead>
+        <tbody id="books-list">
+          {
+            books.map((book, i) => {
+              const tagClasses = (book.tags || []).map((t) => slug(t)).join(" ");
+              const tagsStr = (book.tags || []).join(",");
+              const isLast = i === books.length - 1;
+              const rowBorder = isLast
+                ? ""
+                : "border-b border-text/10 dark:border-dk-text/10";
+              return (
+                <>
+                  <tr
+                    class={`book-row book-item ${tagClasses} ${rowBorder} cursor-pointer hover:bg-secondary/5 dark:hover:bg-dk-secondary/5 transition-colors`}
+                    data-target={book.id}
+                    data-title={book.title.toLowerCase()}
+                    data-author={book.author.toLowerCase()}
+                    data-tags={tagsStr.toLowerCase()}
+                    data-description={book.description.toLowerCase()}
+                  >
+                    <td class="px-3 sm:px-4 py-3 align-top">
+                      <div class="font-semibold text-secondary dark:text-dk-accent">
+                        {book.title}
+                      </div>
+                      {book.subtitle && (
+                        <div class="text-xs text-text/50 dark:text-dk-text/50 mt-0.5">
+                          {book.subtitle}
+                        </div>
+                      )}
+                    </td>
+                    <td class="px-3 sm:px-4 py-3 align-top text-text/80 dark:text-dk-text/80 text-xs sm:text-sm">
+                      {book.author}
+                    </td>
+                    <td class="px-3 sm:px-4 py-3 align-top text-text/60 dark:text-dk-text/60 text-xs sm:text-sm">
+                      {book.year}
+                    </td>
+                    <td class="px-2 py-3 align-top text-right">
+                      <span
+                        class="book-arrow inline-block text-text/40 dark:text-dk-text/40 transition-transform duration-200"
+                        aria-hidden="true"
+                      >
+                        ↓
+                      </span>
+                    </td>
+                  </tr>
+                  <tr class="book-detail-row">
+                    <td colspan="4" class="p-0">
+                      <div
+                        id={`detail-${book.id}`}
+                        class="book-panel overflow-hidden transition-[max-height] duration-300 ease-out max-h-0"
+                      >
+                        <div
+                          class={`px-3 sm:px-6 py-5 bg-secondary/5 dark:bg-dk-secondary/5 ${
+                            isLast ? "" : "border-b border-text/10 dark:border-dk-text/10"
+                          }`}
+                        >
+                          <p class="text-sm text-text/80 dark:text-dk-text/80 leading-relaxed mb-4">
+                            {book.description}
+                          </p>
+
+                          <dl class="grid grid-cols-2 sm:grid-cols-4 gap-x-4 gap-y-2 text-xs">
+                            <div>
+                              <dt class="uppercase tracking-wide text-text/50 dark:text-dk-text/50">
+                                Publisher
+                              </dt>
+                              <dd class="text-text/80 dark:text-dk-text/80 mt-0.5">
+                                {book.publisher}
+                              </dd>
+                            </div>
+                            <div>
+                              <dt class="uppercase tracking-wide text-text/50 dark:text-dk-text/50">
+                                Format
+                              </dt>
+                              <dd class="text-text/80 dark:text-dk-text/80 mt-0.5">
+                                {book.format}
+                              </dd>
+                            </div>
+                            <div>
+                              <dt class="uppercase tracking-wide text-text/50 dark:text-dk-text/50">
+                                Pages
+                              </dt>
+                              <dd class="text-text/80 dark:text-dk-text/80 mt-0.5">
+                                {book.pages}
+                              </dd>
+                            </div>
+                            <div>
+                              <dt class="uppercase tracking-wide text-text/50 dark:text-dk-text/50">
+                                ISBN
+                              </dt>
+                              <dd class="text-text/80 dark:text-dk-text/80 mt-0.5">
+                                {book.isbn}
+                              </dd>
+                            </div>
+                            {book.illustrator && (
+                              <div class="col-span-2 sm:col-span-4">
+                                <dt class="uppercase tracking-wide text-text/50 dark:text-dk-text/50">
+                                  Illustrator
+                                </dt>
+                                <dd class="text-text/80 dark:text-dk-text/80 mt-0.5">
+                                  {book.illustrator}
+                                </dd>
+                              </div>
+                            )}
+                          </dl>
+
+                          <div class="mt-4 flex flex-wrap gap-1.5">
+                            {book.tags.map((tag) => (
+                              <span class="text-[11px] px-2 py-0.5 rounded-full border border-text/30 dark:border-dk-text/30 text-text/70 dark:text-dk-text/70">
+                                {tag}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </>
+              );
+            })
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <footer class="mt-16 pt-8 border-t border-text/10 dark:border-dk-text/10">
+      <a
+        href="/"
+        class="text-sm text-text/60 hover:text-secondary dark:hover:text-dk-accent transition-colors"
+      >
+        ← Back to home
+      </a>
+    </footer>
+  </main>
+
+  <script is:inline>
+    document.addEventListener("DOMContentLoaded", () => {
+      const searchEl = document.getElementById("book-search");
+      const tagButtons = Array.from(document.querySelectorAll(".tag-btn"));
+      const rows = Array.from(document.querySelectorAll(".book-row"));
+      const noResults = document.getElementById("no-results");
+
+      let activeFilter = "*";
+
+      const applyFilters = () => {
+        const query = searchEl.value.toLowerCase();
+        let visibleCount = 0;
+
+        rows.forEach((row) => {
+          const title = row.dataset.title || "";
+          const author = row.dataset.author || "";
+          const tags = row.dataset.tags || "";
+          const description = row.dataset.description || "";
+          const textMatch =
+            title.includes(query) ||
+            author.includes(query) ||
+            tags.includes(query) ||
+            description.includes(query);
+          const filterMatch =
+            activeFilter === "*" || row.classList.contains(activeFilter.slice(1));
+
+          const show = textMatch && filterMatch;
+          const detailRow = row.nextElementSibling;
+
+          row.style.display = show ? "table-row" : "none";
+          if (detailRow) {
+            detailRow.style.display = show ? "table-row" : "none";
+          }
+          if (show) visibleCount++;
+        });
+
+        noResults.classList.toggle("hidden", visibleCount !== 0);
+      };
+
+      tagButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          tagButtons.forEach((b) => {
+            b.classList.remove(
+              "text-secondary",
+              "dark:text-dk-accent",
+              "decoration-secondary",
+              "dark:decoration-dk-accent",
+            );
+            b.classList.add("text-text/70", "dark:text-dk-text");
+          });
+
+          btn.classList.remove("text-text/70", "dark:text-dk-text");
+          btn.classList.add(
+            "text-secondary",
+            "dark:text-dk-accent",
+            "decoration-secondary",
+            "dark:decoration-dk-accent",
+          );
+
+          activeFilter = btn.dataset.filter;
+          applyFilters();
+        });
+      });
+
+      searchEl.addEventListener("input", applyFilters);
+
+      /* Tag filter collapsible panel */
+      const panel = document.getElementById("filters-panel");
+      const toggle = document.getElementById("filters-toggle");
+      const arrow = document.getElementById("filters-arrow");
+
+      let open = false;
+      panel.style.maxHeight = "0px";
+
+      toggle.addEventListener("click", () => {
+        open = !open;
+        if (open) {
+          panel.style.maxHeight = panel.scrollHeight + "px";
+          arrow.style.transform = "rotate(180deg)";
+        } else {
+          panel.style.maxHeight = "0px";
+          arrow.style.transform = "rotate(0deg)";
+        }
+      });
+
+      /* Row accordion: click a row to expand/collapse its detail row */
+      rows.forEach((row) => {
+        const targetId = row.dataset.target;
+        const detailPanel = document.getElementById(`detail-${targetId}`);
+        const arrowEl = row.querySelector(".book-arrow");
+
+        row.addEventListener("click", () => {
+          const isOpen = row.getAttribute("aria-expanded") === "true";
+          row.setAttribute("aria-expanded", String(!isOpen));
+
+          if (isOpen) {
+            detailPanel.style.maxHeight = "0px";
+            arrowEl.style.transform = "rotate(0deg)";
+          } else {
+            detailPanel.style.maxHeight = detailPanel.scrollHeight + "px";
+            arrowEl.style.transform = "rotate(180deg)";
+          }
+        });
+      });
+
+      applyFilters();
+    });
+  </script>
+</BaseLayout>

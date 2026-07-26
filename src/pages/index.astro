@@ -6,7 +6,6 @@ import Contact from "../components/contact_section/Contact";
 import { Image } from "astro:assets";
 const allPosts = await Astro.glob("./posts/*.md");
 
-// Find the most recent blog post for the carousel card
 const sortedPosts = [...allPosts].sort((a, b) => {
   const A = new Date(a.frontmatter.date).getTime();
   const B = new Date(b.frontmatter.date).getTime();
@@ -67,6 +66,12 @@ const latestPostUrl = latestPost?.url || "/posts";
             class="inline-flex items-center text-sm font-medium text-secondary dark:text-dk-accent hover:underline underline-offset-4"
           >
             Recipes →
+          </a>
+                    <a
+            href="/library"
+            class="inline-flex items-center text-sm font-medium text-secondary dark:text-dk-accent hover:underline underline-offset-4"
+          >
+            Books →
           </a>
         </div>
       </div>
