@@ -49,7 +49,7 @@ It's about the shape of the post itself because I've seen this exact shape a tho
 
 China's government has a well-documented history of paying and directing large numbers of people to post pro-government content online. Researchers refer to this informally as the ["50 Cent Party" or `wumao`](https://en.wikipedia.org/wiki/50_Cent_Party), named after the rumored per-post payment.
 
-A Harvard-led study published in the *American Political Science Review* analyzed leaked government documents and estimated the Chinese government fabricates roughly 488 million social media posts a year. The large majority of them aren't argumentative at all; they're cheerleading and distraction, meant to shape the ambient narrative. It is worth noting the data on this topic is about ten years old at this point. Techniques and methods that were leaked from a single county don't paint the entire picture.
+A Harvard-led study published in the *American Political Science Review* analyzed leaked government documents and estimated the **Chinese government fabricates roughly 488 million social media posts a year.** The large majority of them aren't argumentative at all; they're cheerleading and distraction, meant to shape the ambient narrative. It is worth noting the data on this topic is about ten years old at this point. Techniques and methods that were leaked from a single county don't paint the entire picture.
 
 > The post wasn't designed to survive an argument, it was designed to be nodded at and upvoted past.
 
