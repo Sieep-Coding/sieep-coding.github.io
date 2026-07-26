@@ -73,7 +73,7 @@ year
 ![Labor Force Participation vs Unemployment 2012-2025](../photo/_labor_chart.png "Participation rate vs unemployment rate")
 > Two lines that are supposed to move together, and haven't, for six years straight. [Data source.](https://www.bls.gov/cps/data/aa2025/cpsa2025.pdf)
 
-The unemployment story is the one everyone already knows: it climbs down steadily from 8.1% in 2012 to a low of 3.6% in 2022-2023, spikes hard to 8.1% in 2020, and by 2025 has crept back up to 4.3%. A clean V-shape — and the number that gets quoted on the news, which is exactly why I trust it least to tell the whole story.
+The unemployment story is the one everyone already knows: it climbs down steadily from 8.1% in 2012 to a low of 3.6% in 2022-2023, spikes hard to 8.1% in 2020, and by 2025 has crept back up to 4.3%.
 
 The participation rate doesn't V-shape at all.
 
@@ -83,6 +83,7 @@ print(f"2019->2020 participation rate drop: {covid_drop:.1f} points")
 
 recovery_gap = df.loc[2019, "participation_rate"] - df.loc[2025, "participation_rate"]
 print
+```
 
 ```
 2019->2020 participation rate drop: -1.4 points
@@ -91,7 +92,9 @@ Pre-covid vs 2025 participation gap: 0.7 points
 
 Participation dropped 1.4 points from 2019 to 2020, which sounds small until you multiply it against a population pushing 260 million. Six years later, in 2025, the gap still hasn't closed. It's sitting 0.7 points below 2019, even though unemployment on paper looks almost back to normal.
 
-Unemployment measures people actively looking for work and not finding it. It says nothing about people who just stopped looking. The `not_in_labor_force` column is where those people show up, and as a share of the population it jumped from 36.9% in 2019 to 38.3% in 2021, and has only partly come back down since — 37.6% in 2025.
+Unemployment measures people actively looking for work and not finding it. It says nothing about people who just stopped looking. 
+
+The `not_in_labor_force` column is where those people show up, and as a share of the population it jumped from 36.9% in 2019 to 38.3% in 2021, and has only partly come back down since, 37.6% in 2025.
 
 Roughly a full percentage point of the population that used to be counted as in the labor force, working or looking, isn't anymore, and hasn't come back even as the headline unemployment number recovered.
 
@@ -99,9 +102,9 @@ Roughly a full percentage point of the population that used to be counted as in 
 
 Same lesson I kept running into on the nuclear paper: the number on the evening news is usually the one that flatters the story being told, and the more useful number is one column over.
 
-Unemployment rate is a good number if you want to say the economy is fine now. Labor force participation — specifically how many people quietly left the workforce altogether — is the number you'd want if you're trying to check whether that's actually true. A country can post a low unemployment rate while permanently carrying more people who've dropped out entirely: retired early, given up looking, gone on disability. The topline number won't show any of it.
+Unemployment rate is a good number if you want to say the economy is fine now. Labor force participation is the number you'd want if you're trying to check whether that's actually true. 
 
-This is just what happens when you load a government table into a dataframe instead of reading the summary paragraph above it.
+A country can post a low unemployment rate while permanently carrying more people who've dropped out entirely: retired early, given up looking, gone on disability.
 
 ## The Code
 
