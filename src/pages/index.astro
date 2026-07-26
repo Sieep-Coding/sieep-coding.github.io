@@ -350,7 +350,29 @@ const latestPostUrl = latestPost?.url || "/posts";
               View →
             </span>
           </a>
-
+          <a
+            href="/wiki"
+        
+            class="carousel-slide group flex items-center justify-between p-5 sm:p-6 w-full shrink-0 hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
+          >
+            <div class="min-w-0">
+              <p
+                class="text-xs uppercase tracking-wide text-text/50 dark:text-dk-text/50 mb-1"
+              >
+                Latest feature
+              </p>
+              <p
+                class="text-base font-semibold text-secondary dark:text-dk-accent truncate"
+              >
+                Nickipedia
+              </p>
+            </div>
+            <span
+              class="text-sm font-medium text-secondary dark:text-dk-accent group-hover:underline underline-offset-4 shrink-0"
+            >
+              View →
+            </span>
+          </a>
           <div
             id="weather-slide"
             class="carousel-slide flex items-center justify-between p-5 sm:p-6 w-full shrink-0"
@@ -432,6 +454,11 @@ const latestPostUrl = latestPost?.url || "/posts";
           <button
             class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors"
             data-index="9"
+            aria-label="Show the recent feature"></button>
+
+          <button
+            class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors"
+            data-index="10"
             aria-label="Show current weather"></button>
         </div>
 
