@@ -165,6 +165,68 @@ const latestPostUrl = latestPost?.url || "/posts";
               Read →
             </span>
           </a>
+
+          <!-- Slide 5: Most starred GitHub project -->
+          <a
+            href="https://github.com/Sieep-Coding/simple-chat-csharp"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="carousel-slide group flex items-center justify-between p-5 sm:p-6 w-full shrink-0 hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
+          >
+            <div class="min-w-0">
+              <p class="text-xs uppercase tracking-wide text-text/50 dark:text-dk-text/50 mb-1">
+                Most starred repo · ⭐ 27
+              </p>
+              <p class="text-base font-semibold text-secondary dark:text-dk-accent truncate">
+                simple-chat-csharp
+              </p>
+            </div>
+            <span class="text-sm font-medium text-secondary dark:text-dk-accent group-hover:underline underline-offset-4 shrink-0">
+              View →
+            </span>
+          </a>
+
+          <!-- Slide 6: Current local weather (Rockford, MI) -->
+          <div
+            id="weather-slide"
+            class="carousel-slide flex items-center justify-between p-5 sm:p-6 w-full shrink-0"
+          >
+            <div class="min-w-0">
+              <p class="text-xs uppercase tracking-wide text-text/50 dark:text-dk-text/50 mb-1">
+                Rockford, MI right now
+              </p>
+              <p
+                id="weather-text"
+                class="text-base font-semibold text-secondary dark:text-dk-accent truncate"
+              >
+                Loading weather…
+              </p>
+            </div>
+            <span id="weather-icon" class="text-2xl shrink-0" aria-hidden="true"></span>
+          </div>
+
+          <!-- Slide 7: Random quote -->
+          <div
+            id="quote-slide"
+            class="carousel-slide flex items-center p-5 sm:p-6 w-full shrink-0"
+          >
+            <div class="min-w-0">
+              <p class="text-xs uppercase tracking-wide text-text/50 dark:text-dk-text/50 mb-1">
+                Random quote
+              </p>
+              <p
+                id="quote-text"
+                class="text-sm font-medium text-secondary dark:text-dk-accent leading-snug"
+              >
+                Loading a quote…
+              </p>
+              <p
+                id="quote-author"
+                class="text-xs text-text/50 dark:text-dk-text/50 mt-1"
+              ></p>
+            </div>
+          </div>
+
         </div>
       </div>
 
@@ -198,6 +260,21 @@ const latestPostUrl = latestPost?.url || "/posts";
             class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors"
             data-index="3"
             aria-label="Show latest post"
+          ></button>
+          <button
+            class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors"
+            data-index="4"
+            aria-label="Show most starred GitHub project"
+          ></button>
+          <button
+            class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors"
+            data-index="5"
+            aria-label="Show current weather"
+          ></button>
+          <button
+            class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors"
+            data-index="6"
+            aria-label="Show random quote"
           ></button>
         </div>
 
@@ -315,5 +392,78 @@ const latestPostUrl = latestPost?.url || "/posts";
 
     goTo(0);
     startAutoplay();
+
+    // Live weather for Rockford, MI (Open-Meteo — no API key required)
+    const weatherText = document.getElementById("weather-text");
+    const weatherIcon = document.getElementById("weather-icon");
+
+    const WEATHER_ICONS: Record<number, string> = {
+      0: "☀️",
+      1: "🌤️",
+      2: "⛅",
+      3: "☁️",
+      45: "🌫️",
+      48: "🌫️",
+      51: "🌦️",
+      53: "🌦️",
+      55: "🌦️",
+      61: "🌧️",
+      63: "🌧️",
+      65: "🌧️",
+      71: "🌨️",
+      73: "🌨️",
+      75: "❄️",
+      80: "🌦️",
+      81: "🌧️",
+      82: "⛈️",
+      95: "⛈️",
+      96: "⛈️",
+      99: "⛈️",
+    };
+
+    async function loadWeather() {
+      try {
+        const res = await fetch(
+          "https://api.open-meteo.com/v1/forecast?latitude=43.1195&longitude=-85.5606&current=temperature_2m,weather_code&temperature_unit=fahrenheit&timezone=America%2FDetroit",
+        );
+        const data = await res.json();
+        const temp = Math.round(data.current.temperature_2m);
+        const code = data.current.weather_code;
+        if (weatherText) {
+          weatherText.textContent = `${temp}°F`;
+        }
+        if (weatherIcon) {
+          weatherIcon.textContent = WEATHER_ICONS[code] || "🌡️";
+        }
+      } catch (err) {
+        if (weatherText) {
+          weatherText.textContent = "Weather unavailable";
+        }
+      }
+    }
+
+    // Random quote (Quotable API)
+    const quoteText = document.getElementById("quote-text");
+    const quoteAuthor = document.getElementById("quote-author");
+
+    async function loadQuote() {
+      try {
+        const res = await fetch("https://dummyjson.com/quotes/random");
+        const data = await res.json();
+        if (quoteText) {
+          quoteText.textContent = `“${data.quote}”`;
+        }
+        if (quoteAuthor) {
+          quoteAuthor.textContent = `— ${data.author}`;
+        }
+      } catch (err) {
+        if (quoteText) {
+          quoteText.textContent = "Couldn't load a quote right now.";
+        }
+      }
+    }
+
+    loadWeather();
+    loadQuote();
   </script>
 </BaseLayout>
