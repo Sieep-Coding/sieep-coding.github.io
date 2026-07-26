@@ -15,10 +15,6 @@ const recentPosts = sortedPosts.slice(1, 6);
 const totalPosts = allPosts.length;
 const today = new Date();
 
-// ---------------------------------------------------------------------------
-// Live GitHub stats (real API call, made at build time). Falls back to
-// reasonable static values if GitHub is unreachable or rate-limits the build.
-// ---------------------------------------------------------------------------
 let githubStats = {
   topRepo: "simple-chat-csharp",
   stars: 27,
@@ -43,13 +39,10 @@ try {
     }
   }
 } catch (err) {
-  // Network unavailable at build time — keep the fallback values above.
+
 }
 
-// ---------------------------------------------------------------------------
-// Live "On this day" fact, pulled from the Wikipedia REST API. Fitting,
-// since this whole page is a parody of a wiki homepage.
-// ---------------------------------------------------------------------------
+
 let onThisDay: { year: string | number; text: string; url?: string } | null = null;
 
 try {
@@ -71,14 +64,8 @@ try {
     }
   }
 } catch (err) {
-  // Network unavailable at build time — section just won't render.
 }
 
-// ---------------------------------------------------------------------------
-// Scan every post in posts/*.md for real outbound Wikipedia links, so the
-// "Wikipedia Rabbit Holes" module below is always built from what's actually
-// linked in the blog rather than a hand-maintained list.
-// ---------------------------------------------------------------------------
 const wikiLinkPattern =
   /\[([^\]]+)\]\((https?:\/\/(?:[a-z]{2,3}\.)?wikipedia\.org\/wiki\/[^\s)]+)\)/gi;
 
@@ -112,16 +99,12 @@ for (const post of allPosts) {
 }
 
 const wikipediaLinks = Array.from(wikipediaLinksMap.values());
-// Rotate which links surface based on the day, so repeat visitors see variety.
 const rotation = today.getDate() % Math.max(wikipediaLinks.length, 1);
 const featuredWikiLinks = [
   ...wikipediaLinks.slice(rotation),
   ...wikipediaLinks.slice(0, rotation),
 ].slice(0, 8);
 
-// ---------------------------------------------------------------------------
-// "Did you know" quotes — expanded roster, one entry is fully live data.
-// ---------------------------------------------------------------------------
 const didYouKnow = [
   `...that Nick's degrees are in <a href="/about">economics and philosophy</a>, not computer science?`,
   `...that his most-starred repo on GitHub is <a href="https://github.com/Sieep-Coding/${githubStats.topRepo}" target="_blank" rel="noopener noreferrer">${githubStats.topRepo}</a>, with ${githubStats.stars} stars (live from the GitHub API)?`,
@@ -138,7 +121,6 @@ const didYouKnow = [
 ];
 const dykPick = didYouKnow[today.getDate() % didYouKnow.length];
 
-// Tag counts, same logic as tags.astro
 const tagMap = new Map();
 for (const post of allPosts) {
   const postTags = post.frontmatter.tags || [];
@@ -178,7 +160,6 @@ const portals = [
   { href: "/about", label: "About", desc: "Nick Stambaugh", icon: "👤" },
 ];
 ---
-
 <BaseLayout title="Nickipedia — The Stambaugh Wiki">
   <div class="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen">
     <main class="max-w-[1400px] mx-auto px-4 sm:px-8 pt-28 pb-10 sm:pt-32 sm:pb-16">
@@ -195,7 +176,6 @@ const portals = [
             </p>
           </div>
           <p class="text-xs text-text/50 dark:text-dk-text/50">{dateStr}</p>
-          <!-- Search -->
           <form action="/posts" method="get" class="mt-5 flex items-center gap-2 max-w-md">
             <input
               type="text"
@@ -211,14 +191,9 @@ const portals = [
             </button>
           </form>
         </div>
-
       </header>
-
-      <!-- Three-column wiki body (wider than before) -->
       <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
-        <!-- Main column -->
         <div class="lg:col-span-3 space-y-8">
-          <!-- Featured article -->
           {featured && (
             <section class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5 sm:p-6">
               <h2 class="text-xs font-bold uppercase tracking-widest text-secondary dark:text-dk-accent border-b border-text/10 dark:border-dk-text/10 pb-2 mb-3">
@@ -387,7 +362,7 @@ const portals = [
                 </div>
               )}
               <div class="flex justify-between">
-                <dt class="text-text/60 dark:text-dk-text/60">editor</dt>
+                <dt class="text-text/60 dark:text-dk-text/60">Editor</dt>
                 <dd class="font-medium text-text dark:text-dk-text">{info.name}</dd>
               </div>
             </dl>
