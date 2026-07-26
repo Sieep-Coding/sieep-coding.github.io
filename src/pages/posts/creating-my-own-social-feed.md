@@ -3,7 +3,7 @@ title: "Creating My Own Social Feed"
 date: "2026-07-26"
 
 layout: ../../layouts/PostLayout.astro
-description: "Using JavaScript, we can accomplish a cool feed of content that should keep even the most attention-deficit person engaged."
+description: "Using JavaScript, we can accomplish a cool feed of content that should keep even the most attention-deficit person engaged. Cartoon by Mr. Ollie"
 
 img_path: "/social-feed.png"
 img_alt: "A screenshot of the feed"
@@ -14,6 +14,9 @@ tags: ["#Coding", "#Tech"]
 # Creating My Own Social Feed
 
 Most modern websites have some kind of feed. Whether it is a social media timeline, a news aggregator, or a dashboard full of information. I wanted something similar for my own website but without the endless shittiness designed to maximize engagement.
+
+![Mr. Ollie ADHD Cartoon](../photo/_cartoon.jpg "Mr. Ollie ADHD Cartoon")
+> Cartoon Credit [Mr. Ollie](https://mrolliefeatures.weebly.com/)
 
 I wanted something simple:
 
