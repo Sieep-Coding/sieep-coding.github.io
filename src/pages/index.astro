@@ -330,7 +330,7 @@ const latestPostUrl = latestPost?.url || "/posts";
 
     let current = 0;
     let intervalId: ReturnType<typeof setInterval> | undefined;
-    const AUTOPLAY_MS = 4000;
+    const AUTOPLAY_MS = 4750;
 
     function goTo(index: number) {
       if (slides.length === 0) return;
@@ -391,7 +391,6 @@ const latestPostUrl = latestPost?.url || "/posts";
     goTo(0);
     startAutoplay();
 
-    // Live weather for Rockford, MI (Open-Meteo — no API key required)
     const weatherText = document.getElementById("weather-text");
     const weatherIcon = document.getElementById("weather-icon");
 
