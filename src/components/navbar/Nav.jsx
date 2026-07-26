@@ -11,7 +11,6 @@ const PRIMARY_LINKS = [
   { href: "/about", label: "About" },
   { href: "/projects", label: "Projects" },
   { href: "/music", label: "Music" },
-  { href: "/recipes", label: "Recipes" },
 
 ];
 
