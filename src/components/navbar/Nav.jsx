@@ -26,6 +26,7 @@ const ALL_LINKS = [
   { href: "/recipes", label: "Recipes" },
   { href: "/media", label: "Media" },
   { href: "/bruce-the-dog", label: "Bruce the Dog" },
+  { href: "/wiki", label: "Nickipedia" },
   { href: "/tags", label: "Tags" },
 ];
 
