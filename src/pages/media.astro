@@ -1,0 +1,682 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const mediaList = [
+    {
+        id: "cowboy-bebop",
+        title: "Cowboy Bebop",
+        subtitle: "The iconic neo-noir space western",
+        creator: "Shinichirō Watanabe",
+        studio: "Sunrise",
+        year: "1998",
+        episodes: "26 episodes",
+        rating: 4.5,
+        format: "Anime Series",
+        tags: ["anime", "sci-fi", "action", "masterpiece"],
+        description: "A critically acclaimed series following the bounty hunter crew of the spaceship Bebop as they travel the Solar System in 2071. Blending science fiction, western, and noir genres with a legendary jazz soundtrack by Yoko Kanno.",
+    },
+    {
+        id: "seinfeld",
+        title: "Seinfeld",
+        creator: "Larry David, Jerry Seinfeld",
+        studio: "NBC",
+        year: "1989",
+        episodes: "180 episodes",
+        rating: 5,
+        format: "Sitcom",
+        tags: ["comedy", "sitcom", "classic"],
+        description: "A seminal 90s sitcom chronicling the daily absurdities of a stand-up comedian and his three eccentric friends in New York City.",
+    },
+    {
+        id: "goodfellas",
+        title: "Goodfellas",
+        creator: "Martin Scorsese",
+        studio: "Warner Bros.",
+        year: "1990",
+        episodes: "145 min",
+        rating: 5,
+        format: "Movie",
+        tags: ["crime", "drama", "masterpiece"],
+        description: "The fast-paced, visceral true story of Henry Hill and his life in the mob, covering his relationship with his wife Karen and his mob partners Jimmy Conway and Tommy DeVito.",
+    },
+    {
+        id: "casino",
+        title: "Casino",
+        creator: "Martin Scorsese",
+        studio: "Universal Pictures",
+        year: "1995",
+        episodes: "178 min",
+        rating: 4,
+        format: "Movie",
+        tags: ["crime", "drama"],
+        description: "A tale of greed, deception, money, power, and murder occur between two best friends: a mafia enforcer and a casino executive compete over a gambling empire.",
+    },
+    {
+        id: "happy-gilmore",
+        title: "Happy Gilmore",
+        creator: "Dennis Dugan (Director)",
+        studio: "Universal Pictures",
+        year: "1996",
+        episodes: "92 min",
+        rating: 3,
+        format: "Movie",
+        tags: ["comedy", "sports"],
+        description: "A rejected hockey player puts his skills to the golf course to save his grandmother's house.",
+    },
+    {
+        id: "crazy-stupid-love",
+        title: "Crazy, Stupid, Love.",
+        creator: "Glenn Ficarra, John Requa",
+        studio: "Warner Bros.",
+        year: "2011",
+        episodes: "118 min",
+        rating: 3.5,
+        format: "Movie",
+        tags: ["comedy", "romance"],
+        description: "A middle-aged husband's life changes dramatically when his wife asks him for a divorce. He seeks to rediscover his manhood with the help of a newfound friend, Jacob, learning to pick up girls at bars.",
+    },
+    {
+        id: "o-brother-where-art-thou",
+        title: "O Brother, Where Art Thou?",
+        creator: "Joel & Ethan Coen",
+        studio: "Touchstone Pictures",
+        year: "2000",
+        episodes: "108 min",
+        rating: 5,
+        format: "Movie",
+        tags: ["comedy", "adventure", "music"],
+        description: "In the deep south during the 1930s, three escaped convicts search for hidden treasure while a relentless lawman pursues them. A brilliant, musical retelling of Homer's Odyssey.",
+    },
+    {
+        id: "full-metal-jacket",
+        title: "Full Metal Jacket",
+        creator: "Stanley Kubrick",
+        studio: "Warner Bros.",
+        year: "1987",
+        episodes: "116 min",
+        rating: 4.5,
+        format: "Movie",
+        tags: ["war", "drama"],
+        description: "A pragmatic U.S. Marine observes the dehumanizing effects the Vietnam War has on his fellow recruits from their brutal boot camp training to the bloody street fighting in Hue.",
+    },
+    {
+        id: "drake-and-josh",
+        title: "Drake & Josh",
+        creator: "Dan Schneider",
+        studio: "Nickelodeon",
+        year: "2004",
+        episodes: "56 episodes",
+        rating: 4,
+        format: "Sitcom",
+        tags: ["comedy", "sitcom"],
+        description: "Two teenage stepbrothers with opposite personalities navigate the challenges of high school"
+    },
+    {
+        id: "lotr-trilogy",
+        title: "The Lord of the Rings Trilogy",
+        creator: "Peter Jackson",
+        studio: "New Line Cinema",
+        year: "2001-2003",
+        episodes: "3 Movies",
+        rating: 5,
+        format: "Film Series",
+        tags: ["fantasy", "adventure", "masterpiece"],
+        description: "A hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron. An unmatched cinematic achievement.",
+    },
+    {
+        id: "kill-bill-vol-1",
+        title: "Kill Bill: Vol. 1",
+        subtitle: "A blood-soaked tribute to martial arts cinema",
+        creator: "Quentin Tarantino",
+        studio: "Miramax",
+        year: "2003",
+        episodes: "111 min",
+        rating: 5,
+        format: "Movie",
+        tags: ["action", "thriller"],
+        description: "After awakening from a four-year coma, a former assassin wreaks vengeance on the team of assassins who betrayed her.",
+    },
+    {
+        id: "monk",
+        title: "Monk",
+        creator: "Andy Breckman",
+        studio: "USA Network",
+        year: "2002",
+        episodes: "125 episodes",
+        rating: 4.5,
+        format: "TV Show",
+        tags: ["comedy", "mystery", "crime"],
+        description: "A brilliant San Francisco detective, whose obsessive-compulsive disorder just happens to get in the way, solves cases while searching for his wife's killer.",
+    },
+    {
+        id: "good-times",
+        title: "Good Times",
+        creator: "Eric Monte, Mike Evans, Norman Lear",
+        studio: "NBC",
+        year: "1974",
+        episodes: "122 episodes",
+        rating: 4,
+        format: "TV Show",
+        tags: ["comedy", "sitcom"],
+        description: "A Chicago working-class family navigates the challenges of life in the 1970s.",
+    },
+    {
+        id: "scrubs",
+        title: "Scrubs",
+        creator: "Bill Lawrence",
+        studio: "NBC / ABC",
+        year: "2001",
+        episodes: "182 episodes",
+        rating: 4.5,
+        format: "TV Show",
+        tags: ["comedy", "drama", "medical"],
+        description: "In the unreal world of Sacred Heart Hospital, intern John 'J.D.' Dorian learns the ways of medicine, friendship, and life.",
+    },
+    {
+        id: "white-chicks",
+        title: "White Chicks",
+        creator: "Keenen Ivory Wayans",
+        studio: "Columbia Pictures",
+        year: "2004",
+        episodes: "109 min",
+        rating: 4,
+        format: "Movie",
+        tags: ["comedy"],
+        description: "Two disgraced FBI agents go way undercover in an effort to protect hotel heiresses the Wilson Sisters from a kidnapping plot.",
+    },
+    {
+        id: "the-wayans-bros",
+        title: "The Wayans Bros.",
+        creator: "Marlon & Shawn Wayans",
+        studio: "The WB",
+        year: "1995",
+        episodes: "101 episodes",
+        rating: 4,
+        format: "Sitcom",
+        tags: ["comedy", "sitcom"],
+        description: "Brothers Shawn and Marlon Wayans play brothers with completely opposite personalities running a newsstand in New York City.",
+    },
+    {
+        id: "fresh-prince",
+        title: "The Fresh Prince of Bel-Air",
+        creator: "Andy & Susan Borowitz",
+        studio: "NBC",
+        year: "1990",
+        episodes: "148 episodes",
+        rating: 4.5,
+        format: "Sitcom",
+        tags: ["comedy", "sitcom", "classic"],
+        description: "A street-smart teenager from Philadelphia is sent by his mother to live with his wealthy relatives in a Bel-Air mansion.",
+    },
+    {
+        id: "the-office",
+        title: "The Office (US)",
+        creator: "Greg Daniels",
+        studio: "NBC",
+        year: "2005",
+        episodes: "201 episodes",
+        rating: 5,
+        format: "Sitcom",
+        tags: ["comedy", "sitcom", "mockumentary"],
+        description: "A mockumentary on a group of typical office workers, where the workday consists of ego clashes, inappropriate behavior, and tedium.",
+    },
+    {
+        id: "everybody-hates-chris",
+        title: "Everybody Hates Chris",
+        subtitle: "Inspired by the childhood experiences of Chris Rock",
+        creator: "Chris Rock, Ali LeRoi",
+        studio: "UPN / The CW",
+        year: "2005",
+        episodes: "88 episodes",
+        rating: 4.5,
+        format: "Sitcom",
+        tags: ["comedy", "sitcom"],
+        description: "A young African-American teen attempts to survive with his eccentric family and an all-white school in the 1980s.",
+    },
+    {
+        id: "spongebob-original",
+        title: "SpongeBob SquarePants (Seasons 1-3)",
+        subtitle: "The golden era of Bikini Bottom",
+        creator: "Stephen Hillenburg",
+        studio: "Nickelodeon",
+        year: "1999",
+        episodes: "60 episodes",
+        rating: 5,
+        format: "Animated Series",
+        tags: ["animation", "comedy", "masterpiece"],
+        description: "The incredibly clever and infinitely quotable original run of SpongeBob under creator Stephen Hillenburg. Unmatched comedic timing and writing.",
+    },
+    {
+        id: "roots",
+        title: "Roots",
+        creator: "Alex Haley",
+        studio: "ABC",
+        year: "1977",
+        episodes: "8 episodes",
+        rating: 5,
+        format: "Miniseries",
+        tags: ["drama", "historical", "classic"],
+        description: "The story of Kunta Kinte, an 18th-century African who is captured as an adolescent and sold into slavery"
+    },
+    {
+        id: "django-unchained",
+        title: "Django Unchained",
+        creator: "Quentin Tarantino",
+        studio: "The Weinstein Company",
+        year: "2012",
+        episodes: "165 min",
+        rating: 5,
+        format: "Movie",
+        tags: ["action", "western", "drama"],
+        description: "With the help of a German bounty-hunter, a freed slave sets out to rescue his wife from a brutal plantation owner in Mississippi.",
+    },
+    {
+        id: "curb-your-enthusiasm",
+        title: "Curb Your Enthusiasm",
+        creator: "Larry David",
+        studio: "HBO",
+        year: "2000",
+        episodes: "120 episodes",
+        rating: 5,
+        format: "TV Show",
+        tags: ["comedy", "cringe"],
+        description: "The life and times of Larry David and the predicaments he gets himself into with his friends and complete strangers. A masterclass in improvised comedy.",
+    },
+    {
+        id: "breaking-bad",
+        title: "Breaking Bad",
+        creator: "Vince Gilligan",
+        studio: "AMC",
+        year: "2008",
+        episodes: "62 episodes",
+        rating: 5,
+        format: "TV Show",
+        tags: ["drama", "crime", "masterpiece"],
+        description: "A chemistry teacher diagnosed with inoperable lung cancer turns to manufacturing and selling methamphetamine with a former student in order to secure his family's future.",
+    },
+    {
+        id: "the-sopranos",
+        title: "The Sopranos",
+        creator: "David Chase",
+        studio: "HBO",
+        year: "1999",
+        episodes: "86 episodes",
+        rating: 5,
+        format: "TV Show",
+        tags: ["drama", "crime", "masterpiece"],
+        description: "New Jersey mob boss Tony Soprano deals with personal and professional issues in his home and business life that affect his mental state, leading him to seek psychiatric counseling.",
+    }
+];
+
+const tags = new Set();
+for (const m of mediaList) {
+    (m.tags || []).forEach((t) => tags.add(t));
+}
+
+const slug = (t) =>
+    t
+        .toLowerCase()
+        .trim()
+        .replace(/[^\w\s-]/g, "")
+        .replace(/[\s_-]+/g, "-");
+
+const stars = (rating) =>
+    "★".repeat(Math.floor(rating)) +
+    (rating % 1 === 0.5 ? "½" : "") +
+    "☆".repeat(5 - Math.ceil(rating));
+---
+
+<BaseLayout title="Favorite Media — Nick Stambaugh">
+    <main class="max-w-2xl mx-auto px-4 py-16 sm:py-24">
+        <header class="space-y-4 mb-12">
+            <h1
+                class="text-3xl font-bold tracking-tight text-secondary dark:text-dk-accent"
+            >
+                Favorite Media
+            </h1>
+            <p class="text-lg text-text dark:text-dk-text/80 leading-relaxed">
+                An ultra-curated collection of my all-time favorite media. See <a
+                    class="text-inherit underline decoration-text/60 hover:decoration-text dark:decoration-dk-text/40 dark:hover:decoration-dk-text transition-colors"
+                    href="/about">about</a
+                > for more on how I got here. The rating scale is 1 through 5 stars.
+            </p>
+            <p class="text-xs text-text/50 dark:text-dk-text/50">
+                {mediaList.length} items · tap a row to expand
+            </p>
+        </header>
+
+        <div
+            class="relative flex items-center mb-4 border-b-2 border-text/40 dark:border-dk-text/40 focus-within:border-secondary dark:focus-within:border-dk-accent transition-colors pb-1"
+        >
+            <input
+                id="media-search"
+                type="text"
+                placeholder="Search media..."
+                class="w-full py-3 bg-transparent text-text dark:text-dk-accent placeholder-text/60 dark:placeholder-dk-text/60 focus:outline-none text-xl font-medium tracking-wide"
+            />
+
+            <button
+                id="filters-toggle"
+                class="ml-4 px-4 py-2 text-sm uppercase font-bold tracking-widest text-text dark:text-dk-text hover:text-secondary dark:hover:text-dk-accent transition-colors focus:outline-none flex items-center gap-1"
+            >
+                <span>Tags</span>
+                <span
+                    id="filters-arrow"
+                    class="inline-block transition-transform duration-200 text-xs"
+                    >↓</span
+                >
+            </button>
+        </div>
+
+        <!-- Collapsible tag panel -->
+        <div
+            id="filters-panel"
+            class="overflow-hidden transition-[max-height] duration-200 ease-out max-h-0"
+        >
+            <div
+                id="tag-filter"
+                class="flex flex-wrap gap-x-6 gap-y-3 pt-3 pb-8 border-b-2 border-text/10 dark:border-dk-text/10"
+            >
+                <button
+                    data-filter="*"
+                    class="tag-btn text-sm lowercase font-bold tracking-wide text-secondary dark:text-dk-accent decoration-secondary dark:decoration-dk-accent hover:text-secondary dark:hover:text-dk-accent transition-colors underline decoration-2 underline-offset-8"
+                >
+                    all
+                </button>
+
+                {
+                    Array.from(tags).map((tag) => (
+                        <button
+                            data-filter={`.${slug(tag)}`}
+                            class="tag-btn text-sm lowercase font-bold tracking-wide text-text/70 dark:text-dk-text hover:text-secondary dark:hover:text-dk-accent transition-colors underline decoration-2 decoration-transparent underline-offset-8"
+                        >
+                            {tag}
+                        </button>
+                    ))
+                }
+            </div>
+        </div>
+
+        <p
+            id="no-results"
+            class="hidden text-sm text-text/50 dark:text-dk-text/50 mb-8"
+        >
+            No items match your search.
+        </p>
+
+        <!-- Table -->
+        <div
+            class="border border-text/10 dark:border-dk-text/10 rounded-xl overflow-hidden"
+        >
+            <table class="w-full text-sm border-collapse table-fixed">
+                <colgroup>
+                <col class="w-[42%] sm:w-[40%]" />
+                <col class="w-[24%] sm:w-[26%]" />
+                <col class="w-[12%]" />
+                <col class="w-[16%]" />
+                <col class="w-[6%]" />
+                </colgroup>
+                <thead>
+                    <tr
+                        class="border-b border-text/10 dark:border-dk-text/10 bg-secondary/5 dark:bg-dk-secondary/5"
+                    >
+                        <th
+                            class="text-left font-semibold uppercase tracking-wide text-[10px] sm:text-xs text-text/60 dark:text-dk-text/60 px-3 sm:px-4 py-3"
+                        >
+                            Title
+                        </th>
+                        <th
+                            class="text-left font-semibold uppercase tracking-wide text-[10px] sm:text-xs text-text/60 dark:text-dk-text/60 px-3 sm:px-4 py-3"
+                        >
+                            Creator
+                        </th>
+                        <th
+                            class="text-left font-semibold uppercase tracking-wide text-[10px] sm:text-xs text-text/60 dark:text-dk-text/60 px-3 sm:px-4 py-3"
+                        >
+                            Year
+                        </th>
+                        <th
+                            class="text-left font-semibold uppercase tracking-wide text-[10px] sm:text-xs text-text/60 dark:text-dk-text/60 px-3 sm:px-4 py-3"
+                            >
+                            Rating
+                        </th>
+                        <th class="px-2 py-3"></th>
+                    </tr>
+                </thead>
+                <tbody id="media-list">
+                    {
+                        mediaList.map((item, i) => {
+                            const tagClasses = (item.tags || [])
+                                .map((t) => slug(t))
+                                .join(" ");
+                            const tagsStr = (item.tags || []).join(",");
+                            const isLast = i === mediaList.length - 1;
+                            const rowBorder = isLast
+                                ? ""
+                                : "border-b border-text/10 dark:border-dk-text/10";
+                            return (
+                                <>
+                                    <tr
+                                        class={`media-row media-item ${tagClasses} ${rowBorder} cursor-pointer hover:bg-secondary/5 dark:hover:bg-dk-secondary/5 transition-colors`}
+                                        data-target={item.id}
+                                        data-title={item.title.toLowerCase()}
+                                        data-creator={item.creator.toLowerCase()}
+                                        data-tags={tagsStr.toLowerCase()}
+                                        data-description={item.description.toLowerCase()}
+                                    >
+                                        <td class="px-3 sm:px-4 py-3 align-top">
+                                            <div class="font-semibold text-secondary dark:text-dk-accent">
+                                                {item.title}
+                                            </div>
+                                            {item.subtitle && (
+                                                <div class="text-xs text-text/50 dark:text-dk-text/50 mt-0.5">
+                                                    {item.subtitle}
+                                                </div>
+                                            )}
+                                        </td>
+                                        <td class="px-3 sm:px-4 py-3 align-top text-text/80 dark:text-dk-text/80 text-xs sm:text-sm">
+                                            {item.creator}
+                                        </td>
+                                        <td class="px-3 sm:px-4 py-3 align-top text-text/60 dark:text-dk-text/60 text-xs sm:text-sm">
+                                            {item.year}
+                                        </td>
+                                        <td class="px-3 sm:px-4 py-3 align-top whitespace-nowrap">
+                                        <span
+                                            class="text-yellow-500 dark:text-yellow-400 font-medium"
+                                            aria-label={`${item.rating} out of 5 stars`}
+                                        >
+                                            {stars(item.rating)}
+                                        </span>
+                                        </td>
+
+                                        <td class="px-2 py-3 align-top text-right">
+                                        <span
+                                            class="media-arrow inline-block text-text/40 dark:text-dk-text/40 transition-transform duration-200"
+                                            aria-hidden="true"
+                                        >
+                                            ↓
+                                        </span>
+                                        </td>
+                                    </tr>
+                                    <tr class="media-detail-row">
+                                        <td colspan="5" class="p-0">
+                                            <div
+                                                id={`detail-${item.id}`}
+                                                class="media-panel overflow-hidden transition-[max-height] duration-300 ease-out max-h-0"
+                                            >
+                                                <div
+                                                    class={`px-3 sm:px-6 py-5 bg-secondary/5 dark:bg-dk-secondary/5 ${
+                                                        isLast
+                                                            ? ""
+                                                            : "border-b border-text/10 dark:border-dk-text/10"
+                                                    }`}
+                                                >
+                                                    <p class="text-sm text-text/80 dark:text-dk-text/80 leading-relaxed mb-4">
+                                                        {item.description}
+                                                    </p>
+
+                                                    <dl class="grid grid-cols-2 sm:grid-cols-4 gap-x-4 gap-y-2 text-xs">
+                                                        <div>
+                                                            <dt class="uppercase tracking-wide text-text/50 dark:text-dk-text/50">
+                                                                Studio / Network
+                                                            </dt>
+                                                            <dd class="text-text/80 dark:text-dk-text/80 mt-0.5">
+                                                                {item.studio}
+                                                            </dd>
+                                                        </div>
+                                                        <div>
+                                                            <dt class="uppercase tracking-wide text-text/50 dark:text-dk-text/50">
+                                                                Format
+                                                            </dt>
+                                                            <dd class="text-text/80 dark:text-dk-text/80 mt-0.5">
+                                                                {item.format}
+                                                            </dd>
+                                                        </div>
+                                                        <div>
+                                                            <dt class="uppercase tracking-wide text-text/50 dark:text-dk-text/50">
+                                                                Rating
+                                                            </dt>
+                                                            <dd class="text-yellow-500 dark:text-yellow-400 mt-0.5 font-medium">
+                                                                {stars(item.rating)}
+                                                                <span class="ml-1 text-text/70 dark:text-dk-text/70">
+                                                                    ({item.rating}/5)
+                                                                </span>
+                                                            </dd>
+                                                        </div>
+                                                        <div>
+                                                            <dt class="uppercase tracking-wide text-text/50 dark:text-dk-text/50">
+                                                                Episodes/Length
+                                                            </dt>
+                                                            <dd class="text-text/80 dark:text-dk-text/80 mt-0.5">
+                                                                {item.episodes}
+                                                            </dd>
+                                                        </div>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </>
+                            );
+                        })
+                    }
+                </tbody>
+            </table>
+        </div>
+    </main>
+</BaseLayout>
+
+<script is:inline>
+    document.addEventListener("DOMContentLoaded", () => {
+        const searchEl = document.getElementById("media-search");
+        const tagButtons = Array.from(
+            document.querySelectorAll(".tag-btn"),
+        );
+        const rows = Array.from(document.querySelectorAll(".media-row"));
+        const noResults = document.getElementById("no-results");
+
+        let activeFilter = "*";
+
+        const applyFilters = () => {
+            const query = searchEl.value.toLowerCase();
+            let visibleCount = 0;
+
+            rows.forEach((row) => {
+                const title = row.dataset.title || "";
+                const creator = row.dataset.creator || "";
+                const tags = row.dataset.tags || "";
+                const description = row.dataset.description || "";
+                const textMatch =
+                    title.includes(query) ||
+                    creator.includes(query) ||
+                    tags.includes(query) ||
+                    description.includes(query);
+                const filterMatch =
+                    activeFilter === "*" ||
+                    row.classList.contains(activeFilter.slice(1));
+
+                const show = textMatch && filterMatch;
+                const detailRow = row.nextElementSibling;
+
+                row.style.display = show ? "table-row" : "none";
+                if (detailRow) {
+                    detailRow.style.display = show ? "table-row" : "none";
+                }
+                if (show) visibleCount++;
+            });
+
+            noResults.classList.toggle("hidden", visibleCount !== 0);
+        };
+
+        tagButtons.forEach((btn) => {
+            btn.addEventListener("click", () => {
+                tagButtons.forEach((b) => {
+                    b.classList.remove(
+                        "text-secondary",
+                        "dark:text-dk-accent",
+                        "decoration-secondary",
+                        "dark:decoration-dk-accent",
+                    );
+                    b.classList.add("text-text/70", "dark:text-dk-text");
+                });
+
+                btn.classList.remove("text-text/70", "dark:text-dk-text");
+                btn.classList.add(
+                    "text-secondary",
+                    "dark:text-dk-accent",
+                    "decoration-secondary",
+                    "dark:decoration-dk-accent",
+                );
+
+                activeFilter = btn.dataset.filter;
+                applyFilters();
+            });
+        });
+
+        searchEl.addEventListener("input", applyFilters);
+
+        /* Tag filter collapsible panel */
+        const panel = document.getElementById("filters-panel");
+        const toggle = document.getElementById("filters-toggle");
+        const arrow = document.getElementById("filters-arrow");
+
+        let open = false;
+        panel.style.maxHeight = "0px";
+
+        toggle.addEventListener("click", () => {
+            open = !open;
+            if (open) {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+                arrow.style.transform = "rotate(180deg)";
+            } else {
+                panel.style.maxHeight = "0px";
+                arrow.style.transform = "rotate(0deg)";
+            }
+        });
+
+        /* Row accordion: click a row to expand/collapse its detail row */
+        rows.forEach((row) => {
+            const targetId = row.dataset.target;
+            const detailPanel = document.getElementById(
+                `detail-${targetId}`,
+            );
+            const arrowEl = row.querySelector(".media-arrow");
+
+            row.addEventListener("click", () => {
+                const isOpen = row.getAttribute("aria-expanded") === "true";
+                row.setAttribute("aria-expanded", String(!isOpen));
+
+                if (isOpen) {
+                    detailPanel.style.maxHeight = "0px";
+                    arrowEl.style.transform = "rotate(0deg)";
+                } else {
+                    detailPanel.style.maxHeight =
+                        detailPanel.scrollHeight + "px";
+                    arrowEl.style.transform = "rotate(180deg)";
+                }
+            });
+        });
+
+        applyFilters();
+    });
+</script>
