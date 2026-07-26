@@ -27,7 +27,9 @@ The problem is the word **"oldest."**
 
 There are numerous administrative institutions and territorial jurisdictions around the world with substantially older continuous histories and reasonable historians can disagree over what should count as an "administrative division." Even if you narrow the discussion to provinces the continuity is far more complicated than the headline suggests.
 
-If you're going to hand out the "world's oldest" superlative, you'd better have actually checked what else is out there wearing that crown, and this post clearly didn't.
+The [Diocese of Rome](https://en.wikipedia.org/wiki/Diocese_of_Rome) and many other Catholic dioceses trace their origins to Late Antiquity, the [Dutch Hoogheemraadschap van Rijnland (Rijnland Water Board)](https://en.wikipedia.org/wiki/Hoogheemraadschap_van_Rijnland) has existed continuously since 1255, and many [English counties](https://abcounties.com/counties/origins/) have retained recognizable administrative identities for roughly a millennium.
+
+If you're going to hand out the 'world's oldest' superlative you'd better have actually checked what else is out there wearing that crown, and this post didn't.
 
 ---
 
@@ -47,7 +49,7 @@ It's about the shape of the post itself because I've seen this exact shape a tho
 
 China's government has a well-documented history of paying and directing large numbers of people to post pro-government content online. Researchers refer to this informally as the ["50 Cent Party" or `wumao`](https://en.wikipedia.org/wiki/50_Cent_Party), named after the rumored per-post payment.
 
-A Harvard-led study published in the *American Political Science Review* analyzed leaked government documents and estimated the Chinese government fabricates roughly 488 million social media posts a year. The large majority of them aren't argumentative at all; they're cheerleading and distraction, meant to shape the ambient narrative.
+A Harvard-led study published in the *American Political Science Review* analyzed leaked government documents and estimated the Chinese government fabricates roughly 488 million social media posts a year. The large majority of them aren't argumentative at all; they're cheerleading and distraction, meant to shape the ambient narrative. It is worth noting the data on this topic is about ten years old at this point. Techniques and methods that were leaked from a single county don't paint the entire picture.
 
 > The post wasn't designed to survive an argument, it was designed to be nodded at and upvoted past.
 
@@ -55,7 +57,9 @@ It's also worth knowing that Reddit itself isn't fully insulated from Chinese ca
 
 That doesn't mean Tencent is steering front-page content; there's no evidence of that, and by my account it's a passive financial stake. But it's a useful reminder that "a Chinese state-linked company has zero connection to this platform" isn't a safe assumption to start from either.
 
-To be clear, I can't prove that one specific TIL post was planted by a state actor instead of just an overzealous history nerd. Nobody can determine that from a single post, but it's worth naming the broader pattern instead of shrugging it off.
+I have no way of knowing whether a post was coordinated. What I can talk about is the incentive structure that makes this kind of claim likely to spread regardless. To be clear, I can't prove that one specific TIL post was planted by a state actor instead of just an overzealous history nerd. 
+
+Nobody can determine that from a single post, but it's worth naming the broader pattern instead of shrugging it off.
 
 ---
 
