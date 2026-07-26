@@ -48,15 +48,16 @@ Each item is a flex container. The carousel is controlled and hand-written with 
 
 The browser already provides everything needed:
 
-    - DOM manipulation
-    - CSS transitions
-    - Event listeners
-    - API requests
+- DOM manipulation
+- CSS transitions
+- Event listeners
+- API requests
 
 The current slide is updated by changing the translate position:
 
-    slidesWrap.style.transform =
-      `translateX(-${current * 100}%)`;
+```js
+slidesWrap.style.transform = `translateX(-${current * 100}%)`;
+```
 
 Each slide moves left by its own width. This creates the same effect used in modern UI.
 
@@ -64,9 +65,11 @@ Each slide moves left by its own width. This creates the same effect used in mod
 
 The feed automatically rotates every few seconds:
 
-    const AUTOPLAY_MS = 4750;
+```js
+const AUTOPLAY_MS = 4750;
 
-    intervalId = setInterval(next, AUTOPLAY_MS);
+intervalId = setInterval(next, AUTOPLAY_MS);
+```
 
 I also added a few quality-of-life improvements:
 
@@ -87,12 +90,14 @@ The weather section uses Open-Meteo to retrieve current conditions.
 
 The website requests temperature and weather codes, then converts those codes into simple icons:
 
-    {
-      0: "☀️",
-      3: "☁️",
-      61: "🌧️",
-      95: "⛈️"
-    }
+```js
+{
+    0: "☀️",
+    3: "☁️",
+    61: "🌧️",
+    95: "⛈️"
+}
+```
 
 This simple API request turns a static website component into a real time data point.
 
@@ -100,9 +105,11 @@ This simple API request turns a static website component into a real time data p
 
 The quote slide pulls a random quote from an API:
 
-    const res = await fetch(
-      "https://dummyjson.com/quotes/random"
-    );
+```js
+const res = await fetch(
+    "https://dummyjson.com/quotes/random"
+);
+```
 
 The response is then inserted directly into the page. It makes every visit feel slightly different.
 
@@ -112,9 +119,11 @@ One of my favorite additions is the random Wikipedia article.
 
 Every page load requests a random article summary:
 
-    fetch(
-      "https://en.wikipedia.org/api/rest_v1/page/random/summary"
-    );
+```js
+fetch(
+    "https://en.wikipedia.org/api/rest_v1/page/random/summary"
+);
+```
 
 The title, description, and link are then displayed inside the carousel.
 
