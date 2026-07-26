@@ -12,6 +12,7 @@ const PRIMARY_LINKS = [
   { href: "/projects", label: "Projects" },
   { href: "/music", label: "Music" },
   { href: "/recipes", label: "Recipes" },
+
 ];
 
 
@@ -21,6 +22,7 @@ const ALL_LINKS = [
   { href: "/about", label: "About" },
   { href: "/projects", label: "Projects" },
   { href: "/music", label: "Music" },
+  { href: "/library", label: "Library" },
   { href: "/recipes", label: "Recipes" },
   { href: "/bruce-the-dog", label: "Bruce the Dog" },
   { href: "/tags", label: "Tags" },

@@ -174,7 +174,24 @@ const latestPostUrl = latestPost?.url || "/posts";
             </div>
           </div>
 
-          <!-- Slide 5: Latest blog post -->
+          <!-- Slide 5: Latest library book entry -->
+          <a
+            href="/library"
+            class="carousel-slide group flex items-center justify-between p-5 sm:p-6 w-full shrink-0 hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
+          >
+            <div class="min-w-0">
+              <p class="text-xs uppercase tracking-wide text-text/50 dark:text-dk-text/50 mb-1">
+                Latest read
+              </p>
+              <p class="text-base font-semibold text-secondary dark:text-dk-accent truncate">
+                The Penguin Book of Pirates
+              </p>
+            </div>
+            <span class="text-sm font-medium text-secondary dark:text-dk-accent group-hover:underline underline-offset-4 shrink-0">
+              View →
+            </span>
+        </a>
+            <!-- Slide 6: Latest blog post -->
           <a
             href={latestPostUrl}
             class="carousel-slide group flex items-center justify-between p-5 sm:p-6 w-full shrink-0 hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
@@ -192,7 +209,7 @@ const latestPostUrl = latestPost?.url || "/posts";
             </span>
           </a>
 
-          <!-- Slide 6: Most starred GitHub project -->
+          <!-- Slide 7: Most starred GitHub project -->
           <a
             href="https://github.com/Sieep-Coding/simple-chat-csharp"
             target="_blank"
@@ -212,7 +229,7 @@ const latestPostUrl = latestPost?.url || "/posts";
             </span>
           </a>
 
-          <!-- Slide 7: Current local weather (Rockford, MI) -->
+          <!-- Slide 8: Current local weather (Rockford, MI) -->
           <div
             id="weather-slide"
             class="carousel-slide flex items-center justify-between p-5 sm:p-6 w-full shrink-0"
@@ -245,42 +262,54 @@ const latestPostUrl = latestPost?.url || "/posts";
         </button>
 
         <div id="carousel-dots" class="flex items-center gap-1.5">
-          <button
-            class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors"
-            data-index="0"
-            aria-label="Show latest track"
-          ></button>
-          <button
-            class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors"
-            data-index="1"
-            aria-label="Show latest Bruce photo"
-          ></button>
-          <button
-            class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors"
-            data-index="2"
-            aria-label="Show latest recipe"
-          ></button>
-          <button
-            class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors"
-            data-index="3"
-            aria-label="Show latest post"
-          ></button>
-          <button
-            class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors"
-            data-index="4"
-            aria-label="Show most starred GitHub project"
-          ></button>
-          <button
-            class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors"
-            data-index="5"
-            aria-label="Show current weather"
-          ></button>
-          <button
-            class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors"
-            data-index="6"
-            aria-label="Show random quote"
-          ></button>
-        </div>
+  <button
+    class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors"
+    data-index="0"
+    aria-label="Show latest Bruce photo"
+  ></button>
+
+  <button
+    class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors"
+    data-index="1"
+    aria-label="Show latest track"
+  ></button>
+
+  <button
+    class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors"
+    data-index="2"
+    aria-label="Show latest recipe"
+  ></button>
+
+  <button
+    class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors"
+    data-index="3"
+    aria-label="Show random quote"
+  ></button>
+
+  <button
+    class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors"
+    data-index="4"
+    aria-label="Show latest read"
+  ></button>
+
+  <button
+    class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors"
+    data-index="5"
+    aria-label="Show latest post"
+  ></button>
+
+  <button
+    class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors"
+    data-index="6"
+    aria-label="Show most starred GitHub project"
+  ></button>
+
+  <button
+    class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors"
+    data-index="7"
+    aria-label="Show current weather"
+  ></button>
+</div>
 
         <button
           id="carousel-next"
