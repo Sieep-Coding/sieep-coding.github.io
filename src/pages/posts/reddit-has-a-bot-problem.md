@@ -55,19 +55,13 @@ It's also worth knowing that Reddit itself isn't fully insulated from Chinese ca
 
 That doesn't mean Tencent is steering front-page content, there's no evidence of that, and by my account it's a passive financial stake. But it's a useful reminder that "a Chinese state-linked company has zero connection to this platform" isn't a safe assumption to start from either.
 
-To be clear, I can't prove that one specific TIL post was planted by a state actor instead of just an overzealous history nerd chasing karma. 
-
-Nobody can looking at a single post. 
-
-But the shape of it, an unearned superlative that flatters a specific country's government, and thousands of upvotes, matches the documented playbook closely enough that it's worth naming out loud instead of shrugging it off.
+To be clear, I can't prove that one specific TIL post was planted by a state actor instead of just an overzealous history nerd. Nobody can looking at a single post but it's worth naming out loud instead of shrugging it off.
 
 ---
 
 ## Why It's Getting Worse, Not Better
 
-What Reddit rewards is confident phrasing. A superlative dressed up as trivia will always outperform a boring, accurate sentence, because nobody stops to interrogate a claim that already sounds settled, and a state propaganda operation optimizing for exactly that kind of frictionless narrative reinforcement is going to thrive on a platform built that way.
-
-Iit's trivial to automate karma farming and the bar for "post that performs well" has always been lower than the bar for "post that's actually true." Automation and cheap labor just widened that gap.
+What Reddit rewards is confident phrasing. Nobody stops to interrogate a claim that already sounds settle, and a state propaganda operation optimizing for exactly that kind of frictionless narrative reinforcement is going to thrive on a platform built that way. It's trivial to automate karma farming and the bar for "post that performs well" has always been lower than the bar for "post that's actually true." Automation and cheap labor just widened that gap.
 
 The annoying part is that debunking this stuff takes way longer than posting it. I spent more time confirming Roman diocesan history than whoever wrote that headline spent writing it. That asymmetry is the whole game. It's cheap to state a superlative and expensive to check one, and a platform built entirely on upvote velocity, with a business model that included a major Chinese conglomerate as an early investor, is never going to fix that on its own.
 
