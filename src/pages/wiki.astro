@@ -127,11 +127,6 @@ console.log(
   wikipediaLinks
 );
 
-const shuffledWikiLinks = wikipediaLinks.sort(
-  () => Math.random() - 0.5
-);
-
-const featuredWikiLinks = shuffledWikiLinks.slice(0, 8);
 
 const didYouKnow = [
   `...that Nick's degrees are in <a href="/about">economics and philosophy</a>, not computer science?`,
@@ -272,8 +267,8 @@ const portals = [
             </p>
           </section>
 
-          <!-- Wikipedia Rabbit Holes — real links pulled from posts/*.md -->
-          {featuredWikiLinks.length > 0 && (
+          <!-- Wikipedia Rabbit Holes — randomized on the client -->
+          {wikipediaLinks.length > 0 && (
             <section class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5 sm:p-6">
               <h2 class="text-xs font-bold uppercase tracking-widest text-secondary dark:text-dk-accent border-b border-text/10 dark:border-dk-text/10 pb-2 mb-3">
                 Wikipedia Rabbit Holes
@@ -281,8 +276,10 @@ const portals = [
               <p class="text-xs text-text/50 dark:text-dk-text/50 mb-3">
                 Randomized Wikipedia links scraped from Nick's blog.
               </p>
-              <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5">
-                {featuredWikiLinks.map((link) => (
+              
+              <ul id="wiki-links-container" class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5">
+                {/* Fallback for JS-disabled users */}
+                {wikipediaLinks.slice(0, 8).map((link) => (
                   <li class="text-sm">
                     <a
                       href={link.url}
@@ -304,6 +301,48 @@ const portals = [
               </ul>
             </section>
           )}
+
+          <script define:vars={{ wikipediaLinks }}>
+            function renderRandomLinks() {
+              const container = document.getElementById("wiki-links-container");
+              if (!container || !wikipediaLinks || wikipediaLinks.length === 0) return;
+
+              // Fisher-Yates shuffle (much more random than Math.random() - 0.5)
+              const shuffled = [...wikipediaLinks];
+              for (let i = shuffled.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+              }
+              
+              const selected = shuffled.slice(0, 8);
+              
+              container.innerHTML = selected.map(link => `
+                <li class="text-sm">
+                  <a
+                    href="${link.url}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-secondary dark:text-dk-accent hover:underline underline-offset-4 font-medium"
+                  >
+                    ${link.label}
+                  </a>
+                  <span class="text-text/40 dark:text-dk-text/40"> — from </span>
+                  <a
+                    href="${link.postUrl}"
+                    class="text-text/60 dark:text-dk-text/60 hover:underline underline-offset-4"
+                  >
+                    ${link.postTitle}
+                  </a>
+                </li>
+              `).join('');
+            }
+
+            // Run on initial load
+            renderRandomLinks();
+            
+            // If you use Astro View Transitions, this ensures it runs again on navigation
+            document.addEventListener('astro:page-load', renderRandomLinks);
+          </script>
 
           <!-- Categories / portals -->
           <section class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5 sm:p-6">
