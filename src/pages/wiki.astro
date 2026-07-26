@@ -10,7 +10,7 @@ const sortedPosts = [...allPosts].sort((a, b) => {
   return (isNaN(B) ? 0 : B) - (isNaN(A) ? 0 : A);
 });
 
-// Prepare a lightweight payload for the client-side search
+// Prepare payloads for client-side use
 const searchData = allPosts.map(post => ({
   title: post.frontmatter.title || "Untitled",
   description: post.frontmatter.description || "",
@@ -42,28 +42,6 @@ try {
         topRepo: top.name,
         stars: top.stargazers_count ?? 0,
         publicRepos: repos.length,
-      };
-    }
-  }
-} catch (err) {}
-
-let onThisDay: { year: string | number; text: string; url?: string } | null = null;
-
-try {
-  const month = String(today.getMonth() + 1).padStart(2, "0");
-  const day = String(today.getDate()).padStart(2, "0");
-  const owdRes = await fetch(
-    `https://en.wikipedia.org/api/rest_v1/feed/onthisday/selected/${month}/${day}`
-  );
-  if (owdRes.ok) {
-    const owdData = await owdRes.json();
-    const picks = owdData.selected || [];
-    if (picks.length) {
-      const pick = picks[Math.floor(Math.random() * picks.length)];
-      onThisDay = {
-        year: pick.year,
-        text: pick.text,
-        url: pick.pages?.[0]?.content_urls?.desktop?.page,
       };
     }
   }
@@ -112,22 +90,21 @@ for (const post of allPosts) {
 
 const wikipediaLinks = Array.from(wikipediaLinksMap.values());
 
+// Defined array passed safely to client-side scripts via JSON
 const didYouKnow = [
-  `...that Nick's degrees are in <a href="/about">economics and philosophy</a>, not computer science?`,
-  `...that Nick's most-starred repo on GitHub is <a href="https://github.com/Sieep-Coding/${githubStats.topRepo}" target="_blank" rel="noopener noreferrer">${githubStats.topRepo}</a>, with ${githubStats.stars} stars?`,
-  `...that Nick's dog <a href="/bruce-the-dog">Bruce</a> is a Norwegian Elkhound mixed with a Schipperke?`,
-  `...that Nick produces music under the name <a href="/music">sieep</a>, made in FL Studio?`,
-  `...that Nick's rating scale for <a href="/library">books</a> and <a href="/media">media</a> goes up to 5 stars, half-stars included?`,
-  `...that Nick's blog spans <a href="/tags">10+ topics</a>, from nuclear economics to old comic books?`,
-  `...that Nick founded <a href="https://luniv.tech" target="_blank" rel="noopener noreferrer">Luniv Technology</a>, his own custom software and BI shop?`,
-  `...that before software, Nick wrote a <a href="/posts/making-nuclear-energy-competitve-with-fossil-fuels-and-natural-gas">report on nuclear reactor economics</a> for Michigan's NERS department?`,
-  `...that Nick has written up trips to <a href="/posts/chicago">Chicago</a> and <a href="/posts/houston">Houston</a>?`,
-  `...that Nick has strong opinions about <a href="/posts/my-thoughts-on-soccer">football</a> — the kind played with your feet?`,
-  `...that this site runs ad-free, but you can <a href="https://www.buymeacoffee.com/nickstambaugh" target="_blank" rel="noopener noreferrer">buy him a coffee</a> anyway?`,
-  `...that the site itself is hand-coded in <a href="https://astro.build/" target="_blank" rel="noopener noreferrer">Astro</a>, React, and TypeScript?`,
+  `...that Nick's degrees are in <a href="/about" class="text-secondary dark:text-dk-accent underline underline-offset-4">economics and philosophy</a>, not computer science?`,
+  `...that Nick's most-starred repo on GitHub is <a href="https://github.com/Sieep-Coding/${githubStats.topRepo}" target="_blank" rel="noopener noreferrer" class="text-secondary dark:text-dk-accent underline underline-offset-4">${githubStats.topRepo}</a>, with ${githubStats.stars} stars?`,
+  `...that Nick's dog <a href="/bruce-the-dog" class="text-secondary dark:text-dk-accent underline underline-offset-4">Bruce</a> is a Norwegian Elkhound mixed with a Schipperke?`,
+  `...that Nick produces music under the name <a href="/music" class="text-secondary dark:text-dk-accent underline underline-offset-4">sieep</a>, made in FL Studio?`,
+  `...that Nick's rating scale for <a href="/library" class="text-secondary dark:text-dk-accent underline underline-offset-4">books</a> and <a href="/media" class="text-secondary dark:text-dk-accent underline underline-offset-4">media</a> goes up to 5 stars, half-stars included?`,
+  `...that Nick's blog spans <a href="/tags" class="text-secondary dark:text-dk-accent underline underline-offset-4">10+ topics</a>, from nuclear economics to old comic books?`,
+  `...that Nick founded <a href="https://luniv.tech" target="_blank" rel="noopener noreferrer" class="text-secondary dark:text-dk-accent underline underline-offset-4">Luniv Technology</a>, his own custom software and BI shop?`,
+  `...that before software, Nick wrote a <a href="/posts/making-nuclear-energy-competitve-with-fossil-fuels-and-natural-gas" class="text-secondary dark:text-dk-accent underline underline-offset-4">report on nuclear reactor economics</a> for Michigan's NERS department?`,
+  `...that Nick has written up trips to <a href="/posts/chicago" class="text-secondary dark:text-dk-accent underline underline-offset-4">Chicago</a> and <a href="/posts/houston" class="text-secondary dark:text-dk-accent underline underline-offset-4">Houston</a>?`,
+  `...that Nick has strong opinions about <a href="/posts/my-thoughts-on-soccer" class="text-secondary dark:text-dk-accent underline underline-offset-4">football</a> — the kind played with your feet?`,
+  `...that this site runs ad-free, but you can <a href="https://www.buymeacoffee.com/nickstambaugh" target="_blank" rel="noopener noreferrer" class="text-secondary dark:text-dk-accent underline underline-offset-4">buy him a coffee</a> anyway?`,
+  `...that the site itself is hand-coded in <a href="https://astro.build/" target="_blank" rel="noopener noreferrer" class="text-secondary dark:text-dk-accent underline underline-offset-4">Astro</a>, React, and TypeScript?`,
 ];
-
-const dykPick = didYouKnow[Math.floor(Math.random() * didYouKnow.length)];
 
 const tagMap = new Map();
 for (const post of allPosts) {
@@ -185,12 +162,12 @@ const portals = [
           </div>
           <p class="text-xs text-text/50 dark:text-dk-text/50">{dateStr}</p>
           
-          <!-- Inline Wiki Search (Replaces old form) -->
+          <!-- Inline Wiki Search -->
           <div class="mt-5 relative w-full max-w-md z-50">
             <input
               type="text"
               id="wiki-search-input"
-              placeholder="Search wiki (&uarr; and &darr; to navigate)..."
+              placeholder="Search blog (&uarr; and &darr; to navigate)..."
               autocomplete="off"
               class="w-full px-3 py-2 text-sm rounded-md border border-text/20 dark:border-dk-text/20 bg-secondary/5 dark:bg-dk-secondary/5 text-text dark:text-dk-text placeholder-text/40 dark:placeholder-dk-text/40 focus:outline-none focus:border-secondary dark:focus:border-dk-accent transition-colors"
             />
@@ -199,7 +176,6 @@ const portals = [
               class="absolute top-full left-0 right-0 mt-2 bg-primary dark:bg-dk-primary border border-secondary/20 dark:border-dk-accent/20 rounded-lg shadow-xl hidden flex-col max-h-96 overflow-y-auto"
             ></div>
           </div>
-          <!-- Hidden payload for the client-side JS -->
           <div id="wiki-search-data" data-posts={JSON.stringify(searchData)} class="hidden"></div>
 
         </div>
@@ -353,41 +329,84 @@ const portals = [
         </div>
 
         <aside class="space-y-8">
+          <!-- Client-side "Did You Know?" -->
           <section class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5">
             <h2 class="text-xs font-bold uppercase tracking-widest text-secondary dark:text-dk-accent border-b border-text/10 dark:border-dk-text/10 pb-2 mb-3">
               Did You Know?
             </h2>
             <p
-              class="text-sm text-text/80 dark:text-dk-text/80 leading-relaxed [&_a]:text-secondary [&_a]:dark:text-dk-accent [&_a]:underline [&_a]:underline-offset-4"
-              set:html={dykPick}
-            />
+              id="dyk-container"
+              class="text-sm text-text/80 dark:text-dk-text/80 leading-relaxed"
+            >
+              Loading...
+            </p>
           </section>
 
-          {onThisDay && (
-            <section class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5">
-              <h2 class="text-xs font-bold uppercase tracking-widest text-secondary dark:text-dk-accent border-b border-text/10 dark:border-dk-text/10 pb-2 mb-3">
-                On This Day
-              </h2>
-              <p class="text-sm text-text/80 dark:text-dk-text/80 leading-relaxed">
-                <span class="font-semibold text-secondary dark:text-dk-accent">{onThisDay.year}</span> — {onThisDay.text}
-              </p>
-              {onThisDay.url && (
-                <p class="mt-2">
-                  <a
-                    href={onThisDay.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="text-xs font-medium text-secondary dark:text-dk-accent hover:underline underline-offset-4"
-                  >
-                    Read on Wikipedia →
-                  </a>
-                </p>
-              )}
-              <p class="mt-2 text-[10px] text-text/40 dark:text-dk-text/40">
-                Live from the Wikipedia REST API.
-              </p>
-            </section>
-          )}
+          <!-- Client-side "On This Day" -->
+          <section class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5">
+            <h2 class="text-xs font-bold uppercase tracking-widest text-secondary dark:text-dk-accent border-b border-text/10 dark:border-dk-text/10 pb-2 mb-3">
+              On This Day
+            </h2>
+            <div id="on-this-day-container">
+              <p class="text-sm text-text/80 dark:text-dk-text/80 leading-relaxed">Loading...</p>
+            </div>
+            <p class="mt-2 text-[10px] text-text/40 dark:text-dk-text/40">
+              Live from the Wikipedia REST API.
+            </p>
+          </section>
+
+          <script define:vars={{ didYouKnow }}>
+            function initWidgets() {
+              // 1. Randomize "Did You Know?"
+              const dykEl = document.getElementById("dyk-container");
+              if (dykEl && didYouKnow.length > 0) {
+                const randomFact = didYouKnow[Math.floor(Math.random() * didYouKnow.length)];
+                dykEl.innerHTML = randomFact;
+              }
+
+              // 2. Fetch fresh random "On This Day" entry
+              const otdEl = document.getElementById("on-this-day-container");
+              if (otdEl) {
+                const now = new Date();
+                const month = String(now.getMonth() + 1).padStart(2, "0");
+                const day = String(now.getDate()).padStart(2, "0");
+
+                fetch(`https://en.wikipedia.org/api/rest_v1/feed/onthisday/selected/${month}/${day}`)
+                  .then(res => res.json())
+                  .then(data => {
+                    const picks = data.selected || [];
+                    if (picks.length > 0) {
+                      const pick = picks[Math.floor(Math.random() * picks.length)];
+                      otdEl.innerHTML = `
+                        <p class="text-sm text-text/80 dark:text-dk-text/80 leading-relaxed">
+                          <span class="font-semibold text-secondary dark:text-dk-accent">${pick.year}</span> — ${pick.text}
+                        </p>
+                        ${pick.pages?.[0]?.content_urls?.desktop?.page ? `
+                          <p class="mt-2">
+                            <a
+                              href="${pick.pages[0].content_urls.desktop.page}"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              class="text-xs font-medium text-secondary dark:text-dk-accent hover:underline underline-offset-4"
+                            >
+                              Read on Wikipedia →
+                            </a>
+                          </p>
+                        ` : ''}
+                      `;
+                    } else {
+                      otdEl.innerHTML = `<p class="text-sm text-text/60 dark:text-dk-text/60">No events found for today.</p>`;
+                    }
+                  })
+                  .catch(() => {
+                    otdEl.innerHTML = `<p class="text-sm text-text/60 dark:text-dk-text/60">Could not load historical events.</p>`;
+                  });
+              }
+            }
+
+            initWidgets();
+            document.addEventListener('astro:page-load', initWidgets);
+          </script>
 
           <section class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5">
             <h2 class="text-xs font-bold uppercase tracking-widest text-secondary dark:text-dk-accent border-b border-text/10 dark:border-dk-text/10 pb-2 mb-3">
@@ -409,7 +428,7 @@ const portals = [
                 </div>
               )}
               <div class="flex justify-between">
-                <dt class="text-text/60 dark:text-dk-text/60">Editor</dt>
+                <dt class="text-text/60 dark:text-dk-text/60">Programmer</dt>
                 <dd class="font-medium text-text dark:text-dk-text">{info.name}</dd>
               </div>
             </dl>
@@ -458,7 +477,6 @@ const portals = [
 
     if (!dataEl || !input || !resultsContainer) return;
 
-    // Prevent re-attaching multiple times on Astro View Transitions
     if (input.dataset.searchLoaded === "true") return;
     input.dataset.searchLoaded = "true";
 
@@ -505,7 +523,6 @@ const portals = [
 
     input.addEventListener("keydown", (e) => {
       if (currentResults.length === 0) {
-        // Fallback: If no fuzzy results, let Enter default-navigate to a classic search page if you still have one
         if (e.key === "Enter" && e.target.value.trim() !== "") {
             e.preventDefault();
             window.location.href = `/posts?q=${encodeURIComponent(e.target.value)}`;
@@ -531,7 +548,6 @@ const portals = [
       }
     });
 
-    // Close dropdown when clicking outside
     document.addEventListener("click", (e) => {
       if (!input.contains(e.target) && !resultsContainer.contains(e.target)) {
         currentResults = [];
@@ -540,8 +556,6 @@ const portals = [
     });
   }
 
-  // Initialize on first load
   setupWikiSearch();
-  // Ensure it reinitializes seamlessly with Astro's View Transitions
   document.addEventListener("astro:page-load", setupWikiSearch);
 </script>
