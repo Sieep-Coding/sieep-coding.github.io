@@ -27,7 +27,7 @@ The problem is the word **"oldest."**
 
 There are numerous administrative institutions and territorial jurisdictions around the world with substantially older continuous histories and reasonable historians can disagree over what should count as an "administrative division." Even if you narrow the discussion to provinces the continuity is far more complicated than the headline suggests.
 
-The [Diocese of Rome](https://en.wikipedia.org/wiki/Diocese_of_Rome) and many other Catholic dioceses trace their origins to Late Antiquity, the [Dutch Hoogheemraadschap van Rijnland (Rijnland Water Board)](https://en.wikipedia.org/wiki/Hoogheemraadschap_van_Rijnland) has existed continuously since 1255, and many [English counties](https://abcounties.com/counties/origins/) have retained recognizable administrative identities for roughly a millennium.
+The [Diocese of Rome](https://en.wikipedia.org/wiki/Diocese_of_Rome) and many other Catholic dioceses trace their origins to [Late Antiquity](https://en.wikipedia.org/wiki/Late_antiquity), the [Dutch Hoogheemraadschap van Rijnland (Rijnland Water Board)](https://en.wikipedia.org/wiki/Hoogheemraadschap_van_Rijnland) has existed continuously since 1255, and many [English counties](https://abcounties.com/counties/origins/) have retained recognizable administrative identities for roughly a millennium.
 
 If you're going to hand out the 'world's oldest' superlative you'd better have actually checked what else is out there wearing that crown, and this post didn't.
 
@@ -73,7 +73,7 @@ I think it's worth naming the pattern out loud when you see it.
 
 ---
 
-**Sources**
+**Main Sources**
 
 - [50 Cent Party — Wikipedia](https://en.wikipedia.org/wiki/50_Cent_Party)
 
@@ -83,4 +83,4 @@ I think it's worth naming the pattern out loud when you see it.
 
 - ["Tencent Makes Over USD600 Million Gain on Reddit's Stellar Stock Market Debut," Yicai Global, 2024](https://www.yicaiglobal.com/news/tencent-backed-reddit-surges-48-in-new-york-debut)
 
-Questions or corrections? Email me at [nickstambaugh@proton.me](mailto:nickstambaugh@proton.me)
+Questions or corrections? Please email me at [nickstambaugh@proton.me](mailto:nickstambaugh@proton.me)
