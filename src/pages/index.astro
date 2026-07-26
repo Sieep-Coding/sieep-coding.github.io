@@ -17,7 +17,7 @@ const latestPostUrl = latestPost?.url || "/posts";
 ---
 
 <BaseLayout title="Nick Stambaugh - Home">
-  <main class="max-w-4xl mx-auto px-4 py-12 sm:py-24 space-y-12">
+  <main class="max-w-4xl mx-auto px-4 py-12 sm:py-24 space-y-4">
     <header
       class="flex flex-col sm:flex-row sm:items-center justify-between gap-8"
     >
@@ -31,64 +31,71 @@ const latestPostUrl = latestPost?.url || "/posts";
         </div>
 
         <p class="text-text dark:text-dk-text text-lg leading-relaxed pt-1">
-          {info.brief_description}. This site is dedicated to his
-          blog, music, and other interests.
+          {info.brief_description}. This site is dedicated to his blog, music,
+          and other interests.
         </p>
 
         <div class="flex flex-wrap gap-x-8 gap-y-2">
           <a
             href="/posts"
             class="inline-flex items-center text-sm font-medium text-secondary dark:text-dk-accent hover:underline underline-offset-4"
-          >Posts →
+            >Posts →
           </a>
 
           <a
             href="/about"
             class="inline-flex items-center text-sm font-medium text-secondary dark:text-dk-accent hover:underline underline-offset-4"
-          >About →
+            >About →
           </a>
 
           <a
-          href="/music"
-          class="inline-flex items-center text-sm font-medium text-secondary dark:text-dk-accent hover:underline underline-offset-4"
-          >Music →
-        </a>
-        <a
-        href="/recipes"
-        class="inline-flex items-center text-sm font-medium text-secondary dark:text-dk-accent hover:underline underline-offset-4"
-        >Recipes →
-      </a>
-      <a
-        href="/projects"
-        class="inline-flex items-center text-sm font-medium text-secondary dark:text-dk-accent hover:underline underline-offset-4"
-      >Projects →
-      </a>
+            href="/music"
+            class="inline-flex items-center text-sm font-medium text-secondary dark:text-dk-accent hover:underline underline-offset-4"
+            >Music →
+          </a>
           <a
-          href="/media"
-          class="inline-flex items-center text-sm font-medium text-secondary dark:text-dk-accent hover:underline underline-offset-4"
-          >Media →
-        </a>
-        <a
-          href="/library"
-          class="inline-flex items-center text-sm font-medium text-secondary dark:text-dk-accent hover:underline underline-offset-4"
-        >Books →
-        </a>
+            href="/recipes"
+            class="inline-flex items-center text-sm font-medium text-secondary dark:text-dk-accent hover:underline underline-offset-4"
+            >Recipes →
+          </a>
+           <a
+            href="/projects"
+            class="inline-flex items-center text-sm font-medium text-secondary dark:text-dk-accent hover:underline underline-offset-4"
+            >Projects →
+          </a>
+          <a
+            href="/media"
+            class="inline-flex items-center text-sm font-medium text-secondary dark:text-dk-accent hover:underline underline-offset-4"
+            >Media →
+          </a>
+          <a
+            href="/library"
+            class="inline-flex items-center text-sm font-medium text-secondary dark:text-dk-accent hover:underline underline-offset-4"
+            >Books →
+          </a>
           <a
             href="/bruce-the-dog"
             class="inline-flex items-center text-sm font-medium text-secondary dark:text-dk-accent hover:underline underline-offset-4"
-          >Bruce →
+            >Bruce →
           </a>
-                    <a
+          <a
             href="/rss.xml"
             class="inline-flex items-center text-sm font-medium text-secondary dark:text-dk-accent hover:underline underline-offset-4"
-          >RSS XML →
+            >RSS XML →
           </a>
           <a
             href="/tags"
             class="inline-flex items-center text-sm font-medium text-secondary dark:text-dk-accent hover:underline underline-offset-4"
-          >Topics →
+            >Topics →
+          </a>
+          <a
+            href="mailto:nickstambaugh@proton.me"
+            class="spin-border-btn relative inline-flex items-center px-3 py-1 mt-1 rounded-full text-sm font-medium text-secondary dark:text-dk-accent bg-bg dark:bg-dk-bg overflow-hidden hover:underline"
+          >
+            <span class="relative z-10">Email Me →</span>
           </a>
         </div>
+
       </div>
 
       <div class="order-1 sm:order-2 shrink-0">
@@ -102,9 +109,65 @@ const latestPostUrl = latestPost?.url || "/posts";
       </div>
     </header>
 
+    <style>
+      .spin-border-btn {
+        --border-width: 2px;
+        isolation: isolate;
+      }
+
+      .spin-border-btn::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        border-radius: inherit;
+        padding: var(--border-width);
+        background: conic-gradient(
+          from var(--angle, 0deg),
+          transparent 0%,
+          theme(colors.secondary) 15%,
+          theme(colors.dk-accent) 35%,
+          transparent 50%
+        );
+        -webkit-mask:
+          linear-gradient(#fff 0 0) content-box,
+          linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        animation: spin-border 3s linear infinite;
+      }
+
+      .spin-border-btn::after {
+        content: "";
+        position: absolute;
+        inset: var(--border-width);
+        z-index: 0;
+        border-radius: inherit;
+        background: inherit;
+      }
+
+      @property --angle {
+        syntax: "<angle>";
+        initial-value: 0deg;
+        inherits: false;
+      }
+
+      @keyframes spin-border {
+        to {
+          --angle: 360deg;
+        }
+      }
+
+      .spin-border-btn:hover::before {
+        animation-duration: 1.2s;
+      }
+    </style>
+
     <section id="latest-carousel" class="relative">
       <h2 class="text-xl font-bold tracking-tight mb-2">Nick's Feed</h2>
-      <p class="text-xs tracking-tighter mb-4">Last update: <strong>7/26/2026</strong></p>
+      <p class="text-xs tracking-tighter mb-4">
+        Last update: <strong>7/26/2026</strong>
+      </p>
       <div
         id="carousel-track"
         class="overflow-hidden rounded-xl border border-text/10 dark:border-dk-text/10 bg-secondary/5 dark:bg-dk-secondary/5"
@@ -113,45 +176,54 @@ const latestPostUrl = latestPost?.url || "/posts";
           id="carousel-slides"
           class="flex transition-transform duration-500 ease-out"
         >
-        
-        <!-- Slide 1: Latest Bruce photo -->
-        <a
-        href="/bruce-the-dog"
-        class="carousel-slide group flex items-center gap-4 p-3 sm:p-4 w-full shrink-0 hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
-        >
-        <img
-        src="/bruce/bruce7.jpg"
-        alt="Bruce"
-        class="h-16 w-16 rounded-lg object-cover flex-shrink-0"
-        />
-        <div class="flex-1">
-          <p class="text-xs uppercase tracking-wide text-text/50 dark:text-dk-text/50 mb-1">
-            Latest photo of Bruce
-          </p>
-          <span class="text-sm font-medium text-secondary dark:text-dk-accent group-hover:underline underline-offset-4">
-            See more →
-          </span>
-        </div>
-      </a>
+          <!-- Slide 1: Latest Bruce photo -->
+          <a
+            href="/bruce-the-dog"
+            class="carousel-slide group flex items-center gap-4 p-3 sm:p-4 w-full shrink-0 hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
+          >
+            <img
+              src="/bruce/bruce7.jpg"
+              alt="Bruce"
+              class="h-16 w-16 rounded-lg object-cover flex-shrink-0"
+            />
+            <div class="flex-1">
+              <p
+                class="text-xs uppercase tracking-wide text-text/50 dark:text-dk-text/50 mb-1"
+              >
+                Latest photo of Bruce
+              </p>
+              <span
+                class="text-sm font-medium text-secondary dark:text-dk-accent group-hover:underline underline-offset-4"
+              >
+                See more →
+              </span>
+            </div>
+          </a>
 
-      <!-- Slide 2: Latest track -->
-      <a
-        href="/music"
-        class="carousel-slide group flex items-center justify-between p-5 sm:p-6 w-full shrink-0 hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
-      >
-        <div>
-          <p class="text-xs uppercase tracking-wide text-text/50 dark:text-dk-text/50 mb-1">
-            Latest track
-          </p>
-          <p class="text-base font-semibold text-secondary dark:text-dk-accent">
-            continue?
-          </p>
-        </div>
-        <span class="text-sm font-medium text-secondary dark:text-dk-accent group-hover:underline underline-offset-4 shrink-0">
-          Listen →
-        </span>
-      </a>
-                <a
+          <!-- Slide 2: Latest track -->
+          <a
+            href="/music"
+            class="carousel-slide group flex items-center justify-between p-5 sm:p-6 w-full shrink-0 hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
+          >
+            <div>
+              <p
+                class="text-xs uppercase tracking-wide text-text/50 dark:text-dk-text/50 mb-1"
+              >
+                Latest track
+              </p>
+              <p
+                class="text-base font-semibold text-secondary dark:text-dk-accent"
+              >
+                continue?
+              </p>
+            </div>
+            <span
+              class="text-sm font-medium text-secondary dark:text-dk-accent group-hover:underline underline-offset-4 shrink-0"
+            >
+              Listen →
+            </span>
+          </a>
+          <a
             id="wiki-slide"
             href="#"
             target="_blank"
@@ -159,7 +231,9 @@ const latestPostUrl = latestPost?.url || "/posts";
             class="carousel-slide group flex items-center justify-between p-5 sm:p-6 w-full shrink-0 hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
           >
             <div class="min-w-0">
-              <p class="text-xs uppercase tracking-wide text-text/50 dark:text-dk-text/50 mb-1">
+              <p
+                class="text-xs uppercase tracking-wide text-text/50 dark:text-dk-text/50 mb-1"
+              >
                 Random Wikipedia article
               </p>
 
@@ -191,14 +265,20 @@ const latestPostUrl = latestPost?.url || "/posts";
             class="carousel-slide group flex items-center justify-between p-5 sm:p-6 w-full shrink-0 hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
           >
             <div class="min-w-0">
-              <p class="text-xs uppercase tracking-wide text-text/50 dark:text-dk-text/50 mb-1">
+              <p
+                class="text-xs uppercase tracking-wide text-text/50 dark:text-dk-text/50 mb-1"
+              >
                 Latest recipe
               </p>
-              <p class="text-sm font-semibold text-secondary dark:text-dk-accent truncate">
+              <p
+                class="text-sm font-semibold text-secondary dark:text-dk-accent truncate"
+              >
                 Classic Reuben Sandwich
               </p>
             </div>
-            <span class="text-sm font-medium text-secondary dark:text-dk-accent group-hover:underline underline-offset-4 shrink-0">
+            <span
+              class="text-sm font-medium text-secondary dark:text-dk-accent group-hover:underline underline-offset-4 shrink-0"
+            >
               Cook it →
             </span>
           </a>
@@ -208,7 +288,9 @@ const latestPostUrl = latestPost?.url || "/posts";
             class="carousel-slide flex items-center p-5 sm:p-6 w-full shrink-0"
           >
             <div class="min-w-0">
-              <p class="text-xs uppercase tracking-wide text-text/50 dark:text-dk-text/50 mb-1">
+              <p
+                class="text-xs uppercase tracking-wide text-text/50 dark:text-dk-text/50 mb-1"
+              >
                 Random quote
               </p>
               <p
@@ -220,7 +302,8 @@ const latestPostUrl = latestPost?.url || "/posts";
               <p
                 id="quote-author"
                 class="text-xs text-text/50 dark:text-dk-text/50 mt-1"
-              ></p>
+              >
+              </p>
             </div>
           </div>
 
@@ -230,31 +313,43 @@ const latestPostUrl = latestPost?.url || "/posts";
             class="carousel-slide group flex items-center justify-between p-5 sm:p-6 w-full shrink-0 hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
           >
             <div class="min-w-0">
-              <p class="text-xs uppercase tracking-wide text-text/50 dark:text-dk-text/50 mb-1">
+              <p
+                class="text-xs uppercase tracking-wide text-text/50 dark:text-dk-text/50 mb-1"
+              >
                 Latest read
               </p>
-              <p class="text-sm font-semibold text-secondary dark:text-dk-accent truncate">
+              <p
+                class="text-sm font-semibold text-secondary dark:text-dk-accent truncate"
+              >
                 The Penguin Book of Pirates
               </p>
             </div>
-            <span class="text-sm font-medium text-secondary dark:text-dk-accent group-hover:underline underline-offset-4 shrink-0">
+            <span
+              class="text-sm font-medium text-secondary dark:text-dk-accent group-hover:underline underline-offset-4 shrink-0"
+            >
               View →
             </span>
-        </a>
-            <!-- Slide 6: Latest blog post -->
+          </a>
+          <!-- Slide 6: Latest blog post -->
           <a
             href={latestPostUrl}
             class="carousel-slide group flex items-center justify-between p-5 sm:p-6 w-full shrink-0 hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
           >
             <div class="min-w-0">
-              <p class="text-xs uppercase tracking-wide text-text/50 dark:text-dk-text/50 mb-1">
+              <p
+                class="text-xs uppercase tracking-wide text-text/50 dark:text-dk-text/50 mb-1"
+              >
                 Latest post
               </p>
-              <p class="text-sm font-semibold text-secondary dark:text-dk-accent truncate">
+              <p
+                class="text-sm font-semibold text-secondary dark:text-dk-accent truncate"
+              >
                 {latestPostTitle}
               </p>
             </div>
-            <span class="text-sm font-medium text-secondary dark:text-dk-accent group-hover:underline underline-offset-4 shrink-0">
+            <span
+              class="text-sm font-medium text-secondary dark:text-dk-accent group-hover:underline underline-offset-4 shrink-0"
+            >
               Read →
             </span>
           </a>
@@ -263,14 +358,20 @@ const latestPostUrl = latestPost?.url || "/posts";
             class="carousel-slide group flex items-center justify-between p-5 sm:p-6 w-full shrink-0 hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
           >
             <div class="min-w-0">
-              <p class="text-xs uppercase tracking-wide text-text/50 dark:text-dk-text/50 mb-1">
+              <p
+                class="text-xs uppercase tracking-wide text-text/50 dark:text-dk-text/50 mb-1"
+              >
                 Latest media
               </p>
-              <p class="text-sm font-semibold text-secondary dark:text-dk-accent truncate">
+              <p
+                class="text-sm font-semibold text-secondary dark:text-dk-accent truncate"
+              >
                 The Odyssey by Christopher Nolan (2026)
               </p>
             </div>
-            <span class="text-sm font-medium text-secondary dark:text-dk-accent group-hover:underline underline-offset-4 shrink-0">
+            <span
+              class="text-sm font-medium text-secondary dark:text-dk-accent group-hover:underline underline-offset-4 shrink-0"
+            >
               View →
             </span>
           </a>
@@ -281,14 +382,20 @@ const latestPostUrl = latestPost?.url || "/posts";
             class="carousel-slide group flex items-center justify-between p-5 sm:p-6 w-full shrink-0 hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
           >
             <div class="min-w-0">
-              <p class="text-xs uppercase tracking-wide text-text/50 dark:text-dk-text/50 mb-1">
+              <p
+                class="text-xs uppercase tracking-wide text-text/50 dark:text-dk-text/50 mb-1"
+              >
                 Most starred repo · ⭐ 27
               </p>
-              <p class="text-base font-semibold text-secondary dark:text-dk-accent truncate">
+              <p
+                class="text-base font-semibold text-secondary dark:text-dk-accent truncate"
+              >
                 simple-chat-csharp
               </p>
             </div>
-            <span class="text-sm font-medium text-secondary dark:text-dk-accent group-hover:underline underline-offset-4 shrink-0">
+            <span
+              class="text-sm font-medium text-secondary dark:text-dk-accent group-hover:underline underline-offset-4 shrink-0"
+            >
               View →
             </span>
           </a>
@@ -298,7 +405,9 @@ const latestPostUrl = latestPost?.url || "/posts";
             class="carousel-slide flex items-center justify-between p-5 sm:p-6 w-full shrink-0"
           >
             <div class="min-w-0">
-              <p class="text-xs uppercase tracking-wide text-text/50 dark:text-dk-text/50 mb-1">
+              <p
+                class="text-xs uppercase tracking-wide text-text/50 dark:text-dk-text/50 mb-1"
+              >
                 Rockford, MI right now
               </p>
               <p
@@ -308,10 +417,9 @@ const latestPostUrl = latestPost?.url || "/posts";
                 Loading weather…
               </p>
             </div>
-            <span id="weather-icon" class="text-2xl shrink-0" aria-hidden="true"></span>
+            <span id="weather-icon" class="text-2xl shrink-0" aria-hidden="true"
+            ></span>
           </div>
-
-
         </div>
       </div>
 
@@ -325,64 +433,56 @@ const latestPostUrl = latestPost?.url || "/posts";
         </button>
 
         <div id="carousel-dots" class="flex items-center gap-1.5">
-  <button
-    class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors"
-    data-index="0"
-    aria-label="Show latest Bruce photo"
-  ></button>
+          <button
+            class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors"
+            data-index="0"
+            aria-label="Show latest Bruce photo"></button>
 
-  <button
-  class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors"
-  data-index="1"
-  aria-label="Show latest track"
-  ></button>
-  <button
-    class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors"
-    data-index="2"
-    aria-label="Show random wikipedia entry">
-  </button>
+          <button
+            class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors"
+            data-index="1"
+            aria-label="Show latest track"></button>
+          <button
+            class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors"
+            data-index="2"
+            aria-label="Show random wikipedia entry"
+          >
+          </button>
 
-  <button
-    class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors"
-    data-index="3"
-    aria-label="Show latest recipe"
-  ></button>
+          <button
+            class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors"
+            data-index="3"
+            aria-label="Show latest recipe"></button>
 
-  <button
-    class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors"
-    data-index="4"
-    aria-label="Show random quote"
-  ></button>
+          <button
+            class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors"
+            data-index="4"
+            aria-label="Show random quote"></button>
 
-  <button
-    class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors"
-    data-index="5"
-    aria-label="Show latest read"
-  ></button>
+          <button
+            class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors"
+            data-index="5"
+            aria-label="Show latest read"></button>
 
-  <button
-    class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors"
-    data-index="6"
-    aria-label="Show latest post"
-  ></button>
-  <button
-    class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors"
-    data-index="7"
-    aria-label="Show latest media entry"
-  ></button>
+          <button
+            class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors"
+            data-index="6"
+            aria-label="Show latest post"></button>
+          <button
+            class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors"
+            data-index="7"
+            aria-label="Show latest media entry"></button>
 
-  <button
-    class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors"
-    data-index="8"
-    aria-label="Show most starred GitHub project"
-  ></button>
+          <button
+            class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors"
+            data-index="8"
+            aria-label="Show most starred GitHub project"></button>
 
-  <button
-    class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors"
-    data-index="9"
-    aria-label="Show current weather"
-  ></button>
-</div>
+          <button
+            class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors"
+            data-index="9"
+            aria-label="Show current weather"></button>
+        </div>
 
         <button
           id="carousel-next"
@@ -394,11 +494,9 @@ const latestPostUrl = latestPost?.url || "/posts";
       </div>
     </section>
 
-
     <section id="blog">
       <Blog posts={allPosts} />
     </section>
-
 
     <section id="contact" class="pb-12">
       <div
@@ -410,18 +508,6 @@ const latestPostUrl = latestPost?.url || "/posts";
   </main>
 
   <script>
-    const toggle = document.getElementById("alias-toggle");
-    const panel = document.getElementById("alias-panel");
-    const caret = document.getElementById("alias-caret");
-
-    toggle?.addEventListener("click", () => {
-      const isOpen = toggle.getAttribute("aria-expanded") === "true";
-      toggle.setAttribute("aria-expanded", String(!isOpen));
-      panel?.classList.toggle("grid-rows-[0fr]", isOpen);
-      panel?.classList.toggle("grid-rows-[1fr]", !isOpen);
-      caret?.classList.toggle("rotate-180", !isOpen);
-    });
-
     const slidesWrap = document.getElementById("carousel-slides");
     const slides = Array.from(
       document.querySelectorAll<HTMLElement>(".carousel-slide"),
@@ -563,14 +649,16 @@ const latestPostUrl = latestPost?.url || "/posts";
         }
       }
     }
-    const wikiSlide = document.getElementById("wiki-slide") as HTMLAnchorElement | null;
+    const wikiSlide = document.getElementById(
+      "wiki-slide",
+    ) as HTMLAnchorElement | null;
     const wikiTitle = document.getElementById("wiki-title");
     const wikiExcerpt = document.getElementById("wiki-excerpt");
 
     async function loadWikipediaArticle() {
       try {
         const res = await fetch(
-          "https://en.wikipedia.org/api/rest_v1/page/random/summary"
+          "https://en.wikipedia.org/api/rest_v1/page/random/summary",
         );
 
         const article = await res.json();
@@ -592,8 +680,7 @@ const latestPostUrl = latestPost?.url || "/posts";
       } catch {
         if (wikiTitle) wikiTitle.textContent = "Wikipedia unavailable";
         if (wikiExcerpt) {
-          wikiExcerpt.textContent =
-            "Couldn't load a random article.";
+          wikiExcerpt.textContent = "Couldn't load a random article.";
         }
       }
     }
