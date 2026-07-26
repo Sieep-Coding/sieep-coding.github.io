@@ -25,7 +25,7 @@ When I first started building the app, I considered using plain JavaScript.
 
 But then I remembered why I love TypeScript: **its static typing.** 
 
-For example, using TypeScript allows me to easily [enforce](<https://en.wikipedia.org/wiki/Magic_number_(programming]>) that the input data for the bar chart consists of numbers:
+For example, using TypeScript allows me to easily [enforce](<https://en.wikipedia.org/wiki/Magic_number_(programming)>) that the input data for the bar chart consists of numbers:
 
 ```typescript
 const rawData = args.data
