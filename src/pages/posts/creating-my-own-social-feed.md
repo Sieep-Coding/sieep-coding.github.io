@@ -19,7 +19,7 @@ I wanted something simple:
 
 A small window into what I am currently working on, reading, listening to, and learning.
 
-[So I built my own.](/)
+Check it out the [home page](/)
 
 ## The Idea
 

@@ -150,6 +150,39 @@ const latestPostUrl = latestPost?.url || "/posts";
           Listen →
         </span>
       </a>
+                <a
+            id="wiki-slide"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="carousel-slide group flex items-center justify-between p-5 sm:p-6 w-full shrink-0 hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
+          >
+            <div class="min-w-0">
+              <p class="text-xs uppercase tracking-wide text-text/50 dark:text-dk-text/50 mb-1">
+                Random Wikipedia article
+              </p>
+
+              <p
+                id="wiki-title"
+                class="text-base font-semibold text-secondary dark:text-dk-accent truncate"
+              >
+                Loading...
+              </p>
+
+              <p
+                id="wiki-excerpt"
+                class="text-xs text-text/75 dark:text-dk-text/75 mt-1 line-clamp-2"
+              >
+                Fetching article...
+              </p>
+            </div>
+
+            <span
+              class="text-sm font-medium text-secondary dark:text-dk-accent group-hover:underline underline-offset-4 shrink-0"
+            >
+              Read →
+            </span>
+          </a>
 
           <!-- Slide 3: Latest recipe -->
           <a
@@ -221,39 +254,6 @@ const latestPostUrl = latestPost?.url || "/posts";
               </p>
             </div>
             <span class="text-sm font-medium text-secondary dark:text-dk-accent group-hover:underline underline-offset-4 shrink-0">
-              Read →
-            </span>
-          </a>
-          <a
-            id="wiki-slide"
-            href="#"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="carousel-slide group flex items-center justify-between p-5 sm:p-6 w-full shrink-0 hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
-          >
-            <div class="min-w-0">
-              <p class="text-xs uppercase tracking-wide text-text/50 dark:text-dk-text/50 mb-1">
-                Random Wikipedia article
-              </p>
-
-              <p
-                id="wiki-title"
-                class="text-base font-semibold text-secondary dark:text-dk-accent truncate"
-              >
-                Loading...
-              </p>
-
-              <p
-                id="wiki-excerpt"
-                class="text-xs text-text/75 dark:text-dk-text/75 mt-1 line-clamp-2"
-              >
-                Fetching article...
-              </p>
-            </div>
-
-            <span
-              class="text-sm font-medium text-secondary dark:text-dk-accent group-hover:underline underline-offset-4 shrink-0"
-            >
               Read →
             </span>
           </a>
@@ -331,39 +331,39 @@ const latestPostUrl = latestPost?.url || "/posts";
   ></button>
 
   <button
-    class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors"
-    data-index="1"
-    aria-label="Show latest track"
+  class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors"
+  data-index="1"
+  aria-label="Show latest track"
   ></button>
-
   <button
     class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors"
     data-index="2"
+    aria-label="Show random wikipedia entry">
+  </button>
+
+  <button
+    class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors"
+    data-index="3"
     aria-label="Show latest recipe"
   ></button>
 
   <button
     class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors"
-    data-index="3"
+    data-index="4"
     aria-label="Show random quote"
   ></button>
 
   <button
     class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors"
-    data-index="4"
+    data-index="5"
     aria-label="Show latest read"
   ></button>
 
   <button
     class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors"
-    data-index="5"
+    data-index="6"
     aria-label="Show latest post"
   ></button>
-  <button
-    class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors"
-    data-index="6"
-    aria-label="Show random wikipedia entry">
-  </button>
   <button
     class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors"
     data-index="7"
