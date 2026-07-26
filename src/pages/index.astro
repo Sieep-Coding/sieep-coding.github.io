@@ -245,7 +245,7 @@ const latestPostUrl = latestPost?.url || "/posts";
 
               <p
                 id="wiki-excerpt"
-                class="text-sm text-text/75 dark:text-dk-text/75 mt-1 line-clamp-2"
+                class="text-xs text-text/75 dark:text-dk-text/75 mt-1 line-clamp-2"
               >
                 Fetching article...
               </p>
@@ -359,7 +359,11 @@ const latestPostUrl = latestPost?.url || "/posts";
     data-index="5"
     aria-label="Show latest post"
   ></button>
-
+  <button
+    class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors"
+    data-index="5"
+    aria-label="Show random wikipedia entry">
+  </button>
   <button
     class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors"
     data-index="6"
