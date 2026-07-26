@@ -7,7 +7,6 @@ import ViewBlog from "../components/about_section/VisitBlog";
 import ViewAboutMe from "../components/about_section/VisitAboutMe";
 import BookConsultation from "../components/about_section/VisitLuniv";
 import RecentPosts from "../components/post_section/RecentBlogs";
-import FilterTags from "../components/post_section/FilterTags";
 import LinkPreview from "../components/post_section/LinkPreview.astro";
 
 const { frontmatter } = Astro.props;
@@ -29,6 +28,15 @@ const selectedTag = Astro.url.searchParams.get("selectedTag");
 const filteredPosts = selectedTag
   ? posts.filter((post) => post.frontmatter.tags.includes(selectedTag))
   : posts;
+
+const slug = (t: string) =>
+  t
+    .toLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g, "")
+    .replace(/[\s_-]+/g, "-");
+
+const postTags: string[] = tags || [];
 ---
 
 <script is:inline>
@@ -127,13 +135,17 @@ const filteredPosts = selectedTag
       </h2>
     </div>
 
-    <div class="mb-8">
-      <FilterTags
-        tags={tags}
-        onClick={(tag: string) => {
-          window.location.href = `?selectedTag=${tag}`;
-        }}
-      />
+    <div class="mb-8 flex flex-wrap gap-2">
+      {
+        postTags.map((tag) => (
+          <a
+            href={`/posts?tag=${slug(tag)}`}
+            class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium lowercase border border-[#202020]/20 dark:border-[#7c8fd1]/30 text-[#202020] dark:text-[#96a6e2] hover:bg-[#202020]/5 dark:hover:bg-[#7c8fd1]/10 hover:border-[#202020]/40 dark:hover:border-[#7c8fd1]/50 transition-colors"
+          >
+            {tag.replace(/^#/, "")}
+          </a>
+        ))
+      }
     </div>
 
     <div

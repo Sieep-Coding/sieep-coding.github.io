@@ -1,0 +1,125 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const allPosts = await Astro.glob("../pages/posts/*.md");
+
+const slug = (t: string) =>
+  t
+    .toLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g, "")
+    .replace(/[\s_-]+/g, "-");
+
+// Build a map of slug -> { label, count }, keeping the first-seen
+// human-readable label (e.g. "#Coding") for display purposes.
+const tagMap = new Map<string, { label: string; count: number }>();
+
+for (const post of allPosts) {
+  const postTags: string[] = post.frontmatter.tags || [];
+  for (const raw of postTags) {
+    const key = slug(raw);
+    if (!key) continue;
+    const label = raw.replace(/^#/, "");
+    const existing = tagMap.get(key);
+    if (existing) {
+      existing.count += 1;
+    } else {
+      tagMap.set(key, { label, count: 1 });
+    }
+  }
+}
+
+const tags = Array.from(tagMap.entries())
+  .map(([key, { label, count }]) => ({ key, label, count }))
+  .sort((a, b) => b.count - a.count || a.label.localeCompare(b.label));
+
+const totalTags = tags.length;
+---
+
+<BaseLayout title="Tags — Nick Stambaugh">
+  <main class="max-w-2xl mx-auto px-4 py-16 sm:py-24">
+    <header class="mb-10">
+      <h1
+        class="text-3xl font-bold tracking-tight text-secondary dark:text-dk-accent"
+      >
+        Tags
+      </h1>
+      <p class="mt-3 text-sm text-text/60 dark:text-dk-text/60">
+        <span class="font-bold text-text dark:text-dk-text tabular-nums"
+          >{totalTags}</span
+        > topics across all posts. Pick one to jump to filtered posts.
+      </p>
+    </header>
+
+    <div
+      class="relative flex items-center mb-8 border-b-2 border-text/40 dark:border-dk-text/40 focus-within:border-secondary dark:focus-within:border-dk-accent transition-colors pb-1"
+    >
+      <input
+        id="tag-search"
+        type="text"
+        placeholder="Search tags..."
+        class="w-full py-3 bg-transparent text-text dark:text-dk-accent placeholder-text/60 dark:placeholder-dk-text/60 focus:outline-none text-xl font-medium tracking-wide"
+      />
+    </div>
+
+    <p
+      id="no-tag-results"
+      class="hidden text-sm text-text/50 dark:text-dk-text/50 mb-6"
+    >
+      No tags match your search.
+    </p>
+
+    <div id="tags-grid" class="flex flex-wrap gap-2.5">
+      {
+        tags.map((tag) => (
+          <a
+            href={`/posts?tag=${tag.key}`}
+            class="tag-item group flex items-center gap-2 px-3.5 py-2 rounded-full border border-text/15 dark:border-dk-text/20 bg-secondary/5 dark:bg-dk-secondary/5 hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 hover:border-secondary/40 dark:hover:border-dk-accent/40 transition-colors"
+            data-label={tag.label.toLowerCase()}
+          >
+            <span class="text-sm font-medium lowercase text-text dark:text-dk-text group-hover:text-secondary dark:group-hover:text-dk-accent transition-colors">
+              {tag.label}
+            </span>
+            <span class="text-[11px] tabular-nums text-text/40 dark:text-dk-text/40">
+              {tag.count}
+            </span>
+          </a>
+        ))
+      }
+    </div>
+
+    <footer class="mt-16 pt-8 border-t border-text/10 dark:border-dk-text/10">
+      <a
+        href="/posts"
+        class="text-sm text-text/60 hover:text-secondary dark:hover:text-dk-accent transition-colors"
+      >
+        ← Back to posts
+      </a>
+    </footer>
+  </main>
+
+  <script is:inline>
+    document.addEventListener("DOMContentLoaded", () => {
+      const searchEl = document.getElementById("tag-search");
+      const items = Array.from(document.querySelectorAll(".tag-item"));
+      const noResults = document.getElementById("no-tag-results");
+
+      const applyFilter = () => {
+        const query = (searchEl?.value || "").toLowerCase();
+        let visible = 0;
+
+        items.forEach((item) => {
+          const label = item.dataset.label || "";
+          const show = label.includes(query);
+          item.style.display = show ? "flex" : "none";
+          if (show) visible++;
+        });
+
+        noResults?.classList.toggle("hidden", visible !== 0);
+      };
+
+      searchEl?.addEventListener("input", applyFilter);
+      applyFilter();
+    });
+  </script>
+</BaseLayout>

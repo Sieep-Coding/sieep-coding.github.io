@@ -82,6 +82,7 @@ const lastPoint = points[points.length - 1];
               {" "}· latest in <span class="font-medium">{monthLabel(bucketKeys[bucketKeys.length - 1])}</span>
             </>
           )}
+          {" "}· <a href="/tags" class="underline underline-offset-4 hover:text-secondary dark:hover:text-dk-accent">browse all tags →</a>
         </p>
       </div>
 
@@ -227,16 +228,19 @@ const lastPoint = points[points.length - 1];
         });
       };
 
+      const setActiveButton = (btn) => {
+        tagButtons.forEach(b => {
+          b.classList.remove("text-secondary", "dark:text-dk-accent", "decoration-secondary", "dark:decoration-dk-accent");
+          b.classList.add("text-text/70", "dark:text-dk-text");
+        });
+
+        btn.classList.remove("text-text/70", "dark:text-dk-text");
+        btn.classList.add("text-secondary", "dark:text-dk-accent", "decoration-secondary", "dark:decoration-dk-accent");
+      };
+
       tagButtons.forEach(btn => {
         btn.addEventListener("click", () => {
-          tagButtons.forEach(b => {
-            b.classList.remove("text-secondary", "dark:text-dk-accent", "decoration-secondary", "dark:decoration-dk-accent");
-            b.classList.add("text-text/70", "dark:text-dk-text");
-          });
-          
-          btn.classList.remove("text-text/70", "dark:text-dk-text");
-          btn.classList.add("text-secondary", "dark:text-dk-accent", "decoration-secondary", "dark:decoration-dk-accent");
-          
+          setActiveButton(btn);
           activeFilter = btn.dataset.filter;
           applyFilters();
         });
@@ -252,14 +256,23 @@ const lastPoint = points[points.length - 1];
       let open = false; 
       panel.style.maxHeight = "0px";
 
+      const openPanel = () => {
+        open = true;
+        panel.style.maxHeight = panel.scrollHeight + "px";
+        arrow.style.transform = "rotate(180deg)";
+      };
+
+      const closePanel = () => {
+        open = false;
+        panel.style.maxHeight = "0px";
+        arrow.style.transform = "rotate(0deg)";
+      };
+
       toggle.addEventListener("click", () => {
-        open = !open;
         if (open) {
-          panel.style.maxHeight = panel.scrollHeight + "px";
-          arrow.style.transform = "rotate(180deg)";
+          closePanel();
         } else {
-          panel.style.maxHeight = "0px";
-          arrow.style.transform = "rotate(0deg)";
+          openPanel();
         }
       });
 
@@ -268,6 +281,20 @@ const lastPoint = points[points.length - 1];
       if(allBtn) {
         allBtn.classList.remove("text-text/70", "dark:text-dk-text");
         allBtn.classList.add("text-secondary", "dark:text-dk-accent", "decoration-secondary", "dark:decoration-dk-accent");
+      }
+
+      // If a ?tag=<slug> param is present, auto-select the matching tag filter
+      const params = new URLSearchParams(window.location.search);
+      const tagParam = params.get("tag");
+      if (tagParam) {
+        const matchingBtn = tagButtons.find(
+          (b) => b.dataset.filter === `.${tagParam}`
+        );
+        if (matchingBtn) {
+          setActiveButton(matchingBtn);
+          activeFilter = matchingBtn.dataset.filter;
+          openPanel();
+        }
       }
 
       applyFilters();
