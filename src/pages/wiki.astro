@@ -278,24 +278,18 @@ const portals = [
               </p>
               
               <ul id="wiki-links-container" class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5">
-                {/* Fallback for JS-disabled users */}
                 {wikipediaLinks.slice(0, 8).map((link) => (
-                  <li class="text-sm">
-                    <a
+                  <li class="text-sm"><a
                       href={link.url}
                       target="_blank"
                       rel="noopener noreferrer"
                       class="text-secondary dark:text-dk-accent hover:underline underline-offset-4 font-medium"
-                    >
-                      {link.label}
-                    </a>
-                    <span class="text-text/40 dark:text-dk-text/40"> — from </span>
+                    >{link.label}</a>
+                    <span class="text-text/40 dark:text-dk-text/40"> from </span>
                     <a
                       href={link.postUrl}
                       class="text-text/60 dark:text-dk-text/60 hover:underline underline-offset-4"
-                    >
-                      {link.postTitle}
-                    </a>
+                    >{link.postTitle}</a>
                   </li>
                 ))}
               </ul>
