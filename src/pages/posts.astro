@@ -10,7 +10,7 @@ allPosts.sort((a, b) => {
   return (isNaN(B) ? 0 : B) - (isNaN(A) ? 0 : A);
 });
 
-// Build tag set
+
 const tags = new Set();
 for (const p of allPosts) {
   (p.frontmatter.tags || []).forEach(t => tags.add(t));
@@ -21,7 +21,7 @@ const slug = (t) =>
 
 const title = "Posts";
 
-// --- Header stats: total post count + monthly activity sparkline ---
+
 const totalCount = allPosts.length;
 
 const monthKey = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}`;
