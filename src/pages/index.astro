@@ -5,6 +5,16 @@ import Blog from "../components/post_section/Blog.astro";
 import Contact from "../components/contact_section/Contact";
 import { Image } from "astro:assets";
 const allPosts = await Astro.glob("./posts/*.md");
+
+// Find the most recent blog post for the carousel card
+const sortedPosts = [...allPosts].sort((a, b) => {
+  const A = new Date(a.frontmatter.date).getTime();
+  const B = new Date(b.frontmatter.date).getTime();
+  return (isNaN(B) ? 0 : B) - (isNaN(A) ? 0 : A);
+});
+const latestPost = sortedPosts[0];
+const latestPostTitle = latestPost?.frontmatter?.title || "Latest post";
+const latestPostUrl = latestPost?.url || "/posts";
 ---
 
 <BaseLayout title="Nick Stambaugh - Home">
@@ -72,6 +82,137 @@ const allPosts = await Astro.glob("./posts/*.md");
       </div>
     </header>
 
+    <section id="latest-carousel" class="relative">
+      <div
+        id="carousel-track"
+        class="overflow-hidden rounded-xl border border-text/10 dark:border-dk-text/10 bg-secondary/5 dark:bg-dk-secondary/5"
+      >
+        <div
+          id="carousel-slides"
+          class="flex transition-transform duration-500 ease-out"
+        >
+        
+        <!-- Slide 1: Latest Bruce photo -->
+        <a
+        href="/bruce-the-dog"
+        class="carousel-slide group flex items-center gap-4 p-3 sm:p-4 w-full shrink-0 hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
+        >
+        <img
+        src="/bruce/bruce7.jpg"
+        alt="Bruce"
+        class="h-16 w-16 rounded-lg object-cover flex-shrink-0"
+        />
+        <div class="flex-1">
+          <p class="text-xs uppercase tracking-wide text-text/50 dark:text-dk-text/50 mb-1">
+            Latest photo of Bruce
+          </p>
+          <span class="text-sm font-medium text-secondary dark:text-dk-accent group-hover:underline underline-offset-4">
+            See more →
+          </span>
+        </div>
+      </a>
+
+      <!-- Slide 2: Latest track -->
+      <a
+        href="/music"
+        class="carousel-slide group flex items-center justify-between p-5 sm:p-6 w-full shrink-0 hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
+      >
+        <div>
+          <p class="text-xs uppercase tracking-wide text-text/50 dark:text-dk-text/50 mb-1">
+            Latest track
+          </p>
+          <p class="text-base font-semibold text-secondary dark:text-dk-accent">
+            continue?
+          </p>
+        </div>
+        <span class="text-sm font-medium text-secondary dark:text-dk-accent group-hover:underline underline-offset-4 shrink-0">
+          Listen →
+        </span>
+      </a>
+
+          <!-- Slide 3: Latest recipe -->
+          <a
+            href="/recipes#reuben-sandwich"
+            class="carousel-slide group flex items-center justify-between p-5 sm:p-6 w-full shrink-0 hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
+          >
+            <div class="min-w-0">
+              <p class="text-xs uppercase tracking-wide text-text/50 dark:text-dk-text/50 mb-1">
+                Latest recipe
+              </p>
+              <p class="text-base font-semibold text-secondary dark:text-dk-accent truncate">
+                Classic Reuben Sandwich
+              </p>
+            </div>
+            <span class="text-sm font-medium text-secondary dark:text-dk-accent group-hover:underline underline-offset-4 shrink-0">
+              Cook it →
+            </span>
+          </a>
+
+          <!-- Slide 4: Latest blog post -->
+          <a
+            href={latestPostUrl}
+            class="carousel-slide group flex items-center justify-between p-5 sm:p-6 w-full shrink-0 hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
+          >
+            <div class="min-w-0">
+              <p class="text-xs uppercase tracking-wide text-text/50 dark:text-dk-text/50 mb-1">
+                Latest post
+              </p>
+              <p class="text-base font-semibold text-secondary dark:text-dk-accent truncate">
+                {latestPostTitle}
+              </p>
+            </div>
+            <span class="text-sm font-medium text-secondary dark:text-dk-accent group-hover:underline underline-offset-4 shrink-0">
+              Read →
+            </span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Controls row: prev arrow · dots · next arrow (below the card, not overlapping it) -->
+      <div class="flex items-center justify-center gap-4 mt-3">
+        <button
+          id="carousel-prev"
+          aria-label="Previous"
+          class="h-7 w-7 flex items-center justify-center rounded-full text-text/50 dark:text-dk-text/50 hover:text-secondary dark:hover:text-dk-accent hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
+        >
+          ‹
+        </button>
+
+        <div id="carousel-dots" class="flex items-center gap-1.5">
+          <button
+            class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors"
+            data-index="0"
+            aria-label="Show latest track"
+          ></button>
+          <button
+            class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors"
+            data-index="1"
+            aria-label="Show latest Bruce photo"
+          ></button>
+          <button
+            class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors"
+            data-index="2"
+            aria-label="Show latest recipe"
+          ></button>
+          <button
+            class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors"
+            data-index="3"
+            aria-label="Show latest post"
+          ></button>
+        </div>
+
+        <button
+          id="carousel-next"
+          aria-label="Next"
+          class="h-7 w-7 flex items-center justify-center rounded-full text-text/50 dark:text-dk-text/50 hover:text-secondary dark:hover:text-dk-accent hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
+        >
+          ›
+        </button>
+      </div>
+    </section>
+
+    <hr class="border-text/10 dark:border-dk-text/10" />
+
     <section id="blog">
       <Blog posts={allPosts} />
     </section>
@@ -99,5 +240,80 @@ const allPosts = await Astro.glob("./posts/*.md");
       panel?.classList.toggle("grid-rows-[1fr]", !isOpen);
       caret?.classList.toggle("rotate-180", !isOpen);
     });
+
+    // Auto-rotating carousel
+    const slidesWrap = document.getElementById("carousel-slides");
+    const slides = Array.from(
+      document.querySelectorAll<HTMLElement>(".carousel-slide"),
+    );
+    const dots = Array.from(
+      document.querySelectorAll<HTMLElement>(".carousel-dot"),
+    );
+    const carouselSection = document.getElementById("latest-carousel");
+    const prevBtn = document.getElementById("carousel-prev");
+    const nextBtn = document.getElementById("carousel-next");
+
+    let current = 0;
+    let intervalId: ReturnType<typeof setInterval> | undefined;
+    const AUTOPLAY_MS = 3000;
+
+    function goTo(index: number) {
+      if (slides.length === 0) return;
+      current = ((index % slides.length) + slides.length) % slides.length;
+      if (slidesWrap) {
+        (slidesWrap as HTMLElement).style.transform =
+          `translateX(-${current * 100}%)`;
+      }
+      dots.forEach((dot, i) => {
+        dot.classList.toggle("bg-secondary", i === current);
+        dot.classList.toggle("dark:bg-dk-accent", i === current);
+        dot.classList.toggle("bg-text/30", i !== current);
+        dot.classList.toggle("dark:bg-dk-text/30", i !== current);
+      });
+    }
+
+    function next() {
+      goTo(current + 1);
+    }
+
+    function prev() {
+      goTo(current - 1);
+    }
+
+    function startAutoplay() {
+      stopAutoplay();
+      intervalId = setInterval(next, AUTOPLAY_MS);
+    }
+
+    function stopAutoplay() {
+      if (intervalId) {
+        clearInterval(intervalId);
+        intervalId = undefined;
+      }
+    }
+
+    dots.forEach((dot) => {
+      dot.addEventListener("click", () => {
+        const idx = Number(dot.getAttribute("data-index"));
+        goTo(idx);
+        startAutoplay();
+      });
+    });
+
+    prevBtn?.addEventListener("click", () => {
+      prev();
+      startAutoplay();
+    });
+
+    nextBtn?.addEventListener("click", () => {
+      next();
+      startAutoplay();
+    });
+
+    carouselSection?.addEventListener("mouseenter", stopAutoplay);
+    carouselSection?.addEventListener("mouseleave", startAutoplay);
+
+    goTo(0);
+    startAutoplay();
   </script>
 </BaseLayout>

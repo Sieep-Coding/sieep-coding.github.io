@@ -14,6 +14,21 @@ const photos = [
 
 <BaseLayout title="Bruce">
   <main class="max-w-2xl mx-auto px-4 py-16 sm:py-24">
+    <h2 class="text-3xl font-bold mb-4">Bruce</h2>
+    <p class="mb-4">Bruce is my best friend. 
+      I got him as a puppy seven years ago. He is a
+      <a href="https://en.wikipedia.org/wiki/Norwegian_Elkhound" 
+      class="text-inherit underline decoration-text/60 hover:decoration-text dark:decoration-dk-text/40 dark:hover:decoration-dk-text transition-colors">
+      Norwegian Elkhound</a> 
+      mixed with a 
+      <a href="https://en.wikipedia.org/wiki/Schipperke" class="text-inherit underline decoration-text/60 hover:decoration-text dark:decoration-dk-text/40 dark:hover:decoration-dk-text transition-colors">Schipperke</a>. 
+    </p>
+    <p class="mb-4">
+      Over the years, he has been a constant source of loyalty, joy, and companionship.
+    </p>
+    <p class="mb-4">
+      Feel free to browse through the gallery. Please <a href="mailto:nickstambaugh@proton.me" class="text-inherit underline decoration-text/60 hover:decoration-text dark:decoration-dk-text/40 dark:hover:decoration-dk-text transition-colors">email me</a> photos of your dog or any animals you would like to share. I would love to see them!
+    </p>
     <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
       {
         photos.map((photo, i) => (
