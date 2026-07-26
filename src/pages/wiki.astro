@@ -65,45 +65,73 @@ try {
   }
 } catch (err) {
 }
-
-const wikiLinkPattern =
-  /\[([^\]]+)\]\((https?:\/\/(?:[a-z]{2,3}\.)?wikipedia\.org\/wiki\/[^\s)]+)\)/gi;
-
 const wikipediaLinksMap = new Map<
   string,
-  { label: string; url: string; postTitle: string; postUrl: string }
+  {
+    label: string;
+    url: string;
+    postTitle: string;
+    postUrl: string;
+  }
 >();
 
+const wikiHrefPattern =
+  /href="(https?:\/\/(?:[a-z]{2,3}\.)?wikipedia\.org\/wiki\/[^"]+)"/gi;
+
 for (const post of allPosts) {
-  let raw = "";
+  let html = "";
+
   try {
-    raw = typeof post.rawContent === "function" ? post.rawContent() : "";
+    html = await post.compiledContent();
   } catch (err) {
-    raw = "";
+    console.log("FAILED COMPILE:", post.frontmatter.title);
+    continue;
   }
 
-  let match;
-  wikiLinkPattern.lastIndex = 0;
-  while ((match = wikiLinkPattern.exec(raw)) !== null) {
-    const [, label, url] = match;
-    const cleanUrl = url.trim();
-    if (!wikipediaLinksMap.has(cleanUrl)) {
-      wikipediaLinksMap.set(cleanUrl, {
-        label: label.trim(),
-        url: cleanUrl,
+  let found = 0;
+
+  for (const match of html.matchAll(wikiHrefPattern)) {
+    const url = match[1];
+
+    const decoded = decodeURIComponent(
+      url
+        .split("/wiki/")
+        .pop()
+        ?.replaceAll("_", " ") ?? "Wikipedia"
+    );
+
+    found++;
+
+    if (!wikipediaLinksMap.has(url)) {
+      wikipediaLinksMap.set(url, {
+        label: decoded,
+        url,
         postTitle: post.frontmatter.title,
         postUrl: post.url,
       });
     }
   }
+
+  console.log(
+    post.frontmatter.title,
+    "wiki links:",
+    found
+  );
 }
 
 const wikipediaLinks = Array.from(wikipediaLinksMap.values());
-const rotation = today.getDate() % Math.max(wikipediaLinks.length, 1);
-const featuredWikiLinks = [
-  ...wikipediaLinks.slice(rotation),
-  ...wikipediaLinks.slice(0, rotation),
-].slice(0, 8);
+
+console.log(
+  "TOTAL WIKI LINKS:",
+  wikipediaLinks.length,
+  wikipediaLinks
+);
+
+const shuffledWikiLinks = wikipediaLinks.sort(
+  () => Math.random() - 0.5
+);
+
+const featuredWikiLinks = shuffledWikiLinks.slice(0, 8);
 
 const didYouKnow = [
   `...that Nick's degrees are in <a href="/about">economics and philosophy</a>, not computer science?`,
@@ -251,7 +279,7 @@ const portals = [
                 Wikipedia Rabbit Holes
               </h2>
               <p class="text-xs text-text/50 dark:text-dk-text/50 mb-3">
-                Real Wikipedia links, scraped straight out of the blog's own posts.
+                Randomized Wikipedia links scraped from Nick's blog.
               </p>
               <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5">
                 {featuredWikiLinks.map((link) => (
