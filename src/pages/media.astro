@@ -3,6 +3,18 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 const mediaList = [
     {
+        id: "the-odyssey",
+        title: "The Odyssey",
+        creator: "Christoper Nolan, Homer (Original Story)",
+        studio: "Warner Bros.",
+        year: "2026",
+        episodes: "172 minutes",
+        rating: 4,
+        format: "Movie",
+        tags: ["adventure", "drama", "epic"],
+        description: "A modern cinematic adaptation of Homer's epic poem"
+    },
+    {
         id: "cowboy-bebop",
         title: "Cowboy Bebop",
         subtitle: "The iconic neo-noir space western",
@@ -13,7 +25,7 @@ const mediaList = [
         rating: 4.5,
         format: "Anime Series",
         tags: ["anime", "sci-fi", "action", "masterpiece"],
-        description: "A critically acclaimed series following the bounty hunter crew of the spaceship Bebop as they travel the Solar System in 2071. Blending science fiction, western, and noir genres with a legendary jazz soundtrack by Yoko Kanno.",
+        description: "A critically acclaimed series following the bounty hunter crew of the spaceship Bebop as they travel the Solar System in 2071. Blending science fiction, western, and noir genres with a legendary jazz soundtrack by Yoko Kanno."
     },
     {
         id: "seinfeld",
@@ -25,7 +37,7 @@ const mediaList = [
         rating: 5,
         format: "Sitcom",
         tags: ["comedy", "sitcom", "classic"],
-        description: "A seminal 90s sitcom chronicling the daily absurdities of a stand-up comedian and his three eccentric friends in New York City.",
+        description: "A seminal 90s sitcom chronicling the daily absurdities of a stand-up comedian and his three eccentric friends in New York City."
     },
     {
         id: "goodfellas",
@@ -33,11 +45,11 @@ const mediaList = [
         creator: "Martin Scorsese",
         studio: "Warner Bros.",
         year: "1990",
-        episodes: "145 min",
+        episodes: "146 min",
         rating: 5,
         format: "Movie",
         tags: ["crime", "drama", "masterpiece"],
-        description: "The fast-paced, visceral true story of Henry Hill and his life in the mob, covering his relationship with his wife Karen and his mob partners Jimmy Conway and Tommy DeVito.",
+        description: "The fast-paced, visceral true story of Henry Hill and his life in the mob, covering his relationship with his wife Karen and his mob partners Jimmy Conway and Tommy DeVito."
     },
     {
         id: "casino",
@@ -49,7 +61,7 @@ const mediaList = [
         rating: 4,
         format: "Movie",
         tags: ["crime", "drama"],
-        description: "A tale of greed, deception, money, power, and murder occur between two best friends: a mafia enforcer and a casino executive compete over a gambling empire.",
+        description: "A tale of greed, deception, money, power, and murder occur between two best friends: a mafia enforcer and a casino executive compete over a gambling empire."
     },
     {
         id: "happy-gilmore",
@@ -61,7 +73,7 @@ const mediaList = [
         rating: 3,
         format: "Movie",
         tags: ["comedy", "sports"],
-        description: "A rejected hockey player puts his skills to the golf course to save his grandmother's house.",
+        description: "A rejected hockey player puts his skills to the golf course to save his grandmother's house."
     },
     {
         id: "crazy-stupid-love",
@@ -73,7 +85,7 @@ const mediaList = [
         rating: 3.5,
         format: "Movie",
         tags: ["comedy", "romance"],
-        description: "A middle-aged husband's life changes dramatically when his wife asks him for a divorce. He seeks to rediscover his manhood with the help of a newfound friend, Jacob, learning to pick up girls at bars.",
+        description: "A middle-aged husband's life changes dramatically when his wife asks him for a divorce. He seeks to rediscover his manhood with the help of a newfound friend, Jacob, learning to pick up girls at bars."
     },
     {
         id: "o-brother-where-art-thou",
@@ -81,11 +93,11 @@ const mediaList = [
         creator: "Joel & Ethan Coen",
         studio: "Touchstone Pictures",
         year: "2000",
-        episodes: "108 min",
+        episodes: "107 min",
         rating: 5,
         format: "Movie",
         tags: ["comedy", "adventure", "music"],
-        description: "In the deep south during the 1930s, three escaped convicts search for hidden treasure while a relentless lawman pursues them. A brilliant, musical retelling of Homer's Odyssey.",
+        description: "In the deep south during the 1930s, three escaped convicts search for hidden treasure while a relentless lawman pursues them. A brilliant, musical retelling of Homer's Odyssey."
     },
     {
         id: "full-metal-jacket",
@@ -97,7 +109,7 @@ const mediaList = [
         rating: 4.5,
         format: "Movie",
         tags: ["war", "drama"],
-        description: "A pragmatic U.S. Marine observes the dehumanizing effects the Vietnam War has on his fellow recruits from their brutal boot camp training to the bloody street fighting in Hue.",
+        description: "A pragmatic U.S. Marine observes the dehumanizing effects the Vietnam War has on his fellow recruits from their brutal boot camp training to the bloody street fighting in Hue."
     },
     {
         id: "drake-and-josh",
@@ -109,7 +121,7 @@ const mediaList = [
         rating: 4,
         format: "Sitcom",
         tags: ["comedy", "sitcom"],
-        description: "Two teenage stepbrothers with opposite personalities navigate the challenges of high school"
+        description: "Two teenage stepbrothers with opposite personalities navigate the challenges of high school."
     },
     {
         id: "lotr-trilogy",
@@ -121,7 +133,7 @@ const mediaList = [
         rating: 5,
         format: "Film Series",
         tags: ["fantasy", "adventure", "masterpiece"],
-        description: "A hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron. An unmatched cinematic achievement.",
+        description: "A hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron. An unmatched cinematic achievement."
     },
     {
         id: "kill-bill-vol-1",
@@ -134,7 +146,7 @@ const mediaList = [
         rating: 5,
         format: "Movie",
         tags: ["action", "thriller"],
-        description: "After awakening from a four-year coma, a former assassin wreaks vengeance on the team of assassins who betrayed her.",
+        description: "After awakening from a four-year coma, a former assassin wreaks vengeance on the team of assassins who betrayed her."
     },
     {
         id: "monk",
@@ -146,19 +158,19 @@ const mediaList = [
         rating: 4.5,
         format: "TV Show",
         tags: ["comedy", "mystery", "crime"],
-        description: "A brilliant San Francisco detective, whose obsessive-compulsive disorder just happens to get in the way, solves cases while searching for his wife's killer.",
+        description: "A brilliant San Francisco detective, whose obsessive-compulsive disorder just happens to get in the way, solves cases while searching for his wife's killer."
     },
     {
         id: "good-times",
         title: "Good Times",
         creator: "Eric Monte, Mike Evans, Norman Lear",
-        studio: "NBC",
+        studio: "CBS",
         year: "1974",
         episodes: "122 episodes",
         rating: 4,
         format: "TV Show",
         tags: ["comedy", "sitcom"],
-        description: "A Chicago working-class family navigates the challenges of life in the 1970s.",
+        description: "A Chicago working-class family navigates the challenges of life in the 1970s."
     },
     {
         id: "scrubs",
@@ -170,7 +182,7 @@ const mediaList = [
         rating: 4.5,
         format: "TV Show",
         tags: ["comedy", "drama", "medical"],
-        description: "In the unreal world of Sacred Heart Hospital, intern John 'J.D.' Dorian learns the ways of medicine, friendship, and life.",
+        description: "In the unreal world of Sacred Heart Hospital, intern John 'J.D.' Dorian learns the ways of medicine, friendship, and life."
     },
     {
         id: "white-chicks",
@@ -182,7 +194,7 @@ const mediaList = [
         rating: 4,
         format: "Movie",
         tags: ["comedy"],
-        description: "Two disgraced FBI agents go way undercover in an effort to protect hotel heiresses the Wilson Sisters from a kidnapping plot.",
+        description: "Two disgraced FBI agents go way undercover in an effort to protect hotel heiresses the Wilson Sisters from a kidnapping plot."
     },
     {
         id: "the-wayans-bros",
@@ -190,11 +202,11 @@ const mediaList = [
         creator: "Marlon & Shawn Wayans",
         studio: "The WB",
         year: "1995",
-        episodes: "101 episodes",
+        episodes: "119 episodes",
         rating: 4,
         format: "Sitcom",
         tags: ["comedy", "sitcom"],
-        description: "Brothers Shawn and Marlon Wayans play brothers with completely opposite personalities running a newsstand in New York City.",
+        description: "Brothers Shawn and Marlon Wayans play brothers with completely opposite personalities running a newsstand in New York City."
     },
     {
         id: "fresh-prince",
@@ -206,7 +218,7 @@ const mediaList = [
         rating: 4.5,
         format: "Sitcom",
         tags: ["comedy", "sitcom", "classic"],
-        description: "A street-smart teenager from Philadelphia is sent by his mother to live with his wealthy relatives in a Bel-Air mansion.",
+        description: "A street-smart teenager from Philadelphia is sent by his mother to live with his wealthy relatives in a Bel-Air mansion."
     },
     {
         id: "the-office",
@@ -218,7 +230,7 @@ const mediaList = [
         rating: 5,
         format: "Sitcom",
         tags: ["comedy", "sitcom", "mockumentary"],
-        description: "A mockumentary on a group of typical office workers, where the workday consists of ego clashes, inappropriate behavior, and tedium.",
+        description: "A mockumentary on a group of typical office workers, where the workday consists of ego clashes, inappropriate behavior, and tedium."
     },
     {
         id: "everybody-hates-chris",
@@ -231,7 +243,7 @@ const mediaList = [
         rating: 4.5,
         format: "Sitcom",
         tags: ["comedy", "sitcom"],
-        description: "A young African-American teen attempts to survive with his eccentric family and an all-white school in the 1980s.",
+        description: "A young African-American teen attempts to survive with his eccentric family and an all-white school in the 1980s."
     },
     {
         id: "spongebob-original",
@@ -244,7 +256,7 @@ const mediaList = [
         rating: 5,
         format: "Animated Series",
         tags: ["animation", "comedy", "masterpiece"],
-        description: "The incredibly clever and infinitely quotable original run of SpongeBob under creator Stephen Hillenburg. Unmatched comedic timing and writing.",
+        description: "The incredibly clever and infinitely quotable original run of SpongeBob under creator Stephen Hillenburg. Unmatched comedic timing and writing."
     },
     {
         id: "roots",
@@ -256,7 +268,7 @@ const mediaList = [
         rating: 5,
         format: "Miniseries",
         tags: ["drama", "historical", "classic"],
-        description: "The story of Kunta Kinte, an 18th-century African who is captured as an adolescent and sold into slavery"
+        description: "The story of Kunta Kinte, an 18th-century African who is captured as an adolescent and sold into slavery."
     },
     {
         id: "django-unchained",
@@ -268,7 +280,7 @@ const mediaList = [
         rating: 5,
         format: "Movie",
         tags: ["action", "western", "drama"],
-        description: "With the help of a German bounty-hunter, a freed slave sets out to rescue his wife from a brutal plantation owner in Mississippi.",
+        description: "With the help of a German bounty-hunter, a freed slave sets out to rescue his wife from a brutal plantation owner in Mississippi."
     },
     {
         id: "curb-your-enthusiasm",
@@ -280,7 +292,7 @@ const mediaList = [
         rating: 5,
         format: "TV Show",
         tags: ["comedy", "cringe"],
-        description: "The life and times of Larry David and the predicaments he gets himself into with his friends and complete strangers. A masterclass in improvised comedy.",
+        description: "The life and times of Larry David and the predicaments he gets himself into with his friends and complete strangers. A masterclass in improvised comedy."
     },
     {
         id: "breaking-bad",
@@ -292,7 +304,7 @@ const mediaList = [
         rating: 5,
         format: "TV Show",
         tags: ["drama", "crime", "masterpiece"],
-        description: "A chemistry teacher diagnosed with inoperable lung cancer turns to manufacturing and selling methamphetamine with a former student in order to secure his family's future.",
+        description: "A chemistry teacher diagnosed with inoperable lung cancer turns to manufacturing and selling methamphetamine with a former student in order to secure his family's future."
     },
     {
         id: "the-sopranos",
@@ -304,7 +316,7 @@ const mediaList = [
         rating: 5,
         format: "TV Show",
         tags: ["drama", "crime", "masterpiece"],
-        description: "New Jersey mob boss Tony Soprano deals with personal and professional issues in his home and business life that affect his mental state, leading him to seek psychiatric counseling.",
+        description: "New Jersey mob boss Tony Soprano deals with personal and professional issues in his home and business life that affect his mental state, leading him to seek psychiatric counseling."
     }
 ];
 
