@@ -5,80 +5,54 @@ const featuredCases = [
   {
     name: "Luniv Technology",
     description:
-      "A software shop specializing in custom software development, business intelligence, API integrations, and enterprise solutions for small to mid-sized businesses.",
+      "My own software shop, specializing in custom software development, business intelligence, API integrations, and enterprise solutions for small to mid-sized businesses.",
     tags: ["Entrepreneurship", "Software Development", "Business Intelligence"],
-    accent: "#3B82F6",
-    liveLink: "https://www.luniv.tech/contact",
-    link: "https://www.luniv.tech",
     outcome:
-      "Created a digital presence for a software consultancy, establishing credibility and generating leads for their services.",
-    image:
-      "https://images.unsplash.com/photo-1573495627361-d9b87960b12d?auto=format&fit=crop&w=1600&q=80",
+      "Built a consultancy from the ground up, establishing credibility and generating leads through client work and case studies.",
+    link: null,
   },
   {
-    name: "WMS-CRM Integration API",
+    name: "ERP-CRM Integration API",
     description:
-      "A robust middleware solution linking a legacy WMS AX system to a modern SaaS CRM, automating real-time inventory and customer data synchronization.",
+      "A robust middleware solution linking a legacy ERP system to a modern SaaS CRM, automating real-time inventory and customer data synchronization.",
     tags: ["Middleware", "API Development", "Integration"],
-    accent: "#F97316",
-    liveLink: "/contact",
-    link: "https://www.luniv.tech/case-study/wms-crm-integration",
     outcome:
       "Eliminated manual data entry and stock discrepancies by establishing a reliable, automated sync pipeline.",
-    image:
-      "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1600&q=80",
+    link: null,
   },
   {
     name: "BOLD Talks",
     description:
       "An intimate speaker series bringing together curious minds in Grand Rapids for evenings of thoughtful dialogue with authors, academics, and thinkers.",
     tags: ["Events", "Community", "Web Design"],
-    accent: "#F59E0B",
-    liveLink: "https://bold-talks.com",
-    link: "https://bold-talks.com",
     outcome:
       "Turned a cigar bar conversation series into a discoverable, RSVP-ready digital presence.",
-    image:
-      "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=1600&q=80",
+    link: "https://bold-talks.com",
   },
   {
     name: "MPD Welding GR Inc.",
     description:
-      "A lead-generation web presence for a Grand Rapids precision welding and steel treating shop — built to capture quotes and job applications around the clock.",
+      "A lead-generation web presence for a Grand Rapids precision welding and steel treating shop, built to capture quotes and job applications around the clock.",
     tags: ["Industrial", "Web Design", "Lead Generation"],
-    accent: "#EF4444",
-    liveLink: "https://www.mpdwelding.com",
+    outcome: "Turned a legacy industrial site into a 24/7 quote intake and recruiting machine.",
     link: "https://www.mpdwelding.com",
-    outcome:
-      "Turned a legacy industrial site into a 24/7 quote intake and recruiting machine.",
-    image:
-      "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=1600&q=80",
   },
   {
     name: "Performance Management Platform",
     description:
       "An enterprise performance management platform built to streamline annual reviews, competency assessments, goal tracking, and executive reporting across the organization.",
     tags: ["Enterprise Software", "HR Tech", "Internal Tools"],
-    accent: "#3B82F6",
-    liveLink: "/contact",
-    link: "https://www.luniv.tech/case-study/performance-management-platform",
     outcome:
       "Replaced spreadsheet-driven review cycles with a configurable workflow platform managed entirely by HR administrators.",
-    image:
-      "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=80",
+    link: null,
   },
   {
     name: "Document Management Software",
     description:
       "A centralized document management system providing version control, approval workflows, metadata indexing, and enterprise search.",
     tags: ["Enterprise Software", "Document Management", "Internal Tools"],
-    accent: "#A855F7",
-    liveLink: "/contact",
-    link: "https://www.luniv.tech/case-study/document-management-software",
-    outcome:
-      "Unified document storage and governance while improving searchability and compliance.",
-    image:
-      "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1600&q=80",
+    outcome: "Unified document storage and governance while improving searchability and compliance.",
+    link: null,
   },
 ];
 
@@ -86,14 +60,16 @@ const openSourceProjects = [
   {
     title: "Snow Simulation",
     year: "2024",
-    description: "A physics-based snow particle simulation built with C and raylib. Used by educators to demonstrate particle physics, collision detection.",
+    description:
+      "A physics-based snow particle simulation built with C and raylib. Used by educators to demonstrate particle physics and collision detection.",
     link: "https://github.com/Sieep-Coding/snow-simulation",
     tech: ["C", "raylib"],
   },
   {
     title: "Chat Server in C#",
     year: "2025",
-    description: "A simple TCP chat server written in C#. Used by educators to demonstrate socket programming and networking concepts.",
+    description:
+      "A simple TCP chat server written in C#. Used by educators to demonstrate socket programming and networking concepts.",
     link: "https://github.com/Sieep-Coding/simple-chat-csharp",
     tech: ["C#", ".NET"],
   },
@@ -107,9 +83,9 @@ const openSourceProjects = [
   {
     title: "nickstambaugh.dev",
     year: "2024",
-    description: "My personal website built with Astro and Typescript.",
+    description: "My personal website, built with Astro and TypeScript.",
     link: "https://github.com/Sieep-Coding/sieep-coding.github.io",
-    tech: ["Astro", "Typescript"],
+    tech: ["Astro", "TypeScript"],
   },
   {
     title: "Lua Testing Framework",
@@ -124,441 +100,126 @@ const openSourceProjects = [
     description: "Go CLI tool used to manage donated device inventory.",
     link: "https://github.com/Sieep-Coding/laptop-cli",
     tech: ["Go"],
-  }
+  },
 ];
 ---
 
 <BaseLayout title="Projects — Nick Stambaugh">
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&display=swap');
-
-    .projects-root {
-      --serif: "DM Serif Display", Georgia, serif;
-      --mono: "DM Mono", ui-monospace, monospace;
-      --rule: rgba(0, 0, 0, 0.12);
-      --muted: #555;
-      --hover-bg: rgba(0, 0, 0, 0.03);
-      --button-bg: rgb(42, 147, 161);
-    }
-
-    :global(.dark) .projects-root {
-      --rule: rgba(255, 255, 255, 0.1);
-      --muted: #999;
-      --hover-bg: rgba(255, 255, 255, 0.04);
-    }
-
-    /* ── MASTHEAD ── */
-    .masthead {
-      padding: 5rem 0 3.5rem;
-      margin-bottom: 0;
-    }
-
-    .masthead-eyebrow {
-      font-family: var(--mono);
-      font-size: 0.85rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 1.5rem;
-    }
-
-    .masthead-headline {
-      font-family: var(--serif);
-      font-size: clamp(3.2rem, 8vw, 6.5rem);
-      line-height: 0.96;
-      letter-spacing: -0.02em;
-      max-width: 12ch;
-      margin-bottom: 2.5rem;
-    }
-
-    .masthead-headline em {
-      font-style: italic;
-      color: var(--muted);
-    }
-
-    .masthead-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem 2.5rem;
-      padding-top: 2rem;
-      font-family: var(--mono);
-      font-size: 0.85rem;
-      color: var(--muted);
-      letter-spacing: 0.06em;
-    }
-
-    .masthead-meta a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    /* ── SECTION LABEL ── */
-    .section-label {
-      font-family: var(--mono);
-      font-size: 0.8rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--muted);
-      padding-top: 1.1rem;
-      margin-bottom: 3rem;
-    }
-
-    /* ── CASE STUDIES ── */
-    .cases-section {
-      padding: 5rem 0;
-    }
-
-    .case-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      border-top: 1px solid var(--rule);
-      min-height: 440px;
-      text-decoration: none;
-      color: inherit;
-      transition: background 0.2s;
-    }
-
-    .case-row:last-child {
-      border-bottom: 1px solid var(--rule);
-    }
-
-    .case-row:hover {
-    }
-
-    .case-row:nth-child(even) .case-image {
-      order: -1;
-    }
-
-    .case-content {
-      padding: 3rem 3.5rem 3rem 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .case-row:nth-child(even) .case-content {
-      padding: 3rem 0 3rem 3.5rem;
-    }
-
-    .case-number {
-      font-family: var(--mono);
-      font-size: 0.8rem;
-      color: var(--muted);
-      letter-spacing: 0.12em;
-      margin-bottom: 1.5rem;
-    }
-
-    .case-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.45rem;
-      margin-bottom: 1.25rem;
-    }
-
-    .case-tag {
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 0.25rem 0.7rem;
-      border: 1px solid var(--rule);
-      border-radius: 3px;
-      color: var(--muted);
-    }
-
-    .case-name {
-      font-family: var(--serif);
-      font-size: clamp(1.9rem, 3vw, 2.75rem);
-      line-height: 1.05;
-      letter-spacing: -0.01em;
-      margin-bottom: 1.1rem;
-    }
-
-    .case-description {
-      font-size: 1.05rem;
-      line-height: 1.7;
-      color: var(--muted);
-      max-width: 40ch;
-      flex-grow: 1;
-      margin-bottom: 1.75rem;
-    }
-
-    .case-outcome {
-      font-family: var(--mono);
-      font-size: 0.88rem;
-      line-height: 1.6;
-      border-left: 3px solid;
-      padding-left: 1rem;
-      margin-bottom: 2rem;
-    }
-
-    .case-cta {
-      font-family: var(--serif);
-      color: #7c8fd1;
-      font-size: 1.3rem;
-      letter-spacing: -0.01em;
-      margin-bottom: 0.35rem;
-      line-height: 1.2;
-    }
-
-    .case-cta:hover {
-      opacity: 0.5;
-    }
-
-    .case-image {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .case-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      filter: grayscale(15%);
-      transition: filter 0.4s, transform 0.55s;
-    }
-
-    .case-row:hover .case-image img {
-      filter: grayscale(0%);
-      transform: scale(1.025);
-    }
-
-    .case-accent-bar {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 5px;
-    }
-
-    /* ── OSS TABLE ── */
-    .oss-section {
-      padding: 0 0 6rem;
-    }
-
-    .oss-table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
-    .oss-table thead tr {
-      border-bottom: 1px solid var(--rule);
-    }
-
-    .oss-table thead th {
-      font-family: var(--mono);
-      font-size: 0.78rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--muted);
-      text-align: left;
-      padding: 0 0 0.9rem;
-      font-weight: 400;
-    }
-
-    .oss-table thead th.th-right {
-      text-align: right;
-    }
-
-    .oss-table tbody tr {
-      border-bottom: 1px solid var(--rule);
-      cursor: pointer;
-      transition: background 0.15s;
-    }
-
-    .oss-table tbody tr:hover {
-      background: var(--hover-bg);
-    }
-
-    .oss-table tbody td {
-      padding: 1.6rem 0;
-      vertical-align: middle;
-    }
-
-    .oss-num {
-      width: 3rem;
-      font-family: var(--mono);
-      font-size: 0.78rem;
-      color: var(--muted);
-      padding-right: 1.5rem;
-    }
-
-    .oss-title {
-      color: var(--muted);
-      font-size: 1.3rem;
-      letter-spacing: -0.01em;
-      margin-bottom: 0.35rem;
-      line-height: 1.2;
-    }
-
-    .oss-desc {
-      font-size: 0.95rem;
-      color: var(--muted);
-      line-height: 1.6;
-      max-width: 54ch;
-    }
-
-    .oss-tech-cell {
-      padding-left: 2rem;
-      vertical-align: middle;
-    }
-
-    .oss-tech-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.35rem;
-      justify-content: flex-end;
-    }
-
-    .oss-tech {
-      font-family: var(--mono);
-      font-size: 0.7rem;
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
-      color: var(--muted);
-      border: 1px solid var(--rule);
-      padding: 0.2rem 0.55rem;
-      border-radius: 3px;
-    }
-
-    .oss-year {
-      font-family: var(--mono);
-      font-size: 0.78rem;
-      color: var(--muted);
-      white-space: nowrap;
-      padding-left: 1.5rem;
-      text-align: right;
-    }
-
-    .oss-arrow {
-      padding-left: 1rem;
-      text-align: right;
-      font-size: 1rem;
-      color: var(--muted);
-      opacity: 0;
-      transition: opacity 0.15s;
-    }
-
-    .oss-table tbody tr:hover .oss-arrow {
-      opacity: 1;
-    }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 768px) {
-      .case-row {
-        grid-template-columns: 1fr;
-        min-height: unset;
-      }
-
-      .case-row:nth-child(even) .case-image {
-        order: unset;
-      }
-
-      .case-image {
-        height: 260px;
-      }
-
-      .case-content,
-      .case-row:nth-child(even) .case-content {
-        padding: 2rem 0;
-      }
-
-      .oss-tech-cell,
-      .oss-arrow {
-        display: none;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .case-row,
-      .case-image img,
-      .oss-table tbody tr {
-        transition: none;
-      }
-    }
-  </style>
-
-  <div class="projects-root">
-    <header class="masthead mt-8">
-      <p class="masthead-eyebrow mt-8">Nick Stambaugh &mdash; Selected Work</p>
-      <h1 class="masthead-headline">
-        Things I've<br /><em>shipped.</em> <br />
+  <main class="max-w-2xl mx-auto px-4 py-16 sm:py-24">
+    <header class="space-y-4 mb-12">
+      <h1 class="text-3xl font-bold tracking-tight text-secondary dark:text-dk-accent">
+        Projects
       </h1>
-      <a
-  href="https://luniv.tech/contact"
-  class="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-secondary dark:bg-dk-secondary text-white dark:text-white hover:bg-accent hover:text-black dark:hover:text-black dark:hover:bg-dk-accent transition-colors duration-300 font-medium shadow-md hover:shadow-lg"
->
-  Hire Me!
-</a>
+      <p class="text-lg text-text dark:text-dk-text/80 leading-relaxed">
+        Client and product work alongside the open source projects I build for
+        fun. See <a
+          class="text-inherit underline decoration-text/60 hover:decoration-text dark:decoration-dk-text/40 dark:hover:decoration-dk-text transition-colors"
+          href="/about">about</a
+        > for more on how I got here.
+      </p>
     </header>
-    <section class="cases-section">
-      <p class="section-label">Case Studies &mdash; Client &amp; Product Work</p>
-      <div>
-        {featuredCases.map((c, i) => (
-          <a class="case-row" href={c.link}>
-            <div class="case-content">
-              <div>
-                <p class="case-number">
-                  {String(i + 1).padStart(2, "0")} / {String(featuredCases.length).padStart(2, "0")}
-                </p>
-                <div class="case-tags">
-                  {c.tags.map((t) => (
-                    <span class="case-tag">{t}</span>
-                  ))}
+
+    <section class="mb-16">
+      <h2 class="text-xl font-semibold text-secondary dark:text-dk-accent mb-6">
+        Client &amp; Product Work
+      </h2>
+
+      <div class="space-y-3">
+        {
+          featuredCases.map((c) => {
+            const Wrapper = c.link ? "a" : "div";
+            return (
+              <Wrapper
+                {...(c.link
+                  ? { href: c.link, target: "_blank", rel: "noopener noreferrer" }
+                  : {})}
+                class={`block border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5 sm:p-6 transition-colors ${
+                  c.link ? "hover:bg-secondary/10 dark:hover:bg-dk-secondary/10" : ""
+                }`}
+              >
+                <div class="flex items-start justify-between gap-4">
+                  <h3 class="text-lg font-semibold text-secondary dark:text-dk-accent">
+                    {c.name}
+                  </h3>
+                  {c.link && (
+                    <span class="text-sm font-medium text-secondary dark:text-dk-accent shrink-0">
+                      Visit →
+                    </span>
+                  )}
                 </div>
-                <h2 class="case-name">{c.name}</h2>
-                <p class="case-description">{c.description}</p>
-                <p class="case-outcome" style={`border-color: ${c.accent};`}>
+
+                <p class="mt-2 text-sm text-text/80 dark:text-dk-text/80 leading-relaxed">
+                  {c.description}
+                </p>
+
+                <p class="mt-3 text-sm text-text/60 dark:text-dk-text/60 italic">
                   {c.outcome}
                 </p>
-              </div>
-              <span class="case-cta">
-                {c.liveLink.startsWith("http") ? "Visit site →" : "Learn More →"}
-              </span>
-            </div>
-            <div class="case-image">
-              <img src={c.image} alt={c.name} loading="lazy" />
-              <div class="case-accent-bar" style={`background: ${c.accent};`} />
-            </div>
-          </a>
-        ))}
-      </div>
-    </section>
-    <section class="oss-section">
-      <p class="section-label">Open Source &amp; Personal Projects</p>
-      <table class="oss-table">
-        <thead>
-          <tr>
-            <th></th>
-            <th>Project</th>
-            <th class="oss-tech-cell th-right">Stack</th>
-            <th class="th-right">Year</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {openSourceProjects.map((p, i) => (
-            <tr onclick={`window.open('${p.link}','_blank')`}>
-              <td class="oss-num">{String(i + 1).padStart(2, "0")}</td>
-              <td>
-                <div class="oss-title">{p.title}</div>
-                <div class="oss-desc">{p.description}</div>
-              </td>
-              <td class="oss-tech-cell">
-                <div class="oss-tech-list">
-                  {p.tech.map((t) => (
-                    <span class="oss-tech">{t}</span>
+
+                <div class="mt-3 flex flex-wrap gap-1.5">
+                  {c.tags.map((tag) => (
+                    <span class="text-[11px] px-2 py-0.5 rounded-full border border-text/30 dark:border-dk-text/30 text-text/70 dark:text-dk-text/70">
+                      {tag}
+                    </span>
                   ))}
                 </div>
-              </td>
-              <td class="oss-year">{p.year}</td>
-              <td class="oss-arrow">↗</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+              </Wrapper>
+            );
+          })
+        }
+      </div>
     </section>
 
-  </div>
+    <section>
+      <h2 class="text-xl font-semibold text-secondary dark:text-dk-accent mb-6">
+        Open Source &amp; Personal Projects
+      </h2>
+
+      <div class="space-y-3">
+        {
+          openSourceProjects.map((p) => (
+            <a
+              href={p.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group block border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5 sm:p-6 hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
+            >
+              <div class="flex items-start justify-between gap-4">
+                <div class="min-w-0">
+                  <h3 class="text-lg font-semibold text-secondary dark:text-dk-accent">
+                    {p.title}
+                  </h3>
+                  <p class="mt-2 text-sm text-text/80 dark:text-dk-text/80 leading-relaxed">
+                    {p.description}
+                  </p>
+                  <div class="mt-3 flex flex-wrap items-center gap-1.5">
+                    {p.tech.map((t) => (
+                      <span class="text-[11px] px-2 py-0.5 rounded-full border border-text/30 dark:border-dk-text/30 text-text/70 dark:text-dk-text/70">
+                        {t}
+                      </span>
+                    ))}
+                    <span class="text-xs text-text/50 dark:text-dk-text/50 ml-1">
+                      {p.year}
+                    </span>
+                  </div>
+                </div>
+                <span class="text-text/40 dark:text-dk-text/40 group-hover:text-secondary dark:group-hover:text-dk-accent transition-colors shrink-0 mt-1">
+                  ↗
+                </span>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </section>
+
+    <footer class="mt-16 pt-8 border-t border-text/10 dark:border-dk-text/10">
+      <a
+        href="/"
+        class="text-sm text-text/60 hover:text-secondary dark:hover:text-dk-accent transition-colors"
+      >
+        ← Back to home
+      </a>
+    </footer>
+  </main>
 </BaseLayout>
