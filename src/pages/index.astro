@@ -224,7 +224,39 @@ const latestPostUrl = latestPost?.url || "/posts";
               Read →
             </span>
           </a>
-          <!-- Slide 7: Latest media entry -->
+          <a
+            id="wiki-slide"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="carousel-slide group flex items-center justify-between p-5 sm:p-6 w-full shrink-0 hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
+          >
+            <div class="min-w-0">
+              <p class="text-xs uppercase tracking-wide text-text/50 dark:text-dk-text/50 mb-1">
+                Random Wikipedia article
+              </p>
+
+              <p
+                id="wiki-title"
+                class="text-base font-semibold text-secondary dark:text-dk-accent truncate"
+              >
+                Loading...
+              </p>
+
+              <p
+                id="wiki-excerpt"
+                class="text-sm text-text/75 dark:text-dk-text/75 mt-1 line-clamp-2"
+              >
+                Fetching article...
+              </p>
+            </div>
+
+            <span
+              class="text-sm font-medium text-secondary dark:text-dk-accent group-hover:underline underline-offset-4 shrink-0"
+            >
+              Read →
+            </span>
+          </a>
           <a
             href="/media"
             class="carousel-slide group flex items-center justify-between p-5 sm:p-6 w-full shrink-0 hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
@@ -241,7 +273,6 @@ const latestPostUrl = latestPost?.url || "/posts";
               View →
             </span>
           </a>
-          <!-- Slide 8: Most starred GitHub project -->
           <a
             href="https://github.com/Sieep-Coding/simple-chat-csharp"
             target="_blank"
@@ -261,7 +292,6 @@ const latestPostUrl = latestPost?.url || "/posts";
             </span>
           </a>
 
-          <!-- Slide 8: Current local weather (Rockford, MI) -->
           <div
             id="weather-slide"
             class="carousel-slide flex items-center justify-between p-5 sm:p-6 w-full shrink-0"
@@ -530,7 +560,42 @@ const latestPostUrl = latestPost?.url || "/posts";
         }
       }
     }
+    const wikiSlide = document.getElementById("wiki-slide") as HTMLAnchorElement | null;
+    const wikiTitle = document.getElementById("wiki-title");
+    const wikiExcerpt = document.getElementById("wiki-excerpt");
 
+    async function loadWikipediaArticle() {
+      try {
+        const res = await fetch(
+          "https://en.wikipedia.org/api/rest_v1/page/random/summary"
+        );
+
+        const article = await res.json();
+
+        if (wikiTitle) {
+          wikiTitle.textContent = article.title;
+        }
+
+        if (wikiExcerpt) {
+          wikiExcerpt.textContent =
+            article.extract.length > 170
+              ? article.extract.slice(0, 170) + "…"
+              : article.extract;
+        }
+
+        if (wikiSlide) {
+          wikiSlide.href = article.content_urls.desktop.page;
+        }
+      } catch {
+        if (wikiTitle) wikiTitle.textContent = "Wikipedia unavailable";
+        if (wikiExcerpt) {
+          wikiExcerpt.textContent =
+            "Couldn't load a random article.";
+        }
+      }
+    }
+
+    loadWikipediaArticle();
     loadWeather();
     loadQuote();
   </script>
