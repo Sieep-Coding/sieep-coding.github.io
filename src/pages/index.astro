@@ -147,65 +147,7 @@ const latestPostUrl = latestPost?.url || "/posts";
               Cook it →
             </span>
           </a>
-
-          <!-- Slide 4: Latest blog post -->
-          <a
-            href={latestPostUrl}
-            class="carousel-slide group flex items-center justify-between p-5 sm:p-6 w-full shrink-0 hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
-          >
-            <div class="min-w-0">
-              <p class="text-xs uppercase tracking-wide text-text/50 dark:text-dk-text/50 mb-1">
-                Latest post
-              </p>
-              <p class="text-base font-semibold text-secondary dark:text-dk-accent truncate">
-                {latestPostTitle}
-              </p>
-            </div>
-            <span class="text-sm font-medium text-secondary dark:text-dk-accent group-hover:underline underline-offset-4 shrink-0">
-              Read →
-            </span>
-          </a>
-
-          <!-- Slide 5: Most starred GitHub project -->
-          <a
-            href="https://github.com/Sieep-Coding/simple-chat-csharp"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="carousel-slide group flex items-center justify-between p-5 sm:p-6 w-full shrink-0 hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
-          >
-            <div class="min-w-0">
-              <p class="text-xs uppercase tracking-wide text-text/50 dark:text-dk-text/50 mb-1">
-                Most starred repo · ⭐ 27
-              </p>
-              <p class="text-base font-semibold text-secondary dark:text-dk-accent truncate">
-                simple-chat-csharp
-              </p>
-            </div>
-            <span class="text-sm font-medium text-secondary dark:text-dk-accent group-hover:underline underline-offset-4 shrink-0">
-              View →
-            </span>
-          </a>
-
-          <!-- Slide 6: Current local weather (Rockford, MI) -->
-          <div
-            id="weather-slide"
-            class="carousel-slide flex items-center justify-between p-5 sm:p-6 w-full shrink-0"
-          >
-            <div class="min-w-0">
-              <p class="text-xs uppercase tracking-wide text-text/50 dark:text-dk-text/50 mb-1">
-                Rockford, MI right now
-              </p>
-              <p
-                id="weather-text"
-                class="text-base font-semibold text-secondary dark:text-dk-accent truncate"
-              >
-                Loading weather…
-              </p>
-            </div>
-            <span id="weather-icon" class="text-2xl shrink-0" aria-hidden="true"></span>
-          </div>
-
-          <!-- Slide 7: Random quote -->
+          <!-- Slide 4: Random quote -->
           <div
             id="quote-slide"
             class="carousel-slide flex items-center p-5 sm:p-6 w-full shrink-0"
@@ -227,10 +169,67 @@ const latestPostUrl = latestPost?.url || "/posts";
             </div>
           </div>
 
+          <!-- Slide 5: Latest blog post -->
+          <a
+            href={latestPostUrl}
+            class="carousel-slide group flex items-center justify-between p-5 sm:p-6 w-full shrink-0 hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
+          >
+            <div class="min-w-0">
+              <p class="text-xs uppercase tracking-wide text-text/50 dark:text-dk-text/50 mb-1">
+                Latest post
+              </p>
+              <p class="text-base font-semibold text-secondary dark:text-dk-accent truncate">
+                {latestPostTitle}
+              </p>
+            </div>
+            <span class="text-sm font-medium text-secondary dark:text-dk-accent group-hover:underline underline-offset-4 shrink-0">
+              Read →
+            </span>
+          </a>
+
+          <!-- Slide 6: Most starred GitHub project -->
+          <a
+            href="https://github.com/Sieep-Coding/simple-chat-csharp"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="carousel-slide group flex items-center justify-between p-5 sm:p-6 w-full shrink-0 hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
+          >
+            <div class="min-w-0">
+              <p class="text-xs uppercase tracking-wide text-text/50 dark:text-dk-text/50 mb-1">
+                Most starred repo · ⭐ 27
+              </p>
+              <p class="text-base font-semibold text-secondary dark:text-dk-accent truncate">
+                simple-chat-csharp
+              </p>
+            </div>
+            <span class="text-sm font-medium text-secondary dark:text-dk-accent group-hover:underline underline-offset-4 shrink-0">
+              View →
+            </span>
+          </a>
+
+          <!-- Slide 7: Current local weather (Rockford, MI) -->
+          <div
+            id="weather-slide"
+            class="carousel-slide flex items-center justify-between p-5 sm:p-6 w-full shrink-0"
+          >
+            <div class="min-w-0">
+              <p class="text-xs uppercase tracking-wide text-text/50 dark:text-dk-text/50 mb-1">
+                Rockford, MI right now
+              </p>
+              <p
+                id="weather-text"
+                class="text-base font-semibold text-secondary dark:text-dk-accent truncate"
+              >
+                Loading weather…
+              </p>
+            </div>
+            <span id="weather-icon" class="text-2xl shrink-0" aria-hidden="true"></span>
+          </div>
+
+
         </div>
       </div>
 
-      <!-- Controls row: prev arrow · dots · next arrow (below the card, not overlapping it) -->
       <div class="flex items-center justify-center gap-4 mt-3">
         <button
           id="carousel-prev"
@@ -318,7 +317,6 @@ const latestPostUrl = latestPost?.url || "/posts";
       caret?.classList.toggle("rotate-180", !isOpen);
     });
 
-    // Auto-rotating carousel
     const slidesWrap = document.getElementById("carousel-slides");
     const slides = Array.from(
       document.querySelectorAll<HTMLElement>(".carousel-slide"),
@@ -442,7 +440,6 @@ const latestPostUrl = latestPost?.url || "/posts";
       }
     }
 
-    // Random quote (Quotable API)
     const quoteText = document.getElementById("quote-text");
     const quoteAuthor = document.getElementById("quote-author");
 
