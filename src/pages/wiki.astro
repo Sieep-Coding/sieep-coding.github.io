@@ -10,6 +10,13 @@ const sortedPosts = [...allPosts].sort((a, b) => {
   return (isNaN(B) ? 0 : B) - (isNaN(A) ? 0 : A);
 });
 
+// Prepare a lightweight payload for the client-side search
+const searchData = allPosts.map(post => ({
+  title: post.frontmatter.title || "Untitled",
+  description: post.frontmatter.description || "",
+  url: post.url
+}));
+
 const featured = sortedPosts[0];
 const recentPosts = sortedPosts.slice(1, 6);
 const totalPosts = allPosts.length;
@@ -38,10 +45,7 @@ try {
       };
     }
   }
-} catch (err) {
-
-}
-
+} catch (err) {}
 
 let onThisDay: { year: string | number; text: string; url?: string } | null = null;
 
@@ -55,7 +59,6 @@ try {
     const owdData = await owdRes.json();
     const picks = owdData.selected || [];
     if (picks.length) {
-      // Randomized the "On This Day" pick
       const pick = picks[Math.floor(Math.random() * picks.length)];
       onThisDay = {
         year: pick.year,
@@ -64,8 +67,8 @@ try {
       };
     }
   }
-} catch (err) {
-}
+} catch (err) {}
+
 const wikipediaLinksMap = new Map<
   string,
   {
@@ -81,28 +84,21 @@ const wikiHrefPattern =
 
 for (const post of allPosts) {
   let html = "";
-
   try {
     html = await post.compiledContent();
   } catch (err) {
-    console.log("FAILED COMPILE:", post.frontmatter.title);
     continue;
   }
-
   let found = 0;
-
   for (const match of html.matchAll(wikiHrefPattern)) {
     const url = match[1];
-
     const decoded = decodeURIComponent(
       url
         .split("/wiki/")
         .pop()
         ?.replaceAll("_", " ") ?? "Wikipedia"
     );
-
     found++;
-
     if (!wikipediaLinksMap.has(url)) {
       wikipediaLinksMap.set(url, {
         label: decoded,
@@ -112,22 +108,9 @@ for (const post of allPosts) {
       });
     }
   }
-
-  console.log(
-    post.frontmatter.title,
-    "wiki links:",
-    found
-  );
 }
 
 const wikipediaLinks = Array.from(wikipediaLinksMap.values());
-
-console.log(
-  "TOTAL WIKI LINKS:",
-  wikipediaLinks.length,
-  wikipediaLinks
-);
-
 
 const didYouKnow = [
   `...that Nick's degrees are in <a href="/about">economics and philosophy</a>, not computer science?`,
@@ -144,7 +127,6 @@ const didYouKnow = [
   `...that the site itself is hand-coded in <a href="https://astro.build/" target="_blank" rel="noopener noreferrer">Astro</a>, React, and TypeScript?`,
 ];
 
-// Randomized the "Did You Know" pick as well
 const dykPick = didYouKnow[Math.floor(Math.random() * didYouKnow.length)];
 
 const tagMap = new Map();
@@ -202,25 +184,28 @@ const portals = [
             </p>
           </div>
           <p class="text-xs text-text/50 dark:text-dk-text/50">{dateStr}</p>
-          <form action="/posts" method="get" class="mt-5 flex items-center gap-2 max-w-md">
+          
+          <!-- Inline Wiki Search (Replaces old form) -->
+          <div class="mt-5 relative w-full max-w-md z-50">
             <input
               type="text"
-              name="q"
-              placeholder="Search..."
+              id="wiki-search-input"
+              placeholder="Search wiki (&uarr; and &darr; to navigate)..."
+              autocomplete="off"
               class="w-full px-3 py-2 text-sm rounded-md border border-text/20 dark:border-dk-text/20 bg-secondary/5 dark:bg-dk-secondary/5 text-text dark:text-dk-text placeholder-text/40 dark:placeholder-dk-text/40 focus:outline-none focus:border-secondary dark:focus:border-dk-accent transition-colors"
             />
-            <button
-              type="submit"
-              class="px-4 py-2 text-sm font-medium rounded-md border border-text/20 dark:border-dk-text/20 text-text dark:text-dk-text hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors shrink-0"
-            >
-              Search
-            </button>
-          </form>
+            <div
+              id="wiki-search-results"
+              class="absolute top-full left-0 right-0 mt-2 bg-primary dark:bg-dk-primary border border-secondary/20 dark:border-dk-accent/20 rounded-lg shadow-xl hidden flex-col max-h-96 overflow-y-auto"
+            ></div>
+          </div>
+          <!-- Hidden payload for the client-side JS -->
+          <div id="wiki-search-data" data-posts={JSON.stringify(searchData)} class="hidden"></div>
+
         </div>
       </header>
       <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
         <div class="lg:col-span-3 space-y-8">
-            <!-- Wikipedia Rabbit Holes — randomized on the client -->
             {wikipediaLinks.length > 0 && (
               <section class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5 sm:p-6">
                 <div class="flex items-center justify-between border-b border-text/10 dark:border-dk-text/10 pb-2 mb-3">
@@ -313,33 +298,17 @@ const portals = [
             function renderRandomLinks(count = 10) {
               const container = document.getElementById("wiki-links-container");
               if (!container || !wikipediaLinks || wikipediaLinks.length === 0) return;
-
-              // Fisher-Yates shuffle (much more random than Math.random() - 0.5)
               const shuffled = [...wikipediaLinks];
               for (let i = shuffled.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
                 [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
               }
-              
               const selected = shuffled.slice(0, count);
-              
               container.innerHTML = selected.map(link => `
                 <li class="text-sm">
-                  <a
-                    href="${link.url}"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="text-secondary dark:text-dk-accent hover:underline underline-offset-4 font-medium"
-                  >
-                    ${link.label}
-                  </a>
+                  <a href="${link.url}" target="_blank" rel="noopener noreferrer" class="text-secondary dark:text-dk-accent hover:underline underline-offset-4 font-medium">${link.label}</a>
                   <span class="text-text/40 dark:text-dk-text/40"> — from </span>
-                  <a
-                    href="${link.postUrl}"
-                    class="text-text/60 dark:text-dk-text/60 hover:underline underline-offset-4"
-                  >
-                    ${link.postTitle}
-                  </a>
+                  <a href="${link.postUrl}" class="text-text/60 dark:text-dk-text/60 hover:underline underline-offset-4">${link.postTitle}</a>
                 </li>
               `).join('');
             }
@@ -347,11 +316,8 @@ const portals = [
             function setupWikiRabbitHoles() {
               const select = document.getElementById("wiki-count-select");
               if (select) {
-                // Read current default value
                 const count = parseInt(select.value, 10);
                 renderRandomLinks(count);
-                
-                // Add event listener to re-render on change
                 select.addEventListener("change", (e) => {
                   renderRandomLinks(parseInt(e.target.value, 10));
                 });
@@ -359,15 +325,10 @@ const portals = [
                 renderRandomLinks();
               }
             }
-
-            // Run on initial load
             setupWikiRabbitHoles();
-            
-            // If you use Astro View Transitions, this ensures it runs again on navigation
             document.addEventListener('astro:page-load', setupWikiRabbitHoles);
           </script>
 
-          <!-- Categories / portals -->
           <section class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5 sm:p-6">
             <h2 class="text-xs font-bold uppercase tracking-widest text-secondary dark:text-dk-accent border-b border-text/10 dark:border-dk-text/10 pb-2 mb-4">
               Other Areas of This Site
@@ -391,9 +352,7 @@ const portals = [
           </section>
         </div>
 
-        <!-- Sidebar -->
         <aside class="space-y-8">
-          <!-- Did you know -->
           <section class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5">
             <h2 class="text-xs font-bold uppercase tracking-widest text-secondary dark:text-dk-accent border-b border-text/10 dark:border-dk-text/10 pb-2 mb-3">
               Did You Know?
@@ -404,7 +363,6 @@ const portals = [
             />
           </section>
 
-          <!-- On this day, via Wikipedia's own API -->
           {onThisDay && (
             <section class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5">
               <h2 class="text-xs font-bold uppercase tracking-widest text-secondary dark:text-dk-accent border-b border-text/10 dark:border-dk-text/10 pb-2 mb-3">
@@ -431,7 +389,6 @@ const portals = [
             </section>
           )}
 
-          <!-- Wiki stats -->
           <section class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5">
             <h2 class="text-xs font-bold uppercase tracking-widest text-secondary dark:text-dk-accent border-b border-text/10 dark:border-dk-text/10 pb-2 mb-3">
               Wiki Stats
@@ -458,7 +415,6 @@ const portals = [
             </dl>
           </section>
 
-          <!-- Categories cloud -->
           <section class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5">
             <h2 class="text-xs font-bold uppercase tracking-widest text-secondary dark:text-dk-accent border-b border-text/10 dark:border-dk-text/10 pb-2 mb-3">
               Top Categories
@@ -490,3 +446,102 @@ const portals = [
     </main>
   </div>
 </BaseLayout>
+
+<script>
+  // @ts-nocheck
+  import Fuse from "fuse.js";
+
+  function setupWikiSearch() {
+    const dataEl = document.getElementById("wiki-search-data");
+    const input = document.getElementById("wiki-search-input");
+    const resultsContainer = document.getElementById("wiki-search-results");
+
+    if (!dataEl || !input || !resultsContainer) return;
+
+    // Prevent re-attaching multiple times on Astro View Transitions
+    if (input.dataset.searchLoaded === "true") return;
+    input.dataset.searchLoaded = "true";
+
+    const posts = JSON.parse(dataEl.dataset.posts);
+    const fuse = new Fuse(posts, {
+      keys: ["title", "description"],
+      threshold: 0.3
+    });
+
+    let selectedIndex = -1;
+    let currentResults = [];
+
+    function renderResults() {
+      if (currentResults.length === 0) {
+        resultsContainer.classList.add("hidden");
+        resultsContainer.innerHTML = "";
+        return;
+      }
+
+      resultsContainer.classList.remove("hidden");
+      resultsContainer.innerHTML = currentResults.map((res, i) => `
+        <a href="${res.item.url}" class="block p-3 border-b border-text/10 dark:border-dk-text/10 last:border-0 hover:bg-secondary/10 dark:hover:bg-dk-secondary/20 transition-colors ${i === selectedIndex ? 'bg-secondary/10 dark:bg-dk-secondary/20' : ''}">
+          <div class="flex justify-between items-center">
+            <h3 class="text-sm font-bold text-text dark:text-dk-text">${res.item.title}</h3>
+            ${i === selectedIndex ? '<span class="text-accent dark:text-dk-accent text-xs">↵</span>' : ''}
+          </div>
+          <p class="text-xs text-text/70 dark:text-dk-text/70 truncate mt-0.5">${res.item.description || ''}</p>
+        </a>
+      `).join("");
+    }
+
+    input.addEventListener("input", (e) => {
+      const q = e.target.value;
+      if (!q.trim()) {
+        currentResults = [];
+        selectedIndex = -1;
+        renderResults();
+        return;
+      }
+      currentResults = fuse.search(q).slice(0, 5);
+      selectedIndex = currentResults.length > 0 ? 0 : -1;
+      renderResults();
+    });
+
+    input.addEventListener("keydown", (e) => {
+      if (currentResults.length === 0) {
+        // Fallback: If no fuzzy results, let Enter default-navigate to a classic search page if you still have one
+        if (e.key === "Enter" && e.target.value.trim() !== "") {
+            e.preventDefault();
+            window.location.href = `/posts?q=${encodeURIComponent(e.target.value)}`;
+        }
+        return;
+      }
+      
+      if (e.key === "ArrowDown") {
+        e.preventDefault();
+        selectedIndex = selectedIndex < currentResults.length - 1 ? selectedIndex + 1 : 0;
+        renderResults();
+      } else if (e.key === "ArrowUp") {
+        e.preventDefault();
+        selectedIndex = selectedIndex > 0 ? selectedIndex - 1 : currentResults.length - 1;
+        renderResults();
+      } else if (e.key === "Enter" && selectedIndex >= 0) {
+        e.preventDefault();
+        window.location.href = currentResults[selectedIndex].item.url;
+      } else if (e.key === "Escape") {
+        currentResults = [];
+        renderResults();
+        input.blur();
+      }
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener("click", (e) => {
+      if (!input.contains(e.target) && !resultsContainer.contains(e.target)) {
+        currentResults = [];
+        renderResults();
+      }
+    });
+  }
+
+  // Initialize on first load
+  setupWikiSearch();
+  // Ensure it reinitializes seamlessly with Astro's View Transitions
+  document.addEventListener("astro:page-load", setupWikiSearch);
+</script>
