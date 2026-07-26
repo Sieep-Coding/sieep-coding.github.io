@@ -13,13 +13,11 @@ tags: ["#Opinion", "#Tech"]
 
 ## [PERMALINK](https://sieep-coding.github.io/posts/bullshit-as-a-service#Bullshit-As-A-Service)
 
-> This article was inspired by the writings of Cory Doctorow
-
 # Bullshit-As-A-Service
 
 Like many of you, I have grown increasingly frustrated with the results from Google Search. Over the years, we have watched Google’s flagship product degrade from a magical fountain of information into the SEO-optimized, AI-integrated, data-harvesting platform we see today. With the recent addition of AI chats and AI search, it has become even **worse.**
 
-Google Search, for years now, has sucked eggs.
+[Google Search, for years now, has sucked eggs.](https://en.wikipedia.org/wiki/Enshittification)
 
 By 2024, it was evident that Google had lost the battle to SEO spammers, grifters, and bots. Its own content is now buried under endless promotional results, often littered with malware disguised as links or ads.
 
@@ -66,4 +64,4 @@ This is why you are being nudged to use AI. Every prompt to engage with AI Overv
 
 Despite all this, AI enthusiasts still insist that AI will one day become a godlike savior. Tech companies, however, are not investing billions because they believe this—they do it because they *have to*. It is the same cycle that brought us NFTs, the metaverse, and crypto, all sold by the *same grifters*.
 
-Google Search is no longer on life support. It is dead, with no way back.
+Google Search is no longer on life support. It is [dead](https://en.wikipedia.org/wiki/Dead_Internet_theory), with no way back.

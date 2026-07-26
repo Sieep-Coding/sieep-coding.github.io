@@ -21,7 +21,7 @@ We live in a world that rewards volume. Social algorithms favor the prolific. Ov
 
 Today, a single extra sentence can be stripped of its context and fed into the internet machine. The most impactful communicators understand a fundamental truth: *absolute precision beats volume.* It’s about using the correct words, at the exact correct time.
 
-## The Cultural Cost of Excess Noise
+## The Cultural Cost of [Excess Noise](https://en.wikipedia.org/wiki/Signal-to-noise_ratio)
 
 We are living through an era where communication has been weaponized. People are actively looking to misunderstand you. Lately, we’ve seen horrific consequences where people have been assassinated because of misconstrued words, viral rumors, and bad actors intentionally lying. 
 
@@ -44,3 +44,7 @@ True brevity is about impact and unassailable clarity. Using the correct words a
 ## Final Thoughts
 
 The next time you are about to speak on a sensitive topic, send a heated message, or post your thoughts online, take ten seconds to read through it. Look for the fluff. Use fewer words, but make sure the ones you choose leave no room for misinterpretation. 
+
+## Further Reading
+
+[Laconic Phrase](https://en.wikipedia.org/wiki/Laconic_phrase)

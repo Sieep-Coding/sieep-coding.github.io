@@ -12,11 +12,13 @@ tags: ["#Business"]
 ---
 
 # The Importance of Merit in the Workplace
-In any workplace, the balance between merit and nepotism affects team dynamics and overall productivity. 
+In any workplace, the [balance](https://en.wikipedia.org/wiki/Peter_principle) between merit and nepotism affects team dynamics and overall productivity. 
 
 While personal relationships can play a role in career advancement, **prioritizing merit is essential to creating a fair environment.**
+
 # Impact of Nepotism
-Nepotism occurs when individuals in power favor family members or friends for positions or promotions, regardless of their qualifications. 
+
+[Nepotism](https://en.wikipedia.org/wiki/Nepotism) occurs when individuals in power favor family members or friends for positions or promotions, regardless of their qualifications. 
 
 This practice can **create a toxic environment** where merit is sidelined. 
 

@@ -18,7 +18,7 @@ Luckily for me, I could already think back to the time I lost a professional job
 
 The jobs I applied to weren't responding, and the hiring managers I was reaching out to weren't replying. Maybe that was due to externalities, some of them outside my control.
 
-I highly doubt it.
+[I highly doubt it.](https://en.wikipedia.org/wiki/Dark_pattern)
 
 My last 4 professional jobs were all found through word-of-mouth networking or Indeed. So, since I created my LinkedIn account in 2018, it has gotten me zero jobs, zero side gigs.
 
