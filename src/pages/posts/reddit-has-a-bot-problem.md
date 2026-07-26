@@ -35,15 +35,15 @@ If you're going to hand out the "world's oldest" superlative, you'd better have 
 
 Even setting aside the "oldest" claim, the "still in use" part is doing a lot of quiet lifting. 
 
-Yes, the Ming and Qing dynasties laid down a rough framework that modern Chinese provincial maps loosely trace. But the actual borders, names, splits, and administrative functions have been through massive overhauls since then, shifting boundaries, civil wars, and a complete governmental restructuring under the PRC after 1949.
+Yes, the Ming and Qing dynasties laid down a rough framework that modern Chinese provincial maps loosely trace. But the actual borders, names, splits, and administrative functions have been through massive overhauls since then, shifting boundaries, civil wars. This also includes a complete governmental restructuring under the PRC after 1949.
 
 ---
 
 ## This Is the Part That Bothers Me
 
-None of this is really about Chinese provincial history. 
+This post is not about Chinese provincial history. 
 
-It's about the shape of the post itself, because I've seen this exact shape a thousand times on that site and it always smells the same.
+It's about the shape of the post itself because I've seen this exact shape a thousand times on that site and it always smells the same.
 
 China's government has a well-documented history of paying and directing large numbers of people to post pro-government content online. Researchers refer to this informally as the ["50 Cent Party" or `wumao`](https://en.wikipedia.org/wiki/50_Cent_Party), named after the rumored per-post payment. 
 
@@ -57,21 +57,21 @@ That doesn't mean Tencent is steering front-page content, there's no evidence of
 
 To be clear, I can't prove that one specific TIL post was planted by a state actor instead of just an overzealous history nerd chasing karma. 
 
-Nobody can, from the outside, looking at a single post. 
+Nobody can looking at a single post. 
 
-But the shape of it, a true-ish kernel of history, an unearned superlative that flatters a specific country's government, thousands of upvotes, and a conspicuous absence of the kind of skeptical pushback Reddit usually loves to dish out, matches the documented playbook closely enough that it's worth naming out loud instead of shrugging it off as just another dumb TIL.
+But the shape of it, an unearned superlative that flatters a specific country's government, and thousands of upvotes, matches the documented playbook closely enough that it's worth naming out loud instead of shrugging it off.
 
 ---
 
 ## Why It's Getting Worse, Not Better
 
-Whether it's a bored teenager farming karma or something more coordinated, the mechanism Reddit runs on doesn't distinguish between the two, and that's the actual problem. Reddit's voting system was built on the assumption that bad information gets buried and good information rises. What it actually rewards is confident phrasing. A superlative dressed up as trivia will always outperform a boring, accurate sentence, because nobody stops to interrogate a claim that already sounds settled, and a state propaganda operation optimizing for exactly that kind of frictionless narrative reinforcement is going to thrive on a platform built that way.
+What Reddit rewards is confident phrasing. A superlative dressed up as trivia will always outperform a boring, accurate sentence, because nobody stops to interrogate a claim that already sounds settled, and a state propaganda operation optimizing for exactly that kind of frictionless narrative reinforcement is going to thrive on a platform built that way.
 
-Karma farming used to be a manual, kind of pathetic grind. Now it's trivial to automate, or to staff, and the bar for "post that performs well" has always been lower than the bar for "post that's actually true." Automation and cheap labor just widened that gap into a canyon.
+Iit's trivial to automate karma farming and the bar for "post that performs well" has always been lower than the bar for "post that's actually true." Automation and cheap labor just widened that gap.
 
 The annoying part is that debunking this stuff takes way longer than posting it. I spent more time confirming Roman diocesan history than whoever wrote that headline spent writing it. That asymmetry is the whole game. It's cheap to state a superlative and expensive to check one, and a platform built entirely on upvote velocity, with a business model that included a major Chinese conglomerate as an early investor, is never going to fix that on its own.
 
-I don't have a tidy solution here. I just think it's worth naming the pattern out loud when you see it, true-ish kernel plus an unearned superlative plus a suspicious lack of pushback, because once you start looking for it, you start seeing it everywhere on that site, not just in history trivia.
+I think it's worth naming the pattern out loud when you see it.
 
 ---
 
