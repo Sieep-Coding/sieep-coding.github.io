@@ -9,12 +9,6 @@ interface ContactProps {
 export default function Contact({ contact, size }: ContactProps) {
   const socialMediaLinks = [
   {
-    name: "website",
-    icon: "fas fa-globe",
-    link: contact.website,
-    link_alt: "Website",
-  },
-  {
     name: "email",
     icon: "fas fa-envelope",
     link: `mailto:${contact.email}`,
@@ -25,12 +19,6 @@ export default function Contact({ contact, size }: ContactProps) {
     icon: "fab fa-github",
     link: contact.github,
     link_alt: "GitHub",
-  },
-  {
-    name: "twitch",
-    icon: "fab fa-twitch",
-    link: contact.twitch,
-    link_alt: "Twitch",
   },
   {
     name: "youtube",
