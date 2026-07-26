@@ -429,11 +429,11 @@ const stars = (rating) =>
         >
             <table class="w-full text-sm border-collapse table-fixed">
                 <colgroup>
-                <col class="w-[42%] sm:w-[40%]" />
-                <col class="w-[24%] sm:w-[26%]" />
+                <col class="w-[38%] sm:w-[38%]" />
+                <col class="w-[18%] sm:w-[24%]" />
+                <col class="w-[10%]" />
+                <col class="w-[22%]" />
                 <col class="w-[12%]" />
-                <col class="w-[16%]" />
-                <col class="w-[6%]" />
                 </colgroup>
                 <thead>
                     <tr
@@ -499,7 +499,7 @@ const stars = (rating) =>
                                         <td class="px-3 sm:px-4 py-3 align-top text-text/60 dark:text-dk-text/60 text-xs sm:text-sm">
                                             {book.year}
                                         </td>
-                                        <td class="px-3 sm:px-4 py-3 align-top whitespace-nowrap">
+                                        <td class="px-3 sm:px-4 py-3 align-top whitespace-nowrap overflow-hidden">
                                         <span
                                             class="text-yellow-500 dark:text-yellow-400 font-medium"
                                             aria-label={`${book.rating} out of 5 stars`}
@@ -518,7 +518,7 @@ const stars = (rating) =>
                                         </td>
                                     </tr>
                                     <tr class="book-detail-row">
-                                        <td colspan="4" class="p-0">
+                                        <td colspan="5" class="p-0">
                                             <div
                                                 id={`detail-${book.id}`}
                                                 class="book-panel overflow-hidden transition-[max-height] duration-300 ease-out max-h-0"
