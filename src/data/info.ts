@@ -217,9 +217,7 @@ export const info = {
   contact: {
     email: "nickstambaugh@proton.me",
     github: "https://github.com/Sieep-Coding/",
-    twitch: "https://twitch.tv/sieep00",
     youtube: "https://www.youtube.com/@sieep00",
     RSS: "/rss.xml",
-    website: "https://luniv.tech",
   },
 };
