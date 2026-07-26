@@ -90,7 +90,7 @@ const latestPostUrl = latestPost?.url || "/posts";
           </a>
           <a
             href="mailto:nickstambaugh@proton.me"
-            class="spin-border-btn relative inline-flex items-center px-3 py-1 mt-1 rounded-full text-sm font-medium text-secondary dark:text-dk-accent bg-bg dark:bg-dk-bg overflow-hidden hover:underline"
+            class="inline-flex items-center text-sm font-medium text-secondary dark:text-dk-accent hover:underline underline-offset-4"
           >
             <span class="relative z-10">Email Me →</span>
           </a>
@@ -108,60 +108,6 @@ const latestPostUrl = latestPost?.url || "/posts";
         />
       </div>
     </header>
-
-    <style>
-      .spin-border-btn {
-        --border-width: 2px;
-        isolation: isolate;
-      }
-
-      .spin-border-btn::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        z-index: 0;
-        border-radius: inherit;
-        padding: var(--border-width);
-        background: conic-gradient(
-          from var(--angle, 0deg),
-          transparent 0%,
-          theme(colors.secondary) 15%,
-          theme(colors.dk-accent) 35%,
-          transparent 50%
-        );
-        -webkit-mask:
-          linear-gradient(#fff 0 0) content-box,
-          linear-gradient(#fff 0 0);
-        -webkit-mask-composite: xor;
-        mask-composite: exclude;
-        animation: spin-border 3s linear infinite;
-      }
-
-      .spin-border-btn::after {
-        content: "";
-        position: absolute;
-        inset: var(--border-width);
-        z-index: 0;
-        border-radius: inherit;
-        background: inherit;
-      }
-
-      @property --angle {
-        syntax: "<angle>";
-        initial-value: 0deg;
-        inherits: false;
-      }
-
-      @keyframes spin-border {
-        to {
-          --angle: 360deg;
-        }
-      }
-
-      .spin-border-btn:hover::before {
-        animation-duration: 1.2s;
-      }
-    </style>
 
     <section id="latest-carousel" class="relative">
       <h2 class="text-xl font-bold tracking-tight mb-2">Nick's Feed</h2>
