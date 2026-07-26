@@ -1,0 +1,427 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { info } from "../data/info";
+
+const allPosts = await Astro.glob("./posts/*.md");
+
+const sortedPosts = [...allPosts].sort((a, b) => {
+  const A = new Date(a.frontmatter.date).getTime();
+  const B = new Date(b.frontmatter.date).getTime();
+  return (isNaN(B) ? 0 : B) - (isNaN(A) ? 0 : A);
+});
+
+const featured = sortedPosts[0];
+const recentPosts = sortedPosts.slice(1, 6);
+const totalPosts = allPosts.length;
+const today = new Date();
+
+// ---------------------------------------------------------------------------
+// Live GitHub stats (real API call, made at build time). Falls back to
+// reasonable static values if GitHub is unreachable or rate-limits the build.
+// ---------------------------------------------------------------------------
+let githubStats = {
+  topRepo: "simple-chat-csharp",
+  stars: 27,
+  publicRepos: null as number | null,
+};
+
+try {
+  const ghRes = await fetch(
+    "https://api.github.com/users/Sieep-Coding/repos?per_page=100&sort=updated"
+  );
+  if (ghRes.ok) {
+    const repos = await ghRes.json();
+    if (Array.isArray(repos) && repos.length) {
+      const top = [...repos].sort(
+        (a, b) => (b.stargazers_count ?? 0) - (a.stargazers_count ?? 0)
+      )[0];
+      githubStats = {
+        topRepo: top.name,
+        stars: top.stargazers_count ?? 0,
+        publicRepos: repos.length,
+      };
+    }
+  }
+} catch (err) {
+  // Network unavailable at build time — keep the fallback values above.
+}
+
+// ---------------------------------------------------------------------------
+// Live "On this day" fact, pulled from the Wikipedia REST API. Fitting,
+// since this whole page is a parody of a wiki homepage.
+// ---------------------------------------------------------------------------
+let onThisDay: { year: string | number; text: string; url?: string } | null = null;
+
+try {
+  const month = String(today.getMonth() + 1).padStart(2, "0");
+  const day = String(today.getDate()).padStart(2, "0");
+  const owdRes = await fetch(
+    `https://en.wikipedia.org/api/rest_v1/feed/onthisday/selected/${month}/${day}`
+  );
+  if (owdRes.ok) {
+    const owdData = await owdRes.json();
+    const picks = owdData.selected || [];
+    if (picks.length) {
+      const pick = picks[today.getDate() % picks.length];
+      onThisDay = {
+        year: pick.year,
+        text: pick.text,
+        url: pick.pages?.[0]?.content_urls?.desktop?.page,
+      };
+    }
+  }
+} catch (err) {
+  // Network unavailable at build time — section just won't render.
+}
+
+// ---------------------------------------------------------------------------
+// Scan every post in posts/*.md for real outbound Wikipedia links, so the
+// "Wikipedia Rabbit Holes" module below is always built from what's actually
+// linked in the blog rather than a hand-maintained list.
+// ---------------------------------------------------------------------------
+const wikiLinkPattern =
+  /\[([^\]]+)\]\((https?:\/\/(?:[a-z]{2,3}\.)?wikipedia\.org\/wiki\/[^\s)]+)\)/gi;
+
+const wikipediaLinksMap = new Map<
+  string,
+  { label: string; url: string; postTitle: string; postUrl: string }
+>();
+
+for (const post of allPosts) {
+  let raw = "";
+  try {
+    raw = typeof post.rawContent === "function" ? post.rawContent() : "";
+  } catch (err) {
+    raw = "";
+  }
+
+  let match;
+  wikiLinkPattern.lastIndex = 0;
+  while ((match = wikiLinkPattern.exec(raw)) !== null) {
+    const [, label, url] = match;
+    const cleanUrl = url.trim();
+    if (!wikipediaLinksMap.has(cleanUrl)) {
+      wikipediaLinksMap.set(cleanUrl, {
+        label: label.trim(),
+        url: cleanUrl,
+        postTitle: post.frontmatter.title,
+        postUrl: post.url,
+      });
+    }
+  }
+}
+
+const wikipediaLinks = Array.from(wikipediaLinksMap.values());
+// Rotate which links surface based on the day, so repeat visitors see variety.
+const rotation = today.getDate() % Math.max(wikipediaLinks.length, 1);
+const featuredWikiLinks = [
+  ...wikipediaLinks.slice(rotation),
+  ...wikipediaLinks.slice(0, rotation),
+].slice(0, 8);
+
+// ---------------------------------------------------------------------------
+// "Did you know" quotes — expanded roster, one entry is fully live data.
+// ---------------------------------------------------------------------------
+const didYouKnow = [
+  `...that Nick's degrees are in <a href="/about">economics and philosophy</a>, not computer science?`,
+  `...that his most-starred repo on GitHub is <a href="https://github.com/Sieep-Coding/${githubStats.topRepo}" target="_blank" rel="noopener noreferrer">${githubStats.topRepo}</a>, with ${githubStats.stars} stars (live from the GitHub API)?`,
+  `...that his dog <a href="/bruce-the-dog">Bruce</a> is a Norwegian Elkhound mixed with a Schipperke?`,
+  `...that he produces music under the name <a href="/music">sieep</a>, made in FL Studio?`,
+  `...that his rating scale for <a href="/library">books</a> and <a href="/media">media</a> goes up to 5 stars, half-stars included?`,
+  `...that his blog spans <a href="/tags">10+ topics</a>, from nuclear economics to old comic books?`,
+  `...that he founded <a href="https://luniv.tech" target="_blank" rel="noopener noreferrer">Luniv Technology</a>, his own custom software and BI shop?`,
+  `...that before software, he wrote a <a href="/posts/making-nuclear-energy-competitve-with-fossil-fuels-and-natural-gas">report on nuclear reactor economics</a> for Michigan's NERS department?`,
+  `...that he's written up trips to <a href="/posts/chicago">Chicago</a> and <a href="/posts/houston">Houston</a>?`,
+  `...that he has strong opinions about <a href="/posts/my-thoughts-on-soccer">football</a> — the kind played with your feet?`,
+  `...that this site runs ad-free, but you can <a href="https://www.buymeacoffee.com/nickstambaugh" target="_blank" rel="noopener noreferrer">buy him a coffee</a> anyway?`,
+  `...that the site itself is hand-coded in <a href="https://astro.build/" target="_blank" rel="noopener noreferrer">Astro</a>, React, and TypeScript — no page builders involved?`,
+];
+const dykPick = didYouKnow[today.getDate() % didYouKnow.length];
+
+// Tag counts, same logic as tags.astro
+const tagMap = new Map();
+for (const post of allPosts) {
+  const postTags = post.frontmatter.tags || [];
+  for (const raw of postTags) {
+    const key = raw
+      .toLowerCase()
+      .trim()
+      .replace(/[^\w\s-]/g, "")
+      .replace(/[\s_-]+/g, "-");
+    if (!key) continue;
+    const label = raw.replace(/^#/, "");
+    const existing = tagMap.get(key);
+    if (existing) existing.count += 1;
+    else tagMap.set(key, { label, count: 1 });
+  }
+}
+const topTags = Array.from(tagMap.entries())
+  .map(([key, v]) => ({ key, ...v }))
+  .sort((a, b) => b.count - a.count)
+  .slice(0, 12);
+
+const dateStr = today.toLocaleDateString("en-US", {
+  weekday: "long",
+  month: "long",
+  day: "numeric",
+  year: "numeric",
+});
+
+const portals = [
+  { href: "/posts", label: "Posts", desc: `${totalPosts} articles`, icon: "📝" },
+  { href: "/music", label: "Music", desc: "sieep, instrumentals", icon: "🎵" },
+  { href: "/recipes", label: "Recipes", desc: "Cooking archive", icon: "🍳" },
+  { href: "/library", label: "Library", desc: "Books read", icon: "📚" },
+  { href: "/media", label: "Media", desc: "Movies, shows, games", icon: "🎬" },
+  { href: "/projects", label: "Projects", desc: "Client & open source", icon: "🛠️" },
+  { href: "/bruce-the-dog", label: "Bruce", desc: "The dog", icon: "🐕" },
+  { href: "/about", label: "About", desc: "Nick Stambaugh", icon: "👤" },
+];
+---
+
+<BaseLayout title="Nickipedia — The Stambaugh Wiki">
+  <div class="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen">
+    <main class="max-w-[1400px] mx-auto px-4 sm:px-8 pt-28 pb-10 sm:pt-32 sm:pb-16">
+      <header class="border-b-4 border-secondary/20 dark:border-dk-accent/20 pb-4 mb-8">
+        <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
+          <div>
+            <h1
+              class="text-4xl sm:text-5xl font-serif font-bold tracking-tight text-secondary dark:text-dk-accent"
+            >
+              Nickipedia
+            </h1>
+            <p class="text-sm italic text-text/60 dark:text-dk-text/60 mt-1">
+              Version 0.1
+            </p>
+          </div>
+          <p class="text-xs text-text/50 dark:text-dk-text/50">{dateStr}</p>
+          <!-- Search -->
+          <form action="/posts" method="get" class="mt-5 flex items-center gap-2 max-w-md">
+            <input
+              type="text"
+              name="q"
+              placeholder="Search..."
+              class="w-full px-3 py-2 text-sm rounded-md border border-text/20 dark:border-dk-text/20 bg-secondary/5 dark:bg-dk-secondary/5 text-text dark:text-dk-text placeholder-text/40 dark:placeholder-dk-text/40 focus:outline-none focus:border-secondary dark:focus:border-dk-accent transition-colors"
+            />
+            <button
+              type="submit"
+              class="px-4 py-2 text-sm font-medium rounded-md border border-text/20 dark:border-dk-text/20 text-text dark:text-dk-text hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors shrink-0"
+            >
+              Search
+            </button>
+          </form>
+        </div>
+
+      </header>
+
+      <!-- Three-column wiki body (wider than before) -->
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+        <!-- Main column -->
+        <div class="lg:col-span-3 space-y-8">
+          <!-- Featured article -->
+          {featured && (
+            <section class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5 sm:p-6">
+              <h2 class="text-xs font-bold uppercase tracking-widest text-secondary dark:text-dk-accent border-b border-text/10 dark:border-dk-text/10 pb-2 mb-3">
+                Featured Article
+              </h2>
+              <a
+                href={featured.url}
+                class="text-xl font-serif font-semibold text-secondary dark:text-dk-accent hover:underline underline-offset-4"
+              >
+                {featured.frontmatter.title}
+              </a>
+              {featured.frontmatter.description && (
+                <p class="mt-2 text-sm text-text/80 dark:text-dk-text/80 leading-relaxed">
+                  {featured.frontmatter.description}
+                </p>
+              )}
+              <p class="mt-3">
+                <a
+                  href={featured.url}
+                  class="text-sm font-medium text-secondary dark:text-dk-accent hover:underline underline-offset-4"
+                >
+                  Read full article →
+                </a>
+              </p>
+            </section>
+          )}
+          <section class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5 sm:p-6">
+            <h2 class="text-xs font-bold uppercase tracking-widest text-secondary dark:text-dk-accent border-b border-text/10 dark:border-dk-text/10 pb-2 mb-3">
+              Nick's Latest News
+            </h2>
+            <ul class="space-y-2.5">
+              {recentPosts.map((post) => (
+                <li class="flex items-start gap-2 text-sm">
+                  <span class="text-text/30 dark:text-dk-text/30 mt-0.5">•</span>
+                  <a
+                    href={post.url}
+                    class="text-text dark:text-dk-text hover:text-secondary dark:hover:text-dk-accent hover:underline underline-offset-4 transition-colors"
+                  >
+                    {post.frontmatter.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <p class="mt-3">
+              <a href="/posts" class="text-sm font-medium text-secondary dark:text-dk-accent hover:underline underline-offset-4">
+                View all posts →
+              </a>
+            </p>
+          </section>
+
+          <!-- Wikipedia Rabbit Holes — real links pulled from posts/*.md -->
+          {featuredWikiLinks.length > 0 && (
+            <section class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5 sm:p-6">
+              <h2 class="text-xs font-bold uppercase tracking-widest text-secondary dark:text-dk-accent border-b border-text/10 dark:border-dk-text/10 pb-2 mb-3">
+                Wikipedia Rabbit Holes
+              </h2>
+              <p class="text-xs text-text/50 dark:text-dk-text/50 mb-3">
+                Real Wikipedia links, scraped straight out of the blog's own posts.
+              </p>
+              <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5">
+                {featuredWikiLinks.map((link) => (
+                  <li class="text-sm">
+                    <a
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="text-secondary dark:text-dk-accent hover:underline underline-offset-4 font-medium"
+                    >
+                      {link.label}
+                    </a>
+                    <span class="text-text/40 dark:text-dk-text/40"> — from </span>
+                    <a
+                      href={link.postUrl}
+                      class="text-text/60 dark:text-dk-text/60 hover:underline underline-offset-4"
+                    >
+                      {link.postTitle}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+
+          <!-- Categories / portals -->
+          <section class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5 sm:p-6">
+            <h2 class="text-xs font-bold uppercase tracking-widest text-secondary dark:text-dk-accent border-b border-text/10 dark:border-dk-text/10 pb-2 mb-4">
+              Other Areas of This Site
+            </h2>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              {portals.map((p) => (
+                <a
+                  href={p.href}
+                  class="group flex flex-col items-center text-center gap-1 p-3 rounded-lg border border-text/10 dark:border-dk-text/10 hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
+                >
+                  <span class="text-2xl">{p.icon}</span>
+                  <span class="text-sm font-medium text-secondary dark:text-dk-accent group-hover:underline underline-offset-4">
+                    {p.label}
+                  </span>
+                  <span class="text-[11px] text-text/50 dark:text-dk-text/50">
+                    {p.desc}
+                  </span>
+                </a>
+              ))}
+            </div>
+          </section>
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="space-y-8">
+          <!-- Did you know -->
+          <section class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5">
+            <h2 class="text-xs font-bold uppercase tracking-widest text-secondary dark:text-dk-accent border-b border-text/10 dark:border-dk-text/10 pb-2 mb-3">
+              Did You Know?
+            </h2>
+            <p
+              class="text-sm text-text/80 dark:text-dk-text/80 leading-relaxed [&_a]:text-secondary [&_a]:dark:text-dk-accent [&_a]:underline [&_a]:underline-offset-4"
+              set:html={dykPick}
+            />
+          </section>
+
+          <!-- On this day, via Wikipedia's own API -->
+          {onThisDay && (
+            <section class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5">
+              <h2 class="text-xs font-bold uppercase tracking-widest text-secondary dark:text-dk-accent border-b border-text/10 dark:border-dk-text/10 pb-2 mb-3">
+                On This Day
+              </h2>
+              <p class="text-sm text-text/80 dark:text-dk-text/80 leading-relaxed">
+                <span class="font-semibold text-secondary dark:text-dk-accent">{onThisDay.year}</span> — {onThisDay.text}
+              </p>
+              {onThisDay.url && (
+                <p class="mt-2">
+                  <a
+                    href={onThisDay.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-xs font-medium text-secondary dark:text-dk-accent hover:underline underline-offset-4"
+                  >
+                    Read on Wikipedia →
+                  </a>
+                </p>
+              )}
+              <p class="mt-2 text-[10px] text-text/40 dark:text-dk-text/40">
+                Live from the Wikipedia REST API.
+              </p>
+            </section>
+          )}
+
+          <!-- Wiki stats -->
+          <section class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5">
+            <h2 class="text-xs font-bold uppercase tracking-widest text-secondary dark:text-dk-accent border-b border-text/10 dark:border-dk-text/10 pb-2 mb-3">
+              Wiki Stats
+            </h2>
+            <dl class="space-y-2 text-sm">
+              <div class="flex justify-between">
+                <dt class="text-text/60 dark:text-dk-text/60">Articles</dt>
+                <dd class="font-medium text-text dark:text-dk-text tabular-nums">{totalPosts}</dd>
+              </div>
+              <div class="flex justify-between">
+                <dt class="text-text/60 dark:text-dk-text/60">Categories</dt>
+                <dd class="font-medium text-text dark:text-dk-text tabular-nums">{tagMap.size}</dd>
+              </div>
+              {githubStats.publicRepos !== null && (
+                <div class="flex justify-between">
+                  <dt class="text-text/60 dark:text-dk-text/60">Public repos</dt>
+                  <dd class="font-medium text-text dark:text-dk-text tabular-nums">{githubStats.publicRepos}</dd>
+                </div>
+              )}
+              <div class="flex justify-between">
+                <dt class="text-text/60 dark:text-dk-text/60">editor</dt>
+                <dd class="font-medium text-text dark:text-dk-text">{info.name}</dd>
+              </div>
+            </dl>
+          </section>
+
+          <!-- Categories cloud -->
+          <section class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5">
+            <h2 class="text-xs font-bold uppercase tracking-widest text-secondary dark:text-dk-accent border-b border-text/10 dark:border-dk-text/10 pb-2 mb-3">
+              Top Categories
+            </h2>
+            <div class="flex flex-wrap gap-1.5">
+              {topTags.map((tag) => (
+                <a
+                  href={`/posts?tag=${tag.key}`}
+                  class="text-[11px] px-2 py-1 rounded-full border border-text/20 dark:border-dk-text/20 text-text/70 dark:text-dk-text/70 hover:text-secondary dark:hover:text-dk-accent hover:border-secondary/40 dark:hover:border-dk-accent/40 transition-colors"
+                >
+                  {tag.label} <span class="text-text/40 dark:text-dk-text/40">({tag.count})</span>
+                </a>
+              ))}
+            </div>
+            <p class="mt-3">
+              <a href="/tags" class="text-sm font-medium text-secondary dark:text-dk-accent hover:underline underline-offset-4">
+                All categories →
+              </a>
+            </p>
+          </section>
+        </aside>
+      </div>
+
+      <footer class="mt-16 pt-8 border-t border-text/10 dark:border-dk-text/10">
+        <a href="/" class="text-sm text-text/60 hover:text-secondary dark:hover:text-dk-accent transition-colors">
+          ← Back to home
+        </a>
+      </footer>
+    </main>
+  </div>
+</BaseLayout>
