@@ -3,7 +3,7 @@ title: "Reddit Has a Bot Problem"
 date: "2026-07-26"
 
 layout: ../../layouts/PostLayout.astro
-description: "A TIL post about Chinese provinces being 'the world's oldest administrative divisions' got thousands of upvotes. It's wrong and it looks a lot like the playbook China's state media apparatus is running."
+description: "A TIL post about Chinese provinces being 'the world's oldest administrative divisions' got thousands of upvotes. It's wrong and the shape of it smells funny."
 
 img_path: "/reddit-bot.jpg"
 img_alt: "Reddit robots"
