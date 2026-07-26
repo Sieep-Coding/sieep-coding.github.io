@@ -55,7 +55,8 @@ try {
     const owdData = await owdRes.json();
     const picks = owdData.selected || [];
     if (picks.length) {
-      const pick = picks[today.getDate() % picks.length];
+      // Randomized the "On This Day" pick
+      const pick = picks[Math.floor(Math.random() * picks.length)];
       onThisDay = {
         year: pick.year,
         text: pick.text,
@@ -130,19 +131,21 @@ console.log(
 
 const didYouKnow = [
   `...that Nick's degrees are in <a href="/about">economics and philosophy</a>, not computer science?`,
-  `...that his most-starred repo on GitHub is <a href="https://github.com/Sieep-Coding/${githubStats.topRepo}" target="_blank" rel="noopener noreferrer">${githubStats.topRepo}</a>, with ${githubStats.stars} stars (live from the GitHub API)?`,
-  `...that his dog <a href="/bruce-the-dog">Bruce</a> is a Norwegian Elkhound mixed with a Schipperke?`,
-  `...that he produces music under the name <a href="/music">sieep</a>, made in FL Studio?`,
-  `...that his rating scale for <a href="/library">books</a> and <a href="/media">media</a> goes up to 5 stars, half-stars included?`,
-  `...that his blog spans <a href="/tags">10+ topics</a>, from nuclear economics to old comic books?`,
-  `...that he founded <a href="https://luniv.tech" target="_blank" rel="noopener noreferrer">Luniv Technology</a>, his own custom software and BI shop?`,
-  `...that before software, he wrote a <a href="/posts/making-nuclear-energy-competitve-with-fossil-fuels-and-natural-gas">report on nuclear reactor economics</a> for Michigan's NERS department?`,
-  `...that he's written up trips to <a href="/posts/chicago">Chicago</a> and <a href="/posts/houston">Houston</a>?`,
-  `...that he has strong opinions about <a href="/posts/my-thoughts-on-soccer">football</a> — the kind played with your feet?`,
+  `...that Nick's most-starred repo on GitHub is <a href="https://github.com/Sieep-Coding/${githubStats.topRepo}" target="_blank" rel="noopener noreferrer">${githubStats.topRepo}</a>, with ${githubStats.stars} stars?`,
+  `...that Nick's dog <a href="/bruce-the-dog">Bruce</a> is a Norwegian Elkhound mixed with a Schipperke?`,
+  `...that Nick produces music under the name <a href="/music">sieep</a>, made in FL Studio?`,
+  `...that Nick's rating scale for <a href="/library">books</a> and <a href="/media">media</a> goes up to 5 stars, half-stars included?`,
+  `...that Nick's blog spans <a href="/tags">10+ topics</a>, from nuclear economics to old comic books?`,
+  `...that Nick founded <a href="https://luniv.tech" target="_blank" rel="noopener noreferrer">Luniv Technology</a>, his own custom software and BI shop?`,
+  `...that before software, Nick wrote a <a href="/posts/making-nuclear-energy-competitve-with-fossil-fuels-and-natural-gas">report on nuclear reactor economics</a> for Michigan's NERS department?`,
+  `...that Nick has written up trips to <a href="/posts/chicago">Chicago</a> and <a href="/posts/houston">Houston</a>?`,
+  `...that Nick has strong opinions about <a href="/posts/my-thoughts-on-soccer">football</a> — the kind played with your feet?`,
   `...that this site runs ad-free, but you can <a href="https://www.buymeacoffee.com/nickstambaugh" target="_blank" rel="noopener noreferrer">buy him a coffee</a> anyway?`,
-  `...that the site itself is hand-coded in <a href="https://astro.build/" target="_blank" rel="noopener noreferrer">Astro</a>, React, and TypeScript — no page builders involved?`,
+  `...that the site itself is hand-coded in <a href="https://astro.build/" target="_blank" rel="noopener noreferrer">Astro</a>, React, and TypeScript?`,
 ];
-const dykPick = didYouKnow[today.getDate() % didYouKnow.length];
+
+// Randomized the "Did You Know" pick as well
+const dykPick = didYouKnow[Math.floor(Math.random() * didYouKnow.length)];
 
 const tagMap = new Map();
 for (const post of allPosts) {
@@ -217,6 +220,45 @@ const portals = [
       </header>
       <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
         <div class="lg:col-span-3 space-y-8">
+            <!-- Wikipedia Rabbit Holes — randomized on the client -->
+            {wikipediaLinks.length > 0 && (
+              <section class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5 sm:p-6">
+                <div class="flex items-center justify-between border-b border-text/10 dark:border-dk-text/10 pb-2 mb-3">
+                  <h2 class="text-xs font-bold uppercase tracking-widest text-secondary dark:text-dk-accent">
+                    Wikipedia Rabbit Holes
+                  </h2>
+                  <select
+                    id="wiki-count-select"
+                    class="text-xs bg-transparent border border-text/20 dark:border-dk-text/20 rounded px-2 py-1 text-text dark:text-dk-text focus:outline-none focus:border-secondary dark:focus:border-dk-accent cursor-pointer transition-colors"
+                  >
+                    <option value="5" class="bg-secondary/5 dark:bg-dk-secondary/10">Show 5</option>
+                    <option value="10" selected class="bg-secondary/5 dark:bg-dk-secondary/10">Show 10</option>
+                    <option value="15" class="bg-secondary/5 dark:bg-dk-secondary/10">Show 15</option>
+                    <option value="20" class="bg-secondary/5 dark:bg-dk-secondary/10">Show 20</option>
+                  </select>
+                </div>
+                <p class="text-xs text-text/50 dark:text-dk-text/50 mb-3">
+                  Randomized Wikipedia links scraped from Nick's blog.
+                </p>
+                
+                <ul id="wiki-links-container" class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5">
+                  {wikipediaLinks.slice(0, 10).map((link) => (
+                    <li class="text-sm"><a
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-secondary dark:text-dk-accent hover:underline underline-offset-4 font-medium"
+                      >{link.label}</a>
+                      <span class="text-text/40 dark:text-dk-text/40"> from </span>
+                      <a
+                        href={link.postUrl}
+                        class="text-text/60 dark:text-dk-text/60 hover:underline underline-offset-4"
+                      >{link.postTitle}</a>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
           {featured && (
             <section class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5 sm:p-6">
               <h2 class="text-xs font-bold uppercase tracking-widest text-secondary dark:text-dk-accent border-b border-text/10 dark:border-dk-text/10 pb-2 mb-3">
@@ -267,37 +309,8 @@ const portals = [
             </p>
           </section>
 
-          <!-- Wikipedia Rabbit Holes — randomized on the client -->
-          {wikipediaLinks.length > 0 && (
-            <section class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5 sm:p-6">
-              <h2 class="text-xs font-bold uppercase tracking-widest text-secondary dark:text-dk-accent border-b border-text/10 dark:border-dk-text/10 pb-2 mb-3">
-                Wikipedia Rabbit Holes
-              </h2>
-              <p class="text-xs text-text/50 dark:text-dk-text/50 mb-3">
-                Randomized Wikipedia links scraped from Nick's blog.
-              </p>
-              
-              <ul id="wiki-links-container" class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5">
-                {wikipediaLinks.slice(0, 8).map((link) => (
-                  <li class="text-sm"><a
-                      href={link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="text-secondary dark:text-dk-accent hover:underline underline-offset-4 font-medium"
-                    >{link.label}</a>
-                    <span class="text-text/40 dark:text-dk-text/40"> from </span>
-                    <a
-                      href={link.postUrl}
-                      class="text-text/60 dark:text-dk-text/60 hover:underline underline-offset-4"
-                    >{link.postTitle}</a>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          )}
-
           <script define:vars={{ wikipediaLinks }}>
-            function renderRandomLinks() {
+            function renderRandomLinks(count = 10) {
               const container = document.getElementById("wiki-links-container");
               if (!container || !wikipediaLinks || wikipediaLinks.length === 0) return;
 
@@ -308,7 +321,7 @@ const portals = [
                 [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
               }
               
-              const selected = shuffled.slice(0, 8);
+              const selected = shuffled.slice(0, count);
               
               container.innerHTML = selected.map(link => `
                 <li class="text-sm">
@@ -331,11 +344,27 @@ const portals = [
               `).join('');
             }
 
+            function setupWikiRabbitHoles() {
+              const select = document.getElementById("wiki-count-select");
+              if (select) {
+                // Read current default value
+                const count = parseInt(select.value, 10);
+                renderRandomLinks(count);
+                
+                // Add event listener to re-render on change
+                select.addEventListener("change", (e) => {
+                  renderRandomLinks(parseInt(e.target.value, 10));
+                });
+              } else {
+                renderRandomLinks();
+              }
+            }
+
             // Run on initial load
-            renderRandomLinks();
+            setupWikiRabbitHoles();
             
             // If you use Astro View Transitions, this ensures it runs again on navigation
-            document.addEventListener('astro:page-load', renderRandomLinks);
+            document.addEventListener('astro:page-load', setupWikiRabbitHoles);
           </script>
 
           <!-- Categories / portals -->
