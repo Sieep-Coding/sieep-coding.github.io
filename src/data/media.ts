@@ -157,6 +157,18 @@ export const mediaList = [
         description: "A pragmatic U.S. Marine observes the dehumanizing effects the Vietnam War has on his fellow recruits from their brutal boot camp training to the bloody street fighting in Hue."
     },
     {
+        id: "scarface",
+        title: "Scarface",
+        creator: "Brian De Palma",
+        studio: "Universal Pictures",
+        year: "1983",
+        episodes: "170 min",
+        rating: 4,
+        format: "Movie",
+        tags: ["crime", "drama", "classic"],
+        description: "In Miami in 1980, a determined Cuban immigrant takes over a drug cartel and succumbs to greed."
+    },
+    {
         id: "drake-and-josh",
         title: "Drake & Josh",
         creator: "Dan Schneider",
@@ -167,6 +179,31 @@ export const mediaList = [
         format: "Sitcom",
         tags: ["comedy", "sitcom"],
         description: "Two teenage stepbrothers with opposite personalities navigate the challenges of high school."
+    },
+    ,
+    {
+        id: "its-always-sunny",
+        title: "It's Always Sunny in Philadelphia",
+        creator: "Rob McElhenney",
+        studio: "FX",
+        year: "2005",
+        episodes: "170 episodes",
+        rating: 4.5,
+        format: "Sitcom",
+        tags: ["comedy", "sitcom"],
+        description: "Five self-centered friends run an Irish pub in South Philadelphia and frequently scheme against one another."
+    },
+    {
+        id: "workaholics",
+        title: "Workaholics",
+        creator: "Blake Anderson, Adam DeVine, Anders Holm, Kyle Newacheck",
+        studio: "Comedy Central",
+        year: "2011",
+        episodes: "86 episodes",
+        rating: 5,
+        format: "Sitcom",
+        tags: ["comedy", "sitcom"],
+        description: "Three college dropouts share a house and work together as telemarketers, treating every day like a bizarre college party."
     },
     {
         id: "lotr-trilogy",
@@ -194,6 +231,18 @@ export const mediaList = [
         description: "After awakening from a four-year coma, a former assassin wreaks vengeance on the team of assassins who betrayed her."
     },
     {
+        id: "heat",
+        title: "Heat",
+        creator: "Michael Mann",
+        studio: "Warner Bros.",
+        year: "1995",
+        episodes: "170 min",
+        rating: 3.5,
+        format: "Movie",
+        tags: ["crime", "action", "drama"],
+        description: "A masterful L.A. crime saga tracking a relentless detective as he hunts down an iconic professional criminal crew."
+    },
+    {
         id: "monk",
         title: "Monk",
         creator: "Andy Breckman",
@@ -216,6 +265,42 @@ export const mediaList = [
         format: "TV Show",
         tags: ["comedy", "sitcom"],
         description: "A Chicago working-class family navigates the challenges of life in the 1970s."
+    },
+    {
+        id: "zombieland",
+        title: "Zombieland",
+        creator: "Ruben Fleischer",
+        studio: "Columbia Pictures",
+        year: "2009",
+        episodes: "88 min",
+        rating: 4,
+        format: "Movie",
+        tags: ["comedy", "horror", "adventure"],
+        description: "A shy college student trying to reach his family in Ohio, a gun-toting brawler, and two sisters find themselves traveling across America together in a zombie apocalypse."
+    },
+    {
+        id: "superbad",
+        title: "Superbad",
+        creator: "Greg Mottola",
+        studio: "Columbia Pictures",
+        year: "2007",
+        episodes: "113 min",
+        rating: 5,
+        format: "Movie",
+        tags: ["comedy"],
+        description: "Two co-dependent high school seniors are forced to deal with separation anxiety after their plan to stage a booze-soaked party goes awry."
+    },
+    {
+        id: "pineapple-express",
+        title: "Pineapple Express",
+        creator: "David Gordon Green",
+        studio: "Columbia Pictures",
+        year: "2008",
+        episodes: "111 min",
+        rating: 4,
+        format: "Movie",
+        tags: ["comedy", "action"],
+        description: "A process server and his marijuana dealer wind up on the run from hitmen and a corrupt police officer after witnessing a murder."
     },
     {
         id: "scrubs",
@@ -254,6 +339,18 @@ export const mediaList = [
         description: "Brothers Shawn and Marlon Wayans play brothers with completely opposite personalities running a newsstand in New York City."
     },
     {
+        id: "step-brothers",
+        title: "Step Brothers",
+        creator: "Adam McKay",
+        studio: "Columbia Pictures",
+        year: "2008",
+        episodes: "98 min",
+        rating: 3.5,
+        format: "Movie",
+        tags: ["comedy"],
+        description: "Two aimless middle-aged men still living at home are forced to become stepbrothers when their parents marry."
+    },
+    {
         id: "fresh-prince",
         title: "The Fresh Prince of Bel-Air",
         creator: "Andy & Susan Borowitz",
@@ -264,6 +361,18 @@ export const mediaList = [
         format: "Sitcom",
         tags: ["comedy", "sitcom", "classic"],
         description: "A street-smart teenager from Philadelphia is sent by his mother to live with his wealthy relatives in a Bel-Air mansion."
+    },
+    {
+        id: "true-grit",
+        title: "True Grit",
+        creator: "Joel & Ethan Coen",
+        studio: "Paramount Pictures",
+        year: "2010",
+        episodes: "110 min",
+        rating: 3,
+        format: "Movie",
+        tags: ["adventure", "drama", "western"],
+        description: "A stubborn teenager enlists the help of a tough U.S. Marshal to track down her father's murderer in Indian Territory."
     },
     {
         id: "the-office",
@@ -289,6 +398,17 @@ export const mediaList = [
         format: "Sitcom",
         tags: ["comedy", "sitcom"],
         description: "A young African-American teen attempts to survive with his eccentric family and an all-white school in the 1980s."
+    },
+    {
+        id: "interstellar",
+        title: "Interstellar",
+        creator: "Christopher Nolan",
+        studio: "Paramount Pictures",
+        year: "2014",
+        episodes: "169 min",
+        rating: 4,
+        format: "Movie",
+        tags: ["sci-fi", "drama", "masterpiece"],
     },
     {
         id: "spongebob-original",
@@ -327,6 +447,19 @@ export const mediaList = [
         tags: ["action", "western", "drama"],
         description: "With the help of a German bounty-hunter, a freed slave sets out to rescue his wife from a brutal plantation owner in Mississippi."
     },
+    
+    {
+        id: "the-wolf-of-wall-street",
+        title: "The Wolf of Wall Street",
+        creator: "Martin Scorsese",
+        studio: "Paramount Pictures",
+        year: "2013",
+        episodes: "180 min",
+        rating: 4.5,
+        format: "Movie",
+        tags: ["biography", "comedy", "crime"],
+        description: "Based on the true story of Jordan Belfort, from his rise to a wealthy stockbroker living the high life to his fall involving crime and corruption."
+    },
     {
         id: "curb-your-enthusiasm",
         title: "Curb Your Enthusiasm",
@@ -350,6 +483,30 @@ export const mediaList = [
         format: "TV Show",
         tags: ["drama", "crime", "masterpiece"],
         description: "A chemistry teacher diagnosed with inoperable lung cancer turns to manufacturing and selling methamphetamine with a former student in order to secure his family's future."
+    },
+    {
+        id: "band-of-brothers",
+        title: "Band of Brothers",
+        creator: "Tom Hanks, Steven Spielberg",
+        studio: "HBO",
+        year: "2001",
+        episodes: "10 episodes",
+        rating: 5,
+        format: "Miniseries",
+        tags: ["war", "drama", "masterpiece"],
+        description: "The story of Easy Company, 506th Regiment of the 101st Airborne Division, from their initial training through the end of World War II."
+    },
+    {
+        id: "sleeping-dogs",
+        title: "Sleeping Dogs",
+        creator: "United Front Games",
+        studio: "Square Enix",
+        year: "2012",
+        episodes: "Single-player campaign",
+        rating: 4.5,
+        format: "Video Game",
+        tags: ["video game", "action", "adventure"],
+        description: "An open-world cop drama set in Hong Kong, where an undercover police officer tries to take down the triads from the inside."
     },
     {
         id: "the-sopranos",
