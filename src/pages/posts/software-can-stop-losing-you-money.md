@@ -11,7 +11,7 @@ img_alt : "A vaccum about to suck up money"
 tags: ["#Business", "#Tech", "#Opinion"]
 ---
 
-Have you ever built a feature you thought your users would love, only to find that it barely gets used? That sinking feeling is familiar to anyone who’s spent years coding software. I’ve been there, too: pouring hours into building client/server functionality for a tool my customers barely touched. 
+Have you ever built a [feature](https://en.wikipedia.org/wiki/Software_feature) you thought your users would love, only to find that it barely gets used? That sinking feeling is familiar to anyone who’s spent years coding software. I’ve been there, too: pouring hours into building client/server functionality for a tool my customers barely touched. 
 
 Meanwhile, smaller, simpler features like color options in that same tool delivered far more value. The lesson is clear: **features alone do not sell software**. Time and resources are limited, and every engineering hour spent on a misaligned feature is an hour that could have been applied to a project with measurable business impact.
 

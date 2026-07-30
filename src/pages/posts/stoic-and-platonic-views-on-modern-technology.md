@@ -10,21 +10,21 @@ tags: ["#Philosophy", "#Tech"]
 ---
 
 ## The Modern Virtuous Man
-Within Greco-Roman philosophy, the "virtuous person" is someone who has achieved complete internal harmony. 
+Within [Greco-Roman](https://en.wikipedia.org/wiki/Greco-Roman_world) [philosophy](https://en.wikipedia.org/wiki/Philosophy), the "virtuous person" is someone who has achieved complete internal harmony. 
 
 Harmony through:
 - reasoning
-- virtue
+- [virtue](https://en.wikipedia.org/wiki/Virtue)
 - self-mastery
 
-Rather than existing as a static state, becoming virtuous is an ongoing process of refining one's character through reason, self-mastery, and service to the community.
+Rather than existing as a static state, becoming virtuous is an ongoing process of refining one's character through [reason](https://en.wikipedia.org/wiki/Reason), self-mastery, and service to the community.
 
-While a lot has changed about our physical world since ancient Greece and Rome, these same thoughts can still be true in the digital age.
+While a lot has changed about our physical world since ancient [Greece](https://en.wikipedia.org/wiki/Greece) and [Rome](https://en.wikipedia.org/wiki/Rome), these same thoughts can still be true in the digital age.
 
 ---
 
 ## Stoicism and Platonic Thinking In The Digital Age
-While Stoicism emphasizes the neutrality of tools, Plato's concern with appearances suggests that certain technologies may systematically encourage ways of thinking that distance us from truth.
+While [Stoicism](https://en.wikipedia.org/wiki/Stoicism) emphasizes the neutrality of tools, Plato's concern with appearances suggests that certain technologies may systematically encourage ways of thinking that distance us from truth.
 
 The Greco-Roman perspective on technology does not classify it as "good" or "bad". Instead, a Stoic views it as a *preferred indifferent*, while a Platonist sees it as *pharmakon*. This means it is a tool entirely dependent on the user, and their intentionality.
 
@@ -38,7 +38,7 @@ To a stoic, technology is an external. It is not evil, nor is it virtuous. Howev
 - **The Application:** Ancient stoicism would likely lead to digital minimalism. The "virtuous person" uses hardware and software with precision. Once the work is done, the tool is set down. Notifications, feeds, and long-form videos are removed entirely.
 
 ### The Platonic View: Technology as a *Pharmakon*
-In *Phaedrus*, Socrates (as presented by Plato) describes writing as a *pharmakon*, both a remedy and a poison.
+In *Phaedrus*, Socrates (as presented by [Plato](https://en.wikipedia.org/wiki/Plato)) describes writing as a *pharmakon*, both a remedy and a poison.
 
 Plato argues that writing encourages the appearance of wisdom rather than genuine understanding, which is cultivated through dialectic.
 
@@ -49,7 +49,7 @@ Plato argues that writing encourages the appearance of wisdom rather than genuin
 ---
 
 ## A Modern Synthesis of Both Philosophies
-The modern "virtuous person" must consciously bridge the gap between digital output and integrity.
+The modern "virtuous person" must consciously bridge the gap between digital output and [integrity.](https://en.wikipedia.org/wiki/Integrity)
 
 | Aspect | The "Incomplete" Approach | The "Complete" Approach |
 |:---|:---|:---|

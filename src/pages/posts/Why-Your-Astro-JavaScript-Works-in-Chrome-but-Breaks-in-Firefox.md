@@ -15,17 +15,17 @@ tags: ["#Tech", "#Opinion"]
 
 Then Monday morning, your phone is buzzing with angry Slack messages from Firefox users complaining that your carousel doesn't work, your animation stutters, or your infinite scroll loops endlessly.
 
-You pull up Firefox. It works fine on your machine.
+You pull up [Firefox.](https://en.wikipedia.org/wiki/Firefox) It works fine on your machine.
 
 Then you pull up the developer console and see the real problem: `offsetWidth` is returning 0. 
 
-Your carefully calculated animation distance is broken. The gap spacing in your flex layout is being measured differently. None of this happened in Chrome.
+Your carefully calculated animation distance is broken. The gap spacing in your flex layout is being measured differently. None of this happened in [Chrome.](https://en.wikipedia.org/wiki/Google_Chrome)
 
 Welcome to the strange, infuriating world of browser inconsistencies in JavaScript.
 
 # The Problem Isn't Your Code. It's That Browsers Aren't Reading the Same Script.
 
-Here's what makes this particularly dangerous: your JavaScript isn't broken. The DOM isn't broken. Your CSS isn't broken. But the APIs that measure the DOM return different values depending on the browser, the timing, and whether you're measuring before or after layout recalculation.
+Here's what makes this particularly dangerous: your JavaScript isn't broken. The [DOM](https://en.wikipedia.org/wiki/Document_Object_Model) isn't broken. Your CSS isn't broken. But the APIs that measure the DOM return different values depending on the browser, the timing, and whether you're measuring before or after layout recalculation.
 
 Take `offsetWidth`. It's a simple property: return the rendered width of an element. Except it doesn't always return what you'd expect. In some browsers, if an element hasn't finished rendering, it returns 0. In others, it returns an estimated value. In Firefox specifically, flex layout gaps aren't always accounted for when you measure individual child elements. Chrome handles it one way. Safari another. Edge another still.
 
@@ -68,8 +68,6 @@ Use feature detection, not browser sniffing – Instead of checking "is this Fir
 ### The Business Impact: Speed vs. Correctness
 
 Here's where it gets interesting: you have to choose between fast-but-potentially-broken and slow-but-reliable. A 100ms delay adds up across thousands of users. Millions of unnecessary milliseconds translate to real performance degradation, which translates to real business impact.
-
-But shipping broken features is worse. A feature that works for 80% of users and breaks for 20% isn't a feature—it's a liability.
 
 The solution is to fix the measurement problem at its root, not mask it with delays. Use the right APIs. Test systematically. Build in a way that's resilient to timing variations.
 

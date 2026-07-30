@@ -14,7 +14,7 @@ tags: ["#Coding", "#Tech"]
 # Why [Astro](https://astro.build/) Stood Out for [My Portfolio](https://nickstambaugh.vercel.app/)
 Choosing a framework for a portfolio website can be overwhelming with so many options available. 
 
-After experimenting with several frameworks, I landed on Astro, and it quickly became the clear winner for my needs.
+After experimenting with [several frameworks](https://en.wikipedia.org/wiki/Comparison_of_JavaScript-based_web_frameworks), I landed on Astro, and it quickly became the clear winner for my needs.
 
 # My Experience with Hugo
 [Hugo](https://gohugo.io/) seemed like a perfect option for me initially, a lot of other developers used it and I'm familar enough with [Go.](https://go.dev/)

@@ -26,12 +26,12 @@ I love Mint and despise Windows/Microsoft/Apple, but sometimes you have to compr
 ### Ableton
 This isn't meant to be a hit piece. Ableton is excellent software used by serious professionals, and for good reason. But if I'm being honest with myself, the **Session View** never clicked for me the way it does for producers who rely on it daily.
 
-The clip-based workflow is powerful, but my brain doesn't think in clips. I think in patterns and loops that stack on top of each other. FL's Playlist view maps to that mental model naturally. It felt natural coming from video editing software. With Ableton, I always felt like I was one step removed from the actual music.
+The clip-based [workflow](https://en.wikipedia.org/wiki/Workflow) is powerful, but my brain doesn't think in clips. I think in patterns and loops that stack on top of each other. FL's Playlist view maps to that mental model naturally. It felt natural coming from video editing software. With Ableton, I always felt like I was one step removed from the actual music.
 
 ---
 
 ## What I Like About FL Studio
-There is many different aspects of FL Studio I like. Before getting into technical reasons, I wanted to bring light to the other sides of FL and why I find it superior.
+There is many different aspects of [FL Studio](https://en.wikipedia.org/wiki/FL_Studio) I like. Before getting into technical reasons, I wanted to bring light to the other sides of FL and why I find it superior.
 
 - The **pricing model** has long been the most generous among the major DAWs, with a one-time purchase granting you FL Studio for life! You also get all the updates and can upgrade further if you need more sounds/plugins. That's a fair trade-off to me.
 

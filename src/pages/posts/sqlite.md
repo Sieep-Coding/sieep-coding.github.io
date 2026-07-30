@@ -15,7 +15,7 @@ tags: ["#Tech"]
 
 No need for a heavy installation--just direct interaction with a simple .db file.
 
-SQLite doesn’t even need a GUI to be powerful, though if you prefer one, I recommend DB Browser for SQLite. 
+[SQLite](https://en.wikipedia.org/wiki/SQLite) doesn’t even need a GUI to be powerful, though if you prefer one, I recommend DB Browser for SQLite. 
 
 It’s a fantastic tool for visual database management!
 
@@ -64,7 +64,7 @@ func main() {
 }
 ```
 
-In ~20 lines of code, we’ve created a 5-column table with robust error handling and the ability to pass our tables around as objects. SQLite really shines in its simplicity and power, making it a fantastic choice for Go developers!
+In ~20 lines of code, we’ve created a 5-column [table](https://en.wikipedia.org/wiki/Table_(information)) with robust error handling and the ability to pass our tables around as objects. SQLite really shines in its simplicity and power, making it a fantastic choice for Go developers!
 
 ### Conclusion
 

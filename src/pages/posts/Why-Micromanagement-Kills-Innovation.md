@@ -17,11 +17,11 @@ To begin, let's answer some important questions first.
 
 #### What is micromanagement? 
 
-Micromanagement is a style of management that typically involves **control and active examination** over employees' responsibilities and decisions.
+[Micromanagement](https://en.wikipedia.org/wiki/Micromanagement) is a style of management that typically involves **control and active examination** over employees' responsibilities and decisions.
 
 #### What does innovation look like in the workplace?
 
-Innovation in business comes from **employees** & typically not managers, it is the process of mobilizing novel ideas to create work-flows, products, and efficiency improvements.
+[Innovation](https://en.wikipedia.org/wiki/Innovation) in business comes from **employees** & typically not managers, it is the process of mobilizing novel ideas to create work-flows, products, and efficiency improvements.
 
 #### Why does this matter?
 
@@ -42,7 +42,7 @@ When micromanagement occurs, managers are **actively discouraging independent th
 
 > I can't think of anything more rewarding than being able to express yourself to others through painting. Exercising the imagination, experimenting with talents, being creative; these things, to me, are truly the windows to your soul. - *Bob Ross*
 
-Beyond creativity, micromanagement can ruin morale. 
+Beyond creativity, micromanagement can ruin [morale.](https://en.wikipedia.org/wiki/Morale) 
 
 When employees' autonomy is undermined, they stop showing up. **Not physically, but mentally.** 
 
@@ -122,7 +122,7 @@ If organizations are serious about a culture of growth and staying competitive i
 
 Creating a workplace where employees feel trusted and free to think independently is how we can greatly the world around us. 
 
-A culture of creativity and innovation doesn’t happen by accident. 
+A culture of creativity and [innovation](https://en.wikipedia.org/wiki/Technological_change) doesn’t happen by accident. 
 
 It is built on a foundation of collaboration and bold leadership that is willing to embrace forward-thinking ideas, even if they come from unlikely sources.
 

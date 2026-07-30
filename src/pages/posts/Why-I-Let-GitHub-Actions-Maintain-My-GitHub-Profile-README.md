@@ -15,7 +15,7 @@ tags: ["#DevOps", "#Tech"]
 
 # Why I Automated My [GitHub Profile README](https://github.com/Sieep-Coding)
 
-Your GitHub profile README is supposed to show people what you are working on right now.
+Your [GitHub](https://en.wikipedia.org/wiki/GitHub) profile README is supposed to show people what you are working on right now.
 
 In practice, it shows what you cared about six months ago.
 
@@ -48,7 +48,7 @@ Your GitHub profile is often the first thing a recruiter, collaborator, or fello
 
 ## The Constraint I Set
 
-I wanted my profile README to satisfy three rules:
+I wanted my profile [README](https://en.wikipedia.org/wiki/README) to satisfy three rules:
 
 1. **Always reflect my latest writing**
 2. **Require zero manual intervention**
@@ -117,7 +117,7 @@ jobs:
           git push
 ```
 
-The fetch step converts my RSS feed into a deterministic Markdown table.
+The fetch step converts my RSS feed into a deterministic [Markdown](https://en.wikipedia.org/wiki/Markdown) table.
 
 ---
 
