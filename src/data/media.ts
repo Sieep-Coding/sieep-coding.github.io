@@ -180,7 +180,6 @@ export const mediaList = [
         tags: ["comedy", "sitcom"],
         description: "Two teenage stepbrothers with opposite personalities navigate the challenges of high school."
     },
-    ,
     {
         id: "its-always-sunny",
         title: "It's Always Sunny in Philadelphia",
