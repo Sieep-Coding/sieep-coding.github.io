@@ -147,7 +147,7 @@ for (const post of allPosts) {
 
 const wikipediaLinks = Array.from(wikipediaLinksMap.values());
 
-// Defined array passed safely to client-side scripts via JSON
+
 const didYouKnow = [
   `...that Nick's degrees are in <a href="/about" class="text-secondary dark:text-dk-accent underline underline-offset-4">economics and philosophy</a>, not computer science?`,
   `...that Nick's most-starred repo on GitHub is <a href="https://github.com/Sieep-Coding/${githubStats.topRepo}" target="_blank" rel="noopener noreferrer" class="text-secondary dark:text-dk-accent underline underline-offset-4">${githubStats.topRepo}</a>, with ${githubStats.stars} stars?`,
@@ -242,7 +242,7 @@ const randomArticles = [
   { title: "About Nick", url: "/about", type: "Portal" },
 ];
 
-// Cross-wiki "By the numbers" bar chart data
+
 const formatCounts = [
   { label: "Articles", count: totalPosts, href: "/posts" },
   { label: "Books", count: books.length, href: "/library" },
@@ -270,87 +270,91 @@ const topMedia =
 ---
 
 <BaseLayout title="Nickipedia — Nick's Wiki">
- <div class="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen">
-  <main
-    class="max-w-[1400px] mx-auto px-4 sm:px-8 pt-28 pb-10 sm:pt-32 sm:pb-16"
-  >
-    <header
-      class="border-b-4 border-secondary/20 dark:border-dk-accent/20 pb-4 mb-8"
+  <div class="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen">
+    <main
+      class="max-w-[1400px] mx-auto px-4 sm:px-8 pt-28 pb-10 sm:pt-32 sm:pb-16"
     >
-      <div class="flex items-end justify-between gap-4 flex-wrap">
-        <div>
-          <h1
-            class="text-4xl sm:text-5xl font-serif font-bold tracking-tight text-secondary dark:text-dk-accent"
+      <header
+        class="border-b-4 border-secondary/20 dark:border-dk-accent/20 pb-4 mb-8"
+      >
+        <div class="flex items-end justify-between gap-4 flex-wrap">
+          <div>
+            <h1
+              class="text-4xl sm:text-5xl font-serif font-bold tracking-tight text-secondary dark:text-dk-accent"
+            >
+              Nickipedia
+            </h1>
+            <p class="text-sm italic text-text/60 dark:text-dk-text/60 mt-1">
+              Version 0.2
+            </p>
+          </div>
+
+          <p
+            id="wiki-date"
+            class="text-xs text-text/50 dark:text-dk-text/50 whitespace-nowrap"
           >
-            Nickipedia
-          </h1>
-          <p class="text-sm italic text-text/60 dark:text-dk-text/60 mt-1">
-            Version 0.2
+            &nbsp;
           </p>
         </div>
 
-        <p
-          id="wiki-date"
-          class="text-xs text-text/50 dark:text-dk-text/50 whitespace-nowrap"
+        <div
+          class="mt-5 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3"
         >
-          &nbsp;
-        </p>
-      </div>
-
-      <div
-        class="mt-5 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3"
-      >
-        <nav
-          class="flex flex-wrap gap-2 text-[11px] flex-1"
-          aria-label="Nickipedia sections"
-        >
-          {[
-            ["#featured-picture", "Featured picture"],
-            ["#rabbit-holes", "Rabbit holes"],
-            ["#featured-article", "Featured article"],
-            ["#highlights", "Cross-wiki highlights"],
-            ["#latest-news", "Latest news"],
-            ["#by-the-numbers", "By the numbers"],
-            ["#portals", "Portals"],
-          ].map(([href, label]) => (
-            <a
-              href={href}
-              class="px-2.5 py-1 rounded-full border border-text/15 dark:border-dk-text/20 text-text/60 dark:text-dk-text/60 hover:text-secondary dark:hover:text-dk-accent hover:border-secondary/40 dark:hover:border-dk-accent/40 transition-colors"
-            >
-              {label}
-            </a>
-          ))}
-
-          <button
-            id="random-article-btn"
-            type="button"
-            class="text-xs font-semibold px-3 py-1.5 rounded-full border border-secondary/40 dark:border-dk-accent/40 text-secondary dark:text-dk-accent hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
+          <nav
+            class="flex flex-wrap gap-2 text-[11px] flex-1"
+            aria-label="Nickipedia sections"
           >
-            🎲 Random blog
-          </button>
-        </nav>
+            {
+              [
+                ["#featured-picture", "Featured picture"],
+                ["#rabbit-holes", "Rabbit holes"],
+                ["#featured-article", "Featured article"],
+                ["#highlights", "Cross-wiki highlights"],
+                ["#latest-news", "Latest news"],
+                ["#by-the-numbers", "By the numbers"],
+                ["#portals", "Portals"],
+              ].map(([href, label]) => (
+                <a
+                  href={href}
+                  class="px-2.5 py-1 rounded-full border border-text/15 dark:border-dk-text/20 text-text/60 dark:text-dk-text/60 hover:text-secondary dark:hover:text-dk-accent hover:border-secondary/40 dark:hover:border-dk-accent/40 transition-colors"
+                >
+                  {label}
+                </a>
+              ))
+            }
 
-        <div class="relative w-full lg:w-80 xl:w-96 shrink-0 z-50">
-          <input
-            type="text"
-            id="wiki-search-input"
-            placeholder="Search everything (↑ and ↓ to navigate)..."
-            autocomplete="off"
-            class="w-full px-3 py-2 text-sm rounded-md border border-text/20 dark:border-dk-text/20 bg-secondary/5 dark:bg-dk-secondary/5 text-text dark:text-dk-text placeholder-text/40 dark:placeholder-dk-text/40 focus:outline-none focus:border-secondary dark:focus:border-dk-accent transition-colors"
-          />
-          <div
-            id="wiki-search-results"
-            class="absolute top-full left-0 right-0 mt-2 bg-primary dark:bg-dk-primary border border-secondary/20 dark:border-dk-accent/20 rounded-lg shadow-xl hidden flex-col max-h-96 overflow-y-auto"
-          ></div>
+            <button
+              id="random-article-btn"
+              type="button"
+              class="text-xs font-semibold px-3 py-1.5 rounded-full border border-secondary/40 dark:border-dk-accent/40 text-secondary dark:text-dk-accent hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
+            >
+              🎲 Random blog
+            </button>
+          </nav>
+
+          <div class="relative w-full lg:w-80 xl:w-96 shrink-0 z-50">
+            <input
+              type="text"
+              id="wiki-search-input"
+              placeholder="Search everything (↑ and ↓ to navigate)..."
+              autocomplete="off"
+              class="w-full px-3 py-2 text-sm rounded-md border border-text/20 dark:border-dk-text/20 bg-secondary/5 dark:bg-dk-secondary/5 text-text dark:text-dk-text placeholder-text/40 dark:placeholder-dk-text/40 focus:outline-none focus:border-secondary dark:focus:border-dk-accent transition-colors"
+            />
+            <div
+              id="wiki-search-results"
+              class="absolute top-full left-0 right-0 mt-2 bg-primary dark:bg-dk-primary border border-secondary/20 dark:border-dk-accent/20 rounded-lg shadow-xl hidden flex-col max-h-96 overflow-y-auto"
+            >
+            </div>
+          </div>
         </div>
-      </div>
 
-      <div
-        id="wiki-search-data"
-        data-posts={JSON.stringify(unifiedSearchData)}
-        class="hidden"
-      ></div>
-    </header>
+        <div
+          id="wiki-search-data"
+          data-posts={JSON.stringify(unifiedSearchData)}
+          class="hidden"
+        >
+        </div>
+      </header>
 
       <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
         <div class="lg:col-span-3 space-y-8">
@@ -502,7 +506,6 @@ const topMedia =
             )
           }
 
-          <!-- Cross-wiki highlights: the site's own "featured" content outside the blog -->
           <section
             id="highlights"
             class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5 sm:p-6"
@@ -512,44 +515,61 @@ const topMedia =
             >
               Top Rated Across the Site
             </h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {
-                topBook && (
-                  <a
-                    href={`/library?book=${topBook.id}`}
-                    class="block p-3 rounded-lg border border-text/10 dark:border-dk-text/10 hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
-                  >
-                    <p class="text-[10px] uppercase tracking-widest text-text/40 dark:text-dk-text/40 mb-1">
-                      Highest-rated book
-                    </p>
-                    <p class="text-sm font-semibold text-secondary dark:text-dk-accent">
-                      {topBook.title}
-                    </p>
-                    <p class="text-xs text-text/60 dark:text-dk-text/60 mt-0.5">
-                      {topBook.author} · {topBook.rating}/5 ★
-                    </p>
-                  </a>
-                )
-              }
-              {
-                topMedia && (
-                  <a
-                    href={`/media?item=${topMedia.id}`}
-                    class="block p-3 rounded-lg border border-text/10 dark:border-dk-text/10 hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
-                  >
-                    <p class="text-[10px] uppercase tracking-widest text-text/40 dark:text-dk-text/40 mb-1">
-                      Highest-rated media
-                    </p>
-                    <p class="text-sm font-semibold text-secondary dark:text-dk-accent">
-                      {topMedia.title}
-                    </p>
-                    <p class="text-xs text-text/60 dark:text-dk-text/60 mt-0.5">
-                      {topMedia.creator} · {topMedia.rating}/5 ★
-                    </p>
-                  </a>
-                )
-              }
+
+            <div
+              id="top-rated-data"
+              data-books={JSON.stringify(topBooks)}
+              data-media={JSON.stringify(topMediaItems)}
+              class="hidden"
+            >
             </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <a
+                id="top-book-card"
+                href="#"
+                class="block p-3 rounded-lg border border-text/10 dark:border-dk-text/10 hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
+              >
+                <p
+                  class="text-[10px] uppercase tracking-widest text-text/40 dark:text-dk-text/40 mb-1"
+                >
+                  Highest-rated book
+                </p>
+                <p
+                  id="top-book-title"
+                  class="text-sm font-semibold text-secondary dark:text-dk-accent"
+                >
+                </p>
+                <p
+                  id="top-book-meta"
+                  class="text-xs text-text/60 dark:text-dk-text/60 mt-0.5"
+                >
+                </p>
+              </a>
+
+              <a
+                id="top-media-card"
+                href="#"
+                class="block p-3 rounded-lg border border-text/10 dark:border-dk-text/10 hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
+              >
+                <p
+                  class="text-[10px] uppercase tracking-widest text-text/40 dark:text-dk-text/40 mb-1"
+                >
+                  Highest-rated media
+                </p>
+                <p
+                  id="top-media-title"
+                  class="text-sm font-semibold text-secondary dark:text-dk-accent"
+                >
+                </p>
+                <p
+                  id="top-media-meta"
+                  class="text-xs text-text/60 dark:text-dk-text/60 mt-0.5"
+                >
+                </p>
+              </a>
+            </div>
+            
           </section>
 
           <section
@@ -967,7 +987,6 @@ const topMedia =
             document.addEventListener("astro:page-load", initWidgets);
           </script>
 
-          <!-- Featured Good Boy (Bruce), Nickipedia's answer to "Good Article" -->
           <section
             id="good-boy"
             class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5"
@@ -1146,9 +1165,6 @@ const topMedia =
     </main>
   </div>
 
-  <!-- Fixes the date going stale in production: Astro's static build bakes
-       in whatever `new Date()` was at build time, so this must run client-side
-       and re-run on every page load / view-transition, not just once at build. -->
   <script>
     function updateWikiDate() {
       const el = document.getElementById("wiki-date");
@@ -1278,6 +1294,37 @@ const topMedia =
     });
   }
 
-  setupWikiSearch();
   document.addEventListener("astro:page-load", setupWikiSearch);
+  
+  function initTopRated() {
+    const data = document.getElementById("top-rated-data");
+    if (!data) return;
+    
+    const books = JSON.parse(data.dataset.books || "[]");
+    const media = JSON.parse(data.dataset.media || "[]");
+    
+    if (books.length) {
+      const book = books[Math.floor(Math.random() * books.length)];
+      
+      document.getElementById("top-book-card").href =
+      `/library?book=${book.id}`;
+      document.getElementById("top-book-title").textContent = book.title;
+      document.getElementById("top-book-meta").textContent =
+      `${book.author} · ${book.rating}/5 ★`;
+    }
+    
+    if (media.length) {
+      const item = media[Math.floor(Math.random() * media.length)];
+      
+      document.getElementById("top-media-card").href =
+      `/media?item=${item.id}`;
+      document.getElementById("top-media-title").textContent = item.title;
+      document.getElementById("top-media-meta").textContent =
+      `${item.creator} · ${item.rating}/5 ★`;
+    }
+  }
+  
+  initTopRated();
+  setupWikiSearch();
+  document.addEventListener("astro:page-load", initTopRated);
 </script>
