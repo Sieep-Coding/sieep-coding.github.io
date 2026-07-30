@@ -1,6 +1,12 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
 import { info } from "../data/info";
+import { books } from "../data/library";
+import { mediaList } from "../data/media";
+import { tracks } from "../data/music";
+import { featuredCases, openSourceProjects } from "../data/projects";
+import { brucePhotos } from "../data/bruce";
 
 const allPosts = await Astro.glob("./posts/*.md");
 
@@ -10,17 +16,66 @@ const sortedPosts = [...allPosts].sort((a, b) => {
   return (isNaN(B) ? 0 : B) - (isNaN(A) ? 0 : A);
 });
 
-// Prepare payloads for client-side use
-const searchData = allPosts.map(post => ({
+const postSearchData = allPosts.map((post) => ({
+  type: "Article",
   title: post.frontmatter.title || "Untitled",
   description: post.frontmatter.description || "",
-  url: post.url
+  url: post.url,
 }));
+
+const librarySearchData = books.map((b) => ({
+  type: "Book",
+  title: b.title,
+  description: b.description,
+  url: `/library?book=${b.id}`,
+}));
+
+const mediaSearchData = mediaList.map((m) => ({
+  type: "Media",
+  title: m.title,
+  description: m.description,
+  url: `/media?item=${m.id}`,
+}));
+
+const musicSearchData = tracks.map((t) => ({
+  type: "Track",
+  title: t.title,
+  description: t.description,
+  url: "/music",
+}));
+
+const projectSearchData = [
+  ...featuredCases.map((c) => ({
+    type: "Project",
+    title: c.name,
+    description: c.description,
+    url: c.link || "/projects",
+  })),
+  ...openSourceProjects.map((p) => ({
+    type: "Project",
+    title: p.title,
+    description: p.description,
+    url: p.link || "/projects",
+  })),
+];
+
+const unifiedSearchData = [
+  ...postSearchData,
+  ...librarySearchData,
+  ...mediaSearchData,
+  ...musicSearchData,
+  ...projectSearchData,
+];
 
 const featured = sortedPosts[0];
 const recentPosts = sortedPosts.slice(1, 6);
 const totalPosts = allPosts.length;
-const today = new Date();
+
+let recipeCount: number | null = null;
+try {
+  const recipes = await Astro.glob("./recipes/*.md");
+  recipeCount = recipes.length;
+} catch (err) {}
 
 let githubStats = {
   topRepo: "simple-chat-csharp",
@@ -30,13 +85,13 @@ let githubStats = {
 
 try {
   const ghRes = await fetch(
-    "https://api.github.com/users/Sieep-Coding/repos?per_page=100&sort=updated"
+    "https://api.github.com/users/Sieep-Coding/repos?per_page=100&sort=updated",
   );
   if (ghRes.ok) {
     const repos = await ghRes.json();
     if (Array.isArray(repos) && repos.length) {
       const top = [...repos].sort(
-        (a, b) => (b.stargazers_count ?? 0) - (a.stargazers_count ?? 0)
+        (a, b) => (b.stargazers_count ?? 0) - (a.stargazers_count ?? 0),
       )[0];
       githubStats = {
         topRepo: top.name,
@@ -52,6 +107,8 @@ const wikipediaLinksMap = new Map<
   {
     label: string;
     url: string;
+    wikiTitle: string;
+    wikiHost: string;
     postTitle: string;
     postUrl: string;
   }
@@ -67,20 +124,20 @@ for (const post of allPosts) {
   } catch (err) {
     continue;
   }
-  let found = 0;
   for (const match of html.matchAll(wikiHrefPattern)) {
     const url = match[1];
-    const decoded = decodeURIComponent(
-      url
-        .split("/wiki/")
-        .pop()
-        ?.replaceAll("_", " ") ?? "Wikipedia"
-    );
-    found++;
+    const rawTitle = url.split("/wiki/").pop() ?? "Wikipedia";
+    const decoded = decodeURIComponent(rawTitle.replaceAll("_", " "));
+    let host = "en.wikipedia.org";
+    try {
+      host = new URL(url).hostname;
+    } catch (err) {}
     if (!wikipediaLinksMap.has(url)) {
       wikipediaLinksMap.set(url, {
         label: decoded,
         url,
+        wikiTitle: rawTitle,
+        wikiHost: host,
         postTitle: post.frontmatter.title,
         postUrl: post.url,
       });
@@ -104,6 +161,9 @@ const didYouKnow = [
   `...that Nick has strong opinions about <a href="/posts/my-thoughts-on-soccer" class="text-secondary dark:text-dk-accent underline underline-offset-4">football</a> — the kind played with your feet?`,
   `...that this site runs ad-free, but you can <a href="https://www.buymeacoffee.com/nickstambaugh" target="_blank" rel="noopener noreferrer" class="text-secondary dark:text-dk-accent underline underline-offset-4">buy him a coffee</a> anyway?`,
   `...that the site itself is hand-coded in <a href="https://astro.build/" target="_blank" rel="noopener noreferrer" class="text-secondary dark:text-dk-accent underline underline-offset-4">Astro</a>, React, and TypeScript?`,
+  `...that Nick's <a href="/library" class="text-secondary dark:text-dk-accent underline underline-offset-4">library</a> holds ${books.length} physical books he's actually read?`,
+  `...that Nick has ${mediaList.length} entries in his ultra-curated <a href="/media" class="text-secondary dark:text-dk-accent underline underline-offset-4">favorite media</a> list?`,
+  `...that ${tracks.length} tracks are currently live on Nick's <a href="/music" class="text-secondary dark:text-dk-accent underline underline-offset-4">music page</a>, licenseable by email?`,
 ];
 
 const tagMap = new Map();
@@ -127,63 +187,209 @@ const topTags = Array.from(tagMap.entries())
   .sort((a, b) => b.count - a.count)
   .slice(0, 12);
 
-const dateStr = today.toLocaleDateString("en-US", {
-  weekday: "long",
-  month: "long",
-  day: "numeric",
-  year: "numeric",
-});
-
 const portals = [
-  { href: "/posts", label: "Posts", desc: `${totalPosts} articles`, icon: "📝" },
-  { href: "/music", label: "Music", desc: "sieep, instrumentals", icon: "🎵" },
-  { href: "/recipes", label: "Recipes", desc: "Cooking archive", icon: "🍳" },
-  { href: "/library", label: "Library", desc: "Books read", icon: "📚" },
-  { href: "/media", label: "Media", desc: "Movies, shows, games", icon: "🎬" },
-  { href: "/projects", label: "Projects", desc: "Client & open source", icon: "🛠️" },
+  {
+    href: "/posts",
+    label: "Posts",
+    desc: `${totalPosts} articles`,
+    icon: "📝",
+  },
+  {
+    href: "/music",
+    label: "Music",
+    desc: `${tracks.length} tracks`,
+    icon: "🎵",
+  },
+  {
+    href: "/recipes",
+    label: "Recipes",
+    desc: recipeCount !== null ? `${recipeCount} recipes` : "Cooking archive",
+    icon: "🍳",
+  },
+  {
+    href: "/library",
+    label: "Library",
+    desc: `${books.length} books`,
+    icon: "📚",
+  },
+  {
+    href: "/media",
+    label: "Media",
+    desc: `${mediaList.length} favorites`,
+    icon: "🎬",
+  },
+  {
+    href: "/projects",
+    label: "Projects",
+    desc: `${featuredCases.length + openSourceProjects.length} builds`,
+    icon: "🛠️",
+  },
   { href: "/bruce-the-dog", label: "Bruce", desc: "The dog", icon: "🐕" },
   { href: "/about", label: "About", desc: "Nick Stambaugh", icon: "👤" },
 ];
----
-<BaseLayout title="Nickipedia — Nick's Wiki">
-  <div class="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen">
-    <main class="max-w-[1400px] mx-auto px-4 sm:px-8 pt-28 pb-10 sm:pt-32 sm:pb-16">
-      <header class="border-b-4 border-secondary/20 dark:border-dk-accent/20 pb-4 mb-8">
-        <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
-          <div>
-            <h1
-              class="text-4xl sm:text-5xl font-serif font-bold tracking-tight text-secondary dark:text-dk-accent"
-            >
-              Nickipedia
-            </h1>
-            <p class="text-sm italic text-text/60 dark:text-dk-text/60 mt-1">
-              Version 0.1
-            </p>
-          </div>
-          <p class="text-xs text-text/50 dark:text-dk-text/50">{dateStr}</p>
-          
-          <!-- Inline Wiki Search -->
-          <div class="mt-5 relative w-full max-w-md z-50">
-            <input
-              type="text"
-              id="wiki-search-input"
-              placeholder="Search blog (&uarr; and &darr; to navigate)..."
-              autocomplete="off"
-              class="w-full px-3 py-2 text-sm rounded-md border border-text/20 dark:border-dk-text/20 bg-secondary/5 dark:bg-dk-secondary/5 text-text dark:text-dk-text placeholder-text/40 dark:placeholder-dk-text/40 focus:outline-none focus:border-secondary dark:focus:border-dk-accent transition-colors"
-            />
-            <div
-              id="wiki-search-results"
-              class="absolute top-full left-0 right-0 mt-2 bg-primary dark:bg-dk-primary border border-secondary/20 dark:border-dk-accent/20 rounded-lg shadow-xl hidden flex-col max-h-96 overflow-y-auto"
-            ></div>
-          </div>
-          <div id="wiki-search-data" data-posts={JSON.stringify(searchData)} class="hidden"></div>
 
+const randomArticles = [
+  ...allPosts.map((p) => ({
+    title: p.frontmatter.title || "Untitled",
+    url: p.url,
+    type: "Article",
+  })),
+  { title: "Library", url: "/library", type: "Portal" },
+  { title: "Favorite Media", url: "/media", type: "Portal" },
+  { title: "Projects", url: "/projects", type: "Portal" },
+  { title: "Music", url: "/music", type: "Portal" },
+  { title: "Bruce the Dog", url: "/bruce-the-dog", type: "Portal" },
+  { title: "About Nick", url: "/about", type: "Portal" },
+];
+
+// Cross-wiki "By the numbers" bar chart data
+const formatCounts = [
+  { label: "Articles", count: totalPosts, href: "/posts" },
+  { label: "Books", count: books.length, href: "/library" },
+  { label: "Media", count: mediaList.length, href: "/media" },
+  { label: "Tracks", count: tracks.length, href: "/music" },
+  {
+    label: "Projects",
+    count: featuredCases.length + openSourceProjects.length,
+    href: "/projects",
+  },
+];
+if (recipeCount !== null) {
+  formatCounts.push({ label: "Recipes", count: recipeCount, href: "/recipes" });
+}
+const maxFormatCount = Math.max(1, ...formatCounts.map((f) => f.count));
+
+const topBookRating = Math.max(...books.map((b) => b.rating));
+const topBooks = books.filter((b) => b.rating === topBookRating);
+const topBook = topBooks[Math.floor(Math.random() * topBooks.length)];
+
+const topMediaRating = Math.max(...mediaList.map((m) => m.rating));
+const topMediaItems = mediaList.filter((m) => m.rating === topMediaRating);
+const topMedia =
+  topMediaItems[Math.floor(Math.random() * topMediaItems.length)];
+---
+
+<BaseLayout title="Nickipedia — Nick's Wiki">
+ <div class="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen">
+  <main
+    class="max-w-[1400px] mx-auto px-4 sm:px-8 pt-28 pb-10 sm:pt-32 sm:pb-16"
+  >
+    <header
+      class="border-b-4 border-secondary/20 dark:border-dk-accent/20 pb-4 mb-8"
+    >
+      <div class="flex items-end justify-between gap-4 flex-wrap">
+        <div>
+          <h1
+            class="text-4xl sm:text-5xl font-serif font-bold tracking-tight text-secondary dark:text-dk-accent"
+          >
+            Nickipedia
+          </h1>
+          <p class="text-sm italic text-text/60 dark:text-dk-text/60 mt-1">
+            Version 0.2
+          </p>
         </div>
-      </header>
+
+        <p
+          id="wiki-date"
+          class="text-xs text-text/50 dark:text-dk-text/50 whitespace-nowrap"
+        >
+          &nbsp;
+        </p>
+      </div>
+
+      <div
+        class="mt-5 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3"
+      >
+        <nav
+          class="flex flex-wrap gap-2 text-[11px] flex-1"
+          aria-label="Nickipedia sections"
+        >
+          {[
+            ["#featured-picture", "Featured picture"],
+            ["#rabbit-holes", "Rabbit holes"],
+            ["#featured-article", "Featured article"],
+            ["#highlights", "Cross-wiki highlights"],
+            ["#latest-news", "Latest news"],
+            ["#by-the-numbers", "By the numbers"],
+            ["#portals", "Portals"],
+          ].map(([href, label]) => (
+            <a
+              href={href}
+              class="px-2.5 py-1 rounded-full border border-text/15 dark:border-dk-text/20 text-text/60 dark:text-dk-text/60 hover:text-secondary dark:hover:text-dk-accent hover:border-secondary/40 dark:hover:border-dk-accent/40 transition-colors"
+            >
+              {label}
+            </a>
+          ))}
+
+          <button
+            id="random-article-btn"
+            type="button"
+            class="text-xs font-semibold px-3 py-1.5 rounded-full border border-secondary/40 dark:border-dk-accent/40 text-secondary dark:text-dk-accent hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
+          >
+            🎲 Random blog
+          </button>
+        </nav>
+
+        <div class="relative w-full lg:w-80 xl:w-96 shrink-0 z-50">
+          <input
+            type="text"
+            id="wiki-search-input"
+            placeholder="Search everything (↑ and ↓ to navigate)..."
+            autocomplete="off"
+            class="w-full px-3 py-2 text-sm rounded-md border border-text/20 dark:border-dk-text/20 bg-secondary/5 dark:bg-dk-secondary/5 text-text dark:text-dk-text placeholder-text/40 dark:placeholder-dk-text/40 focus:outline-none focus:border-secondary dark:focus:border-dk-accent transition-colors"
+          />
+          <div
+            id="wiki-search-results"
+            class="absolute top-full left-0 right-0 mt-2 bg-primary dark:bg-dk-primary border border-secondary/20 dark:border-dk-accent/20 rounded-lg shadow-xl hidden flex-col max-h-96 overflow-y-auto"
+          ></div>
+        </div>
+      </div>
+
+      <div
+        id="wiki-search-data"
+        data-posts={JSON.stringify(unifiedSearchData)}
+        class="hidden"
+      ></div>
+    </header>
+
       <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
         <div class="lg:col-span-3 space-y-8">
-            {wikipediaLinks.length > 0 && (
-              <section class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5 sm:p-6">
+          <section
+            id="featured-picture"
+            class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5 sm:p-6"
+          >
+            <h2
+              class="text-xs font-bold uppercase tracking-widest text-secondary dark:text-dk-accent border-b border-text/10 dark:border-dk-text/10 pb-2 mb-3"
+            >
+              Featured Picture
+            </h2>
+            <div
+              id="featured-picture-container"
+              class="flex flex-col sm:flex-row gap-4 items-start"
+            >
+              <div
+                id="featured-picture-skeleton"
+                class="w-full sm:w-52 aspect-video sm:aspect-square rounded-lg bg-text/10 dark:bg-dk-text/10 animate-pulse shrink-0"
+              >
+              </div>
+              <p
+                id="featured-picture-caption"
+                class="text-sm text-text/70 dark:text-dk-text/70 leading-relaxed"
+              >
+                Loading today's featured picture from Wikipedia…
+              </p>
+            </div>
+            <p class="mt-2 text-[10px] text-text/40 dark:text-dk-text/40">
+              Live from the Wikipedia REST API — a new picture every day.
+            </p>
+          </section>
+
+          {
+            wikipediaLinks.length > 0 && (
+              <section
+                id="rabbit-holes"
+                class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5 sm:p-6"
+              >
                 <div class="flex items-center justify-between border-b border-text/10 dark:border-dk-text/10 pb-2 mb-3">
                   <h2 class="text-xs font-bold uppercase tracking-widest text-secondary dark:text-dk-accent">
                     Wikipedia Rabbit Holes
@@ -192,101 +398,280 @@ const portals = [
                     id="wiki-count-select"
                     class="text-xs bg-transparent border border-text/20 dark:border-dk-text/20 rounded px-2 py-1 text-text dark:text-dk-text focus:outline-none focus:border-secondary dark:focus:border-dk-accent cursor-pointer transition-colors"
                   >
-                    <option value="5" class="bg-secondary/5 dark:bg-dk-secondary/10">Show 5</option>
-                    <option value="10" selected class="bg-secondary/5 dark:bg-dk-secondary/10">Show 10</option>
-                    <option value="15" class="bg-secondary/5 dark:bg-dk-secondary/10">Show 15</option>
-                    <option value="20" class="bg-secondary/5 dark:bg-dk-secondary/10">Show 20</option>
+                    <option
+                      value="5"
+                      class="bg-secondary/5 dark:bg-dk-secondary/10"
+                    >
+                      Show 5
+                    </option>
+                    <option
+                      value="10"
+                      selected
+                      class="bg-secondary/5 dark:bg-dk-secondary/10"
+                    >
+                      Show 10
+                    </option>
+                    <option
+                      value="15"
+                      class="bg-secondary/5 dark:bg-dk-secondary/10"
+                    >
+                      Show 15
+                    </option>
+                    <option
+                      value="20"
+                      class="bg-secondary/5 dark:bg-dk-secondary/10"
+                    >
+                      Show 20
+                    </option>
                   </select>
                 </div>
                 <p class="text-xs text-text/50 dark:text-dk-text/50 mb-3">
-                  Randomized Wikipedia links scraped from Nick's blog.
+                  Randomized Wikipedia links scraped from Nick's blog, with live
+                  thumbnails.
                 </p>
-                
-                <ul id="wiki-links-container" class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5">
+
+                <ul
+                  id="wiki-links-container"
+                  class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3"
+                >
                   {wikipediaLinks.slice(0, 10).map((link) => (
-                    <li class="text-sm"><a
-                        href={link.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="text-secondary dark:text-dk-accent hover:underline underline-offset-4 font-medium"
-                      >{link.label}</a>
-                      <span class="text-text/40 dark:text-dk-text/40"> from </span>
-                      <a
-                        href={link.postUrl}
-                        class="text-text/60 dark:text-dk-text/60 hover:underline underline-offset-4"
-                      >{link.postTitle}</a>
+                    <li class="text-sm flex items-start gap-2.5">
+                      <span
+                        class="wiki-thumb shrink-0 w-9 h-9 rounded-md bg-text/10 dark:bg-dk-text/10 overflow-hidden flex items-center justify-center text-[9px] text-text/30 dark:text-dk-text/30"
+                        data-title={link.wikiTitle}
+                        data-host={link.wikiHost}
+                      >
+                        ···
+                      </span>
+                      <span class="min-w-0">
+                        <a
+                          href={link.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="text-secondary dark:text-dk-accent hover:underline underline-offset-4 font-medium"
+                        >
+                          {link.label}
+                        </a>
+                        <span class="text-text/40 dark:text-dk-text/40">
+                          {" "}
+                          from{" "}
+                        </span>
+                        <a
+                          href={link.postUrl}
+                          class="text-text/60 dark:text-dk-text/60 hover:underline underline-offset-4"
+                        >
+                          {link.postTitle}
+                        </a>
+                      </span>
                     </li>
                   ))}
                 </ul>
               </section>
-            )}
-          {featured && (
-            <section class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5 sm:p-6">
-              <h2 class="text-xs font-bold uppercase tracking-widest text-secondary dark:text-dk-accent border-b border-text/10 dark:border-dk-text/10 pb-2 mb-3">
-                Featured Article
-              </h2>
-              <a
-                href={featured.url}
-                class="text-xl font-serif font-semibold text-secondary dark:text-dk-accent hover:underline underline-offset-4"
+            )
+          }
+
+          {
+            featured && (
+              <section
+                id="featured-article"
+                class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5 sm:p-6"
               >
-                {featured.frontmatter.title}
-              </a>
-              {featured.frontmatter.description && (
-                <p class="mt-2 text-sm text-text/80 dark:text-dk-text/80 leading-relaxed">
-                  {featured.frontmatter.description}
-                </p>
-              )}
-              <p class="mt-3">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-secondary dark:text-dk-accent border-b border-text/10 dark:border-dk-text/10 pb-2 mb-3">
+                  Featured Article
+                </h2>
                 <a
                   href={featured.url}
-                  class="text-sm font-medium text-secondary dark:text-dk-accent hover:underline underline-offset-4"
+                  class="text-xl font-serif font-semibold text-secondary dark:text-dk-accent hover:underline underline-offset-4"
                 >
-                  Read full article →
+                  {featured.frontmatter.title}
                 </a>
-              </p>
-            </section>
-          )}
-          <section class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5 sm:p-6">
-            <h2 class="text-xs font-bold uppercase tracking-widest text-secondary dark:text-dk-accent border-b border-text/10 dark:border-dk-text/10 pb-2 mb-3">
+                {featured.frontmatter.description && (
+                  <p class="mt-2 text-sm text-text/80 dark:text-dk-text/80 leading-relaxed">
+                    {featured.frontmatter.description}
+                  </p>
+                )}
+                <p class="mt-3">
+                  <a
+                    href={featured.url}
+                    class="text-sm font-medium text-secondary dark:text-dk-accent hover:underline underline-offset-4"
+                  >
+                    Read full article →
+                  </a>
+                </p>
+              </section>
+            )
+          }
+
+          <!-- Cross-wiki highlights: the site's own "featured" content outside the blog -->
+          <section
+            id="highlights"
+            class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5 sm:p-6"
+          >
+            <h2
+              class="text-xs font-bold uppercase tracking-widest text-secondary dark:text-dk-accent border-b border-text/10 dark:border-dk-text/10 pb-2 mb-3"
+            >
+              Top Rated Across the Site
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {
+                topBook && (
+                  <a
+                    href={`/library?book=${topBook.id}`}
+                    class="block p-3 rounded-lg border border-text/10 dark:border-dk-text/10 hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
+                  >
+                    <p class="text-[10px] uppercase tracking-widest text-text/40 dark:text-dk-text/40 mb-1">
+                      Highest-rated book
+                    </p>
+                    <p class="text-sm font-semibold text-secondary dark:text-dk-accent">
+                      {topBook.title}
+                    </p>
+                    <p class="text-xs text-text/60 dark:text-dk-text/60 mt-0.5">
+                      {topBook.author} · {topBook.rating}/5 ★
+                    </p>
+                  </a>
+                )
+              }
+              {
+                topMedia && (
+                  <a
+                    href={`/media?item=${topMedia.id}`}
+                    class="block p-3 rounded-lg border border-text/10 dark:border-dk-text/10 hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
+                  >
+                    <p class="text-[10px] uppercase tracking-widest text-text/40 dark:text-dk-text/40 mb-1">
+                      Highest-rated media
+                    </p>
+                    <p class="text-sm font-semibold text-secondary dark:text-dk-accent">
+                      {topMedia.title}
+                    </p>
+                    <p class="text-xs text-text/60 dark:text-dk-text/60 mt-0.5">
+                      {topMedia.creator} · {topMedia.rating}/5 ★
+                    </p>
+                  </a>
+                )
+              }
+            </div>
+          </section>
+
+          <section
+            id="latest-news"
+            class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5 sm:p-6"
+          >
+            <h2
+              class="text-xs font-bold uppercase tracking-widest text-secondary dark:text-dk-accent border-b border-text/10 dark:border-dk-text/10 pb-2 mb-3"
+            >
               Nick's Latest News
             </h2>
             <ul class="space-y-2.5">
-              {recentPosts.map((post) => (
-                <li class="flex items-start gap-2 text-sm">
-                  <span class="text-text/30 dark:text-dk-text/30 mt-0.5">•</span>
-                  <a
-                    href={post.url}
-                    class="text-text dark:text-dk-text hover:text-secondary dark:hover:text-dk-accent hover:underline underline-offset-4 transition-colors"
-                  >
-                    {post.frontmatter.title}
-                  </a>
-                </li>
-              ))}
+              {
+                recentPosts.map((post) => (
+                  <li class="flex items-start gap-2 text-sm">
+                    <span class="text-text/30 dark:text-dk-text/30 mt-0.5">
+                      •
+                    </span>
+                    <a
+                      href={post.url}
+                      class="text-text dark:text-dk-text hover:text-secondary dark:hover:text-dk-accent hover:underline underline-offset-4 transition-colors"
+                    >
+                      {post.frontmatter.title}
+                    </a>
+                  </li>
+                ))
+              }
             </ul>
             <p class="mt-3">
-              <a href="/posts" class="text-sm font-medium text-secondary dark:text-dk-accent hover:underline underline-offset-4">
+              <a
+                href="/posts"
+                class="text-sm font-medium text-secondary dark:text-dk-accent hover:underline underline-offset-4"
+              >
                 View all posts →
               </a>
             </p>
           </section>
 
+          <section
+            id="by-the-numbers"
+            class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5 sm:p-6"
+          >
+            <h2
+              class="text-xs font-bold uppercase tracking-widest text-secondary dark:text-dk-accent border-b border-text/10 dark:border-dk-text/10 pb-2 mb-4"
+            >
+              Nickipedia by the Numbers
+            </h2>
+            <div class="space-y-3">
+              {
+                formatCounts.map((f) => (
+                  <a
+                    href={f.href}
+                    class="group flex items-center gap-3 text-sm"
+                  >
+                    <span class="w-20 shrink-0 text-text/60 dark:text-dk-text/60 group-hover:text-secondary dark:group-hover:text-dk-accent transition-colors">
+                      {f.label}
+                    </span>
+                    <span class="flex-1 h-2.5 rounded-full bg-text/10 dark:bg-dk-text/10 overflow-hidden">
+                      <span
+                        class="block h-full rounded-full bg-secondary/70 dark:bg-dk-accent/70 group-hover:bg-secondary dark:group-hover:bg-dk-accent transition-colors"
+                        style={`width: ${Math.max(6, (f.count / maxFormatCount) * 75)}%`}
+                      />
+                    </span>
+                    <span class="w-8 text-right tabular-nums text-text/50 dark:text-dk-text/50">
+                      {f.count}
+                    </span>
+                  </a>
+                ))
+              }
+            </div>
+          </section>
+
           <script define:vars={{ wikipediaLinks }}>
             function renderRandomLinks(count = 10) {
               const container = document.getElementById("wiki-links-container");
-              if (!container || !wikipediaLinks || wikipediaLinks.length === 0) return;
+              if (!container || !wikipediaLinks || wikipediaLinks.length === 0)
+                return;
               const shuffled = [...wikipediaLinks];
               for (let i = shuffled.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
                 [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
               }
               const selected = shuffled.slice(0, count);
-              container.innerHTML = selected.map(link => `
-                <li class="text-sm">
-                  <a href="${link.url}" target="_blank" rel="noopener noreferrer" class="text-secondary dark:text-dk-accent hover:underline underline-offset-4 font-medium">${link.label}</a>
-                  <span class="text-text/40 dark:text-dk-text/40"> — from </span>
-                  <a href="${link.postUrl}" class="text-text/60 dark:text-dk-text/60 hover:underline underline-offset-4">${link.postTitle}</a>
+              container.innerHTML = selected
+                .map(
+                  (link) => `
+                <li class="text-sm flex items-start gap-2.5">
+                  <span class="wiki-thumb shrink-0 w-9 h-9 rounded-md bg-text/10 dark:bg-dk-text/10 overflow-hidden flex items-center justify-center text-[9px] text-text/30 dark:text-dk-text/30" data-title="${link.wikiTitle}" data-host="${link.wikiHost}">···</span>
+                  <span class="min-w-0">
+                    <a href="${link.url}" target="_blank" rel="noopener noreferrer" class="text-secondary dark:text-dk-accent hover:underline underline-offset-4 font-medium">${link.label}</a>
+                    <span class="text-text/40 dark:text-dk-text/40"> — from </span>
+                    <a href="${link.postUrl}" class="text-text/60 dark:text-dk-text/60 hover:underline underline-offset-4">${link.postTitle}</a>
+                  </span>
                 </li>
-              `).join('');
+              `,
+                )
+                .join("");
+              loadWikiThumbnails();
+            }
+
+            function loadWikiThumbnails() {
+              const thumbs = Array.from(
+                document.querySelectorAll(".wiki-thumb:not([data-loaded])"),
+              ).slice(0, 12);
+              thumbs.forEach((el) => {
+                el.setAttribute("data-loaded", "1");
+                const title = el.getAttribute("data-title");
+                const host = el.getAttribute("data-host") || "en.wikipedia.org";
+                if (!title) return;
+                fetch(`https://${host}/api/rest_v1/page/summary/${title}`)
+                  .then((res) => (res.ok ? res.json() : null))
+                  .then((data) => {
+                    if (data && data.thumbnail && data.thumbnail.source) {
+                      el.innerHTML = `<img src="${data.thumbnail.source}" alt="" class="w-full h-full object-cover" loading="lazy" />`;
+                    } else {
+                      el.textContent = "📄";
+                    }
+                  })
+                  .catch(() => {
+                    el.textContent = "📄";
+                  });
+              });
             }
 
             function setupWikiRabbitHoles() {
@@ -302,36 +687,193 @@ const portals = [
               }
             }
             setupWikiRabbitHoles();
-            document.addEventListener('astro:page-load', setupWikiRabbitHoles);
+            document.addEventListener("astro:page-load", setupWikiRabbitHoles);
           </script>
 
-          <section class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5 sm:p-6">
-            <h2 class="text-xs font-bold uppercase tracking-widest text-secondary dark:text-dk-accent border-b border-text/10 dark:border-dk-text/10 pb-2 mb-4">
+          <script>
+            function initFeaturedPicture() {
+              const container = document.getElementById(
+                "featured-picture-container",
+              );
+              const skeleton = document.getElementById(
+                "featured-picture-skeleton",
+              );
+              const captionEl = document.getElementById(
+                "featured-picture-caption",
+              );
+              if (!container || !captionEl) return;
+              if (container.dataset.loaded === "true") return;
+              container.dataset.loaded = "true";
+
+              const now = new Date();
+              const yyyy = now.getFullYear();
+              const mm = String(now.getMonth() + 1).padStart(2, "0");
+              const dd = String(now.getDate()).padStart(2, "0");
+
+              fetch(
+                `https://en.wikipedia.org/api/rest_v1/feed/featured/${yyyy}/${mm}/${dd}`,
+              )
+                .then((res) => res.json())
+                .then((data) => {
+                  const img = data.image;
+                  if (img && img.thumbnail && img.thumbnail.source) {
+                    skeleton?.remove();
+                    const imgEl = document.createElement("img");
+                    imgEl.src = img.thumbnail.source;
+                    imgEl.alt =
+                      (img.description && img.description.text) ||
+                      "Wikipedia featured picture";
+                    imgEl.loading = "lazy";
+                    imgEl.className =
+                      "w-full sm:w-52 rounded-lg object-cover shrink-0 border border-text/10 dark:border-dk-text/10";
+                    container.prepend(imgEl);
+
+                    const desc =
+                      (img.description && img.description.text) ||
+                      "No description available for today's picture.";
+                    const pageUrl =
+                      img.file_page ||
+                      (img.title
+                        ? `https://commons.wikimedia.org/wiki/${encodeURIComponent(img.title)}`
+                        : null);
+                    captionEl.innerHTML = `${desc}${
+                      pageUrl
+                        ? ` <a href="${pageUrl}" target="_blank" rel="noopener noreferrer" class="text-secondary dark:text-dk-accent underline underline-offset-4">View on Wikimedia Commons →</a>`
+                        : ""
+                    }`;
+                  } else {
+                    skeleton?.remove();
+                    captionEl.textContent =
+                      "No featured picture available today.";
+                  }
+                })
+                .catch(() => {
+                  skeleton?.remove();
+                  captionEl.textContent =
+                    "Could not load today's featured picture.";
+                });
+            }
+            initFeaturedPicture();
+            document.addEventListener("astro:page-load", initFeaturedPicture);
+          </script>
+
+          <section
+            id="portals"
+            class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5 sm:p-6"
+          >
+            <h2
+              class="text-xs font-bold uppercase tracking-widest text-secondary dark:text-dk-accent border-b border-text/10 dark:border-dk-text/10 pb-2 mb-4"
+            >
               Other Areas of This Site
             </h2>
             <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-              {portals.map((p) => (
-                <a
-                  href={p.href}
-                  class="group flex flex-col items-center text-center gap-1 p-3 rounded-lg border border-text/10 dark:border-dk-text/10 hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
-                >
-                  <span class="text-2xl">{p.icon}</span>
-                  <span class="text-sm font-medium text-secondary dark:text-dk-accent group-hover:underline underline-offset-4">
-                    {p.label}
-                  </span>
-                  <span class="text-[11px] text-text/50 dark:text-dk-text/50">
-                    {p.desc}
-                  </span>
-                </a>
-              ))}
+              {
+                portals.map((p) => (
+                  <a
+                    href={p.href}
+                    class="group flex flex-col items-center text-center gap-1 p-3 rounded-lg border border-text/10 dark:border-dk-text/10 hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
+                  >
+                    <span class="text-2xl">{p.icon}</span>
+                    <span class="text-sm font-medium text-secondary dark:text-dk-accent group-hover:underline underline-offset-4">
+                      {p.label}
+                    </span>
+                    <span class="text-[11px] text-text/50 dark:text-dk-text/50">
+                      {p.desc}
+                    </span>
+                  </a>
+                ))
+              }
             </div>
           </section>
         </div>
 
         <aside class="space-y-8">
+          <!-- Wikipedia-style infobox for the subject of this whole site -->
+          <section
+            class="border-2 border-text/15 dark:border-dk-text/15 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 overflow-hidden"
+          >
+            <div
+              class="bg-secondary/10 dark:bg-dk-secondary/10 text-center py-2 px-3"
+            >
+              <p
+                class="font-serif font-bold text-secondary dark:text-dk-accent text-base"
+              >
+                {info.name}
+              </p>
+            </div>
+            <div class="flex justify-center p-4">
+              <Image
+                src={info.picture}
+                alt={info.picture_alt}
+                width={120}
+                height={120}
+                class="h-28 w-28 rounded-full object-cover grayscale contrast-115 border border-text/10 dark:border-dk-text/10"
+              />
+            </div>
+            <table class="w-full text-xs">
+              <tbody>
+                <tr class="border-t border-text/10 dark:border-dk-text/10">
+                  <td
+                    class="px-3 py-1.5 font-semibold text-text/60 dark:text-dk-text/60 align-top"
+                    >Education</td
+                  >
+                  <td class="px-3 py-1.5 text-text dark:text-dk-text"
+                    >Economics &amp; Philosophy</td
+                  >
+                </tr>
+                <tr class="border-t border-text/10 dark:border-dk-text/10">
+                  <td
+                    class="px-3 py-1.5 font-semibold text-text/60 dark:text-dk-text/60 align-top"
+                    >Company</td
+                  >
+                  <td class="px-3 py-1.5 text-text dark:text-dk-text">
+                    <a
+                      href="https://luniv.tech"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="underline underline-offset-4 hover:text-secondary dark:hover:text-dk-accent"
+                      >Luniv Technology</a
+                    >
+                  </td>
+                </tr>
+                <tr class="border-t border-text/10 dark:border-dk-text/10">
+                  <td
+                    class="px-3 py-1.5 font-semibold text-text/60 dark:text-dk-text/60 align-top"
+                    >Also known as</td
+                  >
+                  <td class="px-3 py-1.5 text-text dark:text-dk-text">
+                    <a
+                      href="/music"
+                      class="underline underline-offset-4 hover:text-secondary dark:hover:text-dk-accent"
+                      >sieep</a
+                    > (music)
+                  </td>
+                </tr>
+                <tr class="border-t border-text/10 dark:border-dk-text/10">
+                  <td
+                    class="px-3 py-1.5 font-semibold text-text/60 dark:text-dk-text/60 align-top"
+                    >Website</td
+                  >
+                  <td class="px-3 py-1.5 text-text dark:text-dk-text">
+                    <a
+                      href="/"
+                      class="underline underline-offset-4 hover:text-secondary dark:hover:text-dk-accent"
+                      >nickstambaugh.dev</a
+                    >
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+
           <!-- Client-side "Did You Know?" -->
-          <section class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5">
-            <h2 class="text-xs font-bold uppercase tracking-widest text-secondary dark:text-dk-accent border-b border-text/10 dark:border-dk-text/10 pb-2 mb-3">
+          <section
+            id="did-you-know"
+            class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5"
+          >
+            <h2
+              class="text-xs font-bold uppercase tracking-widest text-secondary dark:text-dk-accent border-b border-text/10 dark:border-dk-text/10 pb-2 mb-3"
+            >
               Did You Know?
             </h2>
             <p
@@ -343,12 +885,21 @@ const portals = [
           </section>
 
           <!-- Client-side "On This Day" -->
-          <section class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5">
-            <h2 class="text-xs font-bold uppercase tracking-widest text-secondary dark:text-dk-accent border-b border-text/10 dark:border-dk-text/10 pb-2 mb-3">
+          <section
+            id="on-this-day"
+            class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5"
+          >
+            <h2
+              class="text-xs font-bold uppercase tracking-widest text-secondary dark:text-dk-accent border-b border-text/10 dark:border-dk-text/10 pb-2 mb-3"
+            >
               On This Day
             </h2>
             <div id="on-this-day-container">
-              <p class="text-sm text-text/80 dark:text-dk-text/80 leading-relaxed">Loading...</p>
+              <p
+                class="text-sm text-text/80 dark:text-dk-text/80 leading-relaxed"
+              >
+                Loading...
+              </p>
             </div>
             <p class="mt-2 text-[10px] text-text/40 dark:text-dk-text/40">
               Live from the Wikipedia REST API.
@@ -360,7 +911,8 @@ const portals = [
               // 1. Randomize "Did You Know?"
               const dykEl = document.getElementById("dyk-container");
               if (dykEl && didYouKnow.length > 0) {
-                const randomFact = didYouKnow[Math.floor(Math.random() * didYouKnow.length)];
+                const randomFact =
+                  didYouKnow[Math.floor(Math.random() * didYouKnow.length)];
                 dykEl.innerHTML = randomFact;
               }
 
@@ -371,17 +923,22 @@ const portals = [
                 const month = String(now.getMonth() + 1).padStart(2, "0");
                 const day = String(now.getDate()).padStart(2, "0");
 
-                fetch(`https://en.wikipedia.org/api/rest_v1/feed/onthisday/selected/${month}/${day}`)
-                  .then(res => res.json())
-                  .then(data => {
+                fetch(
+                  `https://en.wikipedia.org/api/rest_v1/feed/onthisday/selected/${month}/${day}`,
+                )
+                  .then((res) => res.json())
+                  .then((data) => {
                     const picks = data.selected || [];
                     if (picks.length > 0) {
-                      const pick = picks[Math.floor(Math.random() * picks.length)];
+                      const pick =
+                        picks[Math.floor(Math.random() * picks.length)];
                       otdEl.innerHTML = `
                         <p class="text-sm text-text/80 dark:text-dk-text/80 leading-relaxed">
                           <span class="font-semibold text-secondary dark:text-dk-accent">${pick.year}</span> — ${pick.text}
                         </p>
-                        ${pick.pages?.[0]?.content_urls?.desktop?.page ? `
+                        ${
+                          pick.pages?.[0]?.content_urls?.desktop?.page
+                            ? `
                           <p class="mt-2">
                             <a
                               href="${pick.pages[0].content_urls.desktop.page}"
@@ -392,7 +949,9 @@ const portals = [
                               Read on Wikipedia →
                             </a>
                           </p>
-                        ` : ''}
+                        `
+                            : ""
+                        }
                       `;
                     } else {
                       otdEl.innerHTML = `<p class="text-sm text-text/60 dark:text-dk-text/60">No events found for today.</p>`;
@@ -405,51 +964,170 @@ const portals = [
             }
 
             initWidgets();
-            document.addEventListener('astro:page-load', initWidgets);
+            document.addEventListener("astro:page-load", initWidgets);
           </script>
 
-          <section class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5">
-            <h2 class="text-xs font-bold uppercase tracking-widest text-secondary dark:text-dk-accent border-b border-text/10 dark:border-dk-text/10 pb-2 mb-3">
+          <!-- Featured Good Boy (Bruce), Nickipedia's answer to "Good Article" -->
+          <section
+            id="good-boy"
+            class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5"
+          >
+            <h2
+              class="text-xs font-bold uppercase tracking-widest text-secondary dark:text-dk-accent border-b border-text/10 dark:border-dk-text/10 pb-2 mb-3"
+            >
+              Featured Good Boy
+            </h2>
+            <a href="/bruce-the-dog" class="block group">
+              <div
+                class="aspect-square rounded-lg overflow-hidden bg-text/5 dark:bg-dk-text/5"
+              >
+                <img
+                  id="good-boy-img"
+                  src=""
+                  alt=""
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <p
+                id="good-boy-caption"
+                class="mt-2 text-xs text-text/60 dark:text-dk-text/60"
+              >
+                Loading…
+              </p>
+            </a>
+          </section>
+
+          <script define:vars={{ brucePhotos }}>
+            function initGoodBoy() {
+              const img = document.getElementById("good-boy-img");
+              const caption = document.getElementById("good-boy-caption");
+              if (!img || !brucePhotos || brucePhotos.length === 0) return;
+              const pick =
+                brucePhotos[Math.floor(Math.random() * brucePhotos.length)];
+              img.src = pick.src;
+              img.alt = pick.caption || "Bruce";
+              if (caption) caption.textContent = pick.caption || "Bruce";
+            }
+            initGoodBoy();
+            document.addEventListener("astro:page-load", initGoodBoy);
+          </script>
+
+          <section
+            class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5"
+          >
+            <h2
+              class="text-xs font-bold uppercase tracking-widest text-secondary dark:text-dk-accent border-b border-text/10 dark:border-dk-text/10 pb-2 mb-3"
+            >
               Wiki Stats
             </h2>
             <dl class="space-y-2 text-sm">
               <div class="flex justify-between">
                 <dt class="text-text/60 dark:text-dk-text/60">Articles</dt>
-                <dd class="font-medium text-text dark:text-dk-text tabular-nums">{totalPosts}</dd>
+                <dd
+                  class="font-medium text-text dark:text-dk-text tabular-nums"
+                >
+                  {totalPosts}
+                </dd>
               </div>
               <div class="flex justify-between">
                 <dt class="text-text/60 dark:text-dk-text/60">Categories</dt>
-                <dd class="font-medium text-text dark:text-dk-text tabular-nums">{tagMap.size}</dd>
+                <dd
+                  class="font-medium text-text dark:text-dk-text tabular-nums"
+                >
+                  {tagMap.size}
+                </dd>
               </div>
-              {githubStats.publicRepos !== null && (
-                <div class="flex justify-between">
-                  <dt class="text-text/60 dark:text-dk-text/60">Public repos</dt>
-                  <dd class="font-medium text-text dark:text-dk-text tabular-nums">{githubStats.publicRepos}</dd>
-                </div>
-              )}
+              <div class="flex justify-between">
+                <dt class="text-text/60 dark:text-dk-text/60">Books</dt>
+                <dd
+                  class="font-medium text-text dark:text-dk-text tabular-nums"
+                >
+                  {books.length}
+                </dd>
+              </div>
+              <div class="flex justify-between">
+                <dt class="text-text/60 dark:text-dk-text/60">Media entries</dt>
+                <dd
+                  class="font-medium text-text dark:text-dk-text tabular-nums"
+                >
+                  {mediaList.length}
+                </dd>
+              </div>
+              <div class="flex justify-between">
+                <dt class="text-text/60 dark:text-dk-text/60">Tracks</dt>
+                <dd
+                  class="font-medium text-text dark:text-dk-text tabular-nums"
+                >
+                  {tracks.length}
+                </dd>
+              </div>
+              <div class="flex justify-between">
+                <dt class="text-text/60 dark:text-dk-text/60">Projects</dt>
+                <dd
+                  class="font-medium text-text dark:text-dk-text tabular-nums"
+                >
+                  {featuredCases.length + openSourceProjects.length}
+                </dd>
+              </div>
+              {
+                recipeCount !== null && (
+                  <div class="flex justify-between">
+                    <dt class="text-text/60 dark:text-dk-text/60">Recipes</dt>
+                    <dd class="font-medium text-text dark:text-dk-text tabular-nums">
+                      {recipeCount}
+                    </dd>
+                  </div>
+                )
+              }
+              {
+                githubStats.publicRepos !== null && (
+                  <div class="flex justify-between">
+                    <dt class="text-text/60 dark:text-dk-text/60">
+                      Public repos
+                    </dt>
+                    <dd class="font-medium text-text dark:text-dk-text tabular-nums">
+                      {githubStats.publicRepos}
+                    </dd>
+                  </div>
+                )
+              }
               <div class="flex justify-between">
                 <dt class="text-text/60 dark:text-dk-text/60">Programmer</dt>
-                <dd class="font-medium text-text dark:text-dk-text">{info.name}</dd>
+                <dd class="font-medium text-text dark:text-dk-text">
+                  {info.name}
+                </dd>
               </div>
             </dl>
           </section>
 
-          <section class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5">
-            <h2 class="text-xs font-bold uppercase tracking-widest text-secondary dark:text-dk-accent border-b border-text/10 dark:border-dk-text/10 pb-2 mb-3">
+          <section
+            class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5"
+          >
+            <h2
+              class="text-xs font-bold uppercase tracking-widest text-secondary dark:text-dk-accent border-b border-text/10 dark:border-dk-text/10 pb-2 mb-3"
+            >
               Top Categories
             </h2>
             <div class="flex flex-wrap gap-1.5">
-              {topTags.map((tag) => (
-                <a
-                  href={`/posts?tag=${tag.key}`}
-                  class="text-[11px] px-2 py-1 rounded-full border border-text/20 dark:border-dk-text/20 text-text/70 dark:text-dk-text/70 hover:text-secondary dark:hover:text-dk-accent hover:border-secondary/40 dark:hover:border-dk-accent/40 transition-colors"
-                >
-                  {tag.label} <span class="text-text/40 dark:text-dk-text/40">({tag.count})</span>
-                </a>
-              ))}
+              {
+                topTags.map((tag) => (
+                  <a
+                    href={`/posts?tag=${tag.key}`}
+                    class="text-[11px] px-2 py-1 rounded-full border border-text/20 dark:border-dk-text/20 text-text/70 dark:text-dk-text/70 hover:text-secondary dark:hover:text-dk-accent hover:border-secondary/40 dark:hover:border-dk-accent/40 transition-colors"
+                  >
+                    {tag.label}{" "}
+                    <span class="text-text/40 dark:text-dk-text/40">
+                      ({tag.count})
+                    </span>
+                  </a>
+                ))
+              }
             </div>
             <p class="mt-3">
-              <a href="/tags" class="text-sm font-medium text-secondary dark:text-dk-accent hover:underline underline-offset-4">
+              <a
+                href="/tags"
+                class="text-sm font-medium text-secondary dark:text-dk-accent hover:underline underline-offset-4"
+              >
                 All categories →
               </a>
             </p>
@@ -458,12 +1136,50 @@ const portals = [
       </div>
 
       <footer class="mt-16 pt-8 border-t border-text/10 dark:border-dk-text/10">
-        <a href="/" class="text-sm text-text/60 hover:text-secondary dark:hover:text-dk-accent transition-colors">
+        <a
+          href="/"
+          class="text-sm text-text/60 hover:text-secondary dark:hover:text-dk-accent transition-colors"
+        >
           ← Back to home
         </a>
       </footer>
     </main>
   </div>
+
+  <!-- Fixes the date going stale in production: Astro's static build bakes
+       in whatever `new Date()` was at build time, so this must run client-side
+       and re-run on every page load / view-transition, not just once at build. -->
+  <script>
+    function updateWikiDate() {
+      const el = document.getElementById("wiki-date");
+      if (!el) return;
+      const now = new Date();
+      el.textContent = now.toLocaleDateString("en-US", {
+        weekday: "long",
+        month: "long",
+        day: "numeric",
+        year: "numeric",
+      });
+    }
+    updateWikiDate();
+    document.addEventListener("astro:page-load", updateWikiDate);
+  </script>
+
+  <script define:vars={{ randomArticles }}>
+    function setupRandomArticle() {
+      const btn = document.getElementById("random-article-btn");
+      if (!btn || btn.dataset.bound === "true") return;
+      btn.dataset.bound = "true";
+      btn.addEventListener("click", () => {
+        if (!randomArticles || randomArticles.length === 0) return;
+        const pick =
+          randomArticles[Math.floor(Math.random() * randomArticles.length)];
+        window.location.href = pick.url;
+      });
+    }
+    setupRandomArticle();
+    document.addEventListener("astro:page-load", setupRandomArticle);
+  </script>
 </BaseLayout>
 
 <script>
@@ -480,10 +1196,10 @@ const portals = [
     if (input.dataset.searchLoaded === "true") return;
     input.dataset.searchLoaded = "true";
 
-    const posts = JSON.parse(dataEl.dataset.posts);
-    const fuse = new Fuse(posts, {
+    const items = JSON.parse(dataEl.dataset.posts);
+    const fuse = new Fuse(items, {
       keys: ["title", "description"],
-      threshold: 0.3
+      threshold: 0.3,
     });
 
     let selectedIndex = -1;
@@ -497,15 +1213,19 @@ const portals = [
       }
 
       resultsContainer.classList.remove("hidden");
-      resultsContainer.innerHTML = currentResults.map((res, i) => `
-        <a href="${res.item.url}" class="block p-3 border-b border-text/10 dark:border-dk-text/10 last:border-0 hover:bg-secondary/10 dark:hover:bg-dk-secondary/20 transition-colors ${i === selectedIndex ? 'bg-secondary/10 dark:bg-dk-secondary/20' : ''}">
-          <div class="flex justify-between items-center">
-            <h3 class="text-sm font-bold text-text dark:text-dk-text">${res.item.title}</h3>
-            ${i === selectedIndex ? '<span class="text-accent dark:text-dk-accent text-xs">↵</span>' : ''}
+      resultsContainer.innerHTML = currentResults
+        .map(
+          (res, i) => `
+        <a href="${res.item.url}" ${res.item.url && res.item.url.startsWith("http") ? 'target="_blank" rel="noopener noreferrer"' : ""} class="block p-3 border-b border-text/10 dark:border-dk-text/10 last:border-0 hover:bg-secondary/10 dark:hover:bg-dk-secondary/20 transition-colors ${i === selectedIndex ? "bg-secondary/10 dark:bg-dk-secondary/20" : ""}">
+          <div class="flex justify-between items-center gap-2">
+            <h3 class="text-sm font-bold text-text dark:text-dk-text truncate">${res.item.title}</h3>
+            <span class="shrink-0 text-[9px] uppercase tracking-wide px-1.5 py-0.5 rounded-full border border-text/20 dark:border-dk-text/20 text-text/50 dark:text-dk-text/50">${res.item.type}</span>
           </div>
-          <p class="text-xs text-text/70 dark:text-dk-text/70 truncate mt-0.5">${res.item.description || ''}</p>
+          <p class="text-xs text-text/70 dark:text-dk-text/70 truncate mt-0.5">${res.item.description || ""}</p>
         </a>
-      `).join("");
+      `,
+        )
+        .join("");
     }
 
     input.addEventListener("input", (e) => {
@@ -516,7 +1236,7 @@ const portals = [
         renderResults();
         return;
       }
-      currentResults = fuse.search(q).slice(0, 5);
+      currentResults = fuse.search(q).slice(0, 6);
       selectedIndex = currentResults.length > 0 ? 0 : -1;
       renderResults();
     });
@@ -524,19 +1244,21 @@ const portals = [
     input.addEventListener("keydown", (e) => {
       if (currentResults.length === 0) {
         if (e.key === "Enter" && e.target.value.trim() !== "") {
-            e.preventDefault();
-            window.location.href = `/posts?q=${encodeURIComponent(e.target.value)}`;
+          e.preventDefault();
+          window.location.href = `/posts?q=${encodeURIComponent(e.target.value)}`;
         }
         return;
       }
-      
+
       if (e.key === "ArrowDown") {
         e.preventDefault();
-        selectedIndex = selectedIndex < currentResults.length - 1 ? selectedIndex + 1 : 0;
+        selectedIndex =
+          selectedIndex < currentResults.length - 1 ? selectedIndex + 1 : 0;
         renderResults();
       } else if (e.key === "ArrowUp") {
         e.preventDefault();
-        selectedIndex = selectedIndex > 0 ? selectedIndex - 1 : currentResults.length - 1;
+        selectedIndex =
+          selectedIndex > 0 ? selectedIndex - 1 : currentResults.length - 1;
         renderResults();
       } else if (e.key === "Enter" && selectedIndex >= 0) {
         e.preventDefault();

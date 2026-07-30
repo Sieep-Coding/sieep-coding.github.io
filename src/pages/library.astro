@@ -1,331 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-
-const books = [
-    {
-        id: "penguin-book-of-pirates",
-        title: "The Penguin Book of Pirates",
-        subtitle: "True Stories of the Most Notorious Pirates",
-        author: "Katherine Howe (Editor)",
-        publisher: "Penguin Classics",
-        year: "2024",
-        pages: 400,
-        rating: 3,
-        isbn: "978-0-14-313751-1",
-        format: "Paperback",
-        tags: ["nonfiction", "history", "anthology"],
-        description:
-            "A Penguin Classics anthology of real-life pirate accounts spanning three centuries and eight thousand nautical miles, compiled by Katherine Howe, a direct descendant of a sailor who fought pirates in the early nineteenth century. Drawn from trial transcripts, journalism, and ship logs, it covers figures like Blackbeard and the real pirates behind Jack Sparrow, Stede Bonnet, and the Dread Pirate Roberts, alongside lesser-known women pirates who disguised themselves as men.",
-    },
-    {
-        id: "tale-of-despereaux",
-        title: "The Tale of Despereaux",
-        subtitle:
-            "Being the Story of a Mouse, a Princess, Some Soup, and a Spool of Thread",
-        author: "Kate DiCamillo",
-        illustrator: "Timothy Basil Ering",
-        publisher: "Candlewick Press",
-        year: "2015; originally published 2003",
-        pages: 272,
-        rating: 4,
-        isbn: "978-0-7636-8089-3",
-        format: "Paperback",
-        tags: ["fiction", "children", "fantasy"],
-        description:
-            "A Newbery Medal-winning children's fantasy novel following Despereaux Tilling, an undersized mouse with oversized ears who falls in love with music, stories, and a human princess named Pea. His fate intertwines with Roscuro, a rat drawn to the light he isn't allowed to have, and Miggery Sow, a servant girl chasing an impossible wish — three threads that lead down into a dungeon, up into a castle, and into each other's lives. Illustrated in black and white by Timothy Basil Ering.",
-    },
-    {
-        id: "the-club",
-        title: "The Club",
-        subtitle:
-            "How the Premier League Became the Richest, Most Disruptive Business in Sports",
-        author: "Joshua Robinson, Jonathan Clegg",
-        publisher: "Mariner Books",
-        year: "2019",
-        pages: 464,
-        rating: 3.5,
-        isbn: "978-0-358-21305-5",
-        format: "Paperback",
-        tags: ["nonfiction", "sports", "business", "history"],
-        description:
-            "An inside look at the rise of England's Premier League from a struggling domestic competition into the world's most valuable sports league. Drawing on interviews with club owners, executives, managers, and players, Robinson and Clegg explore the billion-dollar television deals, global marketing, fierce rivalries, and business decisions that reshaped modern football and transformed clubs into international brands.",
-    },
-    {
-        id: "europes-promise",
-        title: "Europe's Promise",
-        subtitle: "Why the European Way Is the Best Hope in an Insecure Age",
-        author: "Steven Hill",
-        publisher: "University of California Press",
-        year: "2010",
-        pages: 488,
-        rating: 3,
-        isbn: "978-0-520-26137-2",
-        format: "Paperback",
-        tags: ["nonfiction", "politics", "economics"],
-        description:
-            "Political analyst Steven Hill argues that Europe's social market model offers a compelling alternative to both unfettered free-market capitalism and state-controlled economies. Examining healthcare, labor protections, environmental policy, education, and democratic institutions across the European Union, he contends that Europe's approach provides greater economic resilience and quality of life while remaining globally competitive.",
-    },
-    {
-        id: "ghost-rider-hell-on-wheels",
-        title: "Ghost Rider Epic Collection: Hell on Wheels",
-        subtitle: "Collects Ghost Rider stories, mainly from the 1970s",
-        author: "Gary Friedrich, Tony Isabella",
-        illustrator: "Mike Ploog, Tom Sutton, Jim Mooney",
-        publisher: "Marvel",
-        year: "2022",
-        pages: 424,
-        rating: 5,
-        isbn: "978-1-302-94611-1",
-        format: "Paperback",
-        tags: ["fiction", "comics", "action"],
-        description:
-            "Collects the origin of Ghost Rider: Marvel Spotlight (1971) #5-12, Ghost Rider (1973) #1-11, and Marvel Team-Up (1972) #15. Johnny Blaze strikes a deal with the devil to save a friend's life and is transformed into the flame-skulled Ghost Rider, battling Satan, the Witch-Woman, and teaming with Daimon Hellstrom, the Son of Satan, in the stories that launched decades of hell-on-wheels action.",
-    },
-    {
-        id: "grand-canyon-and-the-southwest",
-        title: "The Grand Canyon and the Southwest",
-        subtitle: "A Photographic Journey of the US Southwest",
-        author: "Ansel Adams",
-        illustrator: "Edited by Andrea G. Stillman",
-        publisher: "Little, Brown and Company",
-        year: "2019",
-        pages: 112,
-        rating: 4.5,
-        isbn: "978-0-316-53487-1",
-        format: "Paperback",
-        tags: ["nonfiction", "photography", "nature", "art"],
-        description:
-            "Published to honor the Grand Canyon National Park centennial, this collection of Ansel Adams' black-and-white photographs captures the drama and beauty of the Canyon and the American Southwest — landscapes Adams considered second only to Yosemite and the High Sierra in his affections.",
-    },
-    {
-        id: "meditations",
-        title: "Meditations",
-        subtitle: "Thoughts of the Roman Emperor on Life, Death, and the Pursuit of Virtue",
-        author: "Marcus Aurelius (trans. Gregory Hays)",
-        publisher: "St. Martin's Griffin",
-        year: "2003",
-        pages: 256,
-        rating: 4,
-        isbn: "978-1-250-85254-0",
-        format: "Paperback",
-        tags: ["nonfiction", "philosophy", "classics"],
-        description:
-            "The personal journal of the Roman emperor Marcus Aurelius, never intended for publication yet destined to become one of history's most enduring philosophical works. Gregory Hays' modern translation presents Aurelius' reflections on discipline, mortality, virtue, and the pursuit of a meaningful life in clear, contemporary English, making Stoic philosophy accessible without sacrificing its depth.",
-    },
-    {
-        id: "apple-first-50-years",
-        title: "Apple",
-        subtitle: "The First 50 Years of Apple, from the Garage to the World's Most Influential Company",
-        author: "David Pogue",
-        publisher: "Simon & Schuster",
-        year: "2026",
-        pages: 608,
-        rating: 5,
-        isbn: "978-1-9821-3459-4",
-        format: "Hardcover",
-        tags: ["nonfiction", "technology", "business", "history", "apple"],
-        description:
-            "Technology journalist David Pogue chronicles Apple's first half-century, from the company's founding in a California garage through its transformation into one of the world's most influential technology companies. Drawing on more than 150 interviews and extensive archival research, the book explores Apple's landmark products, corporate culture, triumphs, failures, and the people who shaped its history.",
-    },
-    {
-        id: "portable-nietzsche",
-        title: "The Portable Nietzsche",
-        subtitle: "A Comprehensive Collection of Friedrich Nietzsche's Writings",
-        author: "Friedrich Nietzsche",
-        translator: "Walter Kaufmann",
-        publisher: "Penguin Classics",
-        year: "1977",
-        pages: 704,
-        rating: 3.5,
-        isbn: "978-0-14-015062-9",
-        format: "Paperback",
-        tags: ["nonfiction", "philosophy", "classics"],
-        description:
-            "Walter Kaufmann's landmark collection of Friedrich Nietzsche's major writings, including Thus Spoke Zarathustra, Twilight of the Idols, The Antichrist, and Nietzsche Contra Wagner, alongside selections from his notebooks and letters. Widely regarded as one of the best English introductions to Nietzsche's philosophy, it presents his ideas on morality, individuality, religion, and the creation of meaning in a single authoritative volume.",
-    },
-    {
-        id: "rust-programming-language",
-        title: "The Rust Programming Language",
-        subtitle: "An Official Guide to Rust, the Systems Programming Language",
-        author: "Steve Klabnik, Carol Nichols",
-        publisher: "No Starch Press",
-        year: "2023",
-        pages: 560,
-        rating: 4.5,
-        isbn: "978-1-7185-0310-6",
-        format: "Paperback",
-        tags: ["nonfiction", "technology", "programming"],
-        description:
-            "The official guide to Rust, written by two members of the Rust Core Team. Starting with the language's fundamentals before progressing through ownership, borrowing, lifetimes, traits, concurrency, and asynchronous programming, it serves as both an introduction for newcomers and a comprehensive reference for experienced developers building fast, memory-safe software.",
-    },
-    {
-        id: "classic-american-autobiographies",
-        title: "Classic American Autobiographies",
-        subtitle: "A Collection of Foundational American Autobiographical Writing",
-        author: "Edited by William L. Andrews",
-        publisher: "Signet Classics",
-        year: "2014",
-        pages: 496,
-        rating: 3.5,
-        isbn: "978-0-451-47144-4",
-        format: "Paperback",
-        tags: ["nonfiction", "history", "classics", "biography", "anthology"],
-        description:
-            "A collection of foundational American autobiographical writing spanning more than two centuries. Featuring works by Benjamin Franklin, Frederick Douglass, Mark Twain, Zitkala-Ša, and others, the anthology traces the evolution of the American experience through firsthand accounts of exploration, slavery, innovation, and identity.",
-    },
-    {
-        id: "nicomachean-ethics",
-        title: "The Nicomachean Ethics",
-        subtitle: "A Foundational Text of Western Moral Philosophy",
-        author: "Aristotle (trans. David Ross, rev. Lesley Brown)",
-        publisher: "Oxford University Press (Oxford World's Classics)",
-        year: "2009",
-        pages: 336,
-        rating: 4,
-        isbn: "978-0-19-921361-0",
-        format: "Paperback",
-        tags: ["nonfiction", "philosophy", "classics"],
-        description:
-            "Aristotle's foundational work of moral philosophy, asking what the best thing for a human being is and answering: happiness — not a feeling, but a kind of flourishing life built from our best capacities. This Oxford World's Classics edition pairs David Ross's classic translation, revised by Lesley Brown, with a new introduction, notes, glossary, and bibliography.",
-    },
-    {
-        id: "together-is-better",
-        title: "Together Is Better",
-        subtitle: "A Little Book of Inspiration",
-        author: "Simon Sinek",
-        illustrator: "Ethan M. Aldridge",
-        publisher: "Portfolio (Penguin)",
-        year: "2016",
-        pages: 160,
-        rating: 5,
-        isbn: "978-1-59184-785-4",
-        format: "Hardcover",
-        tags: ["nonfiction", "business", "self-help"],
-        description:
-            "A short, illustrated parable from the author of Start With Why and Leaders Eat Last, about the courage to ask for help, the willingness to help others, and how the choice to go together — rather than alone — shapes how we feel about our journey. Looks like a children's book; written for adults.",
-    },
-    {
-        id: "who-moved-my-cheese",
-        title: "Who Moved My Cheese?",
-        subtitle:
-            "An A-Mazing Way to Deal with Change in Your Work and in Your Life",
-        author: "Spencer Johnson",
-        publisher: "G. P. Putnam's Sons",
-        year: "1998",
-        pages: 96,
-        rating: 2,
-        isbn: "978-0-399-14446-2",
-        format: "Hardcover",
-        tags: ["nonfiction", "business", "self-help"],
-        description:
-            'A #1 international bestseller told as a simple parable about two mice and two "littlepeople" navigating a maze in search of cheese — a metaphor for anticipating, acknowledging, and adapting to change at work and in life.',
-    },
-    {
-        id: "art-of-the-deal",
-        title: "Trump: The Art of the Deal",
-        subtitle: "An Insider's Account of the Real Estate Deal-Making Process",
-        author: "Donald J. Trump, Tony Schwartz",
-        publisher: "Ballantine Books (Random House)",
-        year: "2015; originally published 1987",
-        pages: 384,
-        rating: 3.5,
-        isbn: "978-0-399-59449-6",
-        format: "Paperback",
-        tags: ["nonfiction", "business", "biography"],
-        description:
-            "A firsthand account of Donald Trump's rise as a real estate developer, laying out his professional and personal worldview through stories from some of his biggest deals in 1980s New York City real estate.",
-    },
-    {
-        id: "source-code",
-        title: "Source Code",
-        subtitle: "Part 1 of 3, the story of Bill Gates' early life and the founding of Microsoft",
-        author: "Bill Gates",
-        publisher: "Vintage",
-        year: "2026",
-        pages: 336,
-        rating: 3.5,
-        isbn: "978-0-593-68746-8",
-        format: "Paperback",
-        tags: ["nonfiction", "technology", "biography"],
-        description:
-            "Bill Gates' memoir of his childhood, early passions, and the path that led a twenty-year-old Harvard dropout to co-found Microsoft — focused not on the company or the Gates Foundation, but on the personal story of how he became who he is.",
-    },
-    {
-        id: "enders-game",
-        title: "Ender's Game",
-        subtitle: "The revolutionary science fiction novel that launched the Ender Saga",
-        author: "Orson Scott Card",
-        publisher: "Tor Books",
-        year: "2021; originally published 1985",
-        pages: 256,
-        rating: 5,
-        isbn: "978-1-250-77302-9",
-        format: "Paperback",
-        tags: ["fiction", "sci-fi"],
-        description:
-            "The Hugo and Nebula award-winning science fiction novel following Andrew \"Ender\" Wiggin, a child genius bred and trained by military agencies to command Earth's defenses against a hostile alien race — believing he's playing one more simulated war game.",
-    },
-    {
-        id: "the-one-thing",
-        title: "The ONE Thing",
-        subtitle: "The Surprisingly Simple Truth About Extraordinary Results",
-        author: "Gary Keller, Jay Papasan",
-        publisher: "Bard Press",
-        year: "2013",
-        pages: 240,
-        rating: 2.5,
-        isbn: "978-1-885167-77-4",
-        format: "Hardcover",
-        tags: ["nonfiction", "business", "self-help"],
-        description:
-            "A #1 Wall Street Journal, New York Times, and USA Today bestseller arguing that extraordinary results come from focusing on the single most important thing in any area of life — work, personal, family, and spiritual — rather than spreading effort thin.",
-    },
-    {
-        id: "old-man-and-the-sea",
-        title: "The Old Man and the Sea",
-        subtitle: "The classic Hemingway novel about struggle, resilience, and the human spirit",
-        author: "Ernest Hemingway",
-        publisher: "Scribner",
-        year: "2022; originally published 1952",
-        pages: 160,
-        rating: 5,
-        isbn: "978-1-4767-8785-5",
-        format: "Paperback",
-        tags: ["fiction", "classics"],
-        description:
-            "The Pulitzer Prize-winning story of an aging Cuban fisherman's relentless battle with a giant marlin far out in the Gulf Stream. This Hemingway Library Edition adds a previously unpublished short story, a foreword by Patrick Hemingway, and an introduction by Seán Hemingway.",
-    },
-    {
-        id: "steve-jobs",
-        title: "Steve Jobs",
-        subtitle: "The authorized biography of the Apple cofounder and technology visionary",
-        author: "Walter Isaacson",
-        publisher: "Simon & Schuster",
-        year: "2021 originally published 2011",
-        pages: 672,
-        rating: 5,
-        isbn: "978-1-9821-7686-0",
-        format: "Paperback",
-        tags: ["nonfiction", "technology", "business", "biography", "apple"],
-        description:
-            "Based on more than forty interviews with Steve Jobs over two years, plus interviews with over 100 family members, friends, and colleagues, this biography traces the roller-coaster life of Apple's cofounder, whose drive for perfection reshaped personal computers, animation, music, phones, and publishing.",
-    },
-    {
-        id: "better-decisions-fewer-regrets",
-        title: "Better Decisions, Fewer Regrets",
-        subtitle: "5 Questions to Help You Determine Your Next Move",
-        author: "Andy Stanley",
-        publisher: "Zondervan",
-        year: "2020",
-        pages: 192,
-        rating: 3,
-        isbn: "978-0-310-53708-3",
-        format: "Hardcover",
-        tags: ["nonfiction", "self-help"],
-        description:
-            "Pastor and author Andy Stanley lays out five questions to run every major decision through — around finances, relationships, and career — aimed at helping readers make better decisions and avoid the regret of decisions made carelessly or in a hurry.",
-    },
-];
+import { books } from "../data/library";
 
 const tags = new Set();
 for (const b of books) {
@@ -667,6 +342,11 @@ const stars = (rating) =>
                 noResults.classList.toggle("hidden", visibleCount !== 0);
             };
 
+            /* Auto-expand a specific book if ?book=<id> is present (used by the Nickipedia random-article / cross-links) */
+            const params = new URLSearchParams(window.location.search);
+            const wantedTag = params.get("tag");
+            const wantedBook = params.get("book");
+
             tagButtons.forEach((btn) => {
                 btn.addEventListener("click", () => {
                     tagButtons.forEach((b) => {
@@ -691,6 +371,11 @@ const stars = (rating) =>
                     applyFilters();
                 });
             });
+
+            if (wantedTag) {
+                const match = tagButtons.find((b) => b.dataset.filter === `.${wantedTag}`);
+                if (match) match.click();
+            }
 
             searchEl.addEventListener("input", applyFilters);
 
@@ -737,6 +422,14 @@ const stars = (rating) =>
             });
 
             applyFilters();
+
+            if (wantedBook) {
+                const row = rows.find((r) => r.dataset.target === wantedBook);
+                if (row) {
+                    row.scrollIntoView({ behavior: "smooth", block: "center" });
+                    row.click();
+                }
+            }
         });
     </script>
 </BaseLayout>
