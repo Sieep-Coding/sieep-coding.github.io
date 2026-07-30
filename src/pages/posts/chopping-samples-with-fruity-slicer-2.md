@@ -13,15 +13,15 @@ tags: ["#Music"]
 
 I made this using [FL Studio!](/posts/switching-back-to-fl-studio)
 
-Every time I mention sampling in one of these posts, someone asks what I actually use to chop things up. The answer is [Fruity Slicer 2](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Fruity%20Slicer%202.htm), Image-Line's built-in slicer plugin. It's not as deep as [Slicex](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Slicex.htm), but for the kind of vinyl-style chopping I do, it does everything I need without getting in the way. I plan on making a song using Slicex exclusively soon.
+Every time I mention [sampling](https://en.wikipedia.org/wiki/Sampling_(music)) in one of these posts, someone asks what I actually use to chop things up. The answer is [Fruity Slicer 2](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Fruity%20Slicer%202.htm), Image-Line's built-in slicer plugin. It's not as deep as [Slicex](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Slicex.htm), but for the kind of vinyl-style chopping I do, it does everything I need without getting in the way. I plan on making a song using Slicex exclusively soon.
 
 This isn't a new plugin. It's been sitting in FL Studio for years. But I figured it was worth writing up how it actually works, since it's the backbone of tracks like [Be Yourself](/posts/making-be-yourself), where every single sound came from a sample.
 
 ## What It Actually Does
 
-Fruity Slicer 2 takes an audio file, either detects the beats/transients in it automatically or reads existing slice markers if the file has them, and then breaks it into individual pieces called Slices. Each Slice gets mapped to a numbered Pad, and from there you can trigger them from the Piano roll or a MIDI controller, just like a normal sampler.
+Fruity Slicer 2 takes an audio file, either detects the beats/transients in it automatically or reads existing slice markers if the file has them, and then breaks it into individual pieces called Slices. Each Slice gets mapped to a numbered Pad, and from there you can trigger them from the Piano roll or a [MIDI controller](https://en.wikipedia.org/wiki/MIDI_controller), just like a normal sampler.
 
-This is basically the same trick every old-school hip-hop producer has been doing since sampling existed, chop a loop into pieces and rearrange it into something new. Fruity Slicer 2 just automates the tedious part of finding where to cut.
+This is basically the same trick every old-school [hip-hop](https://en.wikipedia.org/wiki/Hip-hop) producer has been doing since sampling existed, chop a loop into pieces and rearrange it into something new. Fruity Slicer 2 just automates the tedious part of finding where to cut.
 
 ![Chicago South Side](../photo/_Fruity_slicer_2.png "Chicago South Side")
 > See the full documentation on the [Image Line website.](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Fruity%20Slicer%202.htm)
@@ -32,7 +32,7 @@ You load a sample using the Load Sample icon at the top of the plugin, which ope
 
 - **Built-in slicing** — uses slice data already embedded in the file, if it has any
 - **Dull / Medium / Sharp auto-slicing** — these control how sensitive the transient detection is, Dull gives you fewer slices, Sharp gives you a lot more
-- **Beat-quantized slicing** (1/6, 1/4, 1/3, whole beat) — ignores the actual audio content and just divides the sample evenly
+- **Beat-quantized slicing** (1/6, 1/4, 1/3, whole [beat](https://en.wikipedia.org/wiki/Beat_(music))) — ignores the actual audio content and just divides the sample evenly
 - **No Slicing** — treats the whole file as one Slice
 
 For most vinyl rips and drum loops, I stick with the auto-slicing options since real recordings never land perfectly on a grid.

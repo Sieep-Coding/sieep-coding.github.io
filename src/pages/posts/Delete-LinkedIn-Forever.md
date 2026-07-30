@@ -12,7 +12,7 @@ tags: ["#SelfHelp", "#SocialMedia"]
 ---
 
 # Delete LinkedIn Forever
-I decided to delete my LinkedIn forever. It had already been hibernating for about 5 months, so I figured I don't need it anymore. At first, I was worried. What if I lose my job?
+I decided to delete my [LinkedIn](https://en.wikipedia.org/wiki/LinkedIn) forever. It had already been hibernating for about 5 months, so I figured I don't need it anymore. At first, I was worried. What if I lose my job?
 
 Luckily for me, I could already think back to the time I lost a professional job. LinkedIn was of little value to me during my jobless period. 
 
@@ -20,7 +20,7 @@ The jobs I applied to weren't responding, and the hiring managers I was reaching
 
 [I highly doubt it.](https://en.wikipedia.org/wiki/Dark_pattern)
 
-My last 4 professional jobs were all found through word-of-mouth networking or Indeed. So, since I created my LinkedIn account in 2018, it has gotten me zero jobs, zero side gigs.
+My last 4 professional jobs were all found through [word-of-mouth](https://en.wikipedia.org/wiki/Word-of-mouth_marketing) networking or Indeed. So, since I created my LinkedIn account in 2018, it has gotten me zero jobs, zero side gigs.
 
 ## The AI Takeover
 With the influx of AI generative posts across all social media, the writing was on the wall for LinkedIn. 

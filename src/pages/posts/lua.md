@@ -12,12 +12,12 @@ tags: ["#Coding", "#Tech"]
 ---
 
 # Lua is strange...
-Lua has some quirks that can trip you up at first but once you get the hang of it, it can end up being intuitive.
+[Lua](https://en.wikipedia.org/wiki/Lua) has some quirks that can trip you up at first but once you get the hang of it, it can end up being intuitive.
 
 Why is it strange?
 
 ### Because of '1-Based Indexing': 
-Unlike many other languages (C, Java, etc.) where arrays start at 0, Lua starts at 1. 
+Unlike many other languages (C, Java, etc.) where [arrays](https://en.wikipedia.org/wiki/Array_(data_structure)) start at 0, Lua starts at 1. 
 
 It might seem odd at first, but it actually fits well with how we naturally count things.
 
@@ -55,4 +55,4 @@ Fruit at position:      4       is      blueberry
 
 ### Conclusion
 
-While Lua has some quirks, it is a fun language to learn and write. 
+While Lua has some quirks, it is a fun [language](https://en.wikipedia.org/wiki/Programming_language) to learn and write. 

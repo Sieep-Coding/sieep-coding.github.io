@@ -53,7 +53,7 @@ A Harvard-led study published in the *American Political Science Review* analyze
 
 > The post wasn't designed to survive an argument, it was designed to be nodded at and upvoted past.
 
-It's also worth knowing that Reddit itself isn't fully insulated from Chinese capital in the first place. [Tencent bought roughly an 11% stake in Reddit back in 2019](https://www.fool.com/investing/2019/02/08/tencent-invests-social-platform-reddit.aspx) ahead of its IPO, and has been selling down that position gradually since Reddit went public in 2024.
+It's also worth knowing that [Reddit](https://en.wikipedia.org/wiki/Reddit) itself isn't fully insulated from Chinese capital in the first place. [Tencent bought roughly an 11% stake in Reddit back in 2019](https://www.fool.com/investing/2019/02/08/tencent-invests-social-platform-reddit.aspx) ahead of its IPO, and has been selling down that position gradually since Reddit went public in 2024.
 
 That doesn't mean Tencent is steering front-page content; there's no evidence of that, and by my account it's a passive financial stake. But it's a useful reminder that "a Chinese state-linked company has zero connection to this platform" isn't a safe assumption to start from either.
 

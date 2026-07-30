@@ -19,7 +19,7 @@ tags: ["#Coding", "#Tech"]
 
 # Randomized Banner Icons in Astro
 
-For websites, small interactive details can create significant visual appeal. One practical approach is to **randomize banner icons and colors** for top-of-page promotions or highlights. This keeps the UI fresh and encourages repeated engagement.
+For [websites](https://en.wikipedia.org/wiki/Website), small interactive details can create significant visual appeal. One practical approach is to **randomize banner icons and colors** for top-of-page promotions or highlights. This keeps the UI fresh and encourages repeated engagement.
 
 At [Luniv](https://luniv.tech), we often use Astro for these dynamic components, paired with TailwindCSS for styling. Here’s a walkthrough.
 
@@ -150,11 +150,11 @@ const { color } = Astro.props;
 
 - Dynamic Navigation: Using `astro:page-load` ensures the same behavior occurs on client-side navigation, keeping the page experience consistent.
 
-- Randomization: Keeps the interface fresh for returning users.
+- [Randomization](https://en.wikipedia.org/wiki/Randomization): Keeps the interface fresh for returning users.
 
-- Scalable: Easily add new banners or colors without changing the logic.
+- [Scalable](https://en.wikipedia.org/wiki/Scalability): Easily add new banners or colors without changing the logic.
 
-- Reusable: The same Banner logic can be used across multiple pages.
+- [Reusable](https://en.wikipedia.org/wiki/Reusability): The same Banner logic can be used across multiple pages.
 
 At [Luniv](https://www.luniv.tech/), this technique is part of our approach to dynamic web presentation, improving both usability and user engagement.
 

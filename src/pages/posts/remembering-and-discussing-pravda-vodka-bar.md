@@ -15,13 +15,13 @@ tags: ["#Philosophy", "#Opinion", "#Travel"]
 # Remembering and Discussing Pravda Vodka Bar
 Is it correct to turn the ghosts of history into decor?
 
-I stumbled upon Pravda Vodka Bar during my travels in Toronto, Canada around 2022. As you can see from the images, it is a restaurant I've never forgotten.
+I stumbled upon Pravda Vodka Bar during my travels in [Toronto](https://en.wikipedia.org/wiki/Toronto), [Canada](https://en.wikipedia.org/wiki/Canada) around 2022. As you can see from the images, it is a restaurant I've never forgotten.
 ![Cyrillic sign of Pravda, and me!](../photo/_nick_in_canada.jpg "Cyrillic sign of Pravda, and me!")
 > Cyrillic sign of Pravda, and me!
 
 Having learned of Pravda shutting down (I think around May 2024), I wanted to share my thoughts on this place and provide it a slice on the internet where it can live forever since it was unique. I don't mean to be offensive to anyone. I simply enjoy preserving history when I see an opportunity to do so.
 
-I grew up in America in the 2000s. The 'red scare' and America's general fear of Russians/Communists had shifted to other ethnic groups by this time. Despite this, you would *never* see a bar like this in America outside of maybe New York City and a handful of other massive cities.
+I grew up in America in the 2000s. The ['red scare'](https://en.wikipedia.org/wiki/Red_Scare) and America's general fear of [Russians/Communists](https://en.wikipedia.org/wiki/Communism_in_Russia) had shifted to other ethnic groups by this time. Despite this, you would *never* see a bar like this in America outside of maybe New York City and a handful of other massive cities.
 
 ---
 

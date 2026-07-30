@@ -13,7 +13,7 @@ tags: ["#Tech"]
 
 ## [PERMALINK](https://sieep-coding.github.io/posts/buffer_overflow#Why_I_Use_Linux_Mint)
 
-# Why I Use Linux Mint
+# Why I Use [Linux Mint](https://en.wikipedia.org/wiki/Linux_Mint)
 
 ## Introduction
 

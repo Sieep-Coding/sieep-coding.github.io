@@ -37,7 +37,7 @@ The exact same rule applies to the words that come out of your mouth or the upda
 
 ## The Right Words at the Right Time
 
-Brevity isn't just about cutting things short for the sake of it. 
+[Brevity](https://en.wikipedia.org/wiki/Brevity) isn't just about cutting things short for the sake of it. 
 
 True brevity is about impact and unassailable clarity. Using the correct words at the correct time respects the gravity of human interaction. It shows that you have already done the heavy lifting of sorting through the chaos in your own head.
 

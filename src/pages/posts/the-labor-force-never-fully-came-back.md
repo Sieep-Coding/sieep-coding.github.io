@@ -11,11 +11,11 @@ img_alt: "A chart of labor force participation trending downward"
 tags: ["#Economics", "#Tech"]
 ---
 
-The last time I wrote anything under the Economics tag, it was a [research paper](/posts/making-nuclear-energy-competitve-with-fossil-fuels-and-natural-gas) for the Nuclear Engineering department at Michigan, arguing nuclear needs better subsidies to compete with fossil fuels and renewables. That paper leaned entirely on LCOE calculators and IEA spreadsheets. This one's smaller in scope, but I found a table of civilian labor force data from the BLS going back to 2012, and instead of eyeballing it, I threw it into a `pandas.DataFrame` and let Python do the arithmetic I'd get wrong by hand.
+The last time I wrote anything under the Economics tag, it was a [research paper](/posts/making-nuclear-energy-competitve-with-fossil-fuels-and-natural-gas) for the [Nuclear Engineering](https://en.wikipedia.org/wiki/Nuclear_engineering) [department](https://en.wikipedia.org/wiki/University_of_Michigan_College_of_Engineering#Departments) at Michigan, arguing nuclear needs better subsidies to compete with fossil fuels and renewables. That paper leaned entirely on LCOE calculators and [IEA](https://en.wikipedia.org/wiki/International_Energy_Agency) [spreadsheets](https://en.wikipedia.org/wiki/Spreadsheet). This one's smaller in scope, but I found a table of civilian labor force data from the BLS going back to 2012, and instead of eyeballing it, I threw it into a `pandas.DataFrame` and let Python do the arithmetic I'd get wrong by hand.
 
 ## The Data
 
-The table covers 2012 through 2025: total civilian population, labor force size, participation rate, employment, unemployment, and how many people are outside the labor force entirely. One footnote before touching any of it: the 2025 figures are 11-month averages that exclude October, since data collection didn't happen that month because of the federal government shutdown. So 2025 isn't strictly apples-to-apples with the other years, but it's close enough.
+The table covers 2012 through 2025: total civilian [population](https://en.wikipedia.org/wiki/Population_(human_biology)), labor force size, participation rate, employment, unemployment, and how many people are outside the [labor force](https://en.wikipedia.org/wiki/Labor_force_in_the_United_States) entirely. One footnote before touching any of it: the 2025 figures are 11-month averages that exclude October, since data collection didn't happen that month because of the federal [government shutdown.](https://en.wikipedia.org/wiki/Government_shutdowns_in_the_United_States) So 2025 isn't strictly apples-to-apples with the other years, but it's close enough.
 
 Here's the dataset and the first pass:
 
@@ -73,7 +73,7 @@ year
 ![Labor Force Participation vs Unemployment 2012-2025](../photo/_labor_chart.png "Participation rate vs unemployment rate")
 > Two lines that are supposed to move together, and haven't, for six years straight. [Data source.](https://www.bls.gov/cps/data/aa2025/cpsa2025.pdf)
 
-The unemployment story is the one everyone already knows: it climbs down steadily from 8.1% in 2012 to a low of 3.6% in 2022-2023, spikes hard to 8.1% in 2020, and by 2025 has crept back up to 4.3%.
+The [unemployment](https://en.wikipedia.org/wiki/Unemployment) story is the one everyone already knows: it climbs down steadily from 8.1% in 2012 to a low of 3.6% in 2022-2023, spikes hard to 8.1% in 2020, and by 2025 has crept back up to 4.3%.
 
 The participation rate doesn't V-shape at all.
 

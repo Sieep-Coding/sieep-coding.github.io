@@ -17,13 +17,13 @@ Starting a new role as a Junior Application Developer is exciting.
 
 When I accepted the position, I knew I had to level up my skills in C#. 
 
-My experience with Python gave me a solid foundation, but diving into a new language on a tight timeline is its own kind of challenge.
+My experience with [Python](https://en.wikipedia.org/wiki/Python_(programming_language)) gave me a solid foundation, but diving into a new language on a tight timeline is its own kind of challenge.
 
 Here's how I'm tackling it.
 
 ### Building Familiarity with C# Basics
 
-Switching from Python to C# initially felt overwhelming. 
+Switching from Python to [C#](https://en.wikipedia.org/wiki/C_Sharp_(programming_language)) initially felt overwhelming. 
 
 Python's dynamic and loosely typed nature is forgiving, while C# demands strict attention to types and structure. 
 

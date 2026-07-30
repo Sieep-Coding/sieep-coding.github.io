@@ -17,7 +17,7 @@ tags: ["#Business", "#Tech"]
 
 ### Introduction
 
-A few weeks ago, I met a business owner who was overwhelmed. They had been pitched an overhaul by a traditional agency. We're talking React frameworks, headless CMS integrations, cloud database hosting, and a monthly maintenance retainer that looked like a car payment. 
+A few weeks ago, I met a business owner who was overwhelmed. They had been pitched an overhaul by a traditional agency. We're talking React frameworks, [headless](https://en.wikipedia.org/wiki/Headless_software) [CMS](https://en.wikipedia.org/wiki/Content_management_system) integrations, cloud [database](https://en.wikipedia.org/wiki/Database) hosting, and a monthly maintenance retainer that looked like a car payment. 
 
 They came to me at [Luniv Technology](https://luniv.tech/) looking for a second opinion. 
 

@@ -36,7 +36,7 @@ Let's dive in!
 
 ### Why Pop!_OS?
 
-After some research and watching [The Primeagen](https://x.com/ThePrimeagen) teach me algorithms and data structures using Pop!_OS, I decided to give it a crack. 
+After some research and watching [The Primeagen](https://x.com/ThePrimeagen) teach me algorithms and data structures using [Pop!_OS](https://en.wikipedia.org/wiki/Pop!_OS), I decided to give it a crack. 
 
 It seemed highly geared to engineers which enticed me, as someone who programs over [30 hours](https://wakatime.com/@SieepCoding) a week typically.
 

@@ -12,7 +12,7 @@ tags: ["#Coding", "#Tech"]
 ---
 
 # Refactoring for Clarity: Lessons Learned from Cleaning Up Code
-Refactoring code can sometimes feel like a chore, but it’s one of the most rewarding aspects of development. 
+[Refactoring code](https://en.wikipedia.org/wiki/Code_refactoring) can sometimes feel like a chore, but it’s one of the most rewarding aspects of development. 
 
 Recently, I revisited code on [this website](https://nickstambaugh.vercel.app/) and stripped away unnecessary styling and complexity. 
 
@@ -21,7 +21,7 @@ The result? A cleaner, more maintainable codebase that’s easier to work with.
 # Why Refactoring Matters
 Codebases naturally accumulate "cruft" over time. 
 
-It could be overly complex logic, unnecessary styling, or redundant libraries. 
+It could be overly complex [logic](https://en.wikipedia.org/wiki/Logic), unnecessary styling, or redundant libraries. 
 
 Taking the time to refactor is more than a best practice—**it’s an investment in the long-term health of your project.**
 

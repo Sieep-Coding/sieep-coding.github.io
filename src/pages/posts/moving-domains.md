@@ -14,7 +14,7 @@ This site started on `nickstambaugh.dev` because that's what it was, a developme
 
 I'm calling it v1 because I stopped moving the goalposts. 
 
-The portfolio reflects work I've done. The blog has real posts. The [music page](/music) is starting to have music on it.
+The [portfolio](https://en.wikipedia.org/wiki/Career_portfolio) reflects work I've done. The blog has real posts. The [music page](/music) is starting to have music on it.
 
 ## What's Coming Next
 

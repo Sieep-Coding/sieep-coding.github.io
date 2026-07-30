@@ -14,7 +14,7 @@ tags: ["#Coding"]
 
 # Utility First Thinking in JavaScript
 
-There are certain tasks you complete with JavaScript repeatedly when working on enterprise systems. A lot of times, building your own library can be beneficial—it gives you improved control over your code.
+There are certain tasks you complete with [JavaScript](https://en.wikipedia.org/wiki/JavaScript) repeatedly when working on enterprise systems. A lot of times, building your own library can be beneficial.
 
 In this blog post, I'll breakdown some code of my [new string library (under development)](https://github.com/Sieep-Coding/luniv-strings/tree/main) and how it contributes to a utility-first approach in JavaScript that seems to have been lost in the age of frameworks.
 
@@ -22,7 +22,7 @@ In this blog post, I'll breakdown some code of my [new string library (under dev
 
 ### Why Build Your Own?
 
-> Why write yet another utility library?
+> Why write yet another utility [library?](https://en.wikipedia.org/wiki/Library_(computing))
 
 I'm curious about about the internal workings of JavaScript--primarily to improve at my day job. 
 
