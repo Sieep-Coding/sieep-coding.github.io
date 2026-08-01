@@ -7,6 +7,14 @@ const gradients = [
   "linear-gradient(135deg,#7c8fd1,#202020)",
   "linear-gradient(135deg,#96a6e2,#202020)",
 ];
+
+// Split into "current" (this year's drops) and "archive" (everything older).
+// The vault holds anything that isn't from the most recent year present in the data.
+const latestYear = Math.max(...tracks.map((t) => parseInt(t.year, 10)));
+const currentTracks = tracks.filter((t) => parseInt(t.year, 10) === latestYear);
+const archiveTracks = tracks.filter((t) => parseInt(t.year, 10) !== latestYear);
+
+const allTags = Array.from(new Set(tracks.flatMap((t) => t.tags))).sort();
 ---
 
 <BaseLayout title="Music — Nick Stambaugh">
@@ -33,7 +41,18 @@ const gradients = [
         </p>
       </header>
 
-      <section class="track-list" aria-label="Tracks">
+      <!-- Filter rail: styled like console channel-strip buttons -->
+      <div class="filter-rail" role="group" aria-label="Filter tracks by tag">
+        <span class="filter-label">Filter</span>
+        <div class="filter-chips" id="filter-chips">
+          {allTags.map((tag) => (
+            <button class="chip" data-tag={tag} type="button">{tag}</button>
+          ))}
+        </div>
+        <button class="chip chip-clear hidden" id="clear-filters" type="button">Clear</button>
+      </div>
+
+      <section class="track-list" aria-label="Tracks" id="current-list">
         <div class="list-head">
           <span class="col-idx">#</span>
           <span class="col-title">Title</span>
@@ -42,13 +61,14 @@ const gradients = [
           <span class="col-time">Time</span>
         </div>
 
-        {tracks.map((track, i) => (
+        {currentTracks.map((track, i) => (
           <div
             class="track-row"
             data-src={track.src}
             data-id={track.id}
             data-title={track.title}
             data-artist={track.artist}
+            data-tags={track.tags.join(",")}
             style={`--art:${gradients[i % gradients.length]}`}
           >
             <span class="col-idx">
@@ -65,6 +85,10 @@ const gradients = [
                 <span class="track-title">{track.title}</span>
                 <span class="track-artist">{track.artist} · {track.type}</span>
                 <span class="track-desc">{track.description}</span>
+                <span class="mobile-meta">
+                  {track.tags.map((tag) => <span class="tag-pill">{tag}</span>)}
+                  <span class="meta-year">{track.year}</span>
+                </span>
               </span>
             </span>
 
@@ -88,7 +112,80 @@ const gradients = [
             </a>
           </div>
         ))}
+        <p class="empty-state hidden" id="current-empty">Nothing matches those tags yet.</p>
       </section>
+
+      {archiveTracks.length > 0 && (
+        <section class="vault" aria-label="Archive">
+          <button class="vault-toggle" id="vault-toggle" aria-expanded="false" aria-controls="vault-body">
+            <span class="vault-toggle-left">
+              <svg class="vault-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="3" y="7" width="18" height="13" rx="1.5"/>
+                <path d="M7 7V5.5A2.5 2.5 0 0 1 9.5 3h5A2.5 2.5 0 0 1 17 5.5V7"/>
+              </svg>
+              <span class="vault-title">The Vault</span>
+              <span class="vault-count">{archiveTracks.length} track{archiveTracks.length === 1 ? "" : "s"} before {latestYear}</span>
+            </span>
+            <svg class="vault-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 9l6 6 6-6"/>
+            </svg>
+          </button>
+
+          <div class="vault-body" id="vault-body">
+            <p class="vault-sub">Older sessions, kept on the shelf rather than deleted. Same filters apply below.</p>
+            <div class="ledger" id="archive-list">
+              {archiveTracks
+                .sort((a, b) => parseInt(b.year, 10) - parseInt(a.year, 10))
+                .map((track, i) => (
+                <div
+                  class="ledger-row track-row"
+                  data-src={track.src}
+                  data-id={track.id}
+                  data-title={track.title}
+                  data-artist={track.artist}
+                  data-tags={track.tags.join(",")}
+                >
+                  <span class="ledger-year">{track.year}</span>
+                  <span class="ledger-line" aria-hidden="true"></span>
+                  <span class="col-idx">
+                    <button class="row-play-btn" aria-label={`Play ${track.title}`}>
+                      <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                      <svg class="icon-pause hidden" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                      <span class="mini-bars" aria-hidden="true"><i></i><i></i><i></i></span>
+                    </button>
+                  </span>
+                  <span class="col-title">
+                    <span class="titles">
+                      <span class="track-title">{track.title}</span>
+                      <span class="track-artist">{track.artist} · {track.type}</span>
+                      <span class="track-desc">{track.description}</span>
+                      <span class="mobile-meta">
+                        {track.tags.map((tag) => <span class="tag-pill">{tag}</span>)}
+                      </span>
+                    </span>
+                  </span>
+                  <span class="col-tags">
+                    {track.tags.map((tag) => <span class="tag-pill">{tag}</span>)}
+                  </span>
+                  <span class="col-time time-display">—:——</span>
+                  <a
+                    href={track.youtube}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="yt-link"
+                    aria-label={`Watch ${track.title} on YouTube`}
+                    title="Watch on YouTube"
+                  >
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.3 31.3 0 0 0 0 12a31.3 31.3 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.3 31.3 0 0 0 24 12a31.3 31.3 0 0 0-.5-5.8zM9.75 15.5v-7l6.5 3.5-6.5 3.5z"/></svg>
+                  </a>
+                </div>
+              ))}
+            </div>
+            <p class="empty-state hidden" id="archive-empty">Nothing in the vault matches those tags.</p>
+          </div>
+        </section>
+      )}
+
       <footer class="page-footer">
         <p>
           Interested in licensing or collaborating? Email me:{" "}
@@ -270,6 +367,67 @@ const gradients = [
     color: var(--text-dim);
   }
 
+  /* ---------- filter rail ---------- */
+  .filter-rail {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 1.5rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .filter-label {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-faint);
+    flex-shrink: 0;
+  }
+
+  .filter-chips {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+  }
+
+  .chip {
+    font-size: 0.68rem;
+    padding: 0.3rem 0.65rem;
+    border-radius: 999px;
+    border: 1px solid var(--pill-border);
+    background: transparent;
+    color: var(--text-dim);
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+    white-space: nowrap;
+  }
+  .chip:hover {
+    border-color: var(--text);
+  }
+  .chip.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #e8d8c8;
+  }
+  :global(html.dark) .chip.active {
+    color: #2a2b39;
+  }
+
+  .chip-clear {
+    margin-left: auto;
+    color: var(--text-faint);
+    border-style: dashed;
+  }
+
+  .empty-state {
+    padding: 1.5rem 0.75rem;
+    font-size: 0.8rem;
+    color: var(--text-faint);
+    text-align: center;
+  }
+
   .license-info {
     max-width: 760px;
     margin: 0 auto;
@@ -369,12 +527,33 @@ const gradients = [
     }
   }
 
+  /* mobile-only meta line (tags + year) shown under the title on small screens */
+  .mobile-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    flex-wrap: wrap;
+    margin-top: 0.3rem;
+  }
+  .mobile-meta .tag-pill {
+    font-size: 0.6rem;
+  }
+  .meta-year {
+    font-size: 0.65rem;
+    color: var(--text-faint);
+  }
+  @media (min-width: 640px) {
+    .mobile-meta {
+      display: none;
+    }
+  }
+
   .track-row {
     display: grid;
-    grid-template-columns: 2.5rem 1fr 3rem 3.5rem 1.25rem;
-    gap: 1rem;
+    grid-template-columns: 2.5rem 1fr 1.25rem;
+    gap: 0.75rem;
     align-items: center;
-    padding: 0.6rem 0.75rem;
+    padding: 0.65rem 0.75rem;
     border-radius: 8px;
     position: relative;
     transition: background 0.15s ease;
@@ -382,6 +561,7 @@ const gradients = [
   @media (min-width: 640px) {
     .track-row {
       grid-template-columns: 2.5rem 1fr auto 3rem 3.5rem 1.25rem;
+      gap: 1rem;
     }
   }
   .track-row:hover {
@@ -392,6 +572,9 @@ const gradients = [
   }
   .track-row.is-playing .track-title {
     color: var(--accent);
+  }
+  .track-row.filtered-out {
+    display: none;
   }
 
   .col-idx {
@@ -433,6 +616,15 @@ const gradients = [
     width: 1rem;
     height: 1rem;
   }
+  /* on mobile there's no idx-num to swap with in the ledger, so always show the button lightly */
+  @media (max-width: 639px) {
+    .row-play-btn {
+      opacity: 0.55;
+    }
+    .track-row.is-playing .row-play-btn {
+      opacity: 1;
+    }
+  }
 
   .mini-bars {
     display: none;
@@ -472,15 +664,6 @@ const gradients = [
     min-width: 0;
   }
 
-  .art {
-    width: 44px;
-    height: 44px;
-    border-radius: 6px;
-    background: var(--art);
-    flex-shrink: 0;
-    box-shadow: 0 2px 8px rgba(32, 32, 32, 0.25);
-  }
-
   .titles {
     display: flex;
     flex-direction: column;
@@ -512,6 +695,11 @@ const gradients = [
     overflow: hidden;
     text-overflow: ellipsis;
   }
+  @media (max-width: 639px) {
+    .track-desc {
+      white-space: normal;
+    }
+  }
 
   .col-tags {
     display: none;
@@ -538,6 +726,12 @@ const gradients = [
     font-size: 0.75rem;
     color: var(--text-faint);
     font-variant-numeric: tabular-nums;
+    display: none;
+  }
+  @media (min-width: 640px) {
+    .col-year {
+      display: block;
+    }
   }
 
   .col-time {
@@ -545,18 +739,29 @@ const gradients = [
     color: var(--text-faint);
     font-variant-numeric: tabular-nums;
     text-align: right;
+    display: none;
+  }
+  @media (min-width: 640px) {
+    .col-time {
+      display: block;
+    }
   }
 
   .yt-link {
     width: 1rem;
     height: 1rem;
     color: var(--text-faint);
-    opacity: 0;
+    opacity: 0.6;
     transition: opacity 0.15s ease, color 0.15s ease;
     justify-self: center;
   }
-  .track-row:hover .yt-link {
-    opacity: 1;
+  @media (min-width: 640px) {
+    .yt-link {
+      opacity: 0;
+    }
+    .track-row:hover .yt-link {
+      opacity: 1;
+    }
   }
   .yt-link:hover {
     color: var(--text);
@@ -564,6 +769,136 @@ const gradients = [
   .yt-link svg {
     width: 100%;
     height: 100%;
+  }
+
+  /* ---------- the vault (archive) ---------- */
+  .vault {
+    max-width: 760px;
+    margin: 1.5rem auto 0;
+    padding: 0 1.5rem;
+  }
+
+  .vault-toggle {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.85rem 1rem;
+    cursor: pointer;
+    color: var(--text);
+    transition: border-color 0.15s ease;
+  }
+  .vault-toggle:hover {
+    border-color: var(--pill-border);
+  }
+
+  .vault-toggle-left {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    min-width: 0;
+  }
+
+  .vault-icon {
+    width: 1.1rem;
+    height: 1.1rem;
+    color: var(--text-dim);
+    flex-shrink: 0;
+  }
+
+  .vault-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+  }
+
+  .vault-count {
+    font-size: 0.7rem;
+    color: var(--text-faint);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .vault-chevron {
+    width: 1rem;
+    height: 1rem;
+    color: var(--text-faint);
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+  }
+  .vault-toggle[aria-expanded="true"] .vault-chevron {
+    transform: rotate(180deg);
+  }
+
+  .vault-body {
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    transition: grid-template-rows 0.28s ease, opacity 0.22s ease;
+  }
+  .vault-body > * {
+    overflow: hidden;
+    min-height: 0;
+  }
+  .vault[data-open="true"] .vault-body {
+    grid-template-rows: 1fr;
+    opacity: 1;
+  }
+
+  .vault-sub {
+    font-size: 0.72rem;
+    color: var(--text-faint);
+    padding: 0.9rem 0.25rem 0.25rem;
+  }
+
+  /* the ledger: a logbook-style timeline for archived sessions */
+  .ledger {
+    padding-top: 0.25rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .ledger-row {
+    grid-template-columns: 2.75rem 0.9rem 2.25rem 1fr 1.25rem;
+    padding-left: 0;
+    padding-right: 0.75rem;
+  }
+  @media (min-width: 640px) {
+    .ledger-row {
+      grid-template-columns: 2.75rem 0.9rem 2.25rem 1fr 3rem 3.5rem 1.25rem;
+    }
+  }
+
+  .ledger-year {
+    font-family: "Courier New", ui-monospace, monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.02em;
+    color: var(--text-faint);
+    text-align: right;
+    padding-right: 0.35rem;
+  }
+
+  .ledger-line {
+    width: 1px;
+    height: 100%;
+    min-height: 2.25rem;
+    background: var(--border);
+    justify-self: center;
+    position: relative;
+  }
+  .ledger-line::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--text-faint);
+    transform: translate(-50%, -50%);
   }
 
   .page-footer {
@@ -882,6 +1217,13 @@ const gradients = [
     }
   }
 
+  function nextPlayableIndex(from: number): number {
+    for (let i = from + 1; i < rows.length; i++) {
+      if (!rows[i].classList.contains("filtered-out")) return i;
+    }
+    return -1;
+  }
+
   rows.forEach((row, i) => {
     const btn = row.querySelector<HTMLButtonElement>(".row-play-btn")!;
     btn.addEventListener("click", () => togglePlay(i));
@@ -904,8 +1246,9 @@ const gradients = [
 
     audio.addEventListener("ended", () => {
       setRowPlaying(i, false);
-      if (i < rows.length - 1) {
-        playIndex(i + 1);
+      const next = nextPlayableIndex(i);
+      if (next !== -1) {
+        playIndex(next);
       } else if (currentIndex === i) {
         pbPlayIconPlay.classList.remove("hidden");
         pbPlayIconPause.classList.add("hidden");
@@ -934,7 +1277,8 @@ const gradients = [
 
   pbPlay.addEventListener("click", () => {
     if (currentIndex === -1) {
-      playIndex(0);
+      const first = nextPlayableIndex(-1);
+      if (first !== -1) playIndex(first);
     } else {
       togglePlay(currentIndex);
     }
@@ -942,18 +1286,23 @@ const gradients = [
 
   pbPrev.addEventListener("click", () => {
     if (currentIndex === -1) return;
-    const nextIndex = currentIndex > 0 ? currentIndex - 1 : 0;
-    playIndex(nextIndex);
+    for (let i = currentIndex - 1; i >= 0; i--) {
+      if (!rows[i].classList.contains("filtered-out")) {
+        playIndex(i);
+        return;
+      }
+    }
   });
 
   pbNext.addEventListener("click", () => {
     if (currentIndex === -1) return;
-    const nextIndex = currentIndex < rows.length - 1 ? currentIndex + 1 : currentIndex;
-    playIndex(nextIndex);
+    const next = nextPlayableIndex(currentIndex);
+    if (next !== -1) playIndex(next);
   });
 
   playAllBtn.addEventListener("click", () => {
-    playIndex(0);
+    const first = nextPlayableIndex(-1);
+    if (first !== -1) playIndex(first);
   });
 
   function seekTo(e: MouseEvent | TouchEvent) {
@@ -1001,9 +1350,74 @@ const gradients = [
     if (tag === "INPUT" || tag === "TEXTAREA" || tag === "BUTTON") return;
     e.preventDefault();
     if (currentIndex === -1) {
-      playIndex(0);
+      const first = nextPlayableIndex(-1);
+      if (first !== -1) playIndex(first);
     } else {
       togglePlay(currentIndex);
     }
   });
+
+  // ---------- tag filtering ----------
+  const chips = Array.from(document.querySelectorAll<HTMLButtonElement>(".chip[data-tag]"));
+  const clearBtn = document.getElementById("clear-filters") as HTMLButtonElement;
+  const activeTags = new Set<string>();
+
+  const vault = document.querySelector<HTMLElement>(".vault");
+  const vaultToggle = document.getElementById("vault-toggle");
+
+  function applyFilters() {
+    let currentVisible = 0;
+    let archiveVisible = 0;
+
+    rows.forEach((row) => {
+      const tags = (row.dataset.tags || "").split(",");
+      const matches = activeTags.size === 0 || tags.some((t) => activeTags.has(t));
+      row.classList.toggle("filtered-out", !matches);
+      if (matches) {
+        if (row.closest("#archive-list")) archiveVisible++;
+        else currentVisible++;
+      }
+    });
+
+    document.getElementById("current-empty")!.classList.toggle("hidden", currentVisible !== 0);
+    const archiveEmpty = document.getElementById("archive-empty");
+    if (archiveEmpty) archiveEmpty.classList.toggle("hidden", archiveVisible !== 0);
+
+    clearBtn.classList.toggle("hidden", activeTags.size === 0);
+
+    // auto-expand the vault if a filter only matches archived tracks
+    if (vault && activeTags.size > 0 && currentVisible === 0 && archiveVisible > 0) {
+      vault.setAttribute("data-open", "true");
+      vaultToggle?.setAttribute("aria-expanded", "true");
+    }
+  }
+
+  chips.forEach((chip) => {
+    chip.addEventListener("click", () => {
+      const tag = chip.dataset.tag!;
+      if (activeTags.has(tag)) {
+        activeTags.delete(tag);
+        chip.classList.remove("active");
+      } else {
+        activeTags.add(tag);
+        chip.classList.add("active");
+      }
+      applyFilters();
+    });
+  });
+
+  clearBtn?.addEventListener("click", () => {
+    activeTags.clear();
+    chips.forEach((c) => c.classList.remove("active"));
+    applyFilters();
+  });
+
+
+  if (vault && vaultToggle) {
+    vaultToggle.addEventListener("click", () => {
+      const isOpen = vault.getAttribute("data-open") === "true";
+      vault.setAttribute("data-open", String(!isOpen));
+      vaultToggle.setAttribute("aria-expanded", String(!isOpen));
+    });
+  }
 </script>
