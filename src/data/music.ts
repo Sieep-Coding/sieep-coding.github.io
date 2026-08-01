@@ -1,5 +1,16 @@
 export const tracks = [
   {
+      id: "villains",
+      title: "Villains",
+      artist: "sieep",
+      year: "2026",
+      type: "Single",
+      description: "hip-hop · eminem inspired",
+      tags: ["hip-hop", "eminem-inspired"],
+      src: "/music-files/villains.wav",
+      youtube: "https://www.youtube.com/watch?v=_Qc645UNLmI",
+  },
+  {
       id: "continue",
       title: "continue?",
       artist: "sieep",
