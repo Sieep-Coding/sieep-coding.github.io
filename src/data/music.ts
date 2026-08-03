@@ -10,6 +10,7 @@ export const tracks = [
       "hip-hop",
       "soulful",
     ],
+    speed: "fast",
     src: "/music-files/side-streets.wav",
     youtube: "https://www.youtube.com/watch?v=HT7onHO8pOI",
   },
@@ -21,6 +22,7 @@ export const tracks = [
     type: "Single",
     description: "hip-hop · eminem inspired",
     tags: ["hip-hop", "eminem-inspired"],
+    speed: "fast",
     src: "/music-files/villains.wav",
     youtube: "https://www.youtube.com/watch?v=_Qc645UNLmI",
   },
@@ -32,6 +34,7 @@ export const tracks = [
     type: "Single",
     description: "trumpet · custom drum pattern",
     tags: ["hip-hop", "atmospheric"],
+    speed: "slow",
     src: "/music-files/continue.wav",
     youtube: "https://youtu.be/d8kZ1MRjuV4?si=WLhrBXND_7ezkRpA",
   },
@@ -43,6 +46,7 @@ export const tracks = [
     type: "Single",
     description: "Live bass · custom drum pattern · rising perc into hi-hat shift",
     tags: ["hip-hop", "live-instruments"],
+    speed: "slow",
     src: "/music-files/crows.wav",
     youtube: "https://www.youtube.com/watch?v=QV10MDaCoNU",
   },
@@ -55,6 +59,7 @@ export const tracks = [
     description: "Travis Scott-influenced beat · Val Kilmer vocal sample",
     tags: ["hip-hop", "atmospheric"],
     src: "/music-files/normal-life-mix2.wav",
+    speed: "slow",
     youtube: "https://www.youtube.com/watch?v=I0BHk5_UDQk",
   },
   {
@@ -65,6 +70,7 @@ export const tracks = [
     type: "Single",
     description: "Bruce Lee vocal sample · chopped wet guitar · DJ scratches",
     tags: ["hip-hop", "sample-only"],
+    speed: "slow",
     src: "/music-files/sample-only-drums-2.wav",
     youtube: "https://www.youtube.com/watch?v=-wRETGIhiKI",
   },
@@ -72,21 +78,15 @@ export const tracks = [
 
 export const licenseOptions = [
   {
-    name: "Non-Exclusive Lease",
+    name: "Non-Exclusive License - All Tracks",
     blurb:
-      "Good for demos, mixtapes, and commercial use. I can license the same track to others.",
-    price: "$50–$550",
+      "The track can be leased by others. Best for demos, mixtapes, and official releases.",
+    price: "$2,550-$10,000+",
   },
   {
-    name: "Exclusive License",
+    name: "Split Royalty - All Tracks",
     blurb:
-      "The track is yours alone going forward, no one else gets it after. Best for official releases.",
-    price: "$2,550+",
-  },
-  {
-    name: "Split Royalty Agreement",
-    blurb:
-      "I retain a 50% interest in royalties. You must register me as a producer on all platforms or a co-writer, if applicable.",
+      "I retain a minimum 50% interest in royalties. You must register me as a producer on all platforms or as a co-writer, if applicable.",
     price: "All splits and terms negotiable",
   }
 ];
