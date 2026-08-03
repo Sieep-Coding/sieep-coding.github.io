@@ -36,11 +36,11 @@ I wanted the whole thing to feel like a soundtrack to a quiet drive through stre
 
 I'm finding that I enjoy making boom bap much more than chasing whatever sound happens to be popular. There's something satisfying about building a beat that rewards you for listening closely.
 
-[Listen to Side Streets →](https://www.youtube.com/watch?v=HT7onHO8pOI)
+[Listen to Side Streets →](https://youtu.be/982CYoWGEXA)
 
 ---
 
-*Side Streets* is available to stream for free on [YouTube](https://www.youtube.com/watch?v=HT7onHO8pOI) or the [Music](/music) page.
+*Side Streets* is available to stream for free on [YouTube](https://youtu.be/982CYoWGEXA) or the [Music](/music) page.
 
 Interested in licensing or collaboration? Email me at [nickstambaugh@proton.me](mailto:nickstambaugh@proton.me)
 

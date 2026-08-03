@@ -11,8 +11,8 @@ export const tracks = [
       "soulful",
     ],
     speed: "fast",
-    src: "/music-files/side-streets.wav",
-    youtube: "https://www.youtube.com/watch?v=HT7onHO8pOI",
+    src: "/music-files/side-streets-remaster.wav",
+    youtube: "https://youtu.be/982CYoWGEXA",
   },
   {
     id: "villains",
