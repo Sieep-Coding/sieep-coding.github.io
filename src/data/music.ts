@@ -1,5 +1,19 @@
 export const tracks = [
   {
+    id: "side-streets",
+    title: "Side Streets",
+    artist: "sieep",
+    year: "2026",
+    type: "Single",
+    description: "Soulful boom bap · atmospheric · dusty drums",
+    tags: [
+      "hip-hop",
+      "soulful",
+    ],
+    src: "/music-files/side-streets.wav",
+    youtube: "https://www.youtube.com/watch?v=HT7onHO8pOI",
+  },
+  {
     id: "villains",
     title: "Villains",
     artist: "sieep",
