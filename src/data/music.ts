@@ -1,5 +1,21 @@
 export const tracks = [
   {
+    id: "palm-smoke",
+    title: "Palm Smoke",
+    artist: "sieep",
+    year: "2026",
+    type: "Single",
+    description: "Chill boom bap beat inspired by reggae",
+    tags: [
+      "hip-hop",
+      "chill",
+      "reggae-inspired",
+    ],
+    speed: "slow",
+    src: "/music-files/palm-smoke.wav",
+    youtube: "https://www.youtube.com/watch?v=zdkIM0CIh2o",
+  },
+  {
     id: "side-streets",
     title: "Side Streets",
     artist: "sieep",
@@ -11,7 +27,7 @@ export const tracks = [
       "soulful",
     ],
     speed: "fast",
-    src: "/music-files/side-streets-remaster.wav",
+    src: "/music-files/side-streets-remaster.mp3",
     youtube: "https://youtu.be/982CYoWGEXA",
   },
   {
