@@ -8,8 +8,7 @@ export const tracks = [
     description: "Chill boom bap beat inspired by reggae",
     tags: [
       "hip-hop",
-      "chill",
-      "reggae-inspired",
+      "chill"
     ],
     speed: "slow",
     src: "/music-files/palm-smoke.mp3",
