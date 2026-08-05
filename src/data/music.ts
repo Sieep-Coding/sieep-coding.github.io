@@ -12,7 +12,7 @@ export const tracks = [
       "reggae-inspired",
     ],
     speed: "slow",
-    src: "/music-files/palm-smoke.wav",
+    src: "/music-files/palm-smoke.mp3",
     youtube: "https://www.youtube.com/watch?v=zdkIM0CIh2o",
   },
   {
@@ -27,7 +27,7 @@ export const tracks = [
       "soulful",
     ],
     speed: "fast",
-    src: "/music-files/side-streets-remaster.mp3",
+    src: "/music-files/side-streets-remaster.wav",
     youtube: "https://youtu.be/982CYoWGEXA",
   },
   {
