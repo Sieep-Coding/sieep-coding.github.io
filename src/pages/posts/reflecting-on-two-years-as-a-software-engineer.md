@@ -31,7 +31,7 @@ The advice of "just learn to code" was already beginning to wear off by the time
 
 > I say this because I think people deserve an honest picture of what they're signing up for.
 
-![Kramer: you better believe it](../photo/_kramer-office3.gif "Kramer: you better believe it")
+![Kramer you better believe it](../photo/_kramer-office3.gif "Kramer: you better believe it")
 
 Programming is one of those fields where you don't stop learning after you get the job. In many ways, that's when the real learning begins. Over the years I've accumulated what feels like an endless collection of technologies. C#, SQL Server, ASP.NET MVC, Razor, JavaScript, TypeScript, React, Astro, Power BI, Python, Git, Linux, Azure, Microsoft Dynamics AX 2009, REST APIs, Entity Framework... the list keeps growing every year. You never really "finish." The tools change, businesses change, and eventually the thing you spent six months mastering is replaced by something else.
 
