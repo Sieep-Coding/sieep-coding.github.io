@@ -3,6 +3,40 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 const recipes = [
   {
+  id: "tomato-pickle-mayo-grilled-cheese",
+  title: "Tomato Pickle-Mayo Grilled Cheese",
+  source: "sieep",
+  year: "2026",
+  time: "10 min",
+  servings: "1 sandwich",
+  tags: ["american", "sandwich", "quick", "comfort-food"],
+  description:
+  "A crispy grilled cheese with sharp cheddar, American cheese, fresh tomato, and a tangy pickle-mayo spread. Simple, salty, creamy, and bright.",
+  ingredients: [
+  "2 slices sourdough or white bread",
+  "1 slice sharp cheddar cheese",
+  "1 slice American cheese",
+  "2-3 thin slices tomato",
+  "1 tbsp mayonnaise",
+  "1/4 tsp garlic powder",
+  "1 tbsp butter",
+  "4 thin slices dill pickle",
+  "Freshly ground black pepper",
+  ],
+  steps: [
+  "Mix the mayonnaise and garlic powder together in a small bowl.",
+  "Spread the mayo evenly on the inside of both slices of bread.",
+  "Layer the cheddar, tomato, black pepper, and American cheese between the bread.",
+  "Heat the butter in a skillet over medium-low heat.",
+  "Grill the sandwich for 3-4 minutes per side, pressing gently, until the bread is deeply golden and the cheese is completely melted.",
+  "Add cold pickle slices for deli contrast or serve them on the side.",
+  "Slice in half and serve immediately.",
+  ],
+  note:
+  "The tiny splash of pickle juice gives the mayo enough acidity to cut through the cheese without making the sandwich taste like a pickle. Pat the tomato dry first so the bread stays crisp.",
+  },
+
+  {
   id: "walking-taco",
   title: "Walking Taco",
   source: "sieep",
@@ -484,8 +518,6 @@ const slug = (t) =>
         >
       </button>
     </div>
-
-    <!-- Collapsible Tag Panel -->
     <div
       id="filters-panel"
       class="overflow-hidden transition-[max-height] duration-200 ease-out max-h-0"
@@ -520,8 +552,6 @@ const slug = (t) =>
     >
       No recipes match your search.
     </p>
-
-    <!-- Accordion list: collapsed by default, click to expand -->
     <div class="space-y-3" id="recipes-list">
       {
         recipes.map((recipe) => {
