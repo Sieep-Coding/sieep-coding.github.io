@@ -38,6 +38,8 @@ When people imagine programmers they often picture someone making $600k, wearing
 The reality for most of us is a lot less glamorous.
 
 ![Kramer in the office](../photo/_kramer-office2.gif "Kramer in the office")
+![Kramer trying to get on the subway](../photo/_kramer-subway1.gif "Kramer trying to get on the subway")
+
 
 ## Final Thoughts
 
