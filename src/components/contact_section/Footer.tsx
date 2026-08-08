@@ -32,20 +32,57 @@ const EASTER_EGGS = [
   },
 ];
 
+// Flipbook frames for Bruce's "bark": mouth swaps between @ (closed) and O (open),
+// with "Woof!" popping in on the open frames.
+const BARK_FRAMES = [
+  { mouth: "O", caption: "Woof!" },
+  { mouth: "@", caption: "" },
+  { mouth: "O", caption: "Woof!" },
+  { mouth: "@", caption: "" },
+  { mouth: "O", caption: "Woof!" },
+  { mouth: "@", caption: "" },
+];
+const FRAME_MS = 180;
+
 const Footer: React.FC = () => {
   const [showAscii, setShowAscii] = useState(false);
   const [eggIndex, setEggIndex] = useState(0);
+  const [barkFrame, setBarkFrame] = useState<number | null>(null);
+  const barkTimers = React.useRef<ReturnType<typeof setTimeout>[]>([]);
+
+  const currentEgg = EASTER_EGGS[eggIndex];
 
   const handleToggle = () => {
     if (showAscii) {
       setEggIndex((prev) => (prev + 1) % EASTER_EGGS.length);
       setShowAscii(false);
+      setBarkFrame(null);
     } else {
       setShowAscii(true);
     }
   };
 
-  const currentEgg = EASTER_EGGS[eggIndex];
+  const handlePet = () => {
+    if (currentEgg.label !== "woof" || barkFrame !== null) return;
+    barkTimers.current.forEach(clearTimeout);
+    barkTimers.current = [];
+    BARK_FRAMES.forEach((_, i) => {
+      barkTimers.current.push(setTimeout(() => setBarkFrame(i), i * FRAME_MS));
+    });
+    barkTimers.current.push(
+      setTimeout(() => setBarkFrame(null), BARK_FRAMES.length * FRAME_MS)
+    );
+  };
+
+  React.useEffect(() => {
+    return () => barkTimers.current.forEach(clearTimeout);
+  }, []);
+
+  const isBarking = barkFrame !== null && currentEgg.label === "woof";
+  const displayArt = isBarking
+    ? currentEgg.art.replace("@", BARK_FRAMES[barkFrame].mouth)
+    : currentEgg.art;
+  const caption = isBarking ? BARK_FRAMES[barkFrame].caption : "";
 
   return (
     <footer className="w-full mt-16 bg-primary dark:bg-dk-primary border-t border-text/10 dark:border-dk-text/10">
@@ -141,20 +178,39 @@ const Footer: React.FC = () => {
                 style={{ fontFamily: ASCII_FONT, fontSize: "10px" }}
               >
                 <span>{currentEgg.filename}</span>
-                <span>found by you, {new Date().toLocaleDateString("en-US", { month: "short", day: "numeric" })}</span>
+                <span>
+                  {currentEgg.label === "woof"
+                    ? "pet me"
+                    : `found by you, ${new Date().toLocaleDateString("en-US", { month: "short", day: "numeric" })}`}
+                </span>
               </div>
 
-              <pre
-                className="select-none text-text/80 dark:text-dk-text/80 m-0 inline-block"
-                style={{
-                  fontFamily: ASCII_FONT,
-                  fontSize: "11px",
-                  lineHeight: "13px",
-                  whiteSpace: "pre",
-                }}
-              >
-                {currentEgg.art}
-              </pre>
+              <div className="relative inline-block">
+                <pre
+                  onMouseEnter={handlePet}
+                  onClick={handlePet}
+                  className={`select-none text-text/80 dark:text-dk-text/80 m-0 inline-block ${
+                    currentEgg.label === "woof" ? "cursor-pointer" : ""
+                  }`}
+                  style={{
+                    fontFamily: ASCII_FONT,
+                    fontSize: "11px",
+                    lineHeight: "13px",
+                    whiteSpace: "pre",
+                  }}
+                >
+                  {displayArt}
+                </pre>
+
+                {caption && (
+                  <span
+                    className="absolute -top-2 right-2 text-secondary dark:text-dk-secondary font-bold select-none"
+                    style={{ fontFamily: ASCII_FONT, fontSize: "11px" }}
+                  >
+                    {caption}
+                  </span>
+                )}
+              </div>
             </div>
           </div>
         )}
