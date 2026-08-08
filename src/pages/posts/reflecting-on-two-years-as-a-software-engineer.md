@@ -5,8 +5,8 @@ date: "2026-08-07"
 layout: ../../layouts/PostLayout.astro
 description: "While I have been writing code for a long time, the title has not always come with it."
 
-img_path : "/programming.jpg"
-img_alt: "Macbook with code on the screen"
+img_path : "/compagnons-Fa9b57hffnM-unsplash.jpg"
+img_alt: "Programmers working in an office"
 
 tags: ["#SelfHelp", "#Tech"]
 ---
@@ -46,3 +46,5 @@ The reality for most of us is a lot less glamorous.
 Working in [manufacturing](https://en.wikipedia.org/wiki/Manufacturing) has given me a greater appreciation for high quality software. When your code crashes on a [social media](https://en.wikipedia.org/wiki/Social_media) site, someone might not see a picture or some dumb [tiktok](https://en.wikipedia.org/wiki/TikTok) about aliens building the pyramids. When your code crashes in a manufacturing environment, production can stop and people are *pissed at you*. 
 
 The other thing that's surprised me is just how much of [software engineering](https://en.wikipedia.org/wiki/Software_engineering) has nothing to do with it. You spend a lot of time talking to people. Understanding [business processes.](https://en.wikipedia.org/wiki/Business_process) Figuring out what someone actually means when they describe a problem. I don't think college prepared me for that part.
+
+[Image Source](https://unsplash.com/photos/people-sitting-on-chair-in-front-of-computer-monitor-Fa9b57hffnM)
