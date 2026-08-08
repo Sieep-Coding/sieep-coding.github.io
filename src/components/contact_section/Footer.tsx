@@ -21,8 +21,8 @@ const EASTER_EGGS = [
 `,
   },
   {
-    label: "meow",
-    filename: "// terminal",
+    label: "cat.txt",
+    filename: "cat cat.txt",
     credit: "Credit: Nick Stambaugh",
     art: String.raw`
                 /\  
@@ -32,8 +32,6 @@ const EASTER_EGGS = [
   },
 ];
 
-// Flipbook frames for Bruce's "bark": mouth swaps between @ (closed) and O (open),
-// with "Woof!" popping in on the open frames.
 const BARK_FRAMES = [
   { mouth: "O", caption: "Woof!" },
   { mouth: "@", caption: "" },
