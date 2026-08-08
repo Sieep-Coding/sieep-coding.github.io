@@ -29,12 +29,10 @@ const latestPostUrl = latestPost?.url || "/posts";
             {info.name}
           </h1>
         </div>
-
         <p class="text-text dark:text-dk-text text-lg leading-relaxed pt-1">
           {info.brief_description}. This site is dedicated to his blog, music,
           and other interests.
         </p>
-
         <div class="flex flex-wrap gap-x-8 gap-y-2">
           <a
             href="/wiki"
@@ -100,9 +98,7 @@ const latestPostUrl = latestPost?.url || "/posts";
             <span class="relative z-10">Email Me →</span>
           </a>
         </div>
-
       </div>
-
       <div class="order-1 sm:order-2 shrink-0">
         <Image
           src={info.picture}
@@ -113,7 +109,6 @@ const latestPostUrl = latestPost?.url || "/posts";
         />
       </div>
     </header>
-
     <section id="latest-carousel" class="relative">
       <h2 class="text-xl font-bold tracking-tight mb-2">Nick's Feed</h2>
       <p class="text-xs tracking-tighter mb-4">
@@ -127,7 +122,6 @@ const latestPostUrl = latestPost?.url || "/posts";
           id="carousel-slides"
           class="flex transition-transform duration-500 ease-out"
         >
-          <!-- Slide 1: Latest Bruce photo -->
           <a
             href="/bruce-the-dog"
             class="carousel-slide group flex items-center gap-4 p-3 sm:p-4 w-full shrink-0 hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
@@ -150,8 +144,6 @@ const latestPostUrl = latestPost?.url || "/posts";
               </span>
             </div>
           </a>
-
-          <!-- Slide 2: Latest track -->
           <a
             href="/music"
             class="carousel-slide group flex items-center justify-between p-5 sm:p-6 w-full shrink-0 hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
@@ -209,8 +201,6 @@ const latestPostUrl = latestPost?.url || "/posts";
               Read →
             </span>
           </a>
-
-          <!-- Slide 3: Latest recipe -->
           <a
             href="/recipes"
             class="carousel-slide group flex items-center justify-between p-5 sm:p-6 w-full shrink-0 hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
@@ -224,7 +214,7 @@ const latestPostUrl = latestPost?.url || "/posts";
               <p
                 class="text-sm font-semibold text-secondary dark:text-dk-accent truncate"
               >
-                Walking Taco
+                Tomato Pickle-Mayo Grilled Cheese
               </p>
             </div>
             <span
@@ -233,7 +223,6 @@ const latestPostUrl = latestPost?.url || "/posts";
               Cook it →
             </span>
           </a>
-          <!-- Slide 4: Random quote -->
           <div
             id="quote-slide"
             class="carousel-slide flex items-center p-5 sm:p-6 w-full shrink-0"
@@ -281,7 +270,6 @@ const latestPostUrl = latestPost?.url || "/posts";
               View →
             </span>
           </a>
-          <!-- Slide 6: Latest blog post -->
           <a
             href={latestPostUrl}
             class="carousel-slide group flex items-center justify-between p-5 sm:p-6 w-full shrink-0 hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
@@ -332,7 +320,6 @@ const latestPostUrl = latestPost?.url || "/posts";
                 Fetching event...
               </p>
             </div>
-
             <span
               class="text-sm font-medium text-secondary dark:text-dk-accent group-hover:underline underline-offset-4 shrink-0"
             >
@@ -430,7 +417,6 @@ const latestPostUrl = latestPost?.url || "/posts";
           </div>
         </div>
       </div>
-
       <div class="flex items-center justify-center gap-4 mt-3">
         <button
           id="carousel-prev"
@@ -509,7 +495,6 @@ const latestPostUrl = latestPost?.url || "/posts";
         </button>
       </div>
     </section>
-
     <section id="blog">
       <Blog posts={allPosts} />
     </section>
@@ -523,7 +508,6 @@ const latestPostUrl = latestPost?.url || "/posts";
       </div>
     </section>
   </main>
-
   <script>
     const slidesWrap = document.getElementById("carousel-slides");
     const slides = Array.from(
