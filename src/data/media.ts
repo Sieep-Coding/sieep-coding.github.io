@@ -1,5 +1,17 @@
 export const mediaList = [
     {
+        id: "george-lopez",
+        title: "George Lopez",
+        creator: "George Lopez, Bruce Helford, Robert Borden",
+        studio: "ABC",
+        year: "2002",
+        episodes: "120 episodes",
+        rating: 4,
+        format: "Sitcom",
+        tags: ["comedy", "sitcom"],
+        description: "A Mexican-American comedian navigates the challenges of family life, work, and cultural identity in Los Angeles."
+    },
+    {
         id: "the-odyssey",
         title: "The Odyssey",
         creator: "Christoper Nolan, Homer (Original Story)",
