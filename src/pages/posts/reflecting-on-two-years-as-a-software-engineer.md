@@ -25,12 +25,12 @@ I think one thing that gets overlooked when people talk about software work is j
 
 The advice of "just learn to code" was beginning to wear off by the time I was in college and today the market is dramatically different. AI driven portfolios and projects are everywhere. Also, hundreds or even thousands of applicants can apply for a single [entry-level position.](https://en.wikipedia.org/wiki/Entry-level_job) I've applied for (and gotten) jobs where I've competed against over 1000 applicants from across the globe. Now that is a satisfying feeling!
 
-> I say this because I think people deserve an honest picture of what they're signing up for.
 
 ![Kramer you better believe it](../photo/_kramer-office3.gif "Kramer: you better believe it")
 
+> I say this because I think people deserve an honest picture of what they're signing up for.
 
-#### There's always something interesting to learn.
+### There's always something interesting to learn.
 In many ways, getting a job in programming is the worst thing you can do if you actually enjoy it, that is when the real learning begins. Over the years I've accumulated what feels like an endless collection of technologies. Almost none of which I signed up to learn. [C#](https://en.wikipedia.org/wiki/C_Sharp_(programming_language)), [SQL Server](https://en.wikipedia.org/wiki/Microsoft_SQL_Server), [ASP.NET MVC](https://en.wikipedia.org/wiki/ASP.NET_MVC), [Razor](https://en.wikipedia.org/wiki/ASP.NET_Razor), [JavaScript](https://en.wikipedia.org/wiki/JavaScript), [TypeScript](https://en.wikipedia.org/wiki/TypeScript), [React](https://en.wikipedia.org/wiki/React_(software)), Astro, [Power BI](https://en.wikipedia.org/wiki/Microsoft_Power_BI), [Python](https://en.wikipedia.org/wiki/Python_(programming_language)), [Git](https://en.wikipedia.org/wiki/Git), [Linux](https://en.wikipedia.org/wiki/Linux), [Azure](https://en.wikipedia.org/wiki/Microsoft_Azure), [Microsoft Dynamics AX 2009](https://en.wikipedia.org/wiki/Microsoft_Dynamics_AX), [REST APIs](https://en.wikipedia.org/wiki/API), [Entity Framework](https://en.wikipedia.org/wiki/Entity_Framework)... the list keeps growing every year.
 
 When people imagine programmers they often picture someone making $600k, wearing a slick Patagonia vest, working 20 hrs a week at [Google](https://en.wikipedia.org/wiki/Google) or [Microsoft](https://en.wikipedia.org/wiki/Microsoft) writing the next billion-dollar application. 
@@ -38,5 +38,7 @@ When people imagine programmers they often picture someone making $600k, wearing
 The reality for most of us is a lot less glamorous.
 
 ![Kramer in the office](../photo/_kramer-office2.gif "Kramer in the office")
+
+## Final Thoughts
 
 Working in [manufacturing](https://en.wikipedia.org/wiki/Manufacturing) has given me a greater appreciation for high quality software. When your code crashes on a [social media](https://en.wikipedia.org/wiki/Social_media) site, someone might not see a picture or some dumb [tiktok](https://en.wikipedia.org/wiki/TikTok) about aliens building the pyramids. When your code crashes in a manufacturing environment, production can stop and people are *pissed* at *you*. The other thing that's surprised me is just how much of [software engineering](https://en.wikipedia.org/wiki/Software_engineering) has nothing to do with it. You spend a lot of time talking to people. Understanding [business processes.](https://en.wikipedia.org/wiki/Business_process) Figuring out what someone actually means when they describe a problem. I don't think college prepared me for that part.
