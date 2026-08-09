@@ -13,7 +13,7 @@ tags: ["#Economics", "#Opinion"]
 
 # Reteaching You Supply and Demand Since You Forgot
 
-I keep seeing the same thing every week: rent is high because landlords are greedy, you can't move out of your mom's basement because of Donald Trump, and home prices are high because [BlackRock](https://en.wikipedia.org/wiki/BlackRock) bought your childhood home.
+I keep seeing the same thing every week: rent is high because landlords are greedy, you can't move out of your mom's basement because of a [$3 McChicken](https://menupricetracker.com/mcdonalds-menu/mcchicken), and home prices are high because [BlackRock](https://en.wikipedia.org/wiki/BlackRock) bought your childhood home.
 
 Since none of you have opened an [econ 101](https://en.wikipedia.org/wiki/Economics) textbook since high school, against my better judgment, here's a refresher.
 
