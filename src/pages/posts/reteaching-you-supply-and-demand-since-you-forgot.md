@@ -1,9 +1,9 @@
 ---
-title: "Reteaching You Supply and Demand Since You Forgot"
+title: "Reteaching You 'Supply and Demand' Since You Forgot"
 date: "2026-08-09"
 
 layout: ../../layouts/PostLayout.astro
-description: "A refresher on the two curves everyone in your feed misunderstands."
+description: "It's okay if you slept during class. I'm here to provide a refresher on the two curves everyone in your feed misunderstands."
 
 img_path: "/supply_demand_curve.png"
 img_alt: "A supply and demand curve chart on a dark background"
