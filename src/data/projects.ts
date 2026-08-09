@@ -9,6 +9,15 @@ export const featuredCases = [
     link: null,
   },
   {
+    name: "mitalent360.com",
+    description:
+      "A survey for community and business leaders to assess the state of talent in West Michigan, built to collect and analyze responses from hundreds of participants.",
+    tags: ["HR", "Community", "Surveys"],
+    outcome:
+      "Turned a simple survey into a comprehensive talent assessment platform.",
+    link: "https://mitalent360.com",
+  },
+  {
     name: "ERP-CRM Integration API",
     description:
       "A robust middleware solution linking a legacy ERP system to a modern SaaS CRM, automating real-time inventory and customer data synchronization.",
@@ -27,6 +36,15 @@ export const featuredCases = [
     link: "https://bold-talks.com",
   },
   {
+    name: "Performance Management Platform",
+    description:
+    "An enterprise performance management platform built to streamline annual reviews, competency assessments, goal tracking, and executive reporting across the organization.",
+    tags: ["Enterprise Software", "HR Tech", "Internal Tools"],
+    outcome:
+    "Replaced spreadsheet-driven review cycles with a configurable workflow platform managed entirely by HR administrators.",
+    link: null,
+  },
+  {
     name: "MPD Welding GR Inc.",
     description:
       "A lead-generation web presence for a Grand Rapids precision welding and steel treating shop, built to capture quotes and job applications around the clock.",
@@ -35,18 +53,9 @@ export const featuredCases = [
     link: "https://www.mpdwelding.com",
   },
   {
-    name: "Performance Management Platform",
-    description:
-      "An enterprise performance management platform built to streamline annual reviews, competency assessments, goal tracking, and executive reporting across the organization.",
-    tags: ["Enterprise Software", "HR Tech", "Internal Tools"],
-    outcome:
-      "Replaced spreadsheet-driven review cycles with a configurable workflow platform managed entirely by HR administrators.",
-    link: null,
-  },
-  {
     name: "Document Management Software",
     description:
-      "A centralized document management system providing version control, approval workflows, metadata indexing, and enterprise search.",
+    "A centralized document management system providing version control, approval workflows, metadata indexing, and enterprise search.",
     tags: ["Enterprise Software", "Document Management", "Internal Tools"],
     outcome: "Unified document storage and governance while improving searchability and compliance.",
     link: null,
