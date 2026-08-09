@@ -13,9 +13,14 @@ tags: ["#Economics", "#Opinion"]
 
 # Reteaching You Supply and Demand Since You Forgot
 
-I keep seeing the same thing every week: rent is high because landlords are greedy, you can't move out of your mom's basement because of a [$3 McChicken](https://menupricetracker.com/mcdonalds-menu/mcchicken), and home prices are high because [BlackRock](https://en.wikipedia.org/wiki/BlackRock) bought your childhood home.
+Since I last tackled the myths surrounding the [American labor force](/posts/the-labor-force-never-fully-came-back), I keep seeing the same arguments every week: 
+- rent is high because landlords are greedy 
+- you can't move out of your mom's basement because of a [$3 McChicken](https://menupricetracker.com/mcdonalds-menu/mcchicken) 
+- and home prices are high because [BlackRock](https://en.wikipedia.org/wiki/BlackRock) personally bought your childhood home.
 
 Since none of you have opened an [econ 101](https://en.wikipedia.org/wiki/Economics) textbook since high school, against my better judgment, here's a refresher.
+
+---
 
 ## The Two Lines You Keep Ignoring
 
@@ -62,6 +67,8 @@ The two lines cross at [equilibrium](https://en.wikipedia.org/wiki/Economic_equi
 
 Housing affordability is a supply-and-demand problem, and blaming any single group obscures the interaction between constrained supply and increased demand. A lot of problems facing modern society can be explained and analyzed with math. A lot of scary boogymen are lines on a chart.
 
+---
+
 ## Myth: "They Could Just Lower the Price"
 
 No, they couldn't. Well, they could, but not without consequences you'd also complain about. 
@@ -71,6 +78,8 @@ If a seller prices below equilibrium, more people want to buy than there are thi
 Congratulations, you've reinvented rent control. Now your neighbor's cousin got the apartment because he is sleeping with the landlord's daughter.
 
 Price floors and price ceilings feel good to legislate and terrible to live under, because they don't change supply or demand. The tradeoffs are scarcity and misallocation.
+
+---
 
 ## Myth: "Housing Prices Are High Because of Greed"
 
@@ -105,6 +114,8 @@ That is not solely greed, that's math showing a steep line.
 Take a look at the state of Texas. An economic powerhouse in its own right, it is also abundant with 'developable' land and has fewer zoning restrictions. This freedom to use the space as developers please drives prices down. Surprise, surprise. Texas boasts [cheaper than average](https://www.kxan.com/news/texas/how-texas-compares-to-the-average-us-home-price/) home prices amongst a booming job market.[^3]
 
 Of course, there are always other factors that affect home prices like taxes, disasters, and geography.
+
+---
 
 ## Myth: "Private Investors Are the Whole Problem"
 
