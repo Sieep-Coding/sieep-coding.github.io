@@ -130,6 +130,6 @@ Enjoy econ? Read my posts about [the labor force](/posts/the-labor-force-never-f
 
 [^1]: We both know that is not true.
 [^2]: Greed as a constant rather than a variable is a standard economic assumption. See [profit maximization](https://en.wikipedia.org/wiki/Profit_maximization).
-[^3]: Now compare this to [San Francisco](https://en.wikipedia.org/wiki/San_Francisco_housing_shortage), where restrictive land-use regulations have constrained housing supply and contributed to higher housing costs, which can in turn increase homelessness.
+[^3]: Now compare this to [San Francisco](https://en.wikipedia.org/wiki/San_Francisco_housing_shortage), where restrictive land-use regulations have constrained housing supply and contributed to higher housing costs, which can in turn increase homelessness. That puts additional pressure on social services and taxpayers.
 
 Questions or corrections? Email me at [nickstambaugh@proton.me](mailto:nickstambaugh@proton.me)
