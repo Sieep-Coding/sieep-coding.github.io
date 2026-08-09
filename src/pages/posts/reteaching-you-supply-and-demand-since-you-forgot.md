@@ -75,7 +75,12 @@ No, they couldn't. Well, they could, but not without consequences you'd also com
 
 If a seller prices below equilibrium, more people want to buy than there are things to sell, and you get a [shortage](https://en.wikipedia.org/wiki/Shortage). 
 
-Congratulations, you've reinvented rent control. Now your neighbor's cousin got the apartment because he is sleeping with the landlord's daughter.
+Congratulations, you've reinvented rent control. 
+
+Now your neighbor's cousin got the apartment because he is sleeping with the landlord's daughter.
+
+![Young Michael Scott](../photo/_office.png "Young Michael Scott")
+> Your neighbor's cousin
 
 Price floors and price ceilings feel good to legislate and terrible to live under, because they don't change supply or demand. The tradeoffs are scarcity and misallocation.
 
