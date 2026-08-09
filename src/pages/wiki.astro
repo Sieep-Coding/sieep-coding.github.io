@@ -84,30 +84,84 @@ try {
   recipeCount = recipes.length;
 } catch (err) {}
 
+const GITHUB_USERNAME = "Sieep-Coding";
+
 let githubStats = {
   topRepo: "simple-chat-csharp",
   stars: 27,
   publicRepos: null as number | null,
+  totalStars: null as number | null,
+  languages: [] as { name: string; count: number }[],
+  recentRepos: [] as {
+    name: string;
+    url: string;
+    pushedAt: string;
+    language: string | null;
+  }[],
 };
 
 try {
   const ghRes = await fetch(
-    "https://api.github.com/users/Sieep-Coding/repos?per_page=100&sort=updated",
+    `https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100&sort=updated`,
   );
   if (ghRes.ok) {
     const repos = await ghRes.json();
     if (Array.isArray(repos) && repos.length) {
+      const nonForks = repos.filter((r: any) => !r.fork);
       const top = [...repos].sort(
         (a, b) => (b.stargazers_count ?? 0) - (a.stargazers_count ?? 0),
       )[0];
+      const totalStars = repos.reduce(
+        (sum: number, r: any) => sum + (r.stargazers_count ?? 0),
+        0,
+      );
+
+      const langCounts = new Map<string, number>();
+      for (const r of nonForks) {
+        if (!r.language) continue;
+        langCounts.set(r.language, (langCounts.get(r.language) ?? 0) + 1);
+      }
+      const languages = Array.from(langCounts.entries())
+        .map(([name, count]) => ({ name, count }))
+        .sort((a, b) => b.count - a.count)
+        .slice(0, 8);
+
+      const recentRepos = [...nonForks]
+        .sort(
+          (a: any, b: any) =>
+            new Date(b.pushed_at).getTime() - new Date(a.pushed_at).getTime(),
+        )
+        .slice(0, 5)
+        .map((r: any) => ({
+          name: r.name,
+          url: r.html_url,
+          pushedAt: r.pushed_at,
+          language: r.language,
+        }));
+
       githubStats = {
         topRepo: top.name,
         stars: top.stargazers_count ?? 0,
         publicRepos: repos.length,
+        totalStars,
+        languages,
+        recentRepos,
       };
     }
   }
 } catch (err) {}
+
+const maxLangCount = Math.max(1, ...githubStats.languages.map((l) => l.count));
+const languageColors = [
+  "#b45f4d",
+  "#5f8fb4",
+  "#8a5fb4",
+  "#5fb47d",
+  "#c9a227",
+  "#c95f8a",
+  "#5fb4ac",
+  "#a2765f",
+];
 
 const wikipediaLinksMap = new Map<
   string,
@@ -123,6 +177,12 @@ const wikipediaLinksMap = new Map<
 
 const wikiHrefPattern =
   /href="(https?:\/\/(?:[a-z]{2,3}\.)?wikipedia\.org\/wiki\/[^"]+)"/gi;
+const bruceHrefPattern = /href="\/bruce-the-dog"/gi;
+
+const postWordCounts: { post: (typeof allPosts)[number]; words: number }[] =
+  [];
+let bruceLinkCount = 0;
+const bruceLinkingPosts: { title: string; url: string; count: number }[] = [];
 
 for (const post of allPosts) {
   let html = "";
@@ -131,6 +191,21 @@ for (const post of allPosts) {
   } catch (err) {
     continue;
   }
+
+  const plainText = html.replace(/<[^>]*>/g, " ");
+  const words = plainText.split(/\s+/).filter(Boolean).length;
+  postWordCounts.push({ post, words });
+
+  const bruceMatches = html.match(bruceHrefPattern);
+  if (bruceMatches && bruceMatches.length) {
+    bruceLinkCount += bruceMatches.length;
+    bruceLinkingPosts.push({
+      title: post.frontmatter.title,
+      url: post.url,
+      count: bruceMatches.length,
+    });
+  }
+
   for (const match of html.matchAll(wikiHrefPattern)) {
     const url = match[1];
     const rawTitle = url.split("/wiki/").pop() ?? "Wikipedia";
@@ -153,6 +228,12 @@ for (const post of allPosts) {
 }
 
 const wikipediaLinks = Array.from(wikipediaLinksMap.values());
+
+const shortestPost = postWordCounts.length
+  ? postWordCounts.reduce((a, b) => (b.words < a.words ? b : a))
+  : null;
+
+bruceLinkingPosts.sort((a, b) => b.count - a.count);
 
 const didYouKnow = [
   `...that Nick's degrees are in <a href="/about" class="text-secondary dark:text-dk-accent underline underline-offset-4">economics and philosophy</a>, not computer science?`,
@@ -191,6 +272,62 @@ const topTags = Array.from(tagMap.entries())
   .map(([key, v]) => ({ key, ...v }))
   .sort((a, b) => b.count - a.count)
   .slice(0, 12);
+
+// Tag of the Day: deterministic per-calendar-day pick, like Wikipedia's
+// "word of the day" — stays the same all day instead of reshuffling on
+// every page load.
+const allTagKeys = Array.from(tagMap.keys());
+const dayOfYear = (() => {
+  const now = new Date();
+  const start = new Date(now.getFullYear(), 0, 0);
+  const diff = now.getTime() - start.getTime();
+  return Math.floor(diff / 86400000);
+})();
+const tagOfDayKey = allTagKeys.length
+  ? allTagKeys[dayOfYear % allTagKeys.length]
+  : null;
+const tagOfDay = tagOfDayKey ? tagMap.get(tagOfDayKey) : null;
+const tagOfDayPosts = tagOfDayKey
+  ? allPosts.filter((p) =>
+      (p.frontmatter.tags || []).some((t: string) => {
+        const key = t
+          .toLowerCase()
+          .trim()
+          .replace(/[^\w\s-]/g, "")
+          .replace(/[\s_-]+/g, "-");
+        return key === tagOfDayKey;
+      }),
+    )
+  : [];
+
+// Tag Evolution: which tags dominated each calendar year, based on each
+// post's frontmatter date.
+const tagsByYear = new Map<number, Map<string, number>>();
+for (const post of allPosts) {
+  const d = new Date(post.frontmatter.date);
+  if (isNaN(d.getTime())) continue;
+  const year = d.getFullYear();
+  if (!tagsByYear.has(year)) tagsByYear.set(year, new Map());
+  const yearMap = tagsByYear.get(year)!;
+  for (const raw of post.frontmatter.tags || []) {
+    const key = raw
+      .toLowerCase()
+      .trim()
+      .replace(/[^\w\s-]/g, "")
+      .replace(/[\s_-]+/g, "-");
+    if (!key) continue;
+    yearMap.set(key, (yearMap.get(key) ?? 0) + 1);
+  }
+}
+const tagEvolution = Array.from(tagsByYear.entries())
+  .sort((a, b) => a[0] - b[0])
+  .map(([year, m]) => ({
+    year,
+    topTags: Array.from(m.entries())
+      .map(([key, count]) => ({ label: tagMap.get(key)?.label ?? key, count }))
+      .sort((a, b) => b.count - a.count)
+      .slice(0, 5),
+  }));
 
 const portals = [
   {
@@ -271,6 +408,123 @@ const topMediaRating = Math.max(...mediaList.map((m) => m.rating));
 const topMediaItems = mediaList.filter((m) => m.rating === topMediaRating);
 const topMedia =
   topMediaItems[Math.floor(Math.random() * topMediaItems.length)];
+
+// ---- Worst of the Wiki ----
+// Books and media both carry a numeric `rating`, so these mirror the
+// "Top Rated" section above. Posts don't have a rating field, so the
+// stand-in there is the shortest article on the site — a nod to
+// Wikipedia's own "stub" articles.
+const worstBookRating = books.length
+  ? Math.min(...books.map((b) => b.rating))
+  : null;
+const worstBooks = books.filter((b) => b.rating === worstBookRating);
+const worstBook = worstBooks.length
+  ? worstBooks[Math.floor(Math.random() * worstBooks.length)]
+  : null;
+
+const worstMediaRating = mediaList.length
+  ? Math.min(...mediaList.map((m) => m.rating))
+  : null;
+const worstMediaItems = mediaList.filter((m) => m.rating === worstMediaRating);
+const worstMedia = worstMediaItems.length
+  ? worstMediaItems[Math.floor(Math.random() * worstMediaItems.length)]
+  : null;
+
+
+function extractDate(item: any, keys: string[]): Date | null {
+  for (const k of keys) {
+    const v = item?.[k];
+    if (!v) continue;
+    const d = new Date(v);
+    if (!isNaN(d.getTime())) return d;
+  }
+  return null;
+}
+
+const growthRaw = [
+  {
+    label: "Articles",
+    color: "#b45f4d",
+    dates: allPosts
+      .map((p) => extractDate(p.frontmatter, ["date"]))
+      .filter((d): d is Date => d !== null),
+  }
+];
+
+const growthSeriesRaw = growthRaw.filter((s) => s.dates.length > 0);
+const skippedGrowthSeries = growthRaw
+  .filter((s) => s.dates.length === 0)
+  .map((s) => s.label);
+
+let growthChart: {
+  years: number[];
+  seriesPaths: {
+    label: string;
+    color: string;
+    points: string;
+    lastX: number;
+    lastY: number;
+  }[];
+  chartW: number;
+  chartH: number;
+  padL: number;
+  yTicks: { value: number; y: number }[];
+  yearLabels: { year: number; x: number }[];
+} | null = null;
+
+if (growthSeriesRaw.length > 0) {
+  const allYears = growthSeriesRaw.flatMap((s) =>
+    s.dates.map((d) => d.getFullYear()),
+  );
+  const minYear = Math.min(...allYears);
+  const maxYear = Math.max(...allYears, new Date().getFullYear());
+  const years: number[] = [];
+  for (let y = minYear; y <= maxYear; y++) years.push(y);
+
+  const seriesWithCumulative = growthSeriesRaw.map((s) => ({
+    ...s,
+    counts: years.map(
+      (y) => s.dates.filter((d) => d.getFullYear() <= y).length,
+    ),
+  }));
+
+  const maxCount = Math.max(1, ...seriesWithCumulative.flatMap((s) => s.counts));
+  const chartW = 640;
+  const chartH = 220;
+  const padL = 30;
+  const padB = 22;
+  const padT = 10;
+  const padR = 10;
+  const plotW = chartW - padL - padR;
+  const plotH = chartH - padT - padB;
+
+  const xFor = (i: number) =>
+    padL + (years.length === 1 ? plotW / 2 : (i / (years.length - 1)) * plotW);
+  const yFor = (count: number) => padT + plotH - (count / maxCount) * plotH;
+
+  const seriesPaths = seriesWithCumulative.map((s) => ({
+    label: s.label,
+    color: s.color,
+    points: s.counts.map((c, i) => `${xFor(i)},${yFor(c)}`).join(" "),
+    lastX: xFor(s.counts.length - 1),
+    lastY: yFor(s.counts[s.counts.length - 1]),
+  }));
+
+  const yTicks = [0, 0.25, 0.5, 0.75, 1].map((f) => {
+    const value = Math.round(f * maxCount);
+    return { value, y: yFor(value) };
+  });
+
+  const yearLabels = years
+    .map((year, i) => ({ year, x: xFor(i), i }))
+    .filter(
+      (yl) =>
+        yl.i === 0 || yl.i === years.length - 1 || years.length <= 8 || yl.year % 2 === 0,
+    )
+    .map(({ year, x }) => ({ year, x }));
+
+  growthChart = { years, seriesPaths, chartW, chartH, padL, yTicks, yearLabels };
+}
 ---
 
 <BaseLayout title="Nickipedia - Nick's Wiki">
@@ -314,9 +568,15 @@ const topMedia =
                 ["#rabbit-holes", "Rabbit holes"],
                 ["#featured-article", "Featured article"],
                 ["#highlights", "Cross-wiki highlights"],
+                ["#worst-of-the-wiki", "Worst of the wiki"],
                 ["#article-graph", "Article graph"],
+                ["#tag-evolution", "Tag evolution"],
                 ["#latest-news", "Latest news"],
+                ["#growth-chart", "Growth chart"],
                 ["#by-the-numbers", "By the numbers"],
+                ["#wiki-playground", "API playground"],
+                ["#github-activity", "GitHub activity"],
+                ["#language-breakdown", "Languages"],
                 ["#portals", "Portals"],
               ].map(([href, label]) => (
                 <a
@@ -584,6 +844,70 @@ const topMedia =
           </section>
 
           <section
+            id="worst-of-the-wiki"
+            class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5 sm:p-6"
+          >
+            <h2
+              class="text-xs font-bold uppercase tracking-widest text-secondary dark:text-dk-accent border-b border-text/10 dark:border-dk-text/10 pb-2 mb-3"
+            >
+              Worst of the Wiki
+            </h2>
+            <p class="text-xs text-text/50 dark:text-dk-text/50 mb-3">
+              Not every entry can be a five-star pick.
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              {worstBook && (
+                <a
+                  href={`/library?book=${worstBook.id}`}
+                  class="block p-3 rounded-lg border border-text/10 dark:border-dk-text/10 hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
+                >
+                  <p class="text-[10px] uppercase tracking-widest text-text/40 dark:text-dk-text/40 mb-1">
+                    Lowest-rated book
+                  </p>
+                  <p class="text-sm font-semibold text-secondary dark:text-dk-accent">
+                    {worstBook.title}
+                  </p>
+                  <p class="text-xs text-text/60 dark:text-dk-text/60 mt-0.5">
+                    {worstBook.author} · {worstBook.rating}/5 ★
+                  </p>
+                </a>
+              )}
+              {worstMedia && (
+                <a
+                  href={`/media?item=${worstMedia.id}`}
+                  class="block p-3 rounded-lg border border-text/10 dark:border-dk-text/10 hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
+                >
+                  <p class="text-[10px] uppercase tracking-widest text-text/40 dark:text-dk-text/40 mb-1">
+                    Lowest-rated media
+                  </p>
+                  <p class="text-sm font-semibold text-secondary dark:text-dk-accent">
+                    {worstMedia.title}
+                  </p>
+                  <p class="text-xs text-text/60 dark:text-dk-text/60 mt-0.5">
+                    {worstMedia.creator} · {worstMedia.rating}/5 ★
+                  </p>
+                </a>
+              )}
+              {shortestPost && (
+                <a
+                  href={shortestPost.post.url}
+                  class="block p-3 rounded-lg border border-text/10 dark:border-dk-text/10 hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
+                >
+                  <p class="text-[10px] uppercase tracking-widest text-text/40 dark:text-dk-text/40 mb-1">
+                    Shortest article (stub)
+                  </p>
+                  <p class="text-sm font-semibold text-secondary dark:text-dk-accent">
+                    {shortestPost.post.frontmatter.title}
+                  </p>
+                  <p class="text-xs text-text/60 dark:text-dk-text/60 mt-0.5">
+                    {shortestPost.words} words
+                  </p>
+                </a>
+              )}
+            </div>
+          </section>
+
+          <section
             id="latest-news"
             class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5 sm:p-6"
           >
@@ -619,6 +943,40 @@ const topMedia =
             </p>
           </section>
           <TagGraph posts={graphPosts} id="article-graph" />
+
+          {tagEvolution.length > 0 && (
+            <section
+              id="tag-evolution"
+              class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5 sm:p-6"
+            >
+              <h2 class="text-xs font-bold uppercase tracking-widest text-secondary dark:text-dk-accent border-b border-text/10 dark:border-dk-text/10 pb-2 mb-3">
+                Tag Evolution
+              </h2>
+              <p class="text-xs text-text/50 dark:text-dk-text/50 mb-4">
+                Nick's most-written-about topics, year by year.
+              </p>
+              <div class="space-y-4">
+                {tagEvolution.map((y) => (
+                  <div>
+                    <p class="text-xs font-semibold text-secondary dark:text-dk-accent mb-1.5">
+                      {y.year}
+                    </p>
+                    <div class="flex flex-wrap gap-1.5">
+                      {y.topTags.map((t) => (
+                        <span class="text-[11px] px-2 py-1 rounded-full border border-text/20 dark:border-dk-text/20 text-text/70 dark:text-dk-text/70">
+                          {t.label}{" "}
+                          <span class="text-text/40 dark:text-dk-text/40">
+                            ({t.count})
+                          </span>
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
+
           <section
             id="by-the-numbers"
             class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5 sm:p-6"
@@ -652,6 +1010,91 @@ const topMedia =
               }
             </div>
           </section>
+
+          {growthChart && (
+            <section
+              id="growth-chart"
+              class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5 sm:p-6"
+            >
+              <h2 class="text-xs font-bold uppercase tracking-widest text-secondary dark:text-dk-accent border-b border-text/10 dark:border-dk-text/10 pb-2 mb-3">
+                Wiki Growth Chart
+              </h2>
+              <p class="text-xs text-text/50 dark:text-dk-text/50 mb-3">
+                Cumulative posts over time.
+              </p>
+              <svg
+                viewBox={`0 0 ${growthChart.chartW} ${growthChart.chartH}`}
+                class="w-full h-auto text-text dark:text-dk-text"
+              >
+                {growthChart.yTicks.map((t) => (
+                  <g>
+                    <line
+                      x1={growthChart.padL}
+                      x2={growthChart.chartW - 10}
+                      y1={t.y}
+                      y2={t.y}
+                      stroke="currentColor"
+                      stroke-opacity="0.08"
+                    />
+                    <text
+                      x={growthChart.padL - 6}
+                      y={t.y + 3}
+                      font-size="9"
+                      text-anchor="end"
+                      fill="currentColor"
+                      fill-opacity="0.4"
+                    >
+                      {t.value}
+                    </text>
+                  </g>
+                ))}
+                {growthChart.yearLabels.map((yl) => (
+                  <text
+                    x={yl.x}
+                    y={growthChart.chartH - 6}
+                    font-size="9"
+                    text-anchor="middle"
+                    fill="currentColor"
+                    fill-opacity="0.4"
+                  >
+                    {yl.year}
+                  </text>
+                ))}
+                {growthChart.seriesPaths.map((s) => (
+                  <g>
+                    <polyline
+                      points={s.points}
+                      fill="none"
+                      stroke={s.color}
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <circle cx={s.lastX} cy={s.lastY} r="3" fill={s.color} />
+                  </g>
+                ))}
+              </svg>
+              <div class="flex flex-wrap gap-3 mt-3">
+                {growthChart.seriesPaths.map((s) => (
+                  <span class="flex items-center gap-1.5 text-[11px] text-text/60 dark:text-dk-text/60">
+                    <span
+                      class="w-2.5 h-2.5 rounded-full"
+                      style={`background:${s.color}`}
+                    />
+                    {s.label}
+                  </span>
+                ))}
+              </div>
+              {skippedGrowthSeries.length > 0 && (
+                <p class="mt-2 text-[10px] text-text/40 dark:text-dk-text/40">
+                  {skippedGrowthSeries.join(", ")}{" "}
+                  {skippedGrowthSeries.length === 1 ? "is" : "are"} skipped —
+                  add a date-ish field to those entries to include{" "}
+                  {skippedGrowthSeries.length === 1 ? "it" : "them"}.
+                </p>
+              )}
+            </section>
+          )}
 
           <script define:vars={{ wikipediaLinks }}>
             function renderRandomLinks(count = 10) {
@@ -787,6 +1230,277 @@ const topMedia =
             initFeaturedPicture();
             document.addEventListener("astro:page-load", initFeaturedPicture);
           </script>
+
+          <section
+            id="wiki-playground"
+            class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5 sm:p-6"
+          >
+            <h2 class="text-xs font-bold uppercase tracking-widest text-secondary dark:text-dk-accent border-b border-text/10 dark:border-dk-text/10 pb-2 mb-3">
+              Wikipedia API Playground
+            </h2>
+            <p class="text-xs text-text/50 dark:text-dk-text/50 mb-3">
+              Tiny toys built on Wikipedia's public REST API.
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="p-3 rounded-lg border border-text/10 dark:border-dk-text/10">
+                <p class="text-[10px] uppercase tracking-widest text-text/40 dark:text-dk-text/40 mb-2">
+                  Random Article
+                </p>
+                <div
+                  id="playground-random-result"
+                  class="flex gap-3 items-start min-h-[64px]"
+                >
+                  <p class="text-xs text-text/50 dark:text-dk-text/50">
+                    Fetch a random Wikipedia article.
+                  </p>
+                </div>
+                <button
+                  id="playground-random-btn"
+                  type="button"
+                  class="mt-3 text-xs font-semibold px-3 py-1.5 rounded-full border border-secondary/40 dark:border-dk-accent/40 text-secondary dark:text-dk-accent hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
+                >
+                  🎲 Fetch random article
+                </button>
+              </div>
+              <div class="p-3 rounded-lg border border-text/10 dark:border-dk-text/10">
+                <p class="text-[10px] uppercase tracking-widest text-text/40 dark:text-dk-text/40 mb-2">
+                  Quick Lookup
+                </p>
+                <input
+                  id="playground-lookup-input"
+                  type="text"
+                  placeholder="Type a topic…"
+                  autocomplete="off"
+                  class="w-full px-2.5 py-1.5 text-xs rounded-md border border-text/20 dark:border-dk-text/20 bg-primary dark:bg-dk-primary text-text dark:text-dk-text placeholder-text/40 dark:placeholder-dk-text/40 focus:outline-none focus:border-secondary dark:focus:border-dk-accent transition-colors"
+                />
+                <div id="playground-lookup-result" class="mt-2 min-h-[64px]">
+                  <p class="text-xs text-text/50 dark:text-dk-text/50">
+                    Search any topic for a live summary.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <script>
+            function initWikiPlayground() {
+              const randomBtn = document.getElementById(
+                "playground-random-btn",
+              );
+              const randomResult = document.getElementById(
+                "playground-random-result",
+              );
+              if (randomBtn && randomResult && !randomBtn.dataset.bound) {
+                randomBtn.dataset.bound = "true";
+                randomBtn.addEventListener("click", () => {
+                  randomResult.innerHTML = `<p class="text-xs text-text/50 dark:text-dk-text/50">Loading…</p>`;
+                  fetch("https://en.wikipedia.org/api/rest_v1/page/random/summary")
+                    .then((res) => (res.ok ? res.json() : Promise.reject()))
+                    .then((data) => {
+                      randomResult.innerHTML = `
+                        ${data.thumbnail?.source ? `<img src="${data.thumbnail.source}" class="w-14 h-14 rounded object-cover shrink-0" alt="" loading="lazy" />` : ""}
+                        <span class="min-w-0">
+                          <a href="${data.content_urls?.desktop?.page ?? "#"}" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-secondary dark:text-dk-accent hover:underline underline-offset-4">${data.title ?? "Untitled"}</a>
+                          <p class="text-xs text-text/60 dark:text-dk-text/60 mt-0.5">${data.extract ?? ""}</p>
+                        </span>
+                      `;
+                    })
+                    .catch(() => {
+                      randomResult.innerHTML = `<p class="text-xs text-text/50 dark:text-dk-text/50">Couldn't load a random article. Try again.</p>`;
+                    });
+                });
+              }
+
+              const lookupInput = document.getElementById(
+                "playground-lookup-input",
+              );
+              const lookupResult = document.getElementById(
+                "playground-lookup-result",
+              );
+              if (lookupInput && lookupResult && !lookupInput.dataset.bound) {
+                lookupInput.dataset.bound = "true";
+                let debounce;
+                lookupInput.addEventListener("input", (e) => {
+                  clearTimeout(debounce);
+                  const q = e.target.value.trim();
+                  if (!q) {
+                    lookupResult.innerHTML = `<p class="text-xs text-text/50 dark:text-dk-text/50">Search any topic for a live summary.</p>`;
+                    return;
+                  }
+                  debounce = setTimeout(() => {
+                    lookupResult.innerHTML = `<p class="text-xs text-text/50 dark:text-dk-text/50">Loading…</p>`;
+                    fetch(
+                      `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(q)}`,
+                    )
+                      .then((res) => (res.ok ? res.json() : Promise.reject()))
+                      .then((data) => {
+                        lookupResult.innerHTML = `
+                          <div class="flex gap-3 items-start">
+                            ${data.thumbnail?.source ? `<img src="${data.thumbnail.source}" class="w-14 h-14 rounded object-cover shrink-0" alt="" loading="lazy" />` : ""}
+                            <span class="min-w-0">
+                              <a href="${data.content_urls?.desktop?.page ?? "#"}" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-secondary dark:text-dk-accent hover:underline underline-offset-4">${data.title ?? "Untitled"}</a>
+                              <p class="text-xs text-text/60 dark:text-dk-text/60 mt-0.5">${data.extract ?? ""}</p>
+                            </span>
+                          </div>
+                        `;
+                      })
+                      .catch(() => {
+                        lookupResult.innerHTML = `<p class="text-xs text-text/50 dark:text-dk-text/50">No article found.</p>`;
+                      });
+                  }, 500);
+                });
+              }
+            }
+            initWikiPlayground();
+            document.addEventListener("astro:page-load", initWikiPlayground);
+          </script>
+
+          <section
+            id="github-activity"
+            class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5 sm:p-6"
+          >
+            <h2 class="text-xs font-bold uppercase tracking-widest text-secondary dark:text-dk-accent border-b border-text/10 dark:border-dk-text/10 pb-2 mb-3">
+              GitHub Activity
+            </h2>
+            <div class="flex flex-wrap gap-x-6 gap-y-2 mb-4 text-sm">
+              <div>
+                <span class="font-semibold text-text dark:text-dk-text tabular-nums">
+                  {githubStats.publicRepos ?? "—"}
+                </span>{" "}
+                <span class="text-text/50 dark:text-dk-text/50">public repos</span>
+              </div>
+              <div>
+                <span class="font-semibold text-text dark:text-dk-text tabular-nums">
+                  {githubStats.totalStars ?? githubStats.stars}
+                </span>{" "}
+                <span class="text-text/50 dark:text-dk-text/50">total stars</span>
+              </div>
+              <div>
+                <span class="font-semibold text-secondary dark:text-dk-accent">
+                  {githubStats.topRepo}
+                </span>{" "}
+                <span class="text-text/50 dark:text-dk-text/50">top repo</span>
+              </div>
+            </div>
+
+            <img
+              src={`https://ghchart.rshah.org/b45f4d/${GITHUB_USERNAME}`}
+              alt={`${GITHUB_USERNAME}'s GitHub contribution graph`}
+              class="w-full rounded-lg border border-text/10 dark:border-dk-text/10"
+              loading="lazy"
+            />
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4">
+              <div>
+                <p class="text-[10px] uppercase tracking-widest text-text/40 dark:text-dk-text/40 mb-2">
+                  Recently pushed
+                </p>
+                {githubStats.recentRepos.length > 0 ? (
+                  <ul class="space-y-1.5">
+                    {githubStats.recentRepos.map((r) => (
+                      <li class="text-sm flex items-center justify-between gap-2">
+                        <a
+                          href={r.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="text-secondary dark:text-dk-accent hover:underline underline-offset-4 truncate"
+                        >
+                          {r.name}
+                        </a>
+                        {r.language && (
+                          <span class="text-[10px] text-text/40 dark:text-dk-text/40 shrink-0">
+                            {r.language}
+                          </span>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p class="text-xs text-text/50 dark:text-dk-text/50">
+                    Repo data unavailable right now.
+                  </p>
+                )}
+              </div>
+            </div>
+          </section>
+
+          <script define:vars={{ GITHUB_USERNAME }}>
+            function initGithubActivity() {
+              const list = document.getElementById("github-recent-commits");
+              if (!list || list.dataset.loaded) return;
+              list.dataset.loaded = "true";
+              fetch(
+                `https://api.github.com/users/${GITHUB_USERNAME}/events/public`,
+              )
+                .then((res) => (res.ok ? res.json() : Promise.reject()))
+                .then((events) => {
+                  const pushes = (events || [])
+                    .filter((e) => e.type === "PushEvent")
+                    .flatMap((e) =>
+                      (e.payload?.commits || []).map((c) => ({
+                        message: (c.message || "").split("\n")[0],
+                        repo: e.repo?.name?.split("/")?.[1] ?? e.repo?.name,
+                        url: `https://github.com/${e.repo?.name}/commit/${c.sha}`,
+                      })),
+                    )
+                    .slice(0, 5);
+
+                  if (pushes.length === 0) {
+                    list.innerHTML = `<li class="text-xs text-text/50 dark:text-dk-text/50">No recent public commits found.</li>`;
+                    return;
+                  }
+
+                  list.innerHTML = pushes
+                    .map(
+                      (c) => `
+                    <li class="text-sm">
+                      <a href="${c.url}" target="_blank" rel="noopener noreferrer" class="text-text dark:text-dk-text hover:text-secondary dark:hover:text-dk-accent hover:underline underline-offset-4 transition-colors truncate block">${c.message || "(no message)"}</a>
+                      <span class="text-[10px] text-text/40 dark:text-dk-text/40">${c.repo}</span>
+                    </li>
+                  `,
+                    )
+                    .join("");
+                })
+                .catch(() => {
+                  list.innerHTML = `<li class="text-xs text-text/50 dark:text-dk-text/50">Couldn't load recent commits.</li>`;
+                });
+            }
+            initGithubActivity();
+            document.addEventListener("astro:page-load", initGithubActivity);
+          </script>
+
+          {githubStats.languages.length > 0 && (
+            <section
+              id="language-breakdown"
+              class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5 sm:p-6"
+            >
+              <h2 class="text-xs font-bold uppercase tracking-widest text-secondary dark:text-dk-accent border-b border-text/10 dark:border-dk-text/10 pb-2 mb-4">
+                Language Breakdown
+              </h2>
+              <p class="text-xs text-text/50 dark:text-dk-text/50 mb-3">
+                Primary language across {githubStats.publicRepos ?? "—"} public
+                repos.
+              </p>
+              <div class="space-y-3">
+                {githubStats.languages.map((l, i) => (
+                  <div class="flex items-center gap-3 text-sm">
+                    <span class="w-24 shrink-0 truncate text-text/60 dark:text-dk-text/60">
+                      {l.name}
+                    </span>
+                    <span class="flex-1 h-2.5 rounded-full bg-text/10 dark:bg-dk-text/10 overflow-hidden">
+                      <span
+                        class="block h-full rounded-full"
+                        style={`width: ${Math.max(6, (l.count / maxLangCount) * 100)}%; background: ${languageColors[i % languageColors.length]}`}
+                      />
+                    </span>
+                    <span class="w-6 text-right tabular-nums text-text/50 dark:text-dk-text/50">
+                      {l.count}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
 
           <section
             id="portals"
@@ -994,6 +1708,39 @@ const topMedia =
             document.addEventListener("astro:page-load", initWidgets);
           </script>
 
+          {tagOfDay && (
+            <section
+              id="tag-of-the-day"
+              class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5"
+            >
+              <h2 class="text-xs font-bold uppercase tracking-widest text-secondary dark:text-dk-accent border-b border-text/10 dark:border-dk-text/10 pb-2 mb-3">
+                Tag of the Day
+              </h2>
+              <a
+                href={`/posts?tag=${tagOfDayKey}`}
+                class="text-lg font-serif font-semibold text-secondary dark:text-dk-accent hover:underline underline-offset-4"
+              >
+                {tagOfDay.label}
+              </a>
+              <p class="text-xs text-text/50 dark:text-dk-text/50 mt-1 mb-2">
+                {tagOfDayPosts.length}{" "}
+                {tagOfDayPosts.length === 1 ? "article" : "articles"}
+              </p>
+              <ul class="space-y-1.5">
+                {tagOfDayPosts.slice(0, 5).map((post) => (
+                  <li class="text-sm">
+                    <a
+                      href={post.url}
+                      class="text-text dark:text-dk-text hover:text-secondary dark:hover:text-dk-accent hover:underline underline-offset-4 transition-colors truncate block"
+                    >
+                      {post.frontmatter.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+
           <section
             id="good-boy"
             class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5"
@@ -1037,6 +1784,50 @@ const topMedia =
             initGoodBoy();
             document.addEventListener("astro:page-load", initGoodBoy);
           </script>
+
+          <section
+            id="bruce-index"
+            class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5"
+          >
+            <h2 class="text-xs font-bold uppercase tracking-widest text-secondary dark:text-dk-accent border-b border-text/10 dark:border-dk-text/10 pb-2 mb-3">
+              Bruce Index
+            </h2>
+            <dl class="space-y-2 text-sm">
+              <div class="flex justify-between">
+                <dt class="text-text/60 dark:text-dk-text/60">Photos of Bruce</dt>
+                <dd class="font-medium text-text dark:text-dk-text tabular-nums">
+                  {brucePhotos.length}
+                </dd>
+              </div>
+              <div class="flex justify-between">
+               <!-- 
+                 <dt class="text-text/60 dark:text-dk-text/60">Times linked from posts</dt>
+                <dd class="font-medium text-text dark:text-dk-text tabular-nums">
+                  {bruceLinkCount}
+                </dd>
+                -->
+              </div>
+            </dl>
+            {bruceLinkingPosts.length > 0 && (
+              <>
+                <p class="mt-3 mb-1.5 text-[10px] uppercase tracking-widest text-text/40 dark:text-dk-text/40">
+                  Bruce cameos
+                </p>
+                <ul class="space-y-1">
+                  {bruceLinkingPosts.slice(0, 5).map((p) => (
+                    <li class="text-sm">
+                      <a
+                        href={p.url}
+                        class="text-text dark:text-dk-text hover:text-secondary dark:hover:text-dk-accent hover:underline underline-offset-4 transition-colors truncate block"
+                      >
+                        {p.title}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
+          </section>
 
           <section
             class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5"
