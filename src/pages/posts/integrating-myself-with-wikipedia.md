@@ -27,7 +27,7 @@ Making a clone of Wikipedia itself is impossible and also completely unnecessary
 
 Most personal websites are boring.
 
-There isn't anything wrong with that but I wanted something closer to a personal archive, something closer to how I've learned information over the years. Something that represented all the random things I write about.
+There isn't anything wrong with that but I wanted something closer to a personal archive, something that represented all the random things I write about.
 
 Over the last few months, the site had grown into a weird combination of:
 
@@ -61,7 +61,7 @@ import { tracks } from "../data/music";
 import { featuredCases, openSourceProjects } from "../data/projects";
 ```
 
-Instead of creating a database, I realized the site already had a lot of [structured data.](https://en.wikipedia.org/wiki/Data_model)
+Instead of creating a [database](https://en.wikipedia.org/wiki/Database), I realized the site already had a lot of [structured data.](https://en.wikipedia.org/wiki/Data_model)
 
 The next step was combining everything into one searchable collection:
 
@@ -75,7 +75,7 @@ const unifiedSearchData = [
 ];
 ```
 
-Now the search bar searches the entire site. A book, a song, a project, or a blog post all exist in the same universe.
+Now the search bar searches the entire site. A book, a song, a project, or a blog post all exist in the same [universe](https://en.wikipedia.org/wiki/Universe).
 
 ---
 
@@ -144,7 +144,7 @@ fetch(
 
 The search system uses [Fuse.js](https://en.wikipedia.org/wiki/Fuzzy_search), which provides fuzzy matching.
 
-Basically, it lets users find things even if they don't type the exact title.
+Basically, it lets [users](https://en.wikipedia.org/wiki/End_user) find things even if they don't type the exact title.
 
 The search data looks like this:
 
@@ -166,7 +166,7 @@ const fuse = new Fuse(items, {
 });
 ```
 
-The result is a small internal search engine for everything I've created using an existing [search algorithm.](https://en.wikipedia.org/wiki/Search_algorithm)
+The result is a small internal [search engine](https://en.wikipedia.org/wiki/Search_engine) for everything I've created using an existing [search algorithm.](https://en.wikipedia.org/wiki/Search_algorithm)
 
 ---
 

@@ -15,7 +15,7 @@ tags: ["#SelfHelp"]
 
 ### Introduction
 
-As someone who relies heavily on efficiency at work, nothing frustrates me more than seeing people not using the available shortcuts that can make their workflow so much smoother. Shortcuts can significantly improve productivity by eliminating unnecessary clicks and steps. So, I decided to compile a list of essential shortcuts for both Windows and browsers that I use daily, which have helped me stay efficient and organized. 
+As someone who relies heavily on [efficiency](https://en.wikipedia.org/wiki/Efficiency) at work, nothing frustrates me more than seeing people not using the available shortcuts that can make their workflow so much smoother. Shortcuts can significantly improve [productivity](https://en.wikipedia.org/wiki/Productivity) by eliminating unnecessary clicks and steps. So, I decided to compile a list of essential shortcuts for both [Windows](https://en.wikipedia.org/wiki/Microsoft_Windows) and [browsers](https://en.wikipedia.org/wiki/Web_browser) that I use daily, which have helped me stay efficient and [organized](https://en.wikipedia.org/wiki/Sorting). 
 
 If you're not using these already, I highly recommend trying them out to streamline your workflow and boost your productivity!
 
@@ -68,6 +68,6 @@ Whether you're researching, downloading files, or simply browsing the web, these
 
 ### Conclusion
 
-These are just a few of the shortcuts I rely on daily to maximize my productivity. Each of them serves a purpose in helping me get things done faster, whether I'm working on a report, browsing the web, or organizing files. I hope you find at least one of these shortcuts helpful and incorporate it into your routine.
+These are just a few of the [shortcuts](https://en.wikipedia.org/wiki/Shortcut_(computing)) I rely on daily to maximize my productivity. Each of them serves a purpose in helping me get things done faster, whether I'm working on a report, browsing the web, or organizing files. I hope you find at least one of these shortcuts helpful and incorporate it into your routine.
 
 Did I miss any of your favorite shortcuts? Let me know! 😁
