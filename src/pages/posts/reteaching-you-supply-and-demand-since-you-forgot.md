@@ -54,7 +54,7 @@ Let me explain further, supply goes up as price goes up, because producers like 
 
 Demand goes down as price goes up, because you, personally, buy fewer things when they cost more money. 
 
-This is under the assumption that you are [rational](https://en.wikipedia.org/wiki/Rational_choice_model) and are capable of performing a [cost-benefit analysis](https://en.wikipedia.org/wiki/Cost%E2%80%93benefit_analysis).
+This is under the assumption that *you* are [rational](https://en.wikipedia.org/wiki/Rational_choice_model) and are capable of performing a [cost-benefit analysis](https://en.wikipedia.org/wiki/Cost%E2%80%93benefit_analysis)[^1].
 
 Groundbreaking stuff, I know. 
 
@@ -74,7 +74,7 @@ Price floors and price ceilings feel good to legislate and terrible to live unde
 
 ## Myth: "Housing Prices Are High Because of Greed"
 
-Landlords can certainly be greedy, but like other suppliers, landlords have always wanted to charge as much as possible. That part never changes, so it can't by itself explain why prices went up.
+Landlords can certainly be greedy, but like other suppliers, landlords have always wanted to charge as much as possible.[^2] That part never changes, so it can't by itself explain why prices went up.
 
 What changed is the supply curve and specifically, how slow and expensive it is to add new housing units.
 
@@ -124,6 +124,7 @@ These curves aren't going anywhere. They help explain how our world works. Learn
 
 Enjoy econ? Read my posts about [the labor force](/posts/the-labor-force-never-fully-came-back) or [nuclear energy economics](/posts/making-nuclear-energy-competitve-with-fossil-fuels-and-natural-gas)
 
----
+[^1]: We both know that is not true.
+[^2]: Greed as a constant rather than a variable is a standard economic assumption. See [profit maximization](https://en.wikipedia.org/wiki/Profit_maximization).
 
 Questions or corrections? Email me at [nickstambaugh@proton.me](mailto:nickstambaugh@proton.me)

@@ -3,12 +3,13 @@ import tailwind from "@astrojs/tailwind";
 import react from "@astrojs/react";
 import robotsTxt from "astro-robots-txt";
 import { rehypeAccessibleEmojis } from 'rehype-accessible-emojis';
-
+import remarkGfm from 'remark-gfm';
 import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
   markdown: {
+    remarkPlugins: [remarkGfm],
     rehypePlugins: [rehypeAccessibleEmojis],
   },
   site: 'https://nickstambaugh.dev/',

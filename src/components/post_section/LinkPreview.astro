@@ -19,7 +19,10 @@
     function isInternalPost(href) {
       try {
         const url = new URL(href, window.location.origin);
-        return url.hostname === window.location.hostname && url.pathname.startsWith("/posts");
+        return (
+          url.hostname === window.location.hostname &&
+          url.pathname.startsWith("/posts")
+        );
       } catch {
         return false;
       }
@@ -70,7 +73,7 @@
 
         if (isExternal(href)) {
           const res = await fetch(
-            `https://api.microlink.io/?url=${encodeURIComponent(href)}&meta=true`
+            `https://api.microlink.io/?url=${encodeURIComponent(href)}&meta=true`,
           );
 
           const json = await res.json();
@@ -139,7 +142,8 @@
         card.querySelector(".lp-desc").textContent = data.description;
 
         if (data.image) {
-          card.querySelector(".lp-img").style.backgroundImage = `url(${data.image})`;
+          card.querySelector(".lp-img").style.backgroundImage =
+            `url(${data.image})`;
           card.querySelector(".lp-img").style.display = "block";
         } else {
           card.querySelector(".lp-img").style.display = "none";
@@ -160,7 +164,12 @@
       const article = document.getElementById("article");
       if (!article) return;
 
-      const links = Array.from(article.querySelectorAll("a[href]"));
+      const links = Array.from(article.querySelectorAll("a[href]")).filter(
+        (link) =>
+          !link.hasAttribute("data-footnote-ref") &&
+          !link.hasAttribute("data-footnote-backref") &&
+          !link.getAttribute("href").startsWith("#fn"),
+      );
 
       links.forEach((link) => {
         link.addEventListener("mouseenter", () => showCard(link));
@@ -261,7 +270,9 @@
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
     opacity: 0;
     transform: translateY(4px);
-    transition: opacity 0.15s ease, transform 0.15s ease;
+    transition:
+      opacity 0.15s ease,
+      transform 0.15s ease;
     pointer-events: none;
     overflow: hidden;
   }

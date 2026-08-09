@@ -154,6 +154,77 @@ html.dark .toc-link-sub {
   opacity: 0.75;
 }
 
+.prose [data-footnote-ref] {
+  color: #202020;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0 2px;
+  transition: opacity 0.2s ease;
+}
+
+.prose [data-footnote-ref]:hover {
+  opacity: 0.65;
+  text-decoration: underline;
+}
+
+.dark .prose [data-footnote-ref] {
+  color: #95b4dd;
+  opacity: 0.95;
+}
+
+.dark .prose [data-footnote-ref]:hover {
+  opacity: 0.75;
+}
+
+.prose section[data-footnotes] {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #202020;
+  font-size: 0.875rem;
+}
+
+.dark .prose section[data-footnotes] {
+  border-top-color: #7c8fd1;
+}
+
+.prose section[data-footnotes] ol {
+  padding-left: 1.25rem;
+}
+
+.prose section[data-footnotes] li {
+  margin-bottom: 0.5rem;
+  color: #202020;
+}
+
+.dark .prose section[data-footnotes] li {
+  color: #96a6e2;
+}
+
+.prose section[data-footnotes] li p {
+  display: inline;
+  font-size: 0.875rem;
+}
+
+.prose [data-footnote-backref] {
+  color: #202020;
+  text-decoration: none;
+  margin-left: 4px;
+  transition: opacity 0.2s ease;
+}
+
+.prose [data-footnote-backref]:hover {
+  opacity: 0.65;
+}
+
+.dark .prose [data-footnote-backref] {
+  color: #95b4dd;
+  opacity: 0.95;
+}
+
+.dark .prose [data-footnote-backref]:hover {
+  opacity: 0.75;
+}
+
 @media (min-width: 1024px) {
   h1 {
     font-size: 2.15rem;
