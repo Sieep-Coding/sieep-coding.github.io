@@ -17,7 +17,7 @@ It's been a [long journey](/about) to create a tech career. The work you have to
 
 Secret, there was never really a straight line into [software development](https://en.wikipedia.org/wiki/Software_development).
 
-Like a lot of other people who end up writing code for work, I bounced around. I spent my evenings building projects, learning [web frameworks,](https://en.wikipedia.org/wiki/Web_framework) reading [documentation,](https://en.wikipedia.org/wiki/Software_documentation) and wondering if I would ever amount to anything beyond a [GitHub](https://en.wikipedia.org/wiki/GitHub) repository with three stars. I [sacrificed](https://en.wikipedia.org/wiki/Interpersonal_relationship#Terminating_a_relationship) the majority of my [social life](https://en.wikipedia.org/wiki/Social_relation) in order to get to this point (I don't recommend that).
+Like a lot of other people who end up writing code for work, I bounced around. I spent my evenings building projects, learning [web frameworks,](https://en.wikipedia.org/wiki/Web_framework) reading [documentation,](https://en.wikipedia.org/wiki/Software_documentation) and wondering if I would ever amount to anything beyond a [GitHub](https://en.wikipedia.org/wiki/GitHub) repository with three stars. I [sacrificed](https://en.wikipedia.org/wiki/Interpersonal_relationship#Terminating_a_relationship) the majority of my [social life](https://en.wikipedia.org/wiki/Social_relation) in order to get to this point[^1].
 
 ![Kramer in the office](../photo/_kramer-office.gif "Kramer in the office")
 
@@ -47,3 +47,5 @@ Working in [manufacturing](https://en.wikipedia.org/wiki/Manufacturing) has give
 The other thing that's surprised me is just how much of [software engineering](https://en.wikipedia.org/wiki/Software_engineering) has nothing to do with it. You spend a lot of time talking to people. Understanding [business processes.](https://en.wikipedia.org/wiki/Business_process) Figuring out what someone actually means when they describe a problem. I don't think [college](https://en.wikipedia.org/wiki/Collegiate_university) prepared me for that part.
 
 [Image Source](https://unsplash.com/photos/people-sitting-on-chair-in-front-of-computer-monitor-Fa9b57hffnM)
+
+[^1]: I don't recommend this.
