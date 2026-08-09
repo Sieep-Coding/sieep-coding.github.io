@@ -116,7 +116,9 @@ When demand shifts right, even a little, the supply curve barely moves and the p
 
 That is not solely greed, that's math showing a steep line.
 
-Take a look at the state of Texas. An economic powerhouse in its own right, it is also abundant with 'developable' land and has fewer zoning restrictions. This freedom to use the space as developers please drives prices down. Surprise, surprise. Texas boasts [cheaper than average](https://www.kxan.com/news/texas/how-texas-compares-to-the-average-us-home-price/) home prices amongst a booming job market.[^3]
+Take a look at the state of [Texas.](https://en.wikipedia.org/wiki/Texas) An [economic powerhouse](https://en.wikipedia.org/wiki/Economy_of_Texas) in its own right, it is also abundant with 'developable' land and has fewer zoning restrictions. 
+
+This freedom to use real estate space as developers see fit contributes to lower prices. Surprise, surprise. Texas boasts [cheaper than average](https://www.kxan.com/news/texas/how-texas-compares-to-the-average-us-home-price/) home prices amongst a booming job market.[^3]
 
 Of course, there are always other factors that affect home prices like taxes, disasters, and geography.
 
