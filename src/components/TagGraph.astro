@@ -1,27 +1,4 @@
 ---
-/**
- * TagGraph.astro
- * -----------------------------------------------------------------------
- * An Obsidian-style force-directed graph connecting blog posts through
- * their shared tags. Post nodes are clickable and route to the article.
- * Tag nodes are clickable and route to /posts?tag=<slug>.
- *
- * USAGE (inside index.astro / Nickipedia):
- *
- *   import TagGraph from "../components/TagGraph.astro";
- *   ...
- *   const graphPosts = allPosts.map((p) => ({
- *     title: p.frontmatter.title || "Untitled",
- *     url: p.url,
- *     tags: p.frontmatter.tags || [],
- *   }));
- *   ...
- *   <TagGraph posts={graphPosts} />
- *
- * No dependencies (d3, etc.) required — the simulation is a small
- * hand-rolled force layout that renders straight to <canvas>.
- * -----------------------------------------------------------------------
- */
 
 interface GraphPost {
   title: string;
@@ -31,7 +8,6 @@ interface GraphPost {
 
 interface Props {
   posts: GraphPost[];
-  /** Optional: cap how many post nodes render, for very large blogs */
   maxPosts?: number;
   id?: string;
 }
@@ -50,13 +26,12 @@ const trimmedPosts = posts
   .map((p) => ({ ...p, tags: p.tags || [] }))
   .slice(0, maxPosts);
 
-// Build node/link data on the server so the client just simulates + draws.
 type Node = {
   id: string;
   kind: "post" | "tag";
   label: string;
   url: string;
-  weight: number; // tag degree, or 1 for posts
+  weight: number;
 };
 type Link = { source: string; target: string };
 
@@ -93,9 +68,7 @@ for (const post of trimmedPosts) {
   }
 }
 
-// Only keep tags used by 2+ posts as graph anchors so the graph reads as
-// clusters rather than a hairball of one-off tags — but still connect
-// singleton-tag posts directly to each other's nearest neighbor tag.
+
 for (const [tagId, deg] of tagDegree) {
   const n = nodeMap.get(tagId);
   if (n) n.weight = deg;
@@ -199,8 +172,6 @@ const nodeCount = nodes.length;
       const isCoarsePointer =
         window.matchMedia && window.matchMedia("(pointer: coarse)").matches;
 
-      // On touch devices, hover doesn't exist, so default labels on and
-      // swap the hint copy to describe tap/pinch instead of hover/scroll.
       if (isCoarsePointer) {
         if (labelsToggle) labelsToggle.checked = true;
         if (hintEl) {
@@ -216,7 +187,6 @@ const nodeCount = nodes.length;
 
       const ctx = canvas.getContext("2d");
 
-      // ---- Theming: read live CSS custom colors so it matches dark mode ----
       function readColor(varExpr, fallback) {
         const probe = document.createElement("div");
         probe.style.color = varExpr;
@@ -234,7 +204,7 @@ const nodeCount = nodes.length;
       function palette() {
         const dark = isDark();
         return {
-          post: dark ? "#e8b189" : "#b5562f", // secondary/dk-accent-ish warm tone
+          post: dark ? "#e8b189" : "#b5562f",
           postGlow: dark ? "rgba(232,177,137,0.25)" : "rgba(181,86,47,0.18)",
           tag: dark ? "rgba(230,225,215,0.55)" : "rgba(40,35,30,0.45)",
           tagFill: dark ? "rgba(230,225,215,0.12)" : "rgba(40,35,30,0.08)",
@@ -245,10 +215,6 @@ const nodeCount = nodes.length;
         };
       }
 
-      // ---- Build simulation nodes ----
-      // Spread initial positions across a radius proportional to node count
-      // so nodes don't spawn stacked on each other (which causes the
-      // repulsion force below to spike toward infinity on frame 1).
       const spreadRadius = Math.max(120, Math.sqrt(rawNodes.length) * 55);
       const nodes = rawNodes.map((n, i) => {
         const angle = (i / rawNodes.length) * Math.PI * 2 * 3; // spiral-ish
@@ -267,7 +233,6 @@ const nodeCount = nodes.length;
         .map((l) => ({ source: nodeById.get(l.source), target: nodeById.get(l.target) }))
         .filter((l) => l.source && l.target);
 
-      // adjacency for hover highlighting
       const neighbors = new Map();
       for (const n of nodes) neighbors.set(n.id, new Set());
       for (const l of links) {
@@ -275,10 +240,9 @@ const nodeCount = nodes.length;
         neighbors.get(l.target.id).add(l.source.id);
       }
 
-      // ---- Force simulation (simple, dependency-free) ----
       const REPEL = 900;
-      const MIN_DIST_SQ = 100; // clamp so overlapping nodes don't explode
-      const MAX_SPEED = 18; // px/frame safety cap
+      const MIN_DIST_SQ = 100;
+      const MAX_SPEED = 18; 
       const LINK_DIST = 46;
       const LINK_STRENGTH = 0.045;
       const CENTER_STRENGTH = 0.012;
@@ -299,8 +263,6 @@ const nodeCount = nodes.length;
         ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       }
       resize();
-
-      // camera
       let camX = 0;
       let camY = 0;
       let zoom = 1;
@@ -308,7 +270,6 @@ const nodeCount = nodes.length;
       const MAX_SETTLE = 260;
 
       function tick() {
-        // repulsion (coarse O(n^2) — fine for typical blog sizes)
         for (let i = 0; i < nodes.length; i++) {
           const a = nodes[i];
           for (let j = i + 1; j < nodes.length; j++) {
@@ -316,8 +277,8 @@ const nodeCount = nodes.length;
             let dx = a.x - b.x;
             let dy = a.y - b.y;
             let distSq = dx * dx + dy * dy || 0.01;
-            if (distSq > 40000) continue; // ignore far pairs for perf
-            distSq = Math.max(distSq, MIN_DIST_SQ); // prevent force spikes
+            if (distSq > 40000) continue;
+            distSq = Math.max(distSq, MIN_DIST_SQ); 
             const dist = Math.sqrt(distSq);
             const force = REPEL / distSq;
             const fx = (dx / dist) * force;
@@ -328,7 +289,6 @@ const nodeCount = nodes.length;
             b.vy -= fy;
           }
         }
-        // links
         for (const l of links) {
           const dx = l.target.x - l.source.x;
           const dy = l.target.y - l.source.y;
@@ -341,7 +301,6 @@ const nodeCount = nodes.length;
           l.target.vx -= fx;
           l.target.vy -= fy;
         }
-        // center gravity + integrate
         for (const n of nodes) {
           if (n.dragging) continue;
           n.vx += -n.x * CENTER_STRENGTH;
@@ -358,13 +317,12 @@ const nodeCount = nodes.length;
         }
       }
 
-      // ---- Interaction state ----
       let hoveredId = null;
-      let selectedId = null; // touch-only: first tap previews, second tap navigates
+      let selectedId = null; 
       let draggingNode = null;
       let dragMoved = false;
       let dragStartPos = { x: 0, y: 0 };
-      const DRAG_THRESHOLD = 4; // px of movement before a click counts as a drag
+      const DRAG_THRESHOLD = 4;
       let isPanning = false;
       let panStart = { x: 0, y: 0 };
       let camStart = { x: 0, y: 0 };
@@ -417,7 +375,6 @@ const nodeCount = nodes.length;
         const showAllLabels = labelsToggle && labelsToggle.checked;
         const activeId = hoveredId || selectedId;
 
-        // links
         ctx.lineWidth = 1;
         for (const l of links) {
           const isActive =
@@ -431,7 +388,7 @@ const nodeCount = nodes.length;
           ctx.stroke();
         }
 
-        // nodes
+
         for (const n of nodes) {
           const s = worldToScreen(n.x, n.y);
           const isHovered = activeId === n.id;
@@ -464,8 +421,6 @@ const nodeCount = nodes.length;
             ctx.globalAlpha = 1;
           }
 
-          // tag labels: always show (they're the map's landmarks) once zoomed
-          // in enough, or when hovered/neighboring.
           const shouldLabelTag =
             n.kind === "tag" &&
             (showAllLabels || zoom > 0.9 || isHovered || isNeighbor);
@@ -502,7 +457,6 @@ const nodeCount = nodes.length;
       }
       loop();
 
-      // ---- Pointer interactions ----
       function getPointerPos(e) {
         const rect = canvas.getBoundingClientRect();
         const t = e.touches ? e.touches[0] : e;
@@ -573,9 +527,6 @@ const nodeCount = nodes.length;
         const hit = nodeAt(p.x, p.y);
 
         if (hit && !wasRealDrag && isTouch) {
-          // Touch: first tap previews (shows tooltip + highlight), a
-          // second tap on the SAME already-selected node opens it. This
-          // avoids fat-finger accidental navigation on small tag nodes.
           if (selectedId === hit.id) {
             window.location.href = hit.url;
           } else {
@@ -613,7 +564,6 @@ const nodeCount = nodes.length;
         "touchstart",
         (e) => {
           if (e.touches.length === 2) {
-            // starting a pinch: cancel any in-progress single-finger drag/pan
             draggingNode = null;
             isPanning = false;
             const rect = canvas.getBoundingClientRect();
@@ -654,7 +604,6 @@ const nodeCount = nodes.length;
           const t = e.changedTouches[0];
           onPointerUp({ clientX: t.clientX, clientY: t.clientY }, true);
         } else if (e.touches.length === 1) {
-          // dropped from pinch to a single finger — treat as a fresh pan start
           pinchStartDist = null;
           const rect = canvas.getBoundingClientRect();
           isPanning = true;
@@ -680,7 +629,7 @@ const nodeCount = nodes.length;
 
       window.addEventListener("resize", resize);
 
-      labelsToggle?.addEventListener("change", () => {}); // draw() reads it live
+      labelsToggle?.addEventListener("change", () => {});
 
       resetBtn?.addEventListener("click", () => {
         camX = 0;
@@ -700,14 +649,12 @@ const nodeCount = nodes.length;
         });
       });
 
-      // Repaint immediately on theme toggle if the site has a dark-mode switch
       const themeObserver = new MutationObserver(() => draw());
       themeObserver.observe(document.documentElement, {
         attributes: true,
         attributeFilter: ["class"],
       });
 
-      // cleanup on Astro view-transition swap
       document.addEventListener(
         "astro:before-swap",
         () => {
