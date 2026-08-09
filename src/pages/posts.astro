@@ -77,11 +77,7 @@ const lastPoint = points[points.length - 1];
           Posts
         </h1>
         <p class="mt-3 text-sm text-text/60 dark:text-dk-text/60">
-          <span class="font-bold text-text dark:text-dk-text tabular-nums">{totalCount}</span> posts written{bucketKeys.length > 0 && (
-            <>
-              {" "}· latest in <span class="font-medium">{monthLabel(bucketKeys[bucketKeys.length - 1])}</span>
-            </>
-          )}
+          <span class="font-bold text-text dark:text-dk-text tabular-nums">{totalCount}</span> posts written · <a href="/wiki" class="underline underline-offset-4 hover:text-secondary dark:hover:text-dk-accent">wiki</a>
           {" "}· <a href="/tags" class="underline underline-offset-4 hover:text-secondary dark:hover:text-dk-accent">all tags →</a>
         </p>
       </div>
