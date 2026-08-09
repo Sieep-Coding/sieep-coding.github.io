@@ -112,7 +112,7 @@ Of course, there are always other factors that affect home prices like taxes, di
 
 Treating it as the sole cause of America's housing issues is lazy because it ignores that the supply curve was already this steep.
 
-Private investment isn't inherently the villain here, it is demand with more capital. The actual lever to pull on is supply. 
+Private investment isn't inherently the villain here, it is demand with more [capital](https://en.wikipedia.org/wiki/Capital_(economics)). The actual lever to pull on is supply. 
 
 ![Leo pointing](../photo/_leo-pointing.gif "Leo pointing")
 
