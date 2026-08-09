@@ -118,28 +118,32 @@ const nodeCount = nodes.length;
     >
       Article Graph
     </h2>
-    <div class="flex items-center gap-3">
+    <div class="flex items-center gap-2 sm:gap-3">
       <label
-        class="flex items-center gap-1.5 text-[11px] text-text/50 dark:text-dk-text/50 cursor-pointer select-none"
+        class="flex items-center gap-1.5 text-[11px] text-text/50 dark:text-dk-text/50 cursor-pointer select-none py-1.5 -my-1.5"
       >
         <input
           type="checkbox"
           id={`${id}-labels-toggle`}
-          class="accent-secondary dark:accent-dk-accent"
+          class="accent-secondary dark:accent-dk-accent w-4 h-4 sm:w-3.5 sm:h-3.5"
         />
-        Show all labels
+        <span class="hidden sm:inline">Show all labels</span>
+        <span class="sm:hidden">Labels</span>
       </label>
       <button
         type="button"
         id={`${id}-reset`}
-        class="text-[11px] px-2 py-1 rounded-full border border-text/20 dark:border-dk-text/20 text-text/60 dark:text-dk-text/60 hover:text-secondary dark:hover:text-dk-accent hover:border-secondary/40 dark:hover:border-dk-accent/40 transition-colors"
+        class="text-[11px] px-3 py-2 sm:px-2 sm:py-1 rounded-full border border-text/20 dark:border-dk-text/20 text-text/60 dark:text-dk-text/60 hover:text-secondary dark:hover:text-dk-accent hover:border-secondary/40 dark:hover:border-dk-accent/40 transition-colors"
       >
-        ↺ Reset view
+        ↺ Reset
       </button>
     </div>
   </div>
 
-  <p class="text-xs text-text/50 dark:text-dk-text/50 mb-3">
+  <p
+    id={`${id}-hint`}
+    class="text-xs text-text/50 dark:text-dk-text/50 mb-3"
+  >
     {nodeCount === 0
       ? "No tagged posts yet."
       : "Every article, mapped by shared tags. Drag to rearrange, scroll to zoom, click a node to open it."}
@@ -147,7 +151,7 @@ const nodeCount = nodes.length;
 
   <div
     id={`${id}-wrap`}
-    class="relative w-full aspect-[16/10] sm:aspect-[16/9] rounded-lg border border-text/10 dark:border-dk-text/10 bg-primary/40 dark:bg-dk-primary/40 overflow-hidden cursor-grab active:cursor-grabbing touch-none"
+    class="relative w-full aspect-[4/5] sm:aspect-[16/9] rounded-lg border border-text/10 dark:border-dk-text/10 bg-primary/40 dark:bg-dk-primary/40 overflow-hidden cursor-grab active:cursor-grabbing touch-none select-none"
   >
     <canvas id={`${id}-canvas`} class="block w-full h-full"></canvas>
     <div
@@ -157,16 +161,19 @@ const nodeCount = nodes.length;
     >
     </div>
     <div
+      id={`${id}-legend`}
       class="absolute bottom-2 left-2 flex items-center gap-3 text-[10px] text-text/50 dark:text-dk-text/50 bg-primary/70 dark:bg-dk-primary/70 backdrop-blur px-2 py-1 rounded-md"
     >
       <span class="flex items-center gap-1"
         ><span
-          class="inline-block w-2 h-2 rounded-full bg-secondary dark:bg-dk-accent"
+          id={`${id}-legend-post`}
+          class="inline-block w-2 h-2 rounded-full"
         ></span> Article</span
       >
       <span class="flex items-center gap-1"
         ><span
-          class="inline-block w-2 h-2 rounded-full bg-text/40 dark:bg-dk-text/40"
+          id={`${id}-legend-tag`}
+          class="inline-block w-2 h-2 rounded-full"
         ></span> Tag</span
       >
     </div>
@@ -182,9 +189,25 @@ const nodeCount = nodes.length;
       const labelsToggle = document.getElementById(`${id}-labels-toggle`);
       const resetBtn = document.getElementById(`${id}-reset`);
       const dataEl = document.getElementById(`${id}-data`);
+      const legendPost = document.getElementById(`${id}-legend-post`);
+      const legendTag = document.getElementById(`${id}-legend-tag`);
+      const hintEl = document.getElementById(`${id}-hint`);
       if (!wrap || !canvas || !tooltip || !dataEl) return;
       if (canvas.dataset.bound === "true") return;
       canvas.dataset.bound = "true";
+
+      const isCoarsePointer =
+        window.matchMedia && window.matchMedia("(pointer: coarse)").matches;
+
+      // On touch devices, hover doesn't exist, so default labels on and
+      // swap the hint copy to describe tap/pinch instead of hover/scroll.
+      if (isCoarsePointer) {
+        if (labelsToggle) labelsToggle.checked = true;
+        if (hintEl) {
+          hintEl.textContent =
+            "Tap a node to preview it, tap again to open. Drag to rearrange, pinch to zoom.";
+        }
+      }
 
       const raw = JSON.parse(dataEl.textContent || "{}");
       const rawNodes = raw.nodes || [];
@@ -337,6 +360,7 @@ const nodeCount = nodes.length;
 
       // ---- Interaction state ----
       let hoveredId = null;
+      let selectedId = null; // touch-only: first tap previews, second tap navigates
       let draggingNode = null;
       let dragMoved = false;
       let dragStartPos = { x: 0, y: 0 };
@@ -345,6 +369,10 @@ const nodeCount = nodes.length;
       let panStart = { x: 0, y: 0 };
       let camStart = { x: 0, y: 0 };
       let pointer = { x: 0, y: 0 };
+      let pinchStartDist = null;
+      let pinchStartZoom = 1;
+      let pinchStartMid = { x: 0, y: 0 };
+      let pinchStartCam = { x: 0, y: 0 };
 
       function worldToScreen(x, y) {
         return {
@@ -362,12 +390,13 @@ const nodeCount = nodes.length;
       function nodeAt(sx, sy) {
         let best = null;
         let bestDist = Infinity;
+        const minHitR = isCoarsePointer ? 16 : 8;
         for (const n of nodes) {
           const s = worldToScreen(n.x, n.y);
           const dx = s.x - sx;
           const dy = s.y - sy;
           const d = Math.sqrt(dx * dx + dy * dy);
-          const hitR = Math.max(n.r * zoom, 8);
+          const hitR = Math.max(n.r * zoom, minHitR);
           if (d <= hitR && d < bestDist) {
             best = n;
             bestDist = d;
@@ -378,15 +407,21 @@ const nodeCount = nodes.length;
 
       function draw() {
         const c = palette();
+        if (legendPost) legendPost.style.backgroundColor = c.post;
+        if (legendTag) {
+          legendTag.style.backgroundColor = c.tagFill;
+          legendTag.style.border = `1.25px solid ${c.tag}`;
+        }
         ctx.clearRect(0, 0, width, height);
 
         const showAllLabels = labelsToggle && labelsToggle.checked;
+        const activeId = hoveredId || selectedId;
 
         // links
         ctx.lineWidth = 1;
         for (const l of links) {
           const isActive =
-            hoveredId && (l.source.id === hoveredId || l.target.id === hoveredId);
+            activeId && (l.source.id === activeId || l.target.id === activeId);
           const s = worldToScreen(l.source.x, l.source.y);
           const t = worldToScreen(l.target.x, l.target.y);
           ctx.strokeStyle = isActive ? c.linkActive : c.link;
@@ -399,9 +434,9 @@ const nodeCount = nodes.length;
         // nodes
         for (const n of nodes) {
           const s = worldToScreen(n.x, n.y);
-          const isHovered = hoveredId === n.id;
-          const isNeighbor = hoveredId && neighbors.get(hoveredId)?.has(n.id);
-          const dimmed = hoveredId && !isHovered && !isNeighbor;
+          const isHovered = activeId === n.id;
+          const isNeighbor = activeId && neighbors.get(activeId)?.has(n.id);
+          const dimmed = activeId && !isHovered && !isNeighbor;
           const r = n.r * zoom * (isHovered ? 1.35 : 1);
 
           if (n.kind === "post") {
@@ -474,7 +509,7 @@ const nodeCount = nodes.length;
         return { x: t.clientX - rect.left, y: t.clientY - rect.top };
       }
 
-      function onPointerDown(e) {
+      function onPointerDown(e, isTouch) {
         const p = getPointerPos(e);
         const hit = nodeAt(p.x, p.y);
         if (hit) {
@@ -487,6 +522,10 @@ const nodeCount = nodes.length;
           isPanning = true;
           panStart = p;
           camStart = { x: camX, y: camY };
+          if (isTouch) {
+            selectedId = null;
+            tooltip.classList.add("hidden");
+          }
         }
       }
       function onPointerMove(e) {
@@ -521,7 +560,7 @@ const nodeCount = nodes.length;
           }
         }
       }
-      function onPointerUp(e) {
+      function onPointerUp(e, isTouch) {
         const p = getPointerPos(e);
         const wasRealDrag = dragMoved;
         if (draggingNode) {
@@ -531,34 +570,97 @@ const nodeCount = nodes.length;
         isPanning = false;
         wrap.style.cursor = "grab";
 
-        // Treat as a click only if the pointer never moved past the threshold
         const hit = nodeAt(p.x, p.y);
-        if (hit && !wasRealDrag) {
+
+        if (hit && !wasRealDrag && isTouch) {
+          // Touch: first tap previews (shows tooltip + highlight), a
+          // second tap on the SAME already-selected node opens it. This
+          // avoids fat-finger accidental navigation on small tag nodes.
+          if (selectedId === hit.id) {
+            window.location.href = hit.url;
+          } else {
+            selectedId = hit.id;
+            tooltip.textContent =
+              hit.kind === "post" ? hit.label : `#${hit.label}`;
+            tooltip.style.left = `${p.x}px`;
+            tooltip.style.top = `${p.y}px`;
+            tooltip.classList.remove("hidden");
+          }
+        } else if (hit && !wasRealDrag && !isTouch) {
           window.location.href = hit.url;
+        } else if (!hit && isTouch) {
+          selectedId = null;
+          tooltip.classList.add("hidden");
         }
         dragMoved = false;
       }
 
-      canvas.addEventListener("mousedown", onPointerDown);
+      canvas.addEventListener("mousedown", (e) => onPointerDown(e, false));
       window.addEventListener("mousemove", onPointerMove);
-      window.addEventListener("mouseup", onPointerUp);
+      window.addEventListener("mouseup", (e) => onPointerUp(e, false));
+
+      function touchDist(t0, t1) {
+        return Math.hypot(t1.clientX - t0.clientX, t1.clientY - t0.clientY);
+      }
+      function touchMid(t0, t1, rect) {
+        return {
+          x: (t0.clientX + t1.clientX) / 2 - rect.left,
+          y: (t0.clientY + t1.clientY) / 2 - rect.top,
+        };
+      }
+
       canvas.addEventListener(
         "touchstart",
         (e) => {
-          onPointerDown(e);
+          if (e.touches.length === 2) {
+            // starting a pinch: cancel any in-progress single-finger drag/pan
+            draggingNode = null;
+            isPanning = false;
+            const rect = canvas.getBoundingClientRect();
+            pinchStartDist = touchDist(e.touches[0], e.touches[1]);
+            pinchStartZoom = zoom;
+            pinchStartMid = touchMid(e.touches[0], e.touches[1], rect);
+            pinchStartCam = { x: camX, y: camY };
+          } else if (e.touches.length === 1) {
+            onPointerDown(e, true);
+          }
         },
         { passive: true },
       );
       canvas.addEventListener(
         "touchmove",
         (e) => {
-          onPointerMove(e);
+          if (e.touches.length === 2 && pinchStartDist != null) {
+            const rect = canvas.getBoundingClientRect();
+            const dist = touchDist(e.touches[0], e.touches[1]);
+            const scale = dist / pinchStartDist;
+            const newZoom = Math.min(2.4, Math.max(0.35, pinchStartZoom * scale));
+            const worldBefore = {
+              x: (pinchStartMid.x - width / 2) / pinchStartZoom + pinchStartCam.x,
+              y: (pinchStartMid.y - height / 2) / pinchStartZoom + pinchStartCam.y,
+            };
+            zoom = newZoom;
+            camX = worldBefore.x - (pinchStartMid.x - width / 2) / zoom;
+            camY = worldBefore.y - (pinchStartMid.y - height / 2) / zoom;
+          } else if (e.touches.length === 1) {
+            onPointerMove(e);
+          }
         },
         { passive: true },
       );
       canvas.addEventListener("touchend", (e) => {
-        const t = e.changedTouches[0];
-        onPointerUp({ clientX: t.clientX, clientY: t.clientY });
+        if (e.touches.length === 0) {
+          pinchStartDist = null;
+          const t = e.changedTouches[0];
+          onPointerUp({ clientX: t.clientX, clientY: t.clientY }, true);
+        } else if (e.touches.length === 1) {
+          // dropped from pinch to a single finger — treat as a fresh pan start
+          pinchStartDist = null;
+          const rect = canvas.getBoundingClientRect();
+          isPanning = true;
+          panStart = { x: e.touches[0].clientX - rect.left, y: e.touches[0].clientY - rect.top };
+          camStart = { x: camX, y: camY };
+        }
       });
 
       canvas.addEventListener(
@@ -585,6 +687,9 @@ const nodeCount = nodes.length;
         camY = 0;
         zoom = 1;
         settleFrames = 0;
+        selectedId = null;
+        hoveredId = null;
+        tooltip.classList.add("hidden");
         nodes.forEach((n, i) => {
           const angle = (i / nodes.length) * Math.PI * 2 * 3;
           const rad = spreadRadius * Math.sqrt(Math.random());
