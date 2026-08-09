@@ -102,21 +102,25 @@ When demand shifts right, even a little, the supply curve barely moves and the p
 
 That is not solely greed, that's math showing a steep line.
 
-Take a look at the state of Texas. An economic powerhouse in its own right, it is also abundant with usable land and has fewer zoning restrictions. This freedom to use the space as developers please drives prices down. Surprise, surprise. Texas boasts [cheaper than average](https://www.kxan.com/news/texas/how-texas-compares-to-the-average-us-home-price/) home prices amongst a booming job market. 
+Take a look at the state of Texas. An economic powerhouse in its own right, it is also abundant with 'developable' land and has fewer zoning restrictions. This freedom to use the space as developers please drives prices down. Surprise, surprise. Texas boasts [cheaper than average](https://www.kxan.com/news/texas/how-texas-compares-to-the-average-us-home-price/) home prices amongst a booming job market.[^3]
 
 Of course, there are always other factors that affect home prices like taxes, disasters, and geography.
 
 ## Myth: "Private Investors Are the Whole Problem"
 
-[Institutional investors](https://en.wikipedia.org/wiki/Institutional_investor) buying single-family homes is a real phenomenon and it [does shift the demand](https://en.wikipedia.org/wiki/Market_power) curve right, same as any other buyer entering the market. 
+[Institutional investors](https://en.wikipedia.org/wiki/Institutional_investor) buying single-family homes is a real [phenomenon](https://en.wikipedia.org/wiki/Phenomenon) and it [does shift the demand](https://en.wikipedia.org/wiki/Market_power) curve right, same as any other buyer entering the market. 
 
 Treating it as the sole cause of America's housing issues is lazy because it ignores that the supply curve was already this steep.
 
-Private investment isn't inherently the villain here either, it's just demand with more capital. The actual lever that matters is supply. 
+Private investment isn't inherently the villain here, it is demand with more capital. The actual lever to pull on is supply. 
 
-If it were cheap and fast to build more housing, an influx of investor demand would get absorbed the same way a busy restaurant just opens another location instead of the existing one tripling its prices. 
+![Leo pointing](../photo/_leo-pointing.gif "Leo pointing")
 
-Investor demand is one contributing factor interacting with a constrained supply.
+If it were cheap and fast to build housing, an influx of investor demand would be absorbed by new construction rather than bidding up the price. 
+
+It's the difference between a busy restaurant opening another location and the same restaurant having to serve twice as many customers from the same kitchen.
+
+Investor demand is one contributing factor to the housing shortage, but it is interacting with a housing market where supply is [heavily constrained.](https://en.wikipedia.org/wiki/San_Francisco_housing_shortage#Permit_process)
 
 ## Closing Thoughts
 
@@ -126,5 +130,6 @@ Enjoy econ? Read my posts about [the labor force](/posts/the-labor-force-never-f
 
 [^1]: We both know that is not true.
 [^2]: Greed as a constant rather than a variable is a standard economic assumption. See [profit maximization](https://en.wikipedia.org/wiki/Profit_maximization).
+[^3]: Now compare this to [San Francisco](https://en.wikipedia.org/wiki/San_Francisco_housing_shortage), where restrictive land-use regulations have constrained housing supply and contributed to higher housing costs, which can in turn increase homelessness.
 
 Questions or corrections? Email me at [nickstambaugh@proton.me](mailto:nickstambaugh@proton.me)

@@ -16,6 +16,8 @@ The choice of build systems can influence productivity and team cohesion.
 
 While more advanced tools and containerization are gaining popularity, sticking with **Makefiles** offers a unique blend of simplicity and clarity that keeps me grounded.
 
+![Leo pointing](../photo/_leo-pointing.gif "Leo pointing")
+
 # Clarity of Purpose
 Makefiles excel at laying out a straightforward roadmap for builds. 
 
