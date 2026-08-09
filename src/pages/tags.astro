@@ -1,7 +1,14 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import TagGraph from "../components/TagGraph.astro";
 
 const allPosts = await Astro.glob("../pages/posts/*.md");
+
+const graphPosts = allPosts.map((p) => ({
+  title: p.frontmatter.title || "Untitled",
+  url: p.url,
+  tags: p.frontmatter.tags || [],
+}));
 
 const slug = (t: string) =>
   t
@@ -87,7 +94,9 @@ const totalTags = tags.length;
         ))
       }
     </div>
-
+    <div class="mt-10">
+      <TagGraph posts={graphPosts} id="tags-page-graph" />
+    </div>
     <footer class="mt-16 pt-8 border-t border-text/10 dark:border-dk-text/10">
       <a
         href="/posts"
