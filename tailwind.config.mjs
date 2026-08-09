@@ -8,7 +8,7 @@ export default {
 			colors: {
 				'primary': '#e8d8c8',
 				'secondary': '#202020',
-				'accent': '#FFFFFF',
+				'accent': '#aff6ff',
 				'text': '#202020',
 				'dk-primary': '#2a2b39', 
 				'dk-secondary': '#7c8fd1',

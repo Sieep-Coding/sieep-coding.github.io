@@ -128,8 +128,6 @@ const lastPoint = points[points.length - 1];
         </div>
       )}
     </header>
-
-    <!-- High-Contrast Search & Action Container -->
     <div class="relative flex items-center mb-4 border-b-2 border-text/40 dark:border-dk-text/40 focus-within:border-secondary dark:focus-within:border-dk-accent transition-colors pb-1">
       <input
         id="post-search"
@@ -146,8 +144,6 @@ const lastPoint = points[points.length - 1];
         <span id="filters-arrow" class="inline-block transition-transform duration-200 text-xs">↓</span>
       </button>
     </div>
-
-    <!-- Collapsible Tag Panel -->
     <div
       id="filters-panel"
       class="overflow-hidden transition-[max-height] duration-200 ease-out max-h-0"
@@ -172,8 +168,6 @@ const lastPoint = points[points.length - 1];
         }
       </div>
     </div>
-
-    <!-- Content Grid Layout -->
     <div
       id="posts-grid"
       class="grid gap-x-6 gap-y-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 pt-12"
@@ -244,7 +238,6 @@ const lastPoint = points[points.length - 1];
 
       searchEl.addEventListener("input", applyFilters);
 
-      /* Collapsible Panel */
       const panel = document.getElementById("filters-panel");
       const toggle = document.getElementById("filters-toggle");
       const arrow = document.getElementById("filters-arrow");
@@ -272,14 +265,12 @@ const lastPoint = points[points.length - 1];
         }
       });
 
-      // Style initial high-contrast state for 'all' button explicitly on load
       const allBtn = document.querySelector('[data-filter="*"]');
       if(allBtn) {
         allBtn.classList.remove("text-text/70", "dark:text-dk-text");
         allBtn.classList.add("text-secondary", "dark:text-dk-accent", "decoration-secondary", "dark:decoration-dk-accent");
       }
 
-      // If a ?tag=<slug> param is present, auto-select the matching tag filter
       const params = new URLSearchParams(window.location.search);
       const tagParam = params.get("tag");
       if (tagParam) {
