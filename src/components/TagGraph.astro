@@ -1,0 +1,620 @@
+---
+/**
+ * TagGraph.astro
+ * -----------------------------------------------------------------------
+ * An Obsidian-style force-directed graph connecting blog posts through
+ * their shared tags. Post nodes are clickable and route to the article.
+ * Tag nodes are clickable and route to /posts?tag=<slug>.
+ *
+ * USAGE (inside index.astro / Nickipedia):
+ *
+ *   import TagGraph from "../components/TagGraph.astro";
+ *   ...
+ *   const graphPosts = allPosts.map((p) => ({
+ *     title: p.frontmatter.title || "Untitled",
+ *     url: p.url,
+ *     tags: p.frontmatter.tags || [],
+ *   }));
+ *   ...
+ *   <TagGraph posts={graphPosts} />
+ *
+ * No dependencies (d3, etc.) required — the simulation is a small
+ * hand-rolled force layout that renders straight to <canvas>.
+ * -----------------------------------------------------------------------
+ */
+
+interface GraphPost {
+  title: string;
+  url: string | undefined;
+  tags: string[] | undefined;
+}
+
+interface Props {
+  posts: GraphPost[];
+  /** Optional: cap how many post nodes render, for very large blogs */
+  maxPosts?: number;
+  id?: string;
+}
+
+const { posts, maxPosts = 400, id = "tag-graph" } = Astro.props;
+
+const slug = (t: string) =>
+  t
+    .toLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g, "")
+    .replace(/[\s_-]+/g, "-");
+
+const trimmedPosts = posts
+  .filter((p): p is { title: string; url: string; tags: string[] } => Boolean(p.url))
+  .map((p) => ({ ...p, tags: p.tags || [] }))
+  .slice(0, maxPosts);
+
+// Build node/link data on the server so the client just simulates + draws.
+type Node = {
+  id: string;
+  kind: "post" | "tag";
+  label: string;
+  url: string;
+  weight: number; // tag degree, or 1 for posts
+};
+type Link = { source: string; target: string };
+
+const nodeMap = new Map<string, Node>();
+const links: Link[] = [];
+const tagDegree = new Map<string, number>();
+
+for (const post of trimmedPosts) {
+  const postId = `post:${post.url}`;
+  if (!nodeMap.has(postId)) {
+    nodeMap.set(postId, {
+      id: postId,
+      kind: "post",
+      label: post.title,
+      url: post.url,
+      weight: 1,
+    });
+  }
+  for (const rawTag of post.tags) {
+    const key = slug(rawTag);
+    if (!key) continue;
+    const tagId = `tag:${key}`;
+    tagDegree.set(tagId, (tagDegree.get(tagId) || 0) + 1);
+    if (!nodeMap.has(tagId)) {
+      nodeMap.set(tagId, {
+        id: tagId,
+        kind: "tag",
+        label: rawTag.replace(/^#/, ""),
+        url: `/posts?tag=${key}`,
+        weight: 0,
+      });
+    }
+    links.push({ source: postId, target: tagId });
+  }
+}
+
+// Only keep tags used by 2+ posts as graph anchors so the graph reads as
+// clusters rather than a hairball of one-off tags — but still connect
+// singleton-tag posts directly to each other's nearest neighbor tag.
+for (const [tagId, deg] of tagDegree) {
+  const n = nodeMap.get(tagId);
+  if (n) n.weight = deg;
+}
+
+const nodes = Array.from(nodeMap.values());
+const graphData = { nodes, links };
+const nodeCount = nodes.length;
+---
+
+<section
+  id={id}
+  class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5 sm:p-6"
+>
+  <div
+    class="flex items-center justify-between border-b border-text/10 dark:border-dk-text/10 pb-2 mb-3"
+  >
+    <h2
+      class="text-xs font-bold uppercase tracking-widest text-secondary dark:text-dk-accent"
+    >
+      Article Graph
+    </h2>
+    <div class="flex items-center gap-3">
+      <label
+        class="flex items-center gap-1.5 text-[11px] text-text/50 dark:text-dk-text/50 cursor-pointer select-none"
+      >
+        <input
+          type="checkbox"
+          id={`${id}-labels-toggle`}
+          class="accent-secondary dark:accent-dk-accent"
+        />
+        Show all labels
+      </label>
+      <button
+        type="button"
+        id={`${id}-reset`}
+        class="text-[11px] px-2 py-1 rounded-full border border-text/20 dark:border-dk-text/20 text-text/60 dark:text-dk-text/60 hover:text-secondary dark:hover:text-dk-accent hover:border-secondary/40 dark:hover:border-dk-accent/40 transition-colors"
+      >
+        ↺ Reset view
+      </button>
+    </div>
+  </div>
+
+  <p class="text-xs text-text/50 dark:text-dk-text/50 mb-3">
+    {nodeCount === 0
+      ? "No tagged posts yet."
+      : "Every article, mapped by shared tags. Drag to rearrange, scroll to zoom, click a node to open it."}
+  </p>
+
+  <div
+    id={`${id}-wrap`}
+    class="relative w-full aspect-[16/10] sm:aspect-[16/9] rounded-lg border border-text/10 dark:border-dk-text/10 bg-primary/40 dark:bg-dk-primary/40 overflow-hidden cursor-grab active:cursor-grabbing touch-none"
+  >
+    <canvas id={`${id}-canvas`} class="block w-full h-full"></canvas>
+    <div
+      id={`${id}-tooltip`}
+      class="pointer-events-none absolute hidden px-2 py-1 rounded-md text-[11px] font-medium bg-text text-primary dark:bg-dk-text dark:text-dk-primary shadow-lg whitespace-nowrap z-10"
+      style="transform: translate(-50%, -130%);"
+    >
+    </div>
+    <div
+      class="absolute bottom-2 left-2 flex items-center gap-3 text-[10px] text-text/50 dark:text-dk-text/50 bg-primary/70 dark:bg-dk-primary/70 backdrop-blur px-2 py-1 rounded-md"
+    >
+      <span class="flex items-center gap-1"
+        ><span
+          class="inline-block w-2 h-2 rounded-full bg-secondary dark:bg-dk-accent"
+        ></span> Article</span
+      >
+      <span class="flex items-center gap-1"
+        ><span
+          class="inline-block w-2 h-2 rounded-full bg-text/40 dark:bg-dk-text/40"
+        ></span> Tag</span
+      >
+    </div>
+  </div>
+
+  <script type="application/json" id={`${id}-data`} set:html={JSON.stringify(graphData)} />
+
+  <script define:vars={{ id }}>
+    function initTagGraph() {
+      const wrap = document.getElementById(`${id}-wrap`);
+      const canvas = document.getElementById(`${id}-canvas`);
+      const tooltip = document.getElementById(`${id}-tooltip`);
+      const labelsToggle = document.getElementById(`${id}-labels-toggle`);
+      const resetBtn = document.getElementById(`${id}-reset`);
+      const dataEl = document.getElementById(`${id}-data`);
+      if (!wrap || !canvas || !tooltip || !dataEl) return;
+      if (canvas.dataset.bound === "true") return;
+      canvas.dataset.bound = "true";
+
+      const raw = JSON.parse(dataEl.textContent || "{}");
+      const rawNodes = raw.nodes || [];
+      const rawLinks = raw.links || [];
+      if (rawNodes.length === 0) return;
+
+      const ctx = canvas.getContext("2d");
+
+      // ---- Theming: read live CSS custom colors so it matches dark mode ----
+      function readColor(varExpr, fallback) {
+        const probe = document.createElement("div");
+        probe.style.color = varExpr;
+        probe.style.display = "none";
+        document.body.appendChild(probe);
+        const val = getComputedStyle(probe).color;
+        probe.remove();
+        return val && val !== "" ? val : fallback;
+      }
+
+      function isDark() {
+        return document.documentElement.classList.contains("dark");
+      }
+
+      function palette() {
+        const dark = isDark();
+        return {
+          post: dark ? "#e8b189" : "#b5562f", // secondary/dk-accent-ish warm tone
+          postGlow: dark ? "rgba(232,177,137,0.25)" : "rgba(181,86,47,0.18)",
+          tag: dark ? "rgba(230,225,215,0.55)" : "rgba(40,35,30,0.45)",
+          tagFill: dark ? "rgba(230,225,215,0.12)" : "rgba(40,35,30,0.08)",
+          link: dark ? "rgba(230,225,215,0.14)" : "rgba(40,35,30,0.12)",
+          linkActive: dark ? "rgba(232,177,137,0.75)" : "rgba(181,86,47,0.65)",
+          text: dark ? "#e6e1d7" : "#28231e",
+          bg: "transparent",
+        };
+      }
+
+      // ---- Build simulation nodes ----
+      // Spread initial positions across a radius proportional to node count
+      // so nodes don't spawn stacked on each other (which causes the
+      // repulsion force below to spike toward infinity on frame 1).
+      const spreadRadius = Math.max(120, Math.sqrt(rawNodes.length) * 55);
+      const nodes = rawNodes.map((n, i) => {
+        const angle = (i / rawNodes.length) * Math.PI * 2 * 3; // spiral-ish
+        const rad = spreadRadius * Math.sqrt(Math.random());
+        return {
+          ...n,
+          x: Math.cos(angle) * rad,
+          y: Math.sin(angle) * rad,
+          vx: 0,
+          vy: 0,
+          r: n.kind === "post" ? 4.5 : Math.min(4 + n.weight * 1.6, 16),
+        };
+      });
+      const nodeById = new Map(nodes.map((n) => [n.id, n]));
+      const links = rawLinks
+        .map((l) => ({ source: nodeById.get(l.source), target: nodeById.get(l.target) }))
+        .filter((l) => l.source && l.target);
+
+      // adjacency for hover highlighting
+      const neighbors = new Map();
+      for (const n of nodes) neighbors.set(n.id, new Set());
+      for (const l of links) {
+        neighbors.get(l.source.id).add(l.target.id);
+        neighbors.get(l.target.id).add(l.source.id);
+      }
+
+      // ---- Force simulation (simple, dependency-free) ----
+      const REPEL = 900;
+      const MIN_DIST_SQ = 100; // clamp so overlapping nodes don't explode
+      const MAX_SPEED = 18; // px/frame safety cap
+      const LINK_DIST = 46;
+      const LINK_STRENGTH = 0.045;
+      const CENTER_STRENGTH = 0.012;
+      const DAMPING = 0.82;
+
+      let width = 0;
+      let height = 0;
+      let dpr = Math.max(1, window.devicePixelRatio || 1);
+
+      function resize() {
+        const rect = wrap.getBoundingClientRect();
+        width = rect.width;
+        height = rect.height;
+        canvas.width = Math.floor(width * dpr);
+        canvas.height = Math.floor(height * dpr);
+        canvas.style.width = `${width}px`;
+        canvas.style.height = `${height}px`;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+      resize();
+
+      // camera
+      let camX = 0;
+      let camY = 0;
+      let zoom = 1;
+      let settleFrames = 0;
+      const MAX_SETTLE = 260;
+
+      function tick() {
+        // repulsion (coarse O(n^2) — fine for typical blog sizes)
+        for (let i = 0; i < nodes.length; i++) {
+          const a = nodes[i];
+          for (let j = i + 1; j < nodes.length; j++) {
+            const b = nodes[j];
+            let dx = a.x - b.x;
+            let dy = a.y - b.y;
+            let distSq = dx * dx + dy * dy || 0.01;
+            if (distSq > 40000) continue; // ignore far pairs for perf
+            distSq = Math.max(distSq, MIN_DIST_SQ); // prevent force spikes
+            const dist = Math.sqrt(distSq);
+            const force = REPEL / distSq;
+            const fx = (dx / dist) * force;
+            const fy = (dy / dist) * force;
+            a.vx += fx;
+            a.vy += fy;
+            b.vx -= fx;
+            b.vy -= fy;
+          }
+        }
+        // links
+        for (const l of links) {
+          const dx = l.target.x - l.source.x;
+          const dy = l.target.y - l.source.y;
+          const dist = Math.sqrt(dx * dx + dy * dy) || 0.01;
+          const diff = (dist - LINK_DIST) * LINK_STRENGTH;
+          const fx = (dx / dist) * diff;
+          const fy = (dy / dist) * diff;
+          l.source.vx += fx;
+          l.source.vy += fy;
+          l.target.vx -= fx;
+          l.target.vy -= fy;
+        }
+        // center gravity + integrate
+        for (const n of nodes) {
+          if (n.dragging) continue;
+          n.vx += -n.x * CENTER_STRENGTH;
+          n.vy += -n.y * CENTER_STRENGTH;
+          n.vx *= DAMPING;
+          n.vy *= DAMPING;
+          const speed = Math.hypot(n.vx, n.vy);
+          if (speed > MAX_SPEED) {
+            n.vx = (n.vx / speed) * MAX_SPEED;
+            n.vy = (n.vy / speed) * MAX_SPEED;
+          }
+          n.x += n.vx;
+          n.y += n.vy;
+        }
+      }
+
+      // ---- Interaction state ----
+      let hoveredId = null;
+      let draggingNode = null;
+      let dragMoved = false;
+      let dragStartPos = { x: 0, y: 0 };
+      const DRAG_THRESHOLD = 4; // px of movement before a click counts as a drag
+      let isPanning = false;
+      let panStart = { x: 0, y: 0 };
+      let camStart = { x: 0, y: 0 };
+      let pointer = { x: 0, y: 0 };
+
+      function worldToScreen(x, y) {
+        return {
+          x: width / 2 + (x - camX) * zoom,
+          y: height / 2 + (y - camY) * zoom,
+        };
+      }
+      function screenToWorld(sx, sy) {
+        return {
+          x: (sx - width / 2) / zoom + camX,
+          y: (sy - height / 2) / zoom + camY,
+        };
+      }
+
+      function nodeAt(sx, sy) {
+        let best = null;
+        let bestDist = Infinity;
+        for (const n of nodes) {
+          const s = worldToScreen(n.x, n.y);
+          const dx = s.x - sx;
+          const dy = s.y - sy;
+          const d = Math.sqrt(dx * dx + dy * dy);
+          const hitR = Math.max(n.r * zoom, 8);
+          if (d <= hitR && d < bestDist) {
+            best = n;
+            bestDist = d;
+          }
+        }
+        return best;
+      }
+
+      function draw() {
+        const c = palette();
+        ctx.clearRect(0, 0, width, height);
+
+        const showAllLabels = labelsToggle && labelsToggle.checked;
+
+        // links
+        ctx.lineWidth = 1;
+        for (const l of links) {
+          const isActive =
+            hoveredId && (l.source.id === hoveredId || l.target.id === hoveredId);
+          const s = worldToScreen(l.source.x, l.source.y);
+          const t = worldToScreen(l.target.x, l.target.y);
+          ctx.strokeStyle = isActive ? c.linkActive : c.link;
+          ctx.beginPath();
+          ctx.moveTo(s.x, s.y);
+          ctx.lineTo(t.x, t.y);
+          ctx.stroke();
+        }
+
+        // nodes
+        for (const n of nodes) {
+          const s = worldToScreen(n.x, n.y);
+          const isHovered = hoveredId === n.id;
+          const isNeighbor = hoveredId && neighbors.get(hoveredId)?.has(n.id);
+          const dimmed = hoveredId && !isHovered && !isNeighbor;
+          const r = n.r * zoom * (isHovered ? 1.35 : 1);
+
+          if (n.kind === "post") {
+            if (isHovered) {
+              ctx.beginPath();
+              ctx.fillStyle = c.postGlow;
+              ctx.arc(s.x, s.y, r + 6, 0, Math.PI * 2);
+              ctx.fill();
+            }
+            ctx.beginPath();
+            ctx.globalAlpha = dimmed ? 0.25 : 1;
+            ctx.fillStyle = c.post;
+            ctx.arc(s.x, s.y, r, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.globalAlpha = 1;
+          } else {
+            ctx.beginPath();
+            ctx.globalAlpha = dimmed ? 0.2 : 1;
+            ctx.fillStyle = c.tagFill;
+            ctx.strokeStyle = c.tag;
+            ctx.lineWidth = 1.25;
+            ctx.arc(s.x, s.y, r, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.stroke();
+            ctx.globalAlpha = 1;
+          }
+
+          // tag labels: always show (they're the map's landmarks) once zoomed
+          // in enough, or when hovered/neighboring.
+          const shouldLabelTag =
+            n.kind === "tag" &&
+            (showAllLabels || zoom > 0.9 || isHovered || isNeighbor);
+          if (shouldLabelTag) {
+            ctx.font = `${isHovered ? "700" : "500"} ${Math.max(10, 10 * Math.min(zoom, 1.4))}px ui-sans-serif, system-ui, sans-serif`;
+            ctx.fillStyle = dimmed ? c.tag : c.text;
+            ctx.globalAlpha = dimmed ? 0.35 : 0.9;
+            ctx.textAlign = "center";
+            ctx.fillText(n.label, s.x, s.y - r - 5);
+            ctx.globalAlpha = 1;
+          }
+
+          if (n.kind === "post" && (showAllLabels || isHovered || isNeighbor)) {
+            ctx.font = `${isHovered ? "700" : "500"} 10px ui-sans-serif, system-ui, sans-serif`;
+            ctx.fillStyle = c.text;
+            ctx.globalAlpha = dimmed ? 0.35 : 0.85;
+            ctx.textAlign = "center";
+            const label =
+              n.label.length > 28 ? n.label.slice(0, 27) + "…" : n.label;
+            ctx.fillText(label, s.x, s.y + r + 12);
+            ctx.globalAlpha = 1;
+          }
+        }
+      }
+
+      let rafId = null;
+      function loop() {
+        if (settleFrames < MAX_SETTLE) {
+          tick();
+          settleFrames++;
+        }
+        draw();
+        rafId = requestAnimationFrame(loop);
+      }
+      loop();
+
+      // ---- Pointer interactions ----
+      function getPointerPos(e) {
+        const rect = canvas.getBoundingClientRect();
+        const t = e.touches ? e.touches[0] : e;
+        return { x: t.clientX - rect.left, y: t.clientY - rect.top };
+      }
+
+      function onPointerDown(e) {
+        const p = getPointerPos(e);
+        const hit = nodeAt(p.x, p.y);
+        if (hit) {
+          draggingNode = hit;
+          dragMoved = false;
+          dragStartPos = { x: p.x, y: p.y };
+          hit.dragging = true;
+          wrap.style.cursor = "grabbing";
+        } else {
+          isPanning = true;
+          panStart = p;
+          camStart = { x: camX, y: camY };
+        }
+      }
+      function onPointerMove(e) {
+        const p = getPointerPos(e);
+        pointer = p;
+        if (draggingNode) {
+          const world = screenToWorld(p.x, p.y);
+          draggingNode.x = world.x;
+          draggingNode.y = world.y;
+          draggingNode.vx = 0;
+          draggingNode.vy = 0;
+          if (!dragMoved) {
+            const dx = p.x - dragStartPos.x;
+            const dy = p.y - dragStartPos.y;
+            if (Math.hypot(dx, dy) > DRAG_THRESHOLD) dragMoved = true;
+          }
+        } else if (isPanning) {
+          camX = camStart.x - (p.x - panStart.x) / zoom;
+          camY = camStart.y - (p.y - panStart.y) / zoom;
+        } else {
+          const hit = nodeAt(p.x, p.y);
+          hoveredId = hit ? hit.id : null;
+          wrap.style.cursor = hit ? "pointer" : "grab";
+          if (hit) {
+            tooltip.textContent =
+              hit.kind === "post" ? hit.label : `#${hit.label}`;
+            tooltip.style.left = `${p.x}px`;
+            tooltip.style.top = `${p.y}px`;
+            tooltip.classList.remove("hidden");
+          } else {
+            tooltip.classList.add("hidden");
+          }
+        }
+      }
+      function onPointerUp(e) {
+        const p = getPointerPos(e);
+        const wasRealDrag = dragMoved;
+        if (draggingNode) {
+          draggingNode.dragging = false;
+          draggingNode = null;
+        }
+        isPanning = false;
+        wrap.style.cursor = "grab";
+
+        // Treat as a click only if the pointer never moved past the threshold
+        const hit = nodeAt(p.x, p.y);
+        if (hit && !wasRealDrag) {
+          window.location.href = hit.url;
+        }
+        dragMoved = false;
+      }
+
+      canvas.addEventListener("mousedown", onPointerDown);
+      window.addEventListener("mousemove", onPointerMove);
+      window.addEventListener("mouseup", onPointerUp);
+      canvas.addEventListener(
+        "touchstart",
+        (e) => {
+          onPointerDown(e);
+        },
+        { passive: true },
+      );
+      canvas.addEventListener(
+        "touchmove",
+        (e) => {
+          onPointerMove(e);
+        },
+        { passive: true },
+      );
+      canvas.addEventListener("touchend", (e) => {
+        const t = e.changedTouches[0];
+        onPointerUp({ clientX: t.clientX, clientY: t.clientY });
+      });
+
+      canvas.addEventListener(
+        "wheel",
+        (e) => {
+          e.preventDefault();
+          const p = getPointerPos(e);
+          const before = screenToWorld(p.x, p.y);
+          const delta = -e.deltaY * 0.0012;
+          zoom = Math.min(2.4, Math.max(0.35, zoom * (1 + delta)));
+          const after = screenToWorld(p.x, p.y);
+          camX += before.x - after.x;
+          camY += before.y - after.y;
+        },
+        { passive: false },
+      );
+
+      window.addEventListener("resize", resize);
+
+      labelsToggle?.addEventListener("change", () => {}); // draw() reads it live
+
+      resetBtn?.addEventListener("click", () => {
+        camX = 0;
+        camY = 0;
+        zoom = 1;
+        settleFrames = 0;
+        nodes.forEach((n, i) => {
+          const angle = (i / nodes.length) * Math.PI * 2 * 3;
+          const rad = spreadRadius * Math.sqrt(Math.random());
+          n.x = Math.cos(angle) * rad;
+          n.y = Math.sin(angle) * rad;
+          n.vx = 0;
+          n.vy = 0;
+        });
+      });
+
+      // Repaint immediately on theme toggle if the site has a dark-mode switch
+      const themeObserver = new MutationObserver(() => draw());
+      themeObserver.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ["class"],
+      });
+
+      // cleanup on Astro view-transition swap
+      document.addEventListener(
+        "astro:before-swap",
+        () => {
+          if (rafId) cancelAnimationFrame(rafId);
+          themeObserver.disconnect();
+          window.removeEventListener("resize", resize);
+        },
+        { once: true },
+      );
+    }
+
+    initTagGraph();
+    document.addEventListener("astro:page-load", initTagGraph);
+  </script>
+</section>

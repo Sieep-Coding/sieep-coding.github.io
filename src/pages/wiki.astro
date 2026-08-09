@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import TagGraph from "../components/TagGraph.astro";
 import { Image } from "astro:assets";
 import { info } from "../data/info";
 import { books } from "../data/library";
@@ -10,11 +11,18 @@ import { brucePhotos } from "../data/bruce";
 
 const allPosts = await Astro.glob("./posts/*.md");
 
+
 const sortedPosts = [...allPosts].sort((a, b) => {
   const A = new Date(a.frontmatter.date).getTime();
   const B = new Date(b.frontmatter.date).getTime();
   return (isNaN(B) ? 0 : B) - (isNaN(A) ? 0 : A);
 });
+
+const graphPosts = allPosts.map((p) => ({
+     title: p.frontmatter.title || "Untitled",
+     url: p.url,
+     tags: p.frontmatter.tags || [],
+   }));
 
 const postSearchData = allPosts.map((post) => ({
   type: "Article",
@@ -310,6 +318,7 @@ const topMedia =
                 ["#rabbit-holes", "Rabbit holes"],
                 ["#featured-article", "Featured article"],
                 ["#highlights", "Cross-wiki highlights"],
+                ["#article-graph", "Article graph"],
                 ["#latest-news", "Latest news"],
                 ["#by-the-numbers", "By the numbers"],
                 ["#portals", "Portals"],
@@ -607,7 +616,7 @@ const topMedia =
               </a>
             </p>
           </section>
-
+          <TagGraph posts={graphPosts} id="article-graph" />
           <section
             id="by-the-numbers"
             class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5 sm:p-6"
