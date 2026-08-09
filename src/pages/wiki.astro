@@ -11,7 +11,6 @@ import { brucePhotos } from "../data/bruce";
 
 const allPosts = await Astro.glob("./posts/*.md");
 
-
 const sortedPosts = [...allPosts].sort((a, b) => {
   const A = new Date(a.frontmatter.date).getTime();
   const B = new Date(b.frontmatter.date).getTime();
@@ -19,10 +18,10 @@ const sortedPosts = [...allPosts].sort((a, b) => {
 });
 
 const graphPosts = allPosts.map((p) => ({
-     title: p.frontmatter.title || "Untitled",
-     url: p.url,
-     tags: p.frontmatter.tags || [],
-   }));
+  title: p.frontmatter.title || "Untitled",
+  url: p.url,
+  tags: p.frontmatter.tags || [],
+}));
 
 const postSearchData = allPosts.map((post) => ({
   type: "Article",
@@ -155,7 +154,6 @@ for (const post of allPosts) {
 
 const wikipediaLinks = Array.from(wikipediaLinksMap.values());
 
-
 const didYouKnow = [
   `...that Nick's degrees are in <a href="/about" class="text-secondary dark:text-dk-accent underline underline-offset-4">economics and philosophy</a>, not computer science?`,
   `...that Nick's most-starred repo on GitHub is <a href="https://github.com/Sieep-Coding/${githubStats.topRepo}" target="_blank" rel="noopener noreferrer" class="text-secondary dark:text-dk-accent underline underline-offset-4">${githubStats.topRepo}</a>, with ${githubStats.stars} stars?`,
@@ -163,7 +161,6 @@ const didYouKnow = [
   `...that Nick produces music under the name <a href="/music" class="text-secondary dark:text-dk-accent underline underline-offset-4">sieep</a>, made in FL Studio?`,
   `...that Nick's rating scale for <a href="/library" class="text-secondary dark:text-dk-accent underline underline-offset-4">books</a> and <a href="/media" class="text-secondary dark:text-dk-accent underline underline-offset-4">media</a> goes up to 5 stars, half-stars included?`,
   `...that Nick's blog spans <a href="/tags" class="text-secondary dark:text-dk-accent underline underline-offset-4">10+ topics</a>, from nuclear economics to old comic books?`,
-  `...that Nick founded <a href="https://luniv.tech" target="_blank" rel="noopener noreferrer" class="text-secondary dark:text-dk-accent underline underline-offset-4">Luniv Technology</a>, his own custom software and BI shop?`,
   `...that before software, Nick wrote a <a href="/posts/making-nuclear-energy-competitve-with-fossil-fuels-and-natural-gas" class="text-secondary dark:text-dk-accent underline underline-offset-4">report on nuclear reactor economics</a> for Michigan's NERS department?`,
   `...that Nick has written up trips to <a href="/posts/chicago" class="text-secondary dark:text-dk-accent underline underline-offset-4">Chicago</a> and <a href="/posts/houston" class="text-secondary dark:text-dk-accent underline underline-offset-4">Houston</a>?`,
   `...that Nick has strong opinions about <a href="/posts/my-thoughts-on-soccer" class="text-secondary dark:text-dk-accent underline underline-offset-4">football</a> — the kind played with your feet?`,
@@ -250,7 +247,6 @@ const randomArticles = [
   { title: "About Nick", url: "/about", type: "Portal" },
 ];
 
-
 const formatCounts = [
   { label: "Articles", count: totalPosts, href: "/posts" },
   { label: "Books", count: books.length, href: "/library" },
@@ -277,7 +273,7 @@ const topMedia =
   topMediaItems[Math.floor(Math.random() * topMediaItems.length)];
 ---
 
-<BaseLayout title="Nickipedia — Nick's Wiki">
+<BaseLayout title="Nickipedia - Nick's Wiki">
   <div class="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen">
     <main
       class="max-w-[1400px] mx-auto px-4 sm:px-8 pt-28 pb-10 sm:pt-32 sm:pb-16"
@@ -338,6 +334,13 @@ const topMedia =
               class="text-xs font-semibold px-3 py-1.5 rounded-full border border-secondary/40 dark:border-dk-accent/40 text-secondary dark:text-dk-accent hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
             >
               🎲 Random page
+            </button>
+            <button
+              id="recent-article-btn"
+              type="button"
+              class="text-xs font-semibold px-3 py-1.5 rounded-full border border-secondary/40 dark:border-dk-accent/40 text-secondary dark:text-dk-accent hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
+            >
+              🕓 Recent Post
             </button>
           </nav>
 
@@ -578,7 +581,6 @@ const topMedia =
                 </p>
               </a>
             </div>
-            
           </section>
 
           <section
@@ -893,8 +895,6 @@ const topMedia =
               </tbody>
             </table>
           </section>
-
-          <!-- Client-side "Did You Know?" -->
           <section
             id="did-you-know"
             class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5"
@@ -912,7 +912,7 @@ const topMedia =
             </p>
           </section>
 
-          <!-- Client-side "On This Day" -->
+
           <section
             id="on-this-day"
             class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5"
@@ -936,7 +936,6 @@ const topMedia =
 
           <script define:vars={{ didYouKnow }}>
             function initWidgets() {
-              // 1. Randomize "Did You Know?"
               const dykEl = document.getElementById("dyk-container");
               if (dykEl && didYouKnow.length > 0) {
                 const randomFact =
@@ -944,7 +943,7 @@ const topMedia =
                 dykEl.innerHTML = randomFact;
               }
 
-              // 2. Fetch fresh random "On This Day" entry
+
               const otdEl = document.getElementById("on-this-day-container");
               if (otdEl) {
                 const now = new Date();
@@ -1204,6 +1203,20 @@ const topMedia =
     setupRandomArticle();
     document.addEventListener("astro:page-load", setupRandomArticle);
   </script>
+  <script define:vars={{ featured }}>
+    function setupRecentArticle() {
+      const btn = document.getElementById("recent-article-btn");
+      if (!btn || btn.dataset.bound === "true") return;
+      btn.dataset.bound = "true";
+      btn.addEventListener("click", () => {
+        if (!featured || featured.length === 0) return; //featured ya boi
+        const pick = featured;
+        window.location.href = pick.url;
+      });
+    }
+    setupRecentArticle();
+    document.addEventListener("astro:page-load", setupRecentArticle);
+  </script>
 </BaseLayout>
 
 <script>
@@ -1303,35 +1316,34 @@ const topMedia =
   }
 
   document.addEventListener("astro:page-load", setupWikiSearch);
-  
+
   function initTopRated() {
     const data = document.getElementById("top-rated-data");
     if (!data) return;
-    
+
     const books = JSON.parse(data.dataset.books || "[]");
     const media = JSON.parse(data.dataset.media || "[]");
-    
+
     if (books.length) {
       const book = books[Math.floor(Math.random() * books.length)];
-      
+
       document.getElementById("top-book-card").href =
-      `/library?book=${book.id}`;
+        `/library?book=${book.id}`;
       document.getElementById("top-book-title").textContent = book.title;
       document.getElementById("top-book-meta").textContent =
-      `${book.author} · ${book.rating}/5 ★`;
+        `${book.author} · ${book.rating}/5 ★`;
     }
-    
+
     if (media.length) {
       const item = media[Math.floor(Math.random() * media.length)];
-      
-      document.getElementById("top-media-card").href =
-      `/media?item=${item.id}`;
+
+      document.getElementById("top-media-card").href = `/media?item=${item.id}`;
       document.getElementById("top-media-title").textContent = item.title;
       document.getElementById("top-media-meta").textContent =
-      `${item.creator} · ${item.rating}/5 ★`;
+        `${item.creator} · ${item.rating}/5 ★`;
     }
   }
-  
+
   initTopRated();
   setupWikiSearch();
   document.addEventListener("astro:page-load", initTopRated);

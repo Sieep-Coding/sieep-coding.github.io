@@ -9,9 +9,7 @@ import HireMe from "./HireMe";
 const PRIMARY_LINKS = [
   { href: "/posts", label: "Blog" },
   { href: "/about", label: "About" },
-  { href: "/projects", label: "Projects" },
   { href: "/music", label: "Music" },
-
 ];
 
 
