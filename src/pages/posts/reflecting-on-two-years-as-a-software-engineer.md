@@ -21,7 +21,7 @@ Like a lot of other people who end up writing code for work, I bounced around. I
 
 ![Kramer in the office](../photo/_kramer-office.gif "Kramer in the office")
 
-I think one thing that gets overlooked when people talk about [software](https://en.wikipedia.org/wiki/Software) work is just how competitive the field is. 
+I think one thing that gets overlooked when people talk about [software](https://en.wikipedia.org/wiki/Software) work is just how [competitive](https://en.wikipedia.org/wiki/Competition#Economics) the field is. 
 
 The advice of "just learn to code" was beginning to wear off by the time I was in college and today the market is dramatically different. [AI](https://en.wikipedia.org/wiki/Artificial_intelligence) driven portfolios and projects are everywhere. Also, hundreds or even thousands of [applicants](https://en.wikipedia.org/wiki/Application_for_employment) can apply for a single [entry-level position](https://en.wikipedia.org/wiki/Entry-level_job).
 
