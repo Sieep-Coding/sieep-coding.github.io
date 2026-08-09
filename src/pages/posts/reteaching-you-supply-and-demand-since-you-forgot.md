@@ -13,10 +13,10 @@ tags: ["#Economics", "#Opinion"]
 
 # Reteaching You Supply and Demand Since You Forgot
 
-Since I last tackled the myths surrounding the [American labor force](/posts/the-labor-force-never-fully-came-back), I keep seeing the same arguments every week: 
-- rent is high because landlords are greedy 
+Since I last tackled the [myths](https://en.wikipedia.org/wiki/Myth) surrounding the [American labor force](/posts/the-labor-force-never-fully-came-back), I keep seeing the same arguments every week: 
+- [rent](https://en.wikipedia.org/wiki/Economic_rent) is high because [landlords](https://en.wikipedia.org/wiki/Landlord) are [greedy](https://en.wikipedia.org/wiki/Greed) 
 - you can't move out of your mom's basement because of a [$3 McChicken](https://menupricetracker.com/mcdonalds-menu/mcchicken) 
-- and home prices are high because [BlackRock](https://en.wikipedia.org/wiki/BlackRock) personally bought your childhood home.
+- and [home prices](https://en.wikipedia.org/wiki/Affordable_housing_by_country) are high because [BlackRock](https://en.wikipedia.org/wiki/BlackRock) personally bought your childhood home.
 
 Since none of you have opened an [econ 101](https://en.wikipedia.org/wiki/Economics) textbook since high school, against my better judgment, here's a refresher.
 
@@ -63,9 +63,9 @@ This is under the assumption that *you* are [rational](https://en.wikipedia.org/
 
 Groundbreaking stuff, I know. 
 
-The two lines cross at [equilibrium](https://en.wikipedia.org/wiki/Economic_equilibrium). This is the price where the amount people want to buy equals the amount people are willing to sell. This isn't a conspiracy, it is arithmetic.
+The two lines cross at [equilibrium](https://en.wikipedia.org/wiki/Economic_equilibrium). This is the price where the amount people want to buy equals the amount people are willing to sell. This isn't a [conspiracy](https://en.wikipedia.org/wiki/Conspiracy_theory), it is arithmetic.
 
-Housing affordability is a supply-and-demand problem, and blaming any single group obscures the interaction between constrained supply and increased demand. A lot of problems facing modern society can be explained and analyzed with math. A lot of scary boogymen are lines on a chart.
+Housing affordability is a supply-and-demand problem, and blaming any single group obscures the interaction between constrained supply and increased demand. A lot of problems facing modern society can be explained and analyzed with math. A lot of scary [bogeymen](https://en.wikipedia.org/wiki/Bogeyman) are lines on a chart.
 
 ---
 
@@ -75,14 +75,14 @@ No, they couldn't. Well, they could, but not without consequences you'd also com
 
 If a seller prices below equilibrium, more people want to buy than there are things to sell, and you get a [shortage](https://en.wikipedia.org/wiki/Shortage). 
 
-Congratulations, you've reinvented rent control. 
+Congratulations, you've reinvented [rent control](https://en.wikipedia.org/wiki/Rent_control). 
 
 Now your neighbor's cousin got the apartment because he is sleeping with the landlord's daughter.
 
 ![Young Michael Scott](../photo/_office.png "Young Michael Scott")
 > Your neighbor's cousin
 
-Price floors and price ceilings feel good to legislate and terrible to live under, because they don't change supply or demand. The tradeoffs are scarcity and misallocation.
+Price floors and price ceilings feel good to legislate and terrible to live under, because they don't change supply or demand. The tradeoffs are [scarcity](https://en.wikipedia.org/wiki/Scarcity) and [misallocation.](https://en.wikipedia.org/wiki/Resource_allocation)
 
 ---
 
@@ -120,13 +120,13 @@ Take a look at the state of [Texas.](https://en.wikipedia.org/wiki/Texas) An [ec
 
 Freedom to use real estate space as developers see fit can create lower prices. Surprise, surprise. Texas boasts [cheaper than average](https://www.kxan.com/news/texas/how-texas-compares-to-the-average-us-home-price/) home prices amongst a booming job market.[^3]
 
-Of course, there are always other factors that affect home prices like taxes, disasters, and geography.
+Of course, there are always other factors that affect home prices like taxes, [disasters](https://en.wikipedia.org/wiki/Natural_disaster#On_the_economy), and geography.
 
 ---
 
 ## Myth: "Private Investors Are the Whole Problem"
 
-[Institutional investors](https://en.wikipedia.org/wiki/Institutional_investor) buying single-family homes is a real [phenomenon](https://en.wikipedia.org/wiki/Phenomenon) and it [does shift the demand](https://en.wikipedia.org/wiki/Market_power) curve right, same as any other buyer entering the market. 
+[Institutional investors](https://en.wikipedia.org/wiki/Institutional_investor) buying [single-family](https://en.wikipedia.org/wiki/Single-family_zoning) homes is a real [phenomenon](https://en.wikipedia.org/wiki/Phenomenon) and it [does shift the demand](https://en.wikipedia.org/wiki/Market_power) curve right, same as any other buyer entering the market. 
 
 Treating it as the sole cause of America's housing issues is lazy because it ignores that the supply curve was already this steep.
 
