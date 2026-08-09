@@ -28,7 +28,7 @@ Below we will make a chart representing supply and demand. Before you fall aslee
 
 The green line represents the quantity sellers are willing to supply at each price, the red represents the quantity buyers are willing to purchase at each price. 
 
-The equilibrium is the price where the market clears under "free market" conditions. Good? Let's code it and find the equilibrium.
+The equilibrium is the price where the [market clears](https://en.wikipedia.org/wiki/Market_clearing) under "free [market](https://en.wikipedia.org/wiki/Market_(economics))" conditions. Good? Let's code it and find the equilibrium.
 
 ```python
 import matplotlib.pyplot as plt
@@ -108,7 +108,7 @@ Of course, there are always other factors that affect home prices like taxes, di
 
 ## Myth: "Private Investors Are the Whole Problem"
 
-[Institutional investors](https://en.wikipedia.org/wiki/Institutional_investor) buying single-family homes is a real phenomenon and it does shift the demand curve right, same as any other buyer entering the market. 
+[Institutional investors](https://en.wikipedia.org/wiki/Institutional_investor) buying single-family homes is a real phenomenon and it [does shift the demand](https://en.wikipedia.org/wiki/Market_power) curve right, same as any other buyer entering the market. 
 
 Treating it as the sole cause of America's housing issues is lazy because it ignores that the supply curve was already this steep.
 
