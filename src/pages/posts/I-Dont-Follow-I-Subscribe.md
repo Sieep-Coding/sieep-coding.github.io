@@ -42,7 +42,7 @@ In the drug, alcohol, or sex addiction world, it is known as a rule-of-thumb tha
 
 Apply that same concept to social media. People I meet in life are often confused when I say I don't use social media. Sometimes they're creeped out. Maybe that's fair. My response to them is always that I just prefer to do other things with my time. 
 
-Since I don't focus any of my brain on social media, I am able to work the career I want, exercise daily, run a [freelance company](https://luniv.tech/), write and read daily, travel where I want to, and have the confidence to speak to any person.
+Since I don't focus any of my brain on social media, I am able to work the career I want, exercise daily, run a freelance company, write and read daily, travel where I want to, and have the confidence to speak to any person.
 
 Now, not all of that can be attributed to my lack of social media, but considering I am 25 and was first introduced to Snapchat and Instagram 11 years ago, I know what it is like to be on the other side.
 
