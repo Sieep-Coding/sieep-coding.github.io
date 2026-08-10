@@ -247,6 +247,8 @@ const didYouKnow = [
   `...that Nick has strong opinions about <a href="/posts/my-thoughts-on-soccer" class="text-secondary dark:text-dk-accent underline underline-offset-4">football</a> — the kind played with your feet?`,
   `...that this site runs ad-free, but you can <a href="https://www.buymeacoffee.com/nickstambaugh" target="_blank" rel="noopener noreferrer" class="text-secondary dark:text-dk-accent underline underline-offset-4">buy him a coffee</a> anyway?`,
   `...that the site itself is hand-coded in <a href="https://astro.build/" target="_blank" rel="noopener noreferrer" class="text-secondary dark:text-dk-accent underline underline-offset-4">Astro</a>, React, and TypeScript?`,
+  `...that Nick has his own <a href="/apps" class="text-secondary dark:text-dk-accent underline underline-offset-4">app store</a>, with ${apps.length} ${apps.length === 1 ? "app" : "apps"} so far?`,
+  `...that Nick has a <a href="/recipes" class="text-secondary dark:text-dk-accent underline underline-offset-4">recipe archive</a> with ${recipeCount} ${recipeCount === 1 ? "recipe" : "recipes"}?`,
   `...that Nick's <a href="/library" class="text-secondary dark:text-dk-accent underline underline-offset-4">library</a> holds ${books.length} physical books he's actually read?`,
   `...that Nick has ${mediaList.length} entries in his ultra-curated <a href="/media" class="text-secondary dark:text-dk-accent underline underline-offset-4">favorite media</a> list?`,
   `...that ${tracks.length} tracks are currently live on Nick's <a href="/music" class="text-secondary dark:text-dk-accent underline underline-offset-4">music page</a>, licenseable by email?`,
@@ -601,6 +603,13 @@ if (growthSeriesRaw.length > 0) {
             >
               🕓 Recent Post
             </button>
+            <a
+              href="https://www.buymeacoffee.com/nickstambaugh"
+              type="button"
+              class="text-xs font-semibold px-3 py-1.5 rounded-full border border-[#6F4E37]/40 dark:border-[#6F4E37]/60 text-[#6F4E37] dark:text-[#A67B5B] hover:bg-[#6F4E37]/10 transition-colors"
+            >
+              ☕ Buy Nick a coffee
+            </a>
           </nav>
 
           <div class="relative w-full lg:w-80 xl:w-96 shrink-0 z-50">
