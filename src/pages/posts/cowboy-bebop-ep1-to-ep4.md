@@ -9,7 +9,7 @@ description: "Diving into the first four episodes of Cowboy Bebop, where space m
 img_path : "/bebop.png"
 img_alt: "Cowboy Bebop Crew"
 
-tags: ["#Review"]
+tags: ["#Opinion"]
 
 ---
 

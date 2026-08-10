@@ -8,7 +8,7 @@ description: "A look at why I believe soccer is the greatest sport in the world.
 img_path : "/rooney.jpg"
 img_alt: "Wayne Rooney scoring an epic bicycle kick"
 
-tags: ["#Sports", "#Opinion"]
+tags: ["#Opinion"]
 
 ---
 

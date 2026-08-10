@@ -8,7 +8,7 @@ description: "Why using fewer words at the right moment is the ultimate competit
 img_path : "/brevity.jpg"
 img_alt: "A clean, empty desk with a single pen sitting next to a white notebook"
 
-tags: ["#Philosophy", "#SelfHelp"]
+tags: ["#Philosophy", "#SelfHelp", "#Opinion"]
 ---
 
 # On Brevity

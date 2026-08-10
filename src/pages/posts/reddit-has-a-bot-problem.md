@@ -8,7 +8,7 @@ description: "A TIL post about Chinese provinces being 'the world's oldest admin
 img_path: "/reddit-bot.jpg"
 img_alt: "Reddit robots"
 
-tags: ["#Tech", "#Opinion"]
+tags: ["#Tech", "#Opinion", "#Business"]
 ---
 
 I saw a TIL on the front page a while back that said something like this:

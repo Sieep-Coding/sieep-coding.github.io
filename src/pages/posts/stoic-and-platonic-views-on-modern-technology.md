@@ -6,7 +6,7 @@ layout: ../../layouts/PostLayout.astro
 description: "A discussion on the differences between Stoic and Platonic viewpoints, through the lens of modern technology."
 img_path : "/stoic.jpg"
 img_alt : "Roman statue"
-tags: ["#Philosophy", "#Tech"]
+tags: ["#Philosophy", "#Tech", "#Opinion"]
 ---
 
 ## The Modern Virtuous Man

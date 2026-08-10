@@ -8,7 +8,7 @@ description: "Explore why SQLite stands out as the go-to database for simplicity
 img_path : "/sqlite.jpg"
 img_alt: "Sqlite logo"
 
-tags: ["#Tech"]
+tags: ["#Tech", "#Opinion"]
 ---
 
 # SQLite is the best SQL, change my mind.

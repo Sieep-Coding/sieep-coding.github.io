@@ -9,7 +9,7 @@ description: "Revisiting the origins of the Spirit of Vengeance in the first Gho
 img_path : "/ghost_rider_epic.jpg"
 img_alt: "Ghost Rider Epic Collection Cover"
 
-tags: ["#Review"]
+tags: ["#Opinion"]
 
 ---
 

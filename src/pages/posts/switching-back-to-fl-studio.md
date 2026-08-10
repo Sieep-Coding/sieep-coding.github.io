@@ -6,7 +6,7 @@ layout: ../../layouts/PostLayout.astro
 description: "After using Ableton for a few years, I decided to move back to the first DAW I learned."
 img_path : "/fl-studio.png"
 img_alt : "Fl Studio!"
-tags: ["#Music",]
+tags: ["#Music", "#Opinion", "#Business"]
 ---
 
 # Finally Moving Back To FL Studio

@@ -3,7 +3,6 @@ import { info } from "../../data/info.ts";
 
 const currentYear = new Date().getFullYear();
 
-// Fixed-width font stack so ASCII art stays aligned across every OS/browser.
 const ASCII_FONT = "'Courier New', Courier, monospace";
 
 const EASTER_EGGS = [

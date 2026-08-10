@@ -8,7 +8,7 @@ description: "My thoughts on the Pop!_OS, as an engineer and gamer."
 img_path : "/popos.png"
 img_alt : "Pop!_OS Desktop"
 
-tags: ["#Tech"]
+tags: ["#Tech", "#Opinion"]
 ---
 
 # Thoughts on Pop!_OS

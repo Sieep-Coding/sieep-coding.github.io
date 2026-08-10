@@ -8,7 +8,7 @@ description: "Nepotism leads to yes-men, unhappy employees, and a breakdown in t
 img_path : "/merit.png"
 img_alt: "Wooden blocks spelling out merit."
 
-tags: ["#Business"]
+tags: ["#Business", "#Opinion"]
 ---
 
 # The Importance of Merit in the Workplace

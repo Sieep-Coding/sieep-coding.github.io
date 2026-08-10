@@ -8,7 +8,7 @@ description: "While I have been writing code for a long time, the title has not 
 img_path : "/compagnons-Fa9b57hffnM-unsplash.jpg"
 img_alt: "Programmers working in an office"
 
-tags: ["#SelfHelp", "#Tech"]
+tags: ["#SelfHelp", "#Tech", "#Opinion"]
 ---
 
 ## Reflecting on Two Years as a Software Engineer in the Midwest

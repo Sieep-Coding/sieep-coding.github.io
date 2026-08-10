@@ -8,7 +8,7 @@ description: "This is a paper that was written for the Nuclear Engineering depar
 img_path : "/nuclear.jpg"
 img_alt: "A Nuclear Power Plant Emitting Steam"
 
-tags: ["#Economics"]
+tags: ["#Economics", "#Business"]
 ---
 
 > Work in progress. Last update was 6/13/2026.

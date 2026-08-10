@@ -6,7 +6,7 @@ layout: ../../layouts/PostLayout.astro
 description: "Revisiting my CachyOS journey: performance, life-time builds, and the state of gaming."
 img_path : "/CachyOS.png"
 img_alt : "CachyOS Desktop"
-tags: ["#Tech",]
+tags: ["#Tech", "#Opinion"]
 ---
 
 # Update: Still Running [CachyOS](https://en.wikipedia.org/wiki/CachyOS)

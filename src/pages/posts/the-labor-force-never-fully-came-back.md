@@ -8,7 +8,7 @@ description: "Pulling apart 14 years of BLS labor force data with Python to see 
 img_path: "/_labor_chart.png"
 img_alt: "A chart of labor force participation trending downward"
 
-tags: ["#Economics", "#Tech"]
+tags: ["#Economics", "#Tech", "#Business"]
 ---
 
 The last time I wrote anything under the Economics tag, it was a [research paper](/posts/making-nuclear-energy-competitve-with-fossil-fuels-and-natural-gas) for the [Nuclear Engineering](https://en.wikipedia.org/wiki/Nuclear_engineering) [department](https://en.wikipedia.org/wiki/University_of_Michigan_College_of_Engineering#Departments) at Michigan, arguing nuclear needs better subsidies to compete with fossil fuels and renewables. That paper leaned entirely on LCOE calculators and [IEA](https://en.wikipedia.org/wiki/International_Energy_Agency) [spreadsheets](https://en.wikipedia.org/wiki/Spreadsheet). This one's smaller in scope, but I found a table of civilian labor force data from the BLS going back to 2012, and instead of eyeballing it, I threw it into a `pandas.DataFrame` and let Python do the arithmetic I'd get wrong by hand.

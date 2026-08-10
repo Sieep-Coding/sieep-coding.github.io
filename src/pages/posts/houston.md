@@ -8,7 +8,7 @@ description: "Houston is an amazing city to explore with a wide variety of inter
 img_path : "/hx.jpg"
 img_alt: "houston"
 
-tags: ["#Travel"]
+tags: ["#Travel", "#Opinion"]
 ---
 
 # Why I Love Houston As A Michigander
