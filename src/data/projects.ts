@@ -64,6 +64,14 @@ export const featuredCases = [
 
 export const openSourceProjects = [
   {
+    title: "Disrupt",
+    year: "2026",
+    description:
+      "A Firefox extension that blocks distracting websites on a schedule. Built with TypeScript.",
+    link: "/disrupt",
+    tech: ["TypeScript"],
+  },
+  {
     title: "Snow Simulation",
     year: "2024",
     description:

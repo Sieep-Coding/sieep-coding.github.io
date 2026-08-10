@@ -1,0 +1,99 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const apps = [
+  {
+    href: "/disrupt",
+    name: "Disrupt",
+    tagline: "A minimal site blocker for Firefox",
+    desc: "Group distracting websites into lists and choose which days they're blocked. Built with TypeScript.",
+    tags: ["Firefox extension", "TypeScript"],
+    status: "Live",
+    icon: "🚦",
+  },
+];
+
+const upcomingCount = 0;
+---
+
+<BaseLayout title="Apps - Nick Stambaugh">
+  <main class="max-w-4xl mx-auto px-4 py-16 sm:py-24">
+    <header class="space-y-4 mb-12">
+      <h1
+        class="text-4xl sm:text-5xl font-black tracking-tight text-secondary dark:text-dk-accent leading-none"
+      >
+        Apps
+      </h1>
+      <p class="text-lg text-text dark:text-dk-text/80 leading-relaxed max-w-xl">
+        A growing collection of small, standalone tools and extensions I've
+        built.
+      </p>
+      <p class="text-xs text-text/50 dark:text-dk-text/50">
+        {apps.length} {apps.length === 1 ? "app" : "apps"} so far · more soon
+      </p>
+    </header>
+
+    <section id="apps-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      {
+        apps.map((app) => (
+          <a
+            href={app.href}
+            class="group flex flex-col rounded-xl border border-text/10 dark:border-dk-text/10 bg-secondary/5 dark:bg-dk-secondary/5 p-5 sm:p-6 hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
+          >
+            <div class="flex items-start justify-between gap-3 mb-2">
+              <span class="text-2xl leading-none">{app.icon}</span>
+              <span class="text-[10px] uppercase tracking-widest font-bold px-2 py-1 rounded-full border border-text/20 dark:border-dk-text/20 text-text/50 dark:text-dk-text/50 shrink-0">
+                {app.status}
+              </span>
+            </div>
+
+            <h2 class="text-lg font-semibold text-secondary dark:text-dk-accent group-hover:underline underline-offset-4">
+              {app.name}
+            </h2>
+            <p class="text-sm text-text/60 dark:text-dk-text/60 mt-0.5">
+              {app.tagline}
+            </p>
+            <p class="text-sm text-text/75 dark:text-dk-text/75 leading-relaxed mt-3">
+              {app.desc}
+            </p>
+
+            <div class="mt-4 flex flex-wrap gap-1.5">
+              {app.tags.map((tag) => (
+                <span class="text-[11px] px-2 py-0.5 rounded-full border border-text/30 dark:border-dk-text/30 text-text/70 dark:text-dk-text/70">
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            <span class="mt-4 text-sm font-medium text-secondary dark:text-dk-accent group-hover:underline underline-offset-4">
+              View app →
+            </span>
+          </a>
+        ))
+      }
+
+      {
+        upcomingCount > 0 &&
+          Array.from({ length: upcomingCount }).map(() => (
+            <div class="flex flex-col items-center justify-center rounded-xl border border-dashed border-text/15 dark:border-dk-text/15 p-5 sm:p-6 text-center min-h-[180px]">
+              <span class="text-2xl mb-2 text-text/30 dark:text-dk-text/30">
+                +
+              </span>
+              <p class="text-sm text-text/40 dark:text-dk-text/40">
+                Something new is cooking here
+              </p>
+            </div>
+          ))
+      }
+    </section>
+
+    <footer class="mt-16 pt-8 border-t border-text/10 dark:border-dk-text/10">
+      <a
+        href="/"
+        class="text-sm text-text/60 hover:text-secondary dark:hover:text-dk-accent transition-colors"
+      >
+        ← Back to home
+      </a>
+    </footer>
+  </main>
+</BaseLayout>

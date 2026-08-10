@@ -1,0 +1,183 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ProtonAdAstroComponent from "../components/about_section/ProtonAd.astro";
+
+const repoUrl = "https://github.com/Sieep-Coding/Disrupt";
+
+const features = [
+  {
+    title: "List-based blocking",
+    desc: "Group sites into named lists: Social Media, News, whatever pulls your focus.",
+  },
+  {
+    title: "Day-of-week scheduling",
+    desc: "Pick exactly which days each list is active.",
+  },
+  {
+    title: "One-tap pause",
+    desc: "Toggle a list off without deleting it.",
+  },
+  {
+    title: "Built with TypeScript",
+    desc: "A small, typed codebase. Uses local storage, nothing is tracked.",
+  },
+];
+
+const steps = [
+  "Click the toolbar icon and name a new list.",
+  "Add the sites you want blocked, one at a time.",
+  "Pick the days that list should be active.",
+  "Save it. Now, visiting a blocked site redirects you to a simple blocked page.",
+];
+---
+
+<BaseLayout title="Disrupt - Nick Stambaugh">
+  <main class="max-w-3xl mx-auto px-4 py-16 sm:py-24">
+    <header class="space-y-4 mb-12">
+      <h1
+        class="text-4xl sm:text-5xl font-black tracking-tight text-secondary dark:text-dk-accent leading-none"
+      >
+        Disrupt
+      </h1>
+      <p class="text-lg text-text dark:text-dk-text/80 leading-relaxed max-w-xl">
+        A minimal site blocker for Firefox. Group distracting websites into
+        lists, choose which days they're blocked, and get out of your own way.
+      </p>
+      <div class="flex flex-wrap gap-x-6 gap-y-2 pt-1">
+        <a
+          href={repoUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 text-sm font-medium text-secondary dark:text-dk-accent hover:underline underline-offset-4"
+        >
+          <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true">
+            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+          </svg>
+          View on GitHub →
+        </a>
+        <a
+          href={`${repoUrl}#locally-download-in-firefox`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center text-sm font-medium text-secondary dark:text-dk-accent hover:underline underline-offset-4"
+        >
+          Install instructions →
+        </a>
+        <a
+          href="#screenshots"
+          class="inline-flex items-center text-sm font-medium text-secondary dark:text-dk-accent hover:underline underline-offset-4"
+        >
+          See Screenshots →
+        </a>
+      </div>
+    </header>
+
+    <section id="features" class="mb-14">
+      <h2 class="text-xl font-bold tracking-tight mb-5">What it does</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {
+          features.map((f) => (
+            <div class="rounded-xl border border-text/10 dark:border-dk-text/10 bg-secondary/5 dark:bg-dk-secondary/5 p-5">
+              <h3 class="text-sm font-semibold text-secondary dark:text-dk-accent mb-1.5">
+                {f.title}
+              </h3>
+              <p class="text-sm text-text/75 dark:text-dk-text/75 leading-relaxed">
+                {f.desc}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+    <section id="how-it-works" class="mb-14">
+        <h2 class="text-xl font-bold tracking-tight mb-5">How it works</h2>
+        <ol class="space-y-3">
+            {
+          steps.map((step, i) => (
+            <li class="flex items-start gap-3 text-sm text-text/80 dark:text-dk-text/80">
+              <span class="shrink-0 h-6 w-6 flex items-center justify-center rounded-full bg-secondary/10 dark:bg-dk-secondary/10 text-secondary dark:text-dk-accent text-xs font-bold">
+                {i + 1}
+              </span>
+              <span class="pt-0.5">{step}</span>
+            </li>
+          ))
+        }
+      </ol>
+    </section>
+    <section class="mb-14">
+        <ProtonAdAstroComponent />
+    </section>
+    <section
+    id="get-it"
+    class="rounded-xl border border-text/10 dark:border-dk-text/10 bg-secondary/5 dark:bg-dk-secondary/5 p-6 sm:p-8 mb-14"
+    >
+    <h2 class="text-xl font-bold tracking-tight mb-2">Try it yourself</h2>
+      <p class="text-sm text-text/75 dark:text-dk-text/75 leading-relaxed mb-4 max-w-xl">
+        Disrupt is loaded as a temporary add-on in Firefox — clone the repo,
+        build it, and load the manifest.
+      </p>
+      <pre
+        class="text-xs sm:text-sm bg-text/5 dark:bg-dk-text/5 rounded-lg p-4 overflow-x-auto text-text/90 dark:text-dk-text/90"
+      ><code>git clone {repoUrl}.git
+cd Disrupt
+npm install
+npm run build</code></pre>
+      <p class="text-xs text-text/50 dark:text-dk-text/50 mt-3">
+        Then open <code class="text-text/70 dark:text-dk-text/70">about:debugging#/runtime/this-firefox</code>
+        in Firefox, choose <strong>Load Temporary Add-on…</strong>, and select
+        <code class="text-text/70 dark:text-dk-text/70">manifest.json</code> from the project folder.
+      </p>
+      <a
+        href={repoUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center mt-5 text-sm font-medium text-secondary dark:text-dk-accent hover:underline underline-offset-4"
+      >
+        Full README on GitHub →
+      </a>
+    </section>
+        <section id="screenshots" class="mb-14">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <figure
+          class="rounded-xl overflow-hidden border border-text/10 dark:border-dk-text/10 bg-secondary/5 dark:bg-dk-secondary/5"
+        >
+          <img
+            src="https://raw.githubusercontent.com/Sieep-Coding/Disrupt/main/public/popup.png"
+            alt="Disrupt popup showing block list creation with day picker"
+            loading="lazy"
+            class="w-full h-auto"
+          />
+          <figcaption
+            class="px-4 py-2.5 text-xs text-text/60 dark:text-dk-text/60 border-t border-text/10 dark:border-dk-text/10"
+          >
+            Main UI
+          </figcaption>
+        </figure>
+        <figure
+          class="rounded-xl overflow-hidden border border-text/10 dark:border-dk-text/10 bg-secondary/5 dark:bg-dk-secondary/5"
+        >
+          <img
+            src="https://raw.githubusercontent.com/Sieep-Coding/Disrupt/main/public/blocked.png"
+            alt="Disrupt blocked page shown when visiting a blocked site"
+            loading="lazy"
+            class="w-full h-auto"
+          />
+          <figcaption
+            class="px-4 py-2.5 text-xs text-text/60 dark:text-dk-text/60 border-t border-text/10 dark:border-dk-text/10"
+          >
+            What you see when a site is blocked
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <footer class="pt-8 border-t border-text/10 dark:border-dk-text/10">
+      <a
+        href="/"
+        class="text-sm text-text/60 hover:text-secondary dark:hover:text-dk-accent transition-colors"
+      >
+        ← Back to home
+      </a>
+    </footer>
+  </main>
+</BaseLayout>
