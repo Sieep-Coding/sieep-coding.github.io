@@ -21,6 +21,14 @@ const features = [
     title: "Built with TypeScript",
     desc: "A small, typed codebase. Uses local storage, nothing is tracked.",
   },
+  {
+    title: "Open source",
+    desc: "The code is on GitHub, and contributions are welcome.",
+  },
+  {
+    title: "Themes",
+    desc: "Light, dark, midnight and forest themes are supported so far.",
+  }
 ];
 
 const steps = [
@@ -71,7 +79,9 @@ const steps = [
         </a>
       </div>
     </header>
-
+      <section class="mb-14">
+      <ProtonAdAstroComponent />
+    </section>
     <section id="features" class="mb-14">
       <h2 class="text-xl font-bold tracking-tight mb-5">What it does</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -103,9 +113,6 @@ const steps = [
           ))
         }
       </ol>
-    </section>
-    <section class="mb-14">
-        <ProtonAdAstroComponent />
     </section>
     <section
     id="get-it"
