@@ -8,6 +8,7 @@ import { mediaList } from "../data/media";
 import { tracks } from "../data/music";
 import { featuredCases, openSourceProjects } from "../data/projects";
 import { brucePhotos } from "../data/bruce";
+import ProtonAdAstroComponent from "../components/about_section/ProtonAd.astro";
 
 const allPosts = await Astro.glob("./posts/*.md");
 
@@ -273,9 +274,7 @@ const topTags = Array.from(tagMap.entries())
   .sort((a, b) => b.count - a.count)
   .slice(0, 12);
 
-// Tag of the Day: deterministic per-calendar-day pick, like Wikipedia's
-// "word of the day" — stays the same all day instead of reshuffling on
-// every page load.
+
 const allTagKeys = Array.from(tagMap.keys());
 const dayOfYear = (() => {
   const now = new Date();
@@ -300,8 +299,7 @@ const tagOfDayPosts = tagOfDayKey
     )
   : [];
 
-// Tag Evolution: which tags dominated each calendar year, based on each
-// post's frontmatter date.
+
 const tagsByYear = new Map<number, Map<string, number>>();
 for (const post of allPosts) {
   const d = new Date(post.frontmatter.date);
@@ -1934,6 +1932,7 @@ if (growthSeriesRaw.length > 0) {
               </a>
             </p>
           </section>
+          <ProtonAdAstroComponent />
         </aside>
       </div>
 
