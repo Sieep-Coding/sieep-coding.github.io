@@ -25,7 +25,7 @@ export const info = {
       {
         title: "Software Engineer",
         date: "2022 - Present",
-        location: "luniv.tech",
+        location: "Michigan",
         link: "https://www.luniv.tech/contact",
         description:
           `Devloping software solutions for enterprises and start-ups. We offer a variety of services such as Custom Software, 

@@ -60,5 +60,3 @@ When every engineering decision is informed by its potential impact on the botto
 ---
 
 **Bottom line:** If your software isn’t making you money or at least preserving it, it’s time to rethink your approach.
-
-[Book a Free Consultation with Luniv Technology](https://luniv.tech/contact) to see how we can help your software start delivering real value.

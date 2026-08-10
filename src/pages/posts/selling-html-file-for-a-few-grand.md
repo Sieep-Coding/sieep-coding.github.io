@@ -19,8 +19,6 @@ tags: ["#Business", "#Tech"]
 
 A few weeks ago, I met a business owner who was overwhelmed. They had been pitched an overhaul by a traditional agency. We're talking React frameworks, [headless](https://en.wikipedia.org/wiki/Headless_software) [CMS](https://en.wikipedia.org/wiki/Content_management_system) integrations, cloud [database](https://en.wikipedia.org/wiki/Database) hosting, and a monthly maintenance retainer that looked like a car payment. 
 
-They came to me at [Luniv Technology](https://luniv.tech/) looking for a second opinion. 
-
 After digging into their actual problem, I realized they just needed to solve one specific business process. 
 
 So, I built them a single `.html` file, hooked it up to a basic automation script, and charged them a few grand for it. 
@@ -74,9 +72,3 @@ In business, removing the friction points that cause high bounce rates and slow 
 Look for the manual processes, the tedious spreadsheets, and the spots where human error costs money.
 
 Don't be afraid to sell a simple solution if it solves a complex problem.
-
----
-
-**Bottom line:**
-
-If your business is bogged down by manual processes and you want to see if a simple software solution can save you thousands, [Book a Free Consultation with Luniv Technology](https://luniv.tech/contact). 
