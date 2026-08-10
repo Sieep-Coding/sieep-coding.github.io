@@ -1,6 +1,23 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { featuredCases, openSourceProjects } from "../data/projects";
+
+const slug = (t) =>
+  t
+    .toLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g, "")
+    .replace(/[\s_-]+/g, "-");
+
+const clientTags = new Set();
+for (const c of featuredCases) {
+  (c.tags || []).forEach((t) => clientTags.add(t));
+}
+
+const ossTags = new Set();
+for (const p of openSourceProjects) {
+  (p.tech || []).forEach((t) => ossTags.add(t));
+}
 ---
 
 <BaseLayout title="Projects">
@@ -18,23 +35,91 @@ import { featuredCases, openSourceProjects } from "../data/projects";
       </p>
     </header>
 
-    <section class="mb-16">
-      <h2 class="text-xl font-semibold text-secondary dark:text-dk-accent mb-6">
-        Client &amp; Product Work
-      </h2>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-16">
+    <!-- CLIENT & PRODUCT WORK -->
+    <section>
+      <div class="flex items-center justify-between gap-4 mb-4 flex-wrap">
+        <h2 class="text-xl font-semibold text-secondary dark:text-dk-accent">
+          Client &amp; Product Work
+        </h2>
+        <p class="text-xs text-text/50 dark:text-dk-text/50">
+          {featuredCases.length} {featuredCases.length === 1 ? "case" : "cases"}
+        </p>
+      </div>
+
+      <div
+        class="relative flex items-center mb-4 border-b-2 border-text/40 dark:border-dk-text/40 focus-within:border-secondary dark:focus-within:border-dk-accent transition-colors pb-1"
+      >
+        <input
+          id="client-search"
+          type="text"
+          placeholder="Search client work..."
+          class="w-full py-3 bg-transparent text-text dark:text-dk-accent placeholder-text/60 dark:placeholder-dk-text/60 focus:outline-none text-xl font-medium tracking-wide"
+        />
+        <button
+          id="client-filters-toggle"
+          class="ml-4 px-4 py-2 text-sm uppercase font-bold tracking-widest text-text dark:text-dk-text hover:text-secondary dark:hover:text-dk-accent transition-colors focus:outline-none flex items-center gap-1"
+        >
+          <span>Tags</span>
+          <span
+            id="client-filters-arrow"
+            class="inline-block transition-transform duration-200 text-xs"
+            >↓</span
+          >
+        </button>
+      </div>
+
+      <div
+        id="client-filters-panel"
+        class="overflow-hidden transition-[max-height] duration-200 ease-out max-h-0"
+      >
+        <div
+          class="flex flex-wrap gap-x-6 gap-y-3 pt-3 pb-8 border-b-2 border-text/10 dark:border-dk-text/10"
+        >
+          <button
+            data-filter="*"
+            class="client-tag-btn text-sm lowercase font-bold tracking-wide text-secondary dark:text-dk-accent decoration-secondary dark:decoration-dk-accent transition-colors underline decoration-2 underline-offset-8"
+          >
+            all
+          </button>
+          {
+            Array.from(clientTags).map((tag) => (
+              <button
+                data-filter={`.${slug(tag)}`}
+                class="client-tag-btn text-sm lowercase font-bold tracking-wide text-text/70 dark:text-dk-text hover:text-secondary dark:hover:text-dk-accent transition-colors underline decoration-2 decoration-transparent underline-offset-8"
+              >
+                {tag}
+              </button>
+            ))
+          }
+        </div>
+      </div>
+
+      <p
+        id="client-no-results"
+        class="hidden text-sm text-text/50 dark:text-dk-text/50 mb-4"
+      >
+        No client work matches your search.
+      </p>
 
       <div class="space-y-3">
         {
           featuredCases.map((c) => {
             const Wrapper = c.link ? "a" : "div";
+            const tagClasses = (c.tags || []).map((t) => slug(t)).join(" ");
+            const tagsStr = (c.tags || []).join(",");
             return (
               <Wrapper
                 {...(c.link
                   ? { href: c.link, target: "_blank", rel: "noopener noreferrer" }
                   : {})}
-                class={`block border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5 sm:p-6 transition-colors ${
+                class={`client-item ${tagClasses} block border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5 sm:p-6 transition-colors ${
                   c.link ? "hover:bg-secondary/10 dark:hover:bg-dk-secondary/10" : ""
                 }`}
+                data-name={c.name.toLowerCase()}
+                data-description={c.description.toLowerCase()}
+                data-outcome={c.outcome.toLowerCase()}
+                data-tags={tagsStr.toLowerCase()}
               >
                 <div class="flex items-start justify-between gap-4">
                   <h3 class="text-lg font-semibold text-secondary dark:text-dk-accent">
@@ -69,48 +154,123 @@ import { featuredCases, openSourceProjects } from "../data/projects";
       </div>
     </section>
 
+    <!-- OPEN SOURCE & PERSONAL PROJECTS -->
     <section>
-      <h2 class="text-xl font-semibold text-secondary dark:text-dk-accent mb-6">
-        Open Source &amp; Personal Projects
-      </h2>
+      <div class="flex items-center justify-between gap-4 mb-4 flex-wrap">
+
+        <h2 class="text-xl font-semibold text-secondary dark:text-dk-accent">
+          Open Source &amp; Personal Projects
+        </h2>
+        <p class="text-xs text-text/50 dark:text-dk-text/50">
+          {openSourceProjects.length} {openSourceProjects.length === 1 ? "project" : "projects"}
+        </p>
+      </div>
+
+      <div
+        class="relative flex items-center mb-4 border-b-2 border-text/40 dark:border-dk-text/40 focus-within:border-secondary dark:focus-within:border-dk-accent transition-colors pb-1"
+      >
+        <input
+          id="oss-search"
+          type="text"
+          placeholder="Search open source projects..."
+          class="w-full py-3 bg-transparent text-text dark:text-dk-accent placeholder-text/60 dark:placeholder-dk-text/60 focus:outline-none text-xl font-medium tracking-wide"
+        />
+        <button
+          id="oss-filters-toggle"
+          class="ml-4 px-4 py-2 text-sm uppercase font-bold tracking-widest text-text dark:text-dk-text hover:text-secondary dark:hover:text-dk-accent transition-colors focus:outline-none flex items-center gap-1"
+        >
+          <span>Tech</span>
+          <span
+            id="oss-filters-arrow"
+            class="inline-block transition-transform duration-200 text-xs"
+            >↓</span
+          >
+        </button>
+      </div>
+
+      <div
+        id="oss-filters-panel"
+        class="overflow-hidden transition-[max-height] duration-200 ease-out max-h-0"
+      >
+        <div
+          class="flex flex-wrap gap-x-6 gap-y-3 pt-3 pb-8 border-b-2 border-text/10 dark:border-dk-text/10"
+        >
+          <button
+            data-filter="*"
+            class="oss-tag-btn text-sm lowercase font-bold tracking-wide text-secondary dark:text-dk-accent decoration-secondary dark:decoration-dk-accent transition-colors underline decoration-2 underline-offset-8"
+          >
+            all
+          </button>
+          {
+            Array.from(ossTags).map((tag) => (
+              <button
+                data-filter={`.${slug(tag)}`}
+                class="oss-tag-btn text-sm lowercase font-bold tracking-wide text-text/70 dark:text-dk-text hover:text-secondary dark:hover:text-dk-accent transition-colors underline decoration-2 decoration-transparent underline-offset-8"
+              >
+                {tag}
+              </button>
+            ))
+          }
+        </div>
+      </div>
+
+      <p
+        id="oss-no-results"
+        class="hidden text-sm text-text/50 dark:text-dk-text/50 mb-4"
+      >
+        No projects match your search.
+      </p>
 
       <div class="space-y-3">
         {
-          openSourceProjects.map((p) => (
-            <a
-              href={p.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="group block border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5 sm:p-6 hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
-            >
-              <div class="flex items-start justify-between gap-4">
-                <div class="min-w-0">
-                  <h3 class="text-lg font-semibold text-secondary dark:text-dk-accent">
-                    {p.title}
-                  </h3>
-                  <p class="mt-2 text-sm text-text/80 dark:text-dk-text/80 leading-relaxed">
-                    {p.description}
-                  </p>
-                  <div class="mt-3 flex flex-wrap items-center gap-1.5">
-                    {p.tech.map((t) => (
-                      <span class="text-[11px] px-2 py-0.5 rounded-full border border-text/30 dark:border-dk-text/30 text-text/70 dark:text-dk-text/70">
-                        {t}
-                      </span>
-                    ))}
-                    <span class="text-xs text-text/50 dark:text-dk-text/50 ml-1">
-                      {p.year}
+          openSourceProjects
+            .slice()
+            .sort((a, b) => b.year.localeCompare(a.year))
+            .map((p) => {
+              const isInternal = p.link.startsWith("/");
+              const tagClasses = (p.tech || []).map((t) => slug(t)).join(" ");
+              const tagsStr = (p.tech || []).join(",");
+              return (
+                <a
+                  href={p.link}
+                  {...(isInternal
+                    ? {}
+                    : { target: "_blank", rel: "noopener noreferrer" })}
+                  class={`oss-item ${tagClasses} group block border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5 sm:p-6 hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors`}
+                  data-title={p.title.toLowerCase()}
+                  data-description={p.description.toLowerCase()}
+                  data-tags={tagsStr.toLowerCase()}
+                >
+                  <div class="flex items-start justify-between gap-4">
+                    <div class="min-w-0">
+                      <h3 class="text-lg font-semibold text-secondary dark:text-dk-accent">
+                        {p.title}
+                      </h3>
+                      <p class="mt-2 text-sm text-text/80 dark:text-dk-text/80 leading-relaxed">
+                        {p.description}
+                      </p>
+                      <div class="mt-3 flex flex-wrap items-center gap-1.5">
+                        {p.tech.map((t) => (
+                          <span class="text-[11px] px-2 py-0.5 rounded-full border border-text/30 dark:border-dk-text/30 text-text/70 dark:text-dk-text/70">
+                            {t}
+                          </span>
+                        ))}
+                        <span class="text-xs text-text/50 dark:text-dk-text/50 ml-1">
+                          {p.year}
+                        </span>
+                      </div>
+                    </div>
+                    <span class="text-text/40 dark:text-dk-text/40 group-hover:text-secondary dark:group-hover:text-dk-accent transition-colors shrink-0 mt-1">
+                      {isInternal ? "→" : "↗"}
                     </span>
                   </div>
-                </div>
-                <span class="text-text/40 dark:text-dk-text/40 group-hover:text-secondary dark:group-hover:text-dk-accent transition-colors shrink-0 mt-1">
-                  ↗
-                </span>
-              </div>
-            </a>
-          ))
+                </a>
+              );
+            })
         }
       </div>
     </section>
+    </div>
 
     <footer class="mt-16 pt-8 border-t border-text/10 dark:border-dk-text/10">
       <a
@@ -122,3 +282,112 @@ import { featuredCases, openSourceProjects } from "../data/projects";
     </footer>
   </main>
 </BaseLayout>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const setupSection = ({
+      searchId,
+      toggleId,
+      arrowId,
+      panelId,
+      noResultsId,
+      tagBtnClass,
+      itemClass,
+      extraDataFields,
+    }) => {
+      const searchEl = document.getElementById(searchId);
+      const toggle = document.getElementById(toggleId);
+      const arrow = document.getElementById(arrowId);
+      const panel = document.getElementById(panelId);
+      const noResults = document.getElementById(noResultsId);
+      const tagButtons = Array.from(document.querySelectorAll(`.${tagBtnClass}`));
+      const items = Array.from(document.querySelectorAll(`.${itemClass}`));
+
+      let activeFilter = "*";
+
+      const applyFilters = () => {
+        const query = searchEl.value.toLowerCase();
+        let visibleCount = 0;
+
+        items.forEach((item) => {
+          const fieldsMatch = extraDataFields.some((f) =>
+            (item.dataset[f] || "").includes(query)
+          );
+          const filterMatch =
+            activeFilter === "*" || item.classList.contains(activeFilter.slice(1));
+
+          const show = fieldsMatch && filterMatch;
+          item.style.display = show ? "" : "none";
+          if (show) visibleCount++;
+        });
+
+        noResults.classList.toggle("hidden", visibleCount !== 0);
+      };
+
+      tagButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          tagButtons.forEach((b) => {
+            b.classList.remove(
+              "text-secondary",
+              "dark:text-dk-accent",
+              "decoration-secondary",
+              "dark:decoration-dk-accent"
+            );
+            b.classList.add("text-text/70", "dark:text-dk-text");
+          });
+
+          btn.classList.remove("text-text/70", "dark:text-dk-text");
+          btn.classList.add(
+            "text-secondary",
+            "dark:text-dk-accent",
+            "decoration-secondary",
+            "dark:decoration-dk-accent"
+          );
+
+          activeFilter = btn.dataset.filter;
+          applyFilters();
+        });
+      });
+
+      searchEl.addEventListener("input", applyFilters);
+
+      let open = false;
+      panel.style.maxHeight = "0px";
+
+      toggle.addEventListener("click", () => {
+        open = !open;
+        if (open) {
+          panel.style.maxHeight = panel.scrollHeight + "px";
+          arrow.style.transform = "rotate(180deg)";
+        } else {
+          panel.style.maxHeight = "0px";
+          arrow.style.transform = "rotate(0deg)";
+        }
+      });
+
+      applyFilters();
+    };
+
+    setupSection({
+      searchId: "client-search",
+      toggleId: "client-filters-toggle",
+      arrowId: "client-filters-arrow",
+      panelId: "client-filters-panel",
+      noResultsId: "client-no-results",
+      tagBtnClass: "client-tag-btn",
+      itemClass: "client-item",
+      extraDataFields: ["name", "description", "outcome", "tags"],
+    });
+
+    setupSection({
+      searchId: "oss-search",
+      toggleId: "oss-filters-toggle",
+      arrowId: "oss-filters-arrow",
+      panelId: "oss-filters-panel",
+      noResultsId: "oss-no-results",
+      tagBtnClass: "oss-tag-btn",
+      itemClass: "oss-item",
+      extraDataFields: ["title", "description", "tags"],
+    });
+  });
+</script>

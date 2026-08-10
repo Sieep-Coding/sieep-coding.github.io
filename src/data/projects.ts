@@ -76,7 +76,7 @@ export const openSourceProjects = [
     year: "2024",
     description:
       "A physics-based snow particle simulation built with C and raylib. Used by educators to demonstrate particle physics and collision detection.",
-    link: "https://github.com/Sieep-Coding/snow-simulation",
+    link: "/snow-simulation",
     tech: ["C", "raylib"],
   },
   {
@@ -91,7 +91,7 @@ export const openSourceProjects = [
     title: "Spark",
     year: "2025",
     description: "My personal CRM built with Python and tkinter.",
-    link: "https://github.com/Sieep-Coding/spark",
+    link: "/spark",
     tech: ["Python", "tkinter"],
   },
   {
