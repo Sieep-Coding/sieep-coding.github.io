@@ -61,7 +61,7 @@ const latestPostUrl = latestPost?.url || "/posts";
             class="inline-flex items-center text-sm font-medium text-secondary dark:text-dk-accent hover:underline underline-offset-4"
             >Recipes →
           </a>
-           <a
+          <a
             href="/projects"
             class="inline-flex items-center text-sm font-medium text-secondary dark:text-dk-accent hover:underline underline-offset-4"
             >Projects →
@@ -271,6 +271,34 @@ const latestPostUrl = latestPost?.url || "/posts";
             </span>
           </a>
           <a
+            href="https://pr.tn/ref/X0J3A3B2"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="carousel-slide group flex items-center justify-between p-5 sm:p-6 w-full shrink-0 hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
+            id="proton-sponsor-slide"
+          >
+            <div class="min-w-0">
+              <p
+                class="text-xs uppercase tracking-wide text-text/50 dark:text-dk-text/50 mb-1"
+              >
+                Sponsored
+              </p>
+              <p
+                class="text-base font-semibold text-secondary dark:text-dk-accent truncate"
+              >
+                Proton - Secure & Private
+              </p>
+              <p class="text-xs text-text/75 dark:text-dk-text/75 mt-1">
+                Encrypted email, VPN, Drive & more
+              </p>
+            </div>
+            <span
+              class="text-sm font-medium text-secondary dark:text-dk-accent group-hover:underline underline-offset-4 shrink-0"
+            >
+              Learn →
+            </span>
+          </a>
+          <a
             href={latestPostUrl}
             class="carousel-slide group flex items-center justify-between p-5 sm:p-6 w-full shrink-0 hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
           >
@@ -374,7 +402,6 @@ const latestPostUrl = latestPost?.url || "/posts";
           </a>
           <a
             href="/wiki"
-        
             class="carousel-slide group flex items-center justify-between p-5 sm:p-6 w-full shrink-0 hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
           >
             <div class="min-w-0">
@@ -709,7 +736,9 @@ const latestPostUrl = latestPost?.url || "/posts";
         const page = event.pages?.[0];
 
         if (onThisDayTitle) {
-          onThisDayTitle.textContent = event.year ? `${event.year}` : "On this day";
+          onThisDayTitle.textContent = event.year
+            ? `${event.year}`
+            : "On this day";
         }
 
         if (onThisDayExcerpt) {

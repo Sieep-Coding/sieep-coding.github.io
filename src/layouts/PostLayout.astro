@@ -6,6 +6,7 @@ import Contact from "../components/contact_section/Contact";
 import ViewBlog from "../components/about_section/VisitBlog";
 import RecentPosts from "../components/post_section/RecentBlogs";
 import LinkPreview from "../components/post_section/LinkPreview.astro";
+import ProtonAdAstroComponent from "../components/about_section/ProtonAd.astro";
 
 const { frontmatter } = Astro.props;
 const rawPosts = await Astro.glob("../pages/posts/*.md");
@@ -144,9 +145,12 @@ const postTags: string[] = tags || [];
           </a>
         ))
       }
-        <a href="/tags" class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium lowercase border border-[#202020]/20 dark:border-[#7c8fd1]/30 text-[#202020] dark:text-[#96a6e2] hover:bg-[#202020]/5 dark:hover:bg-[#7c8fd1]/10 hover:border-[#202020]/40 dark:hover:border-[#7c8fd1]/50 transition-colors">
-          All Tags
-        </a>
+      <a
+        href="/tags"
+        class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium lowercase border border-[#202020]/20 dark:border-[#7c8fd1]/30 text-[#202020] dark:text-[#96a6e2] hover:bg-[#202020]/5 dark:hover:bg-[#7c8fd1]/10 hover:border-[#202020]/40 dark:hover:border-[#7c8fd1]/50 transition-colors"
+      >
+        All Tags
+      </a>
     </div>
 
     <div
@@ -261,11 +265,13 @@ const postTags: string[] = tags || [];
                 class="text-sm font-bold text-[#202020] dark:text-[#7c8fd1] hover:underline"
                 href="/">{info.name}</a
               >
-              <br>
-              <a 
+              <br />
+              <a
                 class="text-sm text-[#202020] dark:text-[#96a6e2] hover:underline"
                 href="/about"
-              >About Nick <span class="text-[#202020]/70 dark:text-[#96a6e2]/70">→</span>
+                >About Nick <span
+                  class="text-[#202020]/70 dark:text-[#96a6e2]/70">→</span
+                >
               </a>
             </div>
           </div>
@@ -276,6 +282,11 @@ const postTags: string[] = tags || [];
         </div>
         <div class="mt-8">
           <RecentPosts posts={filteredPosts} />
+
+          <div class="mt-4">
+            <ProtonAdAstroComponent />
+          </div>
+
           <div class="flex flex-col gap-2 mt-4">
             <ViewBlog />
           </div>
@@ -306,7 +317,7 @@ const postTags: string[] = tags || [];
           >
         </li>
         <li>
-          This website costs money to maintain and contains no advertisements.
+          This website costs money to maintain and contains only one advertisement.
           Consider
           <a href="https://buymeacoffee.com/nickstambaugh" class="underline"
             >buying Nick a coffee</a
