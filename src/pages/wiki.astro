@@ -8,6 +8,8 @@ import { mediaList } from "../data/media";
 import { tracks } from "../data/music";
 import { featuredCases, openSourceProjects } from "../data/projects";
 import { brucePhotos } from "../data/bruce";
+import { apps } from "./apps.astro";
+import { recipes } from "./recipes.astro";
 import ProtonAdAstroComponent from "../components/about_section/ProtonAd.astro";
 
 const allPosts = await Astro.glob("./posts/*.md");
@@ -78,12 +80,9 @@ const unifiedSearchData = [
 const featured = sortedPosts[0];
 const recentPosts = sortedPosts.slice(1, 6);
 const totalPosts = allPosts.length;
+const appsList = apps;
 
-let recipeCount: number | null = null;
-try {
-  const recipes = await Astro.glob("./recipes/*.md");
-  recipeCount = recipes.length;
-} catch (err) {}
+const recipeCount = recipes.length;
 
 const GITHUB_USERNAME = "Sieep-Coding";
 
@@ -366,6 +365,7 @@ const portals = [
   },
   { href: "/bruce-the-dog", label: "Bruce", desc: "The dog", icon: "🐕" },
   { href: "/about", label: "About", desc: "Nick Stambaugh", icon: "👤" },
+  { href: "/apps", label: "Apps", desc: "My apps", icon: "📱" },
 ];
 
 const randomArticles = [
@@ -383,8 +383,9 @@ const randomArticles = [
 ];
 
 const formatCounts = [
-  { label: "Articles", count: totalPosts, href: "/posts" },
   { label: "Books", count: books.length, href: "/library" },
+  { label: "Articles", count: totalPosts, href: "/posts" },
+  { label: "Apps", count: appsList.length, href: "/apps" },
   { label: "Media", count: mediaList.length, href: "/media" },
   { label: "Tracks", count: tracks.length, href: "/music" },
   {
@@ -442,7 +443,7 @@ function extractDate(item: any, keys: string[]): Date | null {
 const growthRaw = [
   {
     label: "Articles",
-    color: "#b45f4d",
+    color: "#7c8fd1",
     dates: allPosts
       .map((p) => extractDate(p.frontmatter, ["date"]))
       .filter((d): d is Date => d !== null),
@@ -1382,13 +1383,13 @@ if (growthSeriesRaw.length > 0) {
             </div>
 
             <img
-              src={`https://ghchart.rshah.org/b45f4d/${GITHUB_USERNAME}`}
+              src={`https://ghchart.rshah.org/7c8fd1/${GITHUB_USERNAME}`}
               alt={`${GITHUB_USERNAME}'s GitHub contribution graph`}
               class="w-full rounded-lg border border-text/10 dark:border-dk-text/10"
               loading="lazy"
             />
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4">
+            <div class="grid grid-cols-1 sm:grid-cols-1 gap-6 mt-4">
               <div>
                 <p class="text-[10px] uppercase tracking-widest text-text/40 dark:text-dk-text/40 mb-2">
                   Recently pushed
@@ -1406,7 +1407,7 @@ if (growthSeriesRaw.length > 0) {
                           {r.name}
                         </a>
                         {r.language && (
-                          <span class="text-[10px] text-text/40 dark:text-dk-text/40 shrink-0">
+                          <span class="text-[16px] text-text/60 dark:text-dk-text/60 shrink-0">
                             {r.language}
                           </span>
                         )}
@@ -1509,7 +1510,7 @@ if (growthSeriesRaw.length > 0) {
             >
               Other Areas of This Site
             </h2>
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
               {
                 portals.map((p) => (
                   <a
