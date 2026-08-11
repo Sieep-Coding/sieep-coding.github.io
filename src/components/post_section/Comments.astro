@@ -31,6 +31,10 @@ const { slug } = Astro.props;
       class="w-full rounded border border-[#202020]/20 dark:border-[#7c8fd1]/30 bg-transparent px-3 py-2 text-sm text-[#202020] dark:text-[#96a6e2]"
     ></textarea>
 
+    <p class="text-xs opacity-60">
+      See the
+      <a href="/privacy" class="underline">privacy policy</a>.
+    </p>
     <button
       type="submit"
       class="self-start rounded border border-[#202020] dark:border-[#7c8fd1] px-4 py-2 text-sm font-semibold text-[#202020] dark:text-[#7c8fd1] hover:bg-[#202020]/5 dark:hover:bg-[#7c8fd1]/10 transition-colors"
@@ -38,10 +42,6 @@ const { slug } = Astro.props;
       Post comment
     </button>
     <p id="comment-status" class="text-sm"></p>
-    <p class="text-xs opacity-60">
-      By commenting you agree your comment may be publicly displayed. See the
-      <a href="/privacy" class="underline">privacy policy</a>.
-    </p>
   </form>
 
   <div id="comment-list" class="flex flex-col gap-6">
@@ -80,6 +80,66 @@ const { slug } = Astro.props;
       return `${Math.floor(diff / 86400)}d ago`;
     }
 
+
+    const BANNED_WORDS = [
+      "fuck", "fucking", "fucked", "fucker", "motherfucker", "shit", "shitty",
+      "bitch", "bitches", "asshole", "assholes", "bastard", "cunt", "cunts",
+      "dick", "dickhead", "cock", "pussy", "prick", "twat", "wanker",
+      "nigger", "nigga", "faggot", "fag", "dyke",
+      "whore", "whores", "slut", "sluts", "hoe", "skank",
+      "bullshit", "horseshit", "dipshit", "dumbass", "jackass", "smartass",
+      "dumbfuck", "shithead", "fuckhead", "asshat", "arsehole",
+      "goddamn", "goddammit", "damn", "hell", "crap", "piss", "pissed",
+      "jerkoff", "jackoff", "blowjob", "handjob", "rimjob",
+      "motherfucking", "shitfuck", "fuckwit", "shitbag", "scumbag",
+    ];
+
+    const SPAM_PATTERNS: RegExp[] = [
+      /\b(?:buy now|click here|free money|work from home|make \$\d+|limited time offer|viagra|casino|crypto giveaway|forex signals)\b/i,
+      /(.)\1{6,}/, 
+      /[A-Z]{10,}/, 
+    ];
+
+    function containsProfanity(text: string) {
+      const normalized = text.toLowerCase().replace(/[^a-z0-9\s]/g, "");
+      return BANNED_WORDS.some((w) => new RegExp(`\\b${w}\\b`, "i").test(normalized));
+    }
+
+    function containsSpam(text: string) {
+      const linkCount = (text.match(/https?:\/\/\S+/gi) || []).length;
+      if (linkCount >= 1) return true;
+      return SPAM_PATTERNS.some((p) => p.test(text));
+    }
+
+    function moderationReason(text: string): string | null {
+      if (containsProfanity(text)) return "flagged for inappropriate language";
+      if (containsSpam(text)) return "flagged as likely spam";
+      return null;
+    }
+
+    function renderComment(c: any) {
+      return `
+        <div class="pb-4 opacity-40">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="text-sm font-semibold text-[#202020] dark:text-[#7c8fd1]">${escapeHtml(c.author_name || "Anonymous")}</span>
+            <span class="text-xs font-semibold text-[#202020] dark:text-[#7c8fd1] opacity-50">${timeAgo(c.created_at)}</span>
+          </div>
+          <p class="text-sm text-[#202020] dark:text-[#96a6e2] whitespace-pre-wrap">${escapeHtml(c.body)}</p>
+        </div>`;
+    }
+
+    function renderFlaggedComment(name: string, body: string, reason: string) {
+      return `
+        <div class="pb-4 opacity-40">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="text-sm font-semibold text-[#202020] dark:text-[#7c8fd1]">${escapeHtml(name || "Anonymous")}</span>
+            <span class="text-xs font-semibold text-[#202020] dark:text-[#7c8fd1] opacity-50">just now</span>
+          </div>
+          <p class="text-sm text-[#202020] dark:text-[#96a6e2] whitespace-pre-wrap">${escapeHtml(body)}</p>
+          <p class="text-xs italic mt-1 text-[#202020] dark:text-[#96a6e2]">This comment was ${escapeHtml(reason)} and is pending moderation review.</p>
+        </div>`;
+    }
+
     async function loadComments() {
       try {
         const res = await fetch(`/api/comments?slug=${encodeURIComponent(slug)}`);
@@ -90,18 +150,7 @@ const { slug } = Astro.props;
           return;
         }
 
-        list.innerHTML = comments
-          .map(
-            (c: any) => `
-            <div class="pb-4">
-              <div class="flex items-center gap-2 mb-1">
-                <span class="text-sm font-semibold text-[#202020] dark:text-[#7c8fd1]">${escapeHtml(c.author_name || "Anonymous")}</span>
-                <span class="text-xs font-semibold text-[#202020] dark:text-[#7c8fd1] opacity-50">${timeAgo(c.created_at)}</span>
-              </div>
-              <p class="text-sm text-[#202020] dark:text-[#96a6e2] whitespace-pre-wrap">${escapeHtml(c.body)}</p>
-            </div>`
-          )
-          .join("");
+        list.innerHTML = comments.map(renderComment).join("");
       } catch {
         list.innerHTML = '<p class="text-sm opacity-60">Couldn\'t load comments.</p>';
       }
@@ -115,6 +164,18 @@ const { slug } = Astro.props;
       if (!body) return;
 
       const name = anonToggle.checked ? "" : nameInput.value.trim();
+
+      const reason = moderationReason(body);
+      if (reason) {
+        const emptyMsg = list.querySelector("p.opacity-60");
+        if (emptyMsg) emptyMsg.remove();
+
+        list.insertAdjacentHTML("afterbegin", renderFlaggedComment(name, body, reason));
+
+        bodyInput.value = "";
+        status.textContent = "Your comment was flagged and won't be posted publicly.";
+        return;
+      }
 
       const submitBtn = form.querySelector("button[type=submit]") as HTMLButtonElement;
       submitBtn.disabled = true;
