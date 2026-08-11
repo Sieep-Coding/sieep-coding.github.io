@@ -7,7 +7,7 @@ description: "A guide to Image-Line's Fruity Slicer 2, and how I used it to chop
 
 img_path: "/kramer-3.jpg"
 img_alt: "Bart in a studio booth with headphones"
-
+image_layout: "stack" 
 tags: ["#Music"]
 ---
 

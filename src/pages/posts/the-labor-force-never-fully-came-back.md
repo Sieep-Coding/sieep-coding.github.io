@@ -7,7 +7,7 @@ description: "Pulling apart 14 years of BLS labor force data with Python to see 
 
 img_path: "/_labor_chart.png"
 img_alt: "A chart of labor force participation trending downward"
-
+image_layout: "stack" 
 tags: ["#Economics", "#Tech", "#Business"]
 ---
 

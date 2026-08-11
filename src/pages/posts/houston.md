@@ -7,7 +7,7 @@ description: "Houston is an amazing city to explore with a wide variety of inter
 
 img_path : "/hx.jpg"
 img_alt: "houston"
-
+image_layout: "stack" 
 tags: ["#Travel", "#Opinion"]
 ---
 

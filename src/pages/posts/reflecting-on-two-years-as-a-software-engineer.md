@@ -19,14 +19,16 @@ Secret, there was never really a straight line into [software development](https
 
 Like a lot of other people who end up writing code for work, I bounced around. I spent my evenings building projects, learning [web frameworks,](https://en.wikipedia.org/wiki/Web_framework) reading [documentation,](https://en.wikipedia.org/wiki/Software_documentation) and wondering if I would ever amount to anything beyond a [GitHub](https://en.wikipedia.org/wiki/GitHub) repository with three stars. I [sacrificed](https://en.wikipedia.org/wiki/Interpersonal_relationship#Terminating_a_relationship) the majority of my [social life](https://en.wikipedia.org/wiki/Social_relation) in order to get to this point.[^1]
 
-![Kramer in the office](../photo/_kramer-office.gif "Kramer in the office")
 
 I think one thing that gets overlooked when people talk about [software](https://en.wikipedia.org/wiki/Software) work is just how [competitive](https://en.wikipedia.org/wiki/Competition#Economics) the field is. 
 
 The advice of "just learn to code" was beginning to wear off by the time I was in college and today the market is dramatically different. [AI](https://en.wikipedia.org/wiki/Artificial_intelligence) driven portfolios and projects are everywhere. Also, hundreds or even thousands of [applicants](https://en.wikipedia.org/wiki/Application_for_employment) can apply for a single [entry-level position](https://en.wikipedia.org/wiki/Entry-level_job).
 
-![Kramer you better believe it](../photo/_kramer-office3.gif "Kramer: you better believe it")
+![Kramer in the office](../photo/_kramer-office.gif "Kramer in the office")
 
+![Kramer you better believe it {left}](../photo/_kramer-office3.gif "Kramer: you better believe it")
+
+##
 > I say this because I think people deserve an honest picture of what they're signing up for.
 
 ### There's always something interesting to learn.
@@ -37,6 +39,7 @@ When people imagine programmers they often picture someone making $600k, wearing
 The reality for most of us is a lot less glamorous.
 
 ![Kramer in the office](../photo/_kramer-office2.gif "Kramer in the office")
+
 ![Kramer trying to get on the subway](../photo/_kramer-subway1.gif "Kramer trying to get on the subway")
 
 

@@ -88,11 +88,12 @@ By defining test cases upfront, we establish a clear set of goals and ensure tha
 
 ## Rule 3: Develop a Brute Force Solution ⚡
 
+![Brute](../photo/_brute.gif "Brute")
+
 With the problem well-defined and test cases in place, we can now tackle the actual solution.
 
 However, instead of diving headfirst into algorithms, we start with a straightforward **brute force approach.**
 
-![Brute](../photo/_brute.gif "Brute")
 
 This initial solution, while inefficient, serves as a baseline for future improvements and helps us validate our understanding.
 

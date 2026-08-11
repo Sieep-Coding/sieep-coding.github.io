@@ -7,7 +7,7 @@ description: "Chicago is a powerhouse of architecture and culture."
 
 img_path : "/chi.jpg"
 img_alt: "Chicago skyline"
-
+image_layout: "stack" 
 tags: ["#Travel", "#Opinion"]
 ---
 

@@ -94,15 +94,15 @@ List<Product> GetExclusiveProducts(List<Product> source)
 
 This is far more readable than the previous example. If you're even slightly familiar with SQL, this will feel right at home. C# allows you to write LINQ this way, as many SQL developers will have this exact mental model for solving problems. It is straightforward in the sense that we can read it and immediately tell what it's doing. We are selecting a product title of *iPhone* then sorting it by *TypeOfPhone* which could represent different versions of the iPhone.
 
-> [https://en.wikipedia.org/wiki/Boilerplate_code](https://en.wikipedia.org/wiki/Boilerplate_code )
 
-> [https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/statements/yield](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/statements/yield)
 
 ### But what if I told you we could make it simpler.
-*Insert Morpheus*
 ![Morpheus](../photo/whatif.jpg "Morpheus")
+>*Insert Morpheus*
 
 The simplest way to write this would be to use [lambdas](https://en.wikipedia.org/wiki/Anonymous_function) within your LINQ. No, I'm not talking about Valve or your ability to hand-write differential calculus. In C#, we denote lambdas by using `=>`.
+
+What took us 21 lines of code initially has been pared down to 4, with a one-liner for the actual logic. This is by far the superior way to write sustainable, easy-to-read, and easy-to-scale code. Your coworkers and QA will thank you for learning LINQ and ditching the imperative methods that plague your Python brain.
 
 ```csharp
 List<Product> GetExclusiveProducts(List<Product> source)
@@ -111,7 +111,6 @@ List<Product> GetExclusiveProducts(List<Product> source)
 }
 ```
 
-What took us 21 lines of code initially has been pared down to 4, with a one-liner for the actual logic. This is by far the superior way to write sustainable, easy-to-read, and easy-to-scale code. Your coworkers and QA will thank you for learning LINQ and ditching the imperative methods that plague your Python brain.
 
 > [https://en.wikipedia.org/wiki/Anonymous_function](https://en.wikipedia.org/wiki/Anonymous_function)
 

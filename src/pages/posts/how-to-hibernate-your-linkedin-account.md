@@ -7,7 +7,7 @@ description: "A step-by-step guide on how to temporarily hibernate your LinkedIn
 
 img_path : "/linkedin-hibernation.png"
 img_alt: "LinkedIn settings interface"
-
+image_layout: "stack" 
 tags: ["#SocialMedia", "#SelfHelp"]
 ---
 

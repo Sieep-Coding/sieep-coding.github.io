@@ -44,10 +44,10 @@ This aspect of the game is what allows it to thrive in all places. It doesn't ma
 ### Simplicity
 The rules of soccer have gotten increasingly complex with the introduction of technology to assist a referee during the game. Despite this, **the rules remain significantly simpler than all American sports.** American culture is dominated by litigation and rules, the sports reflect this.
 
-The clock in the game always runs and the stoppages are minimal. This creates a better viewing experience compared to American football, where viewers can expect about [11 minutes](https://qz.com/150577/an-average-nfl-game-more-than-100-commercials-and-just-11-minutes-of-play) of action. Soccer, on the other hand, contains the highest percentage of action the viewer sees of any sport.
-
-![Chart](../photo/_chartsports.png "Chart")
+![Chart {left}](../photo/_chartsports.png "Chart")
 > This data is from the 2010s but I doubt it has changed much, let alone gotten better!
+
+The clock in the game always runs and the stoppages are minimal. This creates a better viewing experience compared to American football, where viewers can expect about [11 minutes](https://qz.com/150577/an-average-nfl-game-more-than-100-commercials-and-just-11-minutes-of-play) of action. Soccer, on the other hand, contains the highest percentage of action the viewer sees of any sport.
 
 ### Global reach
 The FIFA World Cup is the biggest sporting event globally. This gives small countries a chance to show themselves on the global stage outside of the Olympics opening ceremony. It gives Europeans and South American countries a chance to shit on everyone else. 

@@ -176,9 +176,7 @@ The modern web is increasingly becoming a collection of feeds controlled by algo
 
 I wanted something slower. Something you can sink into.
 
-![Homer Simpson disappearing into bushes](../photo/_homer_bushes.gif "Homer disappearing into bushes")
-
----
+![Homer Simpson disappearing into bushes {left}](../photo/_homer_bushes.gif "Homer disappearing into bushes")
 
 ## The Future
 

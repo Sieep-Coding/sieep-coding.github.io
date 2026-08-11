@@ -13,16 +13,13 @@ tags: ["#Coding", "#Tech"]
 
 # Creating My Own Social Feed
 
-Most modern websites have some kind of feed. Whether it is a social media [timeline](https://en.wikipedia.org/wiki/Timeline), a [news aggregator](https://en.wikipedia.org/wiki/News_aggregator), or a [dashboard](https://en.wikipedia.org/wiki/Dashboard_(computing)) full of information. I wanted something similar for my own website but without the [endless shittiness](https://en.wikipedia.org/wiki/Attention_economy) designed to maximize engagement.
-
 ![Mr. Ollie ADHD Cartoon](../photo/_cartoon.jpg "Mr. Ollie ADHD Cartoon")
 > Cartoon Credit [Mr. Ollie](https://mrolliefeatures.weebly.com/)
 
-I wanted something simple:
+Most modern websites have some kind of feed. Whether it is a social media [timeline](https://en.wikipedia.org/wiki/Timeline), a [news aggregator](https://en.wikipedia.org/wiki/News_aggregator), or a [dashboard](https://en.wikipedia.org/wiki/Dashboard_(computing)) full of information. I wanted something similar for my own website but without the [endless shittiness](https://en.wikipedia.org/wiki/Attention_economy) designed to maximize engagement.
 
-A small window into what I am currently working on, reading, listening to, and learning.
 
-Check it out the [home page](/)
+I wanted something simple: A small window into what I am currently working on, reading, listening to, and learning. Check it out the [home page](/)
 
 ## The Idea
 

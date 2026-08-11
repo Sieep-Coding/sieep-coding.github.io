@@ -33,8 +33,9 @@ I've also moved over my passwords to Proton Pass, and for simple documents or sp
 
 The nice part is that none of this requires a huge overnight migration. You don't have to delete your old accounts and start over. You can move things over gradually, which is probably the only realistic way to do it anyway.
 
+![Kramer Bus Gif](../photo/_kramer-bus2.gif "Kramer Bus Gif")
+
 I still use plenty of other services. I'm not pretending I completely escaped the modern internet. But having a place where my email, files, passwords, and personal data aren't being used as part of someone else's business model feels like a pretty good improvement.
 
-Small changes add up.
 
-![Kramer Bus Gif](../photo/_kramer-bus2.gif "Kramer Bus Gif")
+Small changes add up.

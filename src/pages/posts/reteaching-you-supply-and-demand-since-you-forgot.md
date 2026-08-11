@@ -7,7 +7,7 @@ description: "It's okay if you slept during class. I'm here to provide a refresh
 
 img_path: "/supply_demand_curve.png"
 img_alt: "A supply and demand curve chart on a dark background"
-
+image_layout: "stack" 
 tags: ["#Economics", "#Opinion"]
 ---
 
@@ -53,7 +53,7 @@ Equilibrium price: 5.35
 Equilibrium quantity: 5013
 ```
 
-![Supply and demand curve](../photo/_supply_demand_curve1.png "The two lines that determine literally everything you complain about")
+![Supply and demand curve {left}](../photo/_supply_demand_curve1.png "The two lines that determine literally everything you complain about")
 
 Let me explain further, supply goes up as price goes up, because producers like getting paid more. 
 

@@ -22,6 +22,10 @@ const posts = rawPosts.map((post) => ({
 }));
 
 const { title, date, img_path, img_alt, tags } = frontmatter;
+// Controls how in-article images are laid out:
+// "float"  -> alternating left/right floats with text wrap (default)
+// "stack"  -> traditional full-width, image-then-caption stacking
+const imageLayout: "float" | "stack" = frontmatter.image_layout || "float";
 const selectedTag = Astro.url.searchParams.get("selectedTag");
 
 const filteredPosts = selectedTag
@@ -39,9 +43,77 @@ const postTags: string[] = tags || [];
 ---
 
 <script is:inline>
+  // Wraps each in-article <img> (and its following blockquote caption, if any)
+  // into a <figure> that floats left/right alternately, like a typical blog layout.
+  function setupImageFloats(article) {
+    if (article.dataset.floatsApplied === "true") return;
+
+    // Respect the per-post layout choice set via data-image-layout
+    if (article.dataset.imageLayout === "stack") {
+      article.dataset.floatsApplied = "true";
+      return;
+    }
+
+    const imgs = Array.from(article.querySelectorAll("img")).filter(
+      (img) => !img.closest("figure")
+    );
+
+    let floatIndex = 0;
+    imgs.forEach((img) => {
+      const parent = img.parentElement; // usually the <p> wrapping the markdown image
+      const figure = document.createElement("figure");
+
+      // Per-image override: add {left} or {right} at the end of the markdown
+      // alt text, e.g. ![Chicago skyline {right}](../photo/_chi1.jpg)
+      // to pin a specific image's side instead of using the alternating default.
+      let side;
+      const overrideMatch = img.alt?.match(/\{(left|right)\}\s*$/i);
+      if (overrideMatch) {
+        side = overrideMatch[1].toLowerCase() === "left" ? "img-float-left" : "img-float-right";
+        img.alt = img.alt.replace(/\s*\{(left|right)\}\s*$/i, "");
+      } else {
+        side = floatIndex % 2 === 0 ? "img-float-left" : "img-float-right";
+        floatIndex++;
+      }
+
+      figure.className = `blog-img-figure ${side}`;
+
+      // Move the image into the figure first
+      figure.appendChild(img);
+
+      // If the image's paragraph is now empty, check the next sibling for a
+      // blockquote caption (the "> caption" markdown convention used in posts)
+      let captionEl = null;
+      if (parent && parent.tagName === "P" && parent.childNodes.length === 0) {
+        const nextEl = parent.nextElementSibling;
+        if (nextEl && nextEl.tagName === "BLOCKQUOTE") {
+          captionEl = nextEl;
+        }
+      }
+
+      if (captionEl) {
+        const figcaption = document.createElement("figcaption");
+        figcaption.innerHTML = captionEl.innerHTML;
+        figure.appendChild(figcaption);
+        captionEl.remove();
+      }
+
+      // Swap the figure into place, replacing the (now empty) paragraph
+      if (parent && parent.tagName === "P") {
+        parent.replaceWith(figure);
+      } else if (parent) {
+        parent.insertBefore(figure, img.nextSibling);
+      }
+    });
+
+    article.dataset.floatsApplied = "true";
+  }
+
   function setupArticleFeatures() {
     const article = document.getElementById("article");
     if (!article) return;
+
+    setupImageFloats(article);
 
     const timeEl = document.getElementById("time");
     if (timeEl) {
@@ -92,6 +164,67 @@ const postTags: string[] = tags || [];
   document.addEventListener("astro:page-load", setupArticleFeatures);
   document.addEventListener("astro:after-swap", setupArticleFeatures);
 </script>
+
+<style>
+  /* Alternating left/right floated images with captions, like a typical blog */
+  #article :global(.blog-img-figure) {
+    margin: 0.25rem 0 1rem 0;
+    max-width: 45%;
+  }
+
+  #article :global(.blog-img-figure.img-float-left) {
+    float: left;
+    margin-right: 1.5rem;
+  }
+
+  #article :global(.blog-img-figure.img-float-right) {
+    float: right;
+    margin-left: 1.5rem;
+  }
+
+  #article :global(.blog-img-figure img) {
+    width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    display: block;
+  }
+
+  #article :global(.blog-img-figure figcaption) {
+    font-size: 0.8rem;
+    opacity: 0.7;
+    margin-top: 0.35rem;
+    line-height: 1.3;
+  }
+
+  /* Clear floats around headings so sections start clean */
+  #article :global(h2),
+  #article :global(h3) {
+    clear: both;
+  }
+
+  /* Stack images full-width on small screens instead of floating */
+  @media (max-width: 768px) {
+    #article :global(.blog-img-figure) {
+      float: none;
+      max-width: 100%;
+      margin: 1rem 0;
+    }
+  }
+
+  /* When a post opts into "stack" layout, images render full-width,
+     centered, with the caption underneath — the original behavior. */
+  #article[data-image-layout="stack"] :global(img) {
+    width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    display: block;
+    margin: 1.5rem 0 0.25rem 0;
+  }
+
+  #article[data-image-layout="stack"] :global(blockquote) {
+    margin-top: 0;
+  }
+</style>
 
 <BaseLayout title={title}>
   <main class="pt-20 lg:pt-24 w-full max-w-7xl mx-auto px-4">
@@ -236,6 +369,7 @@ const postTags: string[] = tags || [];
       <div class="w-full lg:w-2/3">
         <div
           id="article"
+          data-image-layout={imageLayout}
           class="prose dark:prose-invert max-w-none text-[#202020] dark:text-[#96a6e2]"
         >
           <slot />
