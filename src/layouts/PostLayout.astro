@@ -6,6 +6,7 @@ import Contact from "../components/contact_section/Contact";
 import ViewBlog from "../components/about_section/VisitBlog";
 import RecentPosts from "../components/post_section/RecentBlogs";
 import LinkPreview from "../components/post_section/LinkPreview.astro";
+import Comments from "../components/post_section/Comments.astro";
 import ProtonAdAstroComponent from "../components/about_section/ProtonAd.astro";
 
 const { frontmatter } = Astro.props;
@@ -371,102 +372,103 @@ const postTags: string[] = tags || [];
           id="article"
           data-image-layout={imageLayout}
           class="prose dark:prose-invert max-w-none text-[#202020] dark:text-[#96a6e2]"
-        >
+          >
           <slot />
         </div>
         <div class="mt-8">
           <LinkPreview />
         </div>
+        <Comments slug={Astro.url.pathname} />
       </div>
-
+      
       <aside class="w-full lg:w-1/3 mt-12 lg:mt-0">
         <div class="border border-[#202020] dark:border-[#7c8fd1] p-6 rounded">
           <div class="flex items-center py-2">
             <Image
-              src={info.picture}
-              alt={info.picture_alt}
-              class="mr-3 h-12 w-12 rounded-full object-cover"
-              height={48}
-              width={48}
+            src={info.picture}
+            alt={info.picture_alt}
+            class="mr-3 h-12 w-12 rounded-full object-cover"
+            height={48}
+            width={48}
             />
             <div>
               <p
-                class="text-xs font-semibold text-[#202020]/70 dark:text-[#96a6e2]/70"
+              class="text-xs font-semibold text-[#202020]/70 dark:text-[#96a6e2]/70"
               >
-                Author
-              </p>
-              <a
-                class="text-sm font-bold text-[#202020] dark:text-[#7c8fd1] hover:underline"
-                href="/">{info.name}</a
-              >
-              <br />
-              <a
-                class="text-sm text-[#202020] dark:text-[#96a6e2] hover:underline"
-                href="/about"
-                >About Nick <span
-                  class="text-[#202020]/70 dark:text-[#96a6e2]/70">→</span
-                >
-              </a>
-            </div>
-          </div>
-          <p class="py-3 text-sm text-[#202020] dark:text-[#96a6e2]">
-            {info.brief_description}
-          </p>
-          <Contact contact={info.contact} size="md" />
+              Author
+            </p>
+            <a
+            class="text-sm font-bold text-[#202020] dark:text-[#7c8fd1] hover:underline"
+            href="/">{info.name}</a
+            >
+            <br />
+            <a
+            class="text-sm text-[#202020] dark:text-[#96a6e2] hover:underline"
+            href="/about"
+            >About Nick <span
+            class="text-[#202020]/70 dark:text-[#96a6e2]/70">→</span
+            >
+          </a>
         </div>
-        <div class="mt-8">
-          <RecentPosts posts={filteredPosts} />
-
-          <div class="mt-4">
-            <ProtonAdAstroComponent />
-          </div>
-
-          <div class="flex flex-col gap-2 mt-4">
-            <ViewBlog />
-          </div>
-        </div>
-      </aside>
-    </div>
-    <section class="pt-6">
-      <h2 class="mb-4 text-xl font-semibold text-[#202020] dark:text-[#7c8fd1]">
-        Notes from Nick
-      </h2>
-
-      <p class="m-1 mb-4 text-[#202020] dark:text-[#7c8fd1]">
-        Thanks for reading! This post was written by <a
-          href="/about"
-          class="underline">Nick Stambaugh</a
-        >, not AI.
+      </div>
+      <p class="py-3 text-sm text-[#202020] dark:text-[#96a6e2]">
+        {info.brief_description}
       </p>
+      <Contact contact={info.contact} size="md" />
+    </div>
+    <div class="mt-8">
+      <RecentPosts posts={filteredPosts} />
+      
+      <div class="mt-4">
+        <ProtonAdAstroComponent />
+      </div>
+      
+      <div class="flex flex-col gap-2 mt-4">
+        <ViewBlog />
+      </div>
+    </div>
+  </aside>
+</div>
+  <section class="pt-6">
+    <h2 class="mb-4 text-xl font-semibold text-[#202020] dark:text-[#7c8fd1]">
+      Notes from Nick
+    </h2>
 
-      <ul class="list-disc space-y-2 pl-5 text-[#202020] dark:text-[#7c8fd1]">
-        <li>
-          Stay up to date with Nick's latest posts via
-          <a href="/rss.xml" class="underline">RSS</a>
-        </li>
-        <li>
-          Have a question or want to discuss a topic?
-          <a href="mailto:nickstambaugh@proton.me" class="underline"
-            >Email Nick</a
-          >
-        </li>
-        <li>
-          This website costs money to maintain and contains only one advertisement.
-          Consider
-          <a href="https://buymeacoffee.com/nickstambaugh" class="underline"
-            >buying Nick a coffee</a
-          >
-          as a token of appreciation.
-        </li>
-      </ul>
-      <footer class="mt-16 pt-8 border-t border-text/10 dark:border-dk-text/10">
-        <a
-          href="/posts"
-          class="text-sm text-text/60 hover:text-secondary dark:hover:text-dk-accent transition-colors"
+    <p class="m-1 mb-4 text-[#202020] dark:text-[#7c8fd1]">
+      Thanks for reading! This post was written by <a
+        href="/about"
+        class="underline">Nick Stambaugh</a
+      >, not AI.
+    </p>
+
+    <ul class="list-disc space-y-2 pl-5 text-[#202020] dark:text-[#7c8fd1]">
+      <li>
+        Stay up to date with Nick's latest posts via
+        <a href="/rss.xml" class="underline">RSS</a>
+      </li>
+      <li>
+        Have a question or want to discuss a topic?
+        <a href="mailto:nickstambaugh@proton.me" class="underline"
+          >Email Nick</a
         >
-          ← Back to blog
-        </a>
-      </footer>
-    </section>
+      </li>
+      <li>
+        This website costs money to maintain and contains only one advertisement.
+        Consider
+        <a href="https://buymeacoffee.com/nickstambaugh" class="underline"
+          >buying Nick a coffee</a
+        >
+        as a token of appreciation.
+      </li>
+    </ul>
+  </section>
+    <footer class="mt-16 pt-8 border-t border-text/10 dark:border-dk-text/10">
+      <a
+        href="/posts"
+        class="text-sm text-text/60 hover:text-secondary dark:hover:text-dk-accent transition-colors"
+      >
+        ← Back to blog
+      </a>
+    </footer>
   </main>
 </BaseLayout>
