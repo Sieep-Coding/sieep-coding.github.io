@@ -3,7 +3,6 @@ import { turso } from "../../lib/turso";
 
 export const prerender = false;
 
-// simple in-memory rate limit per server instance (good enough for a small blog)
 const lastPostByIp = new Map<string, number>();
 
 export const GET: APIRoute = async ({ url }) => {
@@ -36,7 +35,6 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
     return new Response(JSON.stringify({ error: "Comment too long" }), { status: 400 });
   }
 
-  // basic per-IP throttle: 1 comment / 20s
   const now = Date.now();
   const last = lastPostByIp.get(clientAddress) ?? 0;
   if (now - last < 20_000) {
