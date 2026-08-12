@@ -59,7 +59,7 @@ In fact, the Zeigarnik effect is a psychological idea that an individual remembe
 
 If you stop needing an audience to [validate](https://en.wikipedia.org/wiki/Emotional_validation) that your life is going well then the people who once had a front row seat simply lose their seat. You stopped selling them [tickets](https://en.wikipedia.org/wiki/Ticket_(admission)).
 
-I've written before about [why I choose to subscribe instead of follow](/posts/I-Dont-Follow-I-Subscribe) and this is the other half of the same coin. Cutting the [feeds](https://en.wikipedia.org/wiki/News_feed) out protects your own [headspace](https://en.wikipedia.org/wiki/Mental_space). It quietly removes you from being a [data point](https://en.wikipedia.org/wiki/Unit_record_data) in someone else's story. No one can screenshot a life you didn't [publish](https://en.wikipedia.org/wiki/Publishing).
+I've written before about [why I choose to subscribe instead of follow](/posts/I-Dont-Follow-I-Subscribe) and this is the other half of the same coin. Cutting the [feeds](https://en.wikipedia.org/wiki/News_feed) out protects your own [headspace](https://en.wikipedia.org/wiki/Mental_space). It quietly removes you from being a [data point](https://en.wikipedia.org/wiki/data) in someone else's story. No one can screenshot a life you didn't [publish](https://en.wikipedia.org/wiki/Publishing).
 
 ---
 
