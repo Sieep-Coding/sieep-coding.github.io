@@ -32,6 +32,7 @@ import { brucePhotos as photos } from "../data/bruce";
           >
             <img
               src={photo.src}
+              alt={photo.caption}
               loading="lazy"
               class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
             />
@@ -73,6 +74,10 @@ import { brucePhotos as photos } from "../data/bruce";
           alt=""
           class="max-h-[85vh] w-auto rounded-lg object-contain"
         />
+        <figcaption
+          id="lightbox-caption"
+          class="text-white/80 text-sm sm:text-base text-center"
+        ></figcaption>
       </figure>
     </div>
 
@@ -90,6 +95,7 @@ import { brucePhotos as photos } from "../data/bruce";
     document.addEventListener("DOMContentLoaded", () => {
       const lightbox = document.getElementById("lightbox");
       const img = document.getElementById("lightbox-img");
+      const caption = document.getElementById("lightbox-caption");
       const triggers = Array.from(document.querySelectorAll(".gallery-trigger"));
       let current = 0;
 
@@ -97,6 +103,7 @@ import { brucePhotos as photos } from "../data/bruce";
         current = index;
         img.src = photos[current].src;
         img.alt = photos[current].caption;
+        caption.textContent = photos[current].caption;
         lightbox.classList.remove("hidden");
         lightbox.classList.add("flex");
       };

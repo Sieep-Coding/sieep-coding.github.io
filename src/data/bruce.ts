@@ -6,4 +6,5 @@ export const brucePhotos = [
   { src: "/bruce/bruce5.jpg", caption: "Bruce, on guard." },
   { src: "/bruce/bruce6.jpg", caption: "Bruce, on patrol." },
   { src: "/bruce/bruce7.jpg", caption: "Bruce and Nick in nature." },
+  { src: "/bruce/bruce8.jpg", caption: "Sleeping Bruce." },
 ];
