@@ -12,8 +12,8 @@ const LINKS = [
   { href: "/projects", label: "Projects" },
   { href: "/music", label: "Music" },
   { href: "/wiki", label: "Nickipedia" },
-  { href: "/contact", label: "Contact" },
   { href: "/tags", label: "Tags" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export default function Nav({ posts }) {
