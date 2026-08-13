@@ -1,7 +1,7 @@
 ---
 
 title: "The Rat Race & Social Media Consumption"
-date: "2026-08-14"
+date: "2026-08-13"
 
 layout: ../../layouts/PostLayout.astro
 description: "How to notice you're on both treadmills at once."
