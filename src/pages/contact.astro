@@ -1,17 +1,101 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-
+import Contact from "../components/contact_section/Contact";
+import { info } from "../data/info";
 ---
 
 <BaseLayout title="Contact Me">
-    <br><br><br>
-    <section class="max-w-6xl mx-auto my-20 px-4">
-        <h2 class="justify-center text-center"><a href="mailto:nickstambaugh@proton.me">send me an email</a></h2>
-      <div class="mb-12 mt-12">
-    <div class="tidycal-embed" data-path="nstamb6/let-s-chat20251222191754">
-    </div>
+<br><br><br>
+<section class="max-w-6xl mx-auto my-20 px-4">
+  <h2 class="justify-center text-center"><a href="mailto:nickstambaugh@proton.me">Send me a message</a></h2>
+
+  <div class="max-w-xl mx-auto mt-12 mb-12">
+    <form id="contact-form" class="flex flex-col gap-3">
+      <input
+        type="text"
+        id="contact-name"
+        placeholder="Name"
+        required
+        class="w-full rounded border border-[#202020] dark:border-[#7c8fd1]/30 bg-transparent px-3 py-2 text-sm text-[#202020] dark:text-[#96a6e2] placeholder:text-[#202020] dark:placeholder:text-[#96a6e2]/50"
+      />
+      <input
+        type="email"
+        id="contact-email"
+        placeholder="Email"
+        required
+        class="w-full rounded border border-[#202020] dark:border-[#7c8fd1]/30 bg-transparent px-3 py-2 text-sm text-[#202020] dark:text-[#96a6e2] placeholder:text-[#202020] dark:placeholder:text-[#96a6e2]/50"
+      />
+      <textarea
+        id="contact-message"
+        required
+        rows="5"
+        placeholder="Message"
+        class="w-full rounded border border-[#202020] dark:border-[#7c8fd1]/30 bg-transparent px-3 py-2 text-sm text-[#202020] dark:text-[#96a6e2] placeholder:text-[#202020] dark:placeholder:text-[#96a6e2]/50"
+      ></textarea>
+      <button
+        type="submit"
+        class="self-start rounded border border-[#202020] dark:border-[#7c8fd1] px-4 py-2 text-sm font-semibold text-[#202020] dark:text-[#7c8fd1] hover:bg-[#202020]/5 dark:hover:bg-[#7c8fd1]/10 transition-colors"
+      >
+        Send
+      </button>
+      <p id="contact-status" class="text-sm"></p>
+    </form>
+    <section id="contact" class="pb-12 mt-12">
+      <div class="border border-text/10 dark:border-dk-text/10 bg-secondary/5 dark:bg-dk-secondary/5 rounded-xl p-6">
+        <Contact contact={info.contact} size="lg" />
+      </div>
+    </section>
   </div>
-  <div>
-  </div>
-  </section>
+</section>
 </BaseLayout>
+
+<script>
+  function initContactForm() {
+    const form = document.getElementById("contact-form") as HTMLFormElement | null;
+    if (!form || form.dataset.wired === "true") return;
+    form.dataset.wired = "true";
+
+    const nameInput = document.getElementById("contact-name") as HTMLInputElement;
+    const emailInput = document.getElementById("contact-email") as HTMLInputElement;
+    const messageInput = document.getElementById("contact-message") as HTMLTextAreaElement;
+    const status = document.getElementById("contact-status")!;
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      status.textContent = "";
+
+      const name = nameInput.value.trim();
+      const email = emailInput.value.trim();
+      const message = messageInput.value.trim();
+      if (!name || !email || !message) return;
+
+      const body = `Email: ${email}\n\n${message}`;
+
+      const submitBtn = form.querySelector("button[type=submit]") as HTMLButtonElement;
+      submitBtn.disabled = true;
+
+      try {
+        const res = await fetch("/api/comments", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ slug: "contact-page", name, body }),
+        });
+
+        if (!res.ok) {
+          const err = await res.json().catch(() => ({}));
+          status.textContent = err.error || "Something went wrong.";
+        } else {
+          form.reset();
+          status.textContent = "Message sent. I will get back to you ASAP.";
+        }
+      } catch {
+        status.textContent = "Something went wrong.";
+      } finally {
+        submitBtn.disabled = false;
+      }
+    });
+  }
+
+  document.addEventListener("astro:page-load", initContactForm);
+  if (document.readyState !== "loading") initContactForm();
+</script>

@@ -5,25 +5,14 @@ import Hamburger from "./Hamburger";
 import { info } from "../../data/info";
 import HireMe from "./HireMe";
 
-
-const PRIMARY_LINKS = [
-  { href: "/posts", label: "Blog" },
-  { href: "/about", label: "About" },
-  { href: "/music", label: "Music" },
-];
-
-
-const ALL_LINKS = [
+const LINKS = [
   { href: "/", label: "Home" },
   { href: "/posts", label: "Blog" },
   { href: "/about", label: "About" },
   { href: "/projects", label: "Projects" },
   { href: "/music", label: "Music" },
-  { href: "/library", label: "Library" },
-  { href: "/recipes", label: "Recipes" },
-  { href: "/media", label: "Media" },
-  { href: "/bruce-the-dog", label: "Bruce the Dog" },
   { href: "/wiki", label: "Nickipedia" },
+  { href: "/contact", label: "Contact" },
   { href: "/tags", label: "Tags" },
 ];
 
@@ -56,17 +45,20 @@ export default function Nav({ posts }) {
               {"</" + extractInitials(info.name) + ">"}
             </span>
           </a>
-          <div className="hidden md:flex items-center gap-8">
-            {PRIMARY_LINKS.map((link) => (
+
+          {/* Desktop nav — every link, wrapping as needed, no scroll/overflow tricks */}
+          <div className="hidden md:flex flex-1 items-center justify-center flex-wrap gap-x-6 gap-y-1 px-4">
+            {LINKS.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium text-secondary dark:text-dk-secondary hover:underline underline-offset-4 transition-colors"
+                className="text-sm font-medium text-secondary dark:text-dk-secondary hover:underline underline-offset-4 transition-colors whitespace-nowrap"
               >
                 {link.label}
               </a>
             ))}
           </div>
+
           <div className="flex items-center gap-3 sm:gap-4 text-secondary dark:text-dk-secondary shrink-0">
             <Search posts={posts} />
             <ToggleDarkMode />
@@ -97,7 +89,7 @@ export default function Nav({ posts }) {
           }`}
         >
           <ul className="flex flex-col">
-            {ALL_LINKS.map((link, i) => (
+            {LINKS.map((link, i) => (
               <li
                 key={link.href}
                 className="border-b border-secondary/10 dark:border-dk-secondary/10 last:border-b-0"
