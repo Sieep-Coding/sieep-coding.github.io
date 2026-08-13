@@ -30,20 +30,20 @@ export default function SearchBar({ posts, onSearchResults }: SearchBarProps) {
 
     if (query) {
       const results = fuse.search(query);
-      setSearchResults(results); // Update search results
-      setShowDropdown(true); // Show the dropdown
-      onSearchResults(results); // Optionally call onSearchResults if needed for parent
+      setSearchResults(results);
+      setShowDropdown(true); 
+      onSearchResults(results); 
     } else {
-      setSearchResults([]); // Clear results if query is empty
-      setShowDropdown(false); // Hide the dropdown
-      onSearchResults([]); // Clear parent results if query is empty
+      setSearchResults([]); 
+      setShowDropdown(false); 
+      onSearchResults([]); 
     }
   };
 
   const handleSelectResult = (url: string) => {
-    setQuery("");  // Clear query when selecting a result
-    setShowDropdown(false);  // Hide dropdown
-    window.location.href = url;  // Navigate to the selected post
+    setQuery(""); 
+    setShowDropdown(false);  
+    window.location.href = url;  
   };
 
   return (
@@ -60,7 +60,6 @@ export default function SearchBar({ posts, onSearchResults }: SearchBarProps) {
         <i className="fa fa-search"></i>
       </div>
 
-      {/* Dropdown for search results */}
       {showDropdown && searchResults.length > 0 && (
         <div className="absolute z-10 w-full mt-2 bg-white dark:bg-dk-primary border-2 border-secondary dark:border-dk-secondary rounded-lg shadow-lg">
           <ul className="max-h-60 overflow-y-auto">
