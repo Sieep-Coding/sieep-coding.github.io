@@ -23,9 +23,6 @@ const posts = rawPosts.map((post) => ({
 }));
 
 const { title, date, img_path, img_alt, tags } = frontmatter;
-// Controls how in-article images are laid out:
-// "float"  -> alternating left/right floats with text wrap (default)
-// "stack"  -> traditional full-width, image-then-caption stacking
 const imageLayout: "float" | "stack" = frontmatter.image_layout || "float";
 const selectedTag = Astro.url.searchParams.get("selectedTag");
 
@@ -44,12 +41,8 @@ const postTags: string[] = tags || [];
 ---
 
 <script is:inline>
-  // Wraps each in-article <img> (and its following blockquote caption, if any)
-  // into a <figure> that floats left/right alternately, like a typical blog layout.
   function setupImageFloats(article) {
     if (article.dataset.floatsApplied === "true") return;
-
-    // Respect the per-post layout choice set via data-image-layout
     if (article.dataset.imageLayout === "stack") {
       article.dataset.floatsApplied = "true";
       return;
@@ -61,12 +54,8 @@ const postTags: string[] = tags || [];
 
     let floatIndex = 0;
     imgs.forEach((img) => {
-      const parent = img.parentElement; // usually the <p> wrapping the markdown image
+      const parent = img.parentElement; 
       const figure = document.createElement("figure");
-
-      // Per-image override: add {left} or {right} at the end of the markdown
-      // alt text, e.g. ![Chicago skyline {right}](../photo/_chi1.jpg)
-      // to pin a specific image's side instead of using the alternating default.
       let side;
       const overrideMatch = img.alt?.match(/\{(left|right)\}\s*$/i);
       if (overrideMatch) {
@@ -78,12 +67,8 @@ const postTags: string[] = tags || [];
       }
 
       figure.className = `blog-img-figure ${side}`;
-
-      // Move the image into the figure first
       figure.appendChild(img);
 
-      // If the image's paragraph is now empty, check the next sibling for a
-      // blockquote caption (the "> caption" markdown convention used in posts)
       let captionEl = null;
       if (parent && parent.tagName === "P" && parent.childNodes.length === 0) {
         const nextEl = parent.nextElementSibling;
@@ -99,7 +84,6 @@ const postTags: string[] = tags || [];
         captionEl.remove();
       }
 
-      // Swap the figure into place, replacing the (now empty) paragraph
       if (parent && parent.tagName === "P") {
         parent.replaceWith(figure);
       } else if (parent) {
@@ -167,7 +151,6 @@ const postTags: string[] = tags || [];
 </script>
 
 <style>
-  /* Alternating left/right floated images with captions, like a typical blog */
   #article :global(.blog-img-figure) {
     margin: 0.25rem 0 1rem 0;
     max-width: 45%;
@@ -197,13 +180,11 @@ const postTags: string[] = tags || [];
     line-height: 1.3;
   }
 
-  /* Clear floats around headings so sections start clean */
   #article :global(h2),
   #article :global(h3) {
     clear: both;
   }
 
-  /* Stack images full-width on small screens instead of floating */
   @media (max-width: 768px) {
     #article :global(.blog-img-figure) {
       float: none;
@@ -212,8 +193,6 @@ const postTags: string[] = tags || [];
     }
   }
 
-  /* When a post opts into "stack" layout, images render full-width,
-     centered, with the caption underneath — the original behavior. */
   #article[data-image-layout="stack"] :global(img) {
     width: 100%;
     height: auto;
