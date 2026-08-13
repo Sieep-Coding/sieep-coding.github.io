@@ -410,11 +410,7 @@ const topMediaItems = mediaList.filter((m) => m.rating === topMediaRating);
 const topMedia =
   topMediaItems[Math.floor(Math.random() * topMediaItems.length)];
 
-// ---- Worst of the Wiki ----
-// Books and media both carry a numeric `rating`, so these mirror the
-// "Top Rated" section above. Posts don't have a rating field, so the
-// stand-in there is the shortest article on the site — a nod to
-// Wikipedia's own "stub" articles.
+
 const worstBookRating = books.length
   ? Math.min(...books.map((b) => b.rating))
   : null;
