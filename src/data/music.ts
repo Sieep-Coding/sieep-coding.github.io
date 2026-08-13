@@ -96,7 +96,7 @@ export const licenseOptions = [
     name: "Non-Exclusive License - All Tracks",
     blurb:
       "The track can be leased by others. Best for demos, mixtapes, and official releases.",
-    price: "$2,550-$10,000+",
+    price: "Negotiable",
   },
   {
     name: "Split Royalty - All Tracks",
