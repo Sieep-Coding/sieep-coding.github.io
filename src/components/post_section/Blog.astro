@@ -11,7 +11,6 @@ const recentPosts = sortedPosts.slice(0, K);
 
 const totalCount = posts.length;
 
-// Build a sparkline of post volume per month, oldest -> newest, last 12 months with activity
 const monthKey = (d: Date) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}`;
 
 const counts = new Map<string, number>();
