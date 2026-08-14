@@ -11,6 +11,8 @@ import { brucePhotos } from "../data/bruce";
 import { apps } from "./apps.astro";
 import { recipes } from "./recipes.astro";
 import ProtonAdAstroComponent from "../components/about_section/ProtonAd.astro";
+import NavLinks from "../components/NavLinks.astro";
+import FeedCarousel from "../components/FeedCarousel.astro";
 
 const allPosts = await Astro.glob("./posts/*.md");
 
@@ -32,6 +34,12 @@ const postSearchData = allPosts.map((post) => ({
   description: post.frontmatter.description || "",
   url: post.url,
 }));
+
+const latestPost = sortedPosts[0];
+
+
+const latestPostTitle = latestPost?.frontmatter?.title || "Latest post";
+const latestPostUrl = latestPost?.url || "/posts";
 
 const librarySearchData = books.map((b) => ({
   type: "Book",
@@ -517,50 +525,51 @@ if (growthSeriesRaw.length > 0) {
     .filter(
       (yl) =>
         yl.i === 0 || yl.i === years.length - 1 || years.length <= 8 || yl.year % 2 === 0,
-    )
-    .map(({ year, x }) => ({ year, x }));
-
-  growthChart = { years, seriesPaths, chartW, chartH, padL, yTicks, yearLabels };
-}
----
+      )
+      .map(({ year, x }) => ({ year, x }));
+      
+      growthChart = { years, seriesPaths, chartW, chartH, padL, yTicks, yearLabels };
+    }
+    ---
 
 <BaseLayout title="Nickipedia - Nick's Wiki">
   <div class="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen">
     <main
-      class="max-w-[1400px] mx-auto px-4 sm:px-8 pt-28 pb-10 sm:pt-32 sm:pb-16"
+    class="max-w-[1400px] mx-auto px-4 sm:px-8 pt-28 pb-10 sm:pt-32 sm:pb-16"
     >
-      <header
-        class="border-b-4 border-secondary/20 dark:border-dk-accent/20 pb-4 mb-8"
-      >
-        <div class="flex items-end justify-between gap-4 flex-wrap">
-          <div>
-            <h1
-              class="text-4xl sm:text-5xl font-serif font-bold tracking-tight text-secondary dark:text-dk-accent"
-            >
-              Nickipedia
-            </h1>
-            <p class="text-sm italic text-text/60 dark:text-dk-text/60 mt-1">
-              Version 0.4
-            </p>
-          </div>
-
-          <p
-            id="wiki-date"
-            class="text-xs text-text/50 dark:text-dk-text/50 whitespace-nowrap"
-          >
-            &nbsp;
-          </p>
-        </div>
-
-        <div
-          class="mt-5 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3"
+    <header
+    class="border-b-4 border-secondary/20 dark:border-dk-accent/20 pb-4 mb-8"
+    >
+    <div class="flex items-end justify-between gap-4 flex-wrap">
+      <div>
+        <h1
+        class="text-4xl sm:text-5xl font-serif font-bold tracking-tight text-secondary dark:text-dk-accent"
         >
-          <nav
-            class="flex flex-wrap gap-2 text-[11px] flex-1"
-            aria-label="Nickipedia sections"
+        Nickipedia
+        </h1>
+        <p class="text-sm mt-4 italic text-text/60 dark:text-dk-text/60 mt-1">
+          Version 0.4
+          </p>
+          <p
+          id="wiki-date"
+          class="text-xs mt-4 mb-4 text-text/50 dark:text-dk-text/50 whitespace-nowrap"
           >
-            {
-              [
+          &nbsp;
+          </p>
+          </div>
+          
+          </div>
+          
+          <NavLinks class="mt-4" />
+          <div
+          class="mt-5 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3"
+          >
+          <nav
+          class="flex flex-wrap gap-2 text-[11px] flex-1"
+          aria-label="Nickipedia sections"
+          >
+          {
+            [
                 ["#featured-picture", "Featured picture"],
                 ["#rabbit-holes", "Rabbit holes"],
                 ["#featured-article", "Featured article"],
@@ -663,7 +672,6 @@ if (growthSeriesRaw.length > 0) {
               Live from the Wikipedia REST API — a new picture every day.
             </p>
           </section>
-
           {
             wikipediaLinks.length > 0 && (
               <section
@@ -749,7 +757,7 @@ if (growthSeriesRaw.length > 0) {
               </section>
             )
           }
-
+          <FeedCarousel latestPostUrl={latestPostUrl} latestPostTitle={latestPostTitle} />
           {
             featured && (
               <section
@@ -846,7 +854,6 @@ if (growthSeriesRaw.length > 0) {
               </a>
             </div>
           </section>
-
           <section
             id="worst-of-the-wiki"
             class="border border-text/10 dark:border-dk-text/10 rounded-xl bg-secondary/5 dark:bg-dk-secondary/5 p-5 sm:p-6"
@@ -947,7 +954,6 @@ if (growthSeriesRaw.length > 0) {
             </p>
           </section>
           <TagGraph posts={graphPosts} id="article-graph" />
-
           {tagEvolution.length > 0 && (
             <section
               id="tag-evolution"
@@ -1941,7 +1947,7 @@ if (growthSeriesRaw.length > 0) {
           <ProtonAdAstroComponent />
         </aside>
       </div>
-
+      
       <footer class="mt-16 pt-8 border-t border-text/10 dark:border-dk-text/10">
         <a
           href="/"

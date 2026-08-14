@@ -1,0 +1,568 @@
+---
+
+interface Props {
+  latestPostUrl?: string;
+  latestPostTitle?: string;
+  lastUpdate?: string;
+}
+
+const {
+  latestPostUrl = "/posts",
+  latestPostTitle = "Latest post",
+  lastUpdate = "8/11/2026",
+} = Astro.props;
+---
+
+<section id="latest-carousel" class="relative">
+  <h2 class="text-xl font-bold tracking-tight mb-2">Nick's Feed</h2>
+  <p class="text-xs tracking-tighter mb-4">
+    Last update: <strong> {lastUpdate} </strong>
+  </p>
+  <div
+    id="carousel-track"
+    class="overflow-hidden rounded-xl border border-text/10 dark:border-dk-text/10 bg-secondary/5 dark:bg-dk-secondary/5"
+  >
+    <div
+      id="carousel-slides"
+      class="flex transition-transform duration-500 ease-out"
+    >
+      <a
+        href="/bruce-the-dog"
+        class="carousel-slide group flex items-center gap-4 p-3 sm:p-4 w-full shrink-0 hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
+      >
+        <img
+          src="/bruce/bruce8.jpg"
+          alt="Bruce"
+          class="h-16 w-16 rounded-lg object-cover flex-shrink-0"
+        />
+        <div class="flex-1">
+          <p
+            class="text-xs uppercase tracking-wide text-text/50 dark:text-dk-text/50 mb-1"
+          >
+            Latest photo of Bruce
+          </p>
+          <span
+            class="text-sm font-medium text-secondary dark:text-dk-accent group-hover:underline underline-offset-4"
+          >
+            See more →
+          </span>
+        </div>
+      </a>
+      <a
+        href="/music"
+        class="carousel-slide group flex items-center justify-between p-5 sm:p-6 w-full shrink-0 hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
+      >
+        <div>
+          <p
+            class="text-xs uppercase tracking-wide text-text/50 dark:text-dk-text/50 mb-1"
+          >
+            Latest track
+          </p>
+          <p class="text-base font-semibold text-secondary dark:text-dk-accent">
+            Palm Smoke
+          </p>
+        </div>
+        <span
+          class="text-sm font-medium text-secondary dark:text-dk-accent group-hover:underline underline-offset-4 shrink-0"
+        >
+          Listen →
+        </span>
+      </a>
+      <a
+        id="wiki-slide"
+        href="#"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="carousel-slide group flex items-center justify-between p-5 sm:p-6 w-full shrink-0 hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
+      >
+        <div class="min-w-0">
+          <p
+            class="text-xs uppercase tracking-wide text-text/50 dark:text-dk-text/50 mb-1"
+          >
+            Random Wikipedia article
+          </p>
+          <p
+            id="wiki-title"
+            class="text-base font-semibold text-secondary dark:text-dk-accent truncate"
+          >
+            Loading...
+          </p>
+          <p
+            id="wiki-excerpt"
+            class="text-xs text-text/75 dark:text-dk-text/75 mt-1 line-clamp-2"
+          >
+            Fetching article...
+          </p>
+        </div>
+        <span
+          class="text-sm font-medium text-secondary dark:text-dk-accent group-hover:underline underline-offset-4 shrink-0"
+        >
+          Read →
+        </span>
+      </a>
+      <a
+        href="/recipes"
+        class="carousel-slide group flex items-center justify-between p-5 sm:p-6 w-full shrink-0 hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
+      >
+        <div class="min-w-0">
+          <p
+            class="text-xs uppercase tracking-wide text-text/50 dark:text-dk-text/50 mb-1"
+          >
+            Latest recipe
+          </p>
+          <p
+            class="text-sm font-semibold text-secondary dark:text-dk-accent truncate"
+          >
+            Tomato Pickle-Mayo Grilled Cheese
+          </p>
+        </div>
+        <span
+          class="text-sm font-medium text-secondary dark:text-dk-accent group-hover:underline underline-offset-4 shrink-0"
+        >
+          Cook it →
+        </span>
+      </a>
+      <div
+        id="quote-slide"
+        class="carousel-slide flex items-center p-5 sm:p-6 w-full shrink-0"
+      >
+        <div class="min-w-0">
+          <p
+            class="text-xs uppercase tracking-wide text-text/50 dark:text-dk-text/50 mb-1"
+          >
+            Random quote
+          </p>
+          <p
+            id="quote-text"
+            class="text-sm font-medium text-secondary dark:text-dk-accent leading-snug"
+          >
+            Loading a quote…
+          </p>
+          <p id="quote-author" class="text-xs text-text/50 dark:text-dk-text/50 mt-1">
+          </p>
+        </div>
+      </div>
+
+      <!-- Slide 5: Latest library book entry -->
+      <a
+        href="/library"
+        class="carousel-slide group flex items-center justify-between p-5 sm:p-6 w-full shrink-0 hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
+      >
+        <div class="min-w-0">
+          <p
+            class="text-xs uppercase tracking-wide text-text/50 dark:text-dk-text/50 mb-1"
+          >
+            Latest read
+          </p>
+          <p
+            class="text-sm font-semibold text-secondary dark:text-dk-accent truncate"
+          >
+            The Penguin Book of Pirates
+          </p>
+        </div>
+        <span
+          class="text-sm font-medium text-secondary dark:text-dk-accent group-hover:underline underline-offset-4 shrink-0"
+        >
+          View →
+        </span>
+      </a>
+      <a
+        href="https://pr.tn/ref/X0J3A3B2"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="carousel-slide group flex items-center justify-between p-5 sm:p-6 w-full shrink-0 hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
+        id="proton-sponsor-slide"
+      >
+        <div class="min-w-0">
+          <p
+            class="text-xs uppercase tracking-wide text-text/50 dark:text-dk-text/50 mb-1"
+          >
+            Sponsored
+          </p>
+          <p
+            class="text-base font-semibold text-secondary dark:text-dk-accent truncate"
+          >
+            Proton - Secure & Private
+          </p>
+          <p class="text-xs text-text/75 dark:text-dk-text/75 mt-1">
+            Encrypted email, VPN, Drive & more
+          </p>
+        </div>
+        <span
+          class="text-sm font-medium text-secondary dark:text-dk-accent group-hover:underline underline-offset-4 shrink-0"
+        >
+          Learn →
+        </span>
+      </a>
+      <a
+        href={latestPostUrl}
+        class="carousel-slide group flex items-center justify-between p-5 sm:p-6 w-full shrink-0 hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
+      >
+        <div class="min-w-0">
+          <p
+            class="text-xs uppercase tracking-wide text-text/50 dark:text-dk-text/50 mb-1"
+          >
+            Latest post
+          </p>
+          <p
+            class="text-sm font-semibold text-secondary dark:text-dk-accent truncate"
+          >
+            {latestPostTitle}
+          </p>
+        </div>
+        <span
+          class="text-sm font-medium text-secondary dark:text-dk-accent group-hover:underline underline-offset-4 shrink-0"
+        >
+          Read →
+        </span>
+      </a>
+      <a
+        id="onthisday-slide"
+        href="#"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="carousel-slide group flex items-center justify-between p-5 sm:p-6 w-full shrink-0 hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
+      >
+        <div class="min-w-0">
+          <p
+            class="text-xs uppercase tracking-wide text-text/50 dark:text-dk-text/50 mb-1"
+          >
+            On this day
+          </p>
+          <p
+            id="onthisday-title"
+            class="text-base font-semibold text-secondary dark:text-dk-accent truncate"
+          >
+            Loading...
+          </p>
+          <p
+            id="onthisday-excerpt"
+            class="text-xs text-text/75 dark:text-dk-text/75 mt-1 line-clamp-2"
+          >
+            Fetching event...
+          </p>
+        </div>
+        <span
+          class="text-sm font-medium text-secondary dark:text-dk-accent group-hover:underline underline-offset-4 shrink-0"
+        >
+          Read →
+        </span>
+      </a>
+      <a
+        href="/media"
+        class="carousel-slide group flex items-center justify-between p-5 sm:p-6 w-full shrink-0 hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
+      >
+        <div class="min-w-0">
+          <p
+            class="text-xs uppercase tracking-wide text-text/50 dark:text-dk-text/50 mb-1"
+          >
+            Latest media
+          </p>
+          <p
+            class="text-sm font-semibold text-secondary dark:text-dk-accent truncate"
+          >
+            George Lopez
+          </p>
+        </div>
+        <span
+          class="text-sm font-medium text-secondary dark:text-dk-accent group-hover:underline underline-offset-4 shrink-0"
+        >
+          View →
+        </span>
+      </a>
+      <a
+        href="https://github.com/Sieep-Coding/simple-chat-csharp"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="carousel-slide group flex items-center justify-between p-5 sm:p-6 w-full shrink-0 hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
+      >
+        <div class="min-w-0">
+          <p
+            class="text-xs uppercase tracking-wide text-text/50 dark:text-dk-text/50 mb-1"
+          >
+            Most starred repo · ⭐ 27
+          </p>
+          <p
+            class="text-base font-semibold text-secondary dark:text-dk-accent truncate"
+          >
+            simple-chat-csharp
+          </p>
+        </div>
+        <span
+          class="text-sm font-medium text-secondary dark:text-dk-accent group-hover:underline underline-offset-4 shrink-0"
+        >
+          View →
+        </span>
+      </a>
+      <a
+        href="/contact"
+        class="carousel-slide group flex items-center justify-between p-5 sm:p-6 w-full shrink-0 hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
+      >
+        <div class="min-w-0">
+          <p
+            class="text-xs uppercase tracking-wide text-text/50 dark:text-dk-text/50 mb-1"
+          >
+            Latest feature
+          </p>
+          <p
+            class="text-base font-semibold text-secondary dark:text-dk-accent truncate"
+          >
+            Contact Page
+          </p>
+        </div>
+        <span
+          class="text-sm font-medium text-secondary dark:text-dk-accent group-hover:underline underline-offset-4 shrink-0"
+        >
+          View →
+        </span>
+      </a>
+      <div
+        id="weather-slide"
+        class="carousel-slide flex items-center justify-between p-5 sm:p-6 w-full shrink-0"
+      >
+        <div class="min-w-0">
+          <p
+            class="text-xs uppercase tracking-wide text-text/50 dark:text-dk-text/50 mb-1"
+          >
+            Rockford, MI right now
+          </p>
+          <p
+            id="weather-text"
+            class="text-base font-semibold text-secondary dark:text-dk-accent truncate"
+          >
+            Loading weather…
+          </p>
+        </div>
+        <span id="weather-icon" class="text-2xl shrink-0" aria-hidden="true"></span>
+      </div>
+    </div>
+  </div>
+  <div class="flex items-center justify-center gap-4 mt-3">
+    <button
+      id="carousel-prev"
+      aria-label="Previous"
+      class="h-7 w-7 flex items-center justify-center rounded-full text-text/50 dark:text-dk-text/50 hover:text-secondary dark:hover:text-dk-accent hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
+    >
+      ‹
+    </button>
+
+    <div id="carousel-dots" class="flex items-center gap-1.5">
+      <button class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors" data-index="0" aria-label="Show latest Bruce photo"></button>
+      <button class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors" data-index="1" aria-label="Show latest track"></button>
+      <button class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors" data-index="2" aria-label="Show random wikipedia entry"></button>
+      <button class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors" data-index="3" aria-label="Show latest recipe"></button>
+      <button class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors" data-index="4" aria-label="Show random quote"></button>
+      <button class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors" data-index="5" aria-label="Show latest read"></button>
+      <button class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors" data-index="6" aria-label="Show on this day in history"></button>
+      <button class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors" data-index="7" aria-label="Show latest post"></button>
+      <button class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors" data-index="8" aria-label="Show latest media entry"></button>
+      <button class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors" data-index="9" aria-label="Show most starred GitHub project"></button>
+      <button class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors" data-index="10" aria-label="Show the recent feature"></button>
+      <button class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors" data-index="11" aria-label="Show current weather"></button>
+      <button class="carousel-dot h-1.5 w-1.5 rounded-full bg-text/30 dark:bg-dk-text/30 transition-colors" data-index="12" aria-label="Show current weather"></button>
+    </div>
+
+    <button
+      id="carousel-next"
+      aria-label="Next"
+      class="h-7 w-7 flex items-center justify-center rounded-full text-text/50 dark:text-dk-text/50 hover:text-secondary dark:hover:text-dk-accent hover:bg-secondary/10 dark:hover:bg-dk-secondary/10 transition-colors"
+    >
+      ›
+    </button>
+  </div>
+</section>
+
+<script>
+  function initFeedCarousel() {
+    const slidesWrap = document.getElementById("carousel-slides");
+    const slides = Array.from(
+      document.querySelectorAll<HTMLElement>(".carousel-slide"),
+    );
+    const dots = Array.from(
+      document.querySelectorAll<HTMLElement>(".carousel-dot"),
+    );
+    const carouselSection = document.getElementById("latest-carousel");
+    const prevBtn = document.getElementById("carousel-prev");
+    const nextBtn = document.getElementById("carousel-next");
+
+    if (!slidesWrap || carouselSection?.dataset.bound === "true") return;
+    if (carouselSection) carouselSection.dataset.bound = "true";
+
+    let current = 0;
+    let intervalId: ReturnType<typeof setInterval> | undefined;
+    const AUTOPLAY_MS = 5000;
+
+    function goTo(index: number) {
+      if (slides.length === 0) return;
+      current = ((index % slides.length) + slides.length) % slides.length;
+      if (slidesWrap) {
+        (slidesWrap as HTMLElement).style.transform =
+          `translateX(-${current * 100}%)`;
+      }
+      dots.forEach((dot, i) => {
+        dot.classList.toggle("bg-secondary", i === current);
+        dot.classList.toggle("dark:bg-dk-accent", i === current);
+        dot.classList.toggle("bg-text/30", i !== current);
+        dot.classList.toggle("dark:bg-dk-text/30", i !== current);
+      });
+    }
+
+    function next() {
+      goTo(current + 1);
+    }
+
+    function prev() {
+      goTo(current - 1);
+    }
+
+    function startAutoplay() {
+      stopAutoplay();
+      intervalId = setInterval(next, AUTOPLAY_MS);
+    }
+
+    function stopAutoplay() {
+      if (intervalId) {
+        clearInterval(intervalId);
+        intervalId = undefined;
+      }
+    }
+
+    dots.forEach((dot) => {
+      dot.addEventListener("click", () => {
+        const idx = Number(dot.getAttribute("data-index"));
+        goTo(idx);
+        startAutoplay();
+      });
+    });
+
+    prevBtn?.addEventListener("click", () => {
+      prev();
+      startAutoplay();
+    });
+
+    nextBtn?.addEventListener("click", () => {
+      next();
+      startAutoplay();
+    });
+
+    carouselSection?.addEventListener("mouseenter", stopAutoplay);
+    carouselSection?.addEventListener("mouseleave", startAutoplay);
+
+    goTo(0);
+    startAutoplay();
+
+    const weatherText = document.getElementById("weather-text");
+    const weatherIcon = document.getElementById("weather-icon");
+
+    const WEATHER_ICONS: Record<number, string> = {
+      0: "☀️", 1: "🌤️", 2: "⛅", 3: "☁️", 45: "🌫️", 48: "🌫️",
+      51: "🌦️", 53: "🌦️", 55: "🌦️", 61: "🌧️", 63: "🌧️", 65: "🌧️",
+      71: "🌨️", 73: "🌨️", 75: "❄️", 80: "🌦️", 81: "🌧️", 82: "⛈️",
+      95: "⛈️", 96: "⛈️", 99: "⛈️",
+    };
+
+    async function loadWeather() {
+      try {
+        const res = await fetch(
+          "https://api.open-meteo.com/v1/forecast?latitude=43.1195&longitude=-85.5606&current=temperature_2m,weather_code&temperature_unit=fahrenheit&timezone=America%2FDetroit",
+        );
+        const data = await res.json();
+        const temp = Math.round(data.current.temperature_2m);
+        const code = data.current.weather_code;
+        if (weatherText) weatherText.textContent = `${temp}°F`;
+        if (weatherIcon) weatherIcon.textContent = WEATHER_ICONS[code] || "🌡️";
+      } catch (err) {
+        if (weatherText) weatherText.textContent = "Weather unavailable";
+      }
+    }
+
+    const quoteText = document.getElementById("quote-text");
+    const quoteAuthor = document.getElementById("quote-author");
+
+    async function loadQuote() {
+      try {
+        const res = await fetch("https://dummyjson.com/quotes/random");
+        const data = await res.json();
+        if (quoteText) quoteText.textContent = `“${data.quote}”`;
+        if (quoteAuthor) quoteAuthor.textContent = `— ${data.author}`;
+      } catch (err) {
+        if (quoteText) quoteText.textContent = "Couldn't load a quote right now.";
+      }
+    }
+
+    const wikiSlide = document.getElementById(
+      "wiki-slide",
+    ) as HTMLAnchorElement | null;
+    const wikiTitle = document.getElementById("wiki-title");
+    const wikiExcerpt = document.getElementById("wiki-excerpt");
+
+    async function loadWikipediaArticle() {
+      try {
+        const res = await fetch(
+          "https://en.wikipedia.org/api/rest_v1/page/random/summary",
+        );
+        const article = await res.json();
+        if (wikiTitle) wikiTitle.textContent = article.title;
+        if (wikiExcerpt) {
+          wikiExcerpt.textContent =
+            article.extract.length > 170
+              ? article.extract.slice(0, 170) + "…"
+              : article.extract;
+        }
+        if (wikiSlide) wikiSlide.href = article.content_urls.desktop.page;
+      } catch {
+        if (wikiTitle) wikiTitle.textContent = "Wikipedia unavailable";
+        if (wikiExcerpt) wikiExcerpt.textContent = "Couldn't load a random article.";
+      }
+    }
+
+    const onThisDaySlide = document.getElementById(
+      "onthisday-slide",
+    ) as HTMLAnchorElement | null;
+    const onThisDayTitle = document.getElementById("onthisday-title");
+    const onThisDayExcerpt = document.getElementById("onthisday-excerpt");
+
+    async function loadOnThisDay() {
+      try {
+        const now = new Date();
+        const mm = String(now.getMonth() + 1).padStart(2, "0");
+        const dd = String(now.getDate()).padStart(2, "0");
+
+        const res = await fetch(
+          `https://en.wikipedia.org/api/rest_v1/feed/onthisday/events/${mm}/${dd}`,
+        );
+        const data = await res.json();
+        const events = data.events || [];
+        if (events.length === 0) throw new Error("No events");
+
+        const event = events[Math.floor(Math.random() * events.length)];
+        const page = event.pages?.[0];
+
+        if (onThisDayTitle) {
+          onThisDayTitle.textContent = event.year ? `${event.year}` : "On this day";
+        }
+        if (onThisDayExcerpt) {
+          const text = event.text || "";
+          onThisDayExcerpt.textContent =
+            text.length > 170 ? text.slice(0, 170) + "…" : text;
+        }
+        if (onThisDaySlide) {
+          onThisDaySlide.href =
+            page?.content_urls?.desktop?.page ||
+            `https://en.wikipedia.org/wiki/${mm}_${dd}`;
+        }
+      } catch {
+        if (onThisDayTitle) onThisDayTitle.textContent = "Unavailable";
+        if (onThisDayExcerpt) onThisDayExcerpt.textContent = "Couldn't load today's event.";
+      }
+    }
+
+    loadWikipediaArticle();
+    loadOnThisDay();
+    loadWeather();
+    loadQuote();
+  }
+
+  initFeedCarousel();
+  document.addEventListener("astro:page-load", initFeedCarousel);
+</script>
